@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (1:1.3.2+202311252150+091e20ef0f)"
+   sodipodi:docname="schema1.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="1.0356019"
+     inkscape:cx="276.6507"
+     inkscape:cy="416.18308"
+     inkscape:window-width="1920"
+     inkscape:window-height="1008"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid1"
+       units="mm"
+       originx="0"
+       originy="0"
+       spacingx="0.99999998"
+       spacingy="1"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       dotted="false"
+       gridanglex="30"
+       gridanglez="30"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#55ddff;stroke:#999999;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:2,6;stroke-dashoffset:0"
+       d="m 20,59.999998 v 89.999992 0"
+       id="path1"
+       inkscape:export-filename="schema1.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:#55ddff;stroke:#999999;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:2,6;stroke-dashoffset:0"
+       d="m 20,105 108.9245,-1e-5"
+       id="path2" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       d="m 20,74.999997 c 10.094348,1.817016 13.19867,7.329488 17.918273,15.574238 7.40637,12.938305 9.807271,29.553565 17.903441,41.697825 C 75.608333,161.95199 75.000002,105 135,110"
+       id="path3"
+       sodipodi:nodetypes="cssc" />
+    <path
+       style="fill:none;stroke:#ff2a2a;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+       d="M 66.058335,139.99999 V 105"
+       id="path4" />
+    <text
+       xml:space="preserve"
+       style="font-size:10.71px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;fill:#999999;stroke:#ff2a2a;stroke-width:8.674;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+       x="25"
+       y="65"
+       id="text4"><tspan
+         sodipodi:role="line"
+         id="tspan4"
+         style="fill:#999999;stroke:none;stroke-width:8.674"
+         x="25"
+         y="65">E</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.71px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;fill:#999999;stroke:#ff2a2a;stroke-width:8.674;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+       x="131.41992"
+       y="103.99999"
+       id="text4-5"><tspan
+         sodipodi:role="line"
+         id="tspan4-0"
+         style="fill:#999999;stroke:none;stroke-width:8.674"
+         x="131.41992"
+         y="103.99999">x</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:9.56101px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;fill:#ff0000;stroke:none;stroke-width:7.74346;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+       x="74.185867"
+       y="123.02831"
+       id="text5"><tspan
+         sodipodi:role="line"
+         id="tspan5"
+         style="fill:#ff0000;stroke-width:7.74346"
+         x="74.185867"
+         y="123.02831">D<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan7">e</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:9.56101px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;fill:#ff0000;stroke:none;stroke-width:7.74346;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+       x="68.215034"
+       y="101.95541"
+       id="text5-0"><tspan
+         sodipodi:role="line"
+         id="tspan5-6"
+         style="fill:#ff0000;stroke-width:7.74346"
+         x="68.215034"
+         y="101.95541">R<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan6">e</tspan></tspan></text>
+  </g>
+</svg>

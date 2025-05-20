@@ -1,0 +1,154 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Linux et Python : Une introduction}
+\subtitle{Mathématiques et Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{Juliette Jinenez Jaimes}% jimenez@irsamc.ups-tlse.fr
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+
+%\setcounter{chapter}{2} Login Générique : fsi.local et mot de passe : pdfl1
+
+	\chapter{Systèmes UNIX}
+\section{Commandes de base}
+\subsubsection{Bases}
+	\begin{tabular}{_l^l^l}
+		\tableHeaderStyle%
+		Commande & Explication\\
+		pwd & Affiche le répertoire dans lequel on se trouve\\
+		ls & liste le contenu du répertoire\\
+		ls -all & liste le contenu du répertoire avec les permissions\\
+		man & Affiche la Doc de la commande qui le suit\\
+		echo ``texte'' & Affiche le texte\\
+	\end{tabular}
+\subsection{Modification des fichiers}
+\begin{tabular}{_l^l^l}
+		\tableHeaderStyle%
+		Commande & Explication\\
+		touch file.txt & Crée un fichier vide nommé file.txt\\
+		nano file.txt & Modifie le fichier file.txt ou le crée s'il n'existe pas\\
+		mv file.txt new\_name.txt & Renomme le fichier file.txt en new\_name.txt\\
+	\end{tabular}
+	\subsubsection{Nano}
+	Nano est un éditeur de texte utilisable dans le Terminal adapté pour les débutants. Pour enregistrer le fichier, faire Ctrl+S et pour quitter Nano, Ctrl+x.
+	\subsection{Modification des répertoires}
+	\begin{tabular}{_l^l^l}
+		\tableHeaderStyle%
+		Commande & Explication\\
+		mkdir dossier & Crée un dossier dans le répertoire courant\\
+		rmdir dossier& Supprime un dossier vide\\
+		rmdir -r dossier & Supprime un dossier et son contenu\\
+		mv dossier /emplacement2/ & déplace le dossier dans le dossier emplacement2\\
+	\end{tabular}
+\subsection{Navigation}
+\begin{tabular}{_l^l^l}
+		\tableHeaderStyle%
+		Commande & Explication\\
+		cd dossier & Aller dans le dossier\\
+		cd ..& Aller dans le dossier parent\\
+		cd & Aller dans l'emplacement par défaut\\
+	\end{tabular}
+
+	La commande ``cd'' accepte un répertoire, donc les commandes ``cd dossier1'' suivie de ``cd dossier2'' ont le m\^eme effet que ``cd dossier1/dossier2''.
+	\section{Filtres}
+	Le filtre > permet d'écrire le résultat de ce qui précède vers, par exemple un fichier.
+
+\checkInfo{Exemple}{
+	Je veux enregistrer le manuel de la commande ``ls'' dans un fichier nommé documentation.txt. Pour cela, je sais que le manuel est donné par ``man ls''; je fais donc : man ls > documenttation.txt.}
+
+Le filtre | permet de passer le résultat de ce qui précède vers une autre commande.
+
+	\section{Permissions}
+	\subsection{Utilisateurs, groupes, fichier}
+	Dans les systèmes UNIX, à chaque fichiers sont associés les permissions de :
+	\begin{itemize}
+	 \item Un propriétaire : par défaut celui qui crée le fichier
+	 \item Un groupe : Par défaut le groupe du m\^eme nom que le propriétaire
+	 \item Tous les autres
+	\end{itemize}
+\subsection{Lecture des permissions}
+Quand on fait la commande ``ls -all'', la première indique une suite de lettre x,r,w,-. Ce sont les permissions.
+
+Il y a 10 caractères en tout, que l'on peut partager en 4.
+
+\begin{itemize}
+ \item Le premier indique s'il s'agit d'un dossier (d) ou d'un fichier (-)
+ \item Les 3 autres caractères correspondent aux permissions du propriétaire
+ \item les 3 autres aux permissions du groupe
+ \item les 3 derniers aux permissions des autres utilisateurs.
+\end{itemize}
+
+Chaque ensemble de 3 caractère peut contenir un ``r'', un ``w'', un ``x'' et des ``-'', symbolisant respectivement les droits de lecture, écriture et d'exécution. L'absence de l'un de ces droit est marqué par un ``-''.
+\checkInfo{Exemple}{Analysons les permissions {\color{blue}-}{\color{red}rwx}{\color{orange}r-x}{\color{purple}r- -}.
+
+L'élément est un {\color{blue}fichier}
+
+Les permissions du propriétaire sont {\color{red}rwx}, celles des membres du groupe sont {\color{orange}r-x} et celles des autres sont {\color{purple}r- -}.
+
+On en déduit que le propriétaire peut lire, écrire et exécuter le fichier, les membres du groupe peuvent le lire et l'exécuter et les autres peuvent seulement le lire.}
+\subsection{Modification des permissions}
+On utilise la commande chmod, qui adopte la syntaxe suivante :
+
+\texttt{chmod [option] [mode] [nom\_fichier\_dossier]}
+
+L'option la plus utilisée est -R, pour appliquer la commande de manière récursive.
+
+Le mode correspond au coeur de la commande. On y indique à quels utilisateurs on applique les modification et l'opération sur les permissions.
+\subsubsection{Syntaxe du mode}
+On indique d'abord à qui on applique les modifications
+
+	\begin{tabular}{_l^l^l}
+		\tableHeaderStyle%
+		Lettre & Utilisateur(s)\\
+		u & Propriétaire\\
+		g & Groupe\\
+		o & 8 Les Autres\\
+	\end{tabular}
+
+On indique ensuite l'opération à effectuer :
+
+	\begin{tabular}{_l^l^l}
+		\tableHeaderStyle%
+		Signe & Opération\\
+		+ & Ajout des permissions\\
+		- & retrait des permissions\\
+		= & Édition des permissions
+	\end{tabular}
+
+On indique ensuite les lettres de permissions (r,w,x) que l'on souhaite utiliser.
+
+\checkInfo{Exemples}{
+Pour supprimer la permission d'éxécution au propriétaire, on utilise : \texttt{chmod u-x fichier.txt}
+
+Pour ajouter la permission de modification au groupe et indiquer que les autres ne peuvent que lire le fichier, on tape : \texttt{chmod g+w,o=r fichier.txt}
+
+Pour supprimer la permission de lecture aux autres et ajouter la permissions d'éxécution au propriétaire, on tape \texttt{chmod o-r, u+x fichier.txt}}
+\end{document}
+
+

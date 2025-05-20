@@ -1,0 +1,242 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Démonstrations}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+
+\setcounter{chapter}{2}
+
+	\chapter{Fonctions}
+\section{Précisions sur les applications réciproques}
+
+
+\begin{theorem}[Proposition]
+Soit $f : E\rightarrow F$ une application. S'il existe $g : F\rightarrow E$ une application telle que : $g\circ f = Id_E$ et $ f\circ g = Id_F$. Alors $f$ est bijective et $g$ est la réciproque de $f$.
+\end{theorem}
+
+\begin{myproof}[]
+Je suppose :$f:E\rightarrow F$. Soit $g : F\rightarrow E$ avec $g\circ f = Id_E$ et $ f\circ g = Id_F$
+\begin{itemize}
+ \item Montrons que $f$ est bijective.
+
+Soir $y\in F, E? x\in E,$ tel que $y=f(x)$, est unique ?
+
+$y = f(x) \Rightarrow g(y) = g(f(x)) = x$, car $g\circ f = Id_E$.
+
+Si $g=f(x)$, alors  $x=g(y)$. $y$ a au plus un antécédant et $f$ est injective.
+
+De plus, $f(x) = f(g(y)) = y$ car $f\circ g = Id_F$. Donc $x = g(y)$ est bien un antécédant de $y$ par $f$ et c'est le seul.
+
+Conslusion : $f$ est bijective de $E \rightarrow F$
+
+\item Montrons $g=f^{-1}$.
+
+$f$ bijective et $F \rightarrow E$ et $y \longmapsto x$.
+
+$f^{-1}(x) = x \iff y = f(x)$ et $x\in E$.
+
+Vérifions que $\forall y \in F, f^{-1}(y) = g(y)$.
+
+$f^{-1}(y)=x \iff f(x) = y \iff g\circ f(x) = g(y) \Rightarrow x = g(y)$. Donc $g(y) = f^{-1}(y) \forall y\in F$.
+\end{itemize}
+Donc l'implication est démontrée.
+
+\end{myproof}
+\begin{theorem}[Proposition]
+Soit $f : E\rightarrow F$ et $g : F\Rightarrow G$ deux applications bijectives. $g\circ f : E\rightarrow F \rightarrow G$ et $x \longmapsto f(x) \longmapsto g(f(x))$ Alors $g\circ f$ est bijective.
+\end{theorem}
+
+\begin{theorem}[Proposition]
+Soit $f : E\rightarrow F$ bijective et notons $f^{-1} : F\Rightarrow E$ sa réciproque. Alors $f^{-1}$ est bijective de réciproque $f$.
+\end{theorem}
+\begin{myproof}[]
+Si $f$ est bijective, alors $f\circ f^{-1} = Id_F$ et $f^{-1}\circ f = Id_E$. D'après la proposition précédante, $f^{-1}$ est bijective
+
+\end{myproof}
+
+\begin{theorem}[Proposition]
+Soit $f : I\rightarrow R$, si $f$ est strictement monotone sur $I$, alors $f$ est injective de I sur R.
+\end{theorem}
+\begin{myproof}
+Pour une fonction strictement décroissante.
+
+$\forall x,x', x'>x f(x)>f(x')$ et donc $f(x)\neq f(x')$
+$\forall x,x',x'<x, f(x)<f(x')$ et donc $f(x)\neq f(x')$
+
+Donc, on a bien $\forall x\neq x' \Rightarrow f(x)\neq f(x')$
+\end{myproof}
+
+
+
+On dit que $f$ est continue sur l'intervalle $I$ si elle est continue en tout $x$ de $I$.
+\section{Continuité et opérations}
+On prend 2 fonctions $f$ et $g$ continues sur $I$. Alors $f+g, fg$ sont continues sur $I$ et $\frac{f}{g}$ est continue en tout point de $I$ tel que $g(x)\neq 0$.
+
+\begin{theorem}[Continuité des composées]
+Soient $f : I\to J$ une fonction continue sur$I$, à valeurs dans $I\in\mathbb{R}$ et $g:I\to J\in\mathbb{R}$. Alors $g\circ f$ est continue sur $I$.
+\end{theorem}
+\begin{myproof}
+Soit $x_0\in I$
+
+Soit $\epsilon >0$ $\exists ? \alpha >0,$ tel que $|x-x_0| < \alpha \Rightarrow |g(f(x)) - g(f(x_0))|<\varepsilon$.
+
+Soit $\varepsilon >0$ donné. On cherche $\alpha$ tel que $y_0 = f(x_0)$. Notons alors $y=f(x)$. $g$ est continue en $x_0$, donc $\exists \eta >0$, $|y-y_0|<\eta \Rightarrow |g(y)-g(y_0)|<\varepsilon$.
+
+Or, $f$ est continue en $x_0$, donc $\exists \alpha >0, |x-x_0| \Rightarrow |f(x)-f(x_0) < \eta \Rightarrow |g(f(x))-g(f(x_0))| < \varepsilon$ car $|y-y_0|<\eta \Rightarrow |g(y)-g(y_0)|<\varepsilon$
+
+Donc $g\circ f$ est bien continue en $x_0$.
+\end{myproof}
+\subsection{Théorème des valeurs intermédiaires}
+\begin{theorem}[TVI]
+Soit $f:I\to\mathbb{R}$ une fonction et $(a \leq b)\in I$. On suppose $f$ continue sur $[a,b]$.
+
+Alors $\forall y_0 \in [f(a),f(b)], \exists x_0\in[a,b], y_0=f(x_0)$.
+\end{theorem}
+\begin{theorem}[Variante du TVI]
+Il est équivalent à :
+
+si $f$ est continue sur $[a,b]$ et $f(a)\times f(b) \leq 0$, alors $\exists c\in[a,b], f(c)=0$.
+\end{theorem}
+\begin{myproof}[Par dichotomie]
+Supposons par exemple que $f (a) \leq 0 \leq f (b)$, de sorte que $0 \in [f (a), f (b)]$ (l’autre cas s’y ramène en considérant $−f$ ). On construit par récurrence deux suites $(a_n )$ et $(b_n )$
+de la façon suivante.
+
+On part de $a_0 := a$, $b_0 := b$, et supposant construits $a_n$ et $b_n$ tels que $f(a_n)\leq 0\leq f(b_n)$,  on considère la valeur de f en $(a_n + b_n )/2$ , milieu du segment $[a_n , b_n ]$.
+
+On construit alors$ a_{n+1}$ et $b_{n+1}$ ainsi :
+\begin{itemize}
+ \item si $f(\frac{a_n+b_n}{2})<0$, on pose $a_{n+1} = \frac{a_n+b_n}{2}$ et $b_{n+1} = b_n$.
+ \item Sinon, c'est à dire si $f(\frac{a_n+b_n}{2}) \geq 0$, on pose $a_{n+1} = a_n$ et $b_{n+1} = \frac{a_n+b_n}{2}$.
+\end{itemize}
+On voit ainsi que :
+\begin{enumerate}
+ \item $a_n\leq a_{n+1}\leq b_{n+1}\leq b_n$
+ \item $0\leq b_n-a_n = \frac{b-a}{2^n}$ (On divise par 2 à chaque fois la longueur initiale $b-a$
+ \item $f(a_n)\leq0\leq f(b_n)$
+\end{enumerate}
+En particulier, $\Lim{\infty} |b_n-a_n| = 0$ et les 2 suites sont adjacentes.
+
+Elles convergent donc vers une unique limite $c$. On a $c\in[a,b]$ car $a_n\in[a,b]$ et comme $f$ est continue, on a : $\Lim{\infty} f(a_n) = f(c) = f(b_n)$.
+
+Les doubles inégalités 2 et 3 impliquent que $c=0$.
+\end{myproof}
+
+\subsection{Théorème de Heine}
+\begin{theorem}[Théorème de Heine]
+L'image continue d'un intervalle fermé et borné est un intervalle fermé et borné.
+
+Soient $ a<b \in\mathbb{R}$ et $f:[a,b] \to \mathbb{R}, f$ continue sur $[a,b]$, alors $\exists m\in\mathbb{R},M\in\mathbb{R}, m\leq M$ tels que $f([a,b] = [m,M]$ en particulier $\exists x_0\in[a,b], f(x_0) = m$ et $\exists x_1\in[a,b], f(x_1) = M$
+\end{theorem}
+\begin{myproof}{}
+On montre d'abord que la fonction est bornée, puis qu'elle atteint ses bornes.
+
+Montrons que la fonction est bornée. Soit $f:[a;b]\to \mathbb{R}$, avec $a<b$. On suppose la fonction $f$ non majorée (hypothèse de la démonstration par l'absurde). Dans ce cas, $\forall M,\exists t \in[a,b], t\geq M$.
+
+En posant $M=n\in\mathbb{N}$, on a $t_n\in[a,b],f(t_n) \geq n = M$. La suite obtenue est bornée, on peut en extraire une suite convergente $(t_{n_k})$ de limite $\alpha$.
+
+Nous avons donc $f(t_{n_k}) \geq n_k, \forall k\in\mathbb{N}$.
+
+$f$ est continue, donc la suite $(f(t_{n_k}))\to f(\alpha)$.
+
+Or, d'après $f(t_{n_k}) \geq n_k$, la suite devrait tendre vers $+\infty$. Il y a contradiction, donc $f$ est majorée. On applique ce qui précède pour montrer que $f$ est minorée.
+
+Montrons qu'elle atteint ses bornes.
+
+Notons maintenant $\alpha$ sa borne inférieure et supposons qu'elle n'est pas atteinte pas $f$. Posons alors la fonction $\displaystyle g:[a,b] \to \mathbb{R}, g(t) = \frac{1}{f(t)-\alpha}$. $g$ est bien continue sur $[a,b]$ par composition.
+
+Soit $M>0$ donné. Par définition de la borne inférieure, nous savons qu'il existe $t \in[a,b]$ tel que $\alpha\leq f(t)<\alpha+\frac{1}{M}$, et donc que $g(t) > M$. $M$ étant arbitraire, $g$ n'est pas majorée. Or, cela contredit la première partie de la démonstration.
+\end{myproof}
+
+\subsection{Réciproque d'une application continue strictement monotone}
+
+\subsection{Dérivées}
+
+\begin{theorem}[Dérivée de la réciproque]
+On donne un intervalle $I,J\in\mathbb{R}$ et $f:I\to J$. On suppose $f$ dérivable sur $I$ et que $f$ est bijective de $I\to J$. On note $f^{-1} :J\to I$ la réciproque. Elle est dérivable en $y_0\in J \iff f'(f^{-1}(y_0))\neq 0$
+
+On a alors : $(f^{-1})'_{y_0} = \frac{1}{f'(f^{-1}(y_0))} = \frac{1}{f'(x_0)}$ avec $x_0 = f^{-1}(y_0)$.
+\end{theorem}
+\begin{myproof}
+On pose $f^{-1}(y_0) = x_0$ Si $f^{-1}$ est dérivable en $x$.
+
+On a $\Lim{y\to y_0}\frac{f^{-1}(y)-f^{-1}(y_0)}{y-y_0}$.
+
+On pose alors $ y = f(x)$ et $x_0 = f^{-1}(y_0)$. Donc $y\to y_0 \iff x\to x_0$ car les fonctions sont continues.
+
+Donc $\Lim{x\to x_0} \frac{x-x_0}{f(x)-f(x_0)} = \frac{1}{f'(x_0)}$ si $f'(x_0)\neq 0$.
+\end{myproof}
+\section{Théorème des accroissements finis et de Rolle}
+$a<b$
+\subsection{Théorème des accroissements finis}
+\begin{theorem}[]
+Soit $f:[a,b]\to \mathbb{R}$. Si $f$ est continue sur $[a,b]$ et dérivable sur $]a,b[$. Alors $\exists c\in]a,b[, \frac{f(b)-f(a)}{b-a} = f'(c)$
+\end{theorem}
+
+\begin{myproof}
+On suppose $f$ continue sur $[a,b]$ et dérivable sur $]a,b[$.
+
+On considère une fonction auxilliaire $\varphi(t) = (t-a)(f(b)-f(a)) - (b-a)(f(t)-f(a))$.
+
+$\varphi$ est continue sur $[a,b]$ et dérivable sur $]a,b[$ car $f$ l'est.
+
+$\varphi(b) = 0 = \varphi(a)$
+
+D'après le Théorème de Rolle, il existe $c\in]a,b[, \varphi'(c) = 0$.
+
+Or, $\varphi'(t) = f(b)-f(a) - (b-a)f'(t)$, donc $\varphi'(c) = 0 \iff f'(c) = \frac{f(b)-f(a)}{b-a}$.
+\end{myproof}
+\subsection{Théorème de Rolle}
+\begin{theorem}[Théorème de Rolle]
+Soit $f:[a,b]\to \mathbb{R}$. Si $f$ est continue sur $[a,b]$ et dérivable sur $]a,b[$ et $f(a) = f(b)$. Alors $\exists c\in]a,b[, f'(c) = 0$
+\end{theorem}
+
+\begin{myproof}
+$f$ étant continue sur $[a, b]$, elle est bornée et atteint
+sa borne inférieure $\alpha$ et sa borne supérieure $\beta$. Prenons
+donc $c$ et $d$ dans $[a, b]$ tels que $f (c) = \alpha$ et $f (d) = \alpha$ .
+
+Si $\alpha = \beta$ , alors la fonction est en fait constante, et donc en tous les points $c\in ]a, b[$, la dérivée s’annule.
+
+Sinon, on a $\alpha \neq \beta$ , et donc l’un des deux est différent de $f (a) = f (b)$. Disons par exemple
+que $f (c) = \alpha < f (a) = f (b)$. Donc $c \neq a$ et $c \neq b$, soit $c \in ]a, b[$ et $f'(c) = 0$.
+
+En effet,
+$\Lim{x\to x_0^-} \frac{f(x)-f(x_0)}{x-x_0} = \Lim{x\to x_0^-} \frac{f(x)-m}{x-x_0} \leq 0$.
+
+Mais $f'(x_0) = \Lim{x\to x_0^+} \frac{f(x)-f(x_0)}{x-x_0} = \Lim{x\to x_0^+} \frac{f(x)-m}{x-x_0} \geq 0$.
+
+Donc $f'(x_0) \geq 0 $ et $\leq 0$, donc $f'(x_0) = 0$.
+\end{myproof}
+
+\end{document}
+
+

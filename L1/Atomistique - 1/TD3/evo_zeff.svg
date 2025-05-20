@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="191.64343mm"
+   height="85.43573mm"
+   viewBox="0 0 191.64343 85.43573"
+   version="1.1"
+   id="svg1"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient172">
+      <stop
+         style="stop-color:#5f00c4;stop-opacity:1;"
+         offset="0"
+         id="stop171" />
+      <stop
+         style="stop-color:#fa0000;stop-opacity:1;"
+         offset="0.68345499"
+         id="stop172" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient170">
+      <stop
+         style="stop-color:#5f00c4;stop-opacity:1;"
+         offset="0"
+         id="stop169" />
+      <stop
+         style="stop-color:#fa0000;stop-opacity:1;"
+         offset="0.68393564"
+         id="stop170" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient20">
+      <stop
+         style="stop-color:#5f00c4;stop-opacity:1;"
+         offset="0.00386794"
+         id="stop19" />
+      <stop
+         style="stop-color:#fa0000;stop-opacity:1;"
+         offset="1"
+         id="stop20" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient18">
+      <stop
+         style="stop-color:#5f00c4;stop-opacity:1;"
+         offset="0.34132716"
+         id="stop17" />
+      <stop
+         style="stop-color:#fa0000;stop-opacity:1;"
+         offset="1"
+         id="stop18" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient16">
+      <stop
+         style="stop-color:#5f00c4;stop-opacity:1;"
+         offset="0"
+         id="stop15" />
+      <stop
+         style="stop-color:#fa0000;stop-opacity:1;"
+         offset="0.48456025"
+         id="stop16" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient14">
+      <stop
+         style="stop-color:#5f00c4;stop-opacity:1;"
+         offset="0"
+         id="stop13" />
+      <stop
+         style="stop-color:#fa0000;stop-opacity:1;"
+         offset="1"
+         id="stop14" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5">
+      <stop
+         style="stop-color:#5f00c4;stop-opacity:1;"
+         offset="0"
+         id="stop7" />
+      <stop
+         style="stop-color:#fa0000;stop-opacity:1;"
+         offset="0.7642315"
+         id="stop8" />
+    </linearGradient>
+    <marker
+       style="overflow:visible"
+       id="Triangle"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135" />
+    </marker>
+    <linearGradient
+       xlink:href="#linearGradient14"
+       id="linearGradient7"
+       x1="16.204172"
+       y1="100"
+       x2="194.04504"
+       y2="100"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(1.0583333,-76.729194)" />
+    <linearGradient
+       xlink:href="#linearGradient20"
+       id="linearGradient8"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(1.2958169,-66.729194)"
+       x1="16.204172"
+       y1="100"
+       x2="194.04504"
+       y2="100" />
+    <linearGradient
+       xlink:href="#linearGradient5"
+       id="linearGradient9"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(1.2958169,-56.729193)"
+       x1="16.204172"
+       y1="100"
+       x2="194.04504"
+       y2="100" />
+    <linearGradient
+       xlink:href="#linearGradient172"
+       id="linearGradient10"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(1.2958187,-46.729193)"
+       x1="16.204172"
+       y1="100"
+       x2="194.04504"
+       y2="100" />
+    <linearGradient
+       xlink:href="#linearGradient170"
+       id="linearGradient11"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(1.2958155,-36.729188)"
+       x1="16.204172"
+       y1="100"
+       x2="194.04504"
+       y2="100" />
+    <linearGradient
+       xlink:href="#linearGradient16"
+       id="linearGradient12"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(1.2958121,-26.729197)"
+       x1="16.204172"
+       y1="100"
+       x2="194.04504"
+       y2="100" />
+    <linearGradient
+       xlink:href="#linearGradient18"
+       id="linearGradient13"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(1.2958144,-86.729199)"
+       x1="16.204172"
+       y1="100"
+       x2="194.04504"
+       y2="100" />
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-3.7565428,-6.2833045)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.799999;stroke-linejoin:round"
+       d="m 15,6.6833042 h 10.000001 v 9.9999998 h 9.999998 V 36.683255 H 140 V 16.683304 h 45 V 6.6833042 h 10 V 81.683083 H 15 Z"
+       id="path1" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.8;stroke-linejoin:round;stroke-dasharray:1.6, 0.8;stroke-dashoffset:0;marker-end:url(#Triangle)"
+       d="M 10,6.6833012 V 76.683101"
+       id="path2" />
+    <path
+       style="fill:#000000;stroke:url(#linearGradient7);stroke-width:2;stroke-linejoin:round;stroke-dasharray:none"
+       d="M 17.262507,23.270796 H 192.26253"
+       id="path2-5" />
+    <path
+       style="fill:#000000;stroke:url(#linearGradient8);stroke-width:2;stroke-linejoin:round;stroke-dasharray:none"
+       d="M 17.499991,33.270776 H 192.50001"
+       id="path2-5-7" />
+    <path
+       style="fill:#000000;stroke:url(#linearGradient9);stroke-width:2;stroke-linejoin:round;stroke-dasharray:none"
+       d="M 17.499991,43.270737 H 192.50001"
+       id="path2-5-6" />
+    <path
+       style="fill:#000000;stroke:url(#linearGradient10);stroke-width:2;stroke-linejoin:round;stroke-dasharray:none"
+       d="M 17.499992,53.270698 H 192.50001"
+       id="path2-5-9" />
+    <path
+       style="fill:#000000;stroke:url(#linearGradient11);stroke-width:2;stroke-linejoin:round;stroke-dasharray:none"
+       d="M 17.499989,63.27065 H 192.50002"
+       id="path2-5-5" />
+    <path
+       style="fill:#000000;stroke:url(#linearGradient12);stroke-width:2;stroke-linejoin:round;stroke-dasharray:none"
+       d="M 17.499986,73.27062 H 192.50002"
+       id="path2-5-5-7" />
+    <path
+       style="fill:#000000;stroke:url(#linearGradient13);stroke-width:2;stroke-linejoin:round;stroke-dasharray:none"
+       d="M 17.499987,13.2708 H 192.50002"
+       id="path2-5-5-3" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.67703px;font-family:helvetica;-inkscape-font-specification:helvetica;fill:#000000;stroke:#000000;stroke-width:0.964195;stroke-linejoin:round;stroke-dasharray:1.92839, 0.964195;stroke-dashoffset:0"
+       x="19.928318"
+       y="90.69944"
+       id="text168"><tspan
+         id="tspan168"
+         style="stroke:none;stroke-width:0.964196"
+         x="19.928318"
+         y="90.69944">Évolution de Z<tspan
+   style="font-size:3.04007px;baseline-shift:sub;stroke-width:0.964196"
+   id="tspan169">eff</tspan> (en bleue les valeurs les plus faibles et en rouge les plus élevées</tspan></text>
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.8;stroke-linejoin:round;stroke-dasharray:1.6, 0.8;stroke-dashoffset:0;marker-end:url(#Triangle)"
+       d="M 192.50002,13.270798 20,21.683299"
+       id="path179" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.88056px;font-family:helvetica;-inkscape-font-specification:helvetica;fill:#000000;stroke:#000000;stroke-width:0.799999;stroke-linejoin:round;stroke-dasharray:1.6, 0.799999;stroke-dashoffset:0"
+       x="107.30051"
+       y="28.548445"
+       id="text180"
+       transform="rotate(-4.0862244)"><tspan
+         id="tspan180"
+         style="baseline-shift:baseline;stroke:none;stroke-width:0.8"
+         x="107.30051"
+         y="28.548445">chute brutale</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.23516px;font-family:helvetica;-inkscape-font-specification:helvetica;fill:#000000;stroke:none;stroke-width:0.666945;stroke-linejoin:round;stroke-dasharray:1.33389, 0.666945;stroke-dashoffset:0"
+       x="-82.463089"
+       y="6.12468"
+       id="text181"
+       transform="rotate(-90)"><tspan
+         id="tspan181"
+         style="stroke-width:0.666946"
+         x="-82.463089"
+         y="6.12468">Augmentation faible en descendant dans les groupes</tspan></text>
+  </g>
+</svg>

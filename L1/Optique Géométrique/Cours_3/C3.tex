@@ -1,0 +1,103 @@
+ % !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Optique Géométrique}
+\subtitle{Niveau 1}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Gatel}%christophe.gatel@cemes.fr : section B sillon 7
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+\setcounter{chapter}{2}
+\chapter{Formation des images}
+\section{Système optiques, stigmatisme}
+\begin{definition}[Système optique]
+Un système optique transformer un objet pour en faire une image.
+\end{definition}
+\begin{definition}[Stigmatisme]
+Système qui associe L'image d'un point à un point. Un système optique fait une image de chaque points. Si il n'y a pas de stigmatisme, on observe des t\^aches avec un diamètre plus ou moins grand.
+\end{definition}
+À part le mirroir plan, aucun instrument d'optique n'est stigmatique\marginTips{On parle de stigmatisme rigoureux. Si l'image d'un point est une tache assez petite par rapport à notre utilisation de l'image, on parle de stigmatisme approché.}.
+\subsection{Système optique}
+On a une phase d'entrée S et une phase de sortie S'.
+
+Le système optique est centré si il a un axe de révolution (axe de symétrie axiale), appelé axe optique commun à tous les dioptres, surfaces rélféchissantes.
+\begin{definition}[Système dioptrique/catadioptrique]
+Un système dioptrique est composé uniquement de dioptre alors qu'un système catadioptrique est composé de surfaces réfractantes mais aussi réfléchissantes.
+\end{definition}
+\begin{definition}[Points conjugués]
+2 points sont conjugués si l'image d'un point est celui d'un objet. Ces deux points sont reliés par le système optique et soumis à une relation de conjugaison.
+\end{definition}
+\begin{definition}[Vergence et dioptrie]
+Elle s'exprime en dioptrie $\delta = m^{-1}$ et traduit la capacité du système à dévier les rayons. Si elle est positive, le système est convergent, dans le cas contraire, le système est divergent.
+\end{definition}
+%\warningInfo{Un système divergent est un système convergent avant la phase de sortie, voire avant le système.}
+\begin{definition}[Aplanétisme]
+L'image d'un segment perpendiulaire à l'axe optique est un segment perpendiculaire à l'axe optique, sur le m\^eme plan.
+\end{definition}
+Pour modéliser un objet, on prend souvent un point sur l'axe optique $A_0$ et un point perpendiculaire $B_0$ à l'axe et dont le segment passe par $A_0$. \marginInfo{On parle d'image inversée si $A_0B_0$ est dans le sens inverse de l'image $A_iB_i$. On remarque aussi qu'un système non aplanétique permet d'obtenir une image nette quelque soit la profondeur.}
+
+
+% \section{Cas stigmatismes}
+% \ref{schema 4}
+% Dioptre plan : non stigmatique, les rayons ne se croisent pas en un point. C'est un des pires systèmes au stigmatisme.
+% \ref{schema 5}
+% Miroir plan : Tous les points dans le système convernent en un point. C'est le seul système purement stigmatique. Mais sa vergence est nulle, donc inutile.
+% \ref{schema 6 et 7}
+% Miroir hyperbolique : stimagtique pour ses foyers. Si je met un objet dans un foyer, j'aurai une image parfaite dans l'autre foyer
+%
+% Miroir parabolique : parfaitement stigmatique pour un objet à l'infini.
+\section{stigmatisme approché et conditions de Gauss}
+
+Si le système n'est pas stigmatique, on souhaite que l'image de point soit la plus petite possible. Plus les conditions de Gauss\marginTips{Aussi appellées approximation paraxiale} sont respectées, plus l'image est petite.\marginInfo{Mais plus on supprime les rayons incepptables, plus l'image formée sera sombre.}
+\begin{definition}[Conditions de Gauss]
+On considère des rayons faiblement inclinés et proches de l'axe optique pour approcher des conditions de stigmatisme.
+\end{definition}
+Dans ces conditions, on utilise les lois de Kepler\marginTips{En effet, dans les conditions de Gauss, le sinus de l'angle sera équivalent à l'angle.}
+\begin{theorem}[Lois de Kepler]
+ \(n_1i_1 = n_2i_2\)
+\end{theorem}
+\section{Formation des images}
+\subsection{Définitions}
+\begin{definition}[Image réelle]
+C'est une image formée par des rayons convergents à la sortie du sytsème optique. La sortie n'est pas forcément après le système. C'est une image que l'on peut projeter sur un écran.
+\end{definition}
+\begin{definition}[Image virtuelle]
+C'est une image formée par des rayons divergents à la sortie du sytsème optique. L'image est formée dans ou avant le système optique.
+\end{definition}
+\begin{definition}[Objet réel]
+Objet dont les rayons arrivent de manière divergent sur le système optique. Il peut ou pas avoir une existence physique. Il est avant le système
+\end{definition}
+\begin{definition}[Objet virtuel]
+Objet dont les rayons arrivent de manière convergente sur le système optique. Il est placé après la phase d'entrée du système. Il est formé par un autre système.
+\end{definition}
+% \subsection{Distance algébrique}
+% Un signe (correspondant aus sens de parcours) est toujours associé. La distance peut \^etre négative.
+% \[\bar{AC} = \bar{AB} + \bar{BC}\]
+
+\end{document}
+

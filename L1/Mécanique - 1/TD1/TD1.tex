@@ -1,0 +1,232 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mécanique}
+\subtitle{Analyse dimensionnelle}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{S.Deheuvels}%sebastien.deveuhels.irap.omp.eu
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+
+\titleOne
+
+	\chapter{Analyse Dimensionnelle }
+	\section{Intro}
+	La physique nécessite de mesurer le monde qui nous entoure. Il faut définir des grandeurs physiques.
+
+	\section{Grandeurs physiques et unités associées}
+	\subsection{Grandeurs physiques}
+	\checkInfo{Définition}{Propriété d'un système que l'on peut mesurer ou calculer}
+	\checkInfo{Exemple}{longueur, distance, masse, force, énergie, puissance, température, vitesse, accélération, fréquence, temps, pression, longueur d'onde, tension, résistance, capacité, charge, angle, qt de matière}
+
+	Ces grandeurs ne sont pas toutes indépendantes : Vitesse = Longueur/Temps
+
+	mesure : Pour évaluer une grandeur G, on la compare a une grandeur $G_0$ de m\^eme nature qui sert de référence. Cette référence se nomme étalon de mesure. La mesure $m_g = \frac{G}{G_0}$.
+
+	On appelle dimension la nature d'une grandeur. Elle se note $[G]$.
+
+	Deux grandeurs $G$ et $G'$ qui ont la m\^eme dimension sont dites homogènes. On note $[G] = [G']$ ou $G ~ G'$
+
+	\subsection{Systèmes de mesure}
+	Un système de mesure est un ensemble de grandeurs physiques qui sont
+
+	\begin{itemize}
+	 \item  indépendantes (on ne peut pas reconstituer une grandeur du système avec les autres)
+	 \item complètes (toute grandeur physique doit pouvoir \^etre générée à partir des grandeurs du système)
+	\end{itemize}
+
+	Le système choisi doit avoir un caractère universel.\marginInfo{Aparté historique : A la révolution, on utilisait en pieds, pouce. Au 19e, les scientifiques réclament un système fiable et universel. En 1875 a lieu la convention du mètre à Paris : création du Bureau International du poids et des mesures + Mise en place de conférences officielles générales des Poids et Mesures + Création du SI + création d'étalons de longueur et de masse le plus précis possible et reproductible}
+
+	\subsection{Système international}
+	7 grandeurs physiques indépendantes
+
+	\begin{center}
+\begin{tabular}{ll}
+\tableHeaderStyle%
+Dimension & Unité\\
+Longueur (L) & mètre (m)\\
+Masse (M) & kilogramme (kg)\\
+Temps (T) & seconde (s)\\
+Intensité du courant (I) & ampère (A)\\
+Température ($\theta$) & kelvin (K)\\
+Qt de matière (N)& mole (mol)\\
+intensité lumineuse (J)& candela (cd)
+\end{tabular}
+\end{center}
+\section{Dimension d'une grandeur physique}
+\subsection{Dans le SI}
+Il est constitué de grandeurs indépendantes et il est complet. Pour toute grandeur physique G, il existe une unique décomposition dans le SI du type : $[G] = [L]^a[T]^b[M]^c[I]^d[\theta]^e[N]^f[J]^g$ Trouver la dimension de G dan le système revient à déterminer les valeurs des exposants et l'unité de G dans le sysème est $m^as^bkg^cA^dK^emol^fcd^g$
+
+Exmeple : [Vitesse] = $[L]\cdot[T]^{-1}$. Dans le SI, elle se mesure en $m\cdots^{-1}$.
+
+\subsection{Loi de combinaison des dimensions}
+\subsubsection{Somme/Différence}
+Soit x,y 2 grandeurs physique. On ne peut sommer/soustraire x et y que si les grandeurs sont homogènes. Dans ce cas, [x+y] = [x] = [y]
+
+Corrolaire : Si 2 grandeurs physiques apparaissent sommées/soustraites dans une expression, elles sont la m\^eme dimension.
+
+Exemple : Périmètre d'un rectangle : 2a+2b = p [p] = [a]= [b]
+
+\subsubsection{Produit}
+$[x\times y] = [x] \times [y]$
+
+$[\frac{x}{y}] = \frac{[x]}{[y]}$.
+
+Exemple : Aire du rectangle : $A = a\times b$.
+
+Dimension de A : $[L]^2$ et l'unité $m^2$.
+
+\subsection{Grandeur sans dimension}
+On dit qu'une grandeur G est sans dimension si [G] = 1
+
+Exemple : Angle
+Définition d'un radian : $\alpha = \frac{l}{R}$.
+
+Dimension d'un angle : $[\alpha] = \frac{[L]}{[L]} = 1$.
+
+
+Exemple 2 : $[\tan(\theta)] = \frac{[L]}{[L]}$
+\warningInfo{Grandeur sans dimension et unité}{Elle peut cependant avoir une unité}
+
+\criticalInfo{Liste des grandeurs sans dimension}{
+\begin{itemize}
+ \item angles
+ \item fonctions usuelles, cos, tan, ln, exp, log
+ \item arguments des fonction usuelles : (dans $\exp(x)$, x est sans dimension
+ Exemple : décroissance exp : Dimension de N(t) est la m\^eme que $N_0$ car celle de exp est 1. $\frac{-t}{\tau}$ est l'argument d'exp donc $[\frac{t}{\tau}] = 1$ donc $[\tau] = [T]$.
+\end{itemize}
+}
+\subsection{Dimension d'un vecteur}
+La dimension d'un vecteur correspond à la dimension de sa norme. Exemple du vecteur vitesse $[\overrightarrow{v}] = [L][T]^{-1}$
+
+\warningInfo{Vecteur unitaire}{
+$[\overrightarrow{OM}] = [x][\overrightarrow{e_x}] \Rightarrow [e_x] = 1$}
+\subsection{Dimension et unité de grandeurs dérivées}
+\tipsInfo{Méthode pour déterminer la dimension d'une grandeur dans le SI}{Il faut trouver une formule qui fait intervenir cette grandeur + des grandeurs du SI (ou de dimensions connues).}
+
+Pour la vitesse, $v = \frac{d}{t}$.
+
+Pour l'accélération : $a = \frac{d v}{dt} \Rightarrow [a] = [L][T]^{-2}$.
+
+Pour une force dans le SI : $P = m \times g$ donc $[P] = [M][L][T]^{-2}$ donc : $kg\cdot m\cdot s^{-2}$
+
+Fin séance 1
+\subsection{Homogénéité d'un résultat}
+L'analyse dimensionnelle permet de vérifier que le résultat d'un calcul a bien la dimension attendue.
+\checkInfo{Méthode}{Il faut systématiquement vérifier que c'est le cas.
+
+Exemple 1 : $y(t) = -g\frac{t^2}{2} + v_0\sin(\alpha)t + h$.
+
+y est en $[L]$
+
+$-g\frac{t^2}{2}$ : $ [L][T]^{-2}[T]^2 = [L]$.
+
+$v_0\sin(\alpha)t$ : $[L][T]^{-1}\times1 \times [T]^1 = [L]$
+
+$h$ : $[L]$.
+
+Le résultat est homogène.
+
+Exemple 2 :
+
+$I(t) = I_0\sqrt{2}e^{-t/\tau}\cos{wt+\phi}$
+
+$I : [I] $
+
+$\sqrt{2}e^{-t/\tau}\cos{wt+\phi}$ sont des fonctions ou des nombres, donc de dimension 1, ou sans dimension.
+
+Donc $[I_0] = [I(t)] = [I]$
+
+Les arguments des fonctions usuelles sont sans dimension, donc $[\tau] = [T]$ et $[w] = [T]^{-1}$ et $[wt] = [\phi] = 1$.}
+
+\warningInfo{Calcul littéral}{Il faut toujours mener le calcul littéral jusqu'à son terme avant de remplacer les grandeurs par leurs valeurs numériques, sinon on perd l'info de la dimension.}
+
+\subsection{Problème aux dimensions}
+C'est une méthode qualitative qui permet de déterminer comment une grandeur physique dépend d'autres grandeurs $\phi$ en raisonnant uniquement sur les dimensions.
+
+\checkInfo{Principe}{
+On suppose qu'une grandeur physique G dépend d'un ensemble d'autres grandeurs $g_i$ (intuition physique). On voudrait écrire que la grandeur $G = g_i^{\alpha_1} \times g_i^{\alpha_2} \times g_i^{\alpha_i}$.
+
+On détermine les valeurs des exposants $\alpha_i$ à partir des dimensions des grandeurs.
+}
+
+\checkInfo{Exemple de la période d'osscialtion d'un pendule}{On veut déterminer la période P des oscillations de la masse $m$.
+
+Elle va dépendre de $g, l, \theta, m$. Le tout peut etre multiplié par une constante sans dimension.
+
+Dimension des grandeurs : $[P] = [T]$
+
+$[g] = [L][T]^{-2}$
+
+$[l] = [L]$.
+
+$[m] = [M]$.
+
+
+$[M]^0[L]^0[T]^1 = [g]^\alpha[l]^{\beta}[m]^{\lambda}$
+
+$[M]^0[L]^0[T]^1 = ([L][T]^{-2})^\alpha[L]^{\beta}[M]^{\lambda}$
+
+$[M]^0[L]^0[T]^1 = [M]^\lambda[L]^{\alpha+\beta}[T]^{-2\alpha}$
+
+On procède par identification pour créer un système d'équations et trouver les coefficients.
+
+On suppose que la constante multiplication est de
+
+}
+
+\criticalInfo{Masse volumique de l'air}{
+$\rho_{air} = 1.2$kg/m$^3$.}
+
+\subsection{Lois d'échelles}
+Quand on compare 2 systèmes, il n'est pas nécessaire de conna\^itre la valeur de la constante multiplicative.
+
+Exemple : Période du pendule : $P ~ \sqrt{\frac{l}{g}}$. On peut répondre à des questions comme :
+
+Comment varie la période si on multiplie par 4 la longueur du fil.
+
+$P = C \sqrt{\frac{l}{g}}$
+
+$P' = C \sqrt{\frac{l'}{g}}$
+
+La rapport vaut $\frac{P'}{P} = \frac{l'}{l}$ en simplifiant les fractions.
+
+Si le fil est 4 fois plus long, le rapport vaut 2.
+
+Comment varie P si le pendule oscille sur la lune. avec $(g_l = \frac{g_r}{6})$.
+
+$\frac{P''}{P} = \frac{g}{g''} = \sqrt{6}$
+
+\subsection{Calculs dans le SI}
+\warningInfo{Méthode}{Pour obtenir un résultat dans le SI, il faut mettre toutes les grandeurs dans les unités du SI. Il faut donc penser à convertir.
+
+Exemple : $\rho = 1 g\cdot cm^{-3} = 10^6g\cdot m^{-3} = 10^{3}kg\cdot m^{-3}.$
+
+Énergie d'ionisation d'un atome en eV à convertir en J. Distance entre 2 étoiles en années lumières à convertir en m.}
+\end{document}
+

@@ -1,0 +1,179 @@
+ % !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Optique Géométrique}
+\subtitle{Niveau 1}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Gatel}%christophe.gatel@cemes.fr : section B sillon 7
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+%\titleOne
+\subsection{Étude du prsime}
+\subsubsection{Les 4 relations fondamentales}
+On utilise les lois de Snell-Descartes pour trouver les 2 premières :
+\begin{enumerate}
+	 \item \(\sin(i) = n\sin(r)\)
+	 \item \(\sin(i') = n\sin(r')\)
+	\end{enumerate}
+
+	On se place dans le triangle $SII'$ en appliquant la propriété de somme des angles d'un triangle. On a : \( \pi = A + (\frac{\pi}{2}-r) + (\frac{\pi}{2}-r')\), soit :
+	\begin{enumerate}
+	 \item \(A = r+r'\)
+	\end{enumerate}
+
+	On calcule la déviation totale pour trouver la dernière relation. \(D = {\color{purple}i-r} + {\color{blue}i'-r'}\), soit en replaçant les angles $r$ par $A$ :
+	\begin{enumerate}
+	 \item \(D = i + i' - A\)
+	\end{enumerate}
+\subsubsection{Calcul de l'angle limite}
+On cherche l'angle limite $i_{lim}$ pour observer un rayon en sortie du prisme. Pour pouvoir le voir, l'angle de sortie doit \^etre inférieur à $\frac{\pi}{2}$. Pour trouver $i_{lim}$, on prendra donc $i'=\frac{\pi}{2}$.
+
+\begin{flalign*}
+\sin(i) &= n\sin(r)\\
+&= n\sin(A-r')\\
+&\\
+\sin(i') &= n \sin(r')\\
+1 &= n\sin(r')\\
+r' &= \sin^{-1}(\frac{1}{n})\\
+&\\
+\sin(i) &= n\sin(A-\sin^{-1}(\frac{1}{n}))\\
+i_{lim} &= \sin^{-1}(n\sin(A-\sin^{-1}(\frac{1}{n})))
+\end{flalign*}
+\subsubsection{Mesure de $n$ avec l'angle de déviation total minium}
+On veut obtenir une valeur de $n$ par des mesures expérimentales. On conna\^it l'angle A avec précision. On va utiliser $D_m$ l'angle de déviation minimum, où l'on remarque que $i=i'=i_{min}$. On peut donc écrire $D_m = i+i'-A = 2i_{min} - A$, d'où $i_{min} = \frac{D_m+A}{2}$
+
+On peut aussi simplifier l'expression 3 car si $i'=i, r'=r=r_{min}$. On obtient alors $r_{min} = \frac{A}{2}$.
+
+En appliquant la loi de Snell-Descartes et replaçant $r_{min}$ et $i_{min}$ par leur expressions, on trouve : \(\sin(\frac{D_m+A}{2}) = n\sin(\frac{A}{2}) \) d'où l'on peut déduire $n$ : \(n=\frac{sin(\frac{D_m+A}{2}}{\sin(\frac{A}{2})}\).
+\subsubsection{Calcul de $D_m$}
+On souhaite déterminer la déviation $D$ en fonction de $n$ et de l'angle du rayon incident.
+
+On utilise la 4e relation : $D = i+i'-A$. On ne connait pas $i'$, il va donc falloir l'exprimer en fonction de $A$ et $i$.
+
+\begin{flalign*}
+\sin(i')&=n\sin r'\\
+&= n\sin(A-r)\\
+&= n\sin(A- \sin^{-1}(\frac{\sin(i)}{n}) )
+\end{flalign*}
+On a plus qu'à remplacer $i'$ par son expression pour trouver $D$.
+\subsection{Étude de l'arc-en-ciel}
+\subsubsection{Analyse}
+Les triangles ABO et OBC sont isocèles en O. On en déduit que les angles OAB et OBO sont égaux, tous commes les angles OBC et OCB. De plus, au point B la lumière est réflechie, donc d'après les propriétés de réflexion, OBC = OBO. On en déduit que r=r'.
+\subsubsection{Angles de déviation total}
+On cherche à exprimer l'angle de déviation total. On somme les angles des trois déviations : $D = {\color{purple}(i-r)} + {\color{blue}(\pi - 2r)} + {\color{ForestGreen}i'-r} = 2i + \pi -4r$
+\subsubsection{Minimum de déviation}
+On cherche l'angle $i$ pour lequel $D$ est minium, c'est-à-dire de dérivée nulle. On a donc $D'= 0 = 2 - 4\frac{\mathrm{d}r}{\mathrm{d}i} = 1-2\frac{\mathrm{d}r}{\mathrm{d}i}$
+
+Il faut savoir que $\frac{\mathrm{d}r}{\mathrm{d}i} = \frac{\cos(i)}{n\cos(r)} =  \frac{\sqrt{1-\sin^2(i)}}{n\sqrt{1-\sin^2(r)}}$.
+
+On obtient
+\begin{flalign*}
+1 &= 2\frac{\sqrt{1-\sin^2(i)}}{n\sqrt{1-\sin^2(r)}} = 2 \frac{\sqrt{1-\sin^2(i)}}{\sqrt{n^2-\sin^2(i)}}\\
+&\iff \sqrt{n^2-\sin^2(i)} = 2\sqrt{1-\sin^2(i)}\\
+&\iff n^2-\sin^2(i) = 4(1-\sin^2(i))\\
+&\iff n^2-\sin^2(i) = 4-4\sin^2(i))\\
+&\iff n^2 = 4-3\sin^2(i))\\
+&\iff n^2-4=-3\sin^2(i))\\
+&\iff i = \sin^{-1}(\sqrt{\frac{4-n^2}{3}})\\
+\end{flalign*}
+\subsubsection{Indice optique et couleur réfléchie}
+Par la loi de Cauchy, on sait que si la longueur d'onde augmente, l'indice optique $n$ diminue. Or, $i_{lim}$ dépend de $n$, qui est soustrait. Ainsi, $i_{lim}$ augmente, ce qui fait diminuer $D_m$.
+
+Cela explique pourquoi le rouge, avec une longueur d'onde plus grande,  est moins dévié que le bleu.
+% 	\chapter{Introduction et notion de rayons lumineux}
+% 	\subsection{Prisme}
+% 	\subsubsection{Relations du prisme}
+% 	\begin{enumerate}
+% 	 \item \(\sin(i) = n\sin(r)\)
+% 	 \item \(\sin(i') = n\sin(r')\)
+% 	 \item \(A = r + r'\)
+% 	 \item \(D = i + i' - A\)
+% 	\end{enumerate}
+% Si $i$ diminue, $i'$ augmente. Mais $0\leq i'<\frac{\pi}{2} \Rightarrow i_{lim} = \arcsin(n\sin(A-\arcsin(\frac{1}{n})))$.
+% %Schema du prisme
+%
+% Graphique
+%
+% Correspond a une valeur d'angle limite grand d diminu puis remonte jusq'uà la valeur maximale permise, $\frac{\pi}{2}$. 2 valeurs à cause du principe de retour inverse de la lumière.
+%
+% Pour $D_m$ : une seule valeur $i_m \Rightarrow i = i' = i_m$ et $D_m = 2i_m - A $ et $r=r' = r_m = \frac{A}{2}$
+% On a : $i_m = \frac{D_m + A}{2}$ et $\sin i_m = n\sin\frac{A}{2}\Rightarrow n = \frac{\sin(D_m+A)}{}$.
+%
+% Milieu dispersif = varie l'indive avec la longueur d'onde
+%
+% Application numérique :
+% \begin{flalign*}
+% r &= \arcsin(\frac{1}{n}\sin(i))\\
+% r' &= A - \arcsin(\frac{1}{n}\sin(i))\\
+% i' &= \arcsin(n\sin(A - \arcsin(\frac{1}{n}\sin(i))))\\
+% D &= i + i' - A\\
+% \end{flalign*}
+%
+% App.num : 39.35° et 40.3
+%
+% Le prisme disperse la lumière.
+%
+% On se sert du prisme comme miroir. Avantage : ne se dégrade et salit pas.
+%
+% \subsection{Fibre optique}
+%
+% \subsection{Arc-en-ciel}
+%
+% On exprime les angles. Pour un certain angle d'incidence la lumière est réfléchie
+%
+% D = $\pi+2i-4r$.
+%
+% Dm si dérivée de de D en fonction de i vaut 0.
+%
+% l'angle d'incidence doit etre au moins égal à 59.6
+%
+% Le rouge est plus élevé que le violet :
+\chapter{Formation des images, stigmatisme}
+\begin{definition}[Système optique]
+Le but d'un système optique peut etre élémetaire ou très compliqué. Il va observer un objet pour en faire une image
+\end{definition}
+\begin{definition}
+Stigmatisme : L'image d'un point est un point. Un système optique fait une image de chaque points. Si il n'y a pas de stigmatisme, il y a trois taches avec un diamètre de plus en plus grand.
+\end{definition}
+Mais aucun instrument d'optique n'est stigmatique. le seul qui est stigmatique, c'est le mirroir plan. On parle de stigmatisme rigoureux. Si l'image d'un point est une tache pas trip grosse par rapport à notre utilisation de l'image, on parle de stigmatisme approché.
+\subsection{Système optique}
+Trait horrizontal = axe optique
+
+On a une phase d'entrée S et une phase de sortie S'. Les rayons partent d'un point et doivent en sortant se croiser à un moment.
+
+Il est centré si il a un axe de révolution (axe de symétrie axiale). L'axe optique passe par la symétrie axiale. Toutes les surfaces ont en commun l'axe optique.
+
+Si on parle de système catadiptrique = surface réfra=ctantes + réflechissantes.
+
+2 points conjugués si 'imahe d'un point est celui d'un objet. Ils sont reliés par le système optique.
+
+Vergence : si le systme dévie vers l'extérieur, il est divergent.
+
+A
+\end{document}
+

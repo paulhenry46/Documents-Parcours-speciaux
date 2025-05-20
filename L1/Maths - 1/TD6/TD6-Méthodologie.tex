@@ -1,0 +1,102 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\begin{document}
+
+\setcounter{chapter}{5}
+
+	\chapter{Nombres complexes}
+\section{Méthode}
+\subsection{Solutions de $z^n=1$}
+\begin{enumerate}
+ \item On pose $z=\rho e^{i\theta}$
+ \item On écrit sous forme polaire : $\rho^ne^{in\theta} = 1e^{i0}$
+ \item L'égalité est vérifiée si le module des 2 nombres sont égaux, i.e. $\rho = 1$
+ \item Il faut aussi que $n\theta = 0+2k\pi$, avec $0<k\leq n-1$
+ \item Les solutions sont donc $\{1, e^{i\frac{2\pi}{n}}, e^{i\frac{4\pi}{n}}\dots e^{i\frac{2(n-1)\pi}{n}}\}$
+\end{enumerate}
+\subsection{Résoudre $z^n = w$}
+\begin{enumerate}
+ \item On pose $z=\rho e^{i\theta}$
+ \item On écrit sous forme polaire : $\rho^ne^{in\theta} = |w|e^{i\varphi}$
+ \item L'égalité est vérifiée si le module des 2 nombres sont égaux, i.e. $\rho = \sqrt[n]{|w|}$
+ \item Il faut aussi que $\theta = \frac{\varphi}{n}$.
+ \item On multiplie le résultat par les racines $n$-eme de l'unité associées.
+\end{enumerate}
+\subsection{Résoudre $z^n = w^n$}
+On cherche $z$ pour $w$ donné. $z$ a $n$ solutions, qui sont $z$ mutipliées par chacunes des racines $n$ de l'unité associées.
+% \subsection{Résoudre une équation de la forme $e^z = a+ib$}
+\subsection{Calculer les racines d'un nombre complexe}
+On cherche les racines $z_1,z_2$ d'un nombre complexe, noté $w$. Si $w=0, z=0$
+\begin{enumerate}
+ \item On calcule le module de $w$
+ \item Comme $z^2=w \Rightarrow |z|^2 = |w| \Rightarrow \sqrt{a^2+b^2}^2 = |w|$, on en déduit finalement que $a^2+b^2 = |w|$
+ \item De plus, $z^2 = (a+ib)^2 = (a^2-b^2)+2iab$. On en déduit que la partie réelle de $w$ est $a^2-b^2$ et que la partie imaginaire est $2ab$.
+ \item On obtient un système à 3 équations. les 2 premières nous permettent de déterminer $\pm a$ et $\pm b$. La dernière nous donne le signe : si $2ab$ est positif, $a$ et $b$ sont de m\^eme signe, dans le cas contraire, ils sont de signe contraire.
+\end{enumerate}
+En résumé, on doit résoudre ce système pour trouver les solutions :\[ \left\{\begin{matrix}
+a^2+b^2 &= |w|\\
+a^2-b^2 &= Re(w)\\
+2ab &= Im(w)
+\end{matrix}\right.\]
+% \subsection{Calcul des racines nieme de l'unité}
+% $z^2 = 1 \iff z=1,-1$
+%
+% $z^3 \iff z=1, etc$. $z$ est un complexe de module $1$, i.e. $z= e^{i\theta}$, alors $z^3 = e^{3i\theta} = e^{i\times 0} \iff 3\theta = 0 + 2k\pi \iff \theta = \frac{2k\pi}{3}$ On prend $0\leq k\leq 2$. Les solutions sont donc $1,e^{2i\pi/3}, e^{4i\pi/3}$.
+%
+% La multiplication est stable dans le groupe des racines. On obtient une racine en multipliant/divisant 2 racines. Il y a $n$ racines nieme de l'unité
+% \subsection{Utiliser les formules d'Euler (6.11)}
+\subsection{Utiliser la formule de moivre pour exprimer des cosinus et sinus}
+On sait que $(e^{i\theta})^n = e^{in\theta}$. On souhaite exprimer $\cos(4x)$ en fonction de sinus et cosinus. On introduit pour cela le nombre complexe $e^{i4x} = (e^{ix})^4 = (\cos(x)+i\sin(x))^4$. Par identification de la partie réelle pour le $\cos$ et imaginaire pour le $\sin$, on peut trouver le résultat demandé.
+
+On se sert du binome de Newton pour retrouver les coefficients de notre développement si il le faut
+\begin{flalign*}
+(\cos(x)+i\sin(x))^4 &= \cos^4(x) + 4\cos^3(x)(i\sin(x))\\
+&\:\:\:\:+6\cos^2(x)(i\sin(x))^2+4\cos(x)(i\sin(x))^3+(i\sin(x))^4\\
+&= \cos^4(x) + 4\cos^3(x)(i\sin(x))-6\cos^2(x)\sin^2(x)\\
+&\:\:\:\:-4\cos(x)(i\sin^3(x)+\sin^4(x)\\
+&= \cos^4(x)+\sin^4(x) -6\cos^2(x)\sin^2(x)\\
+&\:\:\:\:+ 4\cos^3(x)(i\sin(x))-4\cos(x)(i\sin^3(x)\\
+\cos(4x) &= \cos^4(x)+\sin^4(x) -6\cos^2(x)\sin^2(x)\\
+\end{flalign*}
+\subsection{Linéariser une expression}
+On utilise les formules d'Euler pour exprimer les $\cos$ et $\sin$. Ainsi, pour linéariser $\cos^n(x)\sin^m(x)$, on écrit
+\begin{flalign*}
+\cos^n(x)\sin^m(x) &= (\frac{e^{ix}+e^{-ix}}{2})^n(\frac{e^{ix}-e^{-ix}}{2i})^m
+\end{flalign*}
+On met en facteur tout ce qui se trouve au dénominateur pour l'enlever et on calcule pour retrouver d'autres expressions que l'on pourra retransformer avec les formules d'Euler.
+\end{document}
+
+

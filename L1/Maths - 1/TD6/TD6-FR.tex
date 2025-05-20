@@ -1,0 +1,195 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\begin{document}
+
+\setcounter{chapter}{5}
+
+	\chapter{Nombres complexes}
+\section{Généralités}
+\subsection{Propriétés}
+\warningInfo{Inférieur Ou supérieur}{Il n'y a pas de relation d'ordre sur $\mathbb{C}$. On ne peut pas dire qu'un nombre complexe est plus grand qu'un autre.}
+\subsubsection{Opérations usuelles}
+Soient $z=a+i\,b$ et $z'=a'+i\,b'$ deux nombres complexes.
+
+\begin{itemize}
+ \item $\displaystyle z+z'=(a+a')+i(b+b')$
+ \item $\displaystyle z\times z'=(aa'-bb')+i(ab'+a'b)$
+ \item $\displaystyle\frac{1}{z}=\frac{a}{a^2+b^2}-i\frac{b}{a^2+b^2}$
+\end{itemize}
+\subsubsection{Opérations de conjugaison}
+\begin{itemize}
+ \item $\displaystyle \bar{z} = a-ib$
+ \item $\displaystyle\overline{z+z'} = \overline{z}+\overline{z'}$
+ \item $\displaystyle Re(z) = \frac{z+\bar{z}}{2}$
+  \item $\displaystyle Im(z) = \frac{z-\bar{z}}{2i}$
+  \item $\displaystyle z\in\mathbb{R} \iff z = \bz$
+  \item $\displaystyle\overline{\overline{z}} = z$.
+\end{itemize}
+
+% Dans ce chapitre, $a,a',b,b'\in\mathbb{R}$
+% \section{Généralité}
+% \subsection{Définition}
+% On note $i$ un nombre tel que $i^2 = -1$. On définit $\mathbb{C} = \{a+ib,\}$. La partie imaginaire $b\in\mathbb{R}$.
+%
+% \subsection{Opérations}
+% On peut prolonger les opérations $+$ et $\times$ qui existent sur $\mathbb{C}$.
+%
+% \begin{itemize}
+%  \item $z+z' = a+a'+i(b+b')$
+%  \item $z\times z' = aa'-bb'+i(ab'+ba')$
+% \end{itemize}
+% \subsubsection{Propriétés}
+% \begin{itemize}
+%  \item $(\mathbb{C}, +,\times)$ est un corps commutatif
+%  \item Les opérations sont associatives
+%  \item Elles sont commutative : $a+0i$ est le neutre pour l'addition et $1$ est le neutre pour la multiplication
+%  \item $-z = -a-ib$
+%  \item $\frac{1}{z} = \frac{a-ib}{a^2+b^2}$.
+% \end{itemize}
+% On a : $\mathbb{R}\hookrightarrow \mathbb{C}$.
+%
+% \warningInfo{Inférieur Ou supérieur}{Il n'y a pas de relation d'ordre sur $\mathbb{C}$}
+%
+% \subsection{Opérations de conjugaison}
+% \begin{itemize}
+%  \item $\bar{z} = a-ib$
+%  \item $\overline{z+z'} = \overline{z}+\overline{z'}$
+%  \item $Re(z) = \frac{z+\bar{z}}{2}$
+%   \item $Im(z) = \frac{z-\bar{z}}{2i}$
+%   \item $z\in\mathbb{R} \iff z = \bz$
+%   \item $\overline{\overline{z}} = z$.
+% \end{itemize}
+% \subsection{Plan Complexe}
+% On munit le plan $\mathbb{R}^2$ d'un repère orthonormé $(0,\vec{i},\vec{j})$. L'application suivante est une bijection $\mathbb{C}\to P : x+iy \to M(x,y)$.
+%
+% Le conjugué s'interprète comme une symétrie par rapport à $Ox$, l'axe des réels.
+% $\vec{MM'}$ a pour affixe $z'-z$.
+\subsection{Module d'un nombre complexe}
+\subsubsection{Définitions}
+
+
+Le module est noté $|z| = \sqrt{z\bz}$\marginInfo{La notation $\sqrt{x}$ est réservée au Réels positifs. Or le module est une valeur réelle positive, on peut donc l'utiliser ici.}
+
+Le module d'un nombre complexe est la prolongement à $\mathbb{C}$ de la valeur absolue qui existe sur $\mathbb{R}$. On a $|z| = OM$. Il défini une distance sur $\mathbb{C}$
+\subsubsection{Propriétés}
+\begin{itemize}
+\item Si $z=x+i\,y\quad $ alors $\;\;\;|z|=\sqrt{x^2+y^2}\;$
+\item $|z|=\left|\overline{z}\right|,\quad z\times\overline{z}=x^2+y^2$
+\item $\left|z\times z'\right|=|z|\times|z'|,\quad \left|\dfrac{1}{z}\right|=\frac{1}{|z|},\quad \left|\frac{z}{z'}\right|=\frac{|z|}{|z'|} $.
+\item $|z+z'|\leq |z|+|z'|$
+\item $\left| z^n\right|=|z|^n,\quad n\;\;$ entier naturel.
+\end{itemize}
+\warningInfo{Inégalité triangulaire}{
+\[||z|-|z'|| \leq |z+z'| \leq |z|+|z'|\]}
+
+\warningInfo{Module négatif}{$z = -3e^{i\frac{\pi}{4}}$ n'est pas sous forme polaire. On sait que $e^{i\pi} = -1$, donc $z = 3e^{i(\frac{\pi}{4}+\pi)}$.}
+
+% 0 ne s'écrit pas sous forme polaire. De plus, $e^{k\pi} = (-1)^k$.
+\subsection{Argument}
+\subsubsection{Définition}
+Soit M un point d'affixe le nombre complexe $z\;$ non nul.\\
+On appelle argument de $z$ tous les réels $\theta$, mesure en radians de l'angle$ \left( \overrightarrow{e_1};\overrightarrow{OM}\right)$ .\\ On note $arg(z)=\theta +2k\pi,\;\;\; k \in \mathbb{Z}\;\;$ ou $arg(z)=\theta \;\;\;[2\pi]\;$ (modulo $[2\pi]$\marginTips{Autrement dit, un nombre complexe non nul a  une infinité d'arguments.\\ Si $\theta$ est l'un d'entre eux, tout autre argument de $z$ s'écrit $ \theta +2k\pi.\;$\\ On dit aussi qu'un argument de $z$ est défini modulo $\;2\pi$.} ).
+\criticalInfo{Argument du nombre $0$}{Le nombre complexe 0 n'a pas d'argument car la définition $\;arg(z)=\left( \overrightarrow{e_1};\overrightarrow{OM}\right)\;$ suppose $M\neq 0$.}
+
+
+\subsubsection{Propriétés}
+\begin{itemize}
+\item Si $z$ est un réel strictement positif alors $arg(z)=0 \quad [2\pi]$.
+\item Si $z$ est un réel strictement négatif alors $arg(z)=\pi \quad [2\pi]$.
+\item Si $z$ est un imaginaire pur non nul alors $arg(z)=\dfrac{\pi}{2} \quad [\pi]$.
+\item Si $arg(z)=\theta \quad [2\pi]\quad $ alors $arg(-z)=\theta+\pi \quad [2\pi]\quad $
+\item Si $arg(z)=\theta \quad [2\pi]\quad $ alors  $arg \left( \overline{z}\right) =-\theta \quad [2\pi] $.
+\end{itemize}
+\subsubsection{Règles de calcul}
+\begin{itemize}
+\item $\arg(zz') = \arg(z)+\arg(z')$
+\item $\arg(\frac{z}{z'}) = \arg(z)-\arg(z')$
+\item$\arg(\frac{1}{z'}) = -\arg(z')$
+\item$\arg(z^n) = n\arg(z)$
+\item$\arg(\bar{z}) = -\arg(z)$
+\end{itemize}
+
+On note : $z = |z| e^{i\theta} = |z|( \cos(\theta) + i\sin(\theta))$
+\subsection{Formules d'Euler}
+\begin{theorem}[Formule d'Euler]
+\[\cos(\theta) = \frac{e^{i\theta}+e^{-i\theta}}{2}\]
+\[\sin(\theta) = \frac{e^{i\theta}-e^{-i\theta}}{2i}\]
+\end{theorem}
+\begin{theorem}[Propriétés]
+$\forall \theta,\theta' \in\mathbb{R}$ :
+\begin{itemize}
+ \item $e^{i\theta}e^{i\theta'} = e^{i(\theta+\theta')}$
+ \item $\overline{e^{i\theta}} = e^{-i\theta} = \frac{1}{e^{i\theta}}$
+ \item Formule de Moivre : $(e^{i\theta})^n = e^{in\theta}$
+\end{itemize}
+\end{theorem}
+% \warningInfo{Remarque}{$(U,\times)$ est un groupe}
+%
+% \begin{theorem}[Corrolaire]
+% $\arg(zz') = \arg(z)+\arg(z')$
+%
+% $\arg(\frac{z}{z'}) = \arg(z)-\arg(z')$
+%
+% $\arg(\frac{1}{z'}) = -\arg(z')$
+%
+% $\arg(z^n) = n\arg(z)$
+%
+% $\arg(\bar{z}) = -\arg(z)$
+% \end{theorem}
+\subsection{Exponentielle complexe}
+On définit l'exponentielle complexe sur $\mathbb{C}$ par $\exp : C\to C, z \to e^{a+ib}$
+
+Elle vérifie les m\^emes propriétés que dans les réels. :
+
+\begin{itemize}
+ \item $\exp(z+z') = \exp(z)\exp(z')$
+ \item $\exp(nz) = (\exp(z))^n$
+ \item Elle prolonge à $\mathbb{C}$ l'exponentielle réelle. Il ne faut pas le confondre avec la forme exponentielle d'un nombre complexe.
+\end{itemize}
+\section{Equations du 2nd degré}
+\begin{theorem}[Solutions d'une  Équation du 2nd degré à coefficients complexes]
+L'équation $Az^2+bz+c = 0$, notée $E$ admet 2 solutions complexes, qui sont :
+\begin{itemize}
+ \item $z_1=z_2 = \frac{-b}{2a}$ si $\Delta =0$
+ \item $z_1 = \frac{-b+\delta}{2a}, z_1 = \frac{-b-\delta}{2a}$, avec $\delta^2 = \Delta$
+\end{itemize}
+\end{theorem}
+\begin{theorem}[Théorème fondamental de l'algèbre]
+Toute fonction polynôme de degré $n$  admet $n$ racines dans $\mathbb{C}$.
+\end{theorem}
+\end{document}
+
+

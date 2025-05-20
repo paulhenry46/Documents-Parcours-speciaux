@@ -1,0 +1,111 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Chimie des solutions}
+\subtitle{Chimie}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{IHallery}%isabelle.hallery@univ-tlse3.fr
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+\setcounter{chapter}{4}
+\chapter{Équilibre de plusieurs réactions acido-basiques }
+\section{Les outils}
+\subsection{pH d'une solution aqueuse}
+\begin{definition}[Définition du pH]
+\(pH = -\log(a(H_3O^+)) \simeq -\log([H_3O^+])\) si la concentration totale en ion est suffisament faible.
+\end{definition}
+\begin{definition}[Définition du pOH]
+\(pH = -\log(a(HO^-)) \simeq -\log([HO^-])\) si la concentration totale en ion est suffisament faible.
+\end{definition}
+La somme des 2 vaut 14.
+% \subsection{Diagramme de prédominance}
+% Pour trouver la valeur à laquelle les 2 espèces sont dans les m\^emes proportions,  on éxprime l'une des 2 en fonction du Ka pour obtenir le pKa. Si le pH est supérieur à ce dernier, $A^-$ prédomine.
+% \subsection{Diagramme de prépondérance}
+% Une espèce est prépondérante devant une autre si il y a 10 fois plus de cette espèce que l'autre espèce. On recule et avance de 0,5 unités de pH pour l'eau. Pour les autres espèces, on pkA+1 et pkA-1 pour un prépondérance de $A^-$ et $AH$.
+\subsection{Constante d'équilibre d'une réaction}
+La constante d'équilibre peut se déduire des Ka des 2 couples mis en jeu. On a
+\begin{theorem}[Constante d'équilibre]
+ Pour une réaction de la forme Acide1+Base2=Base1+Acide2, on a \(K° = \frac{Ka(1)}{Ka(2)}\).
+\end{theorem}
+Si le \(pK_a(2)>pK_a(1)\) et \(|\Delta pK_a| >4\), alors la réaction est quasi-totale dans le sens direct et la constante d'équilibre est \(K°=10^{+|\Delta pKa|}\).
+
+Si le \(pK_a(2)<pK_a(1)\) et \(|\Delta pK_a| >4\), alors la réaction est quasi-négligeable dans le sens indirect et la constante d'équilibre est \(K°=10^{-|\Delta pKa|}\).
+\section{Méthode de la réaction prépondérante}
+\subsection{Réaction prépondérante}
+Par définition, c'est la réaction qui modifie le plus la composition du milieu.
+
+Par hypothèse\marginCritical{Cela dépend aussi de la composition initiale mais aussi des conditions initiales (dilution, réactif en excès)}, c'est celle qui a la constante d'équilibre la plus élevée. Quand il n'y a que es acides ou des bases, c'est la réaction de l'acide le plus fort sur la base la plus forte.
+\subsubsection{Méthode}
+
+\begin{enumerate}
+ \item Identifier les espèces prépondérantes
+ \item Classer les couples présents sur une échelle de \(pK_a\)
+ \item Entourer les espèces prépondérantes présentes initialement
+ \item On identifie l'acide le plus fort et la base la plus forte
+ \item Les 2 réagissent ensembles
+\end{enumerate}
+\subsection{Principe}
+On image la succession des réactions prépondérantes qui conduisent à des solutions équivalentes. On s'arrette quand $K \leq 10^4$.
+\subsection{Validation}
+Quand on connait le Ka, la concentration de la forme acide et de la forme basique, on peut trouver la concentration en [H3O+] car \(K_a = \frac{[A-][H_3O^+]}{[AH]}\).
+\subsection{pH}
+\subsubsection{Acide/base fort}
+\begin{tabular}{lll}
+\tableHeaderStyle%
+Solution & pH & Validité\\
+Acide fort & $-\log(C)$ & $<6.5$\\
+Base forte & \(14 + \log(C)\) & $>7.5$
+\end{tabular}
+\subsubsection{Acide/base faible}
+\begin{tabular}{lll}
+\tableHeaderStyle%
+Solution & pH & Validité\\
+Acide faible & $\frac{1}{2}(pK_A-\log(C_0))$ & $<6.5, <pKa-1$\\
+Base faible & \(\frac{1}{2}(14+pk_A+\log(C_0))\) & $>7.5, >pKa+1$
+\end{tabular}
+\subsubsection{Mélange}
+\begin{tabular}{lll}
+\tableHeaderStyle%
+Solution & pH & Validité\\
+Tampon (A/B faibles conjugués) & $pkA + \log(\frac{C_B}{C_A})$ &\\
+Acide/Base faible de couples $\neq$ & \( \frac{1}{2}(pkA + pkB + \log(\frac{C_B}{C_A}))\) &
+\end{tabular}
+
+
+% Pour une solution d'acide fort à la concentration $C_0$, $pH=-\log(C_0)$ si $pH<6.5$
+%
+% Pour une solution de base forte à la concentration $C_0$, $pOH=-\log(C_0) \Rightarrow pH = 14+\log(C_0)$ si $pH>7.5$
+%
+% Pour une solution d'acide faible à la concentration $C_0$, $pH=\frac{1}{2}(pKa-\log(C_0))$ si $pH<pKa-1$ et $pH<6.5$
+%
+% Pour une solution de base faible à la concentration $C_0$, $pOH=\frac{1}{2}(pKb-\log(C_0)) \Rightarrow pH = \frac{1}{2}(14+pk_A+\log(C_0))$ si $pH>pKa+1$ et $pH>7.5$
+
+% Pour une solution de base faible et acide faible conjugué (solution tampon) : \(pH = pkA + \log(\frac{C_B}{C_A})\)
+%
+% Pour une solution contenant un acide faible et une base faible (non conjugué ou appartenant à 2 couples différents dans le cas d'un polyacide) : \(pH = \frac{1}{2}(pkA + pkB + \log(\frac{C_B}{C_A}))\)
+\end{document}
+

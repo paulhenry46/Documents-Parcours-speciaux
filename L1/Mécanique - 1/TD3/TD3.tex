@@ -1,0 +1,237 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mécanique}
+\subtitle{Mécanique du point}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{S.Deheuvels}%sebastien.deveuhels.irap.omp.eu
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\DeclareMathOperator\arctanh{arctanh}
+\begin{document}
+
+%\titleOne
+\setcounter{chapter}{2}
+	\chapter{Systèmes du premier ordre }
+L'air exerce des forces de frottement qui modifient significativement les trajectoires. Ces frottements correspondent à des forces de frottement fluide/visqueux, qui sont
+\begin{itemize}
+\item dans la direction du mouvement
+\item dans le sens opposé au mouvement
+                                                                                                                                                                    \end{itemize}
+Dans ce chapitre, on va considérer des forces du type $\vec{F_f} = -\alpha\vec{v}$ avec $\alpha$ une constante positive.
+\checkInfo{Remarque}{Il y a d'autres types de forces de frottement}
+\section{Rappel sur la résolution d'EQD du premier ordre linéaire et à coefficient constant}
+C'est une équation dont l'inconnue faisant intervenir une fonction $f$ et ses dérivées. L'ordre de l'EQD est le plus haut degré de dérivation de la fonction $f$ dans l'EQD. Elle est linéaire si $u$ et $v$ sont solutions de l'EQD, $\lambda u+\mu v$ est aussi solution de l'EQD. Elle est à coefficient constant si les coefficients sont des constantes de dépendant pas de $t$. Elle est dite homogène si le second membre est nul
+
+\subsection{Forme canonique}
+On a une équation de cette forme :$Af'+Bf = C$. On met dans le membre de gauche tout ce qui dépend de $f$ et dans celui de droite ce qui ne dépend pas de $f$. On divise donc par $a$ : $f'+\frac{B}{A}f = \frac{C}{A}$ et on obtient $f'+\frac{1}{\tau}f = a$ avec $\tau \equiv \frac{A}{B}$ et $a\equiv \frac{C}{A}$ $\tau$ est un temps.
+\subsection{Résolution}
+On écrit l'équation homogène associée : \[f_h'+\frac{1}{\tau}f_h = 0\]
+On cherche la solution sous la forme exponentielle : $f_h = Ce^{rt}$ et $f_h' = Cre^{rt}$. On les injecte dans l'EQD pour obtenir l'équation caractéristique : $r+\frac{1}{\tau} = 0$. Donc $f_h = Ce^{-t/\tau}$.
+
+On cherche une solution particulière qui vérifie l'équation complète :
+\[ f_h'+\frac{1}{\tau}f_h = a \]
+
+On utilise la méthode de ressemblance : On cherche une solution particulière du m\^eme type que le second membre :
+
+Si le second membre $a$ est constant, on cherche $f_p$ = Constant : alors on a $f_p = a\tau$.
+
+La solution générale est la somme des 2 : $f(t) = f_h(t)+f_p(t)$. On obtient donc \[ f(t) = Ce^{-t/\tau}+a\tau\]
+
+On trouve $C$ à partir des conditions initiales.
+\section{Mouvement avec frottements fluides}
+\subsection{Exemple : Largage d'un colis}
+\subsubsection{On obtient les 2 équations}
+Système  = Colis M. On se met dans le reférénetiel terrestre muni du repère $R$
+
+On fait un bilan des forces : $\vec{P}, \vec{F_f} = -\alpha\vec{v}$
+
+On écrit le PDF : $m\vec{a} = \vec{P}+ \vec{F_f}$
+
+On projette les forces : $\vec{P} = -mg\vec{e_y}$ et $\vec{F_f} = -\alpha(V_x\vec{e_x}+V_y\vec{e_y})$
+
+On réécrit le PFD, projeté selon les axes :
+
+\[
+ \left\{\begin{matrix}
+ m\ddot{x} =& 0 + -\alpha\dot{x}\\
+ m\ddot{y} =& -mg + -\alpha\dot{y}
+\end{matrix}\right.
+\]
+\subsubsection{On transforme les équations}
+
+\begin{multicols}{2}
+On obtient une équation linéaire :
+
+\[
+ \left\{\begin{matrix}
+ m\dot{v_x} =& 0 + -\alpha v_x\\
+ m\dot{v_y} =& -mg + -\alpha v_y
+\end{matrix}\right.
+\]
+
+On l'écrit sous la forme canonique
+
+\[
+ \left\{\begin{matrix}
+ m\dot{v_x} + \alpha v_x =& 0\\
+ m\dot{v_y} +\alpha v_y =& -mg
+\end{matrix}\right.
+\]
+\setlength{\columnseprule}{0.4pt}
+On divise tout par $m$ :
+
+\[
+ \left\{\begin{matrix}
+\dot{v_x} +\frac{\alpha}{m} v_x =& 0\\
+ \dot{v_y} +\frac{\alpha}{m} v_y =& -g
+\end{matrix}\right.
+\]
+On pose $\tau  = \frac{m}{\alpha}$ :
+
+\[\left\{\begin{matrix}
+\dot{v_x} +\frac{1}{\tau} v_x =& 0\\
+ \dot{v_y} +\frac{1}{\tau} v_y =& -g
+\end{matrix}\right.
+\]
+\end{multicols}
+
+
+\subsubsection{On résout les équations}
+La première équation est homogène, donc $v_x(t) = Ce^{-t/\tau}$. À $t=0, v_x(0) = Ce^0 = C$, donc $C = V_0$. Finalement, $v_x(t) = V_0e^{-t/\tau}$. Dans ce cas, $v_x(t)\rightarrow 0$ quand $x\rightarrow+\infty$.
+
+La deuxième équation est non homogène : On écrit donc l'équation sous forme homogène : $\dot{v}_{y,h}(t) + \frac{1}{\tau} v_{y,h} = 0$. Donc : $v_{y,h} = De^{-t/\tau}$. On cherche maintenant une solution particulière. Le second membre est constant, donc on cherche $v_{y,p}$ constant, (avec sa dérivée nulle), donc $v_{y,p} = -\tau g$.
+
+Donc, $v_y(t) = De^{-t/\tau} - \tau g$\marginCritical{On trouve la valeur de D à partir de la solution complète, et non à partir de la solution homogène.}.
+
+À $t=0, v_y(0)=0$ et $v_y(0) = De^0-\tau g = D-\tau g = 0 \iff D = \tau g$. Donc : $v_y(t) = \tau g(e^{-t\tau}-1)$.
+
+On va tendre vers un vecteur vitesse \[v_{lim} = 0\vec{e_x} -\tau g \vec{e_y}\]
+On peut noter qu’il s’agit de la valeur obtenue quand l’accélération s’annule : quand
+la vitesse tend vers une constante, l’accélération est nulle. \marginTips{Elle est indépendante des
+conditions initiales. Cependant elle n’est pas obtenue instantanément mais après un
+régime transitoire dont la durée caractéristique est la constante $\tau$. La constante $\tau$ s’interprète donc physiquement comme le temps caractéristique d’établissement du régime pour lequel la vitesse est égale à la vitesse limite.}
+\subsubsection{Représentation des solutions}
+\subsubsection{Intégration}
+On intègre $v_x(t)$ : $x(t) = -\tau V_0e^{-t/\tau} + A$. Avec les conditions initiales : $x(0) = 0$ et $x(t=0) = -\tau V_0+A = 0 $ et $A = \tau v_0$. $x(t)$ tend vers $\tau V_0$ quand $x$ tend vers l'infini.
+
+On intègre $v_y(t)$ : $y(t) = \tau g(-\tau e^{-t/\tau}-t) + B = \tau^2ge^{-t/\tau}-\tau g t + B$. Avec les conditions initiales : $y(0) = h$ et $y(t=0) = \tau^2ge^{-t/\tau}-\tau g t + B$ et $B = h + \tau^2g$.
+\subsubsection{Au bout de combien de temps $v_y$ atteint-t-elle 95\% de la vitesse limite ?}
+$v_y$ tend vers $-\tau g$, vitesse limite. On veut $v_y(t_{95}) =0.95\times -\tau g$. Donc $\tau g e^{-t_{95}/\tau} = 0.05\tau g$, donc $t_{95} = -\tau \ln(0.05)$. Donc au bout de $3\tau$, $v_y$ atteint 95\% de sa valeur limite.\marginTips{Si le temps de chute est petit devant $\tau$, on calcule la tangente à $v_y$ au voisinage de 0 en calculant la dérivée de $v_y$, qui est l'accélération. L'équation de la tangente en 0 est $-gt$.}
+\section{Force de frottement visqueux non linéaires (non essentiel)}
+On peut avoir des forces de frottement visqueux du type : $\vec{F} = -\beta \norm{v}\vec{v}$, avec $\beta$ constante positive. On a : $\norm{F} \propto \norm{v}^2$.
+\subsection{Chute d'un objet verticale}
+Schéma 3.3.1
+
+Dans ce cas, $\vec{F} = - \beta v_z^2 \vec{e_z}$ et $\vec{P} = mg$
+
+On écrit le PFD : $m\vec{a} = \vec{P}+\vec{F} \iff ma_z\vec{e_z} = mg\vec{e_z}-\beta v^2_z\vec{e_z}$.
+
+On a alors : $\dot{v}_z + \frac{\beta}{m} v^2_z = g$.
+
+C'est une EQD non linéaire, car si $u$ et $v$ sont solutions, $u+v$ ne l'est pas ($(u+v)^2 \neq u^2+v^2$).
+
+\subsubsection{On cherche une vitesse limite constante}
+On a $\dot{v_z} = 0$, donc $\frac{\beta}{m}v^2 = g \Rightarrow v_l^2 = \frac{mg}{\beta}$. On l'introduit dans l'EQD : $\dot{v_z} + \frac{\beta}{m}v_z^2 - \frac{\beta}{m}(\frac{mg}{\beta} = 0$
+
+$\dot{v_z} + \frac{\beta}{m}(v_z^2-v_l^2) = 0$
+
+$\dot{v_z} + \frac{g\beta}{gm}(v_z^2-v_l^2) = 0$
+
+$\dot{v_z} + \frac{g}{v_l^2}(v_z^2-v_l^2) = 0$
+
+$\dot{v_z} + g(\frac{v_z^2}{v_l^2}-1) = 0$
+
+On pose $u=\frac{v_z}{v_l} \Rightarrow v_z = u\times v_l$
+
+On fait un changement de variable avec $u$ et l'EQD devient : $v_l\frac{du}{dt} + g(u^2-1) = 0$ et $v_l\frac{du}{dt} = g(-u^2+1) $ puis $v_l\frac{du}{1-u^2} = gdt $
+
+Mais la dérivé de $\arctanh$ est $\frac{1}{1-u^2}$.
+
+On intègre : $\arctanh(u) = \frac{g}{v_l}t + C$, donc $u=\tanh(\frac{g}{v_l}t + C)$.
+\section{Radioactivité}
+\subsection{Rappels sur le noyau des atomes}
+$_z^aX$ avec $Z$ le nombre de protons, qui détermine le nom de l'espèce et $A$ le nombre de nucléons. Le nombre de neutrons vaut $A-Z$. 2 espèce avec le m\^eme nombre de protons et nb de neutrons $\neq$ sont des isotopes.
+
+$_1^1H$ : Hydrogène et $^2_1H$ deutérium
+\subsection{Unités liés aux noyaux}
+\begin{itemize}
+ \item Taille d'un noyau : 1fm = $10^{-15}$m
+\item Unité d'énergie : $1eV = 1.6\cdot 10^{-19}$ J
+\item Masse en unité de masse atomique $u$
+\item 1 u = $1.66\cdot 10^{-27}$ kg
+\item Masse proton : 1.00728 u
+\item Masse neutron : 1.00867 u
+\item Masse électron : $0.55\cdot10^{-3}$u.
+\end{itemize}
+
+\subsection{Défaut de masse}
+$m_x < Zm_p+(A-Z)m_n$ Énergie de liaison de l'atome : $Zm_p+(A-Z)m_n - m_x = \Delta m$.
+\subsection{Lois de conservations}
+Lors des réactions, il y a conservation du nombre de nucléons, de la charge, de l'équivalent masse-énergie ($\Delta m$ est la différence de masse entre produits et réactifs).
+\subsection{Types de réactions}
+Radioactivité $\alpha$ : Une particule $\alpha$ est $^4_2He$
+
+$^A_ZX\rightarrow _{Z-2}^{A-4}X' + ^4_2\alpha + \gamma$
+
+Radioactivité $\beta +$ : $^A_ZX\rightarrow _{Z-1}^{A}X' + ^0_1e + \nu + \gamma$ avec $\nu$ un neutrino.
+
+Radioactivité $\beta -$ : $^A_ZX\rightarrow _{Z+1}^{A}X' + ^0_{-1}e + \bar{\nu} + \gamma$ avec $\bar{\nu}$ un antineutrino.
+
+Capture électronique : $^A_ZX + ^0_{-1}e \rightarrow _{Z-1}^{A}X' + \nu + \gamma + X$ avec $X$ des rayons $X$
+\subsection{Lois de décroissance radioactive}
+Pour chaque réaction radioactive, on peut déterminer la probabilité de désintégration du noyau pendant un intervalle de temps compris entre $t$ et $t+dt$.
+
+On alors $dP = \lambda dt$. Dans le SI, $\lambda$ est en $s^{-1}$.\marginInfo{Si $\lambda$ est donné en $s^{-1}$, si il est donné en année$^{-1}$, T est en années.}
+
+Si on dispose de $n$ noyaux, on peut déterminer le nombre de désintégrations par seconde = $N\times \lambda dt$.
+
+Donc la variation du nombre de noyaux $n$ pendant $dt$ : $dN = -N\lambda dt$. On divise tout par $dt$ : $\frac{dN}{dt} = -\lambda N$, et on aboutit à une EQD du premier ordre linéaire à coefficients constants : $\frac{dN}{dt} +\lambda N= 0 $
+
+On cherche une solution du type $Ce^{rt}$ avec $r=-\lambda$, donc $N(t) = Ce^{-\lambda t}$. Si à $t=0$, $N(0) = N_0$ noyaux, alors $C=N_0$ et $N(t) = N_0e^{-\lambda t}$.
+
+Période de demie-vie $T$ : temps au bout duquel le nombre initial de noyaux est divisé par $2$ :\marginCritical{Pour déterminer la durée de vie moyenne de l'échantillon $\tau$, on fait $\tau = \frac{1}{\lambda}$. Tout comme pour la vitesse limite, au bout de 3$\tau$, on aura fait disparaître 95\% de l'échantillon, il en restera donc plus que 5\%.}\marginTips{Pour réduire au milliéme l'échantillon, il faut 10 $T$ car  $\frac{ \frac{\ln(1000)}{\lambda} }{ \frac{\ln(2)}{\lambda} } = \frac{\ln(1000)}{\ln(2)} \simeq \frac{\ln(2^{10})}{\ln(2)} = 10 \frac{\ln(2)}{\ln(2)} = 10$}
+
+\begin{flalign*}
+N_0e^{-\lambda t} &= \frac{N_0}{2}\\
+e^{-\lambda t} &= \frac{1}{2}\\
+\ln(e^{-\lambda t}) &= \ln(\frac{1}{2})\\
+-\lambda T &= -\ln(2)\\
+T &= \frac{\ln(2)}{\lambda}
+\end{flalign*}
+
+
+\subsection{Activité}
+Définition : Nombre de désintégrations par seconde. Elle se mesure en Becquerel (Bq). \[A(t) = \lambda \times N(t)\] donc $A(t) = \lambda N_0e^{-\lambda t}$.
+\subsection{Élément fils}
+$M(t) = $ nombre de noyaux de l'élément fils, soit le nombre d'éléments père détruits. \[M(t) = N_0-N(t) = N_0(1-e^{-\lambda t})\]
+
+
+
+\end{document}
+

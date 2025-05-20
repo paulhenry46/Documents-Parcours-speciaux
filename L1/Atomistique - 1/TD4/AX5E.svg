@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="62.080788mm"
+   height="90.591537mm"
+   viewBox="0 0 62.080788 90.591537"
+   version="1.1"
+   id="svg1"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <pattern
+       xlink:href="#Strips1_1-2-6-4"
+       preserveAspectRatio="xMidYMid"
+       id="pattern4-9-8-66"
+       patternTransform="matrix(0,0.31000001,-0.31000001,0,0,1.0583333)"
+       x="0"
+       y="0" />
+    <pattern
+       patternUnits="userSpaceOnUse"
+       width="2"
+       height="10"
+       patternTransform="translate(0,0) scale(2,2)"
+       preserveAspectRatio="xMidYMid"
+       id="Strips1_1-2-6-4"
+       style="fill:#000000">
+      <rect
+   style="stroke:none"
+   x="0"
+   y="-0.5"
+   width="1"
+   height="11"
+   id="rect134-6-2-0" />
+
+    </pattern>
+    <pattern
+       xlink:href="#Strips1_1-2-6-2-4"
+       preserveAspectRatio="xMidYMid"
+       id="pattern4-9-8-6-0"
+       patternTransform="matrix(0,0.31000001,-0.31000001,0,0,1.0583333)"
+       x="0"
+       y="0" />
+    <pattern
+       patternUnits="userSpaceOnUse"
+       width="2"
+       height="10"
+       patternTransform="translate(0,0) scale(2,2)"
+       preserveAspectRatio="xMidYMid"
+       id="Strips1_1-2-6-2-4"
+       style="fill:#000000">
+      <rect
+   style="stroke:none"
+   x="0"
+   y="-0.5"
+   width="1"
+   height="11"
+   id="rect134-6-2-9-6" />
+
+    </pattern>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-150.78373,-443.23955)">
+    <g
+       id="g3-7-0-6"
+       transform="rotate(49.510244,-271.58275,369.89364)">
+      <circle
+         style="fill:#000000;stroke:none;stroke-width:0.575296;stroke-linecap:round;stroke-linejoin:round"
+         id="path1-5-17-3-7"
+         cx="102.56291"
+         cy="125.10778"
+         r="6.12709" />
+      <path
+         style="fill:#000000;stroke:#000000;stroke-width:0.751152;stroke-linecap:round;stroke-linejoin:round"
+         d="m 102.56291,105.00002 v 14.99999"
+         id="path2-3-2-40-5" />
+      <path
+         style="fill:#000000;stroke:#000000;stroke-width:0.751152;stroke-linecap:round;stroke-linejoin:round"
+         d="m 105,119 -5.036028,-0.0674 2.598938,-13.93257 z"
+         id="path3-72-3-6" />
+    </g>
+    <g
+       id="g3-7-6-9"
+       transform="matrix(-0.64931208,0.76052207,0.76052207,0.64931208,176.73622,338.13471)">
+      <circle
+         style="fill:#000000;stroke:none;stroke-width:0.575296;stroke-linecap:round;stroke-linejoin:round"
+         id="path1-5-17-93-8"
+         cx="102.56291"
+         cy="125.10778"
+         r="6.12709" />
+      <path
+         style="fill:#000000;stroke:#000000;stroke-width:0.751152;stroke-linecap:round;stroke-linejoin:round"
+         d="m 102.56291,105.00002 v 14.99999"
+         id="path2-3-2-3-7" />
+      <path
+         style="fill:#000000;stroke:#000000;stroke-width:0.751152;stroke-linecap:round;stroke-linejoin:round"
+         d="m 105,119 -5.036028,-0.0674 2.598938,-13.93257 z"
+         id="path3-72-8-2" />
+    </g>
+    <g
+       id="g4-4-4-8"
+       transform="rotate(123.38353,46.745277,305.13743)">
+      <circle
+         style="fill:#000000;stroke:none;stroke-width:0.575296;stroke-linecap:round;stroke-linejoin:round"
+         id="path1-5-1-9-7-2"
+         cx="120"
+         cy="124.93124"
+         r="6.12709" />
+      <path
+         style="fill:url(#pattern4-9-8-66);fill-opacity:1;stroke:#000000;stroke-width:0.351;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         d="m 122.43709,118.82347 -5.03603,-0.0674 L 120,104.8235 Z"
+         id="path3-7-5-2-9" />
+    </g>
+    <g
+       id="g4-4-4-0-9"
+       transform="matrix(0.55024074,0.83500607,0.83500607,-0.55024074,35.694277,434.00409)">
+      <circle
+         style="fill:#000000;stroke:none;stroke-width:0.575296;stroke-linecap:round;stroke-linejoin:round"
+         id="path1-5-1-9-7-8-6"
+         cx="120"
+         cy="124.93124"
+         r="6.12709" />
+      <path
+         style="fill:url(#pattern4-9-8-6-0);fill-opacity:1;stroke:#000000;stroke-width:0.351;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         d="m 122.43709,118.82347 -5.03603,-0.0674 L 120,104.8235 Z"
+         id="path3-7-5-2-1-0" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:14.8639px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:3.51654;stroke-linecap:round;stroke-linejoin:round"
+       x="180.0636"
+       y="481.30911"
+       id="text1-2-5-2"><tspan
+         id="tspan1-6-1-7"
+         style="fill:#000000;stroke:none;stroke-width:3.51654"
+         x="180.0636"
+         y="481.30911">A</tspan></text>
+    <g
+       id="g2-1-9-6-2"
+       transform="translate(99.864394,378.48672)">
+      <circle
+         style="fill:#000000;stroke:none;stroke-width:0.575296;stroke-linecap:round;stroke-linejoin:round"
+         id="path1-8-7-4-1"
+         cx="80.153595"
+         cy="125.05968"
+         r="6.12709" />
+      <path
+         style="fill:#000000;stroke:#000000;stroke-width:0.751152;stroke-linecap:round;stroke-linejoin:round"
+         d="M 80.000002,105.00001 V 120"
+         id="path2-7-3-6-5" />
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.315089;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       d="m 180.03539,467.66055 c -8.97695,-4.48847 -10.22531,-16.7851 -4.48848,-22.44237 2.20044,-2.16993 6.47002,-2.66538 8.97696,0 5.52007,5.86897 4.48847,17.9539 -4.48848,22.44237 z"
+       id="path4-3-9-4" />
+    <text
+       xml:space="preserve"
+       style="font-size:8.81944px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.350999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       x="181.24739"
+       y="522.60394"
+       id="text17"><tspan
+         id="tspan17"
+         style="stroke-width:0.351"
+         x="181.24739"
+         y="522.60394">Pyramidale à</tspan><tspan
+         style="stroke-width:0.351"
+         x="181.24739"
+         y="533.62823"
+         id="tspan18">base carrée</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:8.81944px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;fill:#ff0000;stroke:none;stroke-width:0.350999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       x="206.62917"
+       y="483.53693"
+       id="text27"><tspan
+         id="tspan27"
+         style="stroke-width:0.351"
+         x="206.62917"
+         y="483.53693">90°</tspan></text>
+  </g>
+</svg>

@@ -1,0 +1,148 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Méthodologie}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+
+\setcounter{chapter}{2}
+
+	\chapter{Fonctions}
+\section{Méthode}
+\subsection{Montrer la limite finie d'une fonction en un point $x_0$}
+On doit montrer que $\forall \varepsilon >0, \exists \alpha >0, \forall x, 0< |x-x_0|<\alpha \Rightarrow |f(x) - l|<\epsilon$. Pour un $\varepsilon$ donné, il faut donc trouver un $\alpha$.
+
+Pour ce faire, on conserve dans la fonction ce qui tend vers 0 quand $x\rightarrow x_0$ et on majore en valeur absolue la limite du reste par une quantité dépendante de $x_0$ et non $x$.
+
+Le but est d'obtenir une expression de $\alpha$ en fonction de $\varepsilon$.
+
+Exemple : Montrons que $\Lim{x\rightarrow x_0} x^2 \rightarrow x_0^2$.
+
+$\forall \varepsilon >0, \exists ? \alpha >0, \forall x, 0< |x-x_0|<\alpha \Rightarrow |f(x) - l|<\epsilon$
+
+$f(x)-l = x^2-x_0^2 = (x-x_0)(x+x_0)$
+
+$x-x_0$ tend vers 0 et on veut montrer que $(x+x_0)$ est majorée par une quantité indépendante de $x$.
+
+On pose $k_0 = \max(|x_0-1|;|x_0+1|) > 0$.
+
+Donc, si $x\in ]x_0-1;x_0+1[ \iff |x-x_0|<1$, on a $ |x+x_0| \leq 2k_0$.
+
+Donc $|x-x_0||x+x_0| \leq 2k_0|x-x_0| <\varepsilon$ et $|x^2-x_0^2| \leq 2k_0|x-x_0| <\varepsilon$
+
+On tire de l'égalité $2k_0|x-x_0| <\varepsilon$ que $|x-x_0| <\frac{\varepsilon}{2k_0}$.
+
+Donc en choisissant $\alpha = \min(1; \frac{\varepsilon}{2k_0})$, on a bien l'implication souhaitée.
+\subsection{Lever une forme indéterminée}
+Le but est d'enlever le terme qui ``perturbe notre analyse'' en le factorisant puis en effectuant une simplification.
+
+Ainsi, pour une FI $\frac{\infty}{\infty}$, on met le terme de plus haut degré en facteur.
+
+En revanche, pour une FI $0/0$, on met en facteur $x-$ la valeur pour laquelle l'expression s'annule. Si elle s'annule $0$, on met simplement $x$ en facteur.
+
+On oeut aussi faire par croissance comparée : l'exp l'emporte sur n'importe quelle fraction artionnelle.
+\subsection{Étudier une fonction}
+\begin{enumerate}
+\item Calculer la dérivée
+\item Donner le signe de la dérivée
+\item  Donner la tableau de variation
+\item Calculer les limites et indiquer les asymptotes
+\item Tracer la courbe de la fonction
+\end{enumerate}
+
+\subsection{Montrer qu'une fonction n'a pas de limite en $x_0$}
+On utilise la définition de la limite avec les suites : $\Lim{\infty}f = l$ si $\forall (u_n),\Lim{\infty} U_n = l \Rightarrow \Lim{\infty}f(U_n) = l$. On montre donc qu'il y a 2 suites tendant vers la limite $x_0$ en $\infty$, mais donc la limite de $f$ quand on les injecte est différente.
+
+\checkInfo{Exemple}{
+Montrons que $\sin(\frac{1}{x})$ n'a pas de limite en 0.
+
+Posons $u_k = \frac{1}{2k\pi}$ Ici, $\Lim{\infty} u_k = 0$
+
+Posons $v_k = \frac{1}{\frac{\pi}{2} + 2k\pi}$ Ici, $\Lim{\infty} v_k = 0$
+
+Les 2 suites tendent bien vers $0$, pourtant $\Lim{\infty} \sin(\pi/2 + 2k\pi) = 1$ et $\Lim{\infty} \sin(2k\pi) = 0$.
+
+Les limites sont différentes, donc $\sin(\frac{1}{x})$ n'a pas de limite en 0.
+
+}
+\subsection{Étudier la continuité d'une fonction en un point}
+On donne la limite à droite et à gauche, puis la valeur atteinte par la fonction au point. Si les 3 valeurs sont égales, la fonction est continue en ce point.
+\subsection{Étudier la dérivabilité d'une fonction en un point}
+Il faut d'abord montrer qu'elle est continue en ce point !
+
+On étudie la limite du taux d'accroissement de la fonction en ce point : $\Lim{x\to x_0} = \frac{f(x)-f(x_0)}{x-x_0}$, que l'on compare avec $f'(x_0)$.
+
+%On dérive la fonction puis on donne la limite de la dérivée en ce point à droite et à gauche, puis la valeur atteinte par la dérivée au point. Si les 3 valeurs sont égales, la fonction est dérivable en ce point.
+\subsection{Créer un intervalle fermé borné à partir d'intervalles infinis pour appliquer le TVI}
+Si $\Lim{+\infty} = + \infty$, par définition de la limite, $\forall A>0, \exists R>0, x>R \Rightarrow f(x)>A$. En particulier, pour $A = 1$, $\exists R>0, x>R \Rightarrow f(x)>1$. Donc $\exists a = 2R, f(a)>1$
+
+Si $\Lim{-\infty} = - \infty$, par définition de la limite, $\forall A>0, \exists R'>0, x>R' \Rightarrow f(x)<-A$. En particulier, pour $A = 1$, $\exists R'>0, x>R' \Rightarrow f(x)<-1$. Donc $\exists b = 2R, f(b)<-1$
+
+On peut désormais appliquer le TVI sur l'intervalle $[a,b]$.
+\subsection{Résoudre un problème impliquant de montrer l'existence d'un intervalle}
+On doit montrer qu'il existe un intervalle $\tau$ durant lequel la fonction augmente de $m$ points.
+On modélise la problème par une fonction continue sur un certain intervalle $[a,b]$.
+
+Il faut alors montrer que $\exists x\in [a,b], f(x)-f(x-\tau) = m \iff f(x)-f(x-\tau) -m =0$
+
+On pose alors une fonction $g$ sur l'intervalle $[a,b-\tau]$ telle que $g(x) = f(x)-f(x-\tau)-3$
+
+On calcule $g$ aux bornes de son intervalle, $a$ et $b-\tau$ pour montrer que $g(a)$ et $g(x-\tau)$ sont de signe opposé. Comme $g$ est continue, d'après le TVI, il existe $c$ tel que $g(c) = 0$.
+\subsection{Utiliser Rolle}
+\begin{itemize}
+ \item On nous parle de la dérivée
+
+\item Cette dernière doit s'annuler
+
+\item L'intervalle d'annulation de la dérivée est ouvert, donc on utilise Rolle.
+\end{itemize}
+
+Utilisation :
+
+\begin{enumerate}
+ \item on vérifie qu'elle est continue sur $[a,b]$
+ \item On vérifie qu'elle est dérivable sur $]a,b[$.
+ \item On calcule $f(a)$ et $f(b)$
+\item On conclue : Donc d'après le Théorème de Rolle, $\exists c\in]a,b[, f'(c)=0$.
+\end{enumerate}
+\subsection{Utiliser la bijectivité pour montrer qu'il existe une unique solution telle que $f(x_0) = c$ sur un intervalle}
+$f$ est continue sur l'intervalle, par exemple $\mathbb{R}$ et strictement croissante ou décroissante.
+
+On calcule les images des limites ou bornes de l'intervalle, $[a,b]$.
+
+Donc $f$ réalise une bijection de l'intervalle $\mathbb{R}$ dans  $[a,b]$.
+
+Or, $c\in[a,b]$
+
+Donc $\exists! x_0\in \mathbb{R}, f(x_0) = c$
+\end{document}
+
+

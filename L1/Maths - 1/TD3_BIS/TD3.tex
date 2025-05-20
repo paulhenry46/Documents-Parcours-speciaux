@@ -1,0 +1,89 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+
+\setcounter{chapter}{2}
+
+	\chapter{Fonctions Réciproques et croissance comparée}
+\section{Fonctions trigonométriques}
+\subsection{Réciproques de fonctions usuelles}
+	\begin{tabular}{_l^l^l}
+		\tableHeaderStyle%
+		Fonction & Réciproque & Domaine de Def\\
+		$\cos$ & $\arccos$ & $[-1,1]\to[0,\pi]$\\
+		$\sin$ & $\arcsin$ & $[-1,1]\to[-\frac{\pi}{2},\frac{\pi}{2}]$\\
+		$\tan$ & $\arctan$ & $\mathbb{R}\to[-\frac{\pi}{2},\frac{\pi}{2}]$\\
+	\end{tabular}
+\subsection{Fonctions hyperboliques}
+\subsubsection{Définition}
+On définit 3 nouvelles fonctions :
+\begin{theorem}[Fonctions hyperboliques]
+\begin{itemize}
+ \item $\cosh(x) = \frac{e^x+e^{-x}}{2}$
+  \item $\sinh(x) = \frac{e^x-e^{-x}}{2}$
+  \item $\tanh(x) = \frac{\sinh(x)}{\cosh(x)}$
+\end{itemize}
+\end{theorem}
+\subsubsection{Propriétés}
+	\begin{tabular}{_l^l}
+		\tableHeaderStyle%
+		Fonction & Dérivée\\
+		$\cosh(x)$ & $\sinh(x)$\\
+		$\sinh(x)$ & $\cosh(x)$\\
+		$\tanh(x)$ & $\frac{1}{\cosh^2(x)}$
+	\end{tabular}
+
+De plus, on a : $\cosh^2-\sinh^2 = 1$.
+\subsection{Fonctions hyperboliques inverses}
+\begin{tabular}{_l^l^l}
+		\tableHeaderStyle%
+		Fonction & Inverse & Domaine de Def\\
+		$\cosh(x)$ & arcosh & $[-1,+\infty]\to\mathbb{R}$\\
+		$\sinh(x)$ & arsinh & $\mathbb{R}\to\mathbb{R}$\\
+		$\tanh(x)$ & artanh & $]-1,1[\to\mathbb{R}$\\
+	\end{tabular}
+\section{Croissance comparée}
+\begin{theorem}[Limites à connaître]
+On pose $a,n >0$
+\begin{itemize}
+ \item $\Lim{+\infty} \frac{e^{ax}}{x^n} = +\infty$
+ \item $\Lim{+\infty} \frac{x^a}{(\ln(x)^n} = +\infty$
+  \item $\Lim{-\infty} |x|^n e^{ax} = 0$
+  \item $\Lim{0^+} |\ln(x)|^nx^a = 0$
+\end{itemize}
+
+\end{theorem}
+\end{document}
+
+

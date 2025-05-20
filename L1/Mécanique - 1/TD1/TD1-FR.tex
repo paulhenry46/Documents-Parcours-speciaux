@@ -1,0 +1,153 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mécanique}
+\subtitle{Analyse dimensionnelle}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{S.Deheuvels}%sebastien.deveuhels.irap.omp.eu
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+
+	\chapter{Analyse Dimensionnelle }
+
+	\section{Grandeurs physiques et unités associées}
+	\subsection{Grandeurs physiques et Dimensions}
+	\checkInfo{Définitions}{
+	Grandeur physique : Propriété d'un système que l'on peut mesurer ou calculer
+
+	Dimension : la nature d'une grandeur. Elle se note $[G]$.}
+
+	Deux grandeurs $G$ et $G'$ qui ont la m\^eme dimension sont dites homogènes. On note $[G] = [G']$ ou $G \sim G'$
+
+
+	\subsection{Système international}
+
+	\begin{center}
+\begin{tabular}{ll}
+\tableHeaderStyle%
+Dimension & Unité\\
+Longueur (L) & mètre (m)\\
+Masse (M) & kilogramme (kg)\\
+Temps (T) & seconde (s)\\
+Intensité du courant (I) & ampère (A)\\
+Température ($\theta$) & kelvin (K)\\
+Qt de matière (N)& mole (mol)\\
+intensité lumineuse (J)& candela (cd)
+\end{tabular}
+\end{center}
+\section{Dimension d'une grandeur physique}
+\subsection{Dans le SI}
+Pour toute grandeur physique G, il existe une unique décomposition dans le SI du type : $[G] = [L]^a[T]^b[M]^c[I]^d[\theta]^e[N]^f[J]^g$ Trouver la dimension de G dan le système revient à déterminer les valeurs des exposants.
+
+\subsection{Grandeur sans dimension}
+On dit qu'une grandeur G est sans dimension\marginCritical{Elle peut cependant avoir une unité} si [G] = 1
+
+
+\criticalInfo{Liste des grandeurs sans dimension}{
+\begin{itemize}
+ \item angles
+ \item fonctions usuelles, $\cos, \tan, \ln, \exp, \log$
+ \item arguments des fonction usuelles
+\end{itemize}
+}
+\subsection{Dimension d'un vecteur}
+La dimension d'un vecteur correspond à la dimension de sa norme.
+
+\subsection{Dimension et unité de grandeurs dérivées}
+\tipsInfo{Méthode pour déterminer la dimension d'une grandeur dans le SI}{Il faut trouver une formule qui fait intervenir cette grandeur + des grandeurs du SI (ou de dimensions connues).}
+
+\subsubsection{Dimensions à conna\^itre}
+	\begin{tabular}{_l^l^l}
+		\tableHeaderStyle%
+		Type & Exemple d'unités & Dimension\\
+		Énergie & J & $[M][L]^2[T]^{-2}$\\
+		Force & N & $[M][L][T]^{-2}$\\
+		Accélération & $m\cdot s^{-2}$ & $[L][T]^{-2}$\\
+		Vitesse & Km/h & $[L][T]^{-1}$\\
+		Charge & C & $[I][T]$\\
+	\end{tabular}
+
+\subsection{Problème aux dimensions}
+
+On suppose qu'une grandeur physique G dépend d'un ensemble d'autres grandeurs $g_i$ (intuition physique). On voudrait écrire que la grandeur $G = g_i^{\alpha_1} \times g_i^{\alpha_2} \times g_i^{\alpha_i}$.
+
+On détermine les valeurs des exposants $\alpha_i$ à partir des dimensions des grandeurs.
+
+\checkInfo{Exemple : Période d'oscillation d'un pendule}{On veut déterminer la période P des oscillations de la masse $m$.
+
+Elle peut dépendre de $g, l, \theta, m$. Le tout peut être multiplié par une constante sans dimension.
+
+Dimension des grandeurs : $[P] = [T]$
+
+$[g] = [L][T]^{-2}$
+
+$[l] = [L]$.
+
+$[m] = [M]$.
+
+\begin{flalign*}
+[M]^0[L]^0[T]^1 &= [g]^{\alpha}[l]^{\beta}[m]^{\lambda}\\
+&= ([L][T]^{-2})^\alpha[L]^{\beta}[M]^{\lambda}\\
+&= [M]^\lambda[L]^{\alpha+\beta}[T]^{-2\alpha}\\
+\end{flalign*}
+
+
+
+On procède par identification pour créer un système d'équations et trouver les coefficients.
+
+\[
+\begin{cases}0 = \lambda\\
+0 = \alpha+\beta\\
+1 = -2\alpha
+\end{cases} \Rightarrow
+\begin{cases}\lambda = 0\\
+0 = \alpha+\beta\\
+\alpha = -0.5
+\end{cases} \Rightarrow
+\begin{cases}\lambda = 0\\
+\beta = 0.5\\
+\alpha = -0.5
+\end{cases}
+\]
+
+On remplace les valeurs dans l'expression de départ.
+
+\begin{flalign*}
+[M]^0[L]^0[T]^1 &= [g]^{\alpha}[l]^{\beta}[m]^{\lambda}\\
+&= [g]^{-0.5}[l]^{0.5}[m]^{0}\\
+&= [g]^{-0.5}[l]^{0.5}\\
+\end{flalign*}
+
+}
+
+\criticalInfo{Valeur à conna\^itre : Masse volumique de l'air}{
+$\rho_{air} = 1.2\:kg\cdot m^{-3}$.}
+
+\tipsInfo{Lois d'échelle}{Quand on compare 2 systèmes, il n'est pas nécessaire de conna\^itre la valeur de la constante multiplicative. En effet, ces dernières s'annulent si on fait le rapport de 2 systèmes.}
+\end{document}
+

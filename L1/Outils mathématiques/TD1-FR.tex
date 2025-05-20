@@ -1,0 +1,145 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Outils Mathématiques}
+\subtitle{Analyse dimensionnelle}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{S.Deheuvels}%sebastien.deveuhels.irap.omp.eu
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+
+	\chapter{Dérivée et intégrales }
+\section{Dérivées}
+\begin{center}
+\begin{tabular}{_l^l}
+\tableHeaderStyle%
+Fonction & Dérivée\\
+Dérivée de $x^n$ & $nx^{n-1}$\\
+Dérivée de $\sqrt{x}$ & $0,5x^{-0,5} = \frac{1}{2\sqrt{x}}$\\
+Dérivée de $\frac{1}{x^n}$ & $-n x^{-n-1} = \frac{-n}{x^{n+1}}$\\
+Dérivée de $e^x$ & $e^x$\\
+Dérivée de $ku$ & $ku'$\\
+Dérivée de $u+v$ & $u'+v'$\\
+Dérivée de $uv$ & $u'v+uv'$\\
+Dérivée de $\frac{u}{v}$ & $\frac{u'v-vu'}{v^2}$\\
+Dérivée de $\frac{1}{u^n}$ & $\frac{-nu'}{u^{n+1}}$\\
+Dérivée de $u^2$ & $2u'u$\\
+Dérivée de $\sqrt{u}$ & $\frac{u'}{2\sqrt{u}}$\\
+Dérivée de $\frac{1}{u}$ & $\frac{-u'}{u^2}$\\
+Dérivée de $e^u$ & $u'e^u$\\
+Dérivée de $u^n$ & $nu'u^{n-1}$\\
+Dérivée de $(g \circ f(x))'$ & $f'(x) \times g'(f(x))$\\
+Dérivée de $\ln(u)$ & $\frac{u'}{u}$\\
+Dérivée de $\sin(u)$ & $u’\cos(u)$\\
+Dérivée de $\cos(u)$ & $-u’\sin(u)$\\
+Dérivée de $\sinh(u)$ & $u’\cosh(u)$\\
+Dérivée de $\cosh(u)$ & $u’\sinh(u)$
+\end{tabular}
+\checkInfo{Équation de tangente}{Équation de la tangente de la courbe de f au point a : $y = f'(a)(x-a) + f(a)$ }
+\end{center}
+\section{Intégrales}
+\subsection{Primitives}
+\begin{center}
+\begin{tabular}{_l^l}
+\tableHeaderStyle%
+Fonction & Primitive\\
+Primitive de a & ax+k\\
+Primitive de $x^n$ & $\frac{1}{n+1}x^{n+1}+k$\\
+Primitive de $\frac{1}{x^n}$ & $-\frac{1}{(n-1)x^{n-1}}+k$\\
+Primitive de $\frac{a}{x}$ & $a \ln x+k$\\
+Primitive de $\frac{1}{\sqrt{x}}$ & $2\sqrt{x}+k$\\
+Primitive de $\cos x$ & $\sin x +k$\\
+Primitive de $\sin x$ & $-\cos x +k$\\
+Primitive de $e^x$ & $e^x +k$\\
+Primitive de $u'u^n$ & $\frac{1}{n+1}u^{n+1}+k$\\
+Primitive de $\frac{u'}{u^n}$ & $-\frac{1}{n-1}\times\frac{1}{u^{n-1}}+k$\\
+Primitive de $\frac{u'}{\sqrt{u}}$ & $2\sqrt{u}+k$\\
+Primitive de $u'\cos u$ & $\sin u+k$\\
+Primitive de $u'\sin u$ & $-\cos u +k$\\
+Primitive de $\frac{u'}{u}$ & $\ln u +k$\\
+Primitive de $u'\sqrt{u}$ & $\frac{2}{3}(u)^{3/2} + k$\\
+Primitive de $u'e^u$ & $e^u$\\
+Primitive de $u'\cosh u$ & $\sinh u$\\
+Primitive de $u'\sinh u$ & $\cosh u$
+\end{tabular}
+\end{center}
+\subsection{Intégration par parties}
+\begin{theorem}[Formule]
+\[\int_a^b u(x) v'(x) \, dx  = \Big[u(x) v(x)\Big]_a^b - \int_a^b u'(x) v(x) \, dx\]
+\end{theorem}
+\checkInfo{Exemple : Double intégration par parties}{On doit calculer \[\int^x e^{at}\sin(t) dt\]
+
+On va donc faire 2 intégrations par parties successives, en choississant la fonction trigonométrique comme étant $v'$ dans les 2 cas :
+\begin{flalign*}
+\int^x e^{at}\sin(t) dt = [-e^{at}\cos(t)]^x &- a\int^x -e^{at}\cos(t)\\
+											&+ a\int^x e^{at}\cos(t)\\
+											&+ a([e^{at}\sin(t)]^x - a\int^x e^{at}\sin(t) )\\
+											&+a[e^{at}\sin(t)]^x - a^2\int^x e^{at}\sin(t)\\
+\end{flalign*}
+On remarque que l'intégrale à calculer se trouve dans les 2 membres, on obtient donc :
+\begin{flalign*}
+(1-a^2)\int^x e^{at}\sin(t) dt &= [-e^{at}\cos(t)]^x + a[e^{at}\sin(t)]^x\\
+&=[e^{at}(-\cos(t) +a\sin(t))]^x\\
+\int^x e^{at}\sin(t) dt &= \frac{[e^{at}(-\cos(t) +a\sin(t))]^x}{(1-a^2)}
+&= \frac{e^{ax}(-\cos(x) +a\sin(x))}{(1-a^2)}
+\end{flalign*}
+
+}
+\subsection{Intégration par changement de variable}
+Le but est de simplifier une intégrale en lui attribuant une nouvelle variable intelligemment choisie.
+
+\begin{enumerate}
+ \item On définie une nouvelle variable de la forme $t = \varphi(x)$
+ \item $dt = \varphi(x)'dx \iff dx = \frac{dt}{\varphi(x)'}$
+ \item On remplace dans l'intégrale $\varphi(x)$ par $t$ et $dx$ par l'expression calculée à l'étape précédente
+ \item On applique la fonction $\varphi$ aux bornes de l'intervalle
+ \item On peut simplifier l'expression de l'intégrale et la calculer entre les nouvelles bornes
+\end{enumerate}
+\checkInfo{Exemple}{On veut calculer \[\int^e_1\frac{\ln(x)}{(x\ln(x)-x)^{1/3}}\]
+
+On remarque $(x\ln(x)-x)' = \ln(x)$, qui se trouve au numérateur.
+
+\begin{enumerate}
+ \item On pose : $t = x\ln(x)-x$
+ \item $dt = \ln(x)dx \iff dx = \frac{dt}{\ln(x)}$
+ \item On remplace dans l'intégrale $x\ln(x)-x$ par $t$ et $dx$ par l'expression calculée à l'étape précédente : $\displaystyle \int^e_1\frac{\ln(x)}{(t)^{1/3}}\frac{dt}{\ln(x)}$
+ \item On applique $x\ln(x)-x$ aux bornes de l'intervalle :
+ \begin{itemize}
+  \item Pour $e$ : $e\ln(e)-e = 0$
+  \item Pour 1 : $1\times \ln(1) - 1 = -1$
+ \end{itemize}
+On obtient : $\displaystyle \int^0_{-1}\frac{\ln(x)}{(t)^{1/3}}\frac{dt}{\ln(x)}$
+\item On simplifie : $\displaystyle \int^0_{-1}\frac{dt}{(t)^{1/3}}$
+\end{enumerate}
+
+On n'a plus qu'à utiliser la formule de la primitive de $\frac{1}{x^n}$, c'est à dire : $\frac{-1}{(n-1)x^{n-1}}$
+
+}
+
+\end{document}
+

@@ -1,0 +1,89 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Chimie des solutions}
+\subtitle{Chimie}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{IHallery}%isabelle.hallery@univ-tlse3.fr
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+\setcounter{chapter}{1}
+	\chapter{Critère d'évolution naturelle}
+\section{Critère d'évolution naturelle}
+\subsection{Quotient réactionnel}
+\criticalInfo{Différence avec la constante d'équilibre}{
+À la différence de la contsante de réaction qui se calcule à l'équilibre, le quotient réactionnel se calcule dans n'importe quel état. On utilise les m\^emes expression pour l'activité}
+\begin{definition}[Quotient réactionnel]
+\(Q_{etat} = \Pi a(A_i)_{etat}^{\nu_i}\) avec $a(A_i)_{etat}$ est l'activité du constituant physicochimique $A_i$ à l'équilibre et $\nu_i$ le coefficient stoechiométrique algébrisé.
+\end{definition}
+\subsection{Critère}
+Si $Q_r > K$, le système va naturellement évoluer dans le sens direct. Dans le cas contraire, le système évolue dans le sens indirect. \marginWarning{Si le Quotient de réaction est constant au cours de l'évolution du système (par exemple si il n'y a que des solides) et qu'il est inférieur à K, la réaction est totale.}
+\section{Déplacement d'équilibre}
+Le but est de pousser un équilibre dans le sens qui nous intéresse. La perturbation peut modifier la constante d'équilibre (avec la température) ou celle du quotient réactionnel (avec la pression, ou la composition)
+\subsection{Loi de modération}
+\warningInfo{Loi de modération}{L'évolution s'oppose à cette perturbation pour en modérer les effets}. Mais il faut que le nouvel état d'équilibre soit de m\^eme nature que le précédent. Si il y a trop de modification de paramètre, il n'y a plus d'état d'équilibre.
+\subsection{Influence de la température}
+\criticalInfo{Limite}{Il faut que le système ne soit pas thermostaté}
+La réaction est exothermique si la température augmente, elle est endothermique, la température diminue. Si il n'y a pas d'évolution, elle est athermique.
+\begin{theorem}[Loi de van'T Hoff]
+ Toute augmentation/diminution de température (à composition et pression constantes), déplace l'équilibre dans le sens endothermique/exothermique.
+\end{theorem}
+Si on chauffe une réaction endothermique, la réaction va évoluer dans le sens direct.
+\begin{center}
+Évolution pour augmentation :
+\begin{tabular}{lll}
+Réaction & Évolution & K\\
+Athermique & absence & constant\\
+Endothermique & direct & augmente\\
+exothermique & indirect & diminue
+\end{tabular}
+\end{center}
+
+\subsection{Influence de la pression}
+\begin{theorem}[loi de Le Chatelier]
+ Toute augmentation/diminution de pression à composition et température constante, déplace l'équilibre dans le sens d'une diminution /augmentation deu nombre total de mole gazeuses
+\end{theorem}
+
+Évolution pour augmentation :
+\begin{center}
+\begin{tabular}{ccc}
+Critère & Évolution & Qr\\
+\(\sum \nu_{gaz} = 0\) & absence & indépendant\\
+\(\sum \nu_{gaz} > 0\) & indirect & augmente\\
+\(\sum \nu_{gaz} < 0\) & direct & diminue
+\end{tabular}
+\end{center}
+\tipsInfo{En pratique}{On peut calculer la molécularité en phase gaz \(\sum_i \nu_i\) dans les 2 sens. L'équilibre se déplace dans le sens où le résultat est négatif.}
+\subsection{Influence de la dilution}
+\subsubsection{Dilution d'une solution liquide}
+La dilution déplace l'équilibre dans le sens d'une augmentation du nombre total de mole de soluté.
+\subsubsection{Dilution d'une phase gazeuse}
+La dilution déplace l'équilibre dans le sens d'une augmentation du nombre total de mole gazeuses.
+\subsection{Influence de l'addition/ élimination d'une constituant actif sans dilution}
+L'addition/élimination d'un constituant actif déplace l'équilibre dans le sens de la consomation/formations de ce constutuant
+\end{document}
+

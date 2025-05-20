@@ -1,0 +1,103 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Outils Mathématiques}
+\subtitle{Analyse dimensionnelle}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{S.Deheuvels}%sebastien.deveuhels.irap.omp.eu
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\norm}[1]{||\overrightarrow{#1}||}
+\begin{document}
+\setcounter{chapter}{5}
+\chapter{Nombres complexes}
+\criticalInfo{Fiche de révision}{Cette fiche ne couvre que les nouevelles propriétés vues dans l'UE. Pour une vision globale des nombres complexes, se reporter aux fiches de révision ``Nombres complexes - Partie algébrique'' et ``Nombres complexes - Partie géométrique'' dans la rubrique Mathématiques Exp. du niveau Terminale.}
+\section{Passer d'une forme à une autre}
+\subsection{Mettre sous forme trigonométrique}
+\begin{enumerate}
+ \item On calcule le module avec $|z| = \sqrt{x^2+y^2}$
+ \item On cherche le cosinus de l'angle avec $\cos(\theta) = \frac{x}{|z|}$
+ \item On cherche le sinus de l'angle avec $\sin(\theta) = \frac{y}{|z|}$
+ \item On cherche à quel angle correspond la combinaison de $\cos$ et $\sin$.
+
+\begin{tabular}{llllll}
+$\theta$ & 0 & $\frac{\pi}{6}$ & $\frac{\pi}{4}$ & $\frac{\pi}{3}$ & $\frac{\pi}{2}$\\
+$\cos$ & 1 & $\frac{\sqrt{3}}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{1}{2}$ & 0\\
+$\sin$ & 0 & $\frac{1}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{\sqrt{3}}{2}$ & 1
+\end{tabular}
+\item On n'a plus qu'à écrire : $z = |z|(\cos(\theta) + i\sin(\theta))$ avec les valeurs trouvées
+\end{enumerate}
+\subsection{Mettre sous forme exponentielle}
+\begin{enumerate}
+ \item On écrit le nombre sous sa forme trigonométrique
+ \item On transforme l'écriture en remplaçant $\cos(\theta)+i\sin(\theta)$ par $e^{i\theta}$.
+\end{enumerate}
+\section{Propriétés de l'argument et du module}
+\begin{itemize}
+ \item $\arg(z_1z_2) = \arg(z_1)+\arg(z_2)$
+ \item $\arg(\frac{z_1}{z_2}) = \arg(z_1)-\arg(z_2)$
+ \item $|z_1z_2|=|z_1||z_2|$
+ \item $|\frac{z_1}{z_2}| = \frac{|z_1|}{|z_2|}$
+\end{itemize}
+\section{Représentation complexe des signaux sinusoidaux}
+\subsection{Écrire un signal sous la forme générique}
+On se sert des propriétés des fonctions trigonométriques pour n'avoir plus qu'un signal de la forme $ A\cos(wt+\varphi)$, avec $A>0$
+
+Exemple : $s(t) = -2\cos(wt+\frac{\pi}{4}) = 2\cos(wt+\frac{\pi}{4}+\pi) = 2\cos(wt+\frac{5\pi}{4})$.
+
+Exemple : $s(t) = \cos(wt)+\sqrt{3}\sin(wt) = A\cos(wt+\varphi) = A(\cos(wt)\cos(\varphi)-\sin(wt)\sin(\varphi))$\marginTips{On se sert de la formule de duplication : $\cos(a+b) = \cos(a)\cos(b)-\sin(a)\sin(b)$.}
+
+On procède ensuite par identification :
+\[\left\{\begin{matrix}
+A(\cos(wt)\cos(\varphi))&= \cos(wt)\\
+-A(\sin(wt)\sin(\varphi)) &= \sqrt{3}\sin(wt)
+\end{matrix}\right.
+\Rightarrow
+\left\{\begin{matrix}
+A(\cos(\varphi))&= 1\\
+-A(\sin(\varphi)) &= \sqrt{3}
+\end{matrix}\right.
+\]
+
+On met au carré :
+
+\[\left\{\begin{matrix}
+A^2(\cos(\varphi)^2)&= 1\\
+A^2(\sin(\varphi)^2) &= 3
+\end{matrix}\right.
+\Rightarrow
+\left\{\begin{matrix}
+2A^2(\cos(\varphi)^2+\sin(\varphi)^2)&= 4 \Rightarrow A=2\\
+A^2(\sin(\varphi)^2) &= 3
+\end{matrix}\right.
+\]
+
+De $A$, on peut déduire $\varphi$ avec son $\sin$ et $\cos$.
+\subsection{Déterminer la forme complexe}
+À partir de la forme générique, on donne la forme exponentielle complexe : $s(t) = A\cos(wt+\varphi) \iff s'(t) = Ae^{i(wt+\varphi)} = Ae^{i\varphi}e^{iwt} = A'e^{iwt}$, avec $A' = Ae^{i\varphi}$.
+\end{document}
+

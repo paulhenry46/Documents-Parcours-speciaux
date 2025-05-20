@@ -1,0 +1,191 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électrocinétique}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{Allard}%allard@irsamc.ups-tlse.fr
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres63
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\dd}{\mathrm{d}}
+\begin{document}
+\setcounter{chapter}{5}
+
+\chapter{Régime sinuosidal forcé}
+% Les solutions sont de la forme  une exponetielle qui tend vers 0 et une expression sinusodiale que l'on va chercher à trouver
+%
+% Pour un temps sufisament grand devant \(\tau\), toutes les quantités deviennent sinusoidales et sont caractérsiées par une aplitude et un décalage de phase.
+\section{Notation complexes}
+\subsection{Définitions}
+Soit \(u(t) = u_m \cos(\omega t+\varphi_u)\). On définit \(\underline{U(t)} = U_m e^{j(\omega t+\varphi_u)} = \underline{U_m} e^{j\omega t}\) avec \(\underline{U_m} = U_m e^{j \varphi_u}\).
+
+Le module de \(\underline{U_m}\) est l'amplitude et son argument est la phase à l'origine.
+
+Cela ne fonctionne que pour des circuits linéaires.
+
+% \subsection{Dérivées de grandeurs complexes}
+% La partie réelle de la dérivée de U complexe vaut la dérivée de nu réel.
+
+\warningInfo{Dérivées de grandeurs complexes}{On peut montrer que dériver par rapport au temps c'est multiplier par \(j\omega\), intégrer c'est diviser par cette quantité.}
+
+\section{Impédance des dipoles classiques}
+\subsection{Définition de l'impédance}
+En régime sinusoidal forcé, on pourra toujours trouver une relation de type loi d'ohm pour tout les dipoles, c'est à dire \(\underline{U} = \underline{z}\underline{i}\). \(\underline{z}\) est l'impédance du dipole.
+\subsection{Propriétés}
+L'impédance vérifie les m\^emes propriétés d'association que les résistances.
+\subsection{Impédance des dipoles élémentaires}
+\begin{center}
+\begin{tabular}{ll}
+Dipole & Impédance\\
+Résistance & R\\
+Condensateur & \(\frac{1}{jc\omega}\)\\
+Bobine & \(jL\omega\)
+\end{tabular}
+\end{center}
+
+% \subsubsection{Résistance}
+% L'impédance d'une résistance est sa résistance.
+% \subsubsection{Condensateur}
+% L'impédance vaut \(\frac{1}{jc\omega}\)
+% \subsubsection{Bobine}
+% Elle vaut \(jL\omega\)
+% \subsection{Pont diviseur de tension/de courant}
+% On applique les m\^emes propriétés que pour les grandeurs réelles.
+\section{Puissance en régime sinusoidal forcé}
+\subsection{Définition}
+Nottations : \(i = I\cos(\omega t-\varphi) = I_e \sqrt{2} \cos(\omega t-\varphi)\) et \(u = U\cos(\omega t) = U_e \sqrt{2} \cos(\omega t)\).
+\begin{definition}[Puissance]
+La puissance instantannée : \(p = u(t)\times i(t)\).
+
+La puissance moyenne \(p_m = \frac{1}{T} = \int^{T}_{0}p(t)\dd t\) avec \(T = \frac{2\pi}{\omega}\) ou \(P_m = U_eI_e \cos(\varphi)\) avec le cosinus appelé facteur de puissance.
+
+On a aussi \(P_m = R\times I_e^2\)
+\end{definition}
+
+En effet, en résolvant l'intégrale : \(\frac{1}{T}\int 2I_eU_e \cos(\omega t-\varphi)\cos(\omega t)\dd t = I_eU_e(\cos(\varphi)+ \cos(2\omega t-\varphi))\). Donc \(P_m = U_eI_e \cos(\varphi)\) avec le cosinus appelé facteur de puissance.
+
+% L'impédance est telle que \(\underline{U} = \underline{z}\underline{i}\). On obtient \(\underline{z} = \frac{U_e}{I_e} e^{j\varphi}\)
+
+\(\cos(\varphi) = \frac{R}{|\underline{z}|}\). La puissance consommée est celle consommée par la partie résistive (réelle) de \(\underline{z}\).
+
+% \subsection{Adaptation d'impédance}
+% \(P_m = R\times I_e^2\) qui est la puissance moyenne consommée par R+jX.
+%
+% Donc \(P_m = R \frac{E_e^2}{(r+R)^2+(x+X)^2}\). Pour que Pm soit maximal, il faut que \((x+X)^2 = 0 \Rightarrow x=-X\). De plus, comme la dérivée de Pm est nulle,  \(r=R\).
+%
+% Il faut donc adapter l'impédance.
+% \chapter{Filtrage}
+% %\section{Introuction}
+%
+% On étudie seulement en régime sinusoidal forcé permanent. On étudie l'amplitude et la phase de la tension de sortie en fonction de la pulsation \(\omega\). Comme cela dépend de la fréquence, on parle de réponse spectrale.
+%
+% Si e(t) contient 2 fréquence : \(e(t) = A_1(\cos(\omega_1t+\varphi_1))+A_2(\cos(\omega_2t+\varphi_2))\). Comme les dipoles sont linéaires, on a \(s(t) = B_1\cos(\omega_1t + \phi_1) + B_2(\cos(\omega_2+\phi_2))\).
+%
+% En prratique, on calcule une fonction de transfert \(H(j\omega) = \frac{s(j\omega)}{e(j\omega)}\). En général, on calcule aussi une fonction Gain \(G(j\omega) = |H|\) et le déphasage \(\varphi(j\omega) = \arg(H(j\omega))\). Avec ces 2 fonctions, on trouve que \(B_1 = A_1\times G(j\omega)\) et \(B_2 = A_2\times G(j\omega)\) et \(\phi_1 = \varphi_1+\varphi(j\omega)\) et \(\phi_2 = \varphi_2+\varphi(j\omega)\).
+% \warningInfo{Rmq}{En général, on calcule le gain en Db, \(G_{db} = 20 \log(G)\)}
+% \section{Filtre passe-bas}
+% \subsection{Premier ordre}
+% On applique un pont diviseur de tension : \(\underline{s} = \underline{e} \times \frac{\frac{1}{j\omega}}{R+\frac{1}{jc\omega}} = \frac{1}{1+jRc\omega}\) et \(\underline{s} = \underline{e} \times \frac{R}{R+jL\omega} = \underline{e} \frac{1}{1+jL\omega/R}\)
+%
+% \(H = \frac{1}{1+j\frac{\omega}{\omega_0}}\)
+%
+% et \(G = \frac{1}{\sqrt{1+\frac{\omega^2}{\omega_0^2}}}\)
+%
+% et \(\varphi = \arg(H) = -arg(1+j\frac{\omega}{\omega_0}) = -\arctan(\frac{\omega}{\omega_0})\)
+%
+% Enfin, \(G_{db} = 20\log(G) = -10 \log(1+\frac{\omega^2}{\omega_0^2})\).
+%
+% Comportement asympotique : Quand \(\omega \to 0, G_{Db} \to 0, \varphi \to 0, G\to 1\)
+%
+% \(\omega \to \infty, G_{Db} \to -\infty, \varphi \to -\pi/2, G\to 0\)
+%
+% \warningInfo{Rmq}{
+% Quand \(\omega = \omega_0, G_{db} = -10\log(2) = -3 Db, G = \frac{1}{\sqrt{2}}, \varphi = \frac{-\pi/4}\)
+% }
+%
+% \warningInfo{Rmq}{Pour un filtre d'ordre 1, le decalage de phase maximum est de pi/2 et la pente est de 20 log(db)}
+% \subsection{Ordre 2}
+% \(s = \frac{\frac{1}{jc\omega}}{R+jL\omega+\frac{1}{jc\omega}}\), donc \(H = \frac{1}{1-Lc\omega^2+jRC\omega}\). On pose \(\omeg^2_0 = \frac{1}{LC}\) et \(Q = \frac{1}{R}\sqrt{L/C}\) et on obtient \(H = \frac{1}{1-(\frac{\omega}{\omega_0})^2 + j\frac{1}{Q}\frac{\omega}{\omega_0}}\)
+%
+% \warningInfo{Rmq}{Si \(Q\leq 2 \), on peut écrire \(1-(\frac{\omega}{\omega_0})^2 + j\frac{1}{Q}\frac{\omega}{\omega_0} = (1+j\frac{\omega}{\omega_1})(1+j\frac{\omega}{\omega_2})\) avec \(\omega_{1,2} = \frac{\omega_0}{2}(1/\alpha \pm \sqrt{1/\alpha^2}-4)\)}
+%
+% Donc \(H = \frac{1}{1+j\frac{\omega}{\omega_1}\times \frac{1}{1+j\frac{\omega}{\omega_2}}}\). On remarque que c'est le produit de 2 filtre passe bas d'ordre 1.
+%
+% \(G = \frac{1}{\sqrt{1+\frac{\omega^2}{\omega_1^2}}} \times \frac{1}{\sqrt{1+\frac{\omega^2}{\omega_2^2}}}\)
+%
+% \(G_{db} = -10\log((1+\frac{\omega^2}{\omega_1^2})(1+\frac{\omega^2}{\omega_2^2}))\)
+%
+% \(\varphi = -\arctan(\frac{\omega}{\omega_1}-\arctan(\omega/\omega_2))\)
+%
+% \warningInfo{Rmq}{Si Q >1, en \(\omega = \omega_0, H = -jQ \) et \(G > 1 \Rightarrow |s|>|e|\). Phénomène de résonnance/de surtension}
+% \section{Passe haut}
+% \subsection{Premier ordre}
+% \(H = \frac{R}{R + \frac{1}{jc\omega}} = \frac{jRx\omega}{1+jRc\omega}\). On pose \(\omega_0 = \frac{1}{Rc}\) pour obtenir \(H = \frac{j\frac{\omega}{\omega_0}}{1+j\frac{\omega}{\omega_0}}\), et G = \(\frac{\omega/\omega_0}{\sqrt{1+(\frac{\omega}{\omega_0})^2}}\), \(G_{db} = 20 \log(\frac{\omega}{\omega_0})-10\log(1+(\frac{\omega}{\omega_0})^2)\). Enfin, \(\varphi = \frac{\pi}{2}-\arctan(\omega/\omega_0)\).
+%
+% Quand \(\omega \to 0, H\to 0, G\to 0, G_{db} = -\infty, \varphi \to \pi/2\)
+%
+% Quand \(\omega \to \infty, H\to 1, G\to 1, G_{db} \to 0, \varphi \to 0\)
+%
+% Quand \(\omega = \omega_0, H = \frac{j+1}{\sqrt{2}}, G = 2^{-0.5}, G_{db} =-3db, \varphi \to \pi/4\)
+% \subsection{Ordre 2}
+% \(H = \frac{jL\omega}{R + jL\omega+\frac{1}{jC\omega}} = \frac{-L\omega^2}{1-LC\omega^2+jRC\omega}\)
+%
+% On pose \(\omega_0 = \frac{1}{\sqrt{LC}}\) et \(Q = \frac{1}{R}\sqrt{(L/C)}\).
+%
+% \(H = \frac{-(\omega/\omega_0)^2}{1-(\omega/\omega_0)^2+j\frac{1}{Q}(\omega/\omega_0)^2}\).
+%
+% \(G = \frac{(\omega/\omega_0^2)}{\sqrt{(1-(\omega/\omega_0)^2)^2+\frac{1}{Q^2}(\omega/\oomega_0)^2}}\)
+%
+% \(G_{db} = 40 \log(\omega/\omega_0) - 10\log((1+(\frac{\omega}{\omega_0})^2)^2 + \frac{1}{Q^2}(\omega/\omega_0)^2)\)
+%
+%
+% Quand \(\omega \to 0, G\to 0, G_{db} = -\infty, \varphi \to \pi\)
+%
+% Quand \(\omega \to \infty, G\to 1, G_{db} \to 0, \varphi \to 0\)
+%
+% Quand \(\omega = \omega_0, H = \frac{j+1}{\sqrt{2}}, G = Q, \varphi = \pi/2\)
+% \section{Filtre passe-bande}
+% Ils sont constitués de 2 parties :
+% \begin{itemize}
+%  \item Une qui fait chuter s à basse fréquence
+%  \item Une qui le fait à haute fréquence
+% \end{itemize}
+% Elle est d'ordre 2
+%
+% \(H = \frac{A}{1+jQ(\frac{\omega}{\omega_0 - \frac{\omega_0}{\omega}})}\)
+% \subsection{Exemple du RLC série}
+% \(H = \frac{R}{R+jL\omega + \frac{1}{jL\omega}} = \frac{1}{1+\frac{jL\omega}{R}+\frac{1}{jR\omega}}\). On pose donc \(\omega_0 = 1/\sqrt{LC}\) et \(Q = \frac{1}{R}\sqrt{L/C}\).
+%
+% \(|H|\) est max pour \(\omega = \omega_0 \Rightarrow G = A\). Il existe 2 fréquences de coupure à -3db
+%
+% \(\omega_+, \omega_- = \frac{\omega_0}{Q} (\sqrt{1+Q'}\pm 1)\). Le produit des 2 vaut \(\omega_0^2\) et la différence vaut \(\frac{\omega_0}{Q}\)
+% \subsection{Autres exemples : mise en cascade}
+% \(H = \frac{1}{3+j(Rc\omega-\frac{1}{Rc\omega})}\)
+% \section{Filtre réjecteur de bande}
+% \(H = \frac{1-LC\omega^2}{(1-Lc\omega^2)+jL/R \omega} = \frac{1-(\omega/\omega_0)^2}{1-(\omega/\omega_0)^2+j1/Q \frac{\omega}{\omega_0}} = \frac{1}{1+j(\frac{1/Q \omega/\omega_0}{1-(\omega/\omega_0)^2})}\).
+%
+% \(\Delta \omega = \omega_0/Q\) et \(\omega_{c,\pm} = \frac{\omega_0/2}(\sqrt[1/Q^2+4\pm 1/Q])\)
+\end{document}

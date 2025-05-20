@@ -1,0 +1,145 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Chimie des solutions}
+\subtitle{Chimie}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{IHallery}%isabelle.hallery@univ-tlse3.fr
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+\setcounter{chapter}{2}
+	\chapter{Équilibre de solubilisation}
+	\section{Équilibre de solubilisation}
+	\subsection{Mise en solution d'un corps pur}
+	On note $X$ un corps pur plongé dans une solution liquide. Il peut y avoir des effets thermiques ou de couleur (solvatochromie).
+	\begin{definition}[Limite de solubilité]
+	\(X\) présente le plus souvent une limite de solubilité au-delà de laquelle la solution est saturée en \(X\). Avant la limite de solubilité, la dissolution est totale.
+	\end{definition}
+	Tous les solides en possède une.\marginInfo{Certains liquides sont solubles en proportions infini (eau+éthanol). Ils n'ont pas de limite de solubilité}
+	\begin{center}
+\begin{tabular}{ll}
+X & Manifesttaion de la saturation\\
+Liquide & Précipitation de \(X\)\\
+Solide & Démixtion de \(X\)\\
+Gaz & Dégazage de \(X\)
+	\end{tabular}
+	\end{center}
+	\subsubsection{Modélisation}
+	On écrit \(I_{2(s)} = I_{2(aq)}\)\marginCritical{On remarque que l'eau n'apparait pas dans l'équation de réaction}
+
+	On a aussi : \(CO_{2(g)} = CO_{2(aq)}\) ou \(CH_3CH_2OH_{2(l)} = CH_3CH_2OH_{2(aq)}\) ou encore \(CaCO_{3(s)} = Ca^{2+}_{(aq)}+Co^{2-}_{3(aq)}\)\marginTips{Cela correspond à la dissolution du carbonate de calcium, un solide ionique}
+
+	\begin{theorem}[Loi de Kaulrosh]
+	 \[\sigma = \sum_i \lambda^0_i [i]\] avec \(\lambda\) la solubilité de l'ion et sigma celle du solide ionique dissous à saturation additionnée à celle de l'eau.
+	\end{theorem}
+	\criticalInfo{Unité Conductivté/Solubilité}{Il y a un problème d'unité : L'unité de la conductivité est avec des \(m^{-1}\) et celui des $\lambda$ est avec des\(m^2\cdot mol^{-1}\). Les volumes seront en \(m^3\). Il faut donc convertir les \(m^3\) en L.}
+	On peut accéder, grace à la conductimétrie, à la concentration, puis à la solubilité
+	\subsection{La solubilité}
+	Noté s, c'est un nombre maximal de mol de constituant que l'on peut dissoudre par litre de solution.\marginCritical{Ce n'est pas le terme qui correspond à l'aptitude à se solubiliser.}
+	\subsection{Équilibre de solubilisation}
+	Quand la solution est saturée en X, un équilibre sétablit.\marginCritical{La solubilité est à manipuler comme un avancement volumique. Il s'exprime en g/L ou mol/L. C'est une concentration}
+	Plus le Ks est grand, plus la solubilité est grande. À l'inverse, plus le pkS est petit, plus la solubilité est grande.\marginWarning{On ne peut classer directement des composés en fonction de Ks seulement si ils ont les m\^emes coefficients stoechiométrique}
+	\begin{definition}[Constante de solubilité pour un solide]
+	\(K_s^0 = \frac{a(X_{(aq)})}{a(X_{(s)})} = \frac{[X_{(aq)}]}{C_0}\). La concentration à l'équilibre ne dépend que de \(T\)
+	\end{definition}
+	\begin{definition}[Constante de solubilité pour un gaz]
+	\(K_s^0 = \frac{a(X_{(aq)})}{a(X_{(g)})} = \frac{[X_{(aq)}]\times p_0}{C_0\times p_{X}}\). La concentration ne dépend que de la température et de la pression du gaz environnant.
+	\end{definition}
+	\begin{definition}[Constante de solubilité pour un liquide]
+	\(K_s^0 = \frac{a(X_{(aq)})}{a(X_{(l)})} = \frac{[X_{(l)}]}{C_0\times x_{X}}\). La concentration ne dépend que de la température et de la pression du gaz environnant.
+	\end{definition}
+% 	\begin{definition}[Constante de solubilité pour un solide ionique]
+% 	\(K = \frac{a(X_{(aq)})}{a(X_{(s)})} = \frac{[X_{(l)}]}{C_0\times x_{X}}\). La concentration ne dépend que de la température et de la pression du gaz environnant.
+% 	\end{definition}
+\warningInfo{pKs}{On peut utiliser le logarithme : pKs = \(-\log(Ks)\)}
+\subsection{Produit de solubilité}
+\begin{definition}[Type d'équation mise en jeu]
+\(C_xA_y = xC^{p+} + yA^{q-}\)
+\end{definition}
+\begin{definition}[Produit de solubilité]
+\(K_s = a(C^{p+}_{(aq)})_{eq}^x\times a(A^{q-}_{(aq)})_{eq}^y\times (a((C_xA_y)_{(s)}))^{-1}_{eq} =  \frac{[C^{p+}]^x_{(eq)} \times [A^{q-}]^y_{(eq)}}{C_0} \)
+\end{definition}
+\warningInfo{Concentrations}{Les concentrations sont en mol/L}
+
+Le composé est d'autant plus soluble que $K_s$ est grand et que $pK_s = -\log(K_s)$ est petit.
+
+\checkInfo{Exemple de l'ion phosphate}{
+\(Ag_3PO_4 = 3Ag^+ + Po_4^{3-} \Rightarrow K_s = [Ag^+]^3_{eq} \times [PO_4^{3-}]^1_{eq}\)}
+	\section{Précipitation d'un composé ionique}
+	\subsection{Solubilité dans l'eau pure}
+	On peut aussi prévoir prévoir l'opération inverse avec le $K_s$.
+	\warningInfo{Composés ioniques très solubles}{
+	Ce sont les nitrates, alcalins, certains sulfates}
+	\checkInfo{}{
+	Calcul de la solubilité de AgCl et Ag3Po4 dans l'eau. Le pks de AgCl est plus petit que celui de Ag3Po4. On peut donc espérer que la solubilité de AgCl est plus grande que celle de Ag3Po4.
+
+	On fait un tableau d'avancement en fonction de l'inconnue $s$ (on remplace $\xi$ par $s$).
+
+	\(AgCl_{(s)} = Ag^++Cl^-\) On obtient $K_s = [Ag^+]_{eq} \times [Cl^-]_{eq} = s^2 \iff s = \sqrt{K_s}$.
+
+	Pour $Ag_3Po_4 = 3Ag^++Po_4^{3-}$, on a $K_s = [Ag^+]^3 [Po_4^{3-}] = (3s)^3\times s =27s^4$
+	}
+	Pour 2 composés de m\^eme stoechiométrie, le composé le plus solubke dans l'eau pure est celui dont le $K_s$  est le plus grand, le $pK_s$ le plus petit.
+	\subsection{Condtitions de précipitation}
+	\begin{definition}[Critère de précipitation]
+	Il y a précipitation  si \(Q_r(EI) \geq K_s \iff [C^{p+}]^x\times [A^{q-}]^y \geq K_s\). Dans le cas contraire, il ne se passe rien.
+	\end{definition}
+\subsubsection{pH de précipitation}
+	\(Cu(OH)_2 = Cu^{2+} + 2HO^-\). Pour que ça précipite, il faut que $[Cu^{2+}]\times [HO]^2 \geq K_s \iff [OH^-] \geq \sqrt{\frac{K_s}{C_{Cu}}} \iff pH \geq \log(10^{14}- [HO-]) = 5$
+	\section{Déplacement de l'équilibre de solubilisation}
+\subsection{Influence de la température}
+L'équilibre suit les m\^emes règles que pour les réactions en général et subit les m\^emes mécanismes.
+\checkInfo{Principe de recritsalisation}{La dissolution du solide à recritaliser doit \^etre endothermique}
+\subsection{Effet d'ion commun : addition d'un des ions}
+\subsubsection{Nomemclature}
+Écriture symbolique : On écrit le cation plus l'anion dans le composé
+
+Écirture du nom vernaculaire : L'anion en premier suivi du nom du cation
+\criticalInfo{Ions à retenir}{
+\begin{itemize}
+ \item \(SO_4^{2-}\) : Anion sulfate
+\item \(NO_3^-\) : Anion nitrate
+\item \(NH_4^+\) : Ammonium
+\item \(PO_4^{3-}\) : ion phosphate
+\item \(HCO_3^{-}\) : Hydrogénocarbonate
+\item \(CO_3^{-}\) : carbonate
+\item \(K^+\) : Potassium
+\item \(CH_3COO^-\) : Acetate/ethanoate
+\item \(O^{2-}\): Oxyde
+\end{itemize}
+}
+\subsubsection{Fonctionnement}
+\begin{definition}[Effet d'ion commun]
+La solubilité du composé diminue en présence d'un ion commun au solide.
+\end{definition}
+\subsection{Consommation d'un ion}
+\begin{theorem}[Effet de la consommation d'un ion]
+ La consommation d'un ion déplace l'équilibre dans le sens de leur formation. La solubilité d'un solide ionique à anion basique augmente quand le pH dimnue.
+\end{theorem}
+
+\end{document}
+

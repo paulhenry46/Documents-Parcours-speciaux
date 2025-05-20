@@ -1,0 +1,158 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+
+\setcounter{chapter}{1}
+
+	\chapter{Suites réelles }
+
+\section{Méthodes}
+\subsection{Lever une Forme Indéterminée}
+\subsubsection{Du type Infini/Infini}
+On donne d'abord le type de FI puis on met en facteur le terme variant de plus haut degré en facteur.
+\checkInfo{Exemple}{Voir le 2 et 3 du TD 2.4
+
+\begin{flalign*}
+U_n &= \frac{2n+(-1)^n}{5n + (-1)^{n+1}}\\
+&= \frac{2n(1+\frac{(-1)^n}{2n})}{5n(1+\frac{(-1)^{n+1}}{5n})}\\
+&= \frac{2(1+\frac{(-1)^n}{2n})}{5(1+\frac{(-1)^{n+1}}{5n})}\\
+\end{flalign*}
+
+$\Lim{+\infty} \frac{(-1)^n}{2n} = \Lim{+\infty} \frac{(-1)^n}{2n} = 0$
+
+Donc $\Lim{+\infty} (U_n) = \frac{2}{5} \times \frac{1}{1}$.
+}
+\subsubsection{Du type + Infini - Infini avec des racines}
+On multiplie par la quantité conjuguée au numérateur et au dénominateur
+
+\[ (\sqrt{a}-\sqrt{b}) = (\sqrt{a}-\sqrt{b})\frac{\sqrt{b}-\sqrt{a}}{\sqrt{b}-\sqrt{a}} = \frac{a-b}{\sqrt{a}+\sqrt{b}}  \]
+\checkInfo{Exemple}{Voir le 4 du TD 2.4
+\begin{flalign*} (\sqrt{2n+1}-\sqrt{2n-1}) &= (\sqrt{2n+1}-\sqrt{2n-1})\frac{\sqrt{2n-1}-\sqrt{2n+1}}{\sqrt{2n-1}-\sqrt{2n+1}}\\
+&= \frac{(2n+1)-(2n-1)}{\sqrt{2n+1}+\sqrt{2n-1}}\\
+&= \frac{2}{\sqrt{2n+1}+\sqrt{2n-1}}
+\end{flalign*}
+}
+\subsubsection{Avec des exponentielles}
+Les exponentielles dominent les polyn\^omes. Donc On le met en facteur et on utilise la croissance comparée :
+\begin{theorem}[Croissance comparée]
+$\Lim{+\infty} \frac{n^x}{y^n} = 0$.
+\end{theorem}
+\subsection{Montrer que 2 suites sont adjacentes (2.11)}
+\subsubsection{Montrer que les 2 suites sont définies}
+Il peut \^etre utile de montrer que les 2 suites sont définies et toujours positives.
+
+Pour cela, on peut faire un raisonnement par récurrence.
+\subsubsection{Montrer qu'une suite est supérieure à l'autre}
+On fait la différence $u_n-v_n$ et selon le signe, on conclue.
+\subsubsection{On étudie la monotonie des suites}
+Il faut montrer que l'une est croissante et l'autre décroissante. Pour cela, on fait la différence $u_{n-1}-u_n$ et on conclue, pareil pour $(v_n)$.
+\subsubsection{Montrer que les suites sont convergentes}
+Une suite est croissante et majorée par le premier terme de l'autre suite ; l'autre suite est décroissante et minorée par le premier terme de la première suite.
+
+Les deux suites sont convergentes et on note $l$ et $l'$ leur limite respective.
+
+\subsubsection{Montrer que l=l'}
+
+Les 2 suites sont convergentes, donc en exprimant la limite du terme $n+1$ d'une suite en fonction de l'autre suite, on peut montrer que $l=l'$.
+\subsubsection{Conclusion}
+Toutes les conditions sont réunies pour dire que les 2 suites sont adjacentes.
+\subsubsection{Exemple}
+\checkInfo{Énoncé}{On pose $a_0 >0$ et $b_0 >0$. On a : $\frac{2}{u_{n+1}} = \frac{1}{u_n}+\frac{1}{v_n}$ et $v_{n+1} = \frac{u_n+v_n}{2}$. On veut montrer que les suites sont adjacentes.}
+\begin{enumerate}
+ \item On montre d'abord que les suites sont positives, par récurrence :
+
+L'initialisation est immédiate d'après l'énonce ($a_0 >0$ et $b_0 >0$).
+
+Hérédité : On suppose $(H_n)$. Donc $u_n>0$ et $v_n>0$. On a alors : $v_{n+1} = \frac{u_n+v_n}{2} > 0$. De plus, $\frac{1}{u_n} > 0$ et $\frac{1}{v_n}>0$
+
+Donc la suite est bien définie et supérieure à 0.
+\item On montre qu'une suite est supérieure à l'autre.
+
+On a $u_{n+1} = \frac{2u_nv_n}{v_n+u_n}$, donc la différence $u_{n+1}-v_{n+1}$ vaut :
+
+\begin{flalign*}
+ u_{n+1}-v_{n+1} &= \frac{2u_nv_n}{v_n+u_n} - \frac{u_n+v_n}{2}\\
+ &= \frac{4u_nv_n}{2(v_n+u_n)} - \frac{(u_n+v_n)^2}{2(u_n+v_n)}\\
+ &= \frac{4u_nv_n-(u_n+v_n)^2}{2(v_n+u_n)}\\
+ &= \frac{4u_nv_n-(u_n^2+2u_nv_n+v_n^2)}{2(v_n+u_n)}\\
+  &= \frac{4u_nv_n-u_n^2-2u_nv_n-v_n^2}{2(v_n+u_n)}\\
+    &= \frac{2u_nv_n-u_n^2-v_n^2}{2(v_n+u_n)}\\
+    &= \frac{-(-2u_nv_n+u_n^2+v_n^2)}{2(v_n+u_n)}\\
+    &= \frac{-(u_n+v_n)^2}{2(v_n+u_n)} \leq 0\\
+\end{flalign*}
+Donc $v_n \geq u_n$
+\item On étudie la monotonie de $(v_n)$ et $(u_n)$ : $v_{n+1}-v_n = \frac{u_n+v_n}{2}-v_n$ Mais $v_n \geq u_n$, donc $\frac{u_n+v_n}{2}-v_n \leq 0$
+
+De plus, $u_{n+1}-u_n = \frac{u_n(-u_n+v_n)}{u_n+v_n} \geq 0$, car comme $v_n \geq u_n$, on a $-u_n+v_n \geq 0$
+\item On montre que les suites sont convergentes
+$(u_n)$ est majorée par $v_1$ et est croissante, donc elle convergente et on note $l$ sa limite.
+
+$(v_n)$ est minorée par $u_1$ et est décroissante, donc elle convergente et on note $l'$ sa limite.
+\item On montre que $l=l'$
+
+On sait que $v_{n+1} = \frac{u_n+v_n}{2}$, donc :
+
+\begin{flalign*}
+\Lim{\infty} u_{n+1} &= \Lim{\infty} \frac{u_n+v_n}{2}\\
+l' &= \frac{l+l'}{2}\\
+&= l
+\end{flalign*}
+Les 2 suites sont bien adjacentes.
+\end{enumerate}
+
+\subsection{Utiliser la définition de la convergence (2.10)}
+\subsubsection{Montrer qu'une suite est inférieure à un certain nombre supérieur à sa limite}
+Soit $\Lim{+ \infty} = l$. On souhaite montrer que $u_n \leq x$.
+
+D'après la définition de la limite, $\forall \epsilon > 0, \exists N_0 \in \mathbb{N}, n\geq N_0 \Rightarrow |U_n-l| \leq \epsilon$. Donc :
+
+\begin{flalign*}
+&u_n-l \leq \varepsilon\\
+&\iff -\varepsilon \leq u_n-l\leq \varepsilon\\
+&\iff l-\varepsilon \leq u_n\leq \varepsilon + l
+\end{flalign*}
+Ainsi, en prenant $\varepsilon$ tel que $l+\varepsilon = x$, $\exists n_0\in\mathbb{N}, n\geq n_0 \Rightarrow u_n \leq x$.
+\subsection{Exercice type : Montrer qu'une suite converge (2.6/2.12)}
+\subsubsection{Encadrer la suite}
+On trouve un majorant et un minorant de la suite, souvent par récurrence. Si la suite est positive, un minorant est 0.
+\subsubsection{On montre qu'elle est croissante/décroissante}
+\subsubsection{On montre sa convergence}
+On déduit qu'elle est convergente et, comme on sait que la limite est un point fixe, on peut écrire que $\Lim{\infty} u_{n+1} = \Lim{\infty} u_n = l$ et déterminer $l$ à l'aide de cette relation.
+\checkInfo{Exemple}{On a : $u_{n+1}^2 = 1 + u_n$. On peut donc écrire : $l^2 = 1+l$
+Seul le nombre d'or $\tau$ vérifie cette relation, donc $l= \tau$
+
+}
+\end{document}
+
+

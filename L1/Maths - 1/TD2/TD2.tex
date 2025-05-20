@@ -1,0 +1,424 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+
+\setcounter{chapter}{1}
+
+	\chapter{Suites réelles }
+\section{Généralités}
+\subsection{Définition}
+Une suite réelle u est une application de $\mathbb{N} \rightarrow \mathbb{R}$ et $n \longmapsto u_n$. On écrit $u_n$ au lieu de $u(n)$
+
+$u_n$ est le nieme terme de la suite.
+
+On écrit aussi $u = (u_n)_{n\in\mathbb{N}}$.\marginCritical{$u_n$ ne désigne pas la suite $u_n$. Il faut écrire $(u_n)_{n\in\mathbb{N}}$.}
+
+Les suites $(u_n)$ et $v_n$ sont égales si $\forall n\in \mathbb{N}, u_n = v_n$.
+
+On note :
+$S(\mathbb{R}) = \mathbb{R}^{\mathbb{N}}$ l'ensemble des suites réelles.
+
+Exemple
+
+$u = (n+1)_{n\in\mathbb{N}}$
+
+$0 = (0)_{n\in\mathbb{N}}$
+
+$v = ((-1)^n)_{n\in\mathbb{N}}$
+
+\subsection{Opérations sur les suites}
+On définit sur $S(\mathbb{R})$ les opérations $+,\times$ et $\cdot$
+
+$u+v = (u_n+v_n)_{n\in\mathbb{N}}$
+
+$uv = (u_nv_n)_{n\in\mathbb{N}}$
+
+$\lambda u = (\lambda u)_{n\in\mathbb{N}}$
+
+Pour diviser par $(v_n)$, elle doit \^etre tout le temps non nulle.
+
+\subsection{Variations}
+Soit $u\in S(\mathbb{R})$ et $n_0 \in \mathbb{N}$.
+
+\begin{theorem}[Suite croissante]
+La suite est croissante à partir du rang $n_0$ si $\forall n\geq n_0, u_{n+1} \geq u_n$ et u est stictement croissante à partir de $n_0$ si $n\geq n_0$ on a $u_{n+1} > u_n$.
+\end{theorem}
+
+\begin{theorem}[Suite décroissante]
+La suite est décroissante à partir du rang $n_0$ si $\forall n\geq n_0, u_{n+1} \leq u_n$ et u est stictement croissante à partir de $n_0$ si $n\geq n_0$ on a $u_{n+1} < u_n$.
+\end{theorem}
+
+Exemple : $(n^2)_{n\in\mathbb{N}}$ croissante
+
+$(\frac{1}{n})_{n\in\mathbb{N}}$ décroissante
+
+$\neg(u_n$ est croissante à partir du premier terme)$ = (\exists n\in\mathbb{N}, u_{n+1}<u_n) $
+
+\begin{theorem}[Majoré et minorant]
+La suite est majorée si $\exists M\in\mathbb{R}, \forall n\in\mathbb{N}, u_n\leq M$.
+
+La suite est minorée si $\exists m\in\mathbb{R}, \forall n\in\mathbb{N}, u_n\geq m$.
+
+La suite est bornée si elle est minorée et majorée.
+\end{theorem}
+
+u bornée $\iff \exists M\in \mathbb{R}^+, \forall n\in \mathbb{N}, |u_n|\leq M$.
+
+\subsubsection{Valeur absolue}
+$|x| = x$ si $x>0$ et $-x$ si $x<0$.
+
+$|x-y|$ mesure la distance e x à y.
+
+$|xy| = |x||y|$
+
+$|x+y|\leq |x|+|y|$ (inégalité triangulaire)
+\begin{myproof}
+Preuve : On étudie la différence des carrés : $(|x|+|y|)^2 - (|x+y|)^2 = x^2+2|x||y| + y^2 - (x^2+xy+y^2) = 2(|xy|-xy)\geq 0$. Donc $(|x|+|y|)^2 \geq (|x+y|)^2$. Or la fonction $x^2$ est croissante, donc l'inégalité est vérifiée.
+\end{myproof}
+$|x| = 0 \rightarrow x =0$
+
+
+\section{Limites d'une suite}
+Soit u une suite réelle.
+
+\begin{theorem}[Définition]
+On dit que la suite u est convergente (CV) si existe $l\in\mathbb{R}$ tel que $\forall \epsilon > 0,  \exists N\in\mathbb{N}, \forall n\in\mathbb{N}, n\geq N \Rightarrow  |u_n-l| < \epsilon$. On dit que l est une limite de $(U_n)$.
+\end{theorem} Voir schéma
+\begin{theorem}[Unicité d'une limite d'une suite convergente]
+Si $(U_n)$ est convergente, sa limite l est unique on note $l = \Lim{n+\infty} u_n$.
+\end{theorem}
+
+\begin{myproof}[Démonstration par l'absurde]
+Supposons que $(U_n)$ admette $l_1$ et $l_2$ comme limite, avec $l_1\neq l_2$. Nous avons donc, pour tout $\epsilon > 0$ :
+\begin{flalign}
+\exists &N_1\in\mathbb{N}, \forall n\geq N_1, |u_n-l_1| \leq \epsilon\\
+\exists &N_2\in\mathbb{N}, \forall n\geq N_2, |u_n-l_2| \leq \epsilon
+\end{flalign}
+On pose alors $\epsilon = \frac{|l_1-l_2|}{3}$. Il existe donc $N_1$ et $N_2$ tel que les 2 assertions sont vraies.
+
+Choisissons un nombre entier supérieur à  $N_1$ et $N_2$, comme $\max(N_1,N_2)$.
+
+Pour cette valeur de $n$, nous avons à la fois $|u_n-l_1|<\epsilon$ et $|u_n-l_2|<\epsilon$.
+
+Par l'inégalité triangulaire, on obtient :
+\[3\epsilon = |l_1-l_2| = |(u_n-l_2)-(u_n-l_1)| \leq |u_n-l_1|+|u_n-l_2| \leq 2\epsilon\]
+
+Le nombre réel vérifie à la fois $\epsilon >0$ et $3\epsilon \leq 2\epsilon$, ce qui est absurde. Donc $l_1=l_2$.
+% Supposons qu'il existe 2 limites $l_1$ et $l_2$ et que $(U_n)$ converge.
+%
+% $|l_1-l_2| = |l_1-u_n+u_n-l_2| \leq |l_1-u_n|+|u_n-l_2|$.
+%
+% $(U_n)$ converge vers $l_1$, donc $\forall \epsilon > 0, \exists N_1 \in \mathbb{N}, n \geq N_1 \Rightarrow |u_n-l_1| < \epsilon$.
+%
+% $(U_n)$ converge vers $l_2$, donc $\forall \epsilon > 0, \exists N_2 \in \mathbb{N}, n \geq N_1 \Rightarrow |u_n-l_2| < \epsilon$.
+%
+% Donc pour $n\geq N_1+N_2$ et $|l_1-l_2| \leq \epsilon + \epsilon = 2 \epsilon$.
+%
+% Donc $|l_1-l_2| < \epsilon$ et $|l_1-l_2| = 0$ donc $l_1 = l_2$ et la limite est unique.
+\end{myproof}
+
+On utilise Valeur absolue d'une expression pour la majorer par une valeur. Il vaut mieux dire que $|(-1)^n|\leq 1$ que $-1\leq|(-1)^n|\leq 1$. Utiliser ensuite l'inégalité triangulaire.
+
+\begin{theorem}[Borne d'une suite convergente]
+Toute suite convergente est bornée
+\end{theorem}
+\begin{myproof}
+Soit $(U_n)_{n\in\mathbb{N}}$ une suite réelle convergente. Notons l sa limite $\in \mathbb{R}$.
+Elle est convergente $\iff \forall \epsilon > 0, \exists N_{\epsilon} \in \mathbb{N}, \forall n \in \mathbb{N}, n\geq N_{\epsilon} \Rightarrow |u_n-l|\leq \epsilon$.
+
+Pour $\epsilon = 1$ :
+\begin{flalign*} \exists N_1 \in \mathbb{N}, n \geq N_1 &\Rightarrow |u_n-l| \leq 1\\
+&\Rightarrow -1 \leq u_n-l\leq 1\\
+&\Rightarrow -1+l \leq u_n\leq 1+l\\
+\end{flalign*}
+
+Donc pour $n\geq N_1, |u_n| \leq \max(|-1+l|, |1+l|)$
+
+Donc pour $n<N_1$, le nombre de terme de $(U_n)$ est fini.
+
+Donc $M = \max(|u_k|)$ existe et est fini, avec $0\leq k\leq N_1-1$ et $|U_n| \leq M, \forall 0 \leq n\leq N_1-1$.
+\end{myproof}
+\section{Limites}
+\subsection{Limites et monotonie}
+\begin{theorem}[]
+Toute suite croissante et majorée converge vers son plus petit majorant
+
+Toute suite décroissante et minorée converge vers son plus grand minorant.
+\end{theorem}
+\infoInfo{Remarque}{Si $(U_n)$ est croissante et si $\Lim{+\infty} U_n = l \in\mathbb{R}$, alors $\forall n\in \mathbb{N}, u_n \leq l$ car $(U_n)$ est croissante..
+
+
+En effet, si $x\leq u_n$ et si $u_{n+1}>u_n$, alors $\epsilon = U_{n+1}-U_n >0$ et
+$\forall n\in\mathbb{N}, n>n_0, u_n, \geq x+\frac{\epsilon}{2}$ et $|u_n-x|>\frac{\epsilon}{2}$. Donc $x$ ne peut \^etre la limite de $(U_n)$.
+
+De plus, $\forall \epsilon >0, l-\epsilon$ n'est pas la limite de $(U_n)$ dnc $\exists n\in\mathbb{N}, l-\epsilon < u_n \leq l$ et $l$ est bien le plus petit des minorants de $(U_n)$.
+}
+\subsection{Suites adjacentes}
+\begin{theorem}[Définition]
+2 suites $(U_n)$ et $(V_n)$ sont adjacentes si
+\begin{itemize}
+ \item $(U_n)$ est décroissante
+ \item $(V_n)$ est croissante
+ \item $\Lim{+\infty} U_n-V_n = 0$
+ \item $u_n\geq v_n, \forall n\in\mathbb{N}$.
+\end{itemize}
+\end{theorem}
+
+\begin{theorem}[Définition]
+Si les suites $(U_n)$ et $(V_n)$ sont adjacentes, alors elles sont convergentes de m\^eme limite.
+
+\end{theorem}
+\begin{myproof}
+$\forall n\in\mathbb{N}, u_n\geq v_n\geq v_0$ car $(v_n)$ est croissante. Donc $(U_n)$ est décroissante et minorée par $v_0$ donc convergente. Notons $l_1 = \Lim{+\infty} U_n$.
+
+De m\^eme, $\forall n\in\mathbb{N}v_n\leq u_n\leq, u_0$ car $(u_n)$ est décroissante. Donc $(v_n)$ est croissante et majorée par $v_0$ donc convergente. Notons $l_2 = \Lim{+\infty} v_n$.
+
+De plus, $\Lim{+\infty} U_n-V_n = 0 = l_1-l_2 \iff l_1 = l_2$
+
+Donc, si elles sont adjacentes, $(U_n)$ et $(V_n)$ convergent vers un unique $l$.
+\end{myproof}
+\subsection{Limites infinies}
+Soit $(u_n)$ une suite réelle.
+\begin{theorem}[définition]
+Elle a pour limite $+\infty$ si $\forall A>0, \exists N_A \in \mathbb{N}, \forall n, n\geq N_A \Rightarrow u_n \geq A$.
+
+Elle a pour limite $-\infty$ si $\forall A>0, \exists N_A \in \mathbb{N}, \forall n, n\geq N_A \Rightarrow u_n \leq -A$.
+\end{theorem}
+\subsection{Suites et opérations}
+On considère 2 suites réelles $(u_n)$ et $(v_n)$. On suppose que $\Lim{+\infty} = l/\pm\infty$.
+\subsubsection{Somme des limites}
+\begin{center}
+\begin{tabular}{_l^l^l^l}
+\tableHeaderStyle
+Limite $(v_n)$ & $-\infty$ & l & $+\infty$\\
+$-\infty$ & $-\infty$ & $-\infty$ & FI\\
+l' & $-\infty$ & l+l' & $+\infty$\\
+$+\infty$ & FI & $+\infty$ & $+\infty$
+\end{tabular}
+\end{center}
+\subsubsection{Produit des limites}
+\begin{center}
+\begin{tabular}{_l^l^l^l^l}
+\tableHeaderStyle
+Limite $(v_n)$ et $(u_n)$ & $-\infty$ & l & 0 & $+\infty$\\
+$-\infty$ & $+\infty$ & signe de $l$$ \times -\infty$ & FI &$-\infty$\\
+l' & signe de $l'$ $ \times -\infty$  & $ll'$ & 0 &  signe de $l'$ $ \times +\infty$\\
+0 & FI & 0 & 0&FI\\
+$+\infty$ & $-\infty$ & signe de $l'$ $ \times +\infty$ & FI&$+\infty$
+\end{tabular}
+\end{center}
+Voir tableau des limites
+\begin{myproof}[Somme des limites l et l']
+On veut savoir si $\forall\epsilon > 0, \exists ? N \in \mathbb{N}, n\geq N \Rightarrow |u_n + v_n - (l+l')|< \epsilon$.
+
+On sait que d'après l'inégalité triangulaire, $|u_n + v_n - (l+l')| = |u_n -l + v_n -l'| \leq |u_n-l|+|v_n-l'|$.
+
+Or $\Lim{\infty} u_n = l$, donc $\exists N_1\in\mathbb{N},  n \geq N_1$, alors $|u_n-l| \leq \frac{\epsilon}{2}$.
+
+De m\^eme, $\Lim{\infty} v_n = l'$, donc $\exists N_2\in\mathbb{N},  n \geq N_2$, alors $|u_n-l'| \leq \frac{\epsilon}{2}$
+
+Donc si $n\geq N_1+N_2$, alors $|u_n-l| \leq \frac{\epsilon}{2}$ et $|v_n-l'| \leq \frac{\epsilon}{2}$
+
+Donc $|u_n + v_n - (l+l')| \leq \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$. Donc $u_n+v_n$ est convergente et $\Lim{\infty} u_n+v_n = l$.
+
+
+\end{myproof}
+\begin{myproof}[Produit des limites l et l']
+Soit $(u_n), (v_n)$ 2 suites convergentes. On veut démontrer que $\Lim{\infty}u_nv_n = \Lim u_n \Lim{\infty}v_n$. Notons que $\Lim{\infty}u_n = l \in \mathbb{R}$ et $\Lim{\infty}v_n = l' \in \mathbb{R}$. On doit démontrer que la définition de la limite existe pour la suite $u_nv_n$, i.e, $\forall n\in\mathbb{N}, n\geq N_0 \Rightarrow |u_nv_n-ll'|\leq \epsilon >0$.
+
+\begin{flalign*}
+|u_nv_n-ll'| &= |(u_n-l)v_n+lv_n-ll'|\\
+&= |v_n(u_n-l)+l(v_n-l')|\\
+&\leq |v_n||u_n-l|+|l||v_n-l'|
+\end{flalign*}
+$(v_n)$ convergen, donc est bornée,  donc, $\exists M>0, \forall n\in\mathbb{N} |v_n|\leq M$.
+\begin{flalign*}
+&\leq M|u_n-l|+|l||v_n-l'|\\
+&\leq M\frac{\epsilon}{2M}+|l|\frac{\epsilon}{2M+1+|l|}
+\end{flalign*}
+On a donc : \begin{itemize}
+             \item $\Lim{\infty} u_n = l$, donc pour $\epsilon' = \frac{\epsilon}{2M} >0, \exists N_1 \in \mathbb{N}$, donc $n\geq N_1 \Rightarrow |u_n-l| < \frac{\epsilon}{2M}$.
+             \item $\Lim{\infty} v_n = l'$, donc pour $\epsilon'' = \frac{\epsilon}{2(1+|l|)} >0, \exists N_2 \in \mathbb{N}$, donc $n\geq N_2 \Rightarrow |u_n-l| < \frac{\epsilon}{2(1+|l|)}$.
+            \end{itemize}
+
+            Donc $\forall n\geq N_1+N_2$, on a $|u_nv_n-ll'| \leq M\frac{\epsilon}{2M}+|l|\frac{\epsilon}{2M+1+|l|}$, puis $|u_nv_n-ll'| \leq \frac{\epsilon}{2}+1$ et  $|u_nv_n-ll'| \leq \epsilon$
+
+            On a bien l'inégalité, CQFD
+\end{myproof}
+\subsection{Limites et inégalités}
+\begin{theorem}[Inégalités]
+Supposons que $u_n\leq v_n$. On a : $\Lim{\infty}u_n = +\infty \Rightarrow \Lim{\infty}v_n = +\infty$ et $\Lim{\infty}v_n = -\infty \Rightarrow \Lim{\infty}u_n = -\infty$
+\end{theorem}
+Si les 2 suites sont convergentes, $\Lim{\infty}u_n \leq \Lim{\infty}v_n$.\marginCritical{Les inégalités strictes deviennent larges quand on passe à la limite. Par exemple, $\forall n\in\mathbb{N}, u_n>0$ et $u_n$ converge, alors $\Lim{\infty}u_n \geq 0$.}
+\begin{theorem}[Théorème des gendarmes]
+Si on a 3 suites réelles avec $u_n\leq w_n\leq v_n$. Si $u_n$ et $v_n$ sont convergentes de m\^eme limite $l$, alors $w_n$ est convergente vers $l$.
+\end{theorem}
+\begin{myproof}
+Soit $\epsilon >0$, on cherche $N_0 \in\mathbb{N}, n\geq N_0 \Rightarrow |w_n-l|\leq \epsilon$, avec $\Lim{\infty}u_n = l =\Lim{\infty}v_n$ et  $u_n\leq w_n\leq v_n, \forall n\in\mathbb{N}$.
+
+\begin{flalign*}
+ |w_n-l|&= |w_n-u_n+u_n-l|\\
+ &\leq |w_n-u_n|+|u_n-l|\\
+ &\leq |v_n-u_n|+|u_n-l|\\
+ &\leq |v_n-l+l-u_n|+|u_n-l|\\
+ &\leq |v_n-l|+|l-u_n|+|u_n-l|\\
+ &\leq |v_n-l|+2|u_n-l|\\
+ &\leq \frac{\epsilon}{2}+2\frac{\epsilon}{4}\\
+\end{flalign*}
+On a : $\Lim{\infty} u_n = l$, donc $\exists N\in\mathbb{N},n\geq N_1 \Rightarrow |u_n-l|\leq \frac{\epsilon}{4} $ et $\Lim{\infty} v_n = l$, donc $\exists N\in\mathbb{N},n\geq N_1 \Rightarrow |v_n-l|\leq \frac{\epsilon}{2}$.
+
+Donc pour $N_3 = N_1+N_2$, on a : $n\geq N_0 \Rightarrow |w_n-l| \leq \frac{\epsilon}{2} + 2\times \frac{\epsilon}{4} = \epsilon$. Ce qui démontre bien l'égalité souhaitée.
+\end{myproof}
+Si une suite est encadrée, la limite de la suite l'est aussi.
+La limite est un point fixe de $(u_n)$.
+\checkInfo{Partie entière}{$\forall x\in\mathbb{R}, \exists! n\in\mathbb{N}$, tel que $n\leq x<n+1$. C'est noté $E(x)=n$.}
+\section{Méthodes}
+\subsection{Lever une Forme Indéterminée}
+\subsubsection{Du type Infini/Infini}
+On donne d'abord le type de FI puis on met en facteur le terme variant de plus haut degré en facteur.
+\checkInfo{Exemple}{Voir le 2 et 3 du TD 2.4
+
+\begin{flalign*}
+U_n &= \frac{2n+(-1)^n}{5n + (-1)^{n+1}}\\
+&= \frac{2n(1+\frac{(-1)^n}{2n})}{5n(1+\frac{(-1)^{n+1}}{5n})}\\
+&= \frac{2(1+\frac{(-1)^n}{2n})}{5(1+\frac{(-1)^{n+1}}{5n})}\\
+\end{flalign*}
+
+$\Lim{+\infty} \frac{(-1)^n}{2n} = \Lim{+\infty} \frac{(-1)^n}{2n} = 0$
+
+Donc $\Lim{+\infty} (U_n) = \frac{2}{5} \times \frac{1}{1}$.
+}
+\subsubsection{Du type + Infini - Infini avec des racines}
+On multiplie par la quantité conjuguée au numérateur et au dénominateur
+
+\[ (\sqrt{a}-\sqrt{b}) = (\sqrt{a}-\sqrt{b})\frac{\sqrt{b}-\sqrt{a}}{\sqrt{b}-\sqrt{a}} = \frac{a-b}{\sqrt{a}+\sqrt{b}}  \]
+\checkInfo{Exemple}{Voir le 4 du TD 2.4
+\begin{flalign*} (\sqrt{2n+1}-\sqrt{2n-1}) &= (\sqrt{2n+1}-\sqrt{2n-1})\frac{\sqrt{2n-1}-\sqrt{2n+1}}{\sqrt{2n-1}-\sqrt{2n+1}}\\
+&= \frac{(2n+1)-(2n-1)}{\sqrt{2n+1}+\sqrt{2n-1}}\\
+&= \frac{2}{\sqrt{2n+1}+\sqrt{2n-1}}
+\end{flalign*}
+}
+\subsubsection{Avec des exponentielles}
+Les exponentielles dominent les polyn\^omes. Donc On le met en facteur et on utilise la croissance comparée :
+\begin{theorem}[Croissance comparée]
+$\Lim{+\infty} \frac{n^x}{y^n} = 0$.
+\end{theorem}
+\subsection{Montrer que 2 suites sont adjacentes (2.11)}
+\subsubsection{Montrer que les 2 suites sont définies}
+Il peut \^etre utile de montrer que les 2 suites sont définies et toujours positives.
+
+Pour cela, on peut faire un raisonnement par récurrence.
+\subsubsection{Montrer qu'une suite est supérieure à l'autre}
+On fait la différence $u_n-v_n$ et selon le signe, on conclue.
+\subsubsection{On étudie la monotonie des suites}
+Il faut montrer que l'une est croissante et l'autre décroissante. Pour cela, on fait la différence $u_{n-1}-u_n$ et on conclue, pareil pour $(v_n)$.
+\subsubsection{Montrer que les suites sont convergentes}
+Une suite est croissante et majorée par le premier terme de l'autre suite ; l'autre suite est décroissante et minorée par le premier terme de la première suite.
+
+Les deux suites sont convergentes et on note $l$ et $l'$ leur limite respective.
+
+\subsubsection{Montrer que l=l'}
+
+Les 2 suites sont convergentes, donc en exprimant la limite du terme $n+1$ d'une suite en fonction de l'autre suite, on peut montrer que $l=l'$.
+\subsubsection{Conclusion}
+Toutes les conditions sont réunies pour dire que les 2 suites sont adjacentes.
+\subsubsection{Exemple}
+\checkInfo{Énoncé}{On pose $a_0 >0$ et $b_0 >0$. On a : $\frac{2}{u_{n+1}} = \frac{1}{u_n}+\frac{1}{v_n}$ et $v_{n+1} = \frac{u_n+v_n}{2}$. On veut montrer que les suites sont adjacentes.}
+\begin{enumerate}
+ \item On montre d'abord que les suites sont positives, par récurrence :
+
+L'initialisation est immédiate d'après l'énonce ($a_0 >0$ et $b_0 >0$).
+
+Hérédité : On suppose $(H_n)$. Donc $u_n>0$ et $v_n>0$. On a alors : $v_{n+1} = \frac{u_n+v_n}{2} > 0$. De plus, $\frac{1}{u_n} > 0$ et $\frac{1}{v_n}>0$
+
+Donc la suite est bien définie et supérieure à 0.
+\item On montre qu'une suite est supérieure à l'autre.
+
+On a $u_{n+1} = \frac{2u_nv_n}{v_n+u_n}$, donc la différence $u_{n+1}-v_{n+1}$ vaut :
+
+\begin{flalign*}
+ u_{n+1}-v_{n+1} &= \frac{2u_nv_n}{v_n+u_n} - \frac{u_n+v_n}{2}\\
+ &= \frac{4u_nv_n}{2(v_n+u_n)} - \frac{(u_n+v_n)^2}{2(u_n+v_n)}\\
+ &= \frac{4u_nv_n-(u_n+v_n)^2}{2(v_n+u_n)}\\
+ &= \frac{4u_nv_n-(u_n^2+2u_nv_n+v_n^2)}{2(v_n+u_n)}\\
+  &= \frac{4u_nv_n-u_n^2-2u_nv_n-v_n^2}{2(v_n+u_n)}\\
+    &= \frac{2u_nv_n-u_n^2-v_n^2}{2(v_n+u_n)}\\
+    &= \frac{-(-2u_nv_n+u_n^2+v_n^2)}{2(v_n+u_n)}\\
+    &= \frac{-(u_n+v_n)^2}{2(v_n+u_n)} \leq 0\\
+\end{flalign*}
+Donc $v_n \geq u_n$
+\item On étudie la monotonie de $(v_n)$ et $(u_n)$ : $v_{n+1}-v_n = \frac{u_n+v_n}{2}-v_n$ Mais $v_n \geq u_n$, donc $\frac{u_n+v_n}{2}-v_n \leq 0$
+
+De plus, $u_{n+1}-u_n = \frac{u_n(-u_n+v_n)}{u_n+v_n} \geq 0$, car comme $v_n \geq u_n$, on a $-u_n+v_n \geq 0$
+\item On montre que les suites sont convergentes
+$(u_n)$ est majorée par $v_1$ et est croissante, donc elle convergente et on note $l$ sa limite.
+
+$(v_n)$ est minorée par $u_1$ et est décroissante, donc elle convergente et on note $l'$ sa limite.
+\item On montre que $l=l'$
+
+On sait que $v_{n+1} = \frac{u_n+v_n}{2}$, donc :
+
+\begin{flalign*}
+\Lim{\infty} u_{n+1} &= \Lim{\infty} \frac{u_n+v_n}{2}\\
+l' &= \frac{l+l'}{2}\\
+&= l
+\end{flalign*}
+Les 2 suites sont bien adjacentes.
+\end{enumerate}
+
+\subsection{Utiliser la définition de la convergence (2.10)}
+\subsubsection{Montrer qu'une suite est inférieure à un certain nombre supérieur à sa limite}
+Soit $\Lim{+ \infty} = l$. On souhaite montrer que $u_n \leq x$.
+
+D'après la définition de la limite, $\forall \epsilon > 0, \exists N_0 \in \mathbb{N}, n\geq N_0 \Rightarrow |U_n-l| \leq \epsilon$. Donc :
+
+\begin{flalign*}
+&u_n-l \leq \varepsilon\\
+&\iff -\varepsilon \leq u_n-l\leq \varepsilon\\
+&\iff l-\varepsilon \leq u_n\leq \varepsilon + l
+\end{flalign*}
+Ainsi, en prenant $\varepsilon$ tel que $l+\varepsilon = x$, $\exists n_0\in\mathbb{N}, n\geq n_0 \Rightarrow u_n \leq x$.
+\subsection{Exercice type : Montrer qu'une suite converge (2.6/2.12)}
+\subsubsection{Encadrer la suite}
+On trouve un majorant et un minorant de la suite, souvent par récurrence. Si la suite est positive, un minorant est 0.
+\subsubsection{On montre qu'elle est croissante/décroissante}
+\subsubsection{On montre sa convergence}
+On déduit qu'elle est convergente et, comme on sait que la limite est un point fixe, on peut écrire que $\Lim{\infty} u_{n+1} = \Lim{\infty} u_n = l$ et déterminer $l$ à l'aide de cette relation.
+\checkInfo{Exemple}{On a : $u_{n+1}^2 = 1 + u_n$. On peut donc écrire : $l^2 = 1+l$
+Seul le nombre d'or $\tau$ vérifie cette relation, donc $l= \tau$
+
+}
+\end{document}
+
+

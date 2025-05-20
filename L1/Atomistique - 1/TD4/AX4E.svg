@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="67.053154mm"
+   height="81.078659mm"
+   viewBox="0 0 67.053154 81.078659"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="AX4E.svg"
+   inkscape:version="1.3.2 (1:1.3.2+202311252150+091e20ef0f)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="2.682426"
+     inkscape:cx="126.56454"
+     inkscape:cy="153.21951"
+     inkscape:window-width="1920"
+     inkscape:window-height="1008"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <defs
+     id="defs1">
+    <pattern
+       xlink:href="#Strips1_1-2-0"
+       preserveAspectRatio="xMidYMid"
+       id="pattern4-9-1"
+       patternTransform="matrix(0,0.31000001,-0.31000001,0,0,1.0583333)"
+       x="0"
+       y="0" />
+    <pattern
+       patternUnits="userSpaceOnUse"
+       width="2"
+       height="10"
+       patternTransform="translate(0,0) scale(2,2)"
+       preserveAspectRatio="xMidYMid"
+       id="Strips1_1-2-0"
+       style="fill:#000000">
+      <rect
+         style="stroke:none"
+         x="0"
+         y="-0.5"
+         width="1"
+         height="11"
+         id="rect134-6-6" />
+    </pattern>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-139.09966,-240.61291)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.315089;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       d="m 181.73182,276.0236 c 4.48847,-8.97695 16.7851,-10.22531 22.44237,-4.48848 2.16993,2.20044 2.66538,6.47002 0,8.97696 -5.86897,5.52007 -17.9539,4.48847 -22.44237,-4.48848 z"
+       id="path4-3" />
+    <g
+       id="g3-7-5"
+       transform="rotate(49.510244,-57.208833,262.07438)">
+      <circle
+         style="fill:#000000;stroke:none;stroke-width:0.575296;stroke-linecap:round;stroke-linejoin:round"
+         id="path1-5-17-9"
+         cx="102.56291"
+         cy="125.10778"
+         r="6.12709" />
+      <path
+         style="fill:#000000;stroke:#000000;stroke-width:0.751152;stroke-linecap:round;stroke-linejoin:round"
+         d="m 102.56291,105.00002 v 14.99999"
+         id="path2-3-2-4" />
+      <path
+         style="fill:#000000;stroke:#000000;stroke-width:0.751152;stroke-linecap:round;stroke-linejoin:round"
+         d="m 105,119 -5.036028,-0.0674 2.598938,-13.93257 z"
+         id="path3-72-9" />
+    </g>
+    <g
+       id="g4-4-0"
+       transform="rotate(123.38353,97.777285,201.25388)">
+      <circle
+         style="fill:#000000;stroke:none;stroke-width:0.575296;stroke-linecap:round;stroke-linejoin:round"
+         id="path1-5-1-9-9"
+         cx="120"
+         cy="124.93124"
+         r="6.12709" />
+      <path
+         style="fill:url(#pattern4-9-1);fill-opacity:1;stroke:#000000;stroke-width:0.351;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         d="m 122.43709,118.82347 -5.03603,-0.0674 L 120,104.8235 Z"
+         id="path3-7-5-1" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:14.8639px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:3.51654;stroke-linecap:round;stroke-linejoin:round"
+       x="173.70192"
+       y="280.60287"
+       id="text1-2-4-7"><tspan
+         id="tspan1-6-30-7"
+         style="fill:#000000;stroke:none;stroke-width:3.51654"
+         x="173.70192"
+         y="280.60287">A</tspan></text>
+    <g
+       id="g2-1-7-1"
+       transform="rotate(180,126.81797,185.89984)">
+      <circle
+         style="fill:#000000;stroke:none;stroke-width:0.575296;stroke-linecap:round;stroke-linejoin:round"
+         id="path1-8-8-1"
+         cx="-125.05968"
+         cy="80.153595"
+         r="6.12709"
+         transform="rotate(-90)" />
+      <path
+         style="fill:#000000;stroke:#000000;stroke-width:0.751152;stroke-linecap:round;stroke-linejoin:round"
+         d="M 80.000002,105.00001 V 120"
+         id="path2-7-6-5" />
+    </g>
+    <g
+       id="g2-1-9-8-6"
+       transform="translate(93.502709,178.30964)">
+      <circle
+         style="fill:#000000;stroke:none;stroke-width:0.575296;stroke-linecap:round;stroke-linejoin:round"
+         id="path1-8-7-8-7"
+         cx="80.153595"
+         cy="125.05968"
+         r="6.12709" />
+      <path
+         style="fill:#000000;stroke:#000000;stroke-width:0.751152;stroke-linecap:round;stroke-linejoin:round"
+         d="M 80.000002,105.00001 V 120"
+         id="path2-7-3-4-3" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:8.81944px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.350999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       x="172.87564"
+       y="321.48874"
+       id="text9"><tspan
+         id="tspan9"
+         style="stroke-width:0.351"
+         x="172.87564"
+         y="321.48874">Bascule</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:8.81944px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;fill:#ff0000;stroke:none;stroke-width:0.350999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       x="177.10941"
+       y="289.76794"
+       id="text23"><tspan
+         id="tspan23"
+         style="stroke-width:0.351"
+         x="177.10941"
+         y="289.76794">120°</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:8.81944px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;fill:#ff0000;stroke:none;stroke-width:0.350999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       x="156.87285"
+       y="280.67123"
+       id="text23-5"><tspan
+         id="tspan23-3"
+         style="stroke-width:0.351"
+         x="156.87285"
+         y="280.67123">90°</tspan></text>
+  </g>
+</svg>

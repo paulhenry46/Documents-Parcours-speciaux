@@ -1,0 +1,121 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Atomistique}
+\subtitle{La matière à l'échelle atomique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{J.Cuny}%sebastien.deveuhels.irap.omp.eu
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+
+\titleOne
+
+	\chapter{Éléments introductifs }
+
+La réalité microscopique est complexe : la chimie est la science des électrons. Ce sont des particules quantiques. On utilise donc des modèles simplifiant plus ou moins. Ils permettent d'interpréter certains approximations.
+
+\section{Unités}
+\subsection{Distance}
+1pm = $1\times 10^{-12}$m
+
+1 \r{A}  = $1\times 10^{-10}$m = 100 pm
+
+Un atome a un ordre de grandeur de 100pm = 1 \r{A}
+\subsection{Énergie}
+1eV = $1.60218 \times 10^{-19}$J.
+
+1 MeV = $1\times 10^6$ eV = $1.60218 \times 10^{-13}$J.
+
+\section{unité de masse atomique}
+\checkInfo{Définition}{On définit l'uma comme le 12e de la masse atomique d'un carbone 12. Ainsi, Un atome de carbone pèse 12 uma}
+
+$N_A$ atomes de carbone 12 ont une masse de 12g
+
+1 u = $\frac{1}{N_A} = 1g\cdot mol^{-1}$.
+
+$m_u=\frac1{N_\mathrm A\times10^3}\simeq 1{,}660\;539\;068\;92(52)\times 10^{-27}\ \mbox{kg}$
+\section{Les électrons}
+Ils ont plusieurs manières de s'agencer : atomes métallique donnant des métaux, d'autres
+
+\subsection{Historique}
+\begin{itemize}
+ \item Expérience de Thomson pour extraire les électrons
+ \item Expérience de Rutherford. Fait passer un faisceau a travers une feuille d'or. Si la matière est dense, rien ne doit sortir. Or, tout le faisceau traverse ou est réfléchi. Montre que la matière est constitué de vide avec un noyau.
+ \item Expérience de Bohr : Pense qu'il existe des orbites stationnaires ou se placent les électrons qui ne perdent pas d'énergie.
+\end{itemize}
+
+Forces fortes : $10^{-15}$ Un noyau avec des protons seulement ne peut tenir. L'équilibre neutron/proton est assuré .
+
+
+\subsection{Structure des atomes}
+On note un atome $^A_ZX$ avec A le nombre de masse et Z le numéro atomique, le nombre de protons.
+
+La masse de l'atome est concentrée dans le noyau de taille $10^{-15}$.
+
+Neutrons + Protons = Nucléons
+
+\begin{tabular}{_l^l^l}
+		\tableHeaderStyle%
+		Nom & Charge & Masse\\
+		Neutron & $0\:C$ & $1,6747 10^{-27}\:kg$\\
+		Proton & $e = 1,602 10^{-19}\:C$ & $1,6724 10^{-27}\:kg$\\
+		Électron & $-e = - 1,602 10^{-19}\:C$ & $0,91 10^{-30}\:kg$\\
+\end{tabular}
+
+\subsubsection{Anion}
+On rajoute un électron : chargé négativement
+\subsubsection{Cation}
+On enlève un électron : chargé positivement
+\section{Isotopes}
+Ils ont un nombre identique de protons et d'électrons mais avec un nombre de neutrons différents. C'est un phénomène naturel.
+
+\warningInfo{Masse d'un élément (mélange d'isotopes)}{La masse atomique d'un élément constitué de plusieurs Isotopes vaut la moyenne des masses des différents isotopes stables qui le constituent, compte tenu de leur abondance naturelle ou proportion respectives.}
+\begin{center}
+
+Fin séance 1
+\end{center}
+\section{Méthode et astuces}
+\subsection{Comparer 2 volumes}
+Le rapport de 2 volumes est équivalent au rapport des rayons, mis au cube :
+\[\frac{V_1}{V_2} = \frac{\frac{4}{3}\pi r_1^3}{\frac{4}{3}\pi r_2^3} = (\frac{r_1}{r_2})^3\]
+\subsection{Calculer un nombre d'atome contenu dans un volume}
+On connaît la masse volumique et la masse molaire. De plus, $\rho = \frac{m}{V}$ et $M = \frac{m}{n}$. Donc $n = \frac{\rho \times V}{M}$. Pour obtenir le nombre d'atomes, on multiplie par $N_A$. Finalement, $Nb(atomes) = N_A\frac{\rho \times V}{M}$
+\subsection{Calculer les proportions de 2 isotopes}
+On connaît les masses molaire respectives et la masse molaire moyenne.
+
+On résout le système : \[M_m = \frac{x}{100}M_1 + (1-\frac{x}{100})M_2\]
+\subsection{Défaut de masse et énergie de cohésion d'un noyau}
+La masse d'un noyau est légèrement inférieure à la somme des masses des protons et des neutrons qui le constituent. La différence entre ces deux masses est appelée défaut de masse et se noté $\Delta m$. La masse réelle du noyau se calcule par la relation suivante : \[m_{\mathrm{noyau}} = [Z\cdot m_{\mathrm{p}} + (A - Z)\cdot m_{\mathrm{n}}] - \Delta m\]
+
+où Z et A sont le numéro atomique et le nombre de masse du noyau et m noyau la masse du noyau. On peut trouver $\Delta m$ avec $E = \Delta m c^2$.
+
+\criticalInfo{Aparté sur le lien matière - énergie }{La perte des atomes est de l'ordre du dixième d'unité de masse atomique et est négligeable par rapport à la masse totale du noyau. La masse d'un élément se rapproche donc de la masse de son noyau.
+}
+
+\end{document}
+

@@ -1,0 +1,65 @@
+ % !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Optique Géométrique}
+\subtitle{Niveau 1}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Gatel}%christophe.gatel@cemes.fr : section B sillon 7
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+%\titleOne
+
+\setcounter{chapter}{6}
+\chapter{Miroirs}
+\subsection{Définitions}
+Comme les dioptres, il y a des miroirs convexes et concaves dépendant de \(\bar{SC}\).
+
+Comme les lentilles, les indices objet et images sont les m\^emes.
+
+On étudie les miroirs dans les conditions de Gauss.
+
+On hachure le coté où la lumière ne passe pas.
+\subsection{Réflexion sur un miroir sphérique}
+Changer le sens de parcours de la lumière est équivalent à prendre l'opposé de l'indice.
+
+On change le sens positif de parcours selon si le rayon appartient à l'objet ou à l'image.
+
+On considère \(\bar{SC}\) dans le sens positif du milieu objet.
+
+\begin{theorem}[Relation de conjugaison des miroirs]
+ \(\frac{1}{\bar{Sa_i}} - \frac{1}{\bar{SA_o}} = \frac{-2}{\bar{SC}} = V\) avec le sens positif de Sai dans le sens opposé de SAo et de SC
+\end{theorem}
+Le grandissement vaut \(\frac{\bar{Sa_i}}{\bar{SA_o}}\) mais avec des sens différents.
+\begin{theorem}[Foyers objet/image]
+ \(\bar{SF_o} = \frac{\bar{SC}}{2}\). Il se trouve au milieu de SC. Les foyers objets/images sont au m\^eme endroit mais non confondus car ils gardent leur r\^ole respectif. La distance focale vaut \(f_i  = \bar{SF_i} = 1/V\) et la distance focale objet  vaut \(f_o  = \bar{SF_i} = -1/V\)
+\end{theorem}
+\warningInfo{Convergence et convexité}{Un miroir convexe est divergent et un miroir concave est convergent.}
+\subsection{Construction}
+On se sert des m\^emes règles de constrcution que pour les dioptres
+\end{document}
+

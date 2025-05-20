@@ -1,0 +1,149 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Chimie des solutions}
+\subtitle{Chimie}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{IHallery}%isabelle.hallery@univ-tlse3.fr
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+\setcounter{chapter}{5}
+\chapter{Titrages }
+\begin{definition}[Dosage]
+Détermination de la concentration d'une espèce
+\end{definition}
+\section{Réalisation d'un titrage}
+\subsection{Principe}
+On étudie la réaction de titrage \(aA+bB+cC = dD+eE\) avec C en excès. On cherche à déterminer la concentration de A (introduit dans le becher le plus souvent et appelé prise d'essai), on le titre.
+\begin{proposition}[Caractérisation d'une réaction de titrage]
+Elle est quasi-totale, rapide et unique
+\end{proposition}
+\begin{proposition}[Relation à l'équivalence]
+\(\frac{n(A)_0}{a} = \frac{n(B)_{aj}}{b}\)
+\end{proposition}
+\warningInfo{Influence de l'addition d'eau dans le becher}{Aucune influence sur la valeur du volume équivalent Ve mais applaitit la courbe et la rend moins précise}
+\subsection{Repérage de l'équivalence par pH-métrie}
+On utilise le plus souvent un acide fort ou une base forte.
+\subsubsection{Méthode graphique}
+Méthode des tangentes : repérage du milieu du saut. (OK pour AF+BF)
+
+Méthode des physiciens : On trace les tangentes au plats, avant et après l'équivalence puis on trace les perpendiculaires aux 2 tangentes. On trouve le milieu des 2 droites, puis on trace la droite liant les 2 points
+
+Méthode de la dérivée : on prend le milieu du pic.
+\subsection{Repérage par indicateur coloré}
+\begin{definition}[Indicateur coloré acidobasique]
+Espèce acido-basique dont la forme acide et basique ont des couleurs différentes.
+\end{definition}
+On choisit l'indicateur coloré pour que sa zone de virage contiennent le pH d'équivalence
+\section{Titrage d'un monoacide}
+\subsection{Titrage d'un monoacide fort par base forte}
+Plus l'acide est dilué, plus l'amplitude du saut est faible
+\warningInfo{Concentration}{On ne peut pas doser par titrage un AF avec \(c_0 \leq 10^{-4}\)}
+\subsection{Titrage d'un monoacide faible}
+\tipsInfo{Forme de la courbe}{Si la courbe n'est pas plate près de v=0, c'est un acide faible}
+La dolution aplatit la courbe de titrage mais seulement après l'équivalence seulement.
+
+Plus le pkA augmente, plus la courbe est aplatit avant le Ve. La constante de récation diminue et l'emplitude du saut diminue.
+
+Plus l'amplitude du saut est faible, moins la réaction de titrage est favorisée.
+\section{Solution tampon}
+\begin{definition}
+C'est une solution dont le pH varie peu.
+\end{definition}
+\checkInfo{Composition}{Il s'agit d'un acide faible et sa base faible conjuguée dans des proportions senmblables. La solution fonctionne à \(V_e/2\). Le pkA du couple doit \^etre le plus proche possible du pH que l'on souhaite obtenir. Les propriétés du tampon sont conservées autour de \(pk_a-1\) et \(pk_A+1\).
+}
+\section{Titrage d'un polyacide}
+\subsection{Condition de séparation des acidités}
+Diagralle de distribution : H2A : le premier, HA-, le second et A2- le dernier.
+
+Si l'écart de \(pk_A\) est trop faible, on ne peut apercevoir le saut du premier changement de dosage.
+
+\criticalInfo{Écart}{2 acidités sont dosés séparément si la différence de pkA est d'au moins 4.}
+
+On peut trouver l'acidité dosée avec le pH.
+
+\checkInfo{Exempple}{Pour un \(pkA_1 = 4\) et un \(pk_A2 = 6\), si pH(E) = 9, Espèce prépondérante est \(A^{2-}\) et l'équation est donc \(H_2A+2Ho^- = A^{2-}+H_2O\)}
+
+\subsection{Choix du saut à exploiter}
+Dans le cas, où les 2 acides sont dosés séparément, il faut choisit quelle équivalence choisir.
+
+\checkInfo{Exemple}{
+Pour \(E_1 : H_2A+HO- = HA^-+H_2O\).
+
+Pour \(E_2 : H_2A+2HO^- = A^{2-} + 2H_2O\)
+
+Les 2 donnent le m\^eme résultat et on remarque que \(V_{e2} = 2V_{e1}\).
+}
+Le résultat le plus précis correspond à la pente la plus grande.
+\section{Exemples}
+\subsection{Titrages successifs}
+\subsubsection{mélange AcOH et NH4Cl par de la soude}
+\begin{itemize}
+ \item On titre un mélange de AcOH (C1, pKA1 = 4,8) et NH4Cl (C2, pKA2 = 9,2) (bécher, V0) avec NaOH de concentration $C_B$.
+ \item
+La différence de pkA est bien supérieure à 4, donc les 2 espèces seront titrés séparément.
+\item On remarque que  $NH_4Cl$ se dissout pour donner $NH_4^+$ et $Cl^-$.
+\item En plaçant les couples $AcOH/AcO^-$ et $NH_4^+/NH_3$ sur un diagramme de prédominance, on identifie la première RP, puis la deuxième, quand tout le AcOH est consommé.
+\end{itemize}
+Les 2 RP sont donc
+\begin{enumerate}
+ \item $AcOH_{(aq)} + OH^-_{(aq)} \to ACO^-_{(aq)} + H2O_{(l)}$
+ \item $NH_{4(aq)}+HO^-_{(aq)}\to NH_{3(aq)} + H2O_{(l)}$
+\end{enumerate}
+L'eau étant le solvant, elle est toujours considérée en excès, et on ne cherche pas à calculer sa concentration. Pour des questions de mise en page, elle n'apparait pas dans le tableau
+\begin{center}
+\begin{tabular}{lllll}
+RP1 & $AcOH_{(aq)}$ & $OH^-_{(aq)}$ & $ACO^-_{(aq)}$ & $K_1 = \frac{K{a1}}{K_e}=10^{9.2}$\\
+$V=0$ & $C_B\times V_{eq1}$ & 0 & 0 & $pH=\frac{1}{2}(pk_{a1}-\log(\frac{C_b\times V_{eq1}}{V_T}))$ \\
+$0<V<V_{eq1}$ & $C_B\times (V_{eq1}-V)$ & 0 & $C_B\times V$ & $pH=pk_{a1}+\log(\frac{C_B\times V}{C_B\times (V_{eq1}-V)})$\\
+$V=V_{eq1}$ & 0 & 0 & $C_B\times V_{eq1}$ & $pH=\frac{1}{2}(pk_{a1}+pK_{a2}+\log(\frac{C_B \times V_{eq1}}{C_B \times (V_{eq2}-V_{eq1})}))$\\
+RP2 & $NH_4^+$ & $HO^-$ & $NH_3$ & $K_2=\frac{K_{a2}}{Ke}=10^{4.8}$\\
+$V=V_{eq1}$ & $C_B(V_{eq2}-V_{eq1})$ & 0 & 0 & $pH=\frac{1}{2}(pk_{a1}+pK_{a2}+\log(\frac{C_B \times V_{eq1}}{C_B \times (V_{eq2}-V_{eq1})}))$\\
+$V_{eq1}<V<V_{eq2}$ & $C_B(V_{eq2}-V)$ & 0 & $C_B(V-V_{eq1})$ & $pH=pk_{a2}+\log(\frac{C_B(V-V_{eq1})}{C_B(V_{eq2}-V)})$\\
+$V=V_{eq2}$ & 0 & 0 & $C_B(V_{eq2}-V_{eq1})$ & $pH=\frac{1}{2}(14+pk{a2}+\log(\frac{C_B(V_{eq2}-V_{eq1})}{V_T}))$\\
+$V_{eq}<V$ & 0 & $C_B(V-V_{eq2})$ & $C_B(V_{eq2}-V_{eq1})$ & $pH=14+\log(\frac{C_B(V-V_{eq2})}{V_T})$
+\end{tabular}
+\end{center}
+\begin{itemize}
+ \item Si on avait dosé un diacide au lieu de 2 espèces acides, on aurait obtenu les m\^emes relations de quantités de matière et de pH dans le tableau.
+ \item Dans le cas d'un diacide, \(V_{eq2}=2\times V_{eq1}\)
+ \item Justification des formules de pH
+ \begin{enumerate}
+  \item Il n'y a que des acides faibles dans le milieu, donc le pH est imposé par l'acide faible le plus fort, ici ACOH.
+  \item le pH est imposé par la solution tampon d'acide et base conjuguée.
+  \item Le pH est imposé par le mélange de la base faible ACO- et de l'acide faible NH4+.
+  \item Le pH est imposé par le mélange de la base faible ACO- et de l'acide faible NH4+.
+  \item le pH est imposé par la solution tampon d'acide et base conjuguée.
+  \item Il n'y a que des bases faibles dans le milieu, donc le pH est imposé par la base faible le plus forte, ici NH3.
+  \item Le pH est imposé par la base forte du milieu, ici $HO^-$
+ \end{enumerate}
+
+\end{itemize}
+
+
+\end{document}
+

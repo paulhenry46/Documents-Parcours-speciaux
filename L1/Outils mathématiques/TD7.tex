@@ -1,0 +1,121 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Outils Mathématiques}
+\subtitle{Analyse dimensionnelle}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{S.Deheuvels}%sebastien.deveuhels.irap.omp.eu
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\norm}[1]{||\overrightarrow{#1}||}
+\begin{document}
+\setcounter{chapter}{6}
+\chapter{Différentielles}
+\section{Dérivées partielles}
+\subsection{Définition}
+Quand une fonction possède plusieurs variable, on ne peut la dérivée de la manière habituelle. C'est pourquoi on choisit quelle variable on considère pour la dérivée. On considère alors les autres comme des constantes.
+
+On note :$ (\frac{\partial {\color{red}f(x,y)}}{\partial {\color{orange}x}})_{{\color{ForestGreen}y}}$. On note {\color{red}la fonction} précédée du signe de la dérivée partielle au numérateur et {\color{orange}la variable que l'on considère} au dénominateur. On note en indice {\color{ForestGreen}les variables que l'on considère comme constante}.
+\subsection{Théorème de Scharwz}
+Si les fonction dérivées sont continues, et que l'on dérive 2 fois en changeant de variable, l'ordre n'a pas d'influence sur le résultat final.
+\[\frac{\partial f}{\partial x\partial y} = \frac{\partial f}{\partial y\partial x}\]
+
+\subsection{Différentielle d'une fonction à plusieurs variables}
+Pour obtenir la différentielle d'une fonction de plusieurs variable, on fait la dérivée partielle en fonction de chaque variable puis on les sommes de la façon suivante :
+
+Pour une fonction dépendant de $i$ variables $n$, on a :
+
+\[\mathrm{d}f = \frac{\partial f}{\partial n_1} \mathrm{d}n_1 + \frac{\partial f}{\partial n_2} \mathrm{d}n_2 + \dots \frac{\partial f}{\partial n_i} \mathrm{d}n_i\].
+\section{Différentielle Totale Exacte}
+Soit $\omega$ la forme différentielle $A(x,y)\mathrm{d}x+B(x,y)\mathrm{d}y$. Il est très rare qu'il existe une fonction dont la forme différentielle est $\omega$, i.e. $\omega = \mathrm{d}f(x,y)$. Si c'est le cas, on dit que $\omega$ est une différentielle totale exacte (DTE).
+
+Pour que $\omega$ soit une DTE, c'est à dire pour qu'il existe une fonction telle que $\omega = A(x,y)\mathrm{d}x+B(x,y)\mathrm{d}y = \mathrm{d}f(x,y)$, il faut que la relation de Cauchy soit vérifiée : \[(\frac{\partial A}{\partial y})_x = (\frac{\partial B}{\partial x})_y\]
+
+\subsection{Montrer que $\omega$ est une DTE}
+On calcule $\displaystyle (\frac{\partial A}{\partial y})_x$ et $\displaystyle(\frac{\partial B}{\partial x})_y$. Si le résultat est le m\^eme, $\omega$ est une DTE et on peut dès lors trouver la fonction $f$ dont elle est la DTE.
+\subsection{Déterminer la fonction dont $\omega$ est une DTE}
+\subsubsection{Introduction}
+Comme $\omega$ est une DTE, il existe une fonction $f$ telle que $\mathrm{d}f(x,y) = A(x,y)\mathrm{d}x+B(x,y)\mathrm{d}y$.
+
+Mais on aussi vu en 7.1.3 que $\mathrm{d}f(x,y) = (\frac{\partial f}{\partial x})_y\mathrm{d}x+(\frac{\partial f}{\partial y})_x\mathrm{d}y$
+
+On en déduit que $(\frac{\partial f}{\partial x})_y = A(x,y)$ et $(\frac{\partial f}{\partial y})_x = B(x,y)$.
+
+\subsubsection{Méthode pour déterminer $f$.}
+\begin{enumerate}
+ \item Prenons $A(x,y) = (\frac{\partial f}{\partial x})_y$. Pour obtenir l'expression de $f$, on intègre en fonction de $x$ et en gardant $y$ constant\marginInfo{En effet, on part de la dérivée partielle de $f$ en fonction de $x$. L'opération inverse est donc l'intégration en fonction de $x$ avec $y$ constant.}. Comme dans toutes intégrations, on obtient l'expression de $f(x,y)$ à une constante près, que l'on note $C_y$. On a donc : $f(x,y) = \dots + C_y$.
+
+Les prochaines étapes permettent de déterminer l'expression de $C_y$.
+\item Faisons maintenant la dérivée partielle de $f(x,y)$ en fonction de $y$ : $(\frac{\partial f}{\partial y})_x$. On obtient une expression de la forme : $(\frac{\partial f}{\partial y})_x = \dots + C_y'$ avec $C_y'$ la dérivée de la constante $C_y$ obtenue lors de l'étape précédente.
+\item On sait que $(\frac{\partial f}{\partial y})_x = B(x,y)$. Donc l'expression précédente doit \^etre égale à $B(x,y)$. En les comparant, on peut déduire l'expression de $C_y'$
+
+\item On intègre $C_y'$ en fonction de $y$ pour trouver $C_y$
+\end{enumerate}
+\checkInfo{Exemple}{
+Prenons l'exemple précédent, $\omega = 2(x+y)\mathrm{d}x + (2x-2y+1)\mathrm{d}y$. On a montré que c'était une DTE et on cherche maintenant la fonction $f$ dont elle est la différentielle.
+\begin{enumerate}
+ \item Prenons $2(x+y) = (\frac{\partial f}{\partial x})_y$. On intègre $2(x+y)$ par rapport à $x$ et on trouve que $f(x) = 2\frac{x^2}{2} + 2xy + C_y = x^2+2xy + C_y$.
+
+On veut maintenant déterminer $C_y$.
+\item Faisons maintenant la dérivée partielle de $f(x,y)$ en fonction de $y$ : $(\frac{\partial f}{\partial y})_x = 2x + C_y'$.
+\item On compare avec $(2x-2y+1)$ pour trouver $C_y'$ :
+
+$2x + C_y' = 2x-2y+1 \Rightarrow C_y' = -2y+1$.
+
+\item On intègre $C_y'$ pour obtenir $C_y = -y^2+y$
+\end{enumerate}
+
+Donc $f(x,y) = x^2+2xy -y^2+y$.}
+\section{Équations différentielles à variables séparables}
+Si l'EQD n'est pas à coefficients constants, on ne peut pas utiliser les méthodes classiques vues au chapitre 4.
+
+Pour les résoudre, on sépare ce qui dépend de $x$ et ce qui dépend de la fonction $f$ recherchée (bien qu'elle dépende aussi de $x$). Le but est d'avoir $\mathrm{d}x$ dans chaque membre pour ensuite intégrer. Pour cela, on peut utiliser la relation :\[{\color{red}\mathrm{d}f = f'(x)\mathrm{d}x}\]
+
+\checkInfo{Exemples}{
+On a l'EQD : $\frac{\mathrm{d} f}{\mathrm{d} x} - xf = 0$ On remarque que $f$ n'est pas à coefficient constant puisqu'il s'agit de $x$. On va donc séparer $x$ et $f$ et faire appara\^itre $\mathrm{d}x$ dans chaque membres.
+
+\begin{flalign*}
+\frac{\mathrm{d} f}{\mathrm{d} x} - xf &= 0\\
+\frac{\mathrm{d} f}{\mathrm{d} x} &= xf\\
+\frac{{\color{red}\mathrm{d}f}}{f} &= x\mathrm{d} x\\
+\frac{{\color{red}\mathrm{d}f'}}{f}{\color{red}\mathrm{d}x} &= x\mathrm{d} x &\text{On fait appara\^itre $\mathrm{d}x$ avec la relation. }\\
+\end{flalign*}
+Maintenant que l'on a séparé $x$ et $f$ et fait appara\^itre $\mathrm{d}x$, on peut intégrer :
+\begin{flalign*}
+\frac{f'}{f}\mathrm{d}x &= x\mathrm{d} x\\
+\int \frac{f'}{f}\mathrm{d}x &= \int x\mathrm{d} x\\
+\ln(f) + C_1&= \frac{x^2}{2}+C_2\\
+\ln(f)&= \frac{x^2}{2}+C_2-C_1\\
+f&= e^{\frac{x^2}{2}+C_2-C_1} \\
+f&= e^{\frac{x^2}{2}+C}\\
+f&= e^{\frac{x^2}{2}}e^{C}\\
+f&= Ke^{\frac{x^2}{2}}\\
+\end{flalign*}
+On a donc bien trouvé l'expression de $f$. Pour avoir la valeur de $K$, il faudrait avoir des conditions initiales.
+}
+\end{document}
+

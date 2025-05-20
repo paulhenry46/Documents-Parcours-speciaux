@@ -1,0 +1,144 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Outils Mathématiques}
+\subtitle{Analyse dimensionnelle}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{S.Deheuvels}%sebastien.deveuhels.irap.omp.eu
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+\setcounter{chapter}{2}
+	\chapter{Résoudre une équation différentielle}
+	\section{Du premier ordre}
+\subsection{Équation homogène}
+On a une équation de la forme : $ af'+bf = g(x)$. On enlève le second membre de l'équation. C'est l'équation homogène.
+
+La fonction exponentielle et sa dérivée sont proportionnelles, donc on cherche une solution de la forme : $Ke^{rx}$.
+
+On obtient la forme de la solution générale dans l'équation différentielle :
+\begin{flalign*}
+ar\times Ke^{rx}+b\times Ke^{rx} &= 0\\
+ar\times Ke^{rx} &= -b\times Ke^{rx}\\
+ar &= -b\\
+r &= \frac{-b}{a}
+\end{flalign*}
+
+On a donc $ \displaystyle f_H(x) = Ke^{\frac{-b}{a}x}$
+\subsection{Solution particulière}
+\subsubsection{Avec 2nd membre constant}
+On montre que la solution particulière $f_P = C$ avec $C$ une constante est bien solution de l'équation différentielle. Pour cela, on injecte $f_P$ dans l'EQD afin de déterminer la valeur de $C$
+\subsubsection{Avec 2nd membre}
+On utilise la méthode de la variation de la constante. On suppose que la solution particulière est de la forme de la solution générale, mais avec $K$ fonction de $x$, soit $K(x)$.
+On a donc  $ \displaystyle f_P(x) = K(x)e^{\frac{-b}{a}x}$
+
+On l'injecte dans l'EQD :
+\begin{flalign*}
+a(K(x)e^{\frac{-b}{a}x})' + b(K(x)e^{\frac{-b}{a}x}) &= \phi(x)\\
+{\color{informationColor}a}(K(x)'e^{\frac{-b}{a}x} + K(x)\frac{-b}{a}e^{\frac{-b}{a}x}) + b(K(x)e^{\frac{-b}{a}x}) &= \phi(x)\\
+{\color{informationColor}a}K(x)'e^{\frac{-b}{a}x} + K(x)\frac{-b{\color{informationColor}a}}{a}e^{\frac{-b}{a}x} + b(K(x)e^{\frac{-b}{a}x}) &= \phi(x)\\
+aK(x)'e^{\frac{-b}{a}x}  {\color{criticalColor}-bK(x)e^{\frac{-b}{a}x}} + {\color{criticalColor}bK(x)e^{\frac{-b}{a}x}} &= \phi(x)\\
+aK(x)'e^{\frac{-b}{a}x} &= \phi(x)\\
+aK(x)' &= \frac{\phi(x)}{e^{\frac{-b}{a}x}}\\
+K(x)' &= \frac{\phi(x)e^{\frac{b}{a}x}}{a}\\
+\end{flalign*}
+
+Donc $ \displaystyle K(x) = \int^x \frac{\phi(t)e^{\frac{b}{a}t}}{a}dt = \frac{1}{a}\int^x \phi(t)e^{\frac{b}{a}t}dt$
+
+On résout l'intégrale pour trouver $K(x)$ et la solution particulière s'écrit alors : $     \displaystyle f_p(x) = K(x)e^{-\frac{b}{a}t}$
+
+\subsection{Solution générale}
+On somme $f_H$ et $f_P$.
+\subsection{Solution unique}
+On applique une condition initiale ou limite à la solution générale trouvée $f_H(x)+f_P(x)$ pour déterminer la valeur de $K$.
+\section{Du Deuxième ordre avec second membre nul}
+\subsection{Résolution de l'équation homogène}
+Elle est de la forme $ar^2+br+c$. On utilise les méthodes de résolution des équations du second degré.
+\subsubsection{Delta négatif}
+Si le $\Delta$ est négatif, l'équation caractéristique admet deux racines complexes : $r_1 = \frac{-b+i\sqrt{-\Delta}}{2a}$ et $r_2 = \frac{-b-i\sqrt{-\Delta}}{2a}$.
+
+La solution générale s'écrit alors  : \[f(t)=C_1e^{r_1t} + C_2e^{r_2t}\]
+
+\subsubsection{Delta positif}
+Si le $\Delta$ est positif, l'équation caractéristique admet deux racines réelles : $r_1 = \frac{-b+\sqrt{\Delta}}{2a}$ et $r_2 = \frac{-b-\sqrt{\Delta}}{2a}$.
+
+La solution générale s'écrit alors  : \[f(t)=C_1e^{r_1t} + C_2e^{r_2t}\]
+\subsubsection{Delta nul}
+Si le $\Delta$ est nul, l'équation caractéristique admet une racine unique : $r = \frac{-b}{2a}$.
+
+La solution générale s'écrit alors  : \[f(t)=(C_1+C_2t)e^{rt}\]
+\subsection{Transformation d'une expression avec les complexes}
+\subsubsection{Passer sous forme trigonométrique}
+
+Comme $r_1$ et $r_2$ sont des complexes, on peut les écrire sous la forme $\lambda+i\omega$ et $\lambda-i\omega$
+
+On peut donc écrire :  \[f(t)=C_1e^{(\lambda+i\omega)t} + C_2e^{(\lambda-i\omega)t} = C_1e^{\lambda t+i\omega t} + C_2e^{\lambda t - i\omega t} = C_1e^{\lambda t}e^{i\omega t} + C_2e^{\lambda t}e^{-i\omega t}\]
+
+En transformant les expressions des exponentielles complexes en forme trigonométrique, on obtient :
+\[f(t) = C_1e^{\lambda t}(\cos(\omega t) + i\sin(\omega t)) + C_2e^{\lambda t}(\cos(\omega t) - i\sin(\omega t))\]
+
+On factorise ensuite par $e^{\lambda t}$ puis par $\cos$ et $i\sin$ pour obtenir :
+\[f(t) = e^{\lambda t}[(C_1\cos(\omega t) + i\sin(\omega t)) + C_2(\cos(\omega t) - i\sin(\omega t))]\]
+\[f(t) = e^{\lambda t}[((C_1+C_2)(\cos(\omega t)) + (C_1-C_2)i\sin(\omega t))]\]
+
+On sait que $C_1$ et $C_2$ sont conjugués, donc en écrivant $C_1 = d+ik$ et $C_2 = d-ik$, on a $C_1+C_2 = 2d$ et $i(C_1-C_2) = i(2ik) = -2k$.
+
+Donc on peut écrire, avec $A = 2d$ et $B = -2k$ des constantes réelles :
+
+\[f(t) = e^{\lambda t}[(A(\cos(\omega t)) + B\sin(\omega t))]\]
+\section{Du second ordre avec second membre sinusoidal}
+\subsection{Exemple}
+Prenons l'équation de la forme $\ddot{y}(x)+b\dot{y}(x)+cy(x) = A_0\cos(\omega_e x)$.
+
+On sait qu'il existe une solution de la forme : $y(x) = B\cos(w_ex+\phi)$.\marginInfo{Il faut donc déterminer $B$ et $\phi$.}
+
+Prenons la notation de l'exponentielle complexe pour réécrire notre solution : $Y(x) = Be^{i(\omega_ex+\phi)} = Be^{i(\phi)} \times e^{i\omega_ex}$. Pour simplifier, posons $\Delta = Be^{i(\phi)}$.
+
+On obtient alors $ Y(x) = \Delta e^{i\omega_ex}$.
+
+Calculons les dérivées :
+
+$ Y(x) = \Delta e^{i\omega_ex}$
+
+$ \dot{Y}(x) = i\omega_e\Delta e^{i\omega_ex} =  i\omega_e Y(x)$
+
+$ \ddot{Y}(x) = -\omega_e^2\Delta e^{i\omega_ex} =  -\omega_e^2 Y(x)$
+
+En injectant les 3 équations dans l'EQD, on obtient :\marginCritical{Auparavant, il faut transformer le second membre en forme exponentielle complexe. Ici, la forme expressions complexe de $A_0\cos(\omega_e x)$ est $A_0e^{i\omega_ex}$}
+\begin{flalign*}
+(-\omega_e^2 + bi\omega_e+c)\Delta e^{i\omega_ex} &=A_0e^{i\omega_ex}\\
+(-\omega_e^2 + bi\omega_e+c)\Delta &=A_0\\
+\Delta &=\frac{A_0}{(-\omega_e^2 + bi\omega_e+c)}\\
+\end{flalign*}
+
+Avec l'expression du $\Delta$, on peut déterminer la constante $B$ de notre solution ainsi que $\phi$.\marginInfo{En effet, on a posé plus haut $\Delta = Be^{i(\phi)}$}
+
+La constante $B$ vaut le module du nombre complexe $\Delta$ : $|\frac{A_0}{(-\omega_e^2 + bi\omega_e+c) }| = \frac{|A_0|}{|(-\omega_e^2 + bi\omega_e+c)|} = \frac{A_0}{\sqrt{(c-\omega_e^2)^2 + ( b\omega_e)^2}}$
+
+$\phi$ vaut l'argument de $\Delta$ : $\tan^{-1} (\frac{y}{x}) = \tan^{-1} (\frac{\omega_e b}{c-\omega_e^2})$.
+\end{document}
+

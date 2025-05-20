@@ -1,0 +1,149 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{polynom}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\begin{document}
+
+\setcounter{chapter}{6}
+
+	\chapter{Polyn\^omes et fractions rationnelles}
+\section{Polyn\^ome}
+\subsection{Définition}
+On note $k[X]$ l'ensemble des polyn\^omes à coefficients dans $k$, avec $X$ appelée inderminée.
+
+C'est une suite $(a_k)$ d'éléments de $K$ nulle à partir d'un certain rang.
+
+ On note $X$ l'objet du polyn\^ome qui n'est pas forcément un réel\marginCritical{On peut mettre n'importe quel objet (fonction, matrice, opérateur) dans un polyn\^ome. Les polyn\^omes sont donc très efficaces.}
+
+Soient $P=(a_k)$ et $Q=(b_k)$. On a $P=Q\iff a_k=b_k \forall k$.
+
+On commence les polyn\^omes à la puissance $0$.\marginTips{Le polyn\^ome nul n'est pas un polynome de degré 0 mais $-\infty$}
+
+Exemple : $X = (0,1\dots), 1=(1,0\dots,0), 0=(0\dots), X^k=(0,\dots,k\dots)$
+\begin{definition}[Degré d'un polyn\^ome]
+Noté $\deg(P)$ le plus grand entier $n$ tel que $a_n\neq 0$,i.e, $\deg(P) = \max\{k,a_k\neq 0\}$. On a donc $a_n\neq 0$ et $\forall k>n, a_k=0$. Si $P=0, \deg(P) = -\infty$.
+\end{definition}
+Exemple : $\deg(0,1,2,0,3) = 5$.
+% \subsection{Notation}
+% Soit $P$ un polyn\^ome. On suppose que pour $k\geq n+1, a_k =0$\marginCritical{Ici, $n$ n'est pas forcément le degré, donc on ne sait pas si $a_n\neq 0$. Le degré est inférieur ou égal à $n$}. On note $P = \sum^n_{k=0} a_kX^k$.
+%
+% Cepdendant, si on donne explicitement de degré, alors on sait que $n\neq 0$.
+\subsection{Opérations}
+\subsubsection{Addition}
+Soit $P$ et $Q$ 2 polyn\^omes de degré inférieur à $n$. On pose $P = \sum^n_{k=0} a_kX^k$ et $Q = \sum^n_{k=0} b_kX^k$. On a $P+Q = \sum^n_{k=0} (a_k+b_k)X^k$
+\subsubsection{Multiplication par un scalaire}
+On a $\lambda P = \sum^n_{k=0} \lambda a_kX^k$
+\subsubsection{Multiplication de 2 polyn\^omes}
+Voir Fiche de méthodologie
+\warningInfo{Remarques et résultats}{
+\begin{itemize}
+ \item $X^k+X^m = X^{k+m}$
+ \item $0\times X^k = 0$
+ \item $\deg(P+Q) \leq \max(\deg(P),\deg(Q))$
+ \item $\deg(PQ) = \deg(P)+\deg(Q)$
+ \item Seuls les polyn\^omes constants non nuls de degré 0 ont un inverse.
+\end{itemize}
+}
+\subsubsection{Dérivation}
+On appelle dérivée de $P$ le polyn\^ome noté $P'$ et défini par $P'[X] = \sum_{k=0}^n ka_kX^{k-1}$. On note parfois $P' = \mathrm{D}(P)$.
+
+Exemple : $P = 5X^3+2X+1$. $P'(X) = 15X^2+2$.
+
+Si $\deg(P)>0, \deg(P') = \deg(P)-1$.
+\subsection{Division euclidienne}
+\begin{theorem}[Théorème de la division euclidienne]
+Soit $A$ et $B$ 2 polyn\^omes. Alors $\exists!(Q,R)\in K[X]$ tel que $A=BQ+R$ avec $\deg(R)<\deg(B)$.
+\end{theorem}
+Exemple : $X^3+2X^2+X+2$ divisé par $X+1$.
+
+\polylongdiv[style=D]{X^3+2X^2+X+2}{X+1}
+\begin{definition}[]
+Soient A et B 2 polyn\^omes. $B$ divise $A \iff \exists Q\in K[X]$, tel que $A=BQ$. Si $B\neq 0, B|A\iff$ reste de la division euclidienne de A par B est nul.
+\end{definition}
+Exemple : $(X-i)|(X^2+1)$ car $X^2+1=(X-i)(X+i)$, $(X-1)|(X^3-1)$ car $X^3-1=(X-1)(X^2+X+1)$.
+% \begin{definition}[Morphisme de spécialisation]
+% On définit une application $\varphi : x_0\to P(x_0)$. On remplace $X$ par $x_0$. C'est un morphisme de spécialisation. On note en général \~{P} l'application $x\to P(x)$. C'est le processus pour transformer $X$ en un objet défini et déterminé.
+% \end{definition}
+\subsection{Racines d'un polynome}
+\begin{definition}[Racine]
+Soit $P$ un polynome. $a$ est racine de $P$ si $P(a) = 0$. De plus, $a$ est racine de $P$ si $X-a$ divise $P$, c'est à dire s'il existe $Q$ tel que $P(X) = (X-a)Q$.
+\end{definition}
+\begin{theorem}
+Soit $P$ un polynome de degré $n$. Alors $P$ a au plus $n$ racines disctinctes ou confondues. De plus, s'il s'annule en $x_1<x_2\dots<x_n$, alors $\exists \lambda \in K*$ tel que $P(x) = \lambda(X-x_1)(X-x_2)\dots(X-x_n)$
+\end{theorem}
+\begin{definition}[Polyn\^ome unitaire]
+$P$ est un polyn\^ome unitaire si le coefficient du terme de plus haut degré est $1$. Pour rendre un polyn\^ome unitaire, on peut le diviser par le coefficient du plus haut degré.
+\end{definition}
+Exemples : $P(X)  =X^3+5X^2-X+12$ est unitaire. $P(x) = 0$ ne l'est pas
+\subsection{Racines multiples}
+\begin{definition}
+Soit $P\in K[X]$. $a$ est racine multiple d'ordre $\alpha \in \mathbb{N}*$ de $P$ si $(X-a)^{\alpha}|P$ et $(X-a)^{\alpha+1}$ ne divise pas $P$. C'est à dire qu'$\exists Q$, tel que $P(X) = (X-a)^\alpha Q$ et $Q(a)\neq 0$.
+\end{definition}
+Si $\alpha = 1$, on parle de racine simple, si $\alpha = 2$ ce sont des racines doubles.
+
+Exemple : $P(X) = X^2-2X+1 = (X-1)^2$ $1$ est racine double de $P$
+
+$P(X) = X^2+X+1 = (X-j)(X-\bar{j})$ avec $j = e^{2i\pi/3}$ : $j$ est racine simple de $Q$
+
+$P(X) = X^3(X^2+1)^2(X-5)^2$
+Racine/Ordre : 0/3, 5/2, i/2, -i/2
+
+\begin{theorem}[Caractérisation des racines multiples]
+Soit $P\in k[X]$. $a$ est racine multiple d'odre $\alpha$ de $P$ si $\forall k\in[0,\alpha-1], P(a) = 0$ et $P^\alpha(a) \neq 0$.
+\end{theorem}
+Exemple : $P(X) = X^2$ : $0$ est racine double. $P'(X)=2X$. $P'(0)=0$ mais $P''(0)\neq 0$. Il a bien $\alpha-1$ equation avec la $\alpha$ ieme qui ne s'annule pas.
+\begin{lemma}
+Soit $P$ un polyn\^ome de degré $n$. Alors $P(X) = \sum_{k=0}^n \frac{P^k(a)}{k!}(X-a)^k$
+\end{lemma}
+
+\subsection{Polyn\^omes irréductibles}
+\begin{definition}
+P, avec $\deg(P\geq 1$ est iréductible si $Q|P \iff \exists \lambda \in\mathbb{N} *$ tel que $Q=\lambda$ ou $Q=\lambda P$.
+\end{definition}
+Exemple : $X^1-1 = (X-1)(X+1)$, on a $X-1\neq \lambda, \neq \lambda(X^2+1)$. Donc le polyn\^ome n'est pas iréductible.
+
+Exemple : $X^2+1$ : N'a pas de diviseurs non triviaux dans $\mathbb{R}$ donc $X^2+1$ est irréductible dans $\mathbb{R}[X]$ mais pas dans $\mathbb{C}$ car $X+i$ est un diviseur non trivial de $X^2+1$.
+\begin{theorem}
+ $\mathbb{C}$ est algébriquement clos et signifie que tout polyn\^ome à coefficients complexes a au moins une racine dans $\mathbb{C}$
+\end{theorem}
+\begin{theorem}
+ Les polynomes irréductibles de $C[X]$ sont les polyn\^omes de degré $1$ du type $X-z_0$
+
+ Dans $R[X]$, ce sont ceux de degré 1 et les polyn\^omes de degré 2 de discriminant négatif.
+\end{theorem}
+
+\end{document}
+
+

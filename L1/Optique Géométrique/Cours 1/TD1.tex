@@ -1,0 +1,143 @@
+ % !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Optique Géométrique}
+\subtitle{Niveau 1}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Gatel}%christophe.gatel@cemes.fr : section B sillon 7
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+%\titleOne
+
+	\chapter{Introduction et notion de rayons lumineux}
+	\section{Introduction}
+	Compas à apporter !
+	19/02 éval 1
+	7/03 à 15h45 eval 2
+	28/03 à 15h45 eval 3
+	\subsection{Théories}
+	\begin{itemize}
+	 \item Physique quantique <- électromagnétisuqme <- optique ondulatoire <- optique (= science de la lumière) géométrique.
+
+	\item Optique géométrique : nait naturellement, issue des observations : existe seule jusqu'au 17e
+
+	\item Optique ondulatoire : phénomènes de diffraction, interférences, importante au 19e
+
+	\item Électromégnétisme : On a mesuré la vitesse de la lumière, production de champ magnétique
+
+	\item Physique quantique : Spectre de la lumière, répartission des ondes en fonction de leur énergie, explication de l'effet photoélectrique.
+
+	\end{itemize}
+\subsection{Nature de la lumière}
+Grande évolution : jet de Dieu -> grain de couleur -> particule
+
+Def électromagnétique : partie du spectre électromagnétique visible par l'oeil. Caractérisé par 2 champ vectoriels
+
+\subsubsection{Grandeurs}
+Amplitude A, longueur d'onde $\lambda$, période T, vitesse $v = c$ pour la lumière : $3\cdot 10^{8}$ m.s
+
+Dans le vide : $c = \lambda f$, quelque soit les conditions.
+
+Spectre électromagnétique visible : 750 nm (rouge) à 400 nm (violet)
+
+Matérieux transparent à certains longueurs d'onde.
+
+Première limitation de l'optique géométrique : spectre visible + travail avec des objets et images très supérieures à la longueur d'onde (pas de virus, bactéries, vers quelques centaines de micrométres)
+	\section{Approximations}
+	\subsection{1er principe : Ligne droite}
+	La lumière se propage en ligne droite
+	\subsection{Faisceaux}
+	Elle se présente sous la forme d'un faisecau (= un ensemble de rayon). Un point de lumière envoie des rayons dans toutes les directions.
+	\subsection{Théorème de Malus}
+	Faisceaux convergents, divergents, parallèles (source à l'infini)
+
+	La surface d'onde est une surface qui en tout poitn est perpendiuclaire au rayon.
+	\subsection{2e principe}
+	Les rayons lumineux sont rectilignes et indépendants les uns des autres.
+	(faux car rayon rouge + bleu = violet)
+	\subsection{3e principe}
+	Principe du retour de inversse de la lumière : Le trajet suivi est indépendant du sens de propagation.
+	\subsection{Chemin optique et principe de fermat}
+	Indice de réfraction (sans dimension, sans unité) : \[n=\frac{c}{c_{milieu}}= \frac{c}[v]\] Toujours >1 car on ne peut pas aller plus vite que la vitesse de lumière. Plus l'indice optique est important, plus la vitesse dans le mileu est faible.
+	Milieu ou l'indice varie beaucyoup = dispersif.
+	Exemple : Dans l'eau : $n=1.33$, donc la lumière va trois fois moins vite.
+
+	Dioptre : Surface de spération entre 2 milieux d'indice optique différents. 2 milieux différents mais avec le meme indice n'a pas de dioptre.
+
+	Loi de Cauchy : \[n(\lambda) = A + \frac{B}{\lambda^2}\]
+
+	\subsection{Chemin optique}
+	Lie la distance parocurie dans le milieu et la vitesse à laquelle je la parcoure. Entre 2 points A et B, c'est entre crochet : $[AB] = \frac{c}{v} \times AB = c\times \Delta t = n \times AB$. Le chemin optique total est la somme de tous les chemins optiques. Il représente la distance qu'aurai parcourie le rayon pendant $\Delta t$ à la vitesse maximale, dans le vide.
+	\subsection{Chemin optique}
+	Principe de moindre action : Les processus de phénomènes se fait en minimant l'énergie pour aller vers un état de plus faible énergie. On cherche a minimiser le temps (et non la distance) durant lequel le rayon se ballade.
+
+	Principe de Fermat : La lumière se ballade d etelle manière qu'elle va minimiser le chemin optique. Donne lieu à la réfraction et la réflexion
+	\chapter{Rélfexion et réfraction}
+	\subsection{réfexion}
+	Premier milieu = milieu incident, deuxième milieu de l'autre coté, si on ne peut pas y rentrer, on le hachure
+
+	Direction de référence : normale au miroir au point d'arrivée du rayon incident sur la surface. La lumière arrive en faisant un ange défini par rapport à la normale. ($0<\alpha<\frac{\pi}{2}$)
+
+	Plan d'incidence : contient la normale et le rayon incident, perpendiculaire à la surface.
+
+	Loi de la réflexion : le rayon est réflchi dans le m\^eme pan d'incidence et repart avec le m\^eme angle par rapport à la normale à l'angle d'incidence.
+
+	Démonstration
+
+	\subsection{Réfraction}
+	On considère un dioptre séparant 2 milieux transparents (incidnets et réfractant). On a $n_1\sin(i_1) = n_2 \sin(i_2)$.
+
+	Le rayon réfracté reste dans le plan d'incidence.
+
+	Démonstration
+
+	Une loi d'équilibre : un sinus entre 0 et pi/2 est croissant et positif. Si n auglente, l'angle diminue. Vient de la minimisation du trajet de la lumière.
+
+	\subsubsection{Analyse}
+	Si $n_2 > n_1$ Le milieu 2 est plus réfreingent et le rayon réfracté se rapproche de la normale.
+
+	Cas extrèmes : $i_1 = 0 \to i_2 = 0$ et $i_1 = pi/2 \to i_2 = \arcsin(\frac{n_1}{n_2})$.
+
+	Dans le cas contraire : Le rayon réfracté s'éloigne de la normale.
+
+	Si $i_2 = \pi/2$, $i_{lim} = \arcsin(\frac{n_2}{n_1})$ Si $i_1 > i_{1,lim}$ : réflexion totale.
+
+	\subsection{Construction de rayon réfracté par les surfaces d'indice}
+	\subsubsection{Si $n_1 > n_2$}
+	le rayon vaut $k\times n_1$ et $k\times n_2$ \[r_2 = \frac{n_2}{n_1} r_1\]
+
+	Réfraction limite et réflexion totale.
+
+	Variation linéaire (grandient) = trajectoire parabolique de la lumière.
+
+	Mirage froid sur les objets avec capacité calorifique.
+	\subsection{Le prisme}
+
+
+\end{document}
+

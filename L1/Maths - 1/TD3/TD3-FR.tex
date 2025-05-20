@@ -1,0 +1,227 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+
+\setcounter{chapter}{2}
+
+	\chapter{Fonctions}
+\section{Précisions sur les applications réciproques}
+Une application est bijective de $E\rightarrow F$ si $\forall y\in F, \exists!x\in E,y=f(x)$.
+
+On définit une application, appelée réciproque notée $f^{-1} : F\rightarrow F$ et $y\longmapsto x=f^{-1}(y)$, avec $\forall y\in F, x=f^{-1}(y) \iff x\in E$ et $y = f(x)$. f est bijective donc $f^{-1}$ est une application.
+
+Propriétés :
+\begin{itemize}
+ \item $f\circ f^{-1}(y) = y = Id_F$
+  \item $f^{-1}\circ f(x) = x = Id_E$
+  \item $f\circ Id_E = f$ : $Id_E$ est le neutre à droite pour 0
+  \item $Id_E \circ f = f$ : $Id_E$ est le neutre à gauche pour 0
+\end{itemize}
+En effet, $f\circ f^{-1}(y) = f(f^{-1}(y)) = f(x) = y$.
+
+\begin{theorem}[Proposition]
+Soit $f : E\rightarrow F$ une application. S'il existe $g : F\rightarrow E$ une application telle que : $g\circ f = Id_E$ et $ f\circ g = Id_F$. Alors $f$ est bijective et $g$ est la réciproque de $f$.
+\end{theorem}
+\begin{theorem}[Corrolaire]
+Si l'application réciproque existe, elle est unique
+\end{theorem}
+Exemple : $Id : R\rightarrow R$. $Id_R (\sqrt{2}) = \sqrt{2}$.
+\warningInfo{Conséquence}{On peut donc montrer qu'une application est bijective en exhibant sa réciproque}
+
+
+\begin{theorem}[Proposition]
+Soit $f : E\rightarrow F$ et $g : F\Rightarrow G$ deux applications bijectives. $g\circ f : E\rightarrow F \rightarrow G$ et $x \longmapsto f(x) \longmapsto g(f(x))$ Alors $g\circ f$ est bijective.
+\end{theorem}
+
+\begin{theorem}[Proposition]
+Soit $f : E\rightarrow F$ bijective et notons $f^{-1} : F\Rightarrow E$ sa réciproque. Alors $f^{-1}$ est bijective de réciproque $f$.
+\end{theorem}
+
+\section{Généralités sur les fonctions de R dans R}
+\subsection{Ensemble de définition}
+
+\begin{theorem}[Ensemble de définition]
+Soit $f$ de R dans R une fonction. Le domaine de définition de $f$ est l'ensemble, noté $Df = \{x\in R, f(x) \text{existe}\}$ Alors, $Df\rightarrow R$ est une application.
+\end{theorem}
+
+\begin{theorem}[Proposition]
+Soit $f : I\rightarrow R$, si $f$ est strictement monotone sur $I$, alors $f$ est injective de I sur R.
+\end{theorem}
+
+\subsection{Fonctions majorées et minorées}
+Soit $f : R\rightarrow R$ Soit $I\in D_R$.
+
+$f$ est majorée sur $I$ s'il existe $M\in R,\forall x\in I, f(x) \leq M$.
+
+$f$ est minorée sur $I$ s'il existe $m\in R,\forall x\in I, f(x) \geq m$.
+
+\checkInfo{Montrer que la fonction est non majorée}{
+On montre que $\forall M\in\mathbb{R},\exists x\in I, f(x)>M$.}
+\subsection{Image directe et image réciproque}
+On se donne $f \in F(R,R)$.
+
+Soit $I$ un intervalle de $\mathbb{R}$. $f(I) = \{f(x), x\in I\} = \{y\in\mathbb{R},\exists x\in I, y = f(x)\}$.
+
+Soit $J$ un intervalle de $\mathbb{R}$. $f^{-1}(J) = \{ x\in D_f, f(x)\in J\} = \{y\in\mathbb{R},\exists x\in I, y = f(x)\}$.
+\section{Limites d'une fonction en un point ou en l'infini}
+Soit $f : \mathbb{R} \rightarrow \mathbb{R}$ une fonction.
+\subsection{Limite en un point}
+f doit \^etre définie sur un voisinage épointé de $x_0$
+\subsubsection{Voisinage épointé}
+\warningInfo{Voisinage épointé de $x_0$}{Un intervalle ouvert contenant $x_0$, privé de $x_0$. On le note $V_{x_0}$. $V_{x_0} = ]x_0-\epsilon,x_0+\epsilon[\setminus \{x_0\}$}
+
+f a une limite finie si :
+
+elle est définie sur un voisinage épointé de $x_0$ et pour toute suite $(u_n)$ est convergente vers $x_0$ et à valeurs de $x_0$, \[\Lim{\infty} f(u_n) = l\] avec $(u_n)$ tend vers $x_0$.
+
+Cela équivaut à : $\forall \varepsilon >0, \exists \alpha >0, \forall x, 0< |x-x_0|<\alpha \Rightarrow |f(x) - l|<\epsilon$.
+
+\subsubsection{Limites infinies}
+
+ f a une limite valant $+\infty$ si :
+ \begin{itemize}
+ \item pour toute suite $(u_n)$ à valeurs dans $V_{x_0}$ et de limite $x_0$, on a : \[\Lim{\infty} f(u_n) = +\infty\]
+
+ \item $\forall A >0, \exists \alpha >0, 0<|x-x_0|<\alpha \Rightarrow f(x)>A$
+ \end{itemize}
+
+ De m\^eme en $-\infty$ :
+
+ \begin{itemize}
+  \item Pour toute suite $(u_n)$ à valeurs dans $V_{x_0}$, \[\Lim{\infty} f(u_n) = -\infty\]
+
+ \item $\forall A >0, \exists \alpha >0, 0<|x-x_0|<\alpha \Rightarrow f(x)<-A$ -
+ \end{itemize}
+\subsection{Limites en + l'infini}
+On se donne $f$ définie au voisinage de $+\infty$ : $\exists a\in\mathbb{R}$, f est définie sur $]a,+\infty[$.
+\subsubsection{Limite finie $l$}
+$\forall \epsilon >0, \exists A>0, x>A \Rightarrow |f(x)-l|<\epsilon$
+\begin{multicols}{2}
+\subsubsection{Limite {\color{green}+} infinie}
+$\forall A>0, \exists R>0, x>R \Rightarrow f(x){\color{green}>}A$.
+
+\columnbreak
+\subsubsection{Limite {\color{red}-} infinie}
+$\forall A>0, \exists R>0, x>R \Rightarrow f(x){\color{red}<-}A$.
+\end{multicols}
+
+\subsection{Limites en - l'infini}
+On se donne $f$ définie au voisinage de $-\infty$ : $\exists A\in\mathbb{R}$, f est définie sur $]-\infty,A[$.
+\subsubsection{Limite finie $l$}
+$\forall \epsilon >0, \exists R>0, x<-R \Rightarrow |f(x)-l|<\epsilon$
+\newpage
+\begin{multicols}{2}
+\subsubsection{Limite {\color{green}+} infinie}
+$\forall A>0, \exists R>0, x<-R \Rightarrow f(x){\color{green}>}A$.
+\columnbreak
+\subsubsection{Limite {\color{red}-} infinie}
+$\forall A>0, \exists R>0, x<-R \Rightarrow f(x){\color{red}<-}A$.
+\end{multicols}
+
+
+
+\section{Fonctions continues}
+Soit $I$ un intervalle ouvert de $\mathbb{R}$. Soit $f:I\to \mathbb{R}$, f est définie sur $I$.
+\begin{theorem}[Définitions]
+$f$ est continue en $x_0$ si
+\begin{itemize}
+ \item $\Lim{x\to x_0} f = f(x_0)$.
+ \item $\forall \varepsilon >0,\exists  \alpha >0, |x-x_0|<\alpha \Rightarrow |f(x)-f(x_0)|<\varepsilon$
+ \item $\forall (U_n), \Lim{\infty}f(U_n) = f(x_0)$. On a donc : $\Lim{\infty} f(U_n) = f(\Lim{\infty} U_n)$
+\end{itemize}
+\end{theorem}
+
+\section{Continuité et opérations}
+On prend 2 fonctions $f$ et $g$ continues sur $I$. Alors $f+g, fg$ sont continues sur $I$ et $\frac{f}{g}$ est continue en tout point de $I$ tel que $g(x)\neq 0$.
+
+\begin{theorem}[Continuité des composées]
+Soient $f : I\to J$ une fonction continue sur$I$, à valeurs dans $I\in\mathbb{R}$ et $g:I\to J\in\mathbb{R}$. Alors $g\circ f$ est continue sur $I$.
+\end{theorem}
+\subsection{Théorème des valeurs intermédiaires}
+\begin{theorem}[TVI]
+Soit $f:I\to\mathbb{R}$ une fonction et $(a \leq b)\in I$. On suppose $f$ continue sur $[a,b]$.
+
+Alors $\forall y_0 \in [f(a),f(b)], \exists x_0\in[a,b], y_0=f(x_0)$.
+\end{theorem}
+\begin{theorem}[Variante du TVI]
+Il est équivalent à :
+
+si $f$ est continue sur $[a,b]$ et $f(a)\times f(b) \leq 0$, alors $\exists c\in[a,b], f(c)=0$.
+\end{theorem}
+
+\subsection{Théorème de Heine}
+\begin{theorem}[Théorème de Heine]
+L'image continue d'un intervalle fermé et borné est un intervalle fermé et borné.
+
+Soient $ a<b \in\mathbb{R}$ et $f:[a,b] \to \mathbb{R}, f$ continue sur $[a,b]$,
+
+$\exists m\in\mathbb{R},M\in\mathbb{R}, m\leq M$ tels que $f([a,b] = [m,M]$ avec $\exists x_0\in[a,b], f(x_0) = m$ et $\exists x_1\in[a,b], f(x_1) = M$
+\end{theorem}
+
+\subsection{Réciproque d'une application continue strictement monotone}
+\begin{theorem}[]
+Si $f$ est continue sur $[a,b]$ et strictement monotone sur $[a,b]$, alors $f$  réalise une bijection de $[a,b]$ dans $J=[f(a),f(b)]$ et $f^{-1} : J\to I$ sa réciproque, de m\^eme monotonie sur $J$
+\end{theorem}
+Elle donne plus d'informations que le TVI et est à privilégier.\marginInfo{En effet, le TVI indique qu'il existe $x$ tel que $f(x) = c$ avec $c$ dans l'intervalle de continuité. Ce théorème indique lui qu'il existe une unique solution dans l'intervalle mais il faut que la fonction soit monotone sur l'intervalle considéré.}
+\section{Fonctions dérivables}
+\begin{theorem}[Définitions]
+Soit $x_0 \in[a,b]$.
+
+$f$ est dérivable en $x_0$ si
+\begin{itemize}
+ \item $\Lim{x\to x_0} \frac{f(x)-f(x_0)}{x-x_0}$ existe et est finie. On note alors cette limite $f'(x_0)$.
+ \item $\Lim{x\to 0} \frac{f(a+h)-f(a)}{h}$ existe et est finie.
+ \item $\exists l$ et une fonction $\varepsilon(x)$ dont la limite en $a$ est nulle, tels que $f(x) = f(a)+l(x-a)+(x-a)\varepsilon(x)$.
+\end{itemize}
+\end{theorem}
+
+\begin{theorem}[Dérivée de la réciproque]
+On donne un intervalle $I,J\in\mathbb{R}$ et $f:I\to J$. On suppose $f$ dérivable sur $I$ et que $f$ est bijective de $I\to J$. On note $f^{-1} :J\to I$ la réciproque. Elle est dérivable en $y_0\in J \iff f'(f^{-1}(y_0))\neq 0$
+
+On a alors : $(f^{-1})'_{y_0} = \frac{1}{f'(f^{-1}(y_0))} = \frac{1}{f'(x_0)}$ avec $x_0 = f^{-1}(y_0)$.
+\end{theorem}
+
+\section{Théorème des accroissements finis et de Rolle}
+$a<b$
+\begin{theorem}[Théorème des accroissements finis]
+Soit $f:[a,b]\to \mathbb{R}$. Si $f$ est continue sur $[a,b]$ et dérivable sur $]a,b[$. Alors $\exists c\in]a,b[, \frac{f(b)-f(a)}{b-a} = f'(c)$
+\end{theorem}
+\begin{theorem}[Théorème de Rolle]
+Soit $f:[a,b]\to \mathbb{R}$. Si $f$ est continue sur $[a,b]$ et dérivable sur $]a,b[$ et $f(a) = f(b)$. Alors $\exists c\in]a,b[, f'(c) = 0$
+\end{theorem}
+
+
+\end{document}
+
+

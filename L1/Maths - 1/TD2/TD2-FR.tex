@@ -1,0 +1,164 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+
+\setcounter{chapter}{1}
+
+	\chapter{Suites réelles }
+\section{Généralités}
+
+\subsection{Variations}
+Soit $u\in S(\mathbb{R})$ et $n_0 \in \mathbb{N}$.
+
+\begin{theorem}[Suite croissante]
+La suite est croissante à partir du rang $n_0$ si $\forall n\geq n_0, u_{n+1} \geq u_n$ et u est stictement croissante à partir de $n_0$ si $n\geq n_0$ on a $u_{n+1} > u_n$.
+\end{theorem}
+
+\begin{theorem}[Suite décroissante]
+La suite est décroissante à partir du rang $n_0$ si $\forall n\geq n_0, u_{n+1} \leq u_n$ et u est stictement croissante à partir de $n_0$ si $n\geq n_0$ on a $u_{n+1} < u_n$.
+\end{theorem}
+
+Exemple : $(n^2)_{n\in\mathbb{N}}$ croissante
+
+$(\frac{1}{n})_{n\in\mathbb{N}}$ décroissante
+
+$\neg(u_n$ est croissante à partir du premier terme)$ = (\exists n\in\mathbb{N}, u_{n+1}<u_n) $
+
+\begin{theorem}[Majoré et minorant]
+La suite est majorée si $\exists M\in\mathbb{R}, \forall n\in\mathbb{N}, u_n\leq M$.
+
+La suite est minorée si $\exists m\in\mathbb{R}, \forall n\in\mathbb{N}, u_n\geq m$.
+
+La suite est bornée si elle est minorée et majorée.
+\end{theorem}
+
+u bornée $\iff \exists M\in \mathbb{R}^+, \forall n\in \mathbb{N}, |u_n|\leq M$.
+
+\subsubsection{Valeur absolue}
+$|x| = x$ si $x>0$ et $-x$ si $x<0$.\marginElement{\marginTitle{Utilisation}On utilise Valeur absolue d'une expression pour la majorer par une valeur. Il vaut mieux dire que $|(-1)^n|\leq 1$ que $-1\leq|(-1)^n|\leq 1$. Utiliser ensuite l'inégalité triangulaire.
+}
+
+$|x-y|$ mesure la distance e x à y.
+
+$|xy| = |x||y|$
+
+$|x+y|\leq |x|+|y|$ (inégalité triangulaire)
+
+$|x| = 0 \rightarrow x =0$
+
+
+\section{Limites d'une suite}
+Soit u une suite réelle.
+
+\begin{theorem}[Définition]
+On dit que la suite u est convergente (CV) si existe $l\in\mathbb{R}$ tel que $\forall \epsilon > 0,  \exists N\in\mathbb{N}, \forall n\in\mathbb{N}, n\geq N \Rightarrow  |u_n-l| < \epsilon$. On dit que l est une limite de $(U_n)$.
+\end{theorem}
+\begin{theorem}[Unicité d'une limite d'une suite convergente]
+Si $(U_n)$ est convergente, sa limite l est unique on note $l = \Lim{n+\infty} u_n$.
+\end{theorem}
+
+
+
+
+\begin{theorem}[Borne d'une suite convergente]
+Toute suite convergente est bornée
+\end{theorem}
+
+\section{Limites}
+\subsection{Limites et monotonie}
+\begin{theorem}[]
+Toute suite croissante et majorée converge vers son plus petit majorant
+
+Toute suite décroissante et minorée converge vers son plus grand minorant.
+\end{theorem}
+\subsection{Suites adjacentes}
+\begin{theorem}[Définition]
+2 suites $(U_n)$ et $(V_n)$ sont adjacentes si
+\begin{itemize}
+ \item $(U_n)$ est décroissante
+ \item $(V_n)$ est croissante
+ \item $\Lim{+\infty} U_n-V_n = 0$
+ \item $u_n\geq v_n, \forall n\in\mathbb{N}$.
+\end{itemize}
+\end{theorem}
+
+\begin{theorem}[Définition]
+Si les suites $(U_n)$ et $(V_n)$ sont adjacentes, alors elles sont convergentes de m\^eme limite.
+
+\end{theorem}
+\subsection{Limites infinies}
+Soit $(u_n)$ une suite réelle.
+\begin{theorem}[définition]
+Elle a pour limite $+\infty$ si $\forall A>0, \exists N_A \in \mathbb{N}, \forall n, n\geq N_A \Rightarrow u_n \geq A$.
+
+Elle a pour limite $-\infty$ si $\forall A>0, \exists N_A \in \mathbb{N}, \forall n, n\geq N_A \Rightarrow u_n \leq -A$.
+\end{theorem}
+\subsection{Suites et opérations}
+On considère 2 suites réelles $(u_n)$ et $(v_n)$. On suppose que $\Lim{+\infty} = l/\pm\infty$.
+\subsubsection{Somme des limites}
+\begin{center}
+\begin{tabular}{_l^l^l^l}
+\tableHeaderStyle
+Limite $(v_n)$ & $-\infty$ & l & $+\infty$\\
+$-\infty$ & $-\infty$ & $-\infty$ & FI\\
+l' & $-\infty$ & l+l' & $+\infty$\\
+$+\infty$ & FI & $+\infty$ & $+\infty$
+\end{tabular}
+\end{center}
+\subsubsection{Produit des limites}
+\begin{center}
+\begin{tabular}{_l^l^l^l^l}
+\tableHeaderStyle
+Limite $(v_n)$ et $(u_n)$ & $-\infty$ & l & 0 & $+\infty$\\
+$-\infty$ & $+\infty$ & signe de $l$$ \times -\infty$ & FI &$-\infty$\\
+l' & signe de $l'$ $ \times -\infty$  & $ll'$ & 0 &  signe de $l'$ $ \times +\infty$\\
+0 & FI & 0 & 0&FI\\
+$+\infty$ & $-\infty$ & signe de $l'$ $ \times +\infty$ & FI&$+\infty$
+\end{tabular}
+\end{center}
+
+\subsection{Limites et inégalités}
+\begin{theorem}[Inégalités]
+Supposons que $u_n\leq v_n$. On a : $\Lim{\infty}u_n = +\infty \Rightarrow \Lim{\infty}v_n = +\infty$ et $\Lim{\infty}v_n = -\infty \Rightarrow \Lim{\infty}u_n = -\infty$
+\end{theorem}
+Si les 2 suites sont convergentes, $\Lim{\infty}u_n \leq \Lim{\infty}v_n$.\marginCritical{Les inégalités strictes deviennent larges quand on passe à la limite. Par exemple, $\forall n\in\mathbb{N}, u_n>0$ et $u_n$ converge, alors $\Lim{\infty}u_n \geq 0$.}
+\begin{theorem}[Théorème des gendarmes]
+Si on a 3 suites réelles avec $u_n\leq w_n\leq v_n$. Si $u_n$ et $v_n$ sont convergentes de m\^eme limite $l$, alors $w_n$ est convergente vers $l$.
+\end{theorem}
+Si une suite est encadrée, la limite de la suite l'est aussi.
+La limite est un point fixe de $(u_n)$.
+\checkInfo{Partie entière}{$\forall x\in\mathbb{R}, \exists! n\in\mathbb{N}$, tel que $n\leq x<n+1$. C'est noté $E(x)=n$.}
+\end{document}
+
+

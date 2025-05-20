@@ -1,0 +1,161 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Chimie des solutions}
+\subtitle{Chimie}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{IHallery}%isabelle.hallery@univ-tlse3.fr
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+
+	\chapter{Transformation chimique et équilibre chimique }
+	\section{Description d'un système isgège d'une transformation chimique}
+	\subsection{Description d'un système}
+	\begin{itemize}
+	 \item Au repos : On considère que le système est immobile
+	 \item Fermé : n'échange pas de matière avec l'extérieur mais échange d'énergie : exemple : montage au reflux/becher
+	 \item En contact avec une seule source de chaleur à température constante
+	\end{itemize}
+\subsubsection{Variables pour décrire l'état physique}
+Température, Pression, Volume. Il suffit d'obtenir 2 des 3 pour connaitre l'évolution du système
+\subsubsection{Variables pour décrire la composition}
+On écrit les constituants physicochimiques, notés $A_i$ avec leur état en indice.
+
+% On se sert de \begin{itemize}
+%                \item la concentration $C_i = \frac{n_i}{V_{tot}}$
+%                \item la fraction molaire
+%               \end{itemize}
+\begin{definition}[Fraction molaire]
+\[x_i^{(\alpha)} = \frac{n_i^{(\alpha)}}{\sum n_j^{(\alpha)} = n_{tot}} \leq 1\] avec $\alpha$ la phase
+\end{definition}
+\criticalInfo{Phase}{Pour le nombre total de mole, il faut bien cacluler les quantités de matière présente dans la phase et non dans tout le milieu : pour un gaz, on ne prend que les gaz et pour un liquide qu'un liquide !}
+\begin{definition}[Grandeur intensive]
+Grandeur indépendante de la quantité de matière : Température, Pression, Concentration, Fraction molaire
+\end{definition}
+
+\begin{definition}[Grandeur extensive]
+Grandeur dépendante de la quantité de matière :  Quantité de matière, masse
+\end{definition}
+\subsection{Pression partielle}
+On utilise le modèle des gaz parfaits.\marginWarning{Dans le modèle des gaz parfaits, les molécules n'ont pas d'influence sur les autres sauf quand elles se rentrent dedans.} La pression peut indiquer des éléments stoechiométriques.\marginTips{En effet, si la quantité de matière reste contsante durant la réaction, la pression reste constante. Il faut alors que la somme des coefficient stoechiométriques des gaz soit nulle.}
+% \begin{theorem}[Équation des gaz parfaits pour un seul gaz]
+%  \[pV = nRT\]
+% \end{theorem}
+
+% \begin{definition}
+% \[P = \frac{F}{S}\]
+% \end{definition}
+\begin{theorem}[Mélange des gaz parfaits]
+On écrit pour chaque gaz $i$ la m\^eme relation. Tout se passe comme si chaque gaz occupait la totalité du volume.
+ \[p_iV = n_iRT\]
+\end{theorem}
+La pression totale $p$ est la somme des pressions partielles $p_i$.
+
+
+
+\subsection{Modélisation de la transformtion}
+% Notation : $(n_{H2})_0$ dans l'état initial
+%
+% $(n_{H2})_c$ consommé
+%
+% $(n_{H2})_f$ formé
+
+On prend en compte les proportions dans lesquelles sont consommés les réactifs et sont formés les produits, les charges et les éléments
+\begin{definition}[Écriture formelle et coefficient]
+$0 = \sum \nu_i A_i$ avec $\nu_i$ le coefficient stoechiométrique algébrisé de $A_i$. Si $A_i$ est un produit ($\nu_i >0$) ou un réactif ($\nu_i <0$).
+\end{definition}
+Écriture formelle :
+
+\subsection{Avancement d'une réaction}
+
+\begin{definition}[Avancement molaire]
+\[\frac{n_i-(n_i)_0}{\nu_i} = \xi \iff n_i = (n_i)_0 + \nu_i \xi\]
+\end{definition}
+
+\begin{definition}[Avancement volumétrique]
+\[x = \frac{\xi}{V_{tot}}\]
+\end{definition}
+On peut donc écrire $ [A_i] = [A_i]_0 + \nu_i x$.
+
+L'avancement maximal, noté $\xi_{max} \geq 0$ est l'avancement calculé si la transformation est totale dans le sens direct.\marginTips{Pour le trouver, on compare le rapport $|\frac{n_0}{\nu}|$ de chaque réactif et on prend le plus petit, qui est l'avancement maximal.}
+
+L'avancement minimal, noté $\xi_{min} \leq 0$ est l'avancement calculé si la transformation est totale dans le sens indirect.
+On peut également se servir du taux d'avancement :\marginWarning{En effet, à un instant $t$, $\alpha_t=\frac{\xi_t}{\xi_{max}}$, donc $\xi_t = \alpha_t \xi_{max}$. C'est utile quand on n'a pas la valeur des quantités initiales de matière.}
+\begin{definition}[Taux d'avancement]
+\[\alpha = \frac{\xi-\xi_{min}}{\xi_{max} - \xi{min}}\]
+\end{definition}
+\subsection{Taux de conversion}
+\criticalInfo{Taux de conversion}{Le taux de conversion $\alpha_i$ est défini par rapport à un constituant alors que le taux d'avancemet est le m\^eme pour tous les réactifs.} Si les proportions initiales de A et de B sont différentes des proportions stoechiométriques , seul le taux de conversion du réactif minoritaire sera égal au taux d'avancement de réaction.
+
+On peut cependant l'utiliser pour obtenir une nouvelle expression de l'avancement. On a \(\alpha_{i,t} = \frac{n_{i,0} - n_{i,t}}{n_{i,0}}\)
+
+\criticalInfo{Taux de conversion}{Le taux de conversion est défini par rapport à un constituant alors que le taux d'avancemet est le m\^eme pour tous les réactifs. On peut cependant l'utiliser pour obtenir une nouvelle expression de l'avancement. On a \(\alpha_{i,t} = \frac{n_{i,0} - n_{i,t}}{n_{i,0}}\)}
+\section{Composition du système dans l'état final}
+\subsection{Transformtion totale/limitée}
+Dans une transformation totale, un des réactif est totalement consommé.
+\begin{itemize}
+ \item dans le sens direct : $\xi_{EF} = \xi{max}$ et $\alpha = 1$
+ \item dans le sens indirect : $\xi_{EF} = \xi{min}$ et $\alpha = 0$
+\end{itemize}
+
+En revanche, dans une transformation limitée, toues les réactifs sont encore présents à l'état final : $\xi_{min} < \xi_{EF} < \xi_{max}$ et $0<\alpha_{EF} <1$
+\subsubsection{Constante d'équilibre d'une réaction chimique}
+Il y a équilibre quand le milieu n'évolue plus alors que tous les réactifs et produits sont présents. Il y a un équilibre dynamique.\marginCheck{La constante d'équilibre se calcule toujours à la fin de la réaction et n'évolue pas ! (C'est le quotient de réaction qui évolue)}
+
+% Notations : $\to$ : réaction totale dans le sens direct ou $\leftrightarrows$ pour une réaction conduisant à état d'équilibre chimique.
+
+% Il existe une constante qui ne dépend que de la température et indépendante de la composition initiale.
+
+\begin{definition}[Constante d'équilibre]
+\[K° = \Pi a(A_i)_{eq}^{\nu_i}\] avec $a(A_i)_{eq}$ est l'activité du constituant physicochimique $A_i$ à l'équilibre et $\nu_i$ le coefficient stoechiométrique algébrisé.
+\end{definition}
+
+\begin{center}
+\begin{tabular}{ll}
+$A_i$ & $a(A_i)$\\
+Gaz parfait & $\frac{p_i}{p^0}$\\
+Soluté & $\frac{C_i}{C^0}$\\
+Solvant & 1\\
+Solide pur & 1\\
+Mélange & $x_i$
+\end{tabular}
+\end{center}
+\subsection{Calcul de K}
+On la calcule  à partir des éléments de la réaction pour une tenpérature donnée et elle ne dépend pas des quantités de matière initiales.
+
+En mumtipliant les réaction par des coefficients, on peut trouver le K d'une réaction avec des combinaisons linéaires. Si on a \(K_1\) pour une réaction et qu'on multiplie l'équation par 2, on a $K_1^2$. On écrit le $K$ de la réaction.
+
+Si on peut écrire l'équation l'équation de réaction (1) comme $(2)\times n + (3)\times m$, alors $K(1) = K(2)^n\times K(3)^m$.
+
+Pour de petites valeurs, on a $pK° = -\log(K°)$.
+\tipsInfo{En pratique pour les gaz}{On a :\(a = \frac{p_i}{P_0} = \frac{x_iP_t}{P_0} = \frac{n_iP_t}{n_tP_0}\). Il faut que la pression soit en bar pour \^etre dans le m\^eme unité que $P_0$.}
+\subsection{Composition dans l'état final}
+Si $K° > 10^{4}$, la réaction est considérée comme totale et $\xi_{EF} = \xi_{max}$, si $K° > 10^{-4}$ la réaction est considérée comme totale dans le sens indirect et $\xi_{EF} = \xi_{min}$. Si $K°$ est entre les deux valeurs, on doit résoudre une équation.
+
+
+\end{document}
+

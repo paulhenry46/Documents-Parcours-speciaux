@@ -1,0 +1,153 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Atomistique}
+\subtitle{La matière à l'échelle atomique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{J.Cuny}%sebastien.deveuhels.irap.omp.eu
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+\setcounter{chapter}{1}
+
+	\chapter{Énergie d'un électron}
+
+\section{Structure électronique des hydrogénoides}
+\subsection{Caractéristiques}
+Hydrogène : 1 proton
+
+Deutérium : 1 proton + 1 neutron
+
+Tritium : 1 proton + 2 neutrons
+
+L'hydrogène est l'élément le plus abondant de l'univers (92\%).
+
+\subsubsection{La lumière}
+\begin{theorem}[Fréquence]
+\[\nu_{(Hz = s^{-1})} = \frac{c_{(m\cdot s^{-1})}}{\lambda_{(m)}}\]
+\end{theorem}
+
+\begin{theorem}[Relation de Planck]
+\[E = \frac{hc}{\lambda} = h_{(J\cdot s)}\nu\]
+\end{theorem}
+\subsection{États}
+\warningInfo{Définition}{État fondamental = Étal de plus basse énergie (n=1) et États excités : tous les états avec une énergie supérieure à l'état fondamental. Il y a en a une infinité.}
+
+Pour passer à un niveau d'énergie supérieur, l'électron doit absorber un photon fournissant exactement l'énergie nécessaire.\marginCritical{Ce n'est pas l'intensité qui compte mais la longueur d'onde.}
+\subsubsection{Énergie d'un État}
+L'énergie de l'électron est discontinue. Un électron ne peut pas avoir toutes les énergies mais certaines bien déterminées.\marginInfo{En effet, si on excite des hydrogène puis on disperse la lumière émise par un prise : on obtient des raies de couleurs : c'est un spectre discret de couleur, non continu.}
+\begin{theorem}[Uniquement pour l'hydrogène]
+\[E_n = -\frac{hcR_H}{n^2}\] avec n le nombre quantique principal, $1 \leq$ et $R_H$ la constante de Rydberg
+\end{theorem}
+Ici, $hcR_H = 2.17\cdot10^{-18} = 13.598eV$. Donc \[E_n = -\frac{13.6}{n^2}eV\]
+\begin{theorem}[Uniquement pour les hydrogénoides]
+\[E_n = -\frac{hcR_HZ^2}{n^2} = -\frac{13.6\times Z^2}{n^2}eV\]
+\end{theorem}
+\subsubsection{Conséquence : Lien avec les raies d'émission}
+La longueur d'onde du photon émis ou absorbé lors du passage entre 2 niveaux est donnée\marginInfo{
+En effet,
+\begin{flalign*}
+E_{ph} &=\frac{hc}{\lambda}\\
+&= E_n' - E_n\\
+&=hcR_H(-\frac{1}{n'^2} + \frac{1}{n^2})\\
+&\Rightarrow \frac{1}{\lambda} = R_H(-\frac{1}{n'^2} + \frac{1}{n^2})\\
+&\Rightarrow \lambda = \frac{1}{R_H(-\frac{1}{n'^2} + \frac{1}{n^2})}
+\end{flalign*}
+} par : $\lambda = \frac{1}{R_H(-\frac{1}{n'^2} + \frac{1}{n^2})}$.
+
+Avec $n'>n$.\marginCritical{
+$n'$ correspond toujours au niveau le plus et $n$ au niveau le plus. Ainsi, dans le cas :
+\begin{itemize}
+ \item d'une émission de photon : $n$ est le niveau de départ et $n'$ celui d'arrivée
+  \item d'une absorption de photon : $n$ est le niveau d'arrivée et $n'$ celui de départ
+\end{itemize}}
+Dem pour trouver $n$ et $n'$.
+\warningInfo{Séries d'émissions principales}{
+	\begin{tabular}{_l^l^l}
+		\tableHeaderStyle%
+		Série de & Excitation vers n= & Domaine\\
+		Balmer & 2 & Visible\\
+		Lyman & 1 & Ultraviolet\\
+		Paschen, Brackett, Pfund & $\geq$3 & Infrarouge\\
+	\end{tabular}}
+\subsubsection{Lien avec l'énergie}
+La transition d’un niveau d’énergie plus élevé vers un état fondamental (telle que de la couche 3 à la couche 1) produit un photon d’énergie plus élevée (avec une longueur d'onde plus petite car $\lambda = \frac{hc}{E}$) que la transition d’un état de départ inférieur (de 2 à 1).\marginInfo{À l'inverse la transition de l' état fondamental vers un niveau d'énergie élevé (telle que de la couche 1 à la couche 3) demande un photon d’énergie plus élevée que la transition vers un état d'arrivée inférieur (de 1 à 2).}
+
+\subsubsection{Ionisation}
+\begin{theorem}[Définition]
+La valeur minimale de
+l’énergie qu’il faut fournir à l’atome d’hydrogène pris dans son état fondamental pour lui
+arracher son électron. $E_i = -E_1$.
+\end{theorem}
+\subsection{Méthodes}
+\subsubsection{Déterminer un niveau de transition}
+On part de l'égalité démontrée plus haut : $\frac{1}{\lambda} = R_H(-\frac{1}{n'^2} + \frac{1}{n^2})$, puis
+\begin{multicols}{2}
+si on cherche $n'$ :
+\begin{flalign*}
+\frac{1}{\lambda R_H} &= -\frac{1}{n'^2} + \frac{1}{n^2}\\
+\frac{1}{\lambda R_H} -\frac{1}{n^2}&= -\frac{1}{n'^2}\\
+\frac{-1}{\lambda R_H} +\frac{1}{n^2}&= \frac{1}{n'^2}\\
+\frac{-n^2}{\lambda R_H n^2} +\frac{\lambda R_H}{n^2\lambda R_H}&= \frac{1}{n'^2}\\
+\frac{\lambda R_H -n^2}{\lambda R_H n^2}&= \frac{1}{n'^2}\\
+\sqrt{\frac{\lambda R_H n^2}{\lambda R_H -n^2}}&= n'\\
+\end{flalign*}
+\columnbreak
+
+si on cherche $n$ :
+\begin{flalign*}
+\frac{1}{\lambda R_H} &= -\frac{1}{n'^2} + \frac{1}{n^2}\\
+\frac{1}{\lambda R_H} +\frac{1}{n'^2}&= \frac{1}{n^2}\\
+\frac{\lambda R_H +n'^2}{\lambda R_H n'^2}&= \frac{1}{n^2}\\
+\sqrt{\frac{\lambda R_H n'^2}{\lambda R_H +n'^2}}&= n\\
+\end{flalign*}
+\end{multicols}
+\subsubsection{Déterminer un niveau d'énergie à partir d'une énergie reçue}
+On peut transformer l'énergie en longueur d'onde avec $\displaystyle E = h\frac{c}{\lambda}$, puis utiliser les méthodes précédentes.
+
+On peut utiliser la formule de base :
+\begin{flalign*}
+E_n &= -\frac{hcR_H}{n^2}\\
+n &= \sqrt{\frac{-hcR_H}{E_n}}
+\end{flalign*}
+\subsubsection{Déterminer les transition possibles une fois que l'atome est soumis à une certaine énergie}
+On détermine le niveau d'énergie sur lequel il se trouve avec la méthode précédente.
+
+Ce sont toutes les transitions amenant à un niveau inférieur. Il y en a $\sum^n_{k=1} (n-1)$
+\subsubsection{Déterminer l'énergie d'ionisation d'un hydrogénoide}
+Elle dépend du niveau dans lequel se trouve l'électron. Si ce n'est pas précisé, on le suppose dans l'état fondamental et $n=1$.
+
+$\displaystyle E_{\infty} = - E_n =  \frac{hcR_H}{n^2}Z^2$ avec $Z$ le nombre de protons et $n$ l'énergie du niveau dans lequel se trouve l'électron.
+
+\subsubsection{Déterminer une transition électronique à partir d'une longueur d'onde chez un hydrogénoide}
+On suppose qu'il est dans l'état fondamental à l'origine.
+
+On a l'égalité : \[E_n = -\frac{hcR_H}{n^2}Z^2 = E_1 + E_{ph} = - \frac{hcR_H}{1}Z^2 + E_{ph} \]
+
+On en tire la valeur de n : \[ n = \frac{-hcR_HZ^2}{-hcR_H + E_{ph}} \] avec $E_{ph}$ l'énergie d'un photon que l'on retrouve avec $E = h\frac{c}{\lambda}$.\marginCritical{Cette expression met en jeu l'énergie d'un photon que l'on obtient en Joules avec la relation $E = h\frac{c}{\lambda}$. Il faut donc le convertir en eV pour effectuer le calcul.}
+\end{document}
+

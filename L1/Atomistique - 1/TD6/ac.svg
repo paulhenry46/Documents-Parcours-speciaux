@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   width="927"
+   height="743"
+   id="svg2">
+  <defs
+     id="defs4" />
+  <g
+     transform="translate(102.336,-86.81729)"
+     id="layer1">
+    <rect
+       width="12.486286"
+       height="235.78271"
+       x="306.664"
+       y="308.81729"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.94499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.4766355"
+       id="rect3696" />
+    <rect
+       width="12"
+       height="232.5827"
+       x="269.664"
+       y="308.81729"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.94499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.4766355"
+       id="rect1922" />
+    <rect
+       width="11.999992"
+       height="224.24583"
+       x="-615.4975"
+       y="-232.54584"
+       transform="matrix(-0.5000002,-0.8660253,0.8660253,-0.5000002,0,0)"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.94499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.4766355"
+       id="rect1889" />
+    <rect
+       width="12.130057"
+       height="223.92114"
+       x="-321.07187"
+       y="-742.42114"
+       transform="matrix(0.5000002,-0.8660253,-0.8660253,-0.5000002,0,0)"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.94499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.4766355"
+       id="rect7228" />
+    <text
+       x="-37.7169"
+       y="753.19153"
+       style="font-size:188px"
+       id="text2247"
+       xml:space="preserve"><tspan
+         x="-37.7169"
+         y="753.19153"
+         id="tspan2249"><tspan
+           x="-37.7169"
+           y="753.19153"
+           style="font-family:Arial"
+           id="tspan2251">R</tspan></tspan></text>
+    <text
+       x="219.5761"
+       y="298.52243"
+       style="font-size:188px"
+       id="text2305"
+       xml:space="preserve"><tspan
+         x="219.5761"
+         y="298.52243"
+         id="tspan2307"><tspan
+           x="219.5761"
+           y="298.52243"
+           style="font-family:Arial"
+           id="tspan2309">O</tspan></tspan></text>
+    <text
+       x="484.57611"
+       y="755.57825"
+       style="font-size:188px"
+       id="text2182"
+       xml:space="preserve"><tspan
+         x="484.57611"
+         y="755.57825"
+         id="tspan2184"><tspan
+           x="484.57611"
+           y="755.57825"
+           style="font-family:Arial"
+           id="tspan2186">OH</tspan></tspan></text>
+  </g>
+</svg>

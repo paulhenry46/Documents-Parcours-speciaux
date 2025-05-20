@@ -1,0 +1,96 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Atomistique}
+\subtitle{La matière à l'échelle atomique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{J.Cuny}%sebastien.deveuhels.irap.omp.eu
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+\setcounter{chapter}{4}
+\chapter{Nomenclature}
+\section{Représentation des molécules en chimie organique}
+\subsection{Représentation non structurale}
+Il y a la formule brute.
+\begin{theorem}[Nombre d'insaturation]
+\[N_i = N_c+ 1-\frac{1}{2}n_h+\frac12 n_N - \frac12 n_x\]
+C'est le nombre de cycles et de liaisons multiples
+\end{theorem}
+Pour $C_2H_6O : 0$, $C_6H_6 :4$, $C_4H_6O_3 :2$
+
+\begin{definition}[Isomère]
+Molécule avec la m\^eme formule brute mais avec des agencements d'atome différentes.
+\end{definition}
+\subsection{Représentation strcuturale}
+Il y a la structure de Lewis
+\subsubsection{Formule développée}
+lewis mais sans les DNL. Elle représente l'ensemble des liaisons.
+\subsubsection{Formule semi-developpée}
+On ne représente plus les liaisons $C-H$ et on condense la notation des fonctions.
+
+Exemple : $CH_3-CH_2-OH$
+\subsubsection{Formule topologique}
+On n'écrit plus $C$ et $H$.
+\subsection{Nomenclature}
+Alcane = Suffixe en ane
+
+Chaine carbonée principale = la plus longue
+
+Quand on est en ramfication, on a un truc en yle. On prend la numérotation avec les chiffres les plus petits. S'il y a en a plusieurs, on les met par ordre alphabétique.
+
+Alcène : S'il y a une liaison double : 3-methylhex-X-ene, avec X le plus petit.
+\subsection{Isomérie}
+2 isomères de constitution sont 2 molécules qui ont la m\^eme formule brute mais pas la m\^eme formule développée.
+\begin{itemize}
+ \item Isomérie de fonction : 2 isomères de constitution avec des fonctions différentes
+ \item Isomérie de cha\^ine : M\^eme fonction mais chaine carbonnée différentes
+ \item Isomère de position : m\^eme focntion et chaine mais position de la fonction différente.
+\end{itemize}
+Plus la température d'ébulation est grande plus les intéractions inter moléculaires sont grandes. Géométrie de la fonction : Isomères avec des propriétés physiques différentes
+\subsection{Représentation spatiale}
+\subsubsection{Représentation de cram}
+Le truc habituel de VSEPR (trait gras, trait pointillé, trait normal, etc)
+\subsubsection{Projection de Newman}
+On l'utilise pour les molécules avec au moins une liaison carbone-carbone. Je met mon oeuil le long de la liaison carbone-carbone
+
+Conformères : Conformation : A basse temprétaure la forme décalée est la forme la plus stable : Meme moléculaire avec des conformations différentes
+\section{Stereoismoérie}
+Stéréoisomères : Molécules identiques mais non superposables
+
+Plusieurs types :
+\begin{itemize}
+ \item de géométrie
+ \begin{itemize}
+  \item sur les doubles liaisons
+ \end{itemize}
+
+\end{itemize}
+
+
+\end{document}
+

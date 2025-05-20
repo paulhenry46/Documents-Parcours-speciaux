@@ -1,0 +1,108 @@
+ % !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Optique Géométrique}
+\subtitle{Niveau 1}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Gatel}%christophe.gatel@cemes.fr : section B sillon 7
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+%\titleOne
+
+\setcounter{chapter}{7}
+\chapter{Résumé - Formulaire}
+\section{Relations de base}
+\begin{theorem}[Relations de conjugaison]
+ \begin{itemize}
+  \item Dioptre : \(\displaystyle \frac{n_i}{\bar{SA_i}}-\frac{n_0}{\bar{SA_o}} = \frac{n_i-n_o}{\bar{SC}} = V\)
+  \item Lentille : \(\displaystyle \frac{1}{\bar{OA_i}}-\frac{1}{\bar{OA_o}}  = V\)
+  \item Miroir sphérique : \(\displaystyle \frac{1}{\bar{SA_i}}-\frac{1}{\bar{SA_o}}  = \frac{-2}{\bar{SC}} = V\)
+ \end{itemize}
+\end{theorem}
+\begin{definition}[Convexité/concavité]
+Un dioptre est concave si $\bar{SC}<0$ et convexe $\bar{SC}>0$
+\end{definition}
+\begin{definition}[Convergence/divergence]
+Un dioptre est convergent si $V>0$ et divergent $V<0$
+\end{definition}
+\begin{theorem}[Distances focales]
+ \begin{itemize}
+  \item Dioptre sphérique : \(\displaystyle\bar{SF_i} = \frac{n_i}{V}\) et \(\displaystyle\bar{SF_o} = -\frac{n_o}{V}\)
+  \item Conséquence : Lentille et Miroir : \(\displaystyle\bar{SF_i} = \frac{1}{V}\) et \(\displaystyle\bar{SF_o} = -\frac{1}{V}\)
+ \end{itemize}
+\end{theorem}
+\begin{theorem}[Grandissement transversal]
+ \begin{itemize}
+  \item Dioptre sphérique : \(\displaystyle G_t = \frac{n_0 \bar{SA_i}}{n_i \bar{SA_o}}\)
+  \item Conséquence : Lentille  et miroir : \(\displaystyle G_t = \frac{ \bar{SA_i}}{\bar{SA_o}}\)
+ \end{itemize}
+
+\end{theorem}
+\criticalInfo{Grandissement angulaire Ga / Grossissement Gr}{
+\begin{itemize}
+ \item \(\displaystyle G_a = \frac{\alpha_i}{\alpha_o}\) avec $\alpha_i$ et $\alpha_o$ les angles de sortie et d'entré des rayons dans le système optique.
+ \item \(\displaystyle G_r = \frac{\alpha_i}{\alpha}\) avec $\alpha_i$ l' angle de sortie du système optique des rayons et $\alpha$ l'angle avec lequel on voit l'objet lorsque celui-ci est placé au PP, soit 25 cm.
+\end{itemize}
+}
+\begin{definition}[Puissance]
+C'est l'angle de sortie du système optique $\alpha_i$ sur la taille de l'objet : \(\displaystyle P = \frac{\alpha_i}{\bar{A_oB_o}}\)
+\end{definition}
+\section{Lentilles}
+\criticalInfo{Combinaison impossibles}{
+\begin{itemize}
+ \item Lentille Convergente : Objet virtuel / Image virtuelle
+ \item Lentille Divergente : Objet réel / Image réelle
+\end{itemize}
+}
+\section{Oeil}
+\begin{definition}[Punctun proximum (PP) / Punctun remotum (PR)]
+Le PP est la distance minimale de vision nette lorsque l'oeil accomode au maximum et le PR est la distance maximale de vision sans accomodation
+\end{definition}
+\begin{definition}[Oeil emmétrope]
+Un oeil emmétrope est un oeil qui respecte les conditions de PP  de 25 cm et de PR à l'infini.
+\end{definition}
+\begin{definition}[Myopie]
+Le PR n'est plus l'infini. L'oeil est déjà trop convergent mais le PP se rapproche.
+\end{definition}
+\begin{definition}[Hypermetropie]
+L'oeil n'est pas assez convergent. Au bout d'un moment, l'oeil n'arrive plus à accomoder : Le PP s'éloigne.
+\end{definition}
+\begin{definition}[Presbycie]
+C'est la diminution de l'amplitude d'accomodation.
+\end{definition}
+\section{Miroir}
+\criticalInfo{Sens algébrique}{
+\begin{itemize}
+                                \item On change le sens positif de parcours selon si le rayon appartient à
+l'objet ou à l' image.
+\item le sens positif de $\bar{SC}$ est celui du milieu objet
+                               \end{itemize}
+}
+\warningInfo{Convergence et convexité}{Contrairement aux lentilles, un miroir convexe est divergent et un miroir concave est convergent.}
+\end{document}
+

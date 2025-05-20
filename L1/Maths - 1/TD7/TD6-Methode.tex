@@ -1,0 +1,171 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{polynom}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\begin{document}
+
+\setcounter{chapter}{6}
+
+	\chapter{Polyn\^omes et fractions rationnelles - Méthodologie}
+\section{Polyn\^ome}
+\subsection{Multiplications de 2 polyn\^omes}
+On calcule d'abord les coefficients : Le nombre de coefficient vaut le double du degré le plus des 2 polyn\^omes. Pour chaque coefficient, on cherche le nombre de façon d'obtenir le degré correspondant à son indice.\marginTips{Par exemple, pour $C_3$, afin d'obtenir $3$ avec les indices des coefficients que l'on a, on peut faire $0+3,1+2,2+,3+0$. Pour obtenir $C_5$, on ne peut faire que $3+2$ ou $2+3$. On ne peut pas faire $4+1$ En effet, il n'y pas de coefficient $4$ dans nos polyn\^omes.} Finalement, on écrit le résultat avec un polyn\^ome ayant le double du degré le plus haut initial, avec les coefficients trouvés.
+
+Exemple : $P=3+4X+{\color{red}0X^2}+12X^3$ et $Q=1+X+X^2 + {\color{red}0X^3}$. On a $P+Q = 4+5X+X^2+12X^3$, $\sqrt{2} Q = \sqrt{2}+\sqrt{2}X+\sqrt{2}X^2$.\marginInfo{Pour plus de facilité dans le repérage des coefficients, on peut rajouter des coefficients, on peut en rajouter des nuls pour les degrés nul dans les polyn\^omes. C'est pourquoi on a rajouté en rouge $0X^3$ et $0X^2$.}
+\begin{flalign*}
+C_0 &= a_0b_0 = 3\times 1\\
+C_1 &= a_1b_0+a_0b_1 = 3\times 1 + 4\times 1\\
+C_2 &= a_1b_1+a_0b_2+a_2b_0\\
+C_3 &= a_0b_3+a_1b_2+a_2b_1+a_3b_0\\
+C_4 &= a_1b_3+a_2b_2+a_3b_1\\
+C_5 &= a_2b_3+a_3b_2\\
+C_6 &= a_3b_3
+\end{flalign*}
+
+On écrit $PQ = C_0+C_1X+C_2X^2+C_3X^3+C_4X^4+C_5X^5+C_6X^6$.
+% \subsection{Trouver les racines d'un polyn\^ome}
+% On peut penser à le factoriser ou à utiliser les formules
+% \begin{itemize}
+%  \item Degré 2 : $x=\frac{-b\pm\sqrt{\Delta}}{2a}$, avec $\Delta = b^2-4ac$
+% \end{itemize}
+\subsection{Déterminer la multiplicité d'une racine}
+On sait que $x_0$ est racine de $P$. Pour détmerminer la multiplicité de la racine, c'est à dire trouver pour quel $\alpha$, la racine ne divise plus la dérivée $\alpha$ieme du Polyn\^ome.
+
+Exemple : On veut déterminer la multiplicité de la racine $-1$ du polyn\^ome $P(X) = X^4+2X^3+2X^2+1$. Après avoir vérifié que $-1$ est bien racine, on calcule la dérivée première : $P'(X) = 4X^3+6X^2+4X+2$. En injectant $-1$ dans cette dernière, on retrouve $0$. On calcule ensuite la dérivée seconde : $P''(X) = 12X^2+12X+4$. Ici, $P''(-1) = 4\neq0$. Donc $\alpha = 2$ et la multiciplité de $-1$ comme racine est $2$.
+\subsection{Décomposer un polyn\^ome en facteurs irréductibles}
+On cherche des racines pour écrire le polyn\^ome $P(X)$ sous la forme $(X-x_0)(X-x_1)(X-x_n)\dots$.
+
+Pour ce faire, on peut commencer par chercher une racine évidente.
+
+Une fois une racine trouvée, on peut évaluer sa multiplicité, puis diviser le polyn\^ome par $(X-x_0)^{\alpha}$ pour trouver un autre polyn\^ome au quotient, sur lequel on va recommencer à cherche des racines, et ce jusqu'à ce que l'on écrit le polyn\^ome en polyn\^omes irréductibles.
+
+Quelques astuces pour trouver les racines :
+\begin{itemize}
+ \item Si on a un polyn\^ome de la forme $X^n-1$, il s'agit des racines $n$ ièmes de l'unité.
+ \item Si on conna\^it les racines d'un polyn\^ome $Q(X)$ divisant $P(X)$, alors $P(X)$ a aussi les racines de $Q$ avec au moins la m\^eme multiplicité.
+ \item Si une racine d'un polyn\^ome est un nombre complexe, une autre racine est son conjugué.
+\end{itemize}
+
+
+\section{Décomposer une fraction rationnelle en éléments simples}
+\subsection{Méthode générale}
+\subsubsection{Travail sur le dénominateur}
+On factorise le dénominateur en produit d'éléments irréductibles à coefficients complexes.
+\subsubsection{Décomposition théorique}
+On donne la décomposition de la forme $P(X) = E(X) + \frac{a}{X-x_1} + \frac{b}{X-x_2} + \frac{c}{X-x_3} + \dots$
+
+Dans le cas de racines multiples, il y a d'autres éléments à rajouter dans la décomposition théorique. Si elle est d'ordre 2, il faut rajouter $\frac{a_2}{(X-x_1)^2}$, si elle est d'ordre 3 : $\frac{a_2}{(X-x_1)^2}$ et $\frac{a_3}{(X-x_1)^3}$
+\subsubsection{Calcul de $E$}
+On fait la division euclidienne du numérateur par le dénominateur.\marginTips{Si le degré du dénominateur est plus élevé que le numérateur, le quotient de la division est nul et $E(X) = 0$ !} $E(X)$ vaut le quotient trouvé.
+\subsubsection{Calcul des coefficients}
+On utilise la méthode dit ``du cache''. On multiplie $F$ par chacun des éléments irréductibles du dénominateur puis on injecte la racine du-dit élément pour déterminer le coefficient. On réitère pour chacun des éléments irréductibles.
+
+\subsection{Passer d'une décomposition complexe en décomposition réelle}
+On a une décomposition de la forme : $P(X) = E(X) + \frac{a}{X-x_1}+\frac{b}{X-x_2} +\frac{c}{X-z_1} + \frac{d}{X-z_2}$, avec $z_1,z_2,c,d\in\mathbb{C}$. On souhaite avoir une décompositionn réelle, c'est à dire avec $c,d\in\mathbb{R}$.
+
+On met $\frac{c}{X-z_1}$et$ \frac{d}{x-z_2}$ sous le m\^eme dénominateur pour obtenir $\frac{c(x-z_2)}{(X-z_1)(X-z_2)}$ et $\frac{d(x-z_1)}{(X-z_1)(x-z_2)}$. À ce stade, il nous reste 2 éléments simples réels avec le m\^eme dénominateur, qu'il ne nous reste plus qu'à sommer.
+\checkInfo{Exemple 1}{
+Décomposons $P(X) = \frac{1}{1-X^4}$ dans $\mathbb{C}$ puis dans $\mathbb{R}$.
+
+On travaille d'abord le dénominateur pour le transformer en produits de polyn\^omes irréductibles dans $\mathbb{C}$ : \begin{flalign*}P(X) &= \frac{1}{1^2-(X^2)^2} =  \frac{1}{(1-X^2)(1+X^2)}\\
+&= \frac{1}{(X-1)(X+1)(X-i)(X+i)} \end{flalign*}
+
+La décomposition théorique s'écrit alors :
+\[P(X) = E(X) + \frac{a}{X-1} + \frac{b}{X+1} + \frac{c}{X-i} + \frac{c}{X+i}\]
+
+Le degré du numérateur étant plus faible que celui du dénominateur, $E(X)=0$. On applique la méthode du cache pour trouver les coefficients :
+\begin{flalign*}
+((X-1)P(X))_{X=1} &= \frac{1}{(1+1)(1-i)(1+i)} = a = \frac{1}{4}\\
+((X+1)P(X))_{X=-1} &= \frac{1}{(1+1)(1-i)(1+i)} = b = \frac{1}{4}\\
+((X+i)P(X))_{X=-i} &= \frac{1}{(-i-i)(1-i)(1+i)} = c = \frac{-1}{4i} = \frac{i}{4}\\
+((X-i)P(X))_{X=i} &= \frac{1}{(i+i)(1-i)(1+i)} = c = \frac{1}{4i} = \frac{-i}{4}\\
+\end{flalign*}
+Avec les coefficients, nous pouvons écrire la décomposition dans $\mathbb{C}$ :
+\[P(X) = \frac{1}{4(X-1)} + \frac{1}{4(X+1)} + \frac{i}{4(X-i)} + \frac{-i}{4(X+i)}\]
+On transforme les fractions complexes en fractions réelles en les mettant au m\^eme dénominateur :
+\begin{flalign*}
+&\frac{i}{4(X-i)} + \frac{-i}{4(X+i)}\\
+&= \frac{i(X+i)}{4(X-i)(X+i)} + \frac{-i(X-i)}{4(X+i)(X-i)}\\
+&= \frac{iX+1}{4(X^2+1)} + \frac{-iX+1}{4(X^2+1)}\\
+&= \frac{2}{4(X^2+1)} = \frac{1}{2(X^2+1)}\\
+\end{flalign*}
+Finalement, la décomposition dans $\mathbb{R}$ est :
+\[P(X) = \frac{1}{4(X-1)} + \frac{1}{4(X+1)} + \frac{1}{2(X^2+1)}\]
+}
+\subsection{Méthode de la dérivée}
+Cette méthode est utile pour trouver les coefficients dans le cas de p\^oles multiples. Une fois le coefficient associé à la puissance la plus haute du p\^ole, on dérive successivement pour trouver les autres coefficients associés au puissances plus basses.
+\checkInfo{Exemple 2}{
+On décompose $P(X) = \frac{X^2}{(X+2)^4}$. Il n'y a qu'un p\^ole mais de multiplicité 4.
+
+On sait que $E(X)=0$. La décomposition théorique s'écrit donc : \[P(X) = \frac{a}{X+2}+\frac{b}{(X+2)^2} +\frac{c}{(X+2)^3} +\frac{d}{(X+2)^4} \]
+
+En appliquant la méthode du cache avec $(X+2)^4P(X)$, on trouve \[(X+2)^4P(X) = a(X+2)^3 + b(X+2)^2+c(X+2)+d\]
+
+De cette égalité, avec $X=-2$, on trouve $d=4$.
+
+On va maintenant dériver cette égalité.
+
+On va dériver $(X+2)^4P(X)$ une première fois pour déterminer $c$. Il nous faut donc dériver $(X+2)^4P(X) = (X+2)^4\times\frac{X^2}{(X+2)^4} = X^2$. On obtient $2X$. On dérive maintenant le membre de droite pour obtenir $a\times3(X+2)^2+b\times2(X+2)+C$. Finalement, on obtient une nouvelle égalité :
+\[2X = a\times3(X+2)^2+b\times2(X+2)+c\]
+Avec $X=-2$, on trouve $c = -4$
+
+Pour trouver $b$, on dérive cette égalité pour trouver :
+\[2 = a\times6(X+2)+b\times2\]
+On en déduit, avec $X=-2$ que $b=1$.
+
+Pour trouver $a$, on dérive cette égalité pour trouver :
+\[0 = 6a\]
+D'où l'on tire $a=6$
+
+}
+
+Une alternative si la multiplicité est basse (2 par exemple) est d'évaluer $P(X)$ en des points autres que les p\^oles pour trouver des relations entre les coefficients.
+\section{Calculs sur les polyn\^omes}
+\subsection{Déterminer si un polyn\^ome en divise un autre}
+On cherche à déterminer si le polyn\^ome $Q$ divise le polyn\^ome $P$. On cherche d'abord les racines de $Q$. Si $Q$ divise $P$, alors les racines de $Q$ sont aussi les racines de $P$. On remplace donc dans $X$ par une racine et on vérifie si le résultat est nul.
+\subsection{Trouver un polyn\^ome respectant certaines conditions}
+On cherche un polyn\^ome de degré inférieur à $n$ passant par $n+1$ points. Pour cela, on détermine d'abord les polynomes de Lagrange associés aux points. On somme ensuite les polynomes multipliés par un coeffcient selon la valeur que doit prendre le polynome au point étudié.
+
+Exemple : On cherche un polyn\^ome de degré 3 tel que $P({\color{red}1})=3, P({\color{orange}-1})=2,P({\color{ForestGreen}2})=-1$. On calcule d'abord les polyn\^omes de Lagrange en chacun des points\marginTips{On met au numérateur les valeurs pour lesquelles le polyn\^ome est contraint, autre que la valeur pour laquelle on calcule le polyn\^ome. Au dénominateur, on soustrait à la valeur pour laquelle on calcule le polynome de Lagrange les autres valeurs en lesquelles le polynome est contraint} :
+\begin{itemize}
+ \item $\displaystyle L_1 = \frac{(X-({\color{orange}-1}))(X-{\color{ForestGreen}2})}{({\color{red}1}-{\color{orange}-1})({\color{red}1}-{\color{ForestGreen}2})}$
+ \item $\displaystyle L_2 = \frac{(X-{\color{red}1})(X-{\color{ForestGreen}2})}{({\color{orange}-1}-{\color{red}1})({\color{orange}-1}-{\color{ForestGreen}2})}$
+ \item $\displaystyle L_3 = \frac{(X-{\color{red}1})(X-({\color{orange}-1}))}{({\color{ForestGreen}2}-{\color{red}1})({\color{ForestGreen}2} - ({\color{orange}-1}))}$
+\end{itemize}
+On somme les polyn\^omes de Lagrange pour trouver le polyn\^ome final sans oublier les coefficients !\marginTips{Par exemple, pour $L_1$, son coefficient sera 3, car la valeur pour laquelle on l'a calculé est 1, et on veut que $P(1) = 3$.} On obtient :
+\[P(X) = 3L_1+2L_2-1L_3\]
+\end{document}
+
+

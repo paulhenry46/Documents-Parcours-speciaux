@@ -1,0 +1,306 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\begin{document}
+
+\setcounter{chapter}{5}
+
+	\chapter{Nombres complexes}
+%TODO Cartes sur les fonction arcos/arrcisn, etc fonctions réciproques circulaires (dérivées, domaine de départ et d'arrivé et la réciproque)
+\section{Généralités}
+\subsection{Définitions}
+\begin{itemize}
+\item L'ensemble des nombres de la forme $a+ib$, où $a$ et $b$ sont des réels et $i$ est tel que $i^2=-1$, est appelé ensemble des nombres complexes. On le note $\mathbb{C}$.
+
+\item L'écriture $z=a+ib$ est la forme algébrique du nombre complexe $z$, où $a$ est la partie réelle de $z$, $b$ sa partie imaginaire.
+
+On note $Re(z)=a, Im(z)=b$.
+
+$\mathbb{R}$ est une partie de $\mathbb{C}$, $\mathbb{R}$ contient les nombres complexes  dont la partie imaginaire $b$ est nulle.
+
+\item Tout nombre complexe dont la partie réelle $a$ est nulle est appelé nombre imaginaire pur.
+\end{itemize}
+\subsection{Propriétés}
+\warningInfo{Inférieur Ou supérieur}{Il n'y a pas de relation d'ordre sur $\mathbb{C}$. On ne peut pas dire qu'un nombre complexe est plus grand qu'un autre.}
+\subsubsection{Opérations usuelles}
+Soient $z=a+i\,b$ et $z'=a'+i\,b'$ deux nombres complexes.
+
+\begin{itemize}
+ \item $\displaystyle z+z'=(a+a')+i(b+b')$
+ \item $\displaystyle z\times z'=(aa'-bb')+i(ab'+a'b)$
+ \item $\displaystyle\frac{1}{z}=\frac{a}{a^2+b^2}-i\frac{b}{a^2+b^2}$
+\end{itemize}
+\subsubsection{Opérations de conjugaison}
+\begin{itemize}
+ \item $\displaystyle \bar{z} = a-ib$
+ \item $\displaystyle\overline{z+z'} = \overline{z}+\overline{z'}$
+ \item $\displaystyle Re(z) = \frac{z+\bar{z}}{2}$
+  \item $\displaystyle Im(z) = \frac{z-\bar{z}}{2i}$
+  \item $\displaystyle z\in\mathbb{R} \iff z = \bz$
+  \item $\displaystyle\overline{\overline{z}} = z$.
+\end{itemize}
+
+% Dans ce chapitre, $a,a',b,b'\in\mathbb{R}$
+% \section{Généralité}
+% \subsection{Définition}
+% On note $i$ un nombre tel que $i^2 = -1$. On définit $\mathbb{C} = \{a+ib,\}$. La partie imaginaire $b\in\mathbb{R}$.
+%
+% \subsection{Opérations}
+% On peut prolonger les opérations $+$ et $\times$ qui existent sur $\mathbb{C}$.
+%
+% \begin{itemize}
+%  \item $z+z' = a+a'+i(b+b')$
+%  \item $z\times z' = aa'-bb'+i(ab'+ba')$
+% \end{itemize}
+% \subsubsection{Propriétés}
+% \begin{itemize}
+%  \item $(\mathbb{C}, +,\times)$ est un corps commutatif
+%  \item Les opérations sont associatives
+%  \item Elles sont commutative : $a+0i$ est le neutre pour l'addition et $1$ est le neutre pour la multiplication
+%  \item $-z = -a-ib$
+%  \item $\frac{1}{z} = \frac{a-ib}{a^2+b^2}$.
+% \end{itemize}
+% On a : $\mathbb{R}\hookrightarrow \mathbb{C}$.
+%
+% \warningInfo{Inférieur Ou supérieur}{Il n'y a pas de relation d'ordre sur $\mathbb{C}$}
+%
+% \subsection{Opérations de conjugaison}
+% \begin{itemize}
+%  \item $\bar{z} = a-ib$
+%  \item $\overline{z+z'} = \overline{z}+\overline{z'}$
+%  \item $Re(z) = \frac{z+\bar{z}}{2}$
+%   \item $Im(z) = \frac{z-\bar{z}}{2i}$
+%   \item $z\in\mathbb{R} \iff z = \bz$
+%   \item $\overline{\overline{z}} = z$.
+% \end{itemize}
+% \subsection{Plan Complexe}
+% On munit le plan $\mathbb{R}^2$ d'un repère orthonormé $(0,\vec{i},\vec{j})$. L'application suivante est une bijection $\mathbb{C}\to P : x+iy \to M(x,y)$.
+%
+% Le conjugué s'interprète comme une symétrie par rapport à $Ox$, l'axe des réels.
+% $\vec{MM'}$ a pour affixe $z'-z$.
+\subsection{Module d'un nombre complexe}
+\subsubsection{Définitions}
+
+
+Le module est noté $|z| = \sqrt{z\bz}$\marginInfo{La notation $\sqrt{x}$ est réservée au Réels positifs. Or le module est une valeur réelle positive, on peut donc l'utiliser ici.}
+
+Le module d'un nombre complexe est la prolongement à $\mathbb{C}$ de la valeur absolue qui existe sur $\mathbb{R}$. On a $|z| = OM$. Il défini une distance sur $\mathbb{C}$
+\subsubsection{Propriétés}
+\begin{itemize}
+\item Si $z=x+i\,y\quad $ alors $\;\;\;|z|=\sqrt{x^2+y^2}\;$
+\item $|z|=\left|\overline{z}\right|,\quad z\times\overline{z}=x^2+y^2$
+\item $\left|z\times z'\right|=|z|\times|z'|,\quad \left|\dfrac{1}{z}\right|=\frac{1}{|z|},\quad \left|\frac{z}{z'}\right|=\frac{|z|}{|z'|} $.
+\item $|z+z'|\leq |z|+|z'|$
+\item $\left| z^n\right|=|z|^n,\quad n\;\;$ entier naturel.
+\end{itemize}
+\warningInfo{Inégalité triangulaire}{
+\[||z|-|z'|| \leq |z+z'| \leq |z|+|z'|\]}
+\begin{myproof}
+$|zz'|^2 = zz'\times \overline{zz'} = z\bz \times z'\bar{z'} = |z|^2|z'|^2$
+
+Montrons que $|z+z'|\leq |z|+|z'|$. Pour cela, comparons leur carré : $(|z|+|z'|)^2-(|z+z'|)^2$. En développant, on trouve $2|zz'| - (z'\bz + z\bar{z'}) = 2(z\bar{z'} - Re(z\bar{z'})) \geq 0$ d'après le lemme suivant.
+
+Lemme : $|Re(z)|\leq |z|$. En effet, $|z|^2 = a^2+b^2 \geq a^2$
+
+Fin de la preuve : $(|z|+|z'|)^2 \geq |z+z'|^2$. Comme ce sont des réels positifs, on en déduit que $|z|+|z'| \geq |z+z'|$.
+\end{myproof}
+
+\warningInfo{Module négatif}{$z = -3e^{i\frac{\pi}{4}}$ n'est pas sous forme polaire. On sait que $e^{i\pi} = -1$, donc $z = 3e^{i(\frac{\pi}{4}+\pi)}$.}
+
+% 0 ne s'écrit pas sous forme polaire. De plus, $e^{k\pi} = (-1)^k$.
+\subsection{Argument}
+\subsubsection{Définition}
+Soit M un point d'affixe le nombre complexe $z\;$ non nul.\\
+On appelle argument de $z$ tous les réels $\theta$, mesure en radians de l'angle$ \left( \overrightarrow{e_1};\overrightarrow{OM}\right)$ .\\ On note $arg(z)=\theta +2k\pi,\;\;\; k \in \mathbb{Z}\;\;$ ou $arg(z)=\theta \;\;\;[2\pi]\;$ (modulo $[2\pi]$\marginTips{Autrement dit, un nombre complexe non nul a  une infinité d'arguments.\\ Si $\theta$ est l'un d'entre eux, tout autre argument de $z$ s'écrit $ \theta +2k\pi.\;$\\ On dit aussi qu'un argument de $z$ est défini modulo $\;2\pi$.} ).
+\criticalInfo{Argument du nombre $0$}{Le nombre complexe 0 n'a pas d'argument car la définition $\;arg(z)=\left( \overrightarrow{e_1};\overrightarrow{OM}\right)\;$ suppose $M\neq 0$.}
+
+
+\subsubsection{Propriétés}
+\begin{itemize}
+\item Si $z$ est un réel strictement positif alors $arg(z)=0 \quad [2\pi]$.
+\item Si $z$ est un réel strictement négatif alors $arg(z)=\pi \quad [2\pi]$.
+\item Si $z$ est un imaginaire pur non nul alors $arg(z)=\dfrac{\pi}{2} \quad [\pi]$.
+\item Si $arg(z)=\theta \quad [2\pi]\quad $ alors $arg(-z)=\theta+\pi \quad [2\pi]\quad $
+\item Si $arg(z)=\theta \quad [2\pi]\quad $ alors  $arg \left( \overline{z}\right) =-\theta \quad [2\pi] $.
+\end{itemize}
+\subsubsection{Règles de calcul}
+\begin{itemize}
+\item $\arg(zz') = \arg(z)+\arg(z')$
+\item $\arg(\frac{z}{z'}) = \arg(z)-\arg(z')$
+\item$\arg(\frac{1}{z'}) = -\arg(z')$
+\item$\arg(z^n) = n\arg(z)$
+\item$\arg(\bar{z}) = -\arg(z)$
+\end{itemize}
+
+On note : $z = |z| e^{i\theta} = |z|( \cos(\theta) + i\sin(\theta))$
+\subsection{Formules d'Euler}
+\begin{theorem}[Formule d'Euler]
+\[\cos(\theta) = \frac{e^{i\theta}+e^{-i\theta}}{2}\]
+\[\sin(\theta) = \frac{e^{i\theta}-e^{-i\theta}}{2i}\]
+\end{theorem}
+\begin{theorem}[Propriétés]
+$\forall \theta,\theta' \in\mathbb{R}$ :
+\begin{itemize}
+ \item $e^{i\theta}e^{i\theta'} = e^{i(\theta+\theta')}$
+ \item $\overline{e^{i\theta}} = e^{-i\theta} = \frac{1}{e^{i\theta}}$
+ \item Formule de Moivre : $(e^{i\theta})^n = e^{in\theta}$
+\end{itemize}
+
+\end{theorem}
+\begin{myproof}[Règles précédentes]
+
+$e^{i\theta}e^{i\theta'} = (\cos(\theta)\cos(\theta') - \sin(\theta)\sin(\theta')) + (\cos(\theta)\sin(\theta') + \sin(\theta)\cos(\theta')) = \cos(\theta+\theta') + i\sin(\theta+\theta') = e^{i(\theta+\theta')}$
+
+Formule de Moivre : On fait par récurrence : $H_n : e^{in\theta} = (e^{i\theta})^n$
+
+Initialisation : Claire, par convention
+
+Hérédité : Supposons $H_n$ : $(e^{i\theta})^n = e^{in\theta} \Rightarrow (e^{i\theta})^ne^{i\theta} = e^{in\theta+\theta} \iff (e^{i\theta})^{n+1} = e^{i(n+1)\theta}$.
+\end{myproof}
+% \warningInfo{Remarque}{$(U,\times)$ est un groupe}
+%
+% \begin{theorem}[Corrolaire]
+% $\arg(zz') = \arg(z)+\arg(z')$
+%
+% $\arg(\frac{z}{z'}) = \arg(z)-\arg(z')$
+%
+% $\arg(\frac{1}{z'}) = -\arg(z')$
+%
+% $\arg(z^n) = n\arg(z)$
+%
+% $\arg(\bar{z}) = -\arg(z)$
+% \end{theorem}
+\subsection{Exponentielle complexe}
+On définit l'exponentielle complexe sur $\mathbb{C}$ par $\exp : C\to C, z \to e^{a+ib}$
+
+Elle vérifie les m\^emes propriétés que dans les réels. :
+
+\begin{itemize}
+ \item $\exp(z+z') = \exp(z)\exp(z')$
+ \item $\exp(nz) = (\exp(z))^n$
+ \item Elle prolonge à $\mathbb{C}$ l'exponentielle réelle. Il ne faut pas le confondre avec la forme exponentielle d'un nombre complexe.
+\end{itemize}
+\section{Equations du 2nd degré}
+\begin{theorem}[Solutions d'une  Équation du 2nd degré à coefficients complexes]
+L'équation $Az^2+bz+c = 0$, notée $E$ admet 2 solutions complexes, qui sont :
+\begin{itemize}
+ \item $z_1=z_2 = \frac{-b}{2a}$ si $\Delta =0$
+ \item $z_1 = \frac{-b+\delta}{2a}, z_1 = \frac{-b-\delta}{2a}$, avec $\delta^2 = \Delta$
+\end{itemize}
+\end{theorem}
+\begin{myproof}
+On écrit le polynome sous forme canonique :
+\begin{flalign*}
+E &= a((z+\frac{b}{2a})^2-\frac{\Delta}{4a^2}) = 0\\
+&= a((z+\frac{b}{2a})^2-(\frac{\delta}{2a})^2)\\
+&= a(z-\frac{-b+\delta}{2a})(z-\frac{-b-\delta}{2a})
+\end{flalign*}
+\end{myproof}
+\begin{theorem}[Théorème fondamental de l'algèbre]
+Toute fonction polynôme de degré $n$  admet $n$ racines dans $\mathbb{C}$.
+\end{theorem}
+% On écrit le polynome $az^2+Bz+C$ sous forme canonique, i.e. $z^2+BzA^{-1} + \fracCA = A((-z+\frac{B}{2A})^2 - \frac{B^2}{4A^2} + \frac{C}{A}) = A((z+\frac{B}{2A}^2 - \frac{B^2-4AC}{4A^2})$.
+%
+% On note $\Delta = B^2-4AC$. On a donc $(z+\frac{B}{2A})^2 = \frac{\Delta}{4A^2}$
+%
+% Si $\Delta = 0$, $z=-\frac{B}{2A}$ est racine double de l'équation.
+%
+% Dans le deuxième cas, on a $z = \frac{-B\pm \delta}{2A}$ avec $\pm \delta$ les 2 racines du $\Delta$.
+%
+% De plus, $z_1+z_2 = \frac{-B}{A}$ et $z_1z_2 = \frac{C}{A}$.
+\section{Racines n-eme de l'unité}
+$z$ est une racine de l'unité si $z^n =1$. Si $z$ une racine énième de l'unité, son module vaut $1$. De plus, il se trouve sur le cercle de centre 0 et de rayon $1$. De plus $\frac{z}{|z|}$ est toujours de module $1$.
+\subsection{Solutions de $z^n=1$}
+\begin{enumerate}
+ \item On pose $z=\rho e^{i\theta}$
+ \item On écrit sous forme polaire : $\rho^ne^{in\theta} = 1e^{i0}$
+ \item L'égalité est vérifiée si le module des 2 nombres sont égaux, i.e. $\rho = 1$
+ \item Il faut aussi que $n\theta = 0+2k\pi$, avec $0<k\leq n-1$
+ \item Les solutions sont donc $\{1, e^{i\frac{2\pi}{n}}, e^{i\frac{4\pi}{n}}\dots e^{i\frac{2(n-1)\pi}{n}}\}$
+\end{enumerate}
+\subsection{Résoudre $z^n = w$}
+\begin{enumerate}
+ \item On pose $z=\rho e^{i\theta}$
+ \item On écrit sous forme polaire : $\rho^ne^{in\theta} = |w|e^{i\varphi}$
+ \item L'égalité est vérifiée si le module des 2 nombres sont égaux, i.e. $\rho = \sqrt[n]{|w|}$
+ \item Il faut aussi que $\theta = \frac{\varphi}{n}$.
+ \item On multiplie le résultat par les racines $n$-eme de l'unité associées.
+\end{enumerate}
+\subsection{Résoudre $z^n = w^n$}
+On cherche $z$ pour $w$ donné. $z$ a $n$ solutions, qui sont $z$ mutipliées par chacunes des racines $n$ de l'unité associées.
+\section{Méthode}
+% \subsection{Résoudre une équation de la forme $e^z = a+ib$}
+\subsection{Calculer les racines d'un nombre complexe}
+On cherche les racines $z_1,z_2$ d'un nombre complexe, noté $w$. Si $w=0, z=0$
+\begin{enumerate}
+ \item On calcule le module de $w$
+ \item Comme $z^2=w \Rightarrow |z|^2 = |w| \Rightarrow \sqrt{a^2+b^2}^2 = |w|$, on en déduit finalement que $a^2+b^2 = |w|$
+ \item De plus, $z^2 = (a+ib)^2 = (a^2-b^2)+2iab$. On en déduit que la partie réelle de $w$ est $a^2-b^2$ et que la partie imaginaire est $2ab$.
+ \item On obtient un système à 3 équations. les 2 premières nous permettent de déterminer $\pm a$ et $\pm b$. La dernière nous donne le signe : si $2ab$ est positif, $a$ et $b$ sont de m\^eme signe, dans le cas contraire, ils sont de signe contraire.
+\end{enumerate}
+En résumé, on doit résoudre ce système pour trouver les solutions :\[ \left\{\begin{matrix}
+a^2+b^2 &= |w|\\
+a^2-b^2 &= Re(w)\\
+2ab &= Im(w)
+\end{matrix}\right.\]
+% \subsection{Calcul des racines nieme de l'unité}
+% $z^2 = 1 \iff z=1,-1$
+%
+% $z^3 \iff z=1, etc$. $z$ est un complexe de module $1$, i.e. $z= e^{i\theta}$, alors $z^3 = e^{3i\theta} = e^{i\times 0} \iff 3\theta = 0 + 2k\pi \iff \theta = \frac{2k\pi}{3}$ On prend $0\leq k\leq 2$. Les solutions sont donc $1,e^{2i\pi/3}, e^{4i\pi/3}$.
+%
+% La multiplication est stable dans le groupe des racines. On obtient une racine en multipliant/divisant 2 racines. Il y a $n$ racines nieme de l'unité
+% \subsection{Utiliser les formules d'Euler (6.11)}
+\subsection{Utiliser la formule de moivre pour exprimer des cosinus et sinus}
+On sait que $(e^{i\theta})^n = e^{in\theta}$. On souhaite exprimer $\cos(4x)$ en fonction de sinus et cosinus. On introduit pour cela le nombre complexe $e^{i4x} = (e^{ix})^4 = (\cos(x)+i\sin(x))^4$. Par identification de la partie réelle pour le $\cos$ et imaginaire pour le $\sin$, on peut trouver le résultat demandé.
+
+On se sert du binome de Newton pour retrouver les coefficients de notre développement si il le faut
+\begin{flalign*}
+(\cos(x)+i\sin(x))^4 &= \cos^4(x) + 4\cos^3(x)(i\sin(x))\\
+&\:\:\:\:+6\cos^2(x)(i\sin(x))^2+4\cos(x)(i\sin(x))^3+(i\sin(x))^4\\
+&= \cos^4(x) + 4\cos^3(x)(i\sin(x))-6\cos^2(x)\sin^2(x)\\
+&\:\:\:\:-4\cos(x)(i\sin^3(x)+\sin^4(x)\\
+&= \cos^4(x)+\sin^4(x) -6\cos^2(x)\sin^2(x)\\
+&\:\:\:\:+ 4\cos^3(x)(i\sin(x))-4\cos(x)(i\sin^3(x)\\
+\cos(4x) &= \cos^4(x)+\sin^4(x) -6\cos^2(x)\sin^2(x)\\
+\end{flalign*}
+\subsection{Linéariser une expression}
+On utilise les formules d'Euler pour exprimer les $\cos$ et $\sin$. Ainsi, pour linéariser $\cos^n(x)\sin^m(x)$, on écrit
+\begin{flalign*}
+\cos^n(x)\sin^m(x) &= (\frac{e^{ix}+e^{-ix}}{2})^n(\frac{e^{ix}-e^{-ix}}{2i})^m
+\end{flalign*}
+On met en facteur tout ce qui se trouve au dénominateur pour l'enlever et on calcule pour retrouver d'autres expressions que l'on pourra retransformer avec les formules d'Euler.
+\end{document}
+
+

@@ -1,0 +1,194 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électrocinétique}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{Allard}%allard@irsamc.ups-tlse.fr
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres63
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\dd}{\mathrm{d}}
+\begin{document}
+\setcounter{chapter}{4}
+
+\chapter{Circuits du second ordre}
+% On souhaite étudier l'évolution des grandeurs du circuit dans les cirucits RLC série et R//l//C en régime libre et en réponse à un échelon de tension.
+\section{Régime libre}
+\subsection{RLC série}
+\subsubsection{Analyse}
+Conditions initiales : le condensateur est initialement chargé et le courant i est nul.
+
+Déductions : Par continuité de la charge dans le condensateur, \(q(0-) = q(0+)=q_0\), par continuité du courant dans la bobine, \(i(0+)=i(0-)=i_0\)
+\criticalInfo{Continuité de grandeurs}{Dans un condensateur, la charge est continue et dans une bobine le courant est continu.}
+\subsubsection{Mise en équation}
+On applique la loi des mailles : \(U_R+U_C+U_L =0\)
+
+On remplace les grandeurs par leurs expression :
+\begin{itemize}
+ \item $U_r = R\times i$
+ \item $U_C = \frac{q}{c}$
+ \item $U_L = L\frac{\dd i}{\dd t}$
+\end{itemize}
+
+On obtient : \(Ri+L\frac{\dd i}{\dd t} + \frac{q}{c} = 0\).
+
+En se rappelant que \(i= \frac{\dd q}{\dd t}\), on obtient \(R\frac{\dd q}{\dd t} + L\frac{\dd^2q}{\dd^2t} + \frac{q}{c}=0\).
+
+On réécrit avec les notations de Newton et en divisant par L : \(\ddot{q}+\frac{R}{L}\dot{q}+\frac{q}{LC}=0\).
+
+On pose \(\omega^2 = \frac{1}{LC}\) et \(2\lambda = \frac{R}{L}\).
+
+En remplaçant par ces notations, on obtient la forme canonique :
+\begin{theorem}[Forme canonique]
+\[\ddot{q}+2\lambda \dot{q}+\omega^2_0q = 0\]
+\end{theorem}
+% On peut aussi définir \(Q = \frac{\omega_0}{2\lambda}\) et écrire \(\ddot{q} + \frac{\omega_0}{Q}\dot{q}+\omega^2_0q=0\)
+\subsubsection{Solutions}
+On utilise l'équation caractéristique : \(r^2+2\lambda r+\omega_0^2\). Cela admet 2 solutions \(r^+ \) et \(r^-\).
+\warningInfo{Solution}{
+La solution de l'équation différentielle est \(a_1e^{r^+t} + a_2e^{r^-t}\)}
+
+On calcule le discriminant \(\Delta  = 4\lambda^2-4\omega_0^2\). On pose \(\Delta' = \Delta/4 = \lambda^2-\omega_0^2\)\marginCritical{C'est pour pouvoir faire cette simplification que l'on a posé l'expression canonique avec $2\lambda$ et non $\lambda$}
+
+Si \(\Delta'>0\), il y a 2 racines réelles : \(r^+ = -\lambda +\sqrt{\Delta'}\) et \(r^- = -\lambda -\sqrt{\Delta'}\). On pose alors \(\omega' = \sqrt{\Delta'}\).
+
+On obtient \(q(t) = e^{-\lambda t}(a_1e^{\omega't}+a_2e^{-\omega't})\). Il faut déterminer \(a_1,a_2\) avec les conditions initiales :
+
+\( \left\{\begin{matrix}
+q(0) = q_0 = a_1+a_2\\
+\dot{q(0)} = i_0 = 0 \Rightarrow -\lambda q_0+\omega'a_1-a_2\omega'=0
+\end{matrix}\right.\)
+
+On en déduit :
+
+\( \left\{\begin{matrix}
+a_1 = \frac{q_0}{2}(\frac{\lambda}{\omega'}+1)\\
+a_2 = \frac{q_0}{2}(\frac{-\lambda}{\omega'}+1)
+\end{matrix}\right.\)
+
+Si \(\Delta'<0\), il y a 2 racines complexes et on parle de régime de relaxation pseudo-périodique. On a \(r^+ = -\lambda +j\sqrt{-\Delta'}\) et \(r^- = -\lambda -j\sqrt{-\Delta'}\). On pose alors \(\omega' = \sqrt{-\Delta'}\).
+
+On obtient \[q(t) = e^{-\lambda t}(a_1e^{j\omega't}+a_2e^{-j\omega't})\] qui peut aussi s'écrire sous la forme \[q(t) = e^{-\lambda t}(\beta\cos(\omega't)+\gamma\sin(\omega't))\]
+
+\(e^{-\lambda t}\) est le terme de relaxation et le reste le terme oscillant de période \(T' = \frac{2\pi}{\omega'}\).
+
+Il faut déterminer \(a_1,a_2\) avec les conditions initiales :
+
+\( \left\{\begin{matrix}
+q(0) = q_0 \Rightarrow \beta = q_0\\
+\dot{q(0)} = i_0 = 0\Rightarrow \gamma = \frac{\lambda q_0}{\omega'}
+\end{matrix}\right.\)
+
+On obtient donc:
+
+\( \left\{\begin{matrix}
+q(t) = q_0e^{-\lambda t}(\cos(\omega't)+\frac{\lambda}{\omega'}\sin(\omega't))\\
+i(t) = \frac{-qu_0\omega_0^2}{\omega'}e^{-\lambda t}\sin(\omega' t)
+\end{matrix}\right.\)
+
+Si \(\Delta'=0\), il y a 1 racine double et on parle de régime critique. On a \(r = -\lambda\).
+%On pose \(\omega' = \sqrt{-\Delta'}\).
+
+On écrit \(q(t) = (at+b)e^{-\lambda t}\). On détermine avec les conditions initiales que
+\(q(t) = q_0e^{-\lambda t}(1+\lambda t)\) et \(i(t) = -\lambda^2q_0te^{-\lambda t}\).
+\subsection{R//C//L}
+% Schema 1
+\subsubsection{Mise en équation}
+On peut écrire par les lois de base :
+\begin{itemize}
+ \item Loi des noeuds :\(I_R+I_L+I_C=0\)
+ \item Loi des mailles : \(U = RI_R = L\frac{\dd I_L}{\dd t} = \frac{q}{C}\)
+\end{itemize}
+On remplace les grandeurs par leurs expression :
+\begin{itemize}
+ \item $U_r = R\times i$
+ \item $U_C = \frac{q}{c}$
+ \item $U_L = L\frac{\dd i}{\dd t}$
+\end{itemize}
+On veut exprimer l'équation en fonction de \(I_L\). On doit donc exprimer $I_R$ et $I_C$ en fonction $I_L$.
+
+On a \( = I_c = C\frac{\dd U}{\dd t} = LC\frac{\dd^2 i_L}{\dd t^2}\) par la loi des mailles. De plus, \(I_R = \frac{L}{R}\frac{\dd I_L}{\dd L}\) également par la loi des mailles.
+
+On obtient en injectant dans la loi des noeuds les expressions trouvées : \(\frac{L}{R}\frac{\dd I_L}{\dd t}+I_L+LC\frac{\dd^2 I_L}{\dd t^2} = 0\).
+
+Ce qui donne en forme canonique : \(\frac{\dd^2 i_L}{\dd t^2} + \frac{1}{RC}\frac{\dd i_L}{\dd t} + \frac{1}{LC}i_L = 0\)
+
+On applique la m\^eme méthode pour trouver la solution qu'à la partie précédente.
+
+\section{Réponse à un échelon de tension}
+\subsection{Mise en équation}
+\subsubsection{Analyse}
+Conditions initiales : Le condensateur est déchargé et le courant est nul
+
+On en déduit que \(q(0-) = 0 =q(0+)\) et \(i(0-) = 0 = i(0+)\) par continuité de la charge
+
+On a \(E = R i + L\frac{\dd i}{\dd t} + \frac{q}{c}\).
+
+Or \(i = \frac{\dd q}{\dd t}\).
+
+Donc \(\frac{E}{L} = R\dot{q}+L\ddot{q}+\frac{q}{c}\).
+
+On l'écrit sous forme canonique : \(\ddot{q}+2\lambda \dot{q}+\omega_0^2q = \frac{E}{L}\) avec \(\omega_0^2 = \frac{1}{LC}\) et \(2\lambda = \frac{R}{L}\).
+
+
+La solution est donc \(q(t) = q^{(H)}(t) + q^{(P)}(t)\).
+
+On cherche la solution particulière : \(Q^{(P)} = K = CE\)
+
+\subsection{Exemple R//L en série avec C}
+\subsubsection{Analyse}
+Le condensateur est initialement déchargé et le courant dans la bobine \(i_L(0-) = 0\).
+
+On en déduit que \(q(0-) = q(0+) = 0\) et \(i_L(0+) = i_L(0-) = 0\). En appliquant la loi des mailles à l'instant 0+, on a \(E = U_r(0+) + 0\)\marginCritical{Ce dernier 0 correspond à la tension de la bobine qui est nulle car elle vaut la dérivée de l'intensité qui reste à 0.} \( \Rightarrow R i_R(0+) = E\).
+
+On a finalement \(U_C(0+) = 0\) et \(i(0+) = \frac{E}{R}\).
+
+\subsubsection{Mise en équation}
+On sait que
+\begin{itemize}
+ \item Loi des mailles :\(E = U_R+U_C\)
+ \item Loi des neuds : \(i_R+I_L=i_C\)
+ \item Loi des mailles : \(U_R = R i_R = L\frac{\dd i_L}{\dd t}\)
+ \item Propriété du condensateur : \(i_C = c\frac{\dd u_C}{\dd t}\)
+\end{itemize}
+
+
+% \(E = U_R+U_C, i_R+I_L=i_C, U_R = R i_R = L\frac{\dd i_L}{\dd t}, i_C = c\frac{\dd u_C}{\dd t}\).
+
+On met en équation : \(E = L\frac{\dd i_l}{\dd t} + U_C = L\frac{\dd}{\dd t}(C\frac{\dd U_C}{\dd t} - \frac{u_r}{R})+U_c = L\frac{\dd}{\dd t}(C\frac{\dd u_c}{\dd t}-\frac{(E-u_c)}{R})+U_c\).
+
+On obtient en développant \(E = LC\frac{\dd^2}{\dd t^2}+\frac{L}{R}\frac{\dd U_c}{\dd t} +U_c\) ou encore en mettant sous forme canonique :\(\frac{\dd^2 u_c}{\dd t} + \frac{1}{RC}\frac{\dd u_c}{\dd t}+\frac{u_c}{LC} = \frac{u_c}{L}\).
+
+En posant \( 2\lambda = \frac{1}{RC}\) et \(\omega_0^2 = \frac{1}{LC}\), on a \(\ddot{U_c}+2\lambda \dot{u_c}+\omega_0^2 u_c = \omega_0^2 E\)
+
+% Sous l'hypothèse que \(\Delta'<0\), on a \(u_c(t) = E + e^{-\lambda t}(Ae^{j\omega't}+Be^{-j\omega' t})\) avec \(\omega'^2 = \omega_0^2 -2\lambda\).
+%
+% À t=0, \(u_c(0) = E+A+B = 0\)
+
+% \section{Régime d'excitation sinuosidal}
+% C'est comme pour l'ordre 1 sauf que la solution particulière change et devient comme le second membre, sinuosidal. Comme pour l'ordre 1, pour un temps long, il nes reste que la solution particulière.
+\end{document}
+

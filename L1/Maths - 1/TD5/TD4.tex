@@ -1,0 +1,282 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\DeclareMathOperator{\card}{card}
+\begin{document}
+
+\setcounter{chapter}{4}
+
+	\chapter{Combinatoire et dénombrement}
+\section{Cardinalité}
+\subsection{Introduction}
+\begin{theorem}[Équipotence]
+2 ensembles $E$ et $F$ sont dits équipotents (écrit $E\sim F$) s'il existe une bijection $\varphi$ de $E\to F$
+\end{theorem}
+\begin{theorem}[Propriétés de la relation équipotence]
+Elle est réflexive : $\forall E, E\sim E$. $\varphi = Id_E$
+
+Elle est symétrique : $E\sim F \Rightarrow F\sim E$ car $\varphi^{-1} F\to E$ est bijective
+
+Emme est transitive : $\forall E,F,G$, si $E\sim F$ et $F\sim G$, alors $E\sim G$ car si $\varphi : E\to F$ et $\psi :F\to G$ bijectives alors $\psi \circ \varphi : E\to G$ est bijective car composée de bijections.
+\end{theorem}
+\checkInfo{Conséquences}{
+$E$ et $F$ ont le m\^eme cardinal $\iff E\sim F$}
+\section{Ensembles finis}
+\subsection{Notations}
+Pour $n\in\mathbb{N}$, on définit $n!$ par $0!=1$, $1!=1$, $(n+1)! = n!\times (n+1)$
+\subsection{Définition}
+\begin{theorem}[Définition]
+$E$ est fini si $E=\varnothing$ ou s'il existe $n\in\mathbb{N}$, tel que $E \sim [\![1;n]\!]$
+\end{theorem}
+\subsection{Popriétés et propositions}
+\subsubsection{Lemmes fondamentaux}
+\begin{lemma}
+Il existe une injection de $ [\![1;n]\!]  \to [\![n,m]\!] \iff n\leq m$\label{injection_fini}
+\end{lemma}
+\begin{lemma}
+Il existe une bijection de $[\![1;m]\!]  \to [\![1,n]\!] \iff n=m$\label{bijection_fini}
+\end{lemma}
+
+Si $E\neq \varnothing$, alors les Lemme \ref{injection_fini} et \ref{bijection_fini} montrent l'unicité de l'entier $n$ tel que $E\sim [\![1;n]\!]$. On écrit alors $\card(E) = |E| = n$ et si $E=\varnothing, n=0$
+
+Rmq : Si $E$ et $F$ sont de cardinal finis, alors $E\sim F \Rightarrow \card(E) = \card(F)$
+\subsubsection{cardinalité et surjectivité}
+Soient $E$ et $F$ 2 ensembles finis (c'est faux avec des ensembles infinis). Soit $f:E\to F$ une application.
+\begin{itemize}
+ \item Si $f$ est injective, $Card(E)\leq \card(F)$
+  \item Si $f$ est surjective, $\card(E)\geq \card(F)$
+    \item Si $\card(E) = \card(F)$, $f$ est bijective $\iff$ injective $\iff$ surjective
+\end{itemize}
+
+\subsubsection{Autres propositions}
+
+Soit $E$ un ensemble fini et $A\subset E$, alors
+\begin{itemize}
+ \item $A$ est fini
+ \item $\card(A) \leq \card(E)$
+ \item $A=E \iff \card(A) = \card(E)$
+\end{itemize}
+
+Soit $E$ un ensemble fini et $A_1\to A_k$ le sous-ensemble de $E$ tels que $A_1\cap A_j = \varnothing$ si $i\neq j$. Alors $\cup^k_{i=1} = \sum^k_{i=1} \card(A_i)$
+
+Soit $A,B \subset E$ : $\card(A\cup B) = \card(A) + \card(B) - \card(A\cap B)$
+
+$\card(A\setminus B) = \card(A) - \card(A\cap B)$
+\subsubsection{Lemme des bergers}
+\begin{lemma}[Lemme des bergers]
+
+Principe : Si un ensemble E possède une partition en p sous-ensembles contenant chacun r éléments, alors E contient$ p \times r$ éléments.
+Soit $E$ un ensemble fini et $F$ un ensemble et soit $f:E\to F$ une application.\label{bergers}
+
+Compter les éléments de $E$ revient à compter les éléments de l'image réciproque de f
+
+$\card(E) = \sum_{y\in F} = \card(f^{-1}(\{y\})$
+
+En effet, $f$ est une application donc $\forall y \neq y' \in F$, $f^{-1}(\{y\}) \cap f^{-1}(\{y'\}) = \varnothing$ %car $x\in \cap \Rightarrow f(x) = y = f(x) = y'$ Contradiction
+
+$\forall x\in E, f(x)$ existe donc $x\in f^{-1}(\{f(x)\})$. D'où $\cup_{y\in F} f^{-1}(\{y\}) = E$
+
+D'où $\card(E) = \sum \card(f^{-1}(\{y\}))$ car $f^{-1}(\{y\}) \subset E$ donc de cardinal fini et comme E est fini, $\{y\in F, \card(f^{-1}(\{y\})) \neq 0\}$ est également fini
+\end{lemma}
+\subsubsection{Principe des tiroirs}
+\begin{lemma}[Principe des tiroirs]
+
+Soit $E,F$ 2 ensembles finis tel que $card(E) \geq \card(F)$ alors il n'existe pas d'affectation injective de $E\to F$, i.e soit $f:E\to F$, $\exists y\in F,$ tel que  $f^{-1}(\{y\})$ contient 2 éléments.\label{tiroirs}
+\end{lemma}
+\section{Analyse combinatoire}
+\begin{theorem}[]\label{comb_1}
+Le nombre d'applications de X vers Y, de cardinaux respectifs $n,p\geq 1$ est $p^n$
+\end{theorem}
+\subsection{Fonction caractéristique}
+\begin{theorem}[Fonction caractéristique]
+Soit $X$ un ensemble et $A$ une partie de $X$. Une fonction caractéristique de $A$ est l'application $\chi_A$ de $X$ vers $\{0,1\}$, prenant la valeur $1$ sur $A$ et $0$ sur $X\backslash A$.
+\end{theorem}
+La fonction prend la valeur $1$ si $x \in A$ et $0$ si $x\notin A$
+\begin{theorem}[]
+L'application  $A\to \chi_A$ est une bijection de l'ensemble des parties de $X$ vers ( l'ensemble des applications de $X$ vers $\{0,1\}$.)
+\end{theorem}
+\begin{theorem}[]
+L'ensemble des parties de $X$ est fini de cardinal $2^n$
+\end{theorem}
+\begin{myproof}
+D'après le théorème précédant, comme l'application $A\to \chi_A$ est bijective, $card(P(x) = $ card(l'ensemble des applications de $X$ vers $\{0,1\}$.).
+En appliquant le théorème \ref{comb_1},
+en prenant $Y = \{0.1\}$ et $p = 2$, on obtient $2^n$.
+\end{myproof}
+\subsection{Arrangement}
+Un arrangement parmis $n$ objets est une suite de $p$ objets distincts pris parmi les $n$ objets donnés. On note le nombre d'arangements $A^p_n$. Trouver $A$ revient à trouver le nombre d'injections de $[1,p]$ dans l'ensemble des $n$ objets.
+
+\begin{theorem}[]
+\[A^p_n = n(n-1)\dots(n-p+1) = \frac{n!}{(n-p)!}\]
+\end{theorem}
+\begin{myproof}
+Prenons ici la première égalité comme définition de $A^p_n$.  Pour tout entier p, notons $P(p)$ la propriété suivante :
+pour tout ensemble X de cardinal $p$ et tout ensemble fini Y de cardinal $n\geq p$  le cardinal de l'ensemble des injections de $X\to Y$, noté $I(X,Y)$ est $A^p_n$.
+
+$P(0)$ est vraie : $\forall$ ensembles $Z$, il y a une seule application de l'ensemble vide dans $Z$, et elle est injective.
+
+Soit maintenant $p\geq 1$ un entier tel que $P(p-1)$ est vraie. Nous devons montrer qu'alors le cardinal de $I(X,Y)$ est $A^p_n$.
+
+Fixons un élément $a$ de $X$, et soit $X' = X \backslash \{a\}$, qui est de cardinal $p-1$.
+
+À toute injection $f$ de $I(X,Y)$, on peut associer bijectivement le couple $(g,b)$ où $g$ est la restriction de $f$ à $X'$ et $b$ est $f(a)$.
+
+On a donc : $card(I(X,Y)) = card(I(X',Y)) \times (n-p+1) = A^{p-1}_n (n-p+1) = A^p_n$
+
+Note : $card(f(a)$ correspond à la dernière possibilité, une fois que celles de $X'$ sont prises. C'est pourquoi son cardinal est $(n-p+1)$
+\end{myproof}
+\begin{theorem}[]
+Le nombre de bijection d'un ensemble X vers Y de m\^eme cardinal est $A^n_n = n!$.
+\end{theorem}
+\subsection{Combinaisons}
+On appelle combinaison de $n$ éléments de $X$ pris $p$ à $p$ toute partie de $X$ à $p$ éléments. On le note $C^p_n$. L'ordre n'a pas d'importance.
+\begin{theorem}[]
+Le nombre de parties à $p$ éléments de $X$ est $C^p_n = \frac{n!}{p!(n-p)!} = \frac{A^p_n}{p!}$.
+\end{theorem}
+\begin{myproof}
+Si $f : [1,p] \to X$ est une injection, $f([1,p])$ est une partie à $p$ éléments de $X$, d'où une application $\psi : f\to f([1,p])$ de $I([1,p],X)$ dans $P_p(X)$.
+
+Soit $B$ une partie à $p$ éléments de $X$.
+
+$\psi^{-1}(\{B\})$ est formée des injections $f : [1,p] \to X$ ayant pour image $B$, i.e. des bijections de $[1,p]$ sur $B$. D'après le théorème précédant, la réciproque est donc de cardinal $p!$.
+
+On a alors : $A^p_n = card(I([1,p],X)) = \sum_{B\in P(X)} p! card(P(X))$ et il vient $card(P(X)) = \frac{A^p_n}{p!}$.
+\end{myproof}
+\subsubsection{Propriétés}
+\begin{itemize}
+ \item $C^0_n = 1$
+ \item $C^n_n = 0$
+ \item $C^1_n = n$
+ \item Propriété de symétrie : $C^{n-p}_n = C^p_n$
+ \item Triangle de Pascal : $C^p_n + C^{p+1}_n = C^{p+1}_{n+1}$
+ \item Nombre de parties d'un ensemble : $\sum^n_{k=0} C^p_n = 2^n$
+\end{itemize}
+\subsection{Autres propriétés}
+\begin{itemize}
+ \item Cardinal des parties d'un ensemble à $n$ éléments : $2^n$
+ \item Nombre de fonction d'un ensemble à $k$ éléments vers un ensemble à $n$ éléments : $n^k$
+ \item Nombre de bijections d'un ensemble à $n$ éléments vers un ensemble à $n$ éléments : $n!$. Il s'agit du nombre $n$-uplet de l'un des ensemble, où l'ordre des éléments comptent.
+\end{itemize}
+\section{En résumé}
+\subsection{Tirage}
+%:-+-+-+- Engendré par : http://math.et.info.free.fr/TikZ/Arbre/
+\begin{center}
+% Racine à Gauche, développement vers la droite
+\begin{tikzpicture}[xscale=1,yscale=1]
+% Styles (MODIFIABLES)
+\tikzstyle{fleche}=[->,>=latex,thick]
+\tikzstyle{noeud}=[fill=warningColor,circle,draw]
+\tikzstyle{feuille}=[fill=informationColor,circle,draw]
+\tikzstyle{etiquette}=[midway,fill=white,draw]
+% Dimensions (MODIFIABLES)
+\def\DistanceInterNiveaux{3}
+\def\DistanceInterFeuilles{1}
+% Dimensions calculées (NON MODIFIABLES)
+\def\NiveauA{(0)*\DistanceInterNiveaux}
+\def\NiveauB{(1.6666666666666665)*\DistanceInterNiveaux}
+\def\NiveauC{(3)*\DistanceInterNiveaux}
+\def\NiveauD{(4)*\DistanceInterNiveaux}
+\def\InterFeuilles{(-1)*\DistanceInterFeuilles}
+% Noeuds (MODIFIABLES : Styles et Coefficients d'InterFeuilles)
+\node[noeud] (R) at ({\NiveauA},{(2)*\InterFeuilles}) {Avec remise};
+\node[noeud] (Ra) at ({\NiveauB},{(0.5)*\InterFeuilles}) {Ordonné};
+\node[feuille] (Raa) at ({\NiveauC},{(0)*\InterFeuilles}) {$n^k$};
+\node[feuille] (Rab) at ({\NiveauC},{(1)*\InterFeuilles}) {$K^p_n$};
+\node[noeud] (Rb) at ({\NiveauB},{(3)*\InterFeuilles}) {Ordonné};
+\node[noeud] (Rba) at ({\NiveauC},{(2.5)*\InterFeuilles}) {$n=p$ ?};
+\node[feuille] (Rbaa) at ({\NiveauD},{(2)*\InterFeuilles}) {$A^p_n$};
+\node[feuille] (Rbab) at ({\NiveauD},{(3)*\InterFeuilles}) {$n!$};
+\node[feuille] (Rbb) at ({\NiveauC},{(4)*\InterFeuilles}) {$C^p_n$};
+% Arcs (MODIFIABLES : Styles)
+\draw[fleche] (R)--(Ra) node[etiquette] {Oui};
+\draw[fleche] (Ra)--(Raa) node[etiquette] {Oui};
+\draw[fleche] (Ra)--(Rab) node[etiquette] {Non};
+\draw[fleche] (R)--(Rb) node[etiquette] {Non};
+\draw[fleche] (Rb)--(Rba) node[etiquette] {Oui};
+\draw[fleche] (Rba)--(Rbaa) node[etiquette] {Non};
+\draw[fleche] (Rba)--(Rbab) node[etiquette] {Oui};
+\draw[fleche] (Rb)--(Rbb) node[etiquette] {Non};
+\end{tikzpicture}
+\end{center}
+%:-+-+-+-+- Fin
+\subsection{Rangement}
+%:-+-+-+- Engendré par : http://math.et.info.free.fr/TikZ/Arbre/
+\begin{center}
+% Racine à Gauche, développement vers la droite
+\begin{tikzpicture}[xscale=1,yscale=1]
+% Styles (MODIFIABLES)
+\tikzstyle{fleche}=[->,>=latex,thick]
+\tikzstyle{noeud}=[fill=warningColor,circle,draw]
+\tikzstyle{feuille}=[fill=informationColor,circle,draw]
+\tikzstyle{etiquette}=[midway,fill=white,draw]
+% Dimensions (MODIFIABLES)
+\def\DistanceInterNiveaux{3}
+\def\DistanceInterFeuilles{1}
+% Dimensions calculées (NON MODIFIABLES)
+\def\NiveauA{(0)*\DistanceInterNiveaux}
+\def\NiveauB{(1.6666666666666665)*\DistanceInterNiveaux}
+\def\NiveauC{(3)*\DistanceInterNiveaux}
+\def\NiveauD{(4)*\DistanceInterNiveaux}
+\def\InterFeuilles{(-1)*\DistanceInterFeuilles}
+% Noeuds (MODIFIABLES : Styles et Coefficients d'InterFeuilles)
+\node[noeud] (R) at ({\NiveauA},{(2)*\InterFeuilles}) {$\geq 1$ dans une case};
+\node[noeud] (Ra) at ({\NiveauB},{(0.5)*\InterFeuilles}) {Discernable};
+\node[feuille] (Raa) at ({\NiveauC},{(0)*\InterFeuilles}) {$n^k$};
+\node[feuille] (Rab) at ({\NiveauC},{(1)*\InterFeuilles}) {$K^p_n$};
+\node[noeud] (Rb) at ({\NiveauB},{(3)*\InterFeuilles}) {Discernable};
+\node[noeud] (Rba) at ({\NiveauC},{(2.5)*\InterFeuilles}) {$n=p$ ?};
+\node[feuille] (Rbaa) at ({\NiveauD},{(2)*\InterFeuilles}) {$A^p_n$};
+\node[feuille] (Rbab) at ({\NiveauD},{(3)*\InterFeuilles}) {$n!$};
+\node[feuille] (Rbb) at ({\NiveauC},{(4)*\InterFeuilles}) {$C^p_n$};
+% Arcs (MODIFIABLES : Styles)
+\draw[fleche] (R)--(Ra) node[etiquette] {Oui};
+\draw[fleche] (Ra)--(Raa) node[etiquette] {Oui};
+\draw[fleche] (Ra)--(Rab) node[etiquette] {Non};
+\draw[fleche] (R)--(Rb) node[etiquette] {Non};
+\draw[fleche] (Rb)--(Rba) node[etiquette] {Oui};
+\draw[fleche] (Rba)--(Rbaa) node[etiquette] {Non};
+\draw[fleche] (Rba)--(Rbab) node[etiquette] {Oui};
+\draw[fleche] (Rb)--(Rbb) node[etiquette] {Non};
+\end{tikzpicture}
+\end{center}
+%:-+-+-+-+- Fin
+\begin{theorem}[Formules]
+\begin{itemize}
+ \item $A^p_n = \frac{n!}{(n-p)!}$
+ \item $C^p_n = \frac{n!}{p!(n-p)!}$
+ \item $K^p_n = \frac{(n+p-1)!}{p!(n-1)!}$
+\end{itemize}
+
+\end{theorem}
+
+\end{document}

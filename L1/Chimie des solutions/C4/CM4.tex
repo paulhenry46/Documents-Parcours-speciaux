@@ -1,0 +1,155 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Chimie des solutions}
+\subtitle{Chimie}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{IHallery}%isabelle.hallery@univ-tlse3.fr
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+\setcounter{chapter}{3}
+\chapter{Équilibres acido-basique}
+\section{Équilibres acido-basiques}
+\subsection{Acido-basicité au sens de Bronsted}
+\begin{definition}[Acidobasicité de Bronsted]
+L'acide peut céder un proton H+ et une base peut capter un proton H+. Une espèce pouvant faire ls 2 est ampholyte.
+\end{definition}
+À tout acide est associée une base conjuguée et réciproquement : C'est le couple acido-basique.
+
+\marginTips{Dans tous les cas, la base possède un DNL pouvant fixer un proton et un acide}
+\checkInfo{Exemple d'espèce ampholyte}{L'eau participe à 2 couples acido-basiques. On a \(H_3O⁺/H_2O\) et \(H_2O/HO^-\). Il y a aussi le couple de l'acide carbonique : \(H_2CO_3/HCO_3^-\) et  \(HCO_3^-/CO_3^{2-}\) }
+
+\subsubsection{Formules de Lewis}
+Elles permettent de prévoir le comportement d'une molécule
+\warningInfo{Composés à conna\^itre}{Il y a l'acide acétique \(CH_3COOH\), l'ion carbonate \(CO_3^{2-}\), l'ion hydrogénocarbonate \(HCO_3^-\), l'ion hydronium \(H_3O^+\) et l'ion hydroxyde \(HO^-\).}
+
+Une liaison C-H n'est pas assez polarisée pour avoir une liaison. En revanche une liaison OH l'est assez pour pouvoir céder l'hydrogène.
+
+Un composé pouvant accepter/céder 2 protons est un diacide/dibase. En général, on parle de polyacide/polybase.
+\subsection{Réactions acido-basique}
+C'est une réaction d'échange de protons où il n'apparait pas dans l'équation de réaction.
+
+\begin{proposition}[Réaction d'autoprotolyse de l'eau]
+\(2H_2O = H_3O^++OH^-\)
+\end{proposition}
+\begin{proposition}[Produit ionique de l'eau]
+C'est la constante d'équilibre de la réaction d'autoprotolyse de l'eau. On a \(K_e = [H_3O^+][HO^-]\) dont la valeur à 25° est de \(10^{-14}\).
+\end{proposition}
+Dans l'eau pure, les 2 concentrations valent \(10^{-7}\)
+\subsection{Constante d'acidité Ka}
+\subsubsection{Acide fort/acide faible - Constante d'acidiité Ka}
+Dès qu'on met un acide dans l'eau, il va agir avec l'eau. On a \(AH+H_2O = A^-+H_3O^+\).
+
+\begin{definition}[Acide fort /faible]
+La réaction avec l'eau d'un acide fort est totale alors que celle d'un acide faible est limitée
+\end{definition}
+\begin{definition}[Solution acide]
+On a \([H_3O^+]>[HO^-]\)
+\end{definition}
+\begin{definition}[Constante d'acidité]
+\(K_a = \frac{[A^-][H_3O^+]}{[AH]}\)
+\end{definition}
+On a \(pK_a (H_3O^+/H_2O) = 0\) et \(pk_a(H_2O/OH^-) = 14\)
+\subsubsection{Base forte/base faible - Constante de basicité Ka}
+Dès qu'on met une base dans l'eau, il va agir avec l'eau. On a \(A^-+H_2O = AH+HO^-\).
+
+\begin{definition}[Base fort /faible]
+La réaction avec l'eau d'une base forte est totale alors que celle d'une base faible est limitée
+\end{definition}
+\begin{definition}[Solution basique]
+On a \([H_3P^+]<[HO^-]\)
+\end{definition}
+\begin{definition}[Constante de basicité]
+\(K_b = \frac{[AH][HO^-]}{[A^-]} = \frac{K_e}{K_a}\)
+\end{definition}
+\section{Échelle de pka}
+\subsection{Force comparée dans acides et bases}
+\begin{proposition}[Acides/Bases forts à connaître]
+On a \(HCl,HNO_3, H_2SO_4\) en acides forts et \(NaOH, Ba(OH)\) à conna\^itre.
+\end{proposition}
+\criticalInfo{Comparaison}{\(H_3O^+\) est l'acide le plus fort dans l'eau et \(HO^-\) la base la plus forte.}
+\subsection{Classement sur le critère des Ka}
+Un acide faible est d'autant plus faible que le Ka du couple est petit, que le pKa est grand
+
+Une base faible est d'autant plus faible que le Ka du couple est grand, que le pKb est petit
+
+\subsection{Influence de la dilution}
+\criticalInfo{Acide faible}{CH3COOH se comporte comme un acide faible}
+\begin{proposition}
+La force d'un acide dépend du Ka mais aussi de sa concentration. En première approximation, on ne prend en compte que Ka.
+\end{proposition}
+Quand on dilue un acide faible à l'infini, on peut obtenir un acide fort.
+% \chapter{Équilibre de plusieurs réactions acido-basiques }
+% \section{Les outils}
+% \subsection{pH d'une solution aqueuse}
+% \begin{definition}[Définition du pH]
+% \(pH = -\log(a(H_3O^+)) \simeq -\log([H_3O^+])\) si la concentration totale en ion est suffisament faible.
+% \end{definition}
+% \begin{definition}[Définition du pOH]
+% \(pH = -\log(a(HO^-)) \simeq -\log([HO^-])\) si la concentration totale en ion est suffisament faible.
+% \end{definition}
+% La somme des 2 vaut 14.
+% \subsection{Diagramme de prédominance}
+% Pour trouver la valeur à laquelle les 2 espèces sont dans les m\^emes proportions,  on éxprime l'une des 2 en fonction du Ka pour obtenir le pKa. Si le pH est supérieur à ce dernier, $A^-$ prédomine.
+% \subsection{Diagramme de prépondérance}
+% Une espèce est prépondérante devant une autre si il y a 10 fois plus de cette espèce que l'autre espèce. On recule et avance de 0,5 unités de pH pour l'eau. Pour les autres espèces, on pkA+1 et pkA-1 pour un prépondérance de $A^-$ et $AH$.
+% \subsection{Constante d'équilibre d'une réaction}
+% La constante d'équilibre peut se déduire des Ka des 2 couples mis en jeu. On a
+% \begin{theorem}[Constante d'équilibre]
+%  Pour une réaction de la forme Acide1+Base2=Base1+Acide2, on a \(K° = \frac{Ka(1}){Ka(2)}\).
+% \end{theorem}
+% Si le \(pK_a(2)>pK_a(1)\) et \(|\Delta pK_a| >4\), alors la réaction est quasi-totale dans le sens direct et la constante d'équilibre est \(K°=10^{+|\Delta pKa|}\).
+%
+% Si le \(pK_a(2)<pK_a(1)\) et \(|\Delta pK_a| >4\), alors la réaction est quasi-négligeable dans le sens direct et la constante d'équilibre est \(K°=10^{-|\Delta pKa|}\).
+% \section{Méthode de la réaction prépondérante}
+% \subsection{Réaction prépondérante}
+% Par définition, c'est la réaction qui modifie le plus la composition du milieu.
+%
+% Par hypothèse\marginCritical{Cela dépend aussi de la composition initiale mais aussi des conditions initiales (dilution, réactif en excès)}, c'est celle qui a la constante d'équilibre la plus élevée. Quand il n'y a que es acides ou des bases, c'est la réaction de l'acide le plus fort sur la base la plus forte.
+% \subsubsection{Méthode}
+%
+% \begin{enumerate}
+%  \item Identifier les espèces prépondérantes
+%  \item Classer les couples présents sur une échelle de \(pK_a\)
+%  \item Entourer les espèces prépondérantes présentes initialement
+%  \item On identifie l'acide le plus fort et la base la plus forte
+%  \item Les 2 réagissent ensembles
+% \end{enumerate}
+% \subsection{Principe}
+% On image la succession des réactions prépondérantes qui conduisent à des solutions équivalentes. On s'arrette quand $K \leq 10^4$.
+% \subsection{Validation}
+% Quand on connait le Ka, la concentration de la forme acide et de la forme basique, on peut trouver la concentration en [H3O+] car \(K_a = \frac{[A-][H_3O^+]}{[AH]}\).
+% \subsection{pH}
+% Pour une solution d'acide fort à la concentration $C_0$, $pH=-\log(C_0)$ si $pH<6.5$
+%
+% Pour une solution de base forte à la concentration $C_0$, $pOH=-\log(C_0)$ si $pH>7.5$
+%
+% Pour une solution d'acide faible à la concentration $C_0$, $pH=-\frac{1}{2}(pKa-\log(C_0))$ si $pH<pKa-1$ et $pH<6.5$
+%
+% Pour une solution de base faible à la concentration $C_0$, $pOH=-\frac{1}{2}(pKb-\log(C_0))$ si $pH>pKa+1$ et $pH>7.5$
+\end{document}
+

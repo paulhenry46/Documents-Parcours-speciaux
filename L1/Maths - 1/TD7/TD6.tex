@@ -1,0 +1,269 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{polynom}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\begin{document}
+
+\setcounter{chapter}{6}
+
+	\chapter{Polyn\^omes et fractions rationnelles}
+On note $K = \mathbb{R}$ ou $\mathbb{C}$
+\section{Polyn\^ome}
+\subsection{Définition}
+On note $k[X]$ l'ensemble des polyn\^omes à coefficients dans $k$, avec $X$ appelée inderminée.
+
+C'est une suite $(a_k)$ d'éléments de $K$ nulle à partir d'un certain rang.
+
+ On note $X$ l'objet du polyn\^ome qui n'est pas forcément un réel\marginCritical{On peut mettre n'importe quel objet (fonction, matrice, opérateur) dans un polyn\^ome. Les polyn\^omes sont donc très efficaces.}
+
+Soient $P=(a_k)$ et $Q=(b_k)$. On a $P=Q\iff a_k=b_k \forall k$.
+
+On commence les polyn\^omes à la puissance $0$.\marginTips{Le polyn\^ome nul n'est pas un polynome de degré 0 mais $-\infty$}
+
+Exemple : $X = (0,1\dots), 1=(1,0\dots,0), 0=(0\dots), X^k=(0,\dots,k\dots)$
+\begin{definition}[Degré d'un polyn\^ome]
+Noté $\deg(P)$ le plus grand entier $n$ tel que $a_n\neq 0$,i.e, $\deg(P) = \max\{k,a_k\neq 0\}$. On a donc $a_n\neq 0$ et $\forall k>n, a_k=0$. Si $P=0, \deg(P) = -\infty$.
+\end{definition}
+Exemple : $\deg(0,1,2,0,3) = 5$.
+\subsection{Notation}
+Soit $P$ un polyn\^ome. On suppose que pour $k\geq n+1, a_k =0$\marginCritical{Ici, $n$ n'est pas forcément le degré, donc on ne sait pas si $a_n\neq 0$. Le degré est inférieur ou égal à $n$}. On note $P = \sum^n_{k=0} a_kX^k$.
+
+Cepdendant, si on donne explicitement de degré, alors on sait que $n\neq 0$.
+\subsection{Opérations}
+\subsubsection{Addition}
+Soit $P$ et $Q$ 2 polyn\^omes de degré inférieur à $n$. On pose $P = \sum^n_{k=0} a_kX^k$ et $Q = \sum^n_{k=0} b_kX^k$. On a $P+Q = \sum^n_{k=0} (a_k+b_k)X^k$
+\subsubsection{Multiplication par un scalaire}
+On a $\lambda P = \sum^n_{k=0} \lambda a_kX^k$
+\subsubsection{Multiplication de 2 polyn\^omes}
+On a $P\times Q = \sum^{2n}_{k=0} (c_k)X^k$, avec $c_k = \sum_{p+q=k} a_pb_q$
+
+
+
+On calcul d'abord les coefficients : Le nombre de coefficient vaut le double du degré le plus des 2 polyn\^omes. Pour chaque coefficient, on cherche le nombre de façon d'obtenir le degré correspondant à son indice. Finalement, on écrit le résultat avec un polynome ayant le double du degré le plus haut initial, avec les coefficients trouvés.
+
+Exemple : $P=3+4X+{\color{red}0X^2}+12X^3$ et $Q=1+X+X^2 + {\color{red}0X^3}$. On a $P+Q = 4+5X+X^2+12X^3$, $\sqrt{2} Q = \sqrt{2}+\sqrt{2}X+\sqrt{2}X^2$.
+\begin{flalign*}
+C_0 &= a_0b_0 = 3\times 1\\
+C_1 &= a_1b_0+a_0b_1 = 3\times 1 + 4\times 1\\
+C_2 &= a_1b_1+a_0b_2+a_2b_0\\
+C_3 &= a_0b_3+a_1b_2+a_2b_1+a_3b_0\\
+C_4 &= a_1b_3+a_2b_2+a_3b_1\\
+C_5 &= a_2b_3+a_3b_2\\
+C_6 &= a_3b_3
+\end{flalign*}
+
+On écrit $PQ = C_0+C_1X+C_2X^2+C_3X^3+C_4X^4+C_5X^5+C_6X^6$.
+\warningInfo{Remarques et résultats}{
+\begin{itemize}
+ \item $X^k+X^m = X^{k+m}$
+ \item $0\times X^k = 0$
+ \item $\deg(P+Q) \leq \max(\deg(P),\deg(Q))$
+ \item $\deg(PQ) = \deg(P)+\deg(Q)$
+ \item $(K(X),+,\cdot)$ est un espace vectoriel et $(K(X),+,\times)$ est un anneau commutatif
+ \item Seuls les polyn\^omes constants non nuls de degré 0 ont un inverse.
+\end{itemize}
+}
+\subsubsection{Dérivation}
+On appelle dérivée de $P$ le polyn\^ome noté $P'$ et défini par $P'[X] = \sum_{k=0}^n ka_kX^{k-1}$. On note parfois $P' = \mathrm{D}(P)$.
+
+Exemple : $P = 5X^3+2X+1$. $P'(X) = 15X^2+2$.
+
+Si $\deg(P)>0, \deg(P') = \deg(P)-1$.
+\subsection{Division euclidienne}
+\begin{theorem}[Théorème de la division euclidienne]
+Soit $A$ et $B$ 2 polyn\^omes. Alors $\exists!(Q,R)\in K[X]$ tel que $A=BQ+R$ avec $\deg(R)<\deg(B)$.
+\end{theorem}
+Exemple : $X^3+2X^2+X+2$ divisé par $X+1$.
+
+\polylongdiv[style=D]{X^3+2X^2+X+2}{X+1}
+\begin{definition}[]
+Soient A et B 2 polyn\^omes. $B$ divise $A \iff \exists Q\in K[X]$, tel que $A=BQ$. Si $B\neq 0, B|A\iff$ reste de la division euclidienne de A par B est nul.
+\end{definition}
+Exemple : $(X-i)|(X^2+1)$ car $X^2+1=(X-i)(X+i)$, $(X-1)|(X^3-1)$ car $X^3-1=(X-1)(X^2+X+1)$.
+\begin{definition}[Morphisme de spécialisation]
+On définit une application $\varphi : x_0\to P(x_0)$. On remplace $X$ par $x_0$. C'est un morphisme de spécialisation. On note en général \~{P} l'application $x\to P(x)$. C'est le processus pour transformer $X$ en un objet défini et déterminé.
+\end{definition}
+\subsection{Racines d'un polynome}
+\begin{definition}[Racine]
+Soit $P$ un polynome. $a$ est racine de $P$ si $P(a) = 0$.
+\end{definition}
+\begin{theorem}[]
+$a$ est racine de $P$ si $X-a$ divise $P$, c'est à dire s'il existe $Q$ tel que $P(X) = (X-a)Q$.
+\end{theorem}
+\begin{myproof}
+$P=(X-a)Q \Rightarrow P(a) = (a-a)Q = 0$ De plus, effectuons la division euclidienne de P par $X-a$. Donc $\exists! Q,R$ tel que $P=(X-a)Q + R$ avec $R$ de degré inférieur à $(X-a)$, donc $\exists \lambda$ tel que $P=(X-a)Q+\lambda$. De plus, $P(a) = 0 = \lambda$, donc $\lambda  = 0$
+
+Donc $P=(X-a)Q$
+\end{myproof}
+\begin{theorem}[Corrolaire]
+Soit $P$ un polynome de degré $n$. Alors $P$ a au plus $n$ racines disctinctes ou confondues. De plus, s'il s'annule en $x_1<x_2w\dots<x_n$, alors $\exists \lambda \in K*$ tel que $P(x) = \lambda(X-x_1)(X-x_2)\dots(X-x_n)$
+\end{theorem}
+\begin{definition}[Polyn\^ome unitaire]
+$P$ est un polyn\^ome unitaire si le coefficient du terme de plus haut degré est $1$. Pour rendre un polyn\^ome unitaire, on peut le diviser par le coefficient du plus haut degré.
+\end{definition}
+Exemples : $P(X)  =X^3+5X^2-X+12$ est unitaire. $P(x) = 0$ ne l'est pas
+\subsection{Racines multiples}
+\begin{definition}
+Soit $P\in K[X]$. $a$ est tacine multiple d'ordre $\alpha \in \mathbb{N}*$ de $P$ si $(X-a)^{\alpha}|P$ et $(X-a)^{\alpha+1}$ ne divise pas $P$. C'est à dire qu'$\exists Q$, tel que $P(X) = (X-a)^\alpha Q$ et $Q(a)\neq 0$.
+\end{definition}
+Si $\alpha = 1$, on parle de racine simple, si $\alpha = 2$ ce sont des racines doubles.
+
+Exemple : $P(X) = X^2-2X+1 = (X-1)^2$ $1$ est racine double de $P$
+
+$P(X) = X^2+X+1 = (X-j)(X-\bar{j})$ avec $j = e^{2i\pi/3}$ : $j$ est racine simple de $Q$
+
+$P(X) = X^3(X^2+1)^2(X-5)^2$
+Racine/Ordre : 0/3, 5/2, i/2, -i/2
+
+\begin{theorem}[Caractérisation des racines multiples]
+Soit $P\in k[X]$. $a$ est racine multiple d'odre $\alpha$ de $P$ si $\forall k\in[0,\alpha-1], P(a) = 0$ et $P^\alpha(a) \neq 0$.
+\end{theorem}
+Exemple : $P(X) = X^2$ : $0$ est racine double. $P'(X)=2X$. $P'(0)=0$ mais $P''(0)\neq 0$. Il a bien $\alpha-1$ equation avec la $\alpha$ ieme qui ne s'annule pas.
+\begin{lemma}
+Soit $P$ un polyn\^ome de degré $n$. Alors $P(X) = \sum_{k=0}^n \frac{P^k(a)}{k!}(X-a)^k$
+\end{lemma}
+\begin{myproof}
+On démontre le résultat pour $X^k$ pour $j\in\mathbb{N}$. COmme $P(X) = \sum^{n}_{j=0}a_jX^j$ et $(P+Q)' = P'+Q'$, le résultat des vrai $\forall P\in k[X]$
+
+$X^j = (X-a+a)^j = \sum_{k=0}^j C^k_ja^{j-k}(X-a)^j = \sum^j_{k=0}\frac{j(j-1)\dots(j-k+1)}{k!}a^{j-k}(X-a)^j$. Mais $Q_j = x^j$, $Q'_j = j\times X^{j-1}$ et $Q''_j = j(j-1)X^{j-2}$, et par récurrence, on a $Q_j^{k} = j(j-1)\dots(j-k+1)X^{j-k}$, doù $Q_j - X^j = \sum_{k=0}^j \frac{Q_j^{k}(a)}{k!}(X-a)^k$.
+\end{myproof}
+\begin{myproof}
+Soit $P$ et $a$ une racine multiple d'ordre $\alpha$, alors $P(X)=(X-a)^\alpha Q(X)$ et $Q(a)\neq 0$ et en utilisant la formule de Leibnei pour la dérivation, on obtient que $P(a) = P'(a) = P^{\alpha-1}(a) = 0$ mais $P^k(a)\neq 0$.
+
+Réciproque : Supposons que $P(a) = \dots P^{\alpha-1} =0$. On effectue la division euclidienne de $P$ par $(X-a)^\alpha$. On a donc $P(X) = (X-a)^\alpha Q+R(X)$ avec $\deg(R)<\alpha$. montrons que $R = 0$. Soit $n = \deg(P)$. On a $P(X) = \sum_{k=0}^n\frac{}{P^k(a)k!}(X-a)^k  = (X-a)^\alpha \times Q$.
+\end{myproof}
+\subsection{Polynomes irréductibles}
+\begin{definition}[Polynomes irréductibles]
+P, avec $\deg(P)\geq 1$ est iréductible si $Q|P \iff \exists \lambda \in\mathbb{N} *$ tel que $Q=\lambda$ ou $Q=\lambda P$. Autrement dit, ses divisieurs sont des multiples de lui-m\^eme ou des constantes.
+\end{definition}
+Exemple : $X^1-1 = (X-1)(X+1)$, donc $X-1\neq \lambda, \neq \lambda(X^2+1)$
+
+Exemple : $X^2+1$ : N'a pas de diviseurs non triviaux dans $\mathbb{R}$ donc $X^2+1$ est irréductible dans $\mathbb{R}[X]$ mais pas dans $\mathbb{C}$ car $X+i$ est un diviseur non trivial de $X^2+1$.
+\begin{theorem}
+ $\mathbb{C}$ est algébriquement clos et signifie que tout polyn\^ome à coefficients complexes a au moins une racine dans $\mathbb{C}$
+\end{theorem}
+\begin{theorem}[Type de polynomes irréductibles]
+ Les polynomes irréductibles de $\mathbb{C}[X]$ sont les polyn\^omes unitaires de degré $1$ du type $X-z_0$
+
+Dans $\mathbb{R}[X]$, ce sont ceux de degré 1 et les polyn\^omes de degré 2 de discriminant négatif.
+\end{theorem}
+
+Rappel : Si $P\in\mathbb{R}[X], P(z_0)=0\iff P(\bar{z_0}) = 0$. On a alors :
+\[(X-z_0)(X-\bar{z_0}) |P \iff X^2-2Re(z_0)+|z_0|^2|P\]
+
+Exemple : $X^4+1$ est il irréductible dans $\mathbb{C}[X]$ ? Non car il est de degré supérieur à 1. Dans $\mathbb{R}[X]$ non plus car son degré est supérieur à $2$. Cependant, il n'a pas de racines réelles.\marginTips{Il y a une déconnexion entre racine et irréductibilité.}
+
+Déterminons les facteurs irréductibles dans $\mathbb{R}[X]$ de $X^4+1$.
+
+Méthode : On décompose $X^4+1$ dans $\mathbb{C}[X]$ i.e on cherche les racines de $X^4+1$ dans $\mathbb{C}$ puis on regroupe ensemble les monomes $(X-z_0)(x-\bar{z_0})$ associées à des racines complexes conjuguées.
+
+On résout $X^4+1 = 0 \iff X^4=-1$.
+
+On cherche les racines quatrième de $-1$. $-1=e^{i\pi}$ et $X=\rho e^{i\theta}$
+
+Donc $\rho^4e{4i\theta} = e^{i\pi}$. Donc $\rho^4=1 \Rightarrow \rho = 1$ et $\theta = \frac{\pi}{4} + k\frac{\pi}{2}$. Donc $z_0 = e^{i\frac{i\pi}{4}}$.
+
+\begin{itemize}
+\item $k=0$ : $z_0 = e^{i\frac{i\pi}{4}} = \frac{1}{\sqrt{2}}(1+i)$
+ \item $k= 1$: $ z_1 = e^{\frac{3i\pi}{4}} = \frac{1}{\sqrt{2}}(-1+i)$
+  \item $k= 2$: $ z_2 = e^{\frac{5i\pi}{4}} = \frac{1}{\sqrt{2}}(-1-i) = \bar{z_1}$
+   \item $k= 3$: $ z_1 = e^{\frac{-i\pi}{4}} = \frac{1}{\sqrt{2}}(1-i) = \bar{z_0}$
+\end{itemize}
+Donc $X^4+1 = (X-z_0)(X-\bar{z_0})(X-z_1)(X-\bar{z_1})$ sur $\mathbb{C}$
+
+Donc sur $\mathbb{R}$ : $P(X) = (X^2-2Re(z_0)X+|z_0|^2)(X^2-2Re(z_1)X+|z_1|^2)$ et on obtient $(X^2-\sqrt{2}X+1)(X^2+\sqrt{2}X+1)$
+
+\begin{theorem}[]
+$P$ admet une unique (à l'ordre des facteurs près) décomposition en facteurs irréductibles unitaire. $\exists \lambda \in K*, n\in\mathbb{N}, \alpha \in\mathbb{N}$ tel que $P(X) = \lambda(P_1^{\alpha_1}+\dots+P_n^{\alpha_n}$.
+\end{theorem}
+Exemple : $P(X) = \sqrt{7}(X-\pi)(X-l)^2(X^2+X+1)^3 =  \sqrt{7}(X-\pi)(X-l)^2(X-j)^3(X+j)^3$.
+
+\section{Fractions rationnelles}
+On appelle fraction rationnelle à coeffcient dans $K$ tout objet qui s'écrit $P(X)/Q(X)$ où $P,Q\in K[X],Q\neq0$. On utilise les m\^mes règles que pour les rationnels. On note $K(X)$ avec des parenthèses l'ensemble des fractions rationnelles à coefficents dans $K$. On obtient le corps des fractions de $K[X]$.
+
+\subsection{Éléments simples}
+\subsubsection{Dans C}
+ce sont les polynomes de la forme $\frac{\lambda}{(X-z_0)^{\alpha}}$ avec $\lambda \in\mathbb{C}$
+
+\subsubsection{dans R}
+Ce sont les polynpmes de la forme $\frac{\lambda}{(X-x_0)^{\alpha}}$ avec $\lambda \in\mathbb{C}$ et les $\frac{aX+d}{(X^2+bX+c)^{\alpha}}$
+\subsection{Exemple}
+\subsubsection{Sur C}
+On prend le polynome $F(X) = \frac{X^4}{(X-1)^2(X^2+1)}$.
+
+On factorise le dénominateur en produit d'éléments irréductibles à coeffcients complexes.
+
+$F(x) = \frac{X^4}{(X-1)^2(X-i)(X+i)}$
+
+On donne la décomposition théorique : $F(X) = E(X) + \frac{a_1}{X-1} + \frac{a_2}{(X-1)^2} + \frac{b}{X-i} + \frac{c}{X+i}$.
+
+$a_1,a_2,b,c \in\mathbb{C}$.
+
+Calcul des coeffcicients :
+
+$Ex)$ est le quotident de la division euclidienne de $P$ par $Q$. On trouve $E(x) =1$.
+
+% \polylongdiv[style=D]{X^4}{(X-1)^2(X^+1)}
+
+$(X+i)F(X) = \frac{1}{-i-1)^2(-2i)} = c$. On simplifie : $c= \frac{1}{(2i)(-2i)} = \frac14$.
+
+Je fais le calcul de $(X-i)F(X) = \frac{1}{(i-1)^(2i)} = b$.
+
+Donc $b= \frac14$.
+
+On calcule $a_2$ :
+
+$(X-1)^2F(X) = \frac{1}{2} = a_2$
+
+Calcul de $a_1$ : On calcule en une valeur qui n'est pas un p\^ole et qui va donner des résultats simples.
+
+Pour $F(0) = E(0) + \frac{a_1}{-1} + \frac{1}{2(-1)} + \frac{1}{4(-i)} + \frac{1}{4i}$, donc $a_1 = 1+\frac{1}{2}$.
+
+Maintenant que l'on a tous les coefficients, on peut écrire notre polynome :
+
+$F(X) = 1+\frac{3}{2(X-1)}+\frac{1}{2(X-1)^2}+\frac{1}{4(X-i)}+\frac{1}{4(X+i)}$
+\subsubsection{Dans R}
+$F(X) = E(x) + \frac{a_1}{X-1}+\frac{a_2}{(X-1)^2}+\frac{\gamma X+\delta}{X^2+1}$.
+
+Pour trouver $\gamma$ ou $\delta$, on peut rassembler les 2 monomes imaginaires sous le m\^me dénominateur.
+
+Donc $F(X) = 1+\frac{3/2}{X-1}+\frac{1/2}{(X-1)^2}+\frac14 (\frac{2X}{X^2+1}$.
+
+On peut aussi calculer $(X^2+i)F(X)$ e, $X=i$, donc cela vaut $\frac{X^4}{(X-1)^2(X^2+1)}\times (X^2+1)$. On calcule maintenant pour $X=i$ pour obtenir $\frac{1}{(X-1)^2} = \gamma i+\delta$.
+
+$(X^2+1)F(X) \frac{X^4}{(X-1)^2} = E(X)(X^2+1) + \frac{a_1}{X-1}(X^2+1)+\frac{a_2}{(X-1)^2}(X^2+1) + \frac{\gamma X + \delta}{(X^2+1)}(X^2+1) = \gamma i + \delta$
+\end{document}
+
+

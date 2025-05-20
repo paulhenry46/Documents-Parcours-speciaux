@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="62.724644mm"
+   height="89.783958mm"
+   viewBox="0 0 62.724644 89.783958"
+   version="1.1"
+   id="svg1"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <pattern
+       xlink:href="#Strips1_1-2-6-4-7"
+       preserveAspectRatio="xMidYMid"
+       id="pattern4-9-8-66-0"
+       patternTransform="matrix(0,0.31000001,-0.31000001,0,0,1.0583333)"
+       x="0"
+       y="0" />
+    <pattern
+       patternUnits="userSpaceOnUse"
+       width="2"
+       height="10"
+       patternTransform="translate(0,0) scale(2,2)"
+       preserveAspectRatio="xMidYMid"
+       id="Strips1_1-2-6-4-7"
+       style="fill:#000000">
+      <rect
+   style="stroke:none"
+   x="0"
+   y="-0.5"
+   width="1"
+   height="11"
+   id="rect134-6-2-0-5" />
+
+    </pattern>
+    <pattern
+       xlink:href="#Strips1_1-2-6-2-4-7"
+       preserveAspectRatio="xMidYMid"
+       id="pattern4-9-8-6-0-8"
+       patternTransform="matrix(0,0.31000001,-0.31000001,0,0,1.0583333)"
+       x="0"
+       y="0" />
+    <pattern
+       patternUnits="userSpaceOnUse"
+       width="2"
+       height="10"
+       patternTransform="translate(0,0) scale(2,2)"
+       preserveAspectRatio="xMidYMid"
+       id="Strips1_1-2-6-2-4-7"
+       style="fill:#000000">
+      <rect
+   style="stroke:none"
+   x="0"
+   y="-0.5"
+   width="1"
+   height="11"
+   id="rect134-6-2-9-6-0" />
+
+    </pattern>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-244.57384,-444.60579)">
+    <g
+       id="g3-7-0-6-8"
+       transform="rotate(49.510244,-226.16912,472.2761)">
+      <circle
+         style="fill:#000000;stroke:none;stroke-width:0.575296;stroke-linecap:round;stroke-linejoin:round"
+         id="path1-5-17-3-7-0"
+         cx="102.56291"
+         cy="125.10778"
+         r="6.12709" />
+      <path
+         style="fill:#000000;stroke:#000000;stroke-width:0.751152;stroke-linecap:round;stroke-linejoin:round"
+         d="m 102.56291,105.00002 v 14.99999"
+         id="path2-3-2-40-5-4" />
+      <path
+         style="fill:#000000;stroke:#000000;stroke-width:0.751152;stroke-linecap:round;stroke-linejoin:round"
+         d="m 105,119 -5.036028,-0.0674 2.598938,-13.93257 z"
+         id="path3-72-3-6-2" />
+    </g>
+    <g
+       id="g3-7-6-9-9"
+       transform="matrix(-0.64931208,0.76052207,0.76052207,0.64931208,270.52635,339.50094)">
+      <circle
+         style="fill:#000000;stroke:none;stroke-width:0.575296;stroke-linecap:round;stroke-linejoin:round"
+         id="path1-5-17-93-8-6"
+         cx="102.56291"
+         cy="125.10778"
+         r="6.12709" />
+      <path
+         style="fill:#000000;stroke:#000000;stroke-width:0.751152;stroke-linecap:round;stroke-linejoin:round"
+         d="m 102.56291,105.00002 v 14.99999"
+         id="path2-3-2-3-7-1" />
+      <path
+         style="fill:#000000;stroke:#000000;stroke-width:0.751152;stroke-linecap:round;stroke-linejoin:round"
+         d="m 105,119 -5.036028,-0.0674 2.598938,-13.93257 z"
+         id="path3-72-8-2-0" />
+    </g>
+    <g
+       id="g4-4-4-8-4"
+       transform="rotate(123.38353,93.2724,331.07963)">
+      <circle
+         style="fill:#000000;stroke:none;stroke-width:0.575296;stroke-linecap:round;stroke-linejoin:round"
+         id="path1-5-1-9-7-2-2"
+         cx="120"
+         cy="124.93124"
+         r="6.12709" />
+      <path
+         style="fill:url(#pattern4-9-8-66-0);fill-opacity:1;stroke:#000000;stroke-width:0.351;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         d="m 122.43709,118.82347 -5.03603,-0.0674 L 120,104.8235 Z"
+         id="path3-7-5-2-9-2" />
+    </g>
+    <g
+       id="g4-4-4-0-9-2"
+       transform="matrix(0.55024074,0.83500607,0.83500607,-0.55024074,129.4844,435.37032)">
+      <circle
+         style="fill:#000000;stroke:none;stroke-width:0.575296;stroke-linecap:round;stroke-linejoin:round"
+         id="path1-5-1-9-7-8-6-0"
+         cx="120"
+         cy="124.93124"
+         r="6.12709" />
+      <path
+         style="fill:url(#pattern4-9-8-6-0-8);fill-opacity:1;stroke:#000000;stroke-width:0.351;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         d="m 122.43709,118.82347 -5.03603,-0.0674 L 120,104.8235 Z"
+         id="path3-7-5-2-1-0-5" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:14.8639px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:3.51654;stroke-linecap:round;stroke-linejoin:round"
+       x="273.85373"
+       y="482.67532"
+       id="text1-2-5-2-5"><tspan
+         id="tspan1-6-1-7-2"
+         style="fill:#000000;stroke:none;stroke-width:3.51654"
+         x="273.85373"
+         y="482.67532">A</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.315089;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       d="m 273.82552,469.02678 c -8.97695,-4.48847 -10.22531,-16.7851 -4.48848,-22.44237 2.20044,-2.16993 6.47002,-2.66538 8.97696,0 5.52007,5.86897 4.48847,17.9539 -4.48848,22.44237 z"
+       id="path4-3-9-4-8" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.315089;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       d="m 274.63852,487.5238 c -8.97695,4.48847 -10.22531,16.7851 -4.48848,22.44237 2.20044,2.16993 6.47002,2.66538 8.97696,0 5.52007,-5.86897 4.48847,-17.9539 -4.48848,-22.44237 z"
+       id="path4-3-9-4-8-4" />
+    <text
+       xml:space="preserve"
+       style="font-size:8.81944px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:0.350999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       x="277.6665"
+       y="532.4671"
+       id="text19"><tspan
+         id="tspan19"
+         style="stroke-width:0.351"
+         x="277.6665"
+         y="532.4671">Carré plan</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:8.81944px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;fill:#ff0000;stroke:none;stroke-width:0.350999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       x="301.06314"
+       y="481.54538"
+       id="text28"><tspan
+         id="tspan28"
+         style="stroke-width:0.351"
+         x="301.06314"
+         y="481.54538">90°</tspan></text>
+  </g>
+</svg>

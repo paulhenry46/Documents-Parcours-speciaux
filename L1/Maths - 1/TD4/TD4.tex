@@ -1,0 +1,225 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+
+\setcounter{chapter}{3}
+
+	\chapter{Intégrales}
+\section{Primitives}
+
+\subsection{Définition}
+Soit $f: [a,b] \to \mathbb{R}$ une fontion définie sur $[a,b]$ et soit $F : [a,b] \to \mathbb{R}$ une fonction. $F$ est une primitive de $f$ si $F$ est dérivable sur $[a,b]$ et $F' = f$, i.e $\forall x\in[a,b], F'(x) = f(x)$.
+
+\subsection{Propriétés}
+\warningInfo{Existence des primitives}{Il n'existe pas forcément une primitive aux fonctions.}
+Si $F$ et $G$ sont 2 primitives de $f$ sur $[a,b]$, alors $\exists k\in\mathbb{R},\forall x\in[a,b],F(x) = G(x)+k$, i.e $f$ et $g$ diffèrent d'une constante
+
+\begin{myproof}
+Soit $F$, $G$ deux primitives de $f$ de $[a,b]\to \mathbb{R}$. Donc $F,G$ sont continues et dérivables sur $[a,b]$ et $\forall x\in[a,b], F'(x) = f(x) = G'(x)$.
+
+Donc $(F'-G')(x) = 0 \forall x\in[a,b]$.
+
+Montrons que $(F-G)(x) = (F-G)'(a)$
+
+Considérons $F-G : [a,b] \to \mathbb{R}$ et soit $x\in]a,b]$
+\begin{itemize}
+ \item $F-G$ est continue sur $[a,x]$
+ \item $F-G$ est dérivable sur $]a,x[$
+\end{itemize}
+Donc d'après le TAF, $\exists c\in]a,b[$, tel que $(F-G)'(c) = \frac{(F-G)(x)-(F-G)(a)}{x-a}$.
+
+Donc, $F-G)(x) = (F-G)(a) = K,\forall x\in[a,b]$ et $\forall x\in[a,b],F(x) = G(x)+k$.
+\end{myproof}
+\section{Techniques}
+On note $\int f$ une primitive de $f$.
+\subsection{Intégration par parties}
+Soient $u,v$ 2 fonctions $C^1$\marginElement{\marginTitle{Classe $C^n$} $f$ est $C^n$ sur $[a,b]$ si $f$ est $n$ fois dérivables sur $[a,b]$ et $f^n$ est continue sur $[a,b]$. $C^{\infty}$ si $\forall n\in\mathbb{N}, f^n$ existe.} (continues de dérivée continues) sur $[a,b]$. Alors
+\begin{theorem}[Formule]
+\[\int_a^b u(x) v'(x) \, dx  = \Big[u(x) v(x)\Big]_a^b - \int_a^b u'(x) v(x) \, dx\]
+\end{theorem}
+\subsection{Formulaire}
+\begin{tabular}{_l^l}
+\tableHeaderStyle%
+Fonction & Primitive\\
+Primitive de $x^n$ & $\frac{1}{n+1}x^{n+1}+k$ si $n\neq -1$\\
+Primitive de $\frac{1}{x^n}$ & $-\frac{1}{(n-1)x^{n-1}}+k$\\
+Primitive de $\frac{a}{x}$ & $a \ln x+k$\\
+Primitive de $\frac{1}{\sqrt{x}}$ & $2\sqrt{x}+k$\\
+Primitive de $\cos x$ & $\sin x +k$\\
+Primitive de $\sin x$ & $-\cos x +k$\\
+Primitive de $e^x$ & $e^x +k$\\
+Primitive de $u'u^n$ & $\frac{1}{n+1}u^{n+1}+k$\\
+Primitive de $\frac{u'}{u^n}$ & $-\frac{1}{n-1}\times\frac{1}{u^{n-1}}+k$\\
+Primitive de $\frac{u'}{\sqrt{u}}$ & $2\sqrt{u}+k$\\
+Primitive de $u'\cos u$ & $\sin u+k$\\
+Primitive de $u'\sin u$ & $-\cos u +k$\\
+Primitive de $\frac{u'}{u}$ & $\ln u +k$\\
+Primitive de $u'\sqrt{u}$ & $\frac{2}{3}(u)^{3/2} + k$\\
+Primitive de $u'e^u$ & $e^u$\\
+Primitive de $u'\cosh u$ & $\sinh u$\\
+Primitive de $u'\sinh u$ & $\cosh u$\\
+Primitive de $\frac{1}{1+x^2}$ & $\tan^{-1}(x)$\\
+Primitive de $\frac{1}{\sqrt{1-x^2}}$ & $\sin^{-1}(x)$
+\end{tabular}
+\section{Partie théorique}
+Les fonction $f$ désignent une fonction définie et bornée sur $[a,b]$. C'est à dire les fonctions continues ou monotones.
+\subsection{Intégrale de Riemann}
+Idée : On sait calculer l'aire d'un rectangle, donc de plusieurs rectangles
+
+Si c'est intégrable, la plus petite aire des fonctions escalier vaut la plus grande.
+\subsection{Intégrales des fontions en escalier subidvision d'un intervalle}
+\begin{theorem}[Définition]
+Une subdivision de l'intervalle [a,b] est une suite finie de réels strictement croissant, $\sigma = (x_k)$ et $x_0=a<x_1<x_2<\dots<x_{n-1}<x_n=b$
+
+Le pas de la subdivision $\delta$ est le nombre $\max_{i=0\dots,n-1} (x_{i+1}-x_i)$
+\end{theorem}
+
+
+Exemple : Subidivision régulière : $\delta = \frac{b-a}{n}$. Alors $x_0 = a, x_1 = a+\frac{b-a}{n}, x_2 = a+2\frac{b-a}{n}, x_k = a+k\frac{b-a}{n}$.
+\begin{theorem}[Définition d'une fonction en escalier]
+Une fonction $\varphi$ est dite enescalier s'il existe sur [a,b] une subdivision $\sigma=(x_k)$ de $[a,b]$ telle que $\varphi$ est constante sur $]x_i,x_{i-1}[, \forall i \in {0,\dots,-n-1},$ i.e. $\forall i\in {0,\dots,-n-1},\exists \varphi_i \in\mathbb{R}$ telle que $\varphi(t) = \varphi_i \forall t\in ]x_i,x_{i+1}[$.
+
+On défini alors pour une telle fonction $\varphi$ le nombre $S(\varphi,\sigma) = \sum_{k=0}^{n-1} \varphi_k(x_{kh}-x_k)$ = aire sous la courbe en escalier
+
+Schéma 2
+\end{theorem}
+Ce qui nous interrese est la valeur sur les intervalles et non aux bornes de ces intervalles.
+\begin{theorem}[Proposition]
+$S(\varphi,\sigma)$ ne dépend pas de $\sigma$. On note alors $S(\varphi,\sigma) = S(\varphi)$ qui est l'aire sous la courbe de $y=\varphi(t)$
+
+On note alors $\int^b_a \varphi(t)\mathrm{d}t = S(\varphi)$
+\end{theorem}
+\subsection{Propriétés de l'intégrale}
+Soient $\varphi,\psi$ 2 fonction en escalier
+
+\begin{itemize}
+ \item $\int$ est linéaire : $\int_b^a \varphi + \lambda \psi(t) \mathrm{d}t = \int_b^a \mathrm{d}t + \lambda \int_b^a \psi(t) \mathrm{d}t$
+ \item $\in^a_b$ est croissante sur les fonctions. Donc si $\varphi \geq 0$, alors $\int^b_a\varphi(t)\mathrm{d}t \geq 0$ et si $\varphi \leq \psi, \int \varphi \leq \int \psi$
+ \item Inégalité triangulaire : $|\int_b^a \varphi(t)| \leq \int^a_b |\varphi(t)|$
+ \item Relation de Chasle : $\int^y_x\varphi + \int^z_y = \int^z_x\varphi$ : $\int^x_x \varphi = 0$ et $\int^x_y\varphi = -\int^y_x \varphi$.
+\end{itemize}
+\begin{myproof}
+Soit $\varphi$ est escalier sur $\sigma = (x_k)$. On a : $\varphi(t) = \varphi_k$.
+
+$\varphi \geq 0 \iff \forall k\in[c,n-1],\varphi_k\geq 0$, donc $\int_a^b \varphi = \sum_{k=0}^{n-1} \varphi_k (x_{k+1}-x_k) \geq 0$.
+
+--
+
+Si $\varphi$ est en escalier sur $\sigma$, alors $|\varphi|$ est aussi en escalier.
+
+$|\int^b_a \varphi| = |\sum_{k=0}^{n-1} \varphi_k (x_{k+1}-x_k)| \leq \sum_{k=0}^{n-1} |\varphi_k| (x_{k+1}-x_k) = \int_a^b \varphi$.
+
+Linéarité
+$\varphi,\psi$ 2 fonctions en escalier, avec $\sigma = (x_k)$ subdivision associée à $\varphi$ et $\tau = (y_k)$ celle associée à $\psi$. On se demande s'il existe une subdivision $\theta$ telle que $\varphi + \lambda \psi$ soit constante.
+
+Il existe donc une subdivision plus fine de $\sigma,\tau$ qui soitn adaptée à $\varphi$ et $\psi$ pour laquelle $\psi$ et $\varphi$ sont en escalier. $\sigma = (z_k)$, alors $\forall t\in]z_k,z_{k+1}[$ et $\varphi+\lambda \psi = \varphi_k+\lambda \psi$. Donc $\sum(\varphi_k+\lambda \psi_k)(z_{k+1}-z_k) = \int^b_a \varphi + \lambda \int^b_a\psi$.
+
+--
+
+Relation de Chasle
+\end{myproof}
+\subsection{Intégrale d'une fonction définie sur [a,b] et bornée sur [a,b]}
+\begin{theorem}[Définitoon]
+Une fonction $f$ est intégrable sur $[a,b]$ s'il existe $\forall \varepsilon >0$ 2 fonctions en escalier $\varphi,\psi$, telles que $\varphi \leq f\leq \psi$ et $\int^b_a (\psi(t)-\varphi(t) \mathrm{d}t < \varepsilon$
+\end{theorem}
+Dans ce cas, on peut définir le plus grand des minorants et le plus petit des majorants, qui sont égaux : $\int^b_a\varphi = \int^b_a\psi$.
+\subsection{Autres}
+\begin{itemize}
+ \item Les fonctions monotones ou contnues sont intégrables sur $[a,b]$.
+\end{itemize}
+\begin{myproof}
+Supposons $f$ croissante. On choisit $\varphi,\psi$ définies sur $(x_k)$ par $\varphi(t) = f(x_k)\forall t\in[xk,x_{k+1}[$ et $\phi(t) = f(x_{k+1} \forall t\in[x,x_{k+1}[$.
+
+Comme $f$ est croissante, $\varphi \leq f \leq \psi$ et $\int^b_a(\psi(t)-\varphi(t)\mathrm{d}t = \sum^{n-1}_{k=0} (f(x_{k+1}) - f(x_k))(\frac{b-a}{n}) = (\frac{b-a}{n})\sum^n_{k=0} f(x_{k+1})-f(x_k) = \frac{b-a}{n} (f(b)-f(a))$.
+
+Donc $\forall \varepsilon$, on choisit $n\in\mathbb{N}$ assez grand pour que $\frac{b-a}{n} (f(b)-f(a)) < \varepsilon$. Donc $\forall \varepsilon >0,\exists \psi,\varphi$ en escalier sur $[a,b]$ telle que $\int^b_a\psi-\varphi < \varepsilon$.
+
+A savoir refaire
+\end{myproof}
+\begin{theorem}[Proposition]
+L'intégrale des fonctions intégrables sur [a,b] présente les m\^emes prorpéiéts que l'intégrale des fonctions en escalier, c'est à dire linéarité, croissance, inégalité triangulaire, relation de Chasle.
+\end{theorem}
+\subsection{Théorème fondamental de l'analyse}
+\begin{theorem}[Théorème]
+Soit $f$ une fonction de $[a;b]\to\mathbb{R}$ continue sur $[a,b]$. Alors, la fonction $F : [a,b]\to\mathbb{R}, x\to \int^x_a f(t_\mathrm{d}t$ est une primitive de $f$. Donc $F$ est dérivable sur $[a,b]$ et $F'=f$. De plus, si $G$ est une primitive de $f$ alors $\int^b_af(t)\mathrm{d}t = G(b)-G(a)$.
+\end{theorem}
+
+
+\begin{myproof}
+On suppose $f$ une fonction $C^1$, donc intégrable sur $[a,b]$. On considère $F : [a,b] \to \mathbb{R},x\to \int^x_af(t)\mathrm{d}t$.
+
+Soit $x_0 \in]a,b[$. On doit démontrer que $F$ est dérivable en $x_0$ et $F'(x_0) = f(x_0)$. On étudie si $\Lim{h\to0} \frac{F(x_0+h)-F(x_0)}{h}  - f(x_0) = 0$.
+
+Calculons d'abord la différence $F(x_0+h-F(x_0)$ :
+
+\begin{flalign*}
+F(x_0+h)-F(x_0) &= \int^{x+h}_a f(t)\mathrm{d}t - \int^{x}_a f(t)\mathrm{d}t\\
+&= (\int^{x}_a f(t)\mathrm{d}t + \int^{x+h}_x f(t)\mathrm{d}t) - \int^{x}_a f(t)\mathrm{d}t \text{ Relation de Chasles}\\
+&= \int^{x+h}_x f(t)\mathrm{d}t\\
+\end{flalign*}
+$f$ est continue, d’après le théorème de la moyenne, conséquence du TAF,$\exists c \in
+[x; x + h]$ pour lequel
+\[\frac{1}{(x+h)-x}\int^{x+h}_{x}f(t)\mathrm{d}t=f(c) \iff \int^{x+h}_{x}f(t)\mathrm{d}t=f(c)((x+h)-x = f(c)\times h\]
+
+Revenons à la limite :\[\Lim{h\to0} \frac{F(x_0+h)-F(x_0)}{h}  - f(x_0) = \Lim{h\to0} \frac{f(c)\times h}{h}  - f(x_0) = \Lim{h\to0} f(c)  - f(x_0)\]
+Quand $h\to0$, l'intervalle $[x_0,x_0+h]$ contenant $c$ tend vers $x$. Donc la limite est nulle, le résultat est démontré.
+\end{myproof}
+\section{Changement de variable dans une intégrale}
+\begin{theorem}[]
+Soit $f : [a,b]\to \mathbb{R}$ une fonction inétgrable
+
+Soit $\varphi [\alpha,\beta] \to [a,b]$ une application bijective et $C^1$. On note $\varphi^{-1}$ l'application réciproque
+
+Alors $\int^b_a f(t)\mathrm{d}t = \int^{\varphi^{-1}(b)}_{\varphi^{-1}(a)} f(\varphi(u))\varphi'(u)\mathrm{d}u$.
+\end{theorem}
+\subsection{Méthode}
+\subsubsection{Première méthode}
+\begin{enumerate}
+ \item On pose $t = \varphi(u)$
+ \item $\mathrm{d}t = \varphi'(u)\mathrm{d}u$
+ \item Valeurs aux bornes $t=a \Rightarrow u = \varphi^{-1}(a)$ et $t=b \Rightarrow u = \varphi^{-1}(b)$
+\end{enumerate}
+\subsubsection{Variante}
+Variante dans le calcul de primitive. On n'exige pas le fait que cela soit bijectif
+
+Soit $f$ une fonction contnue sur $[a,b]$
+
+\[\int f(t)\mathrm{d}t = \int f\circ \varphi (u) \varphi'(u)\mathrm{d}u\]
+
+On pose $t = \varphi(u)$ et $\mathrm{d}t = \varphi'(u)\mathrm{d}u$
+
+Si $F = \int f$ et $f$ continue sur $[a,b]$, $(F\circ \varphi)' = F'\circ \varphi \times \varphi' = f\circ \varphi \times \varphi'$
+\end{document}
+
+

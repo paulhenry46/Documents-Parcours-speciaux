@@ -1,0 +1,96 @@
+ % !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Optique Géométrique}
+\subtitle{Niveau 1}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Gatel}%christophe.gatel@cemes.fr : section B sillon 7
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+
+	\chapter{Introduction et notion de rayons lumineux}
+	\section{Introduction}
+% 	\subsection{Théories}
+% 	\begin{itemize}
+% 	\item Optique géométrique : nait naturellement, issue des observations : existe seule jusqu'au 17e
+% 	\item Optique ondulatoire : phénomènes de diffraction, interférences, importante au 19e
+% 	\item Électromégnétisme : On a mesuré la vitesse de la lumière, production de champ magnétique
+% 	\item Physique quantique : Spectre de la lumière, répartission des ondes en fonction de leur énergie, explication de l'effet photoélectrique.
+% 	\end{itemize}
+\subsection{Nature de la lumière}
+\warningInfo{Définition électromagnétique}{C'est la partie du spectre électromagnétique visible par l'oeil. Il est Caractérisé par 2 champ vectoriels orthogonaux.
+}
+
+\subsubsection{Grandeurs}
+\warningInfo{Grandeurs à savoir}{Spectre visible : de 750 nm (rouge) à 400 nm (violet)
+
+Vitesse de la lumière : $3\cdot 10^{8}$ m$\cdot$s}
+
+\begin{theorem}[Dans le vide, la fréquence d’une onde électromagnétique monochromatique $f$ ou $\nu$ est
+reliée à sa longueur d’onde $\lambda$ par la relation :]
+ \[c = \frac{\lambda}{T} = \lambda f\]
+\end{theorem}
+
+\section{Limitations et principes fondamentaux}
+\subsection{Limitations}
+
+On étudie seulement le spectre visible et on travaille sur des objets et images très supérieures à la longueur d'onde.
+	\subsection{Principes et hypothèses}
+	\begin{itemize}
+	 \item La lumière se propage en ligne droite.
+	 \item Les rayons lumineux sont rectilignes et indépendants.
+	 \item Principe du retour de inverse de la lumière : Le trajet suivi est indépendant du sens de propagation.
+	\end{itemize}
+	\subsection{Faisceaux}
+	La lumière se présente sous la forme d'un faisceau (= un ensemble de rayon). Une source de lumière envoie des rayons dans toutes les directions.
+	\subsection{Théorème de Malus}
+\begin{theorem}[Théorème de Malus]
+ 	La surface d'onde est une surface qui en tout point est perpendiculaire au rayon.
+\end{theorem}
+	\subsection{Chemin optique}
+	\subsubsection{Indice optique}
+	\warningInfo{Indice optique}{Il est supérieur à 1 et sans dimensions :  \[n=\frac{c}{v_{milieu}}= \frac{c}{v}\]}
+Plus l'indice optique est important, plus la vitesse dans le mileu est faible.
+	\warningInfo{Dioptre}{Surface de spération entre 2 milieux d'indice optique différents.}
+Deux milieux différents, mais avec le meme indice ne présentent pas de dioptre.
+
+\subsubsection{Lois de Cauchy}
+Cette loi est une approximation valable pour les milieux transparents dans le visible et dont les bandes d'absorption sont toutes dans l'ultraviolet. Elle s'écrit comme un développement limité de l'indice de réfraction :  \[n(\lambda) = A + \frac{B}{\lambda^2}\]
+	Un milieu ou l'indice varie beaucoup est qualifié de dispersif.
+
+	\subsection{Chemin optique}
+	Lie la distance parcourue dans le milieu et la vitesse de propagation : \[[AB] = \frac{c}{v} \times AB = c\times \Delta t = n \times AB\]
+
+	Il représente la distance qu'aurai parcourie le rayon pendant $\Delta t$ à la vitesse maximale, dans le vide.
+	\subsection{Principe de Fermat}
+	Se base sur le principe de moindre action : Les processus de phénomènes se fait en minimant l'énergie pour aller vers un état de plus faible énergie. On cherche donc a minimiser le temps (et non la distance) durant lequel le rayon se ballade.
+\begin{theorem}[Principe de Fermat]
+ La lumière se dirige de telle manière qu'elle va minimiser le chemin optique.
+\end{theorem}
+\end{document}
+

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="100.557mm"
+   height="87.775215mm"
+   viewBox="0 0 100.557 87.775215"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1"
+     transform="translate(5.5569998,-89.408628)">
+    <ellipse
+       style="fill:none;stroke:#0066ff;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round"
+       id="path1"
+       cx="45"
+       cy="139.7084"
+       rx="20"
+       ry="19.999998" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1.114, 4.456;stroke-dashoffset:0"
+       d="M 44.999999,84.999996 V 194.99999"
+       id="path2" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1.114, 4.456;stroke-dashoffset:0"
+       d="M -5,139.99999 H 95.000002"
+       id="path3" />
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle;fill:none;stroke:#000000;stroke-width:6.91206;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:6.91206, 27.6483;stroke-dashoffset:0"
+       x="55"
+       y="95"
+       id="text4"><tspan
+         id="tspan4"
+         style="font-size:10.5833px;fill:#000000;stroke:none;stroke-width:6.91206"
+         x="55"
+         y="95">y</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1.114, 4.45601;stroke-dashoffset:0"
+       x="85"
+       y="150"
+       id="text5"><tspan
+         id="tspan5"
+         style="stroke-width:1.114"
+         x="85"
+         y="150">x</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1.114, 4.45601;stroke-dashoffset:0"
+       x="65"
+       y="175"
+       id="text6"><tspan
+         id="tspan6"
+         style="stroke-width:1.114"
+         x="65"
+         y="175">S<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan7">00</tspan></tspan></text>
+  </g>
+</svg>

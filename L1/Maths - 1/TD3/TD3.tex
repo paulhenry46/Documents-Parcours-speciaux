@@ -1,0 +1,639 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+
+\setcounter{chapter}{2}
+
+	\chapter{Fonctions}
+\section{Précisions sur les applications réciproques}
+Une application est bijective de $E\rightarrow F$ si $\forall y\in F, \exists!x\in E,y=f(x)$.
+
+On définit une application, appelée réciproque notée $f^{-1} : F\rightarrow F$ et $y\longmapsto x=f^{-1}(y)$, avec $\forall y\in F, x=f^{-1}(y) \iff x\in E$ et $y = f(x)$. f est bijective donc $f^{-1}$ est une application.
+
+Propriétés :
+\begin{itemize}
+ \item $f\circ f^{-1}(y) = y = Id_F$
+  \item $f^{-1}\circ f(x) = x = Id_E$
+  \item $f\circ Id_E = f$ : $Id_E$ est le neutre à droite pour 0
+  \item $Id_E \circ f = f$ : $Id_E$ est le neutre à gauche pour 0
+\end{itemize}
+En effet, $f\circ f^{-1}(y) = f(f^{-1}(y)) = f(x) = y$.
+
+\begin{theorem}[Proposition]
+Soit $f : E\rightarrow F$ une application. S'il existe $g : F\rightarrow E$ une application telle que : $g\circ f = Id_E$ et $ f\circ g = Id_F$. Alors $f$ est bijective et $g$ est la réciproque de $f$.
+\end{theorem}
+\begin{theorem}[Corrolaire]
+Si l'application réciproque exsiste, elle est unique
+\end{theorem}
+Exemple : $Id : R\rightarrow R$. $Id_R (\sqrt{2}) = \sqrt{2}$.
+\warningInfo{Conséquence}{On peut donc montrer qu'une application est bijective en exhibant sa réciproque}
+
+\begin{myproof}[]
+Je suppose :$f:E\rightarrow F$. Soit $g : F\rightarrow E$ avec $g\circ f = Id_E$ et $ f\circ g = Id_F$
+\begin{itemize}
+ \item Montrons que $f$ est bijective.
+
+Soir $y\in F, E? x\in E,$ tel que $y=f(x)$, est unique ?
+
+$y = f(x) \Rightarrow g(y) = g(f(x)) = x$, car $g\circ f = Id_E$.
+
+Si $g=f(x)$, alors  $x=g(y)$. $y$ a au plus un antécédant et $f$ est injective.
+
+De plus, $f(x) = f(g(y)) = y$ car $f\circ g = Id_F$. Donc $x = g(y)$ est bien un antécédant de $y$ par $f$ et c'est le seul.
+
+Conslusion : $f$ est bijective de $E \rightarrow F$
+
+\item Montrons $g=f^{-1}$.
+
+$f$ bijective et $F \rightarrow E$ et $y \longmapsto x$.
+
+$f^{-1}(x) = x \iff y = f(x)$ et $x\in E$.
+
+Vérifions que $\forall y \in F, f^{-1}(y) = g(y)$.
+
+$f^{-1}(y)=x \iff f(x) = y \iff g\circ f(x) = g(y) \Rightarrow x = g(y)$. Donc $g(y) = f^{-1}(y) \forall y\in F$.
+\end{itemize}
+Donc l'implication est démontrée.
+
+\end{myproof}
+\begin{theorem}[Proposition]
+Soit $f : E\rightarrow F$ et $g : F\Rightarrow G$ deux applications bijectives. $g\circ f : E\rightarrow F \rightarrow G$ et $x \longmapsto f(x) \longmapsto g(f(x))$ Alors $g\circ f$ est bijective.
+\end{theorem}
+
+\begin{theorem}[Proposition]
+Soit $f : E\rightarrow F$ bijective et notons $f^{-1} : F\Rightarrow E$ sa réciproque. Alors $f^{-1}$ est bijective de réciproque $f$.
+\end{theorem}
+\begin{myproof}[]
+Si $f$ est bijective, alors $f\circ f^{-1} = Id_F$ et $f^{-1}\circ f = Id_E$. D'après la proposition précédante, $f^{-1}$ est bijective
+
+\end{myproof}
+\section{Généralités sur les fonctions de R dans R}
+\subsection{}
+Une fonction $f$ de R dans R est une correspondance de R dans R telle que tout élément de l'ensemble de départ a au plus une image dans l'ensemble d'arrivée. On ne change pas le domaine d'arrivé mais on s'autorise à changer le domaine de départ.
+
+Exemples :
+\begin{itemize}
+ \item $R\rightarrow R$ et $x\longmapsto \sqrt{x-1}$ f(0) n'est pas définie
+ \item $R\rightarrow R$ et $x\longmapsto \log(x)$. Log est une application de $R_+^*$ dans $R$.
+\end{itemize}
+
+On note $F(R,R)$ les fonctions de $R$ dans $R$
+
+\begin{theorem}[Ensemble de définition]
+Soit $f$ de R dans R une fonction. Le domaine de définition de $f$ est l'ensemble, noté $Df = \{x\in R, f(x) \text{existe}\}$ Alors, $Df\rightarrow R$ est une application.
+\end{theorem}
+
+Exemple : $f : R \rightarrow R$, $x\longmapsto \sqrt{x^2-x-1}$ $f$ est définie si le polynome est positif, i.e $x\leq\alpha$ et $\geq\tau$
+
+Exemple : $f : R \rightarrow R$, $x\longmapsto \log(\frac{1-x}{1+x})$. $f$ est définie si la fraction est supérieure à 0 et $1+x\neq 0$ Donc le domaine de définition est $]-1,1[$
+\checkInfo{Remarque}{Montrer que 2 fonctions sont égales : $\forall x\in D_f = D_g, f(x) = g(x)$}
+\subsection{Monotonie}
+Soit f de R dans R une fonction. Elle est croissante sur R, respectivement strictement croissante si $\forall x,x'\in D_f, x\leq x' \Rightarrow f(x)\leq g(x)$ respectivement $\forall x,x'\in D_f, x<x' \Rightarrow f(x)< g(x)$.
+
+Exemple : $f(x) = 2x$ $\forall x,x' = 2x'-2x = 2(x'-x) >0$, donc elle est croissante.
+
+Exemple : $g(x) = \frac{1}{x}$ est strictement décroissante : $\frac{1}{x'} - \frac{1}{x} = \frac{x-x'}{x'x} <0$. Donc $g$ est bien décroissante sur $R_+^*$.
+
+Si $f$ est (strictement) croissante ou décroissante sur $D_f$, on dit qu'elle est (strictement) monotone sur $D_f$
+\begin{theorem}[Proposition]
+Soit $f : I\rightarrow R$, si $f$ est strictement monotone sur $I$, alors $f$ est injective de I sur R.
+\end{theorem}
+\begin{myproof}
+Pour une fonction strictement décroissante.
+
+$\forall x,x', x'>x f(x)>f(x')$ et donc $f(x)\neq f(x')$
+$\forall x,x',x'<x, f(x)<f(x')$ et donc $f(x)\neq f(x')$
+
+Donc, on a bien $\forall x\neq x' \Rightarrow f(x)\neq f(x')$
+\end{myproof}
+\subsection{Fonctions majorées et minorées}
+Soit $f : R\rightarrow R$ Soit $I\in D_R$.
+
+$f$ est majorée sur $I$ s'il existe $M\in R,\forall x\in I, f(x) \leq M$.
+
+$f$ est minorée sur $I$ s'il existe $m\in R,\forall x\in I, f(x) \geq m$.
+
+Elle est bornée sur $I$, si $f$ est majorée et minorée sur $I \iff \exists M\in\mathbb{R}^+, \forall x\in I, |f(x)\leq M$.
+
+Exemple de fonctions majorées
+
+\begin{itemize}
+ \item $\cos(x) : \forall x\in\mathbb{R}, |\cos(x)|\leq 1$
+ \item $x\longmapsto \exp(x)$ est minorée par 0.
+ \item $x\longmapsto -x^2$ est majorée par 30
+\end{itemize}
+
+\checkInfo{Montrer que la fonction est non majorée}{
+On montre que $\forall M\in\mathbb{R},\exists x\in I, f(x)>M$.}
+\subsection{Image directe et image récirproque}
+On se donne $f \in F(R,R)$.
+
+Soit $I$ un intervalle de $\mathbb{R}$. $f(I) = \{f(x), x\in I\} = \{y\in\mathbb{R},\exists x\in I, y = f(x)\}$.
+
+Soit $J$ un intervalle de $\mathbb{R}$. $f^{-1}(J) = \{ x\in D_f, f(x)\in J\} = \{y\in\mathbb{R},\exists x\in I, y = f(x)\}$.
+\section{Limites d'une fonction en un point ou en l'infini}
+Soit $f : \mathbb{R} \rightarrow \mathbb{R}$ une fonction.
+\subsection{Limite en un point}
+\subsubsection{Voisinage épointé}
+\warningInfo{Voisinage épointé de $x_0$}{Un intervalle ouvert contenant $x_0$, privé de $x_0$. On le note $V_{x_0}$. $V_{x_0} = ]x_0-\epsilon,x_0+\epsilon[\setminus \{x_0\}$}
+
+f a une limite finie si :
+
+est définie sur un voisinage épointé de $x_0$ et pour toute suite $(u_n)$ est convergente vers $x_0$ et à valeurs de $x_0$, \[\Lim{\infty} f(u_n) = l\] avec $(u_n)$ tend vers $x_0$.
+
+Cela équivaut à : $\forall \varepsilon >0, \exists \alpha >0, \forall x, 0< |x-x_0|<\alpha \Rightarrow |f(x) - l|<\epsilon$.
+
+ Exemple : $\Lim{0}\frac{0}{x} = 0$, car $x$ est défini au voisinage épointé de 0.
+\subsubsection{Limites infinies}
+
+ f a une limite valant $+\infty$ si :
+ \begin{itemize}
+  \item f st définie sur un voisinage épointé de $x_0$
+
+ \item pour toute suite $(u_n)$ à valeurs dans $V_{x_0}$ et de limite $x_0$, on a : \[\Lim{\infty} f(u_n) = +\infty\]
+
+ \item $\forall A >0, \exists \alpha >0, 0<|x-x_0|<\alpha \Rightarrow f(x)>A$ (équivalente à la proposition précédente)
+ \end{itemize}
+
+ De m\^eme en $-\infty$ :
+
+ \begin{itemize}
+ \item f st définie sur un voisinage épointé de $x_0$
+  \item Pour toute suite $(u_n)$ à valeurs dans $V_{x_0}$, \[\Lim{\infty} f(u_n) = -\infty\]
+
+ \item $\forall A >0, \exists \alpha >0, 0<|x-x_0|<\alpha \Rightarrow f(x)<-A$ (équivalente à la proposition précédente)
+ \end{itemize}
+\subsection{Limites en + l'infini}
+On se donne $f$ définie au voisinage de $+\infty$ : $\exists a\in\mathbb{R}$, f est définie sur $]a,+\infty[$.
+\subsubsection{Limite finie $l$}
+$\forall \epsilon >0, \exists A>0, x>A \Rightarrow |f(x)-l|<\epsilon$ Schéma 2
+\subsubsection{Limite + infinie}
+La limite vaut $+\infty$
+si $\forall A>0, \exists R>0, x>R \Rightarrow f(x)>A$.
+\subsubsection{Limite - infinie}
+Schéma 3
+La limite vaut $-\infty$
+si $\forall A>0, \exists R>0, x>R \Rightarrow f(x)<-A$.
+\subsection{Limites en - l'infini}
+On se donne $f$ définie au voisinage de $-\infty$ : $\exists a\in\mathbb{R}$, f est définie sur $]-\infty,A[$.
+\subsubsection{Limite finie $l$}
+$\forall \epsilon >0, \exists R>0, x<-R \Rightarrow |f(x)-l|<\epsilon$
+\subsubsection{Limite + infinie}
+La limite vaut $+\infty$
+si $\forall A>0, \exists R>0, x<-R \Rightarrow f(x)>A$.
+\subsubsection{Limite - infinie}
+La limite vaut $-\infty$
+si $\forall A>0, \exists R>0, x<-R \Rightarrow f(x)<-A$.
+\section{Limites et opérations}
+Soit $a\in \mathbb{R}\cup \{\pm \infty\}$, avec $f,g$ définies sur un voisinage épointé de $a$. On suppose que $f,g$ a une limite $b \in\mathbb{R}\cup \{\pm \infty\}$, alors on a pour $f+g$:
+Tableaux à récupérer :
+
+\subsection{Somme}
+$$\begin{array}{|l|c|c|c|c|c|c|}
+\hline
+\Lim{x\to \alpha}f & \ell & \ell & +\infty & -\infty & + \infty \\
+\hline
+\Lim{x\to \alpha}g & \ell' & \pm\infty  & +\infty & -\infty & -\infty \\
+\hline
+\Lim{x\to \alpha}f+g & \ell + \ell' & \pm\infty  & +\infty & -\infty &  \text{F. I.} \\
+\hline
+\end{array}$$
+\subsection{Produit}
+$$\begin{array}{|l|c|c|c|}
+\hline
+\Lim{x\to \alpha}f & \ell  & \ell \neq 0 &  0 \\
+															&       &  $ ou $\pm \infty &   \\
+\hline
+\Lim{x\to \alpha}g & \ell' & \pm \infty & \pm \infty \\
+\hline
+\Lim{x\to \alpha}f\times g & \ell \times \ell' & \pm \infty & \text{F. I.} \\
+\hline
+\end{array}$$
+\subsection{Quotient}
+$$\begin{array}{|l|c|c|c|c|c|c|}
+\hline
+\Lim{x\to \alpha}f & \ell  & \ell  & 0 & \ell \neq 0 & \pm \infty &  \pm \infty  \\
+\hline
+\Lim{x\to \alpha}g & \ell'\neq 0 & \pm \infty & 0 & 0 & \ell' &  \pm \infty \\
+\hline
+\Lim{x\to \alpha}\frac{f}{g} & \cfrac{\ell}{\ell'} & 0^+\text{ ou }0^- & \text{F. I.} & \pm \infty & \pm \infty &  \text{F. I.} \\
+\hline
+\end{array}$$
+\subsection{Limite d'une fonction composée}
+Soit $f = v\circ u$.
+\begin{flalign*}
+\Lim{x\to a}u(x) &= b\\
+\Lim{x\to b}v(x) &= c\\
+\Lim{x\to a}f(x) &= c\\
+\end{flalign*}
+\section{Fonctions continues}
+Soit $I$ un intervalle ouvert de $\mathbb{R}$. Soit $f:I\to \mathbb{R}$, f est définie sur $I$.
+\subsection{Définition}
+$f$ est continue en $x_0$ si $\Lim{x_0} f = f(x_0)$. Ce qui est équivalent à $\forall \varepsilon >0,\exists  \alpha >0, |x-x_0|<\alpha \Rightarrow |f(x)-f(x_0)|<\varepsilon$. Ce qui est équivalent à $\forall (U_n), \Lim{\infty}f(U_n) = f(x_0)$. On a donc : $\Lim{\infty} f(U_n) = f(\Lim{\infty} U_n)$.
+\subsection{Exemples}
+\begin{itemize}
+ \item Fonction polynomiales, sinus, cosinus, tangente, exponentielle, logarithme, sont
+ \item fonction valeur abosolue continue
+\end{itemize}
+
+On dit que $f$ est continue sur l'intervalle $I$ si elle est continue en tout $x$ de $I$.
+\section{Continuité et opérations}
+On prend 2 fonctions $f$ et $g$ continues sur $I$. Alors $f+g, fg$ sont continues sur $I$ et $\frac{f}{g}$ est continue en tout point de $I$ tel que $g(x)\neq 0$.
+
+\begin{theorem}[Continuité des composées]
+Soient $f : I\to J$ une fonction continue sur$I$, à valeurs dans $I\in\mathbb{R}$ et $g:I\to J\in\mathbb{R}$. Alors $g\circ f$ est continue sur $I$.
+\end{theorem}
+\begin{myproof}
+Soit $x_0\in I$
+
+Soit $\epsilon >0$ $\exists ? \alpha >0,$ tel que $|x-x_0| < \alpha \Rightarrow |g(f(x)) - g(f(x_0))|<\varepsilon$.
+
+Soit $\varepsilon >0$ donné. On cherche $\alpha$ tel que $y_0 = f(x_0)$. Notons alors $y=f(x)$. $g$ est continue en $x_0$, donc $\exists \eta >0$, $|y-y_0|<\eta \Rightarrow |g(y)-g(y_0)|<\varepsilon$.
+
+Or, $f$ est continue en $x_0$, donc $\exists \alpha >0, |x-x_0| \Rightarrow |f(x)-f(x_0) < \eta \Rightarrow |g(f(x))-g(f(x_0))| < \varepsilon$ car $|y-y_0|<\eta \Rightarrow |g(y)-g(y_0)|<\varepsilon$
+
+Donc $g\circ f$ est bien continue en $x_0$.
+\end{myproof}
+\subsection{Théorème des valeurs intermédiaires}
+\begin{theorem}[TVI]
+Soit $f:I\to\mathbb{R}$ une fonction et $(a \leq b)\in I$. On suppose $f$ continue sur $[a,b]$.
+
+Alors $\forall y_0 \in [f(a),f(b)], \exists x_0\in[a,b], y_0=f(x_0)$.
+\end{theorem}
+\begin{theorem}[Variante du TVI]
+Il est équivalent à :
+
+si $f$ est continue sur $[a,b]$ et $f(a)\times f(b) \leq 0$, alors $\exists c\in[a,b], f(c)=0$.
+\end{theorem}
+\begin{myproof}[Par dichotomie]
+Supposons par exemple que $f (a) \leq 0 \leq f (b)$, de sorte que $0 \in [f (a), f (b)]$ (l’autre cas s’y ramène en considérant $−f$ ). On construit par récurrence deux suites $(a_n )$ et $(b_n )$
+de la façon suivante.
+
+On part de $a_0 := a$, $b_0 := b$, et supposant construits $a_n$ et $b_n$ tels que $f(a_n)\leq 0\leq f(b_n)$,  on considère la valeur de f en $(a_n + b_n )/2$ , milieu du segment $[a_n , b_n ]$.
+
+On construit alors$ a_{n+1}$ et $b_{n+1}$ ainsi :
+\begin{itemize}
+ \item si $f(\frac{a_n+b_n}{2})<0$, on pose $a_{n+1} = \frac{a_n+b_n}{2}$ et $b_{n+1} = b_n$.
+ \item Sinon, c'est à dire si $f(\frac{a_n+b_n}{2}) \geq 0$, on pose $a_{n+1} = a_n$ et $b_{n+1} = \frac{a_n+b_n}{2}$.
+\end{itemize}
+On voit ainsi que :
+\begin{enumerate}
+ \item $a_n\leq a_{n+1}\leq b_{n+1}\leq b_n$
+ \item $0\leq b_n-a_n = \frac{b-a}{2^n}$ (On divise par 2 à chaque fois la longueur initiale $b-a$
+ \item $f(a_n)\leq0\leq f(b_n)$
+\end{enumerate}
+En particulier, $\Lim{\infty} |b_n-a_n| = 0$ et les 2 suites sont adjacentes.
+
+Elles convergent donc vers une unique limite $c$. On a $c\in[a,b]$ car $a_n\in[a,b]$ et comme $f$ est continue, on a : $\Lim{\infty} f(a_n) = f(c) = f(b_n)$.
+
+Les doubles inégalités 2 et 3 impliquent que $c=0$.
+\end{myproof}
+% \begin{myproof}[Par dichotomie, voir page 634]
+% $f$ continue sur $[a,b]$ et l'on suppose que $f(a)\times f(b) < 0$.
+%
+% On définit 2 suites adjacentes $a_n,b_n$ de la façon suivante : $a_0 = a$, $b_0 = b$ et $f(a_n)f(b_n)\leq 0$. On a aussi $<0b_n-a_n = \frac{b-a}{2^n}$.
+%
+% On construit $a_n$ et $b_n$ par récurrence :
+%
+% Soit $c_1$ = $\frac{a_0+b_0}{2}$. Si $f(a)f(c) \leq0$, alors $a_1=a_0, b_1=c$.
+%
+% Sinon, on a nécessairement $f(c)f(b) \leq 0$, car alors $f(a)f(c)>0$ comme $f(a)f(b)\leq 0$.
+%
+% On a $f(c)f(b)\leq 0$. Dans ce cas, on pose $a_1=c, b_1=b_0$. on a $b_1-a_1 = \frac{b-a}{2}$. Donc $a_1\leq b_1$ et $f(a_1)f(b_1) \leq 0$.
+%
+% Hérédité : Supposons que nous ayons construit $a_n$ et $b_n$ vérifiant $H_n$.
+%
+% On pose $c_{n+1} = \frac{a_n+b_n}{2}$. On a : $a_n\leq c_{n+1}\leq b_n$
+%
+% Si $f(a_n)f(c_{n+1} \leq 0$, alors $ a_{n+1} = a_n$ et $b_{n+1} = \frac{a_n+b_n}{2}$.
+%
+% Sinon, i.e $f(a_n)f(c_{n+1}) >0$, $f(a_n)$ et $f(c_{n+1})$ sont du m\^eme signe, alors comme $f(a_n)$ et $f(b_n)$ sont de signe contraire, on en déduit $f(b_n)f(c_{n+1}) \leq 0$, d'où $a_{n+1} = c_{n+1} = \frac{a_n+b_n}{2}$ et $b_{n+1} = b_n$.
+%
+% Dans tous les cas, $a_n\leq a_{n+1} \leq b_{n+1}\leq b_n$ et $(a_n)$ est croissante et $(b_n)$ est décroissante. On a $f(a_{n+1})f(b_{n+1})\leq 0$ et $b_{n+1} - a_{n+1} = b_n - \frac{a_n+b_n}{2} = \frac{b-a}{2^n\cdot 2}$ ou $\frac{a_n+b_n}{2}-a_n = \frac{b-a}{2^{n+1}}$.
+%
+% Donc $H_n\Rightarrow H_{n+1}$.
+%
+% $(b_n)$ est décroissante et minorée par $b_n-a_n\geq 0$ et $(a_n)$ est croissante et $b_n-a_n \to 0$
+%
+% Donc les suites $(a_n), (b_n)$ convergent vers un m\^eme réel $c$ tel que $a\leq c\leq b$.
+%
+% De plus, $\forall n\in\mathbb{N}, f(a_n)f(b_n)\leq 0$ et $f$ continue sur $[a,b]$, donc $\Lim{\infty} f(a_n) = f(\Lim{\infty} a_n) = f(c)$.
+%
+% De m\^eme, $\Lim{\infty} f(b_n) = f(c)$, donc $\Lim{\infty} f(a_n)f(b_n) \leq 0$, c'est à dire $f(c)^2 \leq 0$, donc $f(c) = 0$.
+% \end{myproof}
+\subsection{Théorème de Heine}
+\begin{theorem}[Théorème de Heine]
+L'image continue d'un intervalle fermé et borné est un intervalle fermé et borné.
+
+Soient $ a<b \in\mathbb{R}$ et $f:[a,b] \to \mathbb{R}, f$ continue sur $[a,b]$, alors $\exists m\in\mathbb{R},M\in\mathbb{R}, m\leq M$ tels que $f([a,b] = [m,M]$ en particulier $\exists x_0\in[a,b], f(x_0) = m$ et $\exists x_1\in[a,b], f(x_1) = M$
+\end{theorem}
+Corrlolaire : $si f$ est continue sur $[a,b]$, alors $f$ est bornée sur $[a,b]$ et atteint ses bornes.
+\begin{myproof}{}
+On montre d'abord que la fonction est bornée, puis qu'elle atteint ses bornes.
+
+Montrons que la fonction est bornée. Soit $f:[a;b]\to \mathbb{R}$, avec $a<b$. On suppose la fonction $f$ non majorée (hypothèse de la démonstration par l'absurde). Dans ce cas, $\forall M,\exists t \in[a,b], t\geq M$.
+
+En posant $M=n\in\mathbb{N}$, on a $t_n\in[a,b],f(t_n) \geq n = M$. La suite obtenue est bornée, on peut en extraire une suite convergente $(t_{n_k})$ de limite $\alpha$.
+
+Nous avons donc $f(t_{n_k}) \geq n_k, \forall k\in\mathbb{N}$.
+
+$f$ est continue, donc la suite $(f(t_{n_k}))\to f(\alpha)$.
+
+Or, d'après $f(t_{n_k}) \geq n_k$, la suite devrait tendre vers $+\infty$. Il y a contradiction, donc $f$ est majorée. On applique ce qui précède pour montrer que $f$ est minorée.
+
+Montrons qu'elle atteint ses bornes.
+
+Notons maintenant $\alpha$ sa borne inférieure et supposons qu'elle n'est pas atteinte pas $f$. Posons alors la fonction $\displaystyle g:[a,b] \to \mathbb{R}, g(t) = \frac{1}{f(t)-\alpha}$. $g$ est bien continue sur $[a,b]$ par composition.
+
+Soit $M>0$ donné. Par définition de la borne inférieure, nous savons qu'il existe $t \in[a,b]$ tel que $\alpha\leq f(t)<\alpha+\frac{1}{M}$, et donc que $g(t) > M$. $M$ étant arbitraire, $g$ n'est pas majorée. Or, cela contredit la première partie de la démonstration.
+\end{myproof}
+
+% \begin{myproof}{Incomplète}
+
+% Lemne : Soit $f$ continue sur $[a;b]$, alors $f$ est bornée sur $[a,b]$.
+%
+% On montre que $f$ est majorée, (alors -$f$ le sera aussi et $f$ sera minorée.)
+%
+% On fait un raisonnement par l'absurde.
+%
+% Supposons que $f$ n'est pas majorée sur $[a,b]$. Alors $\forall n\in\mathbb{N}, \exists t_n \in[a,b]$ tel que $f(t_n) \geq n$. On a aussi contruit une suite $(t_n)$ de $[a,b]$. On prend la suite extraite de $(t_{\phi(n)})$ tel que $\phi$ est strcitement croissante et $v_n = t_{\phi(n)}$. $v_n$ est alors une suite extraite de $(t_n)$.
+%
+% Théorème de Bolsano-Weir : Si $(t_n)$ est une suite à valeurs dans un intervalle fermé borné alors on peut extraire de $(t_n)$ une sous-suite convergente.
+%
+% Soit $t_{\phi(n)}$ une suite extraite de $t_n$ qui converge. Notons $c = \Lim{\infty} t_{\phi(n)}$. On sait que $\Lim{\infty} f(t_{\phi(n)}) = +\infty$. Or, $f$ est continue en $c\in[a,b]$, donc $\Lim{\infty} f(t_{\phi(n)}) = f(\Lim{\infty} t_{\phi(n)}) = f(c)$. Contradiction avec $t_{\phi(n)}$ non bornée. Finalement, si $f$ continue sur $[a,b]$, alors elle est majorée sur $[a,b]$ et aussi minorée.
+%
+% Soit $m$ le plus grand des minorants de $f([a,b])$, c'est à dire que $\forall t\in[a,b],m\leq f(t)$ t $\forall \varepsilon >0, m+\varepsilon$ ne minore pas $f([a,b])$.
+%
+% Donc $\exists t\in[a,b], m\leq f(t)<m+\varepsilon$. On démontrer par l'absurde. Supposons par l'absurde que $\forall t \in [a,b], f(t)>m$. Soit alors $g(t) = \frac{1}{f(t)-m}$. $g$ est continue sur $[a,b]$ comme composée de fonctions continues sur $[a,b]$.
+%
+% or, $\forall n\in\mathbb{N}, m+\frac{1}{n}$ n'est pas minorant de $f([a,b])$, donc $\exists t_n \in[a,b], m<f(t_n)\leq m+\frac{1}{n} \Rightarrow g(t_n) = \frac{1}{f(t_n)-m} \geq \frac{1}{m+\frac{1}{n}-m} = n$, donc $g$ est non majorée.
+%
+% Conclusion : $H$ est fausse, donc non H est vraie, donc $\exists t_0\in[a,b],f(t_1) = m$ et de m\^eme, $\exists t, \in[a,b] f(t_n) = M$. Alors, d'après le TVI, $\exists x\in[t0,t_1] \in [a,b]$, donc $f([a,b]) = [m,M]$
+% \end{myproof}
+
+\subsection{Réciproque d'une application continue strictement monotone}
+
+\begin{theorem}[]
+Si $f$ est continue sur $[a,b]$ et strictement monotone sur $[a,b]$, alors $f$  réalise une bijection de $[a,b]$ dans $J=[f(a),f(b)]$ et $f^{-1} : J\to I$ sa récirproque, de m\^eme monotonie sur $J$
+\end{theorem}
+\subsection{Remarque}
+\warningInfo{Non équivalence entre la dérivabilité et la continuité}{Continuité $\neq$ dérivabilité : dérivabilité$ \Rightarrow$ continuité, mais pas l'inverse. La fonction valeur absolue est continue en 0 mais non dérivable en 0.}
+\section{Fonctions dérivables}
+Soient $a,b \in\mathbb{R}, a<b$.
+\subsection{Généralité}
+\begin{theorem}[Définition 1]
+Soit $x_0 \in[a,b]$.
+
+$f$ est dérivable en $x_0$ si $\Lim{0} \frac{f(x_0+h)-f(x_0)}{h}$ existe et est finie. On note alors cette limite $f(x_0)$.
+
+On dit que $f$ est dérivable sur $[a,b]$ si $f$ est dérivable en tout $x_0 \in[a,b]$, et dérivable à droite en $a$ et à gauche en $b$.
+
+On définit $f' : [a,b]\to\mathbb{R}, x\to f'(x)$.
+\end{theorem}
+$\frac{f(x_0+h)-f(x_0)}{h}$ est la pente de la corde reliant $f(x_0+h)$ et $f(x_0)$.
+\begin{theorem}[Définition alternative et meilleure]
+Soit $x_0 \in]a,b[$ $f$ est dérivable en $x_0$ s'il existe $l\in\mathbb{R}$ et une fonction $\varepsilon$ définie au voisinage de 0 tels que $f(x_0+h) = f(x_0) + lh+h\varepsilon(h)$ où $\Lim{0} \varepsilon(h)=0$. On note $l=f'(x_0)$
+
+On a :$f(x) = f(x_0) + f'(x_0)h+h\varepsilon(h)$ et $f(x_0) + f'(x_0)h$ qui est l'équation de la tangente en $x_0$ à la courbe.
+\end{theorem}
+Preuve rapide :  $f(x_0+h) = f(x_0) + lh+h\varepsilon(h) \iff \varepsilon(h) = \frac{f(x_0+h)-f(x_0)}{h} -l$
+\subsection{Dérivées}
+$(f\circ u)' = u'\times(f'\circ u)$
+
+\begin{theorem}[Dérivée de la réciproque]
+On donne un intervalle $I,J\in\mathbb{R}$ et $f:I\to J$. On suppose $f$ dérivable sur $I$ et que $f$ est bijective de $I\to J$. On note $f^{-1} :J\to I$ la réciproque. Elle est dérivable en $y_0\in J \iff f'(f^{-1}(y_0))\neq 0$
+
+On a alors : $(f^{-1})'_{y_0} = \frac{1}{f'(f^{-1}(y_0))} = \frac{1}{f'(x_0)}$ avec $x_0 = f^{-1}(y_0)$.
+\end{theorem}
+
+Rappel : La courbe de $f^{-1}$ est symétrique de la courbe de $f$ par rapport à $y=x$
+
+Moyen mnomotechnique : $f^{-1}\circ f = Id \iff f'(x)(f^{-1})'(f(x)) = 1$
+\begin{myproof}
+On pose $f^{-1}(y_0) = x_0$ Si $f^{-1}$ est dérivable en $x$.
+
+On a $\Lim{y\to y_0}\frac{f^{-1}(y)-f^{-1}(y_0)}{y-y_0}$.
+
+On pose alors $ y = f(x)$ et $x_0 = f^{-1}(y_0)$. Donc $y\to y_0 \iff x\to x_0$ car les fonctions sont continues.
+
+Donc $\Lim{x\to x_0} \frac{x-x_0}{f(x)-f(x_0)} = \frac{1}{f'(x_0)}$ si $f'(x_0)\neq 0$.
+\end{myproof}
+\section{Théorème des accroissements finis et de Rolle}
+$a<b$
+\subsection{Théorème des accroissements finis}
+\begin{theorem}[]
+Soit $f:[a,b]\to \mathbb{R}$. Si $f$ est continue sur $[a,b]$ et dérivable sur $]a,b[$. Alors $\exists c\in]a,b[, \frac{f(b)-f(a)}{b-a} = f'(c)$
+\end{theorem}
+
+\begin{myproof}
+On suppose $f$ continue sur $[a,b]$ et dérivable sur $]a,b[$.
+
+On considère une fonction auxilliaire $\varphi(t) = (t-a)(f(b)-f(a)) - (b-a)(f(t)-f(a))$.
+
+$\varphi$ est continue sur $[a,b]$ et dérivable sur $]a,b[$ car $f$ l'est.
+
+$\varphi(b) = 0 = \varphi(a)$
+
+D'après le Théorème de Rolle, il existe $c\in]a,b[, \varphi'(c) = 0$.
+
+Or, $\varphi'(t) = f(b)-f(a) - (b-a)f'(t)$, donc $\varphi'(c) = 0 \iff f'(c) = \frac{f(b)-f(a)}{b-a}$.
+\end{myproof}
+\subsection{Théorème de Rolle}
+\begin{theorem}[]
+Soit $f:[a,b]\to \mathbb{R}$. Si $f$ est continue sur $[a,b]$ et dérivable sur $]a,b[$ et $f(a) = f(b)$. Alors $\exists c\in]a,b[, f'(c) = 0$
+\end{theorem}
+
+\begin{myproof}
+$f$ étant continue sur $[a, b]$, elle est bornée et atteint
+sa borne inférieure $\alpha$ et sa borne supérieure $\beta$. Prenons
+donc $c$ et $d$ dans $[a, b]$ tels que $f (c) = \alpha$ et $f (d) = \alpha$ .
+
+Si $\alpha = \beta$ , alors la fonction est en fait constante, et donc en tous les points $c\in ]a, b[$, la dérivée s’annule.
+
+Sinon, on a $\alpha \neq \beta$ , et donc l’un des deux est différent de $f (a) = f (b)$. Disons par exemple
+que $f (c) = \alpha < f (a) = f (b)$. Donc $c \neq a$ et $c \neq b$, soit $c \in ]a, b[$ et $f'(c) = 0$.
+
+En effet,
+$\Lim{x\to x_0^-} \frac{f(x)-f(x_0)}{x-x_0} = \Lim{x\to x_0^-} \frac{f(x)-m}{x-x_0} \leq 0$.
+
+Mais $f'(x_0) = \Lim{x\to x_0^+} \frac{f(x)-f(x_0)}{x-x_0} = \Lim{x\to x_0^+} \frac{f(x)-m}{x-x_0} \geq 0$.
+
+Donc $f'(x_0) \geq 0 $ et $\leq 0$, donc $f'(x_0) = 0$.
+
+
+% Hypothèse : $f$ continue sur $[a,b]$, $f$ dérivable sur $]a,b[$, $f(a)=f(b)$.
+%
+% $f$ est contnue sur $[a,b]$ donc $\exists m?M$, tel que $[m,M] = f([a,b])$. Donc en particuluer $\exists x_0x_1\in[a,b]$, $f(x_0) = m$ et $f(x_1) = M$.
+%
+% Si $m=M$, alors $f = m =M$ et $\forall x\in ]a,b[, f'(x) = 0$
+%
+% Si $m<M$, alors comme $f(a) = f(b)$. Supposons $f(x_0) = m \neq f(a)=f(b)$, doù $x_0\in]a,b[$.
+%
+% Montrons que $f'(x_0) = 0$. $\Lim{x\to x_0^-} \frac{f(x)-f(x_0)}{x-x_0} = \Lim{x\to x_0^-} \frac{f(x)-m}{x-x_0} \leq 0$.
+%
+% Mais $f'(x_0) = \Lim{x\to x_0^+} \frac{f(x)-f(x_0)}{x-x_0} = \Lim{x\to x_0^+} \frac{f(x)-m}{x-x_0} \geq 0$.
+%
+% Donc $f'(x_0) \geq 0 $ et $\leq 0$, donc $f'(x_0) = 0$.
+\end{myproof}
+Théorème de Rolle généralisé :
+
+1er cas : f =cst = l, do,c $\forall x_0\in\mathbb{R}, f'(x_0) = 0$
+
+2e cas : $f$ n'est pas constante. Alors $\exists a \in\mathbb{R}, f(a)\neq l$.
+
+Quitte à prendre $if$ au lieu de $f$, on peut choisir $f(a)>l$. (moment ou l'on choisit de faire le max ou le min).
+
+On veut montrer que $f$ admet un max local sur $\mathbb{R}$
+
+$f$ est continue sur un intervalle fermé borné $[-M,M]$ donc atteint ses bornes. $f(-M,M])$.
+
+On veut éliminier les intervalles à l'infini. :$f(a)>l$ et on choisit $ \varepsilon = \frac{f(a)-l}{2}$.
+
+Comme $\Lim{\infty} f = l,\exists M\in\mathbb{R}, |x|>M \Rightarrow |f(x)-l| < \varepsilon$, donc $l-\frac{f(a)-l}{2} < f(x) < l+\frac{f(a)-l}{2} \leq f(a)$.
+
+$\forall x\in ]-\infty,-M]$ ou $[M,+\infty[, f(x)<f(a)$.
+
+$f$ est continue sur $[-M,M]$, donc $\exists x_0 \in ]-M,M[$, $\exists x_1 \in[-M,M]$
+
+$f([-M,M]) = [f(x_1),f(x_0)]$. Comme $f(x_0) \geq f(a)$, on a $\forall x\in\mathbb{R},f(x_0\geq f(x)$. $x_0$ est un max de $f$ sur $\mathbb{R}$. Comme $f$ est dériavble, $f'(x_0) = 0$.
+\section{Méthode}
+\subsection{Montrer la limite finie d'une fonction en un point $x_0$}
+On doit montrer que $\forall \varepsilon >0, \exists \alpha >0, \forall x, 0< |x-x_0|<\alpha \Rightarrow |f(x) - l|<\epsilon$. Pour un $\varepsilon$ donné, il faut donc trouver un $\alpha$.
+
+Pour ce faire, on conserve dans la fonction ce qui tend vers 0 quand $x\rightarrow x_0$ et on majore en valeur absolue la limite du reste par une quantité dépendante de $x_0$ et non $x$.
+
+Le but est d'obtenir une expression de $\alpha$ en fonction de $\varepsilon$.
+
+Exemple : Montrons que $\Lim{x\rightarrow x_0} x^2 \rightarrow x_0^2$.
+
+$\forall \varepsilon >0, \exists ? \alpha >0, \forall x, 0< |x-x_0|<\alpha \Rightarrow |f(x) - l|<\epsilon$
+
+$f(x)-l = x^2-x_0^2 = (x-x_0)(x+x_0)$
+
+$x-x_0$ tend vers 0 et on veut montrer que $(x+x_0)$ est majorée par une quantité indépendante de $x$.
+
+On pose $k_0 = \max(|x_0-1|;|x_0+1|) > 0$.
+
+Donc, si $x\in ]x_0-1;x_0+1[ \iff |x-x_0|<1$, on a $ |x+x_0| \leq 2k_0$.
+
+Donc $|x-x_0||x+x_0| \leq 2k_0|x-x_0| <\varepsilon$ et $|x^2-x_0^2| \leq 2k_0|x-x_0| <\varepsilon$
+
+On tire de l'égalité $2k_0|x-x_0| <\varepsilon$ que $|x-x_0| <\frac{\varepsilon}{2k_0}$.
+
+Donc en choisissant $\alpha = \min(1; \frac{\varepsilon}{2k_0})$, on a bien l'implication souhaitée.
+\subsection{Lever une forme indéterminée}
+Le but est d'enlever le terme qui ``perturbe notre analyse'' en le factorisant puis en effectuant une simplification.
+
+Ainsi, pour une FI $\frac{\infty}{\infty}$, on met le terme de plus haut degré en facteur.
+
+En revanche, pour une FI $0/0$, on met en facteur $x-$ la valeur pour laquelle l'expression s'annule. Si elle s'annule $0$, on met simplement $x$ en facteur.
+
+On oeut aussi faire par croissance comparée : l'exp l'emporte sur n'importe quelle fraction artionnelle.
+\subsection{Étudier une fonction}
+\begin{enumerate}
+\item Calculer la dérivée
+\item Donner le signe de la dérivée
+\item  Donner la tableau de variation
+\item Calculer les limites et indiquer les asymptotes
+\item Tracer la courbe de la fonction
+\end{enumerate}
+
+\subsection{Montrer qu'une fonction n'a pas de limite en $x_0$}
+On utilise la définition de la limite avec les suites : $\Lim{\infty}f = l$ si $\forall (u_n),\Lim{\infty} U_n = l \Rightarrow \Lim{\infty}f(U_n) = l$. On montre donc qu'il y a 2 suites tendant vers la limite $x_0$ en $\infty$, mais donc la limite de $f$ quand on les injecte est différente.
+
+\checkInfo{Exemple}{
+Montrons que $\sin(\frac{1}{x})$ n'a pas de limite en 0.
+
+Posons $u_k = \frac{1}{2k\pi}$ Ici, $\Lim{\infty} u_k = 0$
+
+Posons $v_k = \frac{1}{\frac{\pi}{2} + 2k\pi}$ Ici, $\Lim{\infty} v_k = 0$
+
+Les 2 suites tendent bien vers $0$, pourtant $\Lim{\infty} \sin(\pi/2 + 2k\pi) = 1$ et $\Lim{\infty} \sin(2k\pi) = 0$.
+
+Les limites sont différentes, donc $\sin(\frac{1}{x})$ n'a pas de limite en 0.
+
+}
+\subsection{Étudier la continuité d'une fonction en un point}
+On donne la limite à droite et à gauche, puis la valeur atteinte par la fonction au point. Si les 3 valeurs sont égales, la fonction est continue en ce point.
+\subsection{Étudier la dérivabilité d'une fonction en un point}
+Il faut d'abord montrer qu'elle est continue en ce point !
+
+On étudie la limite du taux d'accroissement de la fonction en ce point : $\Lim{x\to x_0} = \frac{f(x)-f(x_0)}{x-x_0}$, que l'on compare avec $f'(x_0)$.
+
+%On dérive la fonction puis on donne la limite de la dérivée en ce point à droite et à gauche, puis la valeur atteinte par la dérivée au point. Si les 3 valeurs sont égales, la fonction est dérivable en ce point.
+\subsection{Créer un intervalle fermé borné à partir d'intervalles infinis pour appliquer le TVI}
+Si $\Lim{+\infty} = + \infty$, par définition de la limite, $\forall A>0, \exists R>0, x>R \Rightarrow f(x)>A$. En particulier, pour $A = 1$, $\exists R>0, x>R \Rightarrow f(x)>1$. Donc $\exists a = 2R, f(a)>1$
+
+Si $\Lim{-\infty} = - \infty$, par définition de la limite, $\forall A>0, \exists R'>0, x>R' \Rightarrow f(x)<-A$. En particulier, pour $A = 1$, $\exists R'>0, x>R' \Rightarrow f(x)<-1$. Donc $\exists b = 2R, f(b)<-1$
+
+On peut désormais appliquer le TVI sur l'intervalle $[a,b]$.
+\subsection{Résoudre un problème impliquant de montrer l'existence d'un intervalle}
+On doit montrer qu'il existe un intervalle $\tau$ durant lequel la fonction augmente de $m$ points.
+On modélise la problème par une fonction continue sur un certain intervalle $[a,b]$.
+
+Il faut alors montrer que $\exists x\in [a,b], f(x)-f(x-\tau) = m \iff f(x)-f(x-\tau) -m =0$
+
+On pose alors une fonction $g$ sur l'intervalle $[a,b-\tau]$ telle que $g(x) = f(x)-f(x-\tau)-3$
+
+On calcule $g$ aux bornes de son intervalle, $a$ et $b-\tau$ pour montrer que $g(a)$ et $g(x-\tau)$ sont de signe opposé. Comme $g$ est continue, d'après le TVI, il existe $c$ tel que $g(c) = 0$.
+\subsection{Utiliser Rolle}
+\begin{itemize}
+ \item On nous parle de la dérivée
+
+\item Cette dernière doit s'annuler
+
+\item L'intervalle d'annulation de la dérivée est ouvert, donc on utilise Rolle.
+\end{itemize}
+
+Utilisation :
+
+\begin{enumerate}
+ \item on vérifie qu'elle est continue sur $[a,b]$
+ \item On vérifie qu'elle est dérivable sur $]a,b[$.
+ \item On calcule $f(a)$ et $f(b)$
+\item On conclue : Donc d'après le Théorème de Rolle, $\exists c\in]a,b[, f'(c)=0$.
+\end{enumerate}
+\subsection{Utiliser la bijectivité pour montrer qu'il existe une unique solution telle que $f(x_0) = c$ sur un intervalle}
+$f$ est continue sur l'intervalle, par exemple $\mathbb{R}$ et strictement croissante ou décroissante.
+
+On calcule les images des limites ou bornes de l'intervalle, $[a,b]$.
+
+Donc $f$ réalise une bijection de l'intervalle $\mathbb{R}$ dans  $[a,b]$.
+
+Or, $c\in[a,b]$
+
+Donc $\exists! x_0\in \mathbb{R}, f(x_0) = c$
+\end{document}
+
+

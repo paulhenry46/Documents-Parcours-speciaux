@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="107.95409mm"
+   height="110.55699mm"
+   viewBox="0 0 107.95409 110.55699"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1"
+     transform="translate(3.7865945,55.556994)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1.114, 4.456;stroke-dashoffset:0"
+       d="M 50.000003,-54.999994 V 55"
+       id="path2-8" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1.114, 4.456;stroke-dashoffset:0"
+       d="M -3.4953577e-7,0 H 100"
+       id="path3-6" />
+    <g
+       id="g11"
+       transform="rotate(-45.317832,50.182106,0.0161939)">
+      <path
+         style="fill:none;stroke:#0055d4;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+         d="m 29.999999,-54.999996 c 8.329268,-10.411584 31.670732,-10.41158 39.999999,0 C 90.000002,-29.999999 50.000001,0 50.000001,0 50.000001,0 10,-29.999999 29.999999,-54.999996 Z"
+         id="path11" />
+      <path
+         style="fill:none;stroke:#0055d4;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+         d="m 29.999999,54.999996 c 9.428091,9.42809 33.140055,11.433235 39.999999,0 C 85.000002,29.999999 50.000001,0 50.000001,0 50.000001,0 10,34.999999 29.999999,54.999996 Z"
+         id="path11-5" />
+    </g>
+    <g
+       id="g11-7"
+       transform="rotate(44.682168,49.857892,0.11889872)"
+       style="stroke:#ff9955">
+      <path
+         style="fill:none;stroke:#ff9955;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+         d="m 29.999999,-54.999996 c 8.329268,-10.411584 31.670732,-10.411581 39.999999,0 C 90,-30.000001 50.000001,0 50.000001,0 c 0,0 -39.999999,-30.000001 -20.000002,-54.999996 z"
+         id="path11-4" />
+      <path
+         style="fill:none;stroke:#ff9955;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+         d="m 29.999999,54.999996 c 9.428091,9.42809 31.670732,10.411581 39.999999,0 C 90,30.000001 50.000001,0 50.000001,0 c 0,0 -39.999999,35.000001 -20.000002,54.999996 z"
+         id="path11-5-4" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+       x="90"
+       y="10"
+       id="text11"><tspan
+         id="tspan11"
+         style="fill:#000000;stroke:none;stroke-width:1.114"
+         x="90"
+         y="10">y</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle;fill:none;stroke:#ff9955;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+       x="60.000004"
+       y="-45"
+       id="text12"><tspan
+         id="tspan12"
+         style="fill:#000000;stroke:none;stroke-width:1.114"
+         x="60.000004"
+         y="-45">z</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+       x="90"
+       y="40"
+       id="text13"><tspan
+         id="tspan13"
+         style="stroke-width:1.114"
+         x="90"
+         y="40">d<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan14">yz</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+       x="10"
+       y="40"
+       id="text15"><tspan
+         id="tspan15"
+         style="stroke-width:1.114"
+         x="10"
+         y="40">S<tspan
+   style="font-size:65%;baseline-shift:super"
+   id="tspan16">-</tspan><tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan17">21</tspan></tspan></text>
+  </g>
+</svg>
