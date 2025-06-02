@@ -1,0 +1,163 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques - Analyse 2}
+\subtitle{Analyse}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+
+
+	\chapter{Rappels d'analyse 1 }
+\section{Bornes}
+\subsection{Maximum, majorant et borne supérieure}
+Les définitions et théorèmes s'appliquent aussi aux minorants, bornes inférieures, etc.
+\begin{definition}[Majorant]
+$M$ est un majorant de $A$ si $\forall x\in A, x\leq M$
+\end{definition}
+\begin{definition}[Maximum]
+$m$ est un maxium de $A$ si $\forall x\in A, x\leq m$ et $m\in A$. C'est un majorant appartenant à $A$. On le note $\max(A)$.
+\end{definition}
+Pour montrer que $m$ est le maximum d'un ensemble, il faut montrer qu'il appartient à cet ensemble et que \(\forall x\in A, x\leq m\)
+\begin{definition}[Borne supérieure]
+$M$ est la borne supérieure de $A$ si $M$ est un majorant de $A$ et s'il en existe pas de plus petits. On le note $\sup(A)$. C'est le plus petit des majorants
+\end{definition}
+\begin{theorem}[Théorème fondamental de l'analyse]
+ Toute partie de $\mathbb{R}$ non vide et majorée admet une borne supérieure.
+\end{theorem}
+\begin{proposition}[Caractérisation de la borne supérieure]
+\[M=\sup(A) \iff M\text{ majore A } \wedge \forall \varepsilon > 0, \exists x \in A, M-\varepsilon < x\]
+\end{proposition}
+\section{Suites}
+\subsection{Limites}
+\begin{definition}
+La suite a pour limite $l$ si \(\forall \varepsilon > 0, \exists N \in \mathbb{N}, n\geq N \Rightarrow |u_n-l|\leq \varepsilon\)
+\end{definition}
+\begin{definition}[Série géométrique]
+\(1+a+a^2+\dots+a^n = \frac{1-a^{n+1}}{1-a}\)
+\end{definition}
+\begin{proposition}[Limite de la série géométrique]
+$+\infty$ si $a>1$ et $\frac{1}{1-a}$ si $|a|<1$. Dans les autres cas, elle est divergente.
+\end{proposition}
+\subsection{Suites extraites}
+\begin{definition}
+C'est une suite de la forme $(u_{\varphi(n)})$ avec $\varphi : \mathbb{N} \to \mathbb{N}$ est strictement croissante.
+\end{definition}
+\begin{theorem}[Suite convergente et suite extraite]
+ Toute suite extraite d'une suite convergente converge vers la m\^eme limite.
+\end{theorem}
+\begin{myproof}
+Avec $\varphi \in \mathbb{R}$ Soit $\varphi : \mathbb{N} \to \mathbb{N}$ strictement croissante.
+
+Definition de la limite : $\forall \varepsilon >0,\exists n \in \mathbb{N}, \forall n\in\mathbb{N}, x\geq N \Rightarrow |u_n-l| \leq \varepsilon$.
+
+Soit $\varepsilon >0$. On sait qu'il exisye $N$ tel que pour tout $n\in\mathbb{N}, n\geq N \Rightarrow |U_n -l|\leq \varepsilon$.
+
+Or, $\varphi$ est strciteent croissante donc $\varphi(n) \geq n$.
+
+Donc $n\geq N \Rightarrow \varphi(n) \geq N$ et $|U_{\varphi}| - l| \leq \varepsilon$.
+\end{myproof}
+\begin{proposition}
+La suite $(U_n)$ converge vers $l$ si $(U_{2n})$ et $(U_{2n+1})$ convergent vers $l$.
+\end{proposition}
+\begin{myproof}
+On traduit les hypothèses : $\exists N_1\in\mathbb{N}, \forall n\geq N_1, |U_{2n} - l|\leq \varepsilon$ et  $\exists N_2\in\mathbb{N}, \forall n\geq N_2, |U_{2n+1} - l|\leq \varepsilon$
+
+Posons $N = \max(2N_1,2N_2+1)$.
+Si $n\geq N$, alors
+\begin{itemize}
+ \item si $n$ est pair, $n=2k$ et $n\geq 2N_1$ d'où $k\geq N_1$ donc $|U_n-l| = |U_{2k} - l| \leq \varepsilon$
+ \item si $n$ est impair, $n=2k'+1$ et $n\geq 2N_2+1$ d'où $k'\geq N_2+1$ donc $|U_n-l| = |U_{2k'+1} - l| \leq \varepsilon$
+\end{itemize}
+\end{myproof}
+\begin{definition}
+$l$ est une valeur d'adhérence si une suite extraite de $u_n$ prend $l$ comme limite.
+\end{definition}
+\begin{theorem}[Théorème de Bolzano-Weierstrass]
+ Toute suite bornée admet une sous-suite convergente.
+\end{theorem}
+\section{Comparaison}
+\subsection{Négligeabilité}
+\begin{definition}
+On note $o(u_n)$ une suite pouvant s'écrire de la forme $(\varepsilon_nu_n)$ avec $(\varepsilon_n \to 0) = (v_n)$. On dit que $(v_n)$ est négligeable devant $u_n$.
+\end{definition}
+\begin{proposition}
+\[v_n = o(u_n) \iff \lim \frac{v_n}{u_n} = 0\]
+\end{proposition}
+\subsection{Équivalence}
+\begin{definition}
+$u_n\sim v_n \iff u_n-v_n = o(v_n)$
+\end{definition}
+\begin{proposition}
+$u_n\sim v_n \iff \lim \frac{u_n}{v_n} = 1$
+\end{proposition}[Lien avec les limites]
+\begin{proposition}[lien avec négligeance]
+$u_n-v_n = o(v_n) \iff u_n\sim v_n$
+\end{proposition}
+\begin{proposition}[Équivalent de puissance]
+$u_n\sim v_n \Rightarrow u_n^{\alpha} \sim v_n^{\alpha}$
+\end{proposition}
+\section{Fonctions}
+\begin{theorem}[Théorème des accroissements finis]
+Soit $f$ fonction continue sur $[a,b]$ et dérivable sur $]a,b[$. Il existe $c\in]a,b[$ tel que \(f(b)-f(a) = f'(c)(b-a)\)
+\end{theorem}
+\begin{theorem}[Théorème des bornes de Weierstrass]
+Soit $f : [a,b] \to \mathbb{R}$ une fonction continue sur un segment. Alors il existe deux réels $m$ et $M$ tels que $f([a,b]) = [m,M]$. L'image d'un segment est un segment.
+\end{theorem}
+\begin{theorem}[Formule de Taylor-Young]
+ \[f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2+\dots+o((x-a)^n)\]
+\end{theorem}
+\subsection{Développements limités usuels}
+\criticalInfo{
+Ce sont les DL des fonctions au voisinage de 0 !
+}
+
+\warningInfo{Développements limités à conna\^itre}{
+\begin{eqnarray*}
+e^x&=&1+x+\frac{x^2}2+\dots+\frac{x^n}{n!}+o(x^n)\\
+\cos x&=&1-\frac{x^2}{2!}+\dots+\frac{(-1)^n x^{2n}}{(2n)!}+o(x^{2n+1})\\
+\sin x&=&x-\frac{x^3}{3!}+\dots+\frac{(-1)^n x^{2n+1}}{(2n+1)!}+o(x^{2n+2})\\
+\cosh x&=&1+\frac{x^2}{2!}+\dots+\frac{x^{2n}}{(2n)!}+o(x^{2n+1})\\
+\sinh x&=&x+\frac{x^3}{3!}+\dots+\frac{ x^{2n+1}}{(2n+1)!}+o(x^{2n+2})\\
+\frac{1}{1-x}&=&1+x+x^2+\dots+x^n+o(x^n)\\
+\frac{1}{1+x}&=&1-x+x^2+\dots+(-1)^nx^n+o(x^n)\\
+\ln(1+x)&=&x-\frac{x^2}2+\dots+\frac{(-1)^{n+1}}{n}x^n+o(x^n)\\
+(1+x)^\alpha&=&1+\alpha x+\frac{\alpha(\alpha-1)}2x^2+\dots+\frac{\alpha(\alpha-1)\cdots (\alpha-n+1)}{n!}x^n+o(x^n)\\
+\end{eqnarray*}}
+\subsection{Remarques}
+\begin{itemize}
+ \item Quand une fonction est paire, son DL ne comporte que des puissances de x paires.
+\item Le DL d’une fonction impaire ne comporte que des puissances de x impaires.
+\item Quand elle n’est ni paire ni impaire, elle comporte à priori toutes les puissances de x (sauf exception).
+\item Le DL de ch(x) est la partie paire de $e^x$.
+\item Le DL de sh(x) est la partie impaire de $e^x$.
+\end{itemize}
+
+\end{document}
+

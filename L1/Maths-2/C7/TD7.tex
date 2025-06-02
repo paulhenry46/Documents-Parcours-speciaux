@@ -1,0 +1,372 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{MPS2}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{J.Daudé}%Jérémi Daudé
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
+\usepackage{verbatim}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\newcommand{\tq}[0]{\text{ tel que }}
+\newcommand{\mc}{\mathcal}
+\begin{document}
+
+%\titleOne
+\setcounter{chapter}{7}
+\chapter{Déterminant}
+\section{Application p-linéaires}
+\begin{definition}
+Soient E et F deux R-EV et \(L:E^p\to F\). On dit que L est p-liénaire si elle est linéaire en chacune de ses variable, i.e. \(\forall (u_1,\dots, u_{p-1}\in E^{p-1}), \forall I\in \{1,\dots, p\}, L_I : v\in E \to L(u_1,\dots, u_{I-1},v,\dots u_I,\dots, u_{p-1})\).
+\end{definition}
+Exemple : Toute application linéaire de E dans F est 1-linéaire
+
+Dans \(\R^3\), el produit scalaire : \(L : (x_1,x_2,x_3),(y_1,y_2,y_3)\in \R^3\times R^3 \to x_1y_1+x_2y_2+x_3y_3\) est 2 linéaire.
+
+En effet, fixons \((y_1,y_2,y_3)\in \R^3\). Soit \((x_1,x_2,x_3)\in \R^3\), \((x_4,x_5,x_6)\in \R^3\), \(\lambda\in \R\)
+
+\(L(\lambda(x_1,x_2,x_3) + (x_4,x_5,x_6), (y_1,y_2,y_3)) = L((\lambda x_1+x_4, \lambda x_2+x_5, \lambda x_3+x_6), (y_1,y_2,y_3)) = \lambda (x_1y_1+x_2y_2+x_3y_3)+(x_4y_1+x_5y_2+x_6y_3) = \lambda L() + L()\)
+
+Il faut montrer la linéairité avec l'autre variable pour que la preuve soit complète.
+\begin{proposition}
+Soit une application p-linéaire
+
+si on met en position i le vecteur nul, le résultat est le vecteur nul de l'espace d'arrivé.
+\end{proposition}
+\begin{definition}[Forme p-linéaire]
+L est une forme p-linéaire si F est l'espace des réels.
+\end{definition}
+Exemple : Le produit scalaire.
+\begin{definition}[Forme p-linéaire alternée]
+Soit L une forme p-linéaire. L est alternée si \(\forall (u_1,\dots, u_p)\in E^p\), si \(\exists (i\neq j)\tq u_i = u_j\), alors \(L(u_1,\dots, u_p) = 0\)
+\end{definition}
+\begin{proposition}
+Soit \(L : E^p \to \R\) une forme p-linéaire alternée. Soit \(\forall (u_1,\dots, u_p)\in E^p\, \forall (i,j)\in \{1,\dots, p\}\). Alors \(L(u_1,\dots, u_i,\dots, u_j,\dots, u_p) = - L(u_1,\dots, u_j,\dots, u_i,\dots, u_p)\)
+\end{proposition}
+\begin{myproof}
+ \(L(u_1,\dots, u_i+u_j,\dots, u_i+u_j, \dots u_p) =0 = L(u_1,\dots, u_i,\dots)+L(u_1,\dots, u_j,\dots) = = 0 \)
+\end{myproof}
+\begin{proposition}
+Soit E un ev et L une forme p-linéaire alternée sur E. \(\forall (u_1,\dots, u_p)\) famille liée de E, alors \(L(u_1,\dots, u_p) = 0\)
+\end{proposition}
+\begin{myproof}
+ Soit une famille liée de E. Il existe p coefficients réels \(\lambda_1,\dots, \lambda_p\) non tous nul tels que \(\lambda_1u_1+\dots+\lambda_pu_p = 0_E. \exists J \tq \lambda_J \neq 0\)
+
+ \(\lambda_J L(u_1,\dots, u_p) =  L(u_1,+\dots+\lambda_Ju_J+\dots, u_p) =  L(u_1,+\dots-\sum^p_{q=1}\lambda_qu_q+\dots, u_p) = -\sum^p_{q=1\neq j}\lambda_q L(u_1,\dots, u_q,\dots, u_p) = -\sum^p_{q=1\neq j} \lambda_q 0 = 0\)
+\end{myproof}
+\section{Déterminant d'une famille de vecteurs}
+\subsection{En dimension 2}
+Soit E un REV de dimension 2, \(B = \{e_1,e_2\}\).
+\begin{proposition}
+Soit L une forme 2-linéaire alternée. Alors \(\forall u = a_1+be_2,\forall v = \alpha e_1+\beta e_2, L(u,v) = (a\beta-\alpha b)L(e_1,e_2)\). Ainsi, la connaissance de \(L(e_1,e_2)\) équivaut à connaitre L
+\end{proposition}
+\begin{myproof}
+ \(L(u,v) = \) le résultat en développant.
+\end{myproof}
+
+\begin{definition}
+
+Posons \(L_B : (u,v) \to a\beta -\alpha b\). C'est l'unique forme 2-linéaire alternée vériffiant \(L(e_1,e_2) = 1\). On l'appelle le Déterminant en base B, noté \(\det_B\).
+\end{definition}
+\begin{myproof}
+ \(L_B(e_1,e_2) = 1\) : Existence Ok par définition. Elle est bien alternée par définition
+
+Montrons que c'est 2-linéaire : \(L_B(\lambda(ae_1+be_2)+(ce_1+de_2), \alpha e_1+\beta e_2) = \lambda a \beta + c\beta -\lambda b\alpha -d\alpha = \lambda(a\beta -b\alpha)+c\beta-d\alpha\ = \lambda L + L\)
+
+Unicité :Soit L une forme 2-linéaire alternée vériffiant les conditions. Soit \(u,v\in E^2, L(u,v) = a\beta-\alpha b = L_b(u,v) \times 1  = L_B(u,v)\)
+\end{myproof}
+\begin{proposition}
+Soit L une forme 2-linéaire alternée, alors \(L(u,v) = \det_b(u,v)L(e_1,e_2)\)
+\end{proposition}
+\begin{proposition}
+Soit (u,v) une famille de E. (u,v) est une base de \(\iff\) son Déterminant dans la base B\(\neq 0\)
+\end{proposition}
+\begin{myproof}
+ Si ce n'est pas une base, c'est une famille liée, donc dont \(det_B = 0\).
+
+ Supposons que c'est une base, notée C. Alors \(det_C\) est une forme 2-linéaire alternée qui vérifie \(det_C(u,v) = 1 = det_C(e_1,e_2)det_B(u,v) \Rightarrow det_B(u,v)\neq 0\)
+\end{myproof}
+\begin{proposition}
+Soit B et C 2 bases de E. \(det_B(b_1,b_2)det_C(e_1,e_2) = 1\)
+\end{proposition}
+\begin{myproof}
+ L'application \(u,v \to det_C(u,v)\) est une forme 2-linéaire alternée, donc \(\forall u,v, det_C(u,v) = det_C(e_1,e_2)det_B(u,v) \Rightarrow 1 = det_C(b_1,b_2)det_C(e_1,e_2)det_B(b_1,b_2)\)
+\end{myproof}
+\subsection{En dimension 3}
+E un ev de dimension 3, B = \(b_1,b_2,b_3\) une base de E.
+
+\begin{proposition}
+Soit L une forme 3-linéaire alternée et \(u_2,u_2,u_3\in E \tq \forall i \in \{1.2.3\}, u_i = \sum^3_{k = 1}\alpha_{ki}b_k\). On a
+
+\(L(u_1,u_2,u_3) = (\alpha_{11}\alpha_{22}\alpha_{33}+\alpha_{21}\alpha_{32}\alpha_{13}+ \alpha_{23}\alpha_{31}\alpha_{12}-\alpha_{12}\alpha_{21}\alpha_{33}-\alpha_{13}\alpha_{22}\alpha_{31}-\alpha_{11}\alpha_{23}\alpha_{32})\)
+\end{proposition}
+\begin{myproof}
+ \(L(u_1,u_2,u_3) = L(\alpha_{11}b_1+\alpha_{21}b_2)+\alpha_{31}b_3\,u_2,u_3) = \alpha_{11}L(b_1,u_2,u_3)+\alpha_{21}L(b_2,u_2,u_3)+\alpha_{31}L(b_3,u_2,u_3)\)
+
+ \(L(b_1,u_2,u_3) = L(b_1, \alpha_{12}b_1+\alpha_{22}b_2+\alpha_{32}b_3,u_3) = \alpha_{12}L(b_1,b_1,u_3)+\alpha_{22}L(b_1,b_2,u_3)+\alpha_{32}L(b_1,b_3,u_3)\)
+
+ \(L(b_1,b_3,u_3) = L(b_1,b_3,\alpha_{13}b_1+\alpha_{23}b_2+\alpha_{33}b_3) = \alpha_{23}L(b_1,b_3,b_2) = -\alpha_{23}L(b_1,b_2,b_3)\)
+\end{myproof}
+\begin{definition}
+On note \(L(u_1,u_2,u_3) = (\alpha_{11}\alpha_{22}\alpha_{33}+\alpha_{21}\alpha_{32}\alpha_{13}+ \alpha_{23}\alpha_{31}\alpha_{12}-\alpha_{12}\alpha_{21}\alpha_{33}-\alpha_{13}\alpha_{22}\alpha_{31}-\alpha_{11}\alpha_{23}\alpha_{32})\) le déterminant est base B.
+\end{definition}
+\begin{proposition}
+\(\forall L\) formes 3-linéaires alternées, \(L(u,v,w) = L(b_1,b_2,b_3)det_B(u,v,w)\) et \(det_B\) est l'unique fome 3-linéaire alternée vérifiant \(det_B(b_1,b_2,b_3) = 1\)
+\end{proposition}
+\begin{myproof}
+ \(det_B\) est bien 3-linéaire.
+
+ \(det_B(b_1,b_2,b_3) = 1\) par calcul.
+
+ \(det_B(\alpha b_1 + \beta b_2+\gamma b_3, \alpha b_1, \beta b_2, \gamma b_3, xb_1+yb_2+zb_3) = \alpha \beta z + \beta \gamma x + y\gamma \alpha - \alpha \beta z-x\beta \gamma-\alpha y \gamma = 0\). On procède d ela m\^eme  façon avec les 2 autres cas.
+
+
+ Unicité : Soit L une forme 3-linéaire alternée telle que \(L(b_1,b_2,b_3) = 1\). Alors \(\forall (u,v,w), L(u,v,w,) = L(b_1,b_2,b_3)det-B(u,v,w,) = det_B(u,v,w)\).
+\end{myproof}
+\begin{proposition}
+Soit \((u,v,w)\) une famille de E. C'est une base de E \(\iff det_B(u,v,w) \neq 0\).
+
+Soit \(C = (c_1,c_2,c_3)\) une base de E. \(1 = det_B(c_1,c_2,c_3)\det_C(b_1,b_2,b_3)\)
+\end{proposition}
+\subsection{Dimension quelconque}
+E est un ev de dimension p, B une base de E
+\begin{theorem}[admis]
+ Il existe une unique forme p-linéaire alternée, notée \(det_B\) est appelée déterminant en Base B, vérifiant :
+
+ \(det_B(b_1,\dots, b_p) = 1\)
+
+ \(\forall L\) forme p-linéaire alternée, \(\forall\) famille de vecteurs de E, \(L(u_1,\dots, u_p) = det_B(u_1,\dots, u_p)L(b_1,\dots, b_p)\).
+\end{theorem}
+\begin{proposition}
+Soit une famille \((u_1,u_2,\dots,u_p)\) de vecteurs de E. C'est une base \(\iff det_B(u_1,u_2,\dots,u_p)\neq 0\)
+\end{proposition}
+\begin{proposition}
+Soit C une base de E. \(det_B(c_1,\dots,c_p)\det_C(b_1,\dots, b_p) = 1\).
+\end{proposition}
+\begin{proposition}
+Soit une famille de p-1 vecteurs de E.
+
+\(u_k = \sum_{m=1}^p \alpha_{mk}b_m\). Posons \(v_k = u_k - \alpha_{ik}b_i\). Si on note \(C_I = (b_1,\dots,\b{i-1},b_{i+1},b_p)\). On a \(v_k \in Vect(C_i\).
+
+Alors
+\(det_B(u_1,\dots, u_{j-1}, b_i,u_j,\dots, u_{p-1}) = (-1)^{i+j}det_C (v_1,\dots, v_{p-1})\)
+\end{proposition}
+\begin{myproof}
+ \(det_B (u_1,\dots, u_{j-i},b_i,u_j\dots, u_{p-1}) = (-1)^{j-1} det_B(b_i, u_1,u_2,\dots, u_{p-1})\)
+
+ \( det_B(b_i, u_1,u_2,\dots, u_{p-1}) = det_B(b_i, v_1+\alpha_{i1}b_i,\dots, v_{p-1}+\alpha_{ip-1}b_i) = det_B (b_i, v_i,\dots, v_{p-1})\)
+
+ Notons \(L:(a_1,\dots, a_{p-1})\in D^{p-1} = Vect(C_i)\to det(b_i, a_1,\dots, a_{p-1})\in \R\). L est une forme p-linéaire alternée sur \(D^{p-1}\)
+
+ Donc \(\forall (a_1,\dots, a_{p-1}), L() = L(b_1,\dots, b_{i-1}, b_{i+1},\dots, b_p)det_Ci(a_1,\dots, a_{p-1})\).
+
+ Ainsi, \(det_B(u_,\dots, u_{j-1},b_i, u_j,\dots, u_{p-1}) = (-1)^{j-1}det(b_i, u_1,\dots, u_{p-1}) = (-1)^{j-1}det(b_i, v_1,\dots, v_{p-1}) = (-1)^{j-1}L(v_1,\dots, v_{p-1}) = (-1)^{j-1}L(b_1,\dots, b_{i-1},\b_{i+1}, b_p)det_C(v_1,\dots, v_{p-1}) = (-1)^{j-1}det(b_i,b_1,\dots, b_p)det_C(v_1,\dots, v_{p-1}) = (-1)^{i+j}det_Ci(v_1,\dots, v_p{-1})\).
+\end{myproof}
+\begin{proposition}
+Soit \((u_1,\dots, u_p)\in E^p, u_k = \sum^p_{l=1}\alpha_{lk}b_l\). Soient \((I,J)\in \{1,\dots, p\}\). On pose \(B_i = (b_1,\dots,b_{I-1},b_{I+1}n\dots, b_l)\) et \(u_k^i = u_k-\alpha_{ik}b_I\in vect(B_i)\). Alors \(det_B(u_1,\dots, u_p) = \sum_{i=1}^p (-1)^{i+j}\alpha_{ij}det_{B_i}(u_1^I,\dots, u_{J-1}^I, u_{J+1}^I,\dots, u_p^I)\)
+\end{proposition}
+\begin{myproof}
+ \(det_B(u_1,\dots, u_J,\dots, u_p) = det_B(u_1,\dots, u_{j-1}, \sum_{I=1}^p b_I, u_{j+1},\dots, u_p) = \sum^p_{I=1}\alpha_{ij}(-1)^{i+j}det(u_1^i, \dots, u_{j-1}^i, u_{j+1}^i, u_p^i)\).
+\end{myproof}
+\begin{proposition}
+Soit \((u_1,\dots, u_p)\in E^p, u_k = \sum^p_{l=1}\alpha_{lk}b_l\). Soient \((I,J)\in \{1,\dots, p\}\). On pose \(B_i = (b_1,\dots,b_{I-1},b_{I+1}n\dots, b_l)\) et \(u_k^i = u_k-\alpha_{ik}b_I\in vect(B_i)\). Alors \(det_B(u_1,\dots, u_p) = \sum_{j=1}^p (-1)^{i+j}\alpha_{ij}det_{B_i}(u_1^I,\dots, u_{J-1}^I, u_{J+1}^I,\dots, u_p^I)\)
+\end{proposition}
+\begin{proposition}
+Soit E et F 2 EV de m\^eme dimension finie = p.
+
+Soit B une base de E et C une base de F. On pose \(\phi\in L(E,F)\) par \(\phi(b_i) = \mu_i\). Alors \(\forall (u_1,\dots, u_p)\in E^p, det_B(u_1,\dots, u_p) = det_C(\phi(u_1),\dots, \phi(u_p))\)
+\end{proposition}
+\begin{myproof}
+ Notons \(L:(u_1,\dots, u_p)\to det_C(\phi(u_1),\dots,\phi(u_p))\). Alors L est une forme p-linéaire alternée sur E. Donc \(L(u_1,\dots, u_p) = L(b_1,\dots, b_p)det_B(u_1,\dots, u_p)\) et \(L(b_1,\dots, b_p) = det_C(\phi(b_1),\dots, \phi(b_p)) = det_C(\mu_1,\dots, \mu_p) = 1\).
+\end{myproof}
+\section{Déterminant d'un endomorphisme}
+\begin{theorem}[]
+ Soit E un EV de dimension p, B et C 2 bases de E. Soit \(f\in l(E)\). Alors \(det_B(f(b_1),\dots, f(b_p)) = det_C(f(e_1)\dots, f(e_p))\)
+\end{theorem}
+\begin{myproof}
+ On pose \(L:(u_1,\dots, u_p)\in E^p \to det_B(f(u_1),\dots, f(u_p))\) qui est une forme p-linéaire alternée sur E. Donc \(L(u_1,\dots, u_p) = L(e_1,\dots, e_p)det_C(u_1,\dots, u_p)\), en particulier \(det_B(f(b_1),\dots f(b_p)) = L(b_1,\dots, b_p) = L(e_1,\dots, e_p)det_C(b_1,\dots, b_p) = det_B(f(e_1),\dots, f(e_p))det_C(b_1,\dots, b_p)\)
+
+ \(\forall (w_1,\dots w_p), det_B(w_1,\dots, w_p) = det_B(e_1,\dots, e_2)det_C(w_1,\dots, w_p)\). On obtient \(\det_B(f(b_1),\dots, f(b_p)) = det_B(f(e_1),\dots, f(e_p))det_C(b_1,\dots, b_p) = det_C(f(e_1),\dots, f(e_p))det_B(e_1,\dots, e_p)det_C(b_1,\dots, b_p) = det_C(f(e_1),\dots, f(e_p))\)
+\end{myproof}
+\begin{definition}[Déterminant de l'endomorphisme]
+Noté \(det(f)\), c'est le réel \(det_B(f(b_1),\dots, f(b_p))\) avec \(B = (b_1,\dots, b_p)\) une base quelconque
+\end{definition}
+\begin{proposition}
+\(\forall (u_1,\dots, u_p), det_B(f(u_1), \dots, f(u_p)) = det(f)det_b(u_1,\dots, u_p)\)
+\end{proposition}
+\begin{myproof}
+ On utilise la meme application linéaire que précédemment
+\end{myproof}
+\begin{proposition}
+\begin{enumerate}
+ \item Soient 2 endomorphismes. \(det(f\circ g) = det(f)\times det(g)\)
+ \item \(det(I_d) = 1\)
+ \item \(f\in L(E).\) f est bijectif \(\iff det(f)\neq 0\). Dans ce cas, \(det(f^{-1})=det(f)^{-1}\)
+\end{enumerate}
+\end{proposition}
+\begin{myproof}
+ Soit B une base de E.
+ \begin{enumerate}
+  \item \(det(f\circ g)= det((f\circ g)(b_1)\dots) = det(f)det(g(b_1)\dots) = det(f)det(g)\)
+  \item \(det(I_d) = det_B(b_1,\dots, b_p) = 1\)
+  \item f est bijective \(\iff (f(b_1),\dots, f(b_p))\) est une base de E \(\iff det_B(f(b_1),\dots, f(b_p))\neq 0 \iff det(f)\neq 0\)
+ \end{enumerate}
+\end{myproof}
+\warningInfo{Rappel}{Soit \(A\in M_p(\R)\). On note \(f_A : X\in M_p(\R)\to AX\). \(f_A\in L(M_p(\R))\)}
+\begin{definition}
+On appelle dtéerminant de A, noté \(det(A)\) le réel \(det(f_A)\)
+\end{definition}
+\begin{proposition}
+\begin{enumerate}
+ \item \(det(AB) = det(A)det(B)\)
+ \item \(det(Id) = 1\)
+ \item A est inversible \(det(A)\neq 0\). Alors, \(det(A^{-1}) = det(A)^{-1}\)
+\end{enumerate}
+\end{proposition}
+\begin{myproof}
+ \begin{enumerate}
+  \item Soit \(X\in Mp(\R). f_{AB}(X) = ABX = A(BX) = f_A(BX) = f_A(f_B(X))= (f_A\circ f_B)\)
+  \item Soit \(X\in M_p(\R). f_{I_p}(X) = I_d X= X= Id_E(X) \Rightarrow f(I_p) = I_d, \Rightarrow det(I_p) = det(f_{ip}) = 1.\)
+  \item A est inversible  \(\iff f_A\) est bijectif \(\iff det(f_A)\neq 0 \iff \det(A)\neq 0\)
+ \end{enumerate}
+\end{myproof}
+Notons \(e_k\) la matrice colonne remplie de 0 sauf en k où il y a un 1 et \(\mc(E) = (E_1,\dots, E_p)\) la base canonique de \(M_{p1}(\R)\).
+\begin{proposition}
+Soit \(A\in M_p(\R), A=[C1,C_2,\dots, C_p]\) où \(C_k\) est la k-eme colonne de A. Alors \(det(A) = det_{\mc{E}}(C_1,\dots, C_p)\).
+\end{proposition}
+\begin{myproof}
+ \(det(A) = det_{\mc(E)} = det_{\mc(E)}(f_A(E_1),\dots, f_A(E_p))  = det_{\mc(E)} = det_{\mc{E}}(C_1,\dots,C_p)\)
+\end{myproof}
+Exemple : On prend p réels \(\lambda_i\) et \(D\) la matrice avec les p réels sur la diognale et 0 sur les autres endroits. On a \(det(D) = \Pi_{i=1}^p \lambda_i\).
+
+\begin{theorem}[Lien entre déterminant de fonction et de matrice de fonction]
+ Soit E un ev de dimension p, B une base de E, \(f\in L(E)\) et \(A = Mat_B(f)\). Alors \(det(f) = det(Mat_B(f)) = det(A)\)
+\end{theorem}
+\begin{myproof}
+ On note \(\mc{E} = (E_1,\dots, E_p)\) la base canonique de \(M_p(\R)\). On pose \(\varphi \in L(E, M_{p1}(\R))\tq \varphi(b_i) = E_i,\forall i\).
+
+%  Notons \(c_k\) les applications coordonnées dans la base \(\mc{E}\). Alors \(\forall u\in E, \varphi(u) = \sum_{k=1}^p c_k(\varphi(u))E_k\)
+
+ \(det(f) = det_B(f(b_1),\dots, f(b_p)) = det_{\mc{E}}(\varphi(f(b_1)),\dots, \varphi(f(b_p))) \)
+
+ Notons \(d_p\) les applications coordonnées dans la base B. Alors \(f(b_i) = \sum_{m=1}^p d_m(f(b_i))b_m\)
+
+ \(\varphi(f(b_i)) = \sum^p_{m=1}d_mf(b_i)\varphi(b_m) = \sum d_m(f(b_i))E_m\) = Ieme colonne de \(Mat_B(f) =C_i\).
+
+ Donc \(det(f) = det_{\mc{E}}(C_1,\dots, C_p)  = \det(Mat_B(f))\).
+
+%  Fixons \(I, k\)
+%
+%  \(\varphi(f(b_i))_{k1} = (\sum_{l=1}^p c_l(\varphi(f(b_i))E_l))_{k1} = \sum_{l=1}^p c_p (\varphi(f(b_i)))(E_l)_{k1} = c_k(\varphi(f(b_i)))\)
+
+
+\end{myproof}
+Pour IJ fixé, on note \(R_{ij} : A \in M_p \to M_{p-1}\). (On enlève la ligne I et la colonne J)
+\begin{proposition}[Développement du déterminant de matrice par rapport à une ligne]
+Soit une matrice carrée et on fixe I une ligne. Alors \(det(A) = \sum_{j=1}^p (-1)^{I+j}A_{ij}det(R_{ij}A)\)
+\end{proposition}
+
+\begin{proposition}[Développement du déterminant de matrice par rapport à une colonne]
+Soit une matrice carrée et on fixe J une colonne. Alors \(det(A) = \sum_{i=1}^p (-1)^{I+j}A_{ij}det(R_{ij}A)\)
+\end{proposition}
+\begin{proposition}[Déterminant d'une matrice et de sa transposée]
+\(det(A) = det(A^T)\).
+\end{proposition}
+\begin{proposition}[Sert à rien sauf pour la prochaine propriété]
+Soit B une base de E et une famille de vecteurs de E. On pose f définie par \(f(b_i) = u_i,\). Alors \(det(f) = det(u_1,\dots, u_p)\)
+\end{proposition}
+\begin{proposition}[Corollaire ]
+Soit B une base de E et une famille de vecteurs u de E. On pose \(u_j = \sum_{k=1}^p a_{kj}b_k\) et on définit \(A\in M_p(\R) : A_{ij} = a_{ij}\). On remarque que chaque colonne comporte les coordonnées de chaque vecteurs de la famille dans la base. Alors \(det(B(u_1,\dots, u_p)=det(A))\). En particulier, \((u_1,\dots, u_p)\) est une base ssi A est inversible.
+\end{proposition}
+On a ainsi une nouvelle manière de dire si la famille est une base.
+\begin{myproof}
+ Notons \(c_m\) les applications coordonnées dans la base B.  Alors \(a_{kj = c_k(u_j)}\). Posons \(f\in l(E)\) tq \(f(b_l) = u_l\). Alors \(A_{kj} = c_k(f(b_j)) = Mat(f)_{kj}\) Donc \(A = Mat_B(f)\), d'où \(det(A) = det(Mat_B(f)) = det(f) = det_B(u_1,\dots, u_p)\).
+\end{myproof}
+\begin{definition}[Comatrice]
+On appelle comatrice de A, matrice carré la matrice définie par \(a_{ij} = (-1)^{i+j}\cdot det(R_{ij(A)})\)
+\end{definition}
+\begin{proposition}[Formule théorique]
+\(A\cdot Com(A)^T = det(A)I_p\), donc \(A^{-1} = \frac{Com(A)^T}{det(A)}\)
+\end{proposition}
+À ne pas utiliser en pratique
+
+\begin{myproof}
+ Soit \(A Comp(A)^T = \sum_{l=1}^p A_{kl}Com(A)^T{lk} = \sum^p_{l=1} A_{kl} Com(A)_{kl} = \sum_{l=1}^p A_{kl} (-1)^{k+l} det(R_{kl}(A)) = det(A)\)
+
+ On fait la m\^eme chose pour un indice pas sur la diagonale et on obtient \((A Com(A)^T)_{km} = \sum_{l=1}^p A_{kl} Com(A)_{ml}\)
+
+ Posons \(C\) définie par \(C = A_{ij}, j\neq m, A_{kj}, j=m\). Elle a 2 fois la m\^eme ligne, donc son déterminant est nul.
+
+ Donc \(0 = \sum^p_{l=1}C_{nl}(-1)^{l+k} det(R_{nl}(C)) = \sum^p_{l=1}A_{kl}(-1)^{l+k} det(R_{nl}(C)) = \sum^p_{l=1}A_{kl}(-1)^{l+k} det(R_{nl}(A)) = \sum^p_{l=1}A_{kl}Com(A)_{ml})\) Donc \(ACom(A)^T = \)
+\end{myproof}
+
+\section{Calcul pratique}
+\begin{proposition}
+Le déterminant d'une matrice 22  est \(\begin{vmatrix}
+a&b\\
+c&d
+                \end{vmatrix} = ad-bc\)
+\end{proposition}
+\begin{proposition}
+\(\begin{vmatrix}
+\lambda_1&0&0\\
+0&\lambda_2&0\\
+0&0&\lambda_3
+                \end{vmatrix} = \lambda_1\times\dots\times \lambda_p\)
+\end{proposition}
+\begin{proposition}
+\(\begin{vmatrix}
+\lambda_1&*&*\\
+0&\lambda_2&*\\
+0&0&\lambda_3
+                \end{vmatrix} =\begin{vmatrix}
+\lambda_1&0&0\\
+.&\lambda_2&0\\
+.&.&\lambda_3
+                \end{vmatrix} = \lambda_1\times\dots\times \lambda_p\)
+\end{proposition}
+\begin{proposition}
+On prend une matrice carrée A que l'on écrit sous la forme  de matrice de matrice colonne ou ligne.
+
+\begin{itemize}
+ \item \(\begin{vmatrix}
+        C_1&\dots&\lambda C_i&C_p
+       \end{vmatrix} = \lambda det(A)\)
+\item \(\begin{vmatrix}
+        C_1&\dots& C_j&\dots C_i &\dots &C_p
+       \end{vmatrix} = -1 det(A)\)
+\item \(\begin{vmatrix}
+        C_1&\dots&\lambda C_i+\lambda C_j&C_p
+       \end{vmatrix} = det(A)\) : pratique car permet de faire apparaitre des 0.
+\item Cela vaut pour les lignes également
+\end{itemize}
+
+\end{proposition}
+
+\end{document}

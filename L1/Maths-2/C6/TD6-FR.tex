@@ -1,0 +1,445 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{MPS2}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{J.Daudé}%Jérémi Daudé
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
+\usepackage{verbatim}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\newcommand{\tq}[0]{\text{ tel que }}
+\newcommand{\mc}{\mathcal}
+\begin{document}
+\newcommand{\myunit}{1 cm}
+\tikzset{
+    node style sp/.style={draw,circle,minimum size=\myunit},
+    node style ge/.style={circle,minimum size=\myunit},
+    arrow style mul/.style={draw,sloped,midway,fill=white},
+    arrow style plus/.style={midway,sloped,fill=white},
+}
+%\titleOne
+\setcounter{chapter}{5}
+\chapter{Matrices}
+\section{Définition}
+\begin{definition}[Matrices]
+% On appelle matrice un tableau rectangulaire de nombres réels. Elle est dite de taille \(p\times q\) qi le tableau a \(p\) lignes et \(q\) colonnes. Les nombres du tableau sont appellés coefficients de la matrice.
+
+Soit A une matrice. Le coefficient situé en ligne i et colonne j de A est noté \(A_{ij}\).
+
+On note \(\mathcal{M}_{pq}(\R)\) l'ensemble des matrices à p lignes et q colonnes à coefficients réels
+\end{definition}
+Exemple :  $I_n = \begin{bmatrix}
+ 2 & 1 & 4 & 6 \\
+ 3 & 1 & 2 & 4 \\
+-1 & 0 & 2 & 0 \\
+\end{bmatrix}$
+\(a_{32} = 0, a_{14} = 6, a_{22} = 1\)
+% \begin{definition}[Matrice ligne/colonne/nulle]
+% A est dite matrice ligne si \(p=1\). On parle aussi de vecteur ligne.
+%
+% A est dite matrice colonne si \(q=1\). On parle aussi de vecteur colonnes
+%
+% A est dite nulle si tous ses coeffients sont nuls
+% \end{definition}
+% A et B sont égales si elles ont la meme taille et les memes coefficients
+\section{Structure d'espaces vectoriels}
+% \begin{definition}[Addition / Multiplication par un scalaire]
+% On additionne que des matrices de m\^eme taille.
+% \end{definition}
+\begin{proposition}[Strcuture d'EV des matrices]
+Munie de ces opérations, \(\mathcal{M}_{pq}(\R)\) est un R-espace vectoriel de dimension finie \(p\times q\)
+\end{proposition}
+\begin{definition}[Transposée]
+Soit A une matrice. On appelle transposée de A, notée \(A^T, A^t, t_A,T_A\) la matrice de q lignes et p colonnes. On a \(A^T_{ij} = A_{ji}\). L'application de transposition est une application linéaire.
+\end{definition}
+% \begin{proposition}
+% L'application de transposition est une application linéaire.
+%
+% \((A^T)^T = A\)
+% \end{proposition}
+\begin{definition}[Matrices symétriques /anti-symétriques]
+Si A est une matrice carrée :
+\begin{itemize}
+ \item A est symétrique si \(A^T = A\). On note S l'ensemble des matrices symétriques
+ \item  A est anti-symétrique si \(A^T = -A\) On note AS cet ensemble
+\end{itemize}
+S et AS sont des SEV de \(\mc{M}_C(\R)\) et \(\mc{M}_C\ = S\oplus AS\)
+\end{definition}
+% \begin{proposition}
+% \end{proposition}
+\warningInfo{Décomposition}{On a \[A = 0.5(A+A^T) + 0.5(A-A^T)\]}
+% \begin{definition}[Matrices triangulaires supérieures/inférieures ou  diagonales]
+% Soit \(A\in \mc{M}_p(\R)\). On dit qu'elle est triangulaire supérieure si \(A_{ij}=0, \forall i>j\) (que des 0 sous la diagonale), triangulaire inférieure si \(A_{ij}=0, \forall i<j\), diagonale si \(A_{ij}=0, \forall i\neq j\)
+% \end{definition}
+% \begin{proposition}
+% L'ensemble des matrices triangulaires et diagonales sont des sev de \(\mc{M}_p(\R)\)
+% \end{proposition}
+\begin{definition}[Trace]
+Soit une matrice carrée. La trace est la somme des éléments diagonaux. Cette application est une forme linéaire
+\end{definition}
+\section{Produit matriciel}
+\subsection{Définition}
+\begin{definition}[Produit de 2 matrices]
+Prenons 2 matrices de tailles quelconques. On appelle produit des matrices \(A_{pq}\) et \(B_{qr}\) la matrice C définie par \[C_{ij} = \sum^{q}_{k=1} A_{ik}B_{kj}\]
+\end{definition}
+Le nombre de {\color{Red}colonnes de la premi\`ere} doit valoir le {\color{blue}nombre de ligne de la seconde}. Le r\'esultat sera une matrice avec le m\^eme {\color{orange}nombre de ligne que la premi\`ere} et le m\^eme {\color{green}nombre de colonnes de la deuxi\`eme}.
+
+% $A = \left(\begin{array}{>{\columncolor{yellow!40}}ccc}
+%     \rowcolor{red!40}
+%     \cellcolor{orange!40}5  & 5 & 1 \\
+% 5  & 6 & 1 \\
+% 0   & 1 & 1 \\
+% 3   & 0  & 1 \\
+% 1  &  c &  d\\
+%   \end{array}\right) B = \left(\begin{array}{>{\columncolor{blue!40}}ccc}
+%     \rowcolor{green!40}
+%     \cellcolor{purple!40}5  & 5 & 1 \\
+% 5  & 6 & 1 \\
+% 0   & 1 & 1 \\
+%   \end{array}\right)$
+%
+%   On peut faire $A \times B$
+
+\begin{tikzpicture}[>=latex]
+% les matrices
+\matrix (A) [matrix of math nodes,
+             nodes = {node style ge},
+             left delimiter  = (,
+             right delimiter = )] at (0,0)
+{
+  a_{11} & a_{12} & \ldots & a_{1p}  \\
+  |[node style sp]| a_{21}
+         & |[node style sp]| a_{22}
+                  & \ldots
+                           & |[node style sp]| a_{2p} \\
+  \vdots & \vdots & \ddots & \vdots  \\
+  a_{n1} & a_{n2} & \ldots & a_{np}  \\
+};
+\node [draw,below=10pt] at (A.south)
+    { $A$ : \textcolor{red}{$n$ lignes} $p$ colonnes};
+
+\matrix (B) [matrix of math nodes,
+             nodes = {node style ge},
+             left delimiter  = (,
+             right delimiter = )] at (6*\myunit,6*\myunit)
+{
+  b_{11} & |[node style sp]| b_{12}
+                  & \ldots & b_{1q}  \\
+  b_{21} & |[node style sp]| b_{22}
+                  & \ldots & b_{2q}  \\
+  \vdots & \vdots & \ddots & \vdots  \\
+  b_{p1} & |[node style sp]| b_{p2}
+                  & \ldots & b_{pq}  \\
+};
+\node [draw,above=10pt] at (B.north)
+    { $B$ : $p$ lignes \textcolor{red}{$q$ colonnes}};
+% matrice résultat
+\matrix (C) [matrix of math nodes,
+             nodes = {node style ge},
+             left delimiter  = (,
+             right delimiter = )] at (6*\myunit,0)
+{
+  c_{11} & c_{12} & \ldots & c_{1q} \\
+  c_{21} & |[node style sp,red]| c_{22}
+                  & \ldots & c_{2q} \\
+  \vdots & \vdots & \ddots & \vdots \\
+  c_{n1} & c_{n2} & \ldots & c_{nq} \\
+};
+% les fleches
+\draw[blue] (A-2-1.north) -- (C-2-2.north);
+\draw[blue] (A-2-1.south) -- (C-2-2.south);
+\draw[blue] (B-1-2.west)  -- (C-2-2.west);
+\draw[blue] (B-1-2.east)  -- (C-2-2.east);
+\draw[<->,red](A-2-1) to[in=180,out=90]
+	node[arrow style mul] (x) {$a_{21}\times b_{12}$} (B-1-2);
+\draw[<->,red](A-2-2) to[in=180,out=90]
+	node[arrow style mul] (y) {$a_{22}\times b_{22}$} (B-2-2);
+\draw[<->,red](A-2-4) to[in=180,out=90]
+	node[arrow style mul] (z) {$a_{2p}\times b_{p2}$} (B-4-2);
+\draw[red,->] (x) to node[arrow style plus] {$+$} (y)%
+    to node[arrow style plus] {$+\raisebox{.5ex}{\ldots}+$} (z)
+    to (C-2-2.north west);
+
+
+\node [draw,below=10pt] at (C.south)
+    {$ C=A\times B$ : \textcolor{red}{$n$ lignes}
+                      \textcolor{red}{$q$ colonnes}};
+
+\end{tikzpicture}
+\begin{proposition}[Développement et ordre de multiplication]
+Soit \(A_{np}, B_{pq}, C_{qr}\).
+
+Alors \((AB)C=A(BC)\). L'ordre n'a pas d'importance.
+
+De plus, \(A(B+C) = AB+AC\).
+% Enfin, \(OA = O = AO\)
+\end{proposition}
+\begin{proposition}[Commutativité / intégrité]
+Il n'est ni commutatif ni intègre : On a pas AB = BA m\^eme quand les 2 produits sont définis.
+
+Si AB = 0, cela n'implique pas A est nul ou B est nul.
+
+AB = AC n'implique pas que B = C.
+\end{proposition}
+% Avec,
+% \begin{definition}[Matrice identité]
+% On appelle matrice identité, notée \(I_p\) la matrice \(\begin{bmatrix}
+%  1&0&0 \\
+%  0&1&0 \\
+%  0&0&1
+% \end{bmatrix}\)
+% \end{definition}
+\begin{proposition}[transposition / trace]
+\((AB)^T = B^TA^T\)
+
+\(tr(AB) = tr(BA)\)
+\end{proposition}
+\subsection{Produit de matrices carrée}
+% \begin{proposition}
+% Le produit matriciel est une opération interne de \(\mc{M}_P(\R)\). En effet, on obtient une matrice avec le m\^eme nombre de ligne et de colonnes.
+% \end{proposition}
+% \begin{definition}[Puissance d'une matrice]
+% On appelle puissance 'k-ieme' notée \(A^k\) définie par \(A^k = Id\) si \(k=0\), \(AA^{k-1}\) sinon.
+% \end{definition}
+\begin{definition}[Polyn\^omes de matrice]
+On prend une matrice carrée et un polyn\^ome. Le polynome de la matrice est toujours une matrice carrée.
+\end{definition}
+%TODO voir ce que c'est les polynomes de matrice.
+\begin{definition}[Matrice nilpotente]
+Une matrice carrée est dite nilpotente si \(\exists k\in \N, \tq A^k = 0\)
+\end{definition}
+\begin{definition}[Matrices commutantes]
+Pour ces matrices là, on peut appliquer la formule du binome de Newton.
+
+Soit 2 matrices carrées. On dit que A et B commutent si \(AB = BA\). On a alors \(\forall m \in \N, (A+B)^m  = \sum^m_{k=1}C^k_m A^kB^{m-k}\).
+\end{definition}
+\subsection{Lien entre produit matriciel et systèmes linéaires}
+Soit \(S_A\) le système linéaire de p équations à q inconnues. Il est de la forme \(a_{11}x_1+a_{12}x_2 + a_{13}x_4+\dots+a_{1q}x_q = y_1, \dots a_{p1}x_1 + \dots + a_{pq}x_q  = y_p\).
+
+On pose \(Y = \begin{bmatrix}
+ y_1 \\
+ \dots\\
+ y_p
+\end{bmatrix}, X = \begin{bmatrix}
+ x_1 \\
+ \dots\\
+ x_q
+\end{bmatrix}, A = \begin{bmatrix}
+ a_{11}&\dots&a_{1q} \\
+a_{p1}&\dots&a_{pq}
+\end{bmatrix}\)
+
+Il faut trouver X tel que \(AX=Y\)
+\begin{definition}[Application de matrice]
+Pour A, on pose \(f_a:X\in \mc{M}_Q(\R)\to AX\mc{M}(\R)\) qui est une application linéaire
+\end{definition}
+\begin{proposition}[Propriétés des applications de matrice]
+\begin{itemize}
+ \item Le système \(S_A\) admet au moins une solution \(\iff f_a\) est surjective.
+ \item Si la fonction est injective, le système admet au plus une solution.
+ \item Si la fonction est bijective, le système admet exactement une soltion.
+  \item si \(q>p\) (plus d'inconnues que d'équation), f n'est pas injective et si le système admet une solution, il en admet une infinité.
+ \item Si \(q<p\) (plus d'équations qu d'inconnues), f n'est pas surjective et il existe des y tels que le système n' a pas de solution.
+\end{itemize}
+\end{proposition}
+% \begin{proposition}
+% \(f_A\) est linéaire, en conséquence :
+% \begin{itemize}
+%  \item si \(q>p\) (plus d'inconnues que d'équation), f n'est pas injective et si le système admet une solution, il en admet une infinité.
+%  \item Si \(q<p\),(plus d'équations qu d'inconnues) f n'est pas surjective et il existe des y tels que le système n' a pas de solution.
+% \end{itemize}
+% \end{proposition}
+\subsection{Matrice inversible}
+\begin{definition}[Matrice inversible]
+Soit A carrée. dit que A est inversible si \(\exists B\) de meme taille telle que \(AB = BA = I_d\). Dans ce cas, B est unique, et notée \(A^{-1}\).
+\end{definition}
+% \begin{proposition}
+% Si A est inversible, alors B est unique, notée \(A^{-1}\).
+% \end{proposition}
+On appelle le groupe linéaire, noté \(GL_p(\R)\) l'ensemble des matrices inversibles de taille p. Ce n'est pas un sev.
+% \warningInfo{Inverse}{Pour montrer qu'une matrice est l'inverse d'une autre, on multiplie les 2 pour trouver l'identité}
+\begin{proposition}[Inversibilité et application de matrice]
+Soit A carrée. Les 3 propositions suivantes sont équivalentes
+\begin{itemize}
+ \item \(A\in GL_p(\R)\) (A est inversible)
+ \item \(f_A : X\in \mc{M}_p \to AX \in \mc{M}_{p,1}\) est bijective
+ \item \(\exists B\in M_p, AB=I_d\)
+%  \item \(\exists B, BA = Id\)
+\end{itemize}
+
+\end{proposition}
+% \(A^{-1}\) est aussi inversible.
+\begin{proposition}[Transposition et inversibilité]
+Soit A une matrice inversible.
+
+Alors \(A^T\) est inversible et \((A^T)^{-1} = (A^{-1})^T\)
+\end{proposition}
+% \begin{proposition}
+% Soient A et B 2 matrices inversibles, alors AB est aussi inversible et l'inverse \(B^{-1}A^{-1}\), c'est dans l'autre sens.
+% \end{proposition}
+\begin{proposition}[Commutativité si A inversible et B et C carrées]
+Soit A inversible et B et C carrées
+
+\(AB=AC \Rightarrow B=C\)
+\end{proposition}
+\begin{proposition}[Consition nécessaire d'Inversibilité]
+Si A a une colonne/ligne remplie de 0, elle n'est pas inversible
+\end{proposition}
+\begin{proposition}[Critère d'inversibilité pour matrice 22]
+Soit A = \(\begin{bmatrix}a&b\\c&d\end{bmatrix}\) et B =  \(\begin{bmatrix}d&-b\\-c&a\end{bmatrix}\). Alors A est inversible ssi \(ad-bc \neq 0\) et alors \(A^{-1}= \frac{1}{ad-bc}B\)
+\end{proposition}
+%TODO : À vérifier
+\begin{theorem}[Inversibilité et base]
+ A est inversible ssi \(C_1,C_2\dots C_p\) est une base de \(M_{p1}\) ou ssi \(L_1,L_2\dots L_p\) est une base de \(M_{1,p}\) avec C les matrices colonnes et L les matrices lignes
+\end{theorem}
+Si une colonne s'écrit en focntion des autres, cela ne peut pas etre inversible.
+\subsection{Algorithme pour calculer un inverse}
+%TODO À faire
+\subsection{Rang d'une matrice}
+\begin{definition}[Rang]
+Soit \(A\in M_{p,q}, f_A : X\in M_{q,1}(\R) \to AX \in M_{p,1}(\R)\)
+
+On appelle rang de la matrice A l'entier noté \(rg(A)\) définit par \(rg(A) = rg(f_A)\)
+\end{definition}
+\begin{proposition}[Calcul du rang]
+% Soit \(A = [C_1,C_2,\dots,C_q]\). Alors
+\(rg(A) = \dim(Vect(C_1,C_2,\dots,C_3)) = rg(A^T) = \dim(Vect(L_1,L_2,\dots, L_p))\).
+\end{proposition}
+% \begin{theorem}
+%  \(rg(A) = rg(A^T)\), donc \(rg(A) = \dim(Vect(L_1,L_2,\dots, L_p))\)
+% \end{theorem}
+\begin{proposition}[Inversibilité et rang]
+Soit A une matrice carrée. Elle est invsersible \(\iff rg(A) = p\)
+\end{proposition}
+\chapter{Matrices d'applications linéaires}
+Dans tous ce chapitre, E et F sont deux EV de dimension finie, avec \(\dim(E) = p, \dim(F) = n\)
+
+\section{Matrices d'application linéaire (MAL)}
+\begin{definition}
+\begin{itemize}
+ \item \(f\in L(E,F)\)
+ \item \(B = \{e_1,e_2,\dots,e_p\}\) une base de E
+ \item \(B_a = \{v_1,\dots, v_n\}\) une base de F
+ \item On note \(c_j\) les applications coordonnées sans la base \(B_a\) (i.e : \(\forall u\in F, u = c_1(u)v_1+\dots+c_n(u)v_n\))
+
+\end{itemize}
+On appelle matrice de l'application linéaire f dans les bases \(B, B_a\) notée \(M_{B,B_a}(f)\) la matrice de \(M_{np}(\R)\) définie par \(M_{B,B_a}(f)_{ij} = c_i(f(e_j)), \forall i \in \{1,\dots, n\}, j\in \{1,\dots, p\}\)
+\end{definition}
+% Exemple : \(E=\R^2, B=\{(1.0),(0.1)\}, F = \R^3 B_a = \{(1.0.0),(0.1.0),(0.0.1)\}, f:(a,b)\in R^2 \to (2a, a+b, 2b)\in \R^3\)
+%
+% Donc \(M_{B,B_a}(f) = \begin{bmatrix}2&0\\1&1\\0&2\end{bmatrix}\) car \(f(1.0) = (2.1.0),f(0.1) = (0.1.2)\)
+%
+% Exemple : \(B = ((0.1),(1.0)), B_a = ((0.1.0), (0.0.1), (1.0.0))\)
+%
+% Donc \(M_{B,B_a}(f) = \begin{bmatrix}1&1\\2&0\\0&2\end{bmatrix}\) car \(f(0.1) = (0.1.2),f(1.0) = (2.1.0)\)
+%
+% Exemple : \(B = ((1.0), (1.1)), B_a = ((1.0.0),(1.1.0), (1.1.1)) \) donc
+%
+% Donc \(M_{B,B_a}(f) = \begin{bmatrix}1&0\\1&0\\0&2\end{bmatrix}\) car \(f(1.0) = (2.1.0),f(1.1) = (2.2.2)\)
+
+\begin{proposition}
+Soit B une base de E, \(B_a\) une base de F, et \(F\in L(E,F)\). La connaissance de \(M_{B,B_a}(f)\) est équivalent à connaitre f.
+\end{proposition}
+\section{Opérations}
+\begin{proposition}[Linéarité des MAL]
+Soient f et g deux éléments de \(L(E,F)\), B est une base de E, \(B_a\) est une base de F, \(\lambda \in R\).
+
+\begin{itemize}
+ \item \(M_{B,B_a}(f+g) = M_{B,B_a}(f) +  M_{B,B_a}(g)\)
+ \item \( M_{B,B_a}(\lambda f) = \lambda  M_{B,B_a}(f)\)
+\end{itemize}
+\end{proposition}
+
+\begin{proposition}[MAL composées]
+Soient \(f\in L(E,F), g\in L(F,G),\), B une base de E, \(B_a\) une base de F, \(B_b\) une base G
+
+Alors \(g\circ f \in L(E,G)\) et \(M_{B,B_b}(g\circ f) = M_{B_a, B_b}(g) M_{B,B_a}(f)\)
+\end{proposition}
+\subsection{Matrices d'endomorphisme }
+\(f\in L(E), B, B_a\) 2  bases de E. Alors \(M_{B,B_a}\in M_{pp}(\R)\)
+
+Notation : \(M_B(f) = M_{B,B}(f)\)
+%
+% \warningInfo{Remarque}{Cosidérons \(f = I_dE\), alors \(\forall B, M_B(f)= I_p\). En revanche, si on choisit \(B_a\) une seconde base de E, on na`` a pas necessairement \(M_{B,B_a} = I_p\).
+%
+% Exemple : \(E = \R^2, B=((1.0),(0.1)), B_a=((0.1),(1.0)), B_b = ((1.0), (1.1))\).}
+\begin{proposition}[Mise à la puissance de MAL]
+\(f\in L(E), q\in \N, f^q = f\circ f \circ f\dots\)
+
+\(M_B(f) = M_{B}(f)^q\)
+\end{proposition}
+\subsection{Matrices d'un isomorphisme}
+On suppose que \(\dim(E) = \dim(F)\).
+\begin{proposition}[Propriétés des MAL pour les isomorphismes]
+\(f\in L(E, F), M_{B,B_a}(f) \in M_{p}(\R)\).
+
+\(f\) est un isomorphisme \(\iff  M_{B,B_a}(f)\) est inversible
+
+Si f est un isomorphisme, \(M_{B_a, B}(f^{-1}) =  M_{B,B_a}(f)^{-1}\)
+
+Soit \(f\in L(E), B\). f est bijective \(\iff M_B(f)\) est inversible et \(M_B(f^{-1}) = M_B(f)^{-1}\)
+\end{proposition}
+% \begin{proposition}[]
+% \(f\in L(E), B\). f est bijective \(\iff M_B(f)\) est inversible et \(M_B(f^{-1}) = M_B(f)^{-1}\)
+% \end{proposition}
+\subsection{Image d'un vecteur : changement de base}
+Soit \(B = (e_1,\dots,e_p), c_j\) l'application coordonnées. \(B_a = (v_1,\dots, v_n)\) et \(c_{a,j}\) les applications coordonnées
+\begin{proposition}
+On pose, pour \(u\in E\) \(X = \begin{bmatrix}c_1(u)\\c_2(u)\\\dots\\c_p(u)\end{bmatrix}, Y = \begin{bmatrix}c_{a,1}(f(u))\\c_{a2}(f(u))\\\dots\\c_{ap}(f(u))\end{bmatrix}\). Alors\(Y = M_{B,B_a}(f)X\)
+\end{proposition}
+\begin{definition}[Matrices de changement de base]
+Soit B et \(B_a\) 2 bases de E. On appelle matrice de passage de la base B à la base \(B_a\) la matrice \(M_{B_a,B}(I_d)\)
+\end{definition}
+\begin{proposition}
+Posons \(B  = (v_1, \dots,v_p), c_j\) les applications coordonnées dans la base B. Notons \(M_{B_a,B}(Id_e) = (c_1,\dots, c_p)\). Alors \((c_k)i = c_i(v_k)\)
+\end{proposition}
+\begin{proposition}[Inversion des matrices de changement de base]
+\(M_{B_a,B}(Id_E)\) est toujours inversible et \(M_{B_a,B}(I_d)^{-1} = M_{B,B_a}(I_d)\)
+\end{proposition}
+% \begin{proposition}[Linéarité]
+% % Soient 3 bases de E.
+% %
+% % Alors
+% \(M_{B1,B3}(Id_E) = M_{B2,B3}(Id_E)M_{B1,B2}(Id_E)\)
+% \end{proposition}
+\begin{proposition}
+Soient B et \(B_a, c_{aj}\) les applications coordonnées dans la base B. Soit \(u \in E, X = \begin{bmatrix}c_1(u)\\c_2(u)\\\dots\\c_p(u)\end{bmatrix},  \bar{X} = \begin{bmatrix}\bar{c}_1(u)\\\bar{c}_2(u)\\\dots\\\bar{c}_p(u)\end{bmatrix}\). Alors \(\bar{X} = M_{B, \bar{B}}(Id_E)X\)
+\end{proposition}
+\begin{proposition}[Formules de changement de base]
+Soient \(B_1,B_2,\bar{B_1}, \bar{B_2}, f\in L(E,F)\). Alors
+
+\(M_{B_2,\bar{B_2}}(f) = M_{\bar{B_1}, \bar{B_2}}M_{B_1, \bar{B_1}}(f)M_{B_2, B_1}(Id_E)\)
+\end{proposition}
+\begin{proposition}
+\(B_1,B_2\) 2 bases de E, \(P = M_{B_1,B_2}(Id_E)\). Alors \(M_{B_2} = PM_{B_1}P^{-1}\)
+\end{proposition}
+
+
+\end{document}

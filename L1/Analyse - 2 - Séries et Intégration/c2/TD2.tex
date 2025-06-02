@@ -1,0 +1,117 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques - Analyse 2}
+\subtitle{Analyse}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\R}[0]{\mathbb{R}}
+\begin{document}
+
+
+	\chapter{Compléments sur les fonctions }
+\section{Théorème de Bolzano-Weiestrass}
+\begin{theorem}[Théorème de BW]
+ Toute suite bornée admet une sous-suit convergente
+\end{theorem}
+\begin{myproof}
+$U_n$ est une suite réelle bornée. Comme elle est bornée, il existe deux réels $a$ et $b$ avec $a<b$ tel que $\forall n\in\mathbb{N}, u_n \in[a,b]$. On pose $a_0 = a, b_0=b, \varphi(0) = 0, 8_0 = [a,b]$.
+
+L'un, au moins, des deux intervalles $[a,\frac{a+b}{2}]$ et $[\frac{a+b}{2},b]$ contient une infinité de $n$ pour lesquels $u_n$ est dans cet intervalle. On note $I_1$ cet intervalle et $I_1 = [a_1,b_1]$. On a donc $a_1 = a_0, b_1 = \frac{a_0+b_0}{2}$ ou $a_1 = \frac{a_0+b_0}{2}, b_1=b_0$.
+
+On prend pour $\varphi(1)$ un indice dans $I_1$ et $\varphi(1)$ plus grand que $\varphi(0)+1$.
+
+On suppose alors construit $a_0 \leq a_1\leq a_n$. On a $b_n-a_n = \frac{a_0-b_0}{2^n}$
+
+puis $\varphi(0)<\varphi(1)<\varphi(\dots)<\varphi(n)$.
+
+L'intervalle $I_n = [a_n,b_n]$ contient une infinité de termes dans l'une des 2 moitiées. On répète le processus.
+
+On construit ainsi une suite qui respecte les conditions, $u_{\varphi_n} \in I_n$. Les suites $a_n$ et $b_n$ sont adjacentes, donc convergent vers la m\^eme limite. Par l'encadrement, $u_{\varphi(n)}$ converge vers cette limite.
+\end{myproof}
+\section{Continuité Uniforme}
+\begin{definition}
+f est continue en $x$ si $\forall \varepsilon,\exists \delta >0, \forall y\in I (|y-x|)< \delta \Rightarrow |f(x)-f(y)| <\varepsilon$
+\end{definition}
+Exemple : $f(x) = 2x+3$ est continue sur $\R$. Soit $x\in \R, \varepsilon>0$. Posons $\delta = \frac{\varepsilon}{2}$
+
+Soit $y\in\R$,
+
+Si $|y-x| <\delta, |y-x| < \varepsilon/2$ donc $|2y-2x| <\varepsilon$ et $|2y+3-(2x+3)| <\varepsilon$.
+
+On peut choisit $\delta$ en fonction de $\varepsilon$ uniquement et non $x$.
+
+\begin{lemma}
+Si il existe deux suites  $(x_n), (y_n)$ à valeurs dans $I$ telle que $x_n-y_n \to 0 \wedge f(x_n)-f(y_n) not \to 0$
+\end{lemma}
+
+Exemple pour $x^2$ : Posons $x_n = n$ et $y_n = n+\frac{1}{n}$. On a $x_n-y_n \to$ et $x_n^2-y_n^2 = -2-\frac{1}{n^2} \to -2$.
+
+Donc $f$ n'est pas uniformément continue.
+\begin{theorem}[Théorème de Heine]
+ Toute fonction continue sur un segment $I$ est uniformément continue sur $I$.
+\end{theorem}
+\begin{definition}
+Une fonction définie sur un intervalle I est lipshitienne si et seulement si \(\exists k\in\R,\forall x,y\in I, |f(x)-f(y)|\leq k|x-y|\)
+\end{definition}
+\begin{theorem}[]
+ Une fonction lipschienne sur $I$ est uniformément continue sur $\R$
+\end{theorem}
+\begin{myproof}
+On prend $\delta = \varepsilon/k$.
+\end{myproof}
+Remarque : Si $f$ est $C^1$ sur $I$ avec $f'$ bornée alors f est lipscheinne
+\begin{myproof}
+D'après le TAF, on a $|f(y)-f(x)| \leq \sup(f'(c)) |y-x|$.
+\end{myproof}
+Remarque : Soit $f C^1$ sur un segment. Alors elle est lipscheinne car $f'$ est continue sur $[a,b]$ donc bornée, puis par la première remarque.
+
+$C^1$ dérivée bornée $\Rightarrow$ Lipshei $\Rightarrow$ uniformément continue $\Rightarrow$ continue
+
+Mais continue n'implique pas uniformément continue ($x^2$), mais uniformément continue n'implique lipschiz (racine de x)
+\section{Suites de Cauchy}
+\begin{definition}
+Une suite est de cachy si \(\forall \varepsilon>0,\exists N\in\mathbb{N},\forall p,q \in\mathbb{N}, (p\geq N,q\geq N \Rightarrow |u_p-u_q|\leq \varepsilon)\)
+\end{definition}
+\begin{lemma}
+Une suite de Cauchy est bornée
+\end{lemma}
+On prend $\varepsilon = 1$ et on a $|u_p|=|U_p-U_n+U_n|\leq |U_p-U_n|+|U_n|\leq 1 + |U_n|$. On pose $M = \max(|U_0|\dots |U_n|,|U_n|+1)$. On a $|U_n|\leq M$
+\begin{lemma}
+Une suite de Cauchy avec une valeur d'adhérence converge.
+\end{lemma}
+\begin{theorem}
+ Toute suite de Cauchy rélle ou complexe est convergente.
+\end{theorem}
+Cauchy ->lemme 1 -> bornée ->BW -> possède une VA -> lemme 2 ->VC.
+
+Exemple : m'algorithme de Héron est une suite de rationnels qui converge vers $\sqrt{2}$ mais ne converge pas dans $Q$.
+\warningInfo{Limite de 0}{$U_p-u_n \to 0$ n'implique pas que la suite est de cauchy. la suite ln diverge vers l'infini mais (donc pas de chauchy) mais respecte la condition précédente.}
+\end{document}
+

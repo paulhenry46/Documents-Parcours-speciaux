@@ -1,0 +1,202 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{MPS2}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%Au programme de l'examen
+\professor{J.Daudé}%Jérémi Daudé
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{yFlatTable}
+\usepackage{multicol}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+
+%\titleOne
+\setcounter{chapter}{3}
+	\chapter{EV de dimension finie}
+\section{Familles de vecteurs}
+\begin{definition}[Familles de vecteurs]
+Soit I un ensemble. On appelle famille de vecteurs de E, une collection de vecteurs de E indexée sur I.
+\[F = \{v_i,i\in I\}\] avec \(\forall i\in I, v_i \in E\). C'est comme un array.
+\end{definition}
+% Exemple : \(\{v_1=(1.0.1), v_2=(2.1.0),v_3=(1.01)\}\) est une famille finie de vecteurs de \(\R^3\) avec \(I=\{1,2,3,4,5\}\)
+%
+% Exemple \(\{X^k, k\in \N\}\) est une famille infinie dénombrable de vecteurs de \(\R[X]\).
+%
+% Exemple : \(\{\alpha,\alpha^3\}\) est infinie et indénombrable de vecteur \(\R^2\).
+
+% \begin{definition}
+% On note Card(F) = Card(I) le cardinal de F.
+% \end{definition}
+\begin{definition}[Combinaison linéaire de vecteur d'une famille]
+Soit F une famille de vecteurs de E, indexée sur I. On appelle combinaison linéaire de vecteurs de F tout vecteur de E s'écrivant \(\lambda_1\cdot v_{i1}+\lambda_2\cdot v_{i2}+\dots+\lambda_n\cdot v_{in}\) avec \(N\leq Card(I)\in \N, i_k\in I\).
+
+Si \(N=0\) , la combinaison linéaire vaut le vecteur nul.
+\end{definition}
+On note \(Vect(F)\) l'ensemble du résultat des combinaisons linéaires de F (qui vérifient \(Vect(F)\subset E\)).
+\begin{proposition}
+Soit F une famille de vecteurs de E. Alors un Vect(F) est le plus petit sev de E contenant tous les vecteurs de F
+\end{proposition}
+% \begin{myproof}
+% Le vecteur nul est dedans.
+%
+% \end{myproof}
+% \begin{proposition}
+% Vect(F) est le plus petit sev de E contenant tous les vecteurs de F
+% \end{proposition}
+
+\begin{definition}[Famille génératrice]
+Soit F une famille de vecteurs de E et G un sev de E.
+
+On dit que F est une famille génétratrice de G \(\iff\) Vect(F) = G.
+\end{definition}
+% Exemple : \(F=\{(1.0.0),(0.1.0),(0.1.1)\}\) est une famille génératrice de R3. Tous les vecteurs peuvent sé'écrire comme une combinaison linéaire des 3 vecteurs.
+
+\criticalInfo{Enlever des vecteurs dans une famille génératrice}{Si on en enlève, il est possible de casser le caractère générateur de la famille}
+
+\begin{definition}[Famille libre/liée]
+Soit F une famille de vecteurs de E. On dit que la famille F est libere \(\iff \forall N\in\N, \forall(i_1\dotsi_N)\in I^{\N}, i_p\neq i_q \Leftarrow p\neq q, \lambda_1v_{i1}+\dots + \lambda_N v_{iN} =0_E \iff \lambda_N = 0\). On dit alors que les vecteurs de F sont linéairement indépendants.
+
+On dit que F est liée si elle n'est pas libre. On dit que les vecteurs de F sont linéairement dépendants.
+
+Par convention, la famille vide est libre.
+\end{definition}
+\begin{proposition}
+Soit F \(\{v_1, i\in I\}\) une famille finie. F est libre \(\iff \sum_{i\in I}\lambda_i v_i = 0_E \iff \lambda_i = 0 \forall i\in I\)
+\end{proposition}
+
+\begin{proposition}
+Soit F une famille de vecteur de E.
+
+Si \(\exists i\in I, tq v_i = 0_E\), F est liée
+
+Si \(\exists i,j\in I, i\neq j, v_i=v_j\) F est liée
+\end{proposition}
+\begin{proposition}
+Soit F une famille.
+
+F est liée \(\iff \exists k\) tq \(v_k \in Vect(F \setminus v_k)\).
+\end{proposition}
+\begin{proposition}
+Si F est liée, \(\exists (i_1,\dots, i_N)\in I^N\) et \(\lambda_1,\dots,\lambda_N\), \(\lambda_i\) non tous nul
+
+\end{proposition}
+\begin{proposition}
+Soit 2 familles de vecteurs de E
+
+\begin{itemize}
+ \item F est génératrice de Vect(F)
+ \item Si F est génératrice, et \(F\subset G\), alors G est aussi génératrice.
+ \item Si G est libre, et \(G\subset F\), alors F est libre.
+ \item On suppose F génératrice. Pour \(k\in I\), on note \(H =\{v_i, i\in I \setminus k\}\),  H est génératrice  \(\iff v_k\in\) Vect(H).
+ \item On suppose F libre. Soit \(v \in E\) et \(s\notin I\), alors \(v_s=v\) et \(H = F\cup \{s\}\). I est libre \(\iff\) \(v_s \notin Vect(F)\). (preuve en exo)
+ \item Soit \(p\in \N\). et F une famille de vecteurs à p éléments. Si G est une famille d'au moins p+1 éléments appartenant à Vect(F), alors G est liée
+\end{itemize}
+\end{proposition}
+\begin{definition}[Base]
+Soit F une famille de vecteurs de et G un sev de E.
+
+F est une base de \(G \iff Vect(F) = G\) et F est libre.
+\end{definition}
+\section{Espace vectoriel de dimension finie}
+\begin{definition}[Espace vectoriel de dimension finie]
+Soit E un R-ev. E est de dimension finie si il admet une famille génératrice finie. (Il existe un nombre fini de vecteur tel que je peux créer tous les autres à partir de ceux-ci). Dans le cas contraire, E est de dimension infinie.
+\end{definition}
+\begin{proposition}
+Soit F une famille finie de vecteurs. Il existe une famille B finie de vecteurs de F telle que B est une base de Vect(F). (Si une famille engendre qqc, on peut enlever des vecteurs de cette famille pour obtenir une famille libre génératrice, une base)
+\end{proposition}
+\begin{proposition}
+Soit E un ev de dim finie. Il admet une base finie
+\end{proposition}
+\begin{theorem}[Coordonnées]
+ Soit E un espace vectoriel de dim finie et F une famille finie. F est une base de E \(\iff \forall u\in E, \exists! (\lambda_1,\dots,\lambda_d)\in \R^d tq u = \lambda_1e_1+\dots+\lambda_de_d)\). Les réels \(\lambda\) sont appelés coordonnées du vecteur u dans la base F.
+\end{theorem}
+\begin{theorem}[Dimension]
+ Soit E un espace vectoriel. Si E est de dimension finie, alors toutes les bases de E ont le m\^eme nombre d'éléments. Ce nombre est un entier appelé dimension de l'espace noté $\dim(E)$.
+\end{theorem}
+\begin{proposition}
+Soit E un ev de dimension finie. Soit F une famille de vecteurs de E.
+
+Si F est libre\( \Rightarrow Card(F)\leq \dim(E)\)
+
+\(Card(F)>\dim(E) \Rightarrow F\) est liée
+
+\(F\) est générateur \(\Rightarrow Card(F) \geq \dim(E)\).
+\end{proposition}
+\begin{theorem}[]
+ Soit E un ev de dim finie et B une famille de vecteurs de E. Alors
+ \begin{itemize}
+  \item \(B\) est une base
+  \item \(\iff B\) est une famille libre avec \(Card(B) = \dim(E)\)
+  \item \(\iff B\) est une famille génératrice avec \(Card(B) = \dim(E)\)
+ \end{itemize}
+\end{theorem}
+\warningInfo{En pratique}{On n'utilise que la deuxième équivalence}
+
+\warningInfo{Dimension}{On peut utiliser l'argument de la dimension si uniquement on l'a démontré par ailleur.}
+
+\criticalInfo{Coordonnées}{Il ne faut pas confondre le vecteur et ses coordonnées}
+
+\begin{proposition}
+Soit E un ev et F un sev de E. Alors \(\dim(F)\leq \dim(E)\). En particulier, si E est de dimension finie, F est de dimension finie.
+\end{proposition}
+\begin{proposition}
+E est un ev de dimension finie, F sev de E. Alors F=E \(\iff \dim(F) = \dim(E)\).
+\end{proposition}
+Exercice : Soit E ev, \(\dim(E)<+\infty\). Mq $\forall d\in \{0,\dots, \dim(E)\},\exists F$, sev de E tq $\dim(F)=d$. (par l'absurde).
+
+\begin{proposition}
+E ev de dimension finie. F et G sev de E en somme directe. Alors \(\dim(F+G) = \dim(F)+\dim(G)\).
+\end{proposition}
+\begin{proposition}[Existence du supplémentaire]
+E ev de dimension finie, et F sev de E. Alors \(\exists G\) sev de E tq \(G\) est un supplémentaire de F dans E.
+\end{proposition}
+\begin{proposition}[Formule de Grassmann]
+E est un ev de dimension finie. Fet G 2 sev de E.
+
+\(\dim(F)+\dim(G) = \dim(F+G) + \dim(F\cap G)\)
+\end{proposition}
+\begin{proposition}
+Soit E un \(\R\) ev de dimension finie et F et G 2 sev de E. Alors les propriétés suivantes sont équivalentes :
+\begin{itemize}
+ \item F et G sont supplémentaires dans E
+ \item \(F\cap G = \{0_E\}\) et \(\dim(F)+\dim(G) = \dim(E)\)
+ \item \(G+F = E\) et \(\dim(F)+\dim(G) = \dim(E)\).
+\end{itemize}
+\end{proposition}
+\begin{proposition}
+Soit E un ev de dimension finie. Soit L une famille libre de vecteurs de E et G une famille génératrice de vecteurs de E
+
+\(\exists B\) base de E tq \(L\subset B\subset L\cup G\)
+\end{proposition}
+\begin{theorem}[Théorème de la base incomplète]
+ E ev de dimension finie
+ \begin{itemize}
+  \item Soit L famille libre de vecteurs de E. Alors \(\exists B\) base de \(E\) tq \(L\subset B\).
+  \item Soit G une famille génératrice de E. Alors \(\exists B\) une base tell que \(B\subset G\).
+ \end{itemize}
+\end{theorem}
+\end{document}

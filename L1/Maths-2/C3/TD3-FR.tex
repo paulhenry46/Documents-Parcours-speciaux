@@ -1,0 +1,141 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{MPS2}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{J.Daudé}%Jérémi Daudé
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+
+%\titleOne
+\setcounter{chapter}{2}
+	\chapter{R-Espaces vectoriels}
+\begin{definition}[R-Espace vectoriels]
+Soit E un ensemble muni de 2 lois (opérations) :
+\begin{itemize}
+ \item Une loi de composition interne, appelée addition, notée \(+\), \(E\times E \to E, (u,v) \to u+v\).
+ \item Une loi de composition externe, appelée multiplication par un réel, noté \(\cdot\), \(\R \times E \to E, (\lambda, u)\to \lambda \cdot u\)
+\end{itemize}
+E est un R ev si
+\begin{enumerate}
+ \item \(\forall (u,v)\in E\times E, u+v=v+u\) (commutativité)
+ \item \(\forall (u,v,w)\in E\times E\times E, (u+v)+w=u+(v+w)\) (Associativité)
+ \item Il existe un élément de E appelé élément neutre, noté \(0_E\) tel que \(\forall u\in E,u+0_E = u\).
+ \item \(u\in E\) admet un opposé (appelé parfois symétrique), \(u'\in E\) tel que \(u+u' = 0_E\)
+\item \(\forall u\in E, 1\cdot u = u\)
+\item \(\forall (\lambda,\gamma)\in \R\times\R,\forall u\in E, \lambda\cdot(\gamma\cdot u) = (\lambda\cdot \gamma)\cdot u\)
+\item \(\forall \lambda\in \R, \forall (u,v)\in E\times E,\lambda\cdot (u+v) = \lambda\cdot u+\lambda \cdot v\)
+\item \(\forall( \lambda, \gamma)\in \R\times \R, \forall u\in E, (\lambda+\gamma)\cdot u = \lambda \cdot u + \gamma \cdot u\)
+\end{enumerate}
+\end{definition}
+\warningInfo{Remarque}{
+\begin{itemize}
+ \item Un espace vectoriel est nécessairement non vide
+ \item \(\R\) est appelé corps des scalaires.
+ \item Les éléments de E sont appelés vecteurs de E
+\end{itemize}}
+Exemples :
+\begin{itemize}
+ \item \(p\geq 1, \R^p = \{(x_1,\dots,x_p),x\in \R\}\) muni de \(x_1\dots x_p\ + (y_1\dots,y_p) = (x_1+y_2,\dots x_p+y_p)\) et \(\lambda \cdot(x_1,\dots,x_p) = (\lambda x_1,\lambda x_2,\dots \lambda x_p)\) est un rev.
+ \item \(\C^p = \{(z_1,\dots,z_p), z_p\in\C\}\)
+ \item \(\R[X]\)
+ \item \(\R^{\N}\)
+ \item \(\{f:I\to \R\}\)
+\end{itemize}
+\begin{proposition}[Unicité de l'élément neutre et du symétrique]
+E admet un unique élément neutre appelé vecteur nul et \(\forall u\in E\), u admet un unique opposé.
+\end{proposition}
+\begin{proposition}
+Soit E un rev, \(u\in E\), \(\lambda \in \R\). \(0\times u = O_E, \lambda \cdot O_E = O_E, -1\cdot u =\) l'opposé de u., \(\lambda\cdot u = O_E \iff \lambda = 0 OU u=O_E\).
+\end{proposition}
+On note -u l'opposé de u. On note v-u = v+(-u).
+\subsection{Sous-espace vectoriel}
+E est un R-ev.
+\begin{definition}
+\(F\subset E\) est un sous espace vectoriel de E si
+\begin{enumerate}
+ \item \(F\neq \varnothing\)
+ \item \(\forall (u,v) \in F\times F, \forall (\lambda,\mu)\in\R\times \R, \lambda \cdot u+ \mu \cdot v \in F\)
+\end{enumerate}
+
+\end{definition}
+\begin{proposition}
+F est un sev \(\iff\)
+\begin{enumerate}
+ \item \(0_E \in F\)
+ \item \(\forall (u,b) \in F\times F, u+v \in F\)
+ \item \(\forall u\in F, \forall \lambda \in\R, \lambda \cdot u \in F\)
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+Soit \(F\subset E\) un sev, F est Rev.
+\end{proposition}
+\checkInfo{En pratique}{Poir montrer que ce n'est pas un sev, on prend un objet de l'espace et on montre que cela ne vérifie pas les propriétés. Il faut exhiber l'objet pour lequel cela ne fonctionne pas. Pour montrer que c'est un espace vectoriel, on montretra que c'est un sous-espace vectoriel d'un autre espace.}
+
+\warningInfo{Remarque}{
+L'ensemble ne contenant que le vecteur nul d'un ev est aussi un ev mais l'ensemble vide n'est pas un sev. E est un sev de E.}
+\begin{proposition}
+Soient F et G 2 sev de E. Alors \( F \cap G\) est aussi un sev de E
+
+Soit e un ensemble de sev de E. Alors \(\forall F\in e, F\) est un sev de E. Alors \(\bigcap F\) est un sev de E.
+\end{proposition}
+\begin{proposition}[Corollaire]
+\begin{itemize}
+ \item Soit \(A\subset E\). Posons \(e_a = \{F sev de E,A\subset F\}\). Alors \(e_a \neq \varnothing\) et \(F_A = \bigcap F\) est le plus petit espace vectoriel de E contenant A
+ \item A est un sev de E \(\iff F_a = A\)
+\end{itemize}
+\end{proposition}
+\warningInfo{Remarque}{F sev de E et G sev de E n'implique pas \(F\cup G\) sev de E }
+\begin{proposition}
+Soit 2 sev de E. Alors la somme des 2 est aussi un sev de E.
+\end{proposition}
+\begin{definition}
+Soient F et G 2 sev de E. On dit que F et G sont en somme directe, noté \(F\oplus G\) si \(F\cap G = \{O_E\}\)
+\end{definition}
+\begin{proposition}
+Soient F et G 2 sev de E. Alors les 3 assertions suivantes sont équivalentes
+\begin{itemize}
+ \item \(F, G\) sont en somme directe
+ \item \(u_F\in F, u_G\in G\) tel que \(U_F+U_g = O_E \Rightarrow U_F+U_G = O_E\)
+ \item \(\forall u\in F+G, \exists! (u_F,u_G)\in F \times G, u = u_F+u_G\)
+\end{itemize}
+\end{proposition}
+\begin{definition}[Espace supplémentaire dans E]
+Soient F et G 2 sev de E. On dit que F et G sont supplémentaires dans E si \(F\cap G = \{O_E\}\) et \(F+G = E\)
+\end{definition}
+\begin{proposition}
+F et G sont supplémentaires ssi \(\forall u\in E, \exists ! (u_f,u_g)\in F\times G\) tel que \(u=u_F+u_g\)
+\end{proposition}
+\end{document}

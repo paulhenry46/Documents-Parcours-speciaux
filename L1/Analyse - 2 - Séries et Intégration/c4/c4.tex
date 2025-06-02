@@ -1,0 +1,186 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques - Analyse 2}
+\subtitle{Analyse}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+\setcounter{chapter}{3}
+
+	\chapter{Intégrales}
+
+\section{Intégrale de Riemann}
+\begin{definition}[Subdivision]
+C'est toute famille de réels \(u = (x_i)_{0\leq i\leq n}\) telle que \(a = x_0<x_1<\dots <x_n = b\). Son pas est la quantité \(\max(x_1-x_{i-1})\). On dit que v est plus fine, si tout élément de de v est un élément de u.
+
+C'est une subdivision régulière si \(x_i = a+i\frac{b-a}{n}\).
+\end{definition}
+\begin{proposition}
+Si u et v sont des subdivisions, alors il existe une subdivision plus fine que u et v.
+\end{proposition}
+\begin{definition}
+Une fonction est dite en escalier s'il existe une subdivision u telle que la fonction est constante sur chaque intervalle ouvert \(]x_{i-1},x_i[\). On dit alors que u est une subdivision adaptée à la fonction.
+\end{definition}
+\begin{definition}[Fonction continue par morceaux]
+On dit qu'une fonction est continue par morceaux si on peut trouver une subdivision adaptée à f telle que la restriction de f à chaque intervalle \(]x_{i-1},x_i[\) soit continue et ademette des limites finies à droite de \(x_{i-1}\) et à gauche de \(x_i\).
+\end{definition}
+\warningInfo{Remarque}{Si une fonction  est cpm, alors \(\forall x_0 \in [a,b], \Lim{x\to x_0^+} f(x), \Lim{x\to x_0^-} f(b)\) existent et sont finies.}
+Exemple : \(g(x) = 0 si x=0, \sin(\frac{1}{x} si x>0)\)
+\begin{proposition}
+La combinaison linéaire (et produit/division) de fonctions en escaliers est une fonction en escalier.
+\end{proposition}
+\begin{proposition}
+Une fonction continue par morceaux sur un segment est bornée
+\end{proposition}
+\begin{definition}
+f est prolongeable par continuité en a si f possède une limite a.
+\end{definition}
+Le prolongement par continuité de f en a est bien définie en a. On rajoute le point duquel la fonction se rapproche.
+\begin{theorem}[Approximation d'une fonction continue par morceaux]
+Soit f une fonction continue par morceaux sur un segment. Pour tout \(\varepsilon >0, \exists \theta\) en escalier tq \[\forall x\in [a,b], |f(x)-\theta(x)|<\varepsilon\]
+\end{theorem}
+% \begin{myproof}
+% Si f est continue sur $[a,b]$ :
+%
+%  Soit $\varepsilon >0$. Par Heine, f étant uniformément continu, $\exists \delta >0, tq \forall (x,y)\in [a,b]^2, |x-y|<\delta \Rightarrow  |f(x)-f(y) <\varepsilon$
+%
+%  On se donne u une subdivision régulière avec $x_i = a+i\frac{b-a}{n}$ telle que $\frac{b-a}{n}<\delta$. On pose alors $\theta(x) = f(x_i)$.
+%
+%  Soit $x\in[a,b]$
+%
+%  Si $x=a, |\theta(x)-f(x)|=0$ et si $x\in[x_{i-1}, x_i]$, on a $|\theta(x)-f(x)|=|f(x_i)-f(x)|$. Or, $|x_i-x|\leq |x_i-x_{i-1}|< \delta$, donc $|\theta(x)-f(x)|<\delta$.
+%
+%  D'où $\forall x\in[a,b], |f(x)-\theta(x)|\leq \varepsilon$.
+%
+%  Si f est cpm
+%
+%  Soit $\varepsilon >0$ et $u$ une subdivision adaptée à f. On pose sur $]x_{i-1},x_i[, \theta_i$ vérifiant $\forall x\in ]x_{i-1},x_i[, |\theta_i(x)-f(x)|\leq \varepsilon$. On se retrouve au cas 1 en prolongeant f par continuité sur $[x_{i-1},x_i]$.
+%
+%  On définit alors $\theta(x)  = \theta_i(x)$ si $x\in]x_{i-1},x_i[$ ou $f(x_i)$ si $x=x_i$.
+%
+%  On a $\forall x\in[a,b],|\theta(x)-f(x)|\leq \varepsilon$.
+% \end{myproof}
+\begin{proposition}
+Soit fcpm sur $[a,b]$. $\forall \varepsilon >0,\exists \phi,\psi, $ en escalier telles que $\forall x\in[a,b], \phi(x)\leq f\leq \psi(x)$ et $\psi-\phi \leq \varepsilon$.
+\end{proposition}
+% \begin{myproof}
+%  En effet, $\forall x\in[a,b], \varepsilon + \theta < f(x)\varepsilon+\theta$. On pose $\phi(x) = \theta(x)-\varepsilon/2$ et $\psi(x) = \theta(x)+\varepsilon/2$. Les inégalités sont vérifiées.
+% \end{myproof}
+\begin{proposition}
+On a \[\int \varphi = \sum^{n}_{i=1} c_i(x_i-x_{i-1})\] qui ne dépend pas de la subidivisoon choisie, avec $c_i$ la valeur de la fonction entre $x_i$ et $x_{i-1}$.
+\end{proposition}
+% \begin{myproof}
+%  On montre que si v est plus fine que $u$, on a $I(\phi,u) = I(\psi, u)$. On commence par le cas où v contient un point de plus que u.
+%
+%  poly
+% \end{myproof}
+\begin{proposition}
+Les propriétés  de linéarité, de croissance, de positivité et d'additivité sont conservées.
+\end{proposition}
+\begin{proposition}
+On note $E^+, E^-$ l'ensemble des fonctions en escalier supérieures et inférieures à f. La borne supérieure de l'ensemble des E- et la borne inférieure de la borne des E+ sont égales.
+\end{proposition}
+% \begin{myproof}
+%  Soit f cpm
+% \end{myproof}
+\begin{definition}
+Si f est cpm, on appelle intégrale de f \(\sup(\{\int \varphi, \varphi \in E^-(f)\}) = \inf(\{\int \psi, \psi \in E^+(f)\})\).
+\end{definition}
+\begin{proposition}
+On dit que la fonction est intégrable au sens de Riemann si \(\sup(I^-) = \inf(I^+(f))\)
+\end{proposition}
+% Contre exemple
+\begin{proposition}[VA de l'intégrale]
+Si \(f\) est cpm sur un intervalle, alors \(|f|\) l'est aussi et \(|\int_{I} f| \leq \int_I |f|\)
+\end{proposition}
+\begin{proposition}[Inégalité de la moyenne]
+Si f et g sont cpm, alors leur produit l'est aussi et \(|\int_I fg| \leq \sup_I(|f|) \times \int_I |g|\)
+\end{proposition}
+\begin{proposition}[Corollaire des bornes]
+Si f est cpm, on a \(|\int_{[a,b]} f| \leq (b-a)\sup_{[a,b]}(|f|)\)
+\end{proposition}
+\begin{proposition}[Valeur moyenne]
+\(\inf_{[a,b]}(f) \leq \frac{1}{b-a}\int_{[a,b]}\leq \sup_{[a,b]}(f)\)
+\end{proposition}
+\begin{theorem}[Intégrale non nulle]
+ Si f est continue et positive sur [a,b], alors \(\int f = 0 \Rightarrow f = 0\) sur \([a,b]\)
+\end{theorem}
+\section{Somme de Riemann}
+\begin{definition}
+Soit f continue sur \([a,b]\) et u une subidivision. On appelle Somme de Riemann associée à u la quantité \(\frac{b-a}{n}\sum^{n-1}_{i=0} f(a+i\frac{b-a}{n})\)
+\end{definition}
+\begin{theorem}[Limite de la somme de Riemann]
+ \(\lim S_R = \int^b_a f(x)\dd x\)
+\end{theorem}
+\section{Intégrales et primitives}
+importance de l'intervalle I : arctan(x) + arctan(1/x) a une dérivée nulle mais n'est pas constante.
+\begin{theorem}[Théorème fondamental]
+ La fonction \(F_a\) définie par \(\forall i\in I, F_a(x) = \int^x_af(t)\dd t\) est l'unique primitive de f qui s'annule en a
+\end{theorem}
+Démonstrations
+% \begin{myproof}
+% On pose \(F_a(x) = \int^x_a f(t)\dd t\). Soit \(\varepsilon >0. \exists \delta >0\) tq \(|y-x|< \delta \Rightarrow |f(y)-f(x)|< \varepsilon\). On se donne  \(h\in \R\) tel que \(|h|<\delta\)
+%
+%
+% \(|\frac{F_a(x+h)-F_a(x)}{h}-f(x)| = |\frac{1}{h}\int_x^{x+h}f(t)\dd t - f(t)| = |\frac{1}{h}\int^{x+h}_xf(t)\dd t - \frac{1}{h} \int^{x+h}_{x}f(x)\dd t| = |\frac{1}{h} \int^{x+h}_x (f(t)-f(x)\dd t)| \leq \frac{1}{|h|} |\int^{x+h}_x |f(t)-f(x)|\dd t| \leq \frac{1}{|h| \int^{x+h}_x} \varepsilon = \varepsilon\).
+%
+% Donc \(F_a' = f(x) = f(x)\)
+% \end{myproof}
+\begin{theorem}[Intégration par parties]
+Soient u et v deux fonctions de classe \(\mathcal{C}^1\) sur un intervalle \([a,b]\).
+\(\displaystyle\int_a^b u(x) \, v'(x)\;dx= \big[uv\big]_a^b - \int_a^b u'(x) \, v(x)\;\dd x\)
+\end{theorem}
+\begin{theorem}[Changement de variable]
+Soit f une fonction définie sur un intervalle I et \(\varphi : J \to I\) une bijection de classe \(\mathcal{C}^1\).
+Pour tout \(a,b\in J\), on a
+\(\displaystyle\int_{\varphi(a)}^{\varphi(b)} f(x) \; dx = \int_a^b f\big(\varphi(t)\big)\cdot\varphi'(t) \; dt\)
+
+Si F est une primitive de f alors \(F\circ \varphi\) est une primitive de
+\(\big(f \circ \varphi\big)\cdot\varphi'\).
+\end{theorem}
+\section{Intégrale à paramètres}
+\begin{definition}[Fonction continue sur 2 variables]
+Soit \(\bar{x},\bar{t}\in I\times [a,b]\). On dit que la fonction f est continue en ces 2 points si \[\forall \varepsilon >0, \exists \delta >0,\forall (x,t)\in I\times [a,b], |x-\bar{x}|\leq \delta \] et de m\^eme pour t
+\end{definition}
+On retrouve les caractérisations (séquentielle) habituelles de la continuité.
+\begin{theorem}[Continuité des intégrales à paramètres]
+ Si f est continue sur \(I\times [a,b]\), F est continue sur I.
+\end{theorem}
+\begin{definition}[Dérivée partielle]
+On dit que d admet une dérivée partielle par rapport à la première variable sur I si pour tout \(t\in [a,b]\), la focntion \(\)
+\end{definition}
+\begin{theorem}[Dérivabilité des intégrales à paramètre]
+ Si f est continue sur \(I\times [a,b]\), admet une dérivée partielle par rapport à la première variable sur I, et la fonction \(\frac{\partial f}{\partial x}\) est continue sur \(I\times [a,b]\), alors \(F : x\in I \to \int^b_a f(x,t)\dd t\) est de classe C1 sur I et \(F' = \int^b_a \frac{\partial f}{\partial x}(x,t)\dd t\)
+\end{theorem}
+\end{document}
+

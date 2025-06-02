@@ -1,0 +1,235 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{MPS2}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{J.Daudé}%Jérémi Daudé
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+
+%\titleOne
+\setcounter{chapter}{2}
+	\chapter{R-Espaces vectoriels}
+\begin{definition}[R-Espace vectoriels]
+Soit E un ensemble muni de 2 lois (opérations) :
+\begin{itemize}
+ \item Une loi de composition interne, appelée addition, notée \(+\), \(E\times E \to E, (u,v) \to u+v\).
+ \item Une loi de composition externe, appelée multiplication par un réel, noté \(\cdot\), \(\R \times E \to E, (\lambda, u)\to \lambda \cdot u\)
+\end{itemize}
+E est un R ev si
+\begin{enumerate}
+ \item \(\forall (u,v)\in E\times E, u+v=v+u\) (commutativité)
+ \item \(\forall (u,v,w)\in E\times E\times E, (u+v)+w=u+(v+w)\) (Associativité)
+ \item Il existe un élément de E appelé élément neutre, noté \(0_E\) tel que \(\forall u\in E,u+0_E = u\).
+ \item \(u\in E\) admet un opposé (appelé parfois symétrique), \(u'\in E\) tel que \(u+u' = 0_E\)
+\item \(\forall u\in E, 1\cdot u = u\)
+\item \(\forall (\lambda,\gamma)\in \R\times\R,\forall u\in E, \lambda\cdot(\gamma\cdot u) = (\lambda\cdot \gamma)\cdot u\)
+\item \(\forall \lambda\in \R, \forall (u,v)\in E\times E,\lambda\cdot (u+v) = \lambda\cdot u+\lambda \cdot v\)
+\item \(\forall( \lambda, \gamma)\in \R\times \R, \forall u\in E, (\lambda+\gamma)\cdot u = \lambda \cdot u + \gamma \cdot u\)
+\end{enumerate}
+\end{definition}
+\warningInfo{Remarque}{
+\begin{itemize}
+ \item Un espace vectoriel est nécessairement non vide
+ \item \(\R\) est appelé corps des scalaires.
+ \item Les éléments de E sont appelés vecteurs de E
+\end{itemize}}
+Exemples :
+\begin{itemize}
+ \item \(p\geq 1, \R^p = \{(x_1,\dots,x_p),x\in \R\}\) muni de \(x_1\dots x_p\ + (y_1\dots,y_p) = (x_1+y_2,\dots x_p+y_p)\) et \(\lambda \cdot(x_1,\dots,x_p) = (\lambda x_1,\lambda x_2,\dots \lambda x_p)\) est un rev.
+ \item \(\C^p = \{(z_1,\dots,z_p), z_p\in\C\}\)
+ \item \(\R[X]\)
+ \item \(\R^{\N}\)
+ \item \(\{f:I\to \R\}\)
+\end{itemize}
+\begin{proposition}[Unicité de l'élément neutre et du symétrique]
+E admet un unique élément neutre appelé vecteur nul et \(\forall u\in E\), u admet un unique opposé.
+\end{proposition}
+\begin{myproof}
+Soit $O_1$ et $o_2$ 2 éléments neutres. On a \(O_1 = O_1+O_2=O_2+O_1=O_2\)
+
+Soit $u_1,u_2$ 2 symétriques de u : \(u_1=u_1+O=u_1+(u+u_2) = (u_1+u)+u_2 = O+u_2 = u_2\)
+\end{myproof}
+\begin{proposition}
+Soit E un rev, \(u\in E\), \(\lambda \in \R\). \(0\times u = O_E, \lambda \cdot O_E = O_E, -1\cdot u =\) l'opposé de u., \(\lambda\cdot u = O_E \iff \lambda = 0 OU u=O_E\).
+\end{proposition}
+\begin{myproof}
+Mq \(0\cdot u = O_E\)
+
+\(0\cdot u = (0+0)\cdot u = 0\cdot u + O\cdot u\). Prenons l'opposé de \(0\cdot u\). \(v+0\cdot u = v+0\cdot u = O_E = O_E+o\cdot u = 0\cdot u\)
+
+Mq \(\lambda O_E= O_E\)
+
+Mq \((-1)\cdot u\) est le symétrique de u.
+
+\(u+(-1)u = (1+(-1))u = 0u = O_E\)
+
+Mq \(\lambda u =0_E \iff \lambda = 0 ou u=0_E\)
+Sens 2 OK
+
+Sens 1
+
+Supposons \(\lambda u = 0_E\)
+
+Si \(\lambda = 0\), c'est bon
+Dans ce cas contraire, \(u = 1 u = (\frac{\lambda}{\lambda}) u= \frac{1}{\lambda} (\lambda u) = \frac{1}{\lambda} 0_E = 0_E\)
+\end{myproof}
+On note -u l'opposé de u. On note v-u = v+(-u).
+\subsection{Sous-espace vectoriel}
+E est un R-ev.
+\begin{definition}
+\(F\subset E\) est un sous espace vectoriel de E si
+\begin{enumerate}
+ \item \(F\neq \varnothing\)
+ \item \(\forall (u,v) \in F\times F, \forall (\lambda,\mu)\in\R\times \R, \lambda \cdot u+ \mu \cdot v \in F\)
+\end{enumerate}
+
+\end{definition}
+\begin{proposition}
+F est un sev \(\iff\)
+\begin{enumerate}
+ \item \(0_E \in F\)
+ \item \(\forall (u,b) \in F\times F, u+v \in F\)
+ \item \(\forall u\in F, \forall \lambda \in\R, \lambda \cdot u \in F\)
+\end{enumerate}
+\end{proposition}
+\begin{myproof}
+Def\(\to\) proposition
+\(F\neq \varnothing \Rightarrow \exists u\in F\) Alors on a \(0\cdot u + 0\cdot u = 0_E\in F\)
+
+Avec \(\lambda = \mu = 1\) on a \(u+v \in F\)
+
+Soit \(\lambda \in\R,u\in F, \lambda \cdot u = \lambda \cdot u + 0_E = \lambda \cdot u + 0\cdot v \in F\)
+
+Prop\(\Rightarrow\) definitio
+\(0_E \in F \Rightarrow F\neq 0\)
+
+\(\lambda u + \mu u \in F \) (Par 3, le produit est dans F et par 2 la somme est dans F)
+\end{myproof}
+Exercice : Mq \(F\subset E\iff 0_E\in F, \forall(u,v)\in F\times F,\forall \lambda \in\R, \lambda u + v \)
+\begin{proposition}
+Soit \(F\subset E\) un sev, F est Rev.
+\end{proposition}
+Exemples : \begin{itemize}
+            \item \(F = \{(x_1,x_2,x_3)\in\R^3, x_1+x_2+x_3 = 0\}\). \((0,0,0)\in F\). Soient \(u = (x_1,_2x_3)\) et \(v=(y_1,y_2,y_3)\) dans F. Alors \(u+v = (x_1+y_1,x_2+y_2+x_3+y_3 = 0+0 =0)\)
+            \item \(F = \{P\in\R[X],P(3)= 0\}\)  est un sous-espace vectoriel de l'ensemble des polynomes.
+            \item F
+           \end{itemize}
+Poir montrer que ce n'est pas un sev, on prend un objet de l'espace et on montre que cela ne vérifie pas les propriétés. Il faut exhiber l'objet pour lequel cela ne fonctionne pas.
+\warningInfo{Remarque}{
+L'ensemble ne contenant que le vecteur nul d'un ev est aussi un ev mais l'ensemble vide n'est pas un sev. E est un sev de E.}
+\begin{proposition}
+Soient F et G 2 sev de E. Alors \( F \cap G\) est aussi un sev de E
+
+Soit e un ensemble de sev de E. Alors \(\forall F\in e, F\) est un sev de E. Alors \(\bigcap F\) est un sev de E.
+\end{proposition}
+\begin{myproof}[Du second point]
+\(\forall F\in e, F\) est un sev de E, \(\Rightarrow 0_E \in F\Rightarrow 0_E \in\bigcap F\).
+
+Soient \(u,v \in \in \bigcap F\). \(\forall F\in e, u\in e, v\in e, F est un sev de E \Rightarrow u+v \in F, donc u+v\in \bigcap F\)
+\end{myproof}
+\begin{proposition}[Corollaire]
+\begin{itemize}
+ \item Soit \(A\subset E\). Posons \(e_a = \{F sev de E,A\subset F\}\). Alors \(e_a \neq \varnothing\) et \(F_A = \bigcap F\) est le plus petit espace vectoriel de E contenant A
+ \item A est un sev de E \(\iff F_a = A\)
+\end{itemize}
+\end{proposition}
+\(E\subset e_a \Rightarrow e_a \neq \varnothing\)
+
+\(F_A\) est un sous espace vectoriel par la prorpiété précédente.
+
+Soit \(u\in A, \forall F\in e_a, A\subset F\Rightarrow u\in F\Rightarrow u\in \bigcap F \Rightarrow A\subset F_A\). Par ailleurs, comme \(F_A = \bigcap F,\forall u\in F_A, ,F_A\subset F,\forall F\in e_a\)
+
+Sens 2 : direct puisque \(F_A\) est un sev par 1.
+
+Sens 1 : On sait déjà que A est contenu dans \(F_A\). De plus, si A est sev de E, comme A contient A, \(F_A\subset A\).
+\warningInfo{Remarque}{F sev de E et G sev de E n'implique pas \(F\cup G\) sev de E }
+\begin{proposition}
+Soit 2 sev de E. Alors la somme des 2 est aussi un sev de E.
+\end{proposition}
+\begin{myproof}
+Fk est un sev de E, donc il contient le vecteur nul. Donc \(O_E=O_E+O_E \in F_1+F_2 \Rightarrow F_1+F_2\neq 0\).
+
+SoitSoit \(U\in F_1+F_2\) et \(V\in F_1+F_2\). Donc \(\exists (u_1,u_2)\in F_1\times F_2, (v_1, v_2)\in F_1\times F_2 \) tel que \(U = u_1+u_2, V=v_1+v_2\).
+
+Alors \(\lambda U+\mu V = \lambda (u_1+u_2) + \mu(v_1+v_2) = (\lambda u_1+\mu v_1) + (\lambda u_2+\mu v_2)\in F_1+F_2\).
+\end{myproof}
+\begin{definition}
+Soient F et G 2 sev de E. On dit que F et G sont en somme directe, noté \(F\oplus G\) si \(F\cap G = \{O_E\}\)
+\end{definition}
+\begin{proposition}
+Soient F et G 2 sev de E. Alors les 3 assertions suivantes sont équivalentes
+\begin{itemize}
+ \item \(F, G\) sont en somme directe
+ \item \(u_F\in F, u_G\in G\) tel que \(U_F+U_g = O_E \Rightarrow U_F+U_G = O_E\)
+ \item \(\forall u\in F+G, \exists! (u_F,u_G)\in F \times G, u = u_F+u_G\)
+\end{itemize}
+\end{proposition}
+\begin{myproof}
+3/2
+
+\(u_F+u_G = O_E = O_E+O_E \Rightarrow U_F=O_E, u_G=O_E\)
+
+2/1
+
+Soit \(u\in F\cap G\). Comme c'est un sev, -u appartient aussi au sev
+
+Or, \(u + (-u) = O_E \Rightarrow u = O_E\) donc en somme directe.
+
+1/3
+
+Soit \(u\in F+G, u = U_F+u_G = v_f+v_g\). donc \(u_F-v_F=u_G-u_G \in F\cap G = \{O_E\}\), donc \(U_F=v_F, u_g=v_g\)
+\end{myproof}
+\begin{definition}[Espace supplémentaire dans E]
+Soient F et G 2 sev de E. On dit que F et G sont supplémentaires dans E si \(F\cap G = \{O_E\}\) et \(F+G = E\)
+\end{definition}
+\begin{proposition}
+F et G sont supplémentaires ssi \(\forall u\in E, \exists ! (u_f,u_g)\in F\times G\) tel que \(u=u_F+u_g\)
+\end{proposition}
+Exemple : \(E=R^2, F = \{(\lambda, 0),\lambda \in \R\}, G = \{(0,\lambda),\lambda \in \R\}\) On a \(F\oplus G\)
+
+Exemple \(E = \R[X]. F = \{P\in \R[X],P(4)=0\}, \{P\in \R[X],\deg(P)\leq0\}\) Ce sont bien 2 sev de E
+
+\(P\in G\cap G \Rightarrow P(x) = O\)
+
+Montrons que \(F+G = E\)
+
+Analyse : Soit P dans R[X] tel que \(P = P_F+P_G\)
+
+Donc \(P(4) = P_g(4) = P_g\) car pg constant.
+
+\(P_f = P-P_g = P-P(4)\)
+
+Synthèse : Soit P. Alors \(P = P-P(4) + P(4)\)
+\end{document}

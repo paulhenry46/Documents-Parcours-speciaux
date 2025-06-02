@@ -1,0 +1,88 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques - Analyse 2}
+\subtitle{Analyse}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\begin{document}
+
+\setcounter{chapter}{2}
+	\chapter{Compléments sur les suites et fonctions }
+\section{Théorème de Bolzano-Weierstrass}
+\subsection{Suites}
+\begin{proposition}[Caractérisation de la valeur d'adhérence]
+l est une valeur d'adhérence de la suite \(\iff \forall \varepsilon >0,\forall m\in\mathbb{N},\exists n\geq m, |u_n-l|\leq \varepsilon\).
+\end{proposition}
+\begin{proposition}
+Soit \(u_n\) une suite bornée avec une unique valeur d'adhérence. Alors cette suite converge vers cette valeur d'adhérence
+\end{proposition}
+\section{Fonctions continues sur un segment}
+\subsection{Continuité}
+\begin{definition}[Continuité]
+une fonction est continue si \(\forall x\in I,\forall \varepsilon>0,\exists \delta>0,\forall y\in I, (|x-y|)<\delta \Rightarrow (|f(x)-f(y)|)<\varepsilon\)
+\end{definition}
+\begin{proposition}[Critère séquentiel de la continuité]
+f est continue en un point \(x\in I \iff \forall (x_n)_n \subset I\) qui converge vers \(x\), \((f(x_n))_n\) converge vers \(f(x)\).
+\end{proposition}
+\begin{proposition}
+Toute fonction continue sur un segment \(I=[a,b]\) avec \(a,b\in\mathbb{R}, a<b\) est bornée et atteint ses bornes sur I.
+\end{proposition}
+\begin{theorem}
+ L'image d'un segment  (intervalle borné et fermé) par une fonction continue est un segment.
+\end{theorem}
+\subsection{Continuité uniforme}
+\begin{definition}
+Une fonction est uniformément continue sur I \(\iff \forall \varepsilon>0,\exists \delta >0, \forall x\in I, \forall y\in I, (|x-y|)<\delta \Rightarrow (|f(x)-f(y)|)<\varepsilon \)
+\end{definition}
+\begin{definition}
+Une fonction  est lipschitzienne \(\iff \exists k\in\mathbb{R}⁺,\forall x,y\in I |f(x)-f(y)| \leq k|x-y|\)
+\end{definition}
+\begin{theorem}
+ Toute fonction lipschitzienne sur I est uniformément continue sur I.
+\end{theorem}
+\begin{theorem}[Théorème de Heine]
+ Toute fonction continue sur un segment I est uniformément continue sur I.
+\end{theorem}
+\section{Suites de Cauchy}
+\begin{definition}
+Une suite est de cachy si \(\forall \varepsilon>0,\exists N\in\mathbb{N},\forall p,q \in\mathbb{N}, (p\geq N,q\geq N \Rightarrow |u_p-u_q|\leq \varepsilon)\)
+\end{definition}
+\begin{proposition}
+\begin{itemize}
+ \item Toute suite convergente est de Cauchy
+ \item Toute suite de Cauchy est bornée
+ \item Une suite de Cauchy ademttant une valeur d'adhérence est convergente.
+\end{itemize}
+\begin{theorem}
+ Toute suite de Cauchy converge
+\end{theorem}
+\end{proposition}
+\end{document}
+

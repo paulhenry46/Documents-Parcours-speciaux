@@ -1,0 +1,106 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques - Analyse 2}
+\subtitle{Analyse}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+\setcounter{chapter}{4}
+
+	\chapter{Intégrales impropres}
+
+Exemples de fonctions qui ne sont pas cpm :
+\begin{itemize}
+ \item \(x\to \frac{1}{x} \text{ si } x\neq 0, 0\) car pas de limite finie en 0
+\end{itemize}
+\section{Introduction}
+\subsection{CPM sur un intervalle}
+\begin{definition}
+Une fonction est cpm sur I si pour tout segement appartenant à I, la restrcition de cette fonction à ce segment est cpm.
+\end{definition}
+\begin{proposition}
+Si f est cpm, alors \(|f|\) l'est aussi.
+\end{proposition}
+\subsection{Convergence}
+\begin{definition}
+Si \(I = [a,+\infty]\), l'intégrale converge si la limite quand \(x\to \infty\). On a alors \[\int^{+\infty}_{a} f(t)\dd t = \Lim{x\to +\infty} \int^x_a f(t)\dd t\]
+
+Si \(I = ]a,b]\), l'intégrale converge si la limite quand \(x\to a\). On a alors \[\int^{b}_{a} f(t)\dd t = \Lim{x\to +\infty} \int^x_a f(t)\dd t\]
+\end{definition}
+\subsection{Propriétés}
+\begin{proposition}
+\begin{itemize}
+ \item Chasles : \(\int^{+\infty}_a = \in^{a'}_a + \int^{+\infty}_{a'}\)
+ \item Linéarité : À ne pas utiliser si l'une des deux intégrales et divergente
+ \item Positivité et relation d'ordre
+ \item Intégration par parties : Seules les bornes changent
+\end{itemize}
+\end{proposition}
+\begin{proposition}
+On suppose que f admet une limite. Si sa limite n'est pas nulle, l'intégrale vers \(\infty\) diverge. La contraposée est aussi valable.
+\end{proposition}
+\section{Fonctions de signe constants}
+\begin{proposition}
+Si \(\int^{+\infty}_af\) est convergente \(\iff x\to \int^x_a\) est majorée
+\end{proposition}
+\begin{proposition}[Intégrale de Riemann en \(+\infty\)]
+\(\int^{+\infty}_1\frac{1}{t^{\alpha}}\) converge si \(\alpha > 1\). Dans le cas contraire, elle diverge.
+\end{proposition}
+\begin{proposition}[Intégrale de Riemann en \(0\)]
+\(\int^{1}_0\frac{1}{t^{\alpha}}\) converge si \(\alpha < 1\). Dans le cas contraire, elle diverge.
+\end{proposition}
+\begin{proposition}[Inétgrale de bertrand en \(+\infty\)]
+\(\int^{+\infty}_2\frac{1}{t(\ln(t))^{\beta}}\) converge si \(\beta > 1\) ou . Dans le cas contraire, elle diverge.
+\end{proposition}
+\begin{proposition}[Inétgrale de bertrand en \(0\)]
+\(\int^{1/2}_2\frac{1}{t|(\ln(t))|^{\beta}}\) converge si \(\beta > 1\) ou . Dans le cas contraire, elle diverge.
+\end{proposition}
+\warningInfo{Théorème de comparaison}{Le théorème de comparaison s'applique aussi pour les intégrales généralisées dont les fonctions sont positives.}
+\begin{proposition}[Théorème des équivalents]
+Si 2 fonctions positives sont équivalents en un point incertain, leur intégrale sont de m\^eme nature près de ce point.
+\end{proposition}
+\section{Fonctions oscillantes}
+\begin{definition}[Convergence absolue]
+On dit que \(\int f\) est absolument convergente si \(\int |f|\) converge.
+\end{definition}
+\begin{theorem}
+ Si l'intégrale est absolument convergente, elle est convergente. On a alors \(|\int f|\leq \int f\)
+\end{theorem}
+\begin{definition}[Semi-convergence]
+Une intégrale est semi-convergente si elle est convergente mais pas absolument convergente.
+\end{definition}
+\begin{theorem}[Critère de cauchy]
+ L'intégrale impropre converge si et seulement si si pour tout \(\varepsilon >0\), il existe \(x_e\) tel que \(|\int_u^vf(t)\dd t|\leq \varepsilon\)
+\end{theorem}
+
+\end{document}

@@ -1,0 +1,90 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Méthode}
+\subtitle{Méthode}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%Au programme de l'examen
+\professor{J.Daudé}%Jérémi Daudé
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{yFlatTable}
+\usepackage{multicol}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+
+%\titleOne
+\setcounter{chapter}{4}
+	\chapter{Espaces vectoriels}
+\checkInfo{Calculer ker et Im}{
+Soient \(f\in L(E,F),B=(e_1,\dots, e_n)\) une base de E.
+\begin{itemize}
+ \item Pour déterminer le noyau, on peut :
+ \begin{itemize}
+  \item revenir à la définition, i.e. chercher le sev \(\{x\in E, f(x)=0_E\}\)
+  \item En connaissant \(dim(Ker(f)) = p \neq 0\), on cherche une famille libre de p vecteurs tels que \(f(x_1)=\dots=f(x_p) = 0_F\) et conclure avec \(Ker(f) = Vect(x_1,\dots, x_p)\)
+ \end{itemize}
+\item Pour déterminer Im(f):
+\begin{itemize}
+ \item revenir à la définition et chercher le sev \(Im(f) = vect(f(e_1),\dots, f(e_n))\)
+ \item Avec \(rg(f) = p\neq 0,\) chercher une famille libre de p vecteurs \(\{f(e'_1), \dots, f(e'_p)\}\) avec \(\{e'_1,\dots, e'_p\}\subset B\) puis conclure avec \(Im(f) = Vect(f(e'_1), \dots, f(e'_p))\)
+\end{itemize}
+
+\end{itemize}}
+% Exemple : \(f(x_1,x_2,x_3,x_4) = (x_1+2x_2+3x_3-2x_4,x_2+x_3-x_4,x_1-x_2+x_4)\)
+%
+% On calcule le noyau : \((x_1,x_2,x_3,x_4)\in Ker(f)\iff f((x_1,x_2,x_3,x_4)) = (0.0.0)\)
+
+\checkInfo{Montrer l'injectivité ou la surjectivité}{
+Pour l'injectivité, on montre au choix que :
+\begin{itemize}
+ \item \(\forall x\in E, f(x) = 0_F \Rightarrow x =0_E\)
+ \item \(dim(Ker(f)) = 0\)
+ \item Si S est libre, alors \(f(S)\) est libre
+\end{itemize}
+Pour la surjectivité :
+\begin{itemize}
+ \item Montrer que \(vect(f(e_1,\dots,e_n)) = F\)
+ \item Montrer que \(rg(f) = dim(F)\)
+ \item Si S est génératrice de E, \(f(S)\) est génératrice de F
+\end{itemize}}
+
+\checkInfo{Montrer que f est un isomorphisme}{Les espaces de départ et d'arrivée sont de m\^eme dimension n.
+
+On vérifie que f est une application linéaire, puis on montre qu'elle est bijective en prouvant que
+\begin{itemize}
+ \item f est injective
+ \item \(dim(Ker(f)) = 0\)
+ \item f est surjective
+ \item \(rg(f) = n\)
+\end{itemize}}
+
+\checkInfo{Caractériser un projecteur}{Pour montrer que f est un projecteur, on peut
+\begin{enumerate}
+ \item montrer sa linéarité
+ \item déterminer \(f^2\) et conclure que f est un projecteur si \(f^2=f\)
+ \item Si f est un projecteur, déterminer \(Ker(f), Im(f)\) et conclure que \(f\) est la projection sur \(Im(f)\) parrallèlement à \(Ker(f)\)
+\end{enumerate}
+}
+\end{document}

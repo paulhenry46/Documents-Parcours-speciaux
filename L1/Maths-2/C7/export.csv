@@ -1,0 +1,30 @@
+Title,Content
+Application p-linéaire,"Soient E et F deux R-EV et \(L:E^p\to F\). On dit que L est p-liénaire si elle est linéaire en chacune de ses variable, i.e. \(\forall (u_1,\dots, u_{p-1}\in E^{p-1}), \forall I\in \{1,\dots, p\}, L_I : v\in E \to L(u_1,\dots, u_{I-1},v,\dots u_I,\dots, u_{p-1})\). "
+Application p-linéaire d'un vecteur nul,"Soit une application p-linéaire  si on met en position i le vecteur nul, le résultat est le vecteur nul de l'espace d'arrivé. "
+Forme p-linéaire,L est une forme p-linéaire si l'espace d'arrivé est l'espace des réels. 
+Forme p-linéaire alternée (FPA),"Soit L une forme p-linéaire. L est alternée si \(\forall (u_1,\dots, u_p)\in E^p\), si \(\exists (i\neq j)\tq u_i = u_j\), alors \(L(u_1,\dots, u_p) = 0\) "
+Caractérisation d'une forme p-linéaire alternée,"Soit \(L : E^p \to \R\) une forme p-linéaire alternée. Soit \(\forall (u_1,\dots, u_p)\in E^p\, \forall (i,j)\in \{1,\dots, p\}\). Alors \(L(u_1,\dots, u_i,\dots, u_j,\dots, u_p) = - L(u_1,\dots, u_j,\dots, u_i,\dots, u_p)\) "
+Famille liée dans une FPA,"Soit E un ev et L une forme p-linéaire alternée sur E. \(\forall (u_1,\dots, u_p)\) famille liée de E, alors \(L(u_1,\dots, u_p) = 0\) "
+Forme linéaire en dimension 2,"Soit L une forme 2-linéaire alternée. Alors \(\forall u = a_1+be_2,\forall v = \alpha e_1+\beta e_2, L(u,v) = (a\beta-\alpha b)L(e_1,e_2)\). Ainsi, la connaissance de \(L(e_1,e_2)\) équivaut à connaitre L "
+Déterminant en dimension 2,"Posons \(L_B : (u,v) \to a\beta -\alpha b\). C'est l'unique forme 2-linéaire alternée vériffiant \(L(e_1,e_2) = 1\). On l'appelle le Déterminant en base B, noté \(\det_B\). "
+Forme linéaire (d2) et déterminant,"Soit L une forme 2-linéaire alternée, alors \(L(u,v) = \det_b(u,v)L(e_1,e_2)\) "
+Déterminant et base,"Soit (u,v) une famille de E. (u,v) est une base de E \(\iff\) son Déterminant dans la base B est \(\neq 0\) "
+Multiplication de det de 2 bases,"Soit B et C 2 bases de E. \(det_B(b_1,b_2)det_C(e_1,e_2) = 1\) "
+admis,"Il existe une unique forme p-linéaire alternée, notée \(det_B\) est appelée déterminant en Base B, vérifiant :   \(det_B(b_1,\dots, b_p) = 1\)   \(\forall L\) forme p-linéaire alternée, \(\forall\) famille de vecteurs de E, \(L(u_1,\dots, u_p) = det_B(u_1,\dots, u_p)L(b_1,\dots, b_p)\). "
+Déterminant d'endomorphisme dans plusieurs bases,"Soit E un EV de dimension p, B et C 2 bases de E. Soit \(f\in l(E)\). Alors \(det_B(f(b_1),\dots, f(b_p)) = det_C(f(e_1)\dots, f(e_p))\) "
+Déterminant de l'endomorphisme,"Noté \(det(f)\), c'est le réel \(det_B(f(b_1),\dots, f(b_p))\) avec \(B = (b_1,\dots, b_p)\) une base quelconque "
+Déterminant de vecteurs par endomorphisme et déterminant d'endomorphisme,"\(\forall (u_1,\dots, u_p), det_B(f(u_1), \dots, f(u_p)) = det(f)det_b(u_1,\dots, u_p)\) "
+Propriétés des det d'endomorphisme,"\begin{enumerate}  \item Soient 2 endomorphismes. \(det(f\circ g) = det(f)\times det(g)\)  \item \(det(I_d) = 1\)  \item \(f\in L(E).\) f est bijectif \(\iff det(f)\neq 0\). Dans ce cas, \(det(f^{-1})=det(f)^{-1}\) \end{enumerate} "
+déterminant d'une matrice d'application linéaire,"On appelle dtéerminant de A, noté \(det(A)\) le réel \(det(f_A)\) "
+Propriétés de déterminants d'applications linéaires,"\begin{enumerate}  \item \(det(AB) = det(A)det(B)\)  \item \(det(Id) = 1\)  \item A est inversible \(det(A)\neq 0\). Alors, \(det(A^{-1}) = det(A)^{-1}\) \end{enumerate} "
+Lien entre déterminant de fonction et de matrice de fonction,"Soit E un ev de dimension p, B une base de E, \(f\in L(E)\) et \(A = Mat_B(f)\). Alors \(det(f) = det(Mat_B(f)) = det(A)\) "
+Développement du déterminant de matrice par rapport à une ligne,Soit une matrice carrée et on fixe I une ligne. Alors \(det(A) = \sum_{j=1}^p (-1)^{I+j}A_{ij}det(R_{ij}A)\) 
+Développement du déterminant de matrice par rapport à une colonne,Soit une matrice carrée et on fixe J une colonne. Alors \(det(A) = \sum_{i=1}^p (-1)^{I+j}A_{ij}det(R_{ij}A)\) 
+Déterminant d'une matrice et de sa transposée,\(det(A) = det(A^T)\). 
+Sert à rien sauf pour la prochaine propriété,"Soit B une base de E et une famille de vecteurs de E. On pose f définie par \(f(b_i) = u_i,\). Alors \(det(f) = det(u_1,\dots, u_p)\) "
+Corollaire ,"Soit B une base de E et une famille de vecteurs u de E. On pose \(u_j = \sum_{k=1}^p a_{kj}b_k\) et on définit \(A\in M_p(\R) : A_{ij} = a_{ij}\). On remarque que chaque colonne comporte les coordonnées de chaque vecteurs de la famille dans la base. Alors \(det(B(u_1,\dots, u_p)=det(A))\). En particulier, \((u_1,\dots, u_p)\) est une base ssi A est inversible. "
+Comatrice,"On appelle comatrice de A, matrice carré la matrice définie par \(a_{ij} = (-1)^{i+j}\cdot det(R_{ij(A)})\) "
+Formule théorique,"\(A\cdot Com(A)^T = det(A)I_p\), donc \(A^{-1} = \frac{Com(A)^T}{det(A)}\) "
+Déterminant d'une matrice 22,Le déterminant d'une matrice 22  est \(\begin{vmatrix} a&b\\ c&d                 \end{vmatrix} = ad-bc\) 
+Déterminant de matrices triangulaires,\(\begin{vmatrix} \lambda_1&*&*\\ 0&\lambda_2&*\\ 0&0&\lambda_3                 \end{vmatrix} =\begin{vmatrix} \lambda_1&0&0\\ .&\lambda_2&0\\ .&.&\lambda_3                 \end{vmatrix} = \lambda_1\times\dots\times \lambda_p\) 
+Propriétés calculatoires du détermiant de matrice,On prend une matrice carrée A que l'on écrit sous la forme  de matrice de matrice colonne ou ligne.  \begin{itemize}  \item \(\begin{vmatrix}         C_1&\dots&\lambda C_i&C_p        \end{vmatrix} = \lambda det(A)\) \item \(\begin{vmatrix}         C_1&\dots& C_j&\dots C_i &\dots &C_p        \end{vmatrix} = -1 det(A)\) \item \(\begin{vmatrix}         C_1&\dots&\lambda C_i+\lambda C_j&C_p        \end{vmatrix} = det(A)\) : pratique car permet de faire apparaitre des 0. \item Cela vaut pour les lignes également \end{itemize}  

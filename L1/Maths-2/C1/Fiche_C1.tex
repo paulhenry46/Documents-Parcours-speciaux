@@ -1,0 +1,198 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{MPS2}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{J.Daudé}%Jérémi Daudé
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\begin{document}
+
+%\titleOne
+
+	\chapter{Suites}
+%Analyse (Suites, Dev Lim) et Algèbre (Espaces vecoriels, applications linéaires, matrices, déterminants)
+\section{Rappels}
+\begin{definition}[Suite réelle/complexe]
+Une suite réelle réelle est une application de $\N$ dans $\R$ ou $\C$. L'ensemble des suites réelles est noté $\R^{\N}$.
+\end{definition}
+\begin{definition}[Suites réelles majorées/minorées]
+Une suite réelle est \begin{itemize}
+               \item majorée si $\exists C\in\R, \forall p\in\N,u_p \leq C$
+               \item minorée si $\exists C\in\R, \forall p\in\N,u_p \geq C$
+              \end{itemize}
+
+\end{definition}
+\begin{definition}[Suite réelle/complexe bornée]
+Si $\exists C\in\R, \forall p\in\N, |u_p|\leq C$.
+\end{definition}
+\begin{definition}[Suite convergente/divergente]
+Une suite est dite convergente si $\exists l\in\R \setminus {\infty}, \forall \varepsilon >0,\exists N\in\N, \forall p\geq N, |u_p-l|\leq \varepsilon$. On dit que $l$ est la limite de la suite. On le note $u_p \to l$.
+\end{definition}
+On n'écrit pas $\lim u_p = l$ car en faisant ça on suppose que la limite existe vant m\^eme de commencer à l'étudier. Il ne faut pas l'écrire en début de calcul.
+\begin{definition}[Suite divergente]
+Elle est divergente si elle n'est pas convergente.
+\end{definition}
+\begin{proposition}
+Soit $(u)$ une suite convergente. On suppose qu'il existe $l_1,l_2$ telle que $u_p\to l_1$ et $u_p\to l_2$. Alors $l_1=l_2$.
+\end{proposition}
+\begin{proposition}
+Soit $u$ une suite convergente. Alors elle est bornée. La réciproque est fausse($u_n = (-1)^p$)
+\end{proposition}
+\begin{definition}[Limite infinie de suites réelles]
+On dit que la suite tend vers \begin{itemize}
+                               \item $+\infty$ si $\forall A\in\R,\exists N\in\N, \forall n\geq N, u_p \geq A$
+                               \item $-\infty$ si $\forall A\in\R,\exists N\in\N, \forall n\geq N, u_p \leq A$
+                              \end{itemize}
+
+\end{definition}
+\begin{definition}[Propriété vraie à partir d'un certain rang]
+On dit qu'une suite vérifie une propriété à partir d'un certain rang, si $\exists n, \forall p\geq n, u_p$ vérifie la propriété.
+\end{definition}
+\begin{definition}[Suites réelles monotones]
+Soit $u$ une suite réelle. On dit que $u$ est croissante (à partir d'un certain rang) si ($\exists N$,) $\forall p (\geq N), u_{p+1} \geq u_p$.
+\end{definition}
+\begin{proposition}
+Toute suite réelle croissante à partir d'un certain rang tend vers une limite finie ou infinie.
+
+Si elle est en plus majorée, elle tend vers une limite finie.
+\end{proposition}
+\section{Notations de Landau}
+\begin{definition}[Suites néglieables]
+Soit $u$ et $v$ deux suites. On dit que $u$ est néglieable devant $v$ (en + $\infty$), noté $u_p o_{p\to\infty} (v_p)$. Il existe une suite $\varepsilon$ telle que $\varepsilon_p\to 0$ et $u_p = v_p\varepsilon_p$ à partir d'un certain rang.
+\end{definition}
+\begin{proposition}
+$u$ et $v$ deux suites. On suppose qu'il existe $N\in\N,\forall p\geq N, v_p\neq 0$. Alors $u_p = o(v_p)⁾ \iff \frac{u_p}{v_p}\to 0$.
+\end{proposition}
+\begin{proposition}
+Si $u = o(v), v=o(w)$, alors $u=o(w)$.
+\end{proposition}
+\begin{definition}[Suite dominée]
+Soient $u$ et $v$ deux suites, on dit que $u$ est dominée par $v$, noté $u = O(v)$ si $\exists \eta $ une suite \emph{bornée} telle que $u_p = \eta_pv_p$ à partir d'un certain rang.
+\end{definition}
+\begin{proposition}
+Si $u = o(v)$, alors $u=O(v)$.
+\end{proposition}
+\begin{proposition}
+Si $v_p \neq 0, \forall p\geq N_1$, on a :
+$u = O(v)  \iff \exists C \in\R tq \forall p\geq N, |\frac{u_p}{v_p}| \leq C$.
+\end{proposition}
+\begin{proposition}
+Soient $u,v,w$ trois suites. Si $u=O(v)$ et $v=O(w)$, alors $u=O(w)$.
+\end{proposition}
+\begin{proposition}
+Soient $u = O(v) \wedge v_p\to 0 \Rightarrow u_p\to 0$.
+\end{proposition}
+\begin{definition}[Suite équivalente]
+Soient $u$ et $v$ 2 suites équivalentes. La suite $u$ est éuivalente à $v_p$, noté $u\sim v$ si $u_p = v_p + o(v_p)$ ou encore $\exists \varepsilon \to 0, \forall p\geq N, u_p = v_p + \varepsilon_pv_p = (1+\varepsilon_p)v_p$
+\end{definition}
+\begin{proposition}
+Soient $u$ et $v$ deux suites. $u_p \sim v_p \iff \frac{u_p}{v_p} \to 1$
+\end{proposition}
+\begin{proposition}
+Soient $u,v,w$ trois suites. On a :
+\begin{itemize}
+ \item $u\sim u$
+ \item $u_p \sim v_p \iff v_p\sim u_p$
+ \item $u_p\sim v_p$ et $v_p\sim w_p$ alors $u_p\sim w_p$.
+\end{itemize}
+\end{proposition}
+
+\begin{proposition}
+Soient $u$ et $v$ 2 suites. On suppose que $u_p\sim v_p$ et $v$ converge vers $l$. Alors $u_p\to l$.
+\end{proposition}
+\begin{proposition}
+$u$ et $v$ deux suites réelles. Si $u\sim v$ et $v_p\to\infty$, alors $u_p\to \infty$.
+\end{proposition}
+\section{Sous-suites}
+\begin{definition}
+On dit que $v$ est une suite extraite de $u \iff \exists \varphi : \N \to \N$ strcutement croissante telle que $\forall p\in\N, v_p = u_{\varphi(p)}$.
+
+\end{definition}
+\begin{proposition}
+On a $\varphi(p) \geq p$.
+\end{proposition}
+\begin{proposition}
+Une suite converge vers $l$ $\iff$ toutes ses suites extraites cobvergent ver $l$.
+\end{proposition}
+\begin{definition}[Valeur d'adhérence]
+$l$ est une valeur d'adhérence $\iff$ $l$ est une limite finie d'une suite extraite de $u$.
+\end{definition}
+\begin{proposition}
+Toute suite admet une sous-suite monotone.
+\end{proposition}
+\begin{theorem}[Bolzano Weitrass]
+ Toute suite réelle bornée admet une sous-suite convergente.
+\end{theorem}
+\section{Suite de Cauchy}
+\begin{definition}[Suite de Cauchy]
+Soit $u$ une suite. On dit que $u$ est de Cauchy si elle vérifie une des 2 prorpiétés suivantes équivalentes :
+\begin{itemize}
+ \item $\forall \varepsilon>0, \exists N\in\N, \forall p\>N, q>N, |u_p-u_q|\leq\varepsilon$
+  \item $\forall \varepsilon>0, \exists N\in\N, \forall p\>N, q>N, |u_{p+q}-u_p|\leq\varepsilon$
+\end{itemize}
+\end{definition}
+\begin{proposition}
+Toute suite convergente est de Cauchy
+\end{proposition}
+\begin{proposition}
+Toute suite de Cauchy est bornée.
+\end{proposition}
+\begin{proposition}
+Si $u$ est de Cauchy et admet une sous-suite convergente, alors $u$ converge.
+\end{proposition}
+\begin{theorem}
+ Toute suite de Cauchy converge. On dit que $\R$ et $\C$ sont complets.
+\end{theorem}
+\section{Types de suite}
+\subsection{Suites géométriques, arithmétiques}
+\begin{definition}
+\begin{itemize}
+ \item arithmétique : $u_{n+1} = u_n + r \Rightarrow u_n = u_0+nr$
+ \item géométrique : $u_{n+1} = u_n \times q \Rightarrow u_n = u_0\times q^n$
+ \item arithmético-géométrique : $u_{n+1} = q u_n +a \Rightarrow u_n = q^n u_0 + \frac{1-q^n}{1-q}a$
+\end{itemize}
+\end{definition}
+\begin{definition}[Suite linéaire d'ordre 2]
+C'est une suite de la forme : $u_{n+2} = au_{n+1} + bu_{n}$
+
+On associe le polynomes $x^2-ax-b$ dont on doit trouver les solutions pour avoir l'expression de $u_n$.
+\end{definition}
+\begin{theorem}[Écriture d'une telle suite]
+Si les 2 racines  sont réelles : \(u_n = (u_0-\frac{v_0}{\lambda_2-\lambda_1})\lambda_1^n+(\frac{v_0}{\lambda_2-\lambda_1})\lambda_2^n$ avec $v_n = u_{n+1}-\lambda_1u_n\)
+
+Si les racines $\lambda$ sont complexes, on en met une sous la forme $re^{i\theta}$ et on écrit $u_n = u_0 r^n \cos(n\theta)+(-u_0\frac{\cos(\theta)}{\sin(\theta)} + \frac{u_1}{r\sin(\theta)}) r^n \sin(n\theta)$
+
+Si il y a une racine double réelle : $u_n = u_0\lambda^n + n\lambda^n(\frac{u_1}{\lambda}-u_0)$
+\end{theorem}
+
+\end{document}
+

@@ -1,0 +1,55 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mécanique 2}
+\subtitle{Chimie}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{IHallery}%isabelle.hallery@univ-tlse3.fr
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\begin{document}
+\setcounter{chapter}{1}
+\chapter{Dynamique}
+\section{Lois de Newton}
+\subsection{Première loi}
+\explanation{1}{Un objet est libre si aucune force n'y est appliqué et pseudo-isolé si la somme des forces appliquées est nulle}
+\explanation{2}{Tout référentiel lié à un référentiel aboslu par une transformation (translation à vitesse constnate et rectiligne, avec le m\^eme temps) est aussi galiléen }
+
+ Dans un référentiel galiléen\explain{2}{right}{0}{0.25}{}, tout objet libre\explain{1}{left}{0}{0.25}{} conserve son état de repos soit reste en mouvement uniforme rectiligne
+\subsection{PDF}
+Dans un référentiel R, si un objet est soumis à une force \(\vec{F}\), on a \[\sum \vec{F} = m \vec{a} = m \frac{\dd \vec{v}}{\dd t} = \frac{\dd \vec{P}}{\dd t}\] avec \(\vec{P} = m \vec{V}\) le moment cinétique.
+\subsection{Force récirproque}
+\[\vec{F_{A/B}} = -\vec{F_{B/A}}\]
+\warningInfo{Loi de conservation du moment cinétique}{Dans un système isolé, \(\frac{\dd \vec{P}}{\dd t} = 0\)}
+
+\section{Travail}
+Voir fiche de meca 1
+
+\subsection{Forces non conservatives}
+Exemples : Frottement fluides : \(\vec{f} = -\alpha \vec{v}\), frottements solides, \(\vec{f} = -F_0 \frac{\vec{V}}{\norm{V}}\)
+\subsection{Point d'équilibre}
+Autour du point d'équilibre, on a un système oscillatoire
+\end{document}

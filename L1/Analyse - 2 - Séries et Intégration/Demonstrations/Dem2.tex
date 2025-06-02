@@ -1,0 +1,222 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Séries - Analyse 2}
+\subtitle{Chimie}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{IHallery}%isabelle.hallery@univ-tlse3.fr
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+\setcounter{chapter}{1}
+\chapter{Démonstrations }
+% \begin{lemma}[Lemme de Riemann / Comparaison à un intégrale]
+% \[\int^{n+1}_{1}\frac{1}{x^{\alpha}} \dd x\leq \sum_{k\geq 1} \frac{1}{k^{\alpha}} \leq \int^{n+1}_1 \frac{1}{x^{\alpha}}\dd x + 1\]
+% \end{lemma}
+% \begin{myproof}
+% \begin{enumerate}
+%  \item Soit \(k\in \N^*, x>1, k\leq x\leq k+1\).
+%  \item On a \[\frac{1}{(k+1)^{\alpha}}\leq \frac{1}{x^{\alpha}}\leq \frac{1}{k^{\alpha}}\]
+%  \item que l'on peut intégrer entre \(k\) et \(k+1\), i.e. un intervalle de longueur 1 :
+%   \[\frac{1}{(k+1)^{\alpha}}\leq \int^{k+1}_k\frac{1}{x^{\alpha}}\dd x\leq \frac{1}{k^{\alpha}}\]
+%   \item En sommant pour k de 1 à n :
+%   \[\sum^{n}_{k=1} \frac{1}{(k+1)^{\alpha}}\leq \sum^{n}_{k=1} \int^{k+1}_k\frac{1}{x^{\alpha}}\dd x\leq \sum^{n}_{k=1} \frac{1}{k^{\alpha}}\]
+%   \item La relation de Chasles nous permet d'écrire que \(\sum^{n}_{k=1} \int^{k+1}_k \frac{1}{x^{\alpha}} \dd x = \int^{n+1}_k\frac{1}{x^{\alpha}}\dd x\), ce qui nous permet d'obtenir la première inégalité :
+%   \[\int^{n+1}_k\frac{1}{x^{\alpha}}\dd x \leq \sum^{n}_{k=1} \frac{1}{k^{\alpha}}\]
+%   \item Comme \(\sum^n_{k=1}\frac{1}{(k+1)^{\alpha}} = \sum^{n+1}_{k=2}\frac{1}{k^{\alpha}} = \sum^n_{k=1}\frac{1}{k^{\alpha}}-1+\frac{1}{(n+1)^{\alpha}}\), on a \(\sum^n_{k=1}\frac{1}{k^{\alpha}}\leq \sum^{n}_{k=1}\leq \sum^{n}_{k=1}\frac{1}{(k+1)^{\alpha}}+1\) et en ajoutant 1 à l'inégalité de gauche :
+%   \[\sum^{n}_{k=1}\frac{1}{k^{\alpha}}\leq \int^{n+1}_n \frac{1}{x^{\alpha}}\dd x+1\]
+% \end{enumerate}
+% \end{myproof}
+%
+% \begin{theorem}[Critère de Riemann]
+%  Si \(\alpha > 1, \sum_{k\geq 1} \frac{1}{k^{\alpha}}\) converge. Dans le cas contraire, elle diverge
+% \end{theorem}
+% \begin{myproof}
+%
+% \end{myproof}
+\begin{theorem}[Intégrale de Riemann]
+ $$\text{Si } \quad \alpha > 1\quad \text{ alors }\quad
+\int_1^{+\infty} \frac{1}{t^{\alpha}}\;\dd t \quad\text{ converge.}$$
+$$\text{Si } \quad \alpha\le 1\quad \text{ alors }\quad
+\int_1^{+\infty} \frac{1}{t^{\alpha}}\;\dd t \quad\text{ diverge.}$$
+\end{theorem}
+
+\begin{myproof}[Intégrale de Riemann]
+ On a : \[\int_1^{+\infty} \frac{1}{t^{\alpha}}\;\dd t =
+\left\{
+\begin{array}{lcl}
+\displaystyle{\lim_{x\rightarrow+\infty}
+\Big[\tfrac{1}{-\alpha+1}\frac{1}{t^{\alpha-1}}\Big]_1^x}
+&\quad\text{si}&\alpha\neq 1\\[2ex]
+\displaystyle{\lim_{x\rightarrow+\infty}
+\Big[\ln t\Big]_1^x}
+&\quad\text{si}&\alpha= 1
+\end{array}
+\right.\]
+Dans le premier cas, l'intégrale converge si \(a-1>1\), soit \(\alpha>1\) et tend vers 0.
+\end{myproof}
+
+\begin{theorem}[Théorème de comparaison]
+Soient $f$ et $g$ deux fonctions positives et continues sur $]a,b]$.
+Supposons que $f$ soit majorée par $g$ au voisinage de $+\infty$, c'est-à-dire :
+$$\exists A \quad \forall t>A \qquad f(t)\le g(t)\;.$$
+\begin{enumerate}
+  \item Si \  $\int_a^{\infty} g(t)\;\dd t$ \  converge alors \  $\int_a^{\infty} f(t)\;\dd t$ \  converge.
+  \item Si \  $\int_a^{\infty} f(t)\;\dd t$ \  diverge alors \  $\int_a^{\infty} g(t)\;\dd t$ \  diverge.
+\end{enumerate}
+\end{theorem}
+\begin{myproof}
+La convergence ne dépend pas de la borne de gauche, on peut donc étudier \(\int^x_A f\), tout comme g. Par la positivité de l'intégrale, on a \(\forall x\geq A\):
+\[\int^x_A f(t)\dd t \leq \int_A^x g(t)\dd t)\]
+Si la deuxième intégrale converge, la première converge car c'est alors une fonction majorée et croissante et admet donc une limite finie. Inversement, si la première diverge, la deuxième diverge comme fonction minorée par une fonction de limite infinie.
+\end{myproof}
+
+\begin{theorem}[Théorème des équivalents]
+ Soient $f$ et $g$ deux fonctions continues et strictement positives sur
+$]a,b]$.
+Supposons qu'elles soient équivalentes au voisinage de $a$, c'est-à-dire :
+$$\lim_{t\rightarrow a^+}\frac{f(t)}{g(t)} = 1\;.$$
+Alors l'intégrale $\int_a^b f(t)\;\dd t$ converge si et seulement si
+$\int_a^b g(t)\;\dd t$ converge.
+\end{theorem}
+\begin{myproof}
+\begin{enumerate}
+ \item  Les fonctions f et g sont équivalentes en \(+\infty\), donc \(\forall \varepsilon >0, \exists A, (1-\varepsilon)g(t)<f(t)<(1+\varepsilon)g\).
+ \item Fixons \(\varepsilon <1\). Par le théorème de comparaison, si \(\int_A^{+\infty} f(t)\) converge, \(\int_A^{+\infty} (1-\varepsilon)g(t)\) converge, et par linéarité \(\int_A^{+\infty} g(t)\) converge puis par Chasles \(\int_a^{+\infty} (g)\).
+ \item De m\^eme si \(\int_A^{+\infty} f(t)\) diverge.
+\end{enumerate}
+\end{myproof}
+\begin{theorem}[Approximation d'une fonction cpm par morceaux]
+ Soit f cpm. \(\forall \varepsilon>0,\exists \theta\) en escalier sur \([a,b]\) telle que \[\forall x\in[a,b],|f(x)-\theta(x)|<\varepsilon\]
+\end{theorem}
+\begin{myproof}
+ Pour les fonctions continues :
+ \begin{enumerate}
+  \item La fonction est uniformément continue sur le segment considéré.
+  \item Par définition, \(\exists \delta >0, \forall x,y \in[a,b], |x-y|<\delta \rightarrow |f(x)-f(y)|<\varepsilon\).
+  \item On choisit une subdivision régulière de pas strictement inférieur à \(\delta\) avec \(\theta(a) = f(a, \forall x\in ]x_{i-1},x_i], \theta(x)=f(x_i))\)
+ \end{enumerate}
+Pour les fonctions cpm
+\begin{enumerate}
+ \item Soit v une subdivision adpatée. \(\forall i\in[1,n]\subset \N\) f est prolongeable par continuité en une fonction continue.
+ \item On peut créer une fontion en escalier \(\theta_i\) telle que \(|f_i(x)-\theta_i(x)|<\varepsilon\)
+ \item On construit \(\theta\) avec \(\forall x\in]y_{i-1}, y_i], \theta(x) = \theta_i(x)\) et \(\theta(y_i) = f(y_i)\)
+\end{enumerate}
+\end{myproof}
+\begin{theorem}[Intégrale d'un fonction cpm]
+ \begin{itemize}
+  \item \(I^-= \{\int_{[a,b]}\varphi,\varphi \in E^-(f)\}\) admet un sup
+    \item \(I^+= \{\int_{[a,b]}\psi,\psi \in E^+(f)\}\) admet un inf
+    \item Ces 2 bornes sont égales
+ \end{itemize}
+\end{theorem}
+\begin{myproof}
+ \begin{enumerate}
+  \item Les ensembles sont non-vides
+  \item \(\forall \varphi \in E^-(f), \int \varphi \leq \int \psi\) qui est un majorant de \(I^-(f)\).
+  Donc \(I^-(f)\) admet une borne supérieure et \(\sup I^-\leq \int \psi\)
+  \item Cette inégalité étant vraie pour tout \(\psi\), \(\sup I^-\) minore \(I^+\) et \(\sup I^-\leq \inf I^+\)
+  \item On fixe \(\varepsilon >0\). On peut trouver \(\varphi \in E^-, \psi \in E^+\) tels que \(0\leq \psi-\varphi\leq \varepsilon\).
+  \item Par linéarité de l'intégrale et monotonie : \[\int \psi - \int \varphi = \int \psi-\varphi \leq (b-a)\varepsilon\]
+  \item Or par définition, \(\int \varphi \leq \sup I^-, \int \leq \inf I^+\)
+  \item Donc \(0\leq \inf I^+-\sup I^- \leq \varepsilon(b-a)\)
+ \end{enumerate}
+
+\end{myproof}
+
+\begin{theorem}[Règle du quotient de d'Alembert]
+Soit $\sum u_k$ une série à termes strictement positifs telle que \(\big(\frac{u_{k+1}}{u_{k}}\big)\) converge vers \(l\)
+\begin{enumerate}
+\item Si \(l < 1\), la série converge.
+\item Si \(l > 1\), la série diverge.
+\item Si \(l = 1\), on ne peut conclure.
+\end{enumerate}
+\end{theorem}
+\begin{myproof}
+Rappelons tout d'abord que la série géométrique $\sum q^k$
+converge si $|q|<1$, diverge sinon.
+\begin{itemize}
+ \item Dans le premier cas du théorème, soit un réel q tel que \(l<q<1\). On a $\left|\frac{u_{k+1}}{u_k}\right| \leq q$ à partir d'un certain rang N, et donc \(u_{k+1}\leq u_kq\). Par récurrence, on obtient que \[u_k \leq u_{k-(k-N)}q^{k-N}=u_Nq^{-N}q^k=cq^k\], avec c constant.
+
+Comme $0 < q < 1$, alors la série $\sum q^k$ converge, et,
+par le théorème de comparaison :
+la série $\sum u_k$ converge.
+ \item Si $\left|\frac{u_{k+1}}{u_k}\right| > 1$, la suite $(|u_k|)$ est croissante : elle ne
+peut donc pas tendre vers $0$ et la série diverge.
+\end{itemize}
+\end{myproof}
+\begin{theorem}[Critère de Leibniz]
+Supposons que $(u_k)_{k\ge0}$ soit une suite qui vérifie :
+\begin{enumerate}
+  \item $u_k  \ge 0$ pour tout $k \ge 0$,
+  \item la suite $(u_k)$ est une suite décroissante,
+  \item et $\Lim{k\to+\infty} u_k=0$.
+\end{enumerate}
+Alors la série alternée $\displaystyle \sum_{k=0}^{+\infty} (-1)^k u_k$ converge.
+
+De plus, Soit $S$ la somme de cette série et soit $(S_n)$ la suite des sommes partielles.
+\begin{enumerate}
+  \item La somme $S$ vérifie les encadrements :
+  $$ S_1\le S_5\le \cdots \le S_{2n+1} \le \cdots \le S
+  \le  \cdots\le S_{2n} \le \cdots\le S_4\le S_0.$$
+  \item En plus, si $\displaystyle R_n=S-S_n =\sum_{k=n+1}^{+\infty} (-1)^k u_k$ est le reste d'ordre $n$, alors on  a
+$$\big|R_n\big|\le u_{n+1}.$$
+\end{enumerate}
+\end{theorem}
+
+\begin{myproof}
+Nous allons nous ramener à deux suites adjacentes.
+\begin{itemize}
+  \item La suite $(S_{2n+1})$ est croissante car
+  $S_{2n+1}-S_{2n-1}=u_{2n}-u_{2n+1}\ge 0$.
+
+  \item La suite $(S_{2n})$ est décroissante car
+  $S_{2n}-S_{2n-2}= u_{2n}-u_{2n-1}\le 0$.
+
+%   \item $S_{2n} \ge S_{2n+1}$ car
+%   $S_{2n+1} - S_{2n} = -u_{2n+1} \le 0$.
+
+  \item Enfin $S_{2n+1} - S_{2n}$ tend vers $0$
+  car $S_{2n+1} - S_{2n} = -u_{2n+1} \to 0$
+  (lorsque $n\to+\infty$).
+\end{itemize}
+En conséquence $(S_{2n+1})$ et $(S_{2n})$ convergent vers la même limite $S$.
+Donc $(S_n)$ converge vers $S$.
+\bigskip
+
+De plus, comme les suites \(S_{2n+1}\) et \(S_{2n}\) sont adjacentes,  $S_{2n+1} \le S \le S_{2n}$ pour tout $n$.
+
+Enfin on a aussi
+ $$0\ge R_{2n}= S-S_{2n} \ge S_{2n+1}-S_{2n}=-u_{2n+1}$$ pour n pair et, pour n impair
+ $$0\le R_{2n+1}= S-S_{2n+1} \le  S_{2n+2} -S_{2n+1}= u_{2n+2}.$$
+
+ Ainsi, quelle que soit la parité de $n$, on a
+ $|R_n|=|S-S_n|\le  u_{n+1}$.
+ \end{myproof}
+\end{document}
+

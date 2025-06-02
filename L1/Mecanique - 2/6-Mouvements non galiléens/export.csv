@@ -1,0 +1,8 @@
+Title,Content
+Égalité du vecteur position,\[\vec{O_1M} = \vec{O_1O_2}+\vec{O_2M}\] 
+Égalité du vecteur vitesse,\[\vec{v_1} = \vec{v_e}+\vec{v_2}\] avec \(\vec{v_e} = \vec{v_0} + (x_2\vec{\dot{e_{x2}}} + y_2\vec{\dot{e_{y2}}} + z_2\vec{\dot{e_{z2}}})\) et \(\vec{v_2} = \dot{x_2}\vec{e_{x2}} + \dot{y_2}\vec{e_{y2}} + \dot{z_2}\vec{e_{z2}}\) 
+Égalité du vecteur accelération,\[\vec{a_1} = \vec{a_2} + \vec{a_e}+\vec{a_c}\] avec \(\vec{a_e} = \vec{a_0}+ (x_2\vec{\ddot{e_{x2}}} + y_2\vec{\ddot{e_{y2}}} + z_2\vec{\ddot{e_{z2}}})\) et \(\vec{a_c} = 2 (\dot{x_2}\vec{\dot{e_{x2}}} + \dot{y_2}\vec{\dot{e_{y2}}} + \dot{z_2}\vec{\dot{e_{z2}}})\)  
+Vitesse d'entrainement dans un référenriel tournant,\[\vec{v_e} = \vec{v_0} + \vec{\omega}\wedge \vec{OM_2}\] avec \(\vec{\omega} = \vec{n}\cdot \omega\) et \(\vec{n}\) le vecteur unitaire de l'axe de rotation et \(\omega\) la pulsation. 
+Accélération d'entrainement dans un référenriel tournant,\[\vec{a_e} = \vec{a_0}+ \dot{\vec{\omega}}\wedge \vec{O_2M} + \vec{\omega}\wedge(\vec{\omega} \wedge \vec{O_2M})\] avec \(\vec{\omega} = \vec{n}\cdot \omega\) et \(\vec{n}\) le vecteur unitaire de l'axe de rotation et \(\omega\) la pulsation. 
+Accélération de coriolis dans un référenriel tournant,\[\vec{a_c} = 2\vec{\omega}\wedge \vec{v_2}\] avec \(\vec{\omega} = \vec{n}\cdot \omega\) et \(\vec{n}\) le vecteur unitaire de l'axe de rotation et \(\omega\) la pulsation. 
+Accélération et forces dans un référenriel non galiléen,\[m\vec{a_2} = \vec{F}+\vec{F_e}+\vec{F_c}\] avec \(\vec{F_e} = -m\vec{a_e}\) et \(\vec{F_c} = -m\vec{a_c}\) les 2 forcees d'intertie d'entrainement et de coriolis 

@@ -1,0 +1,81 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mécanique 2}
+\subtitle{Méthode}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{IHallery}%isabelle.hallery@univ-tlse3.fr
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\ex}{\vec{e_x}}
+\newcommand{\ey}{\vec{e_y}}
+\newcommand{\ez}{\vec{e_z}}
+\begin{document}
+\chapter{Systèmes de coordonnées}
+\section{Vecteurs}
+\subsection{Construire le vecteur unitaire tangent à la trajectoire}
+\begin{theorem}[Vecteur unitaire tangent à la trajectoire]
+ \[e_t = \frac{\vec{v}}{\norm{v}}\]
+\end{theorem}
+Exemple pour un vecteur vitesse \(\vec{v} = at\vec{e_x}+b\vec{e_y}\):
+
+On a :
+\begin{flalign*}
+\vec{e_t} &= \frac{\vec{v}}{\norm{v}}\\
+&= \frac{at\vec{e_x}+b\vec{e_y}}{\sqrt{a^2t^2+b^2}}\\
+&= \frac{at}{\sqrt{a^2t^2+b^2}}\ex + \frac{b}{\sqrt{a^2t^2+b^2}}\ey
+\end{flalign*}
+\subsection{Donner les composantes tangentes et normales d'un vecteur}
+On cherche comment écrire le vecteur sous la forme \[\vec{v} = v_t\vec{e_t} + v_n\vec{e_n}\] en connaissant déjà son expression à partir d'autres vecteurs et celle du vecteur normal ou du vecteur tangent.
+\newpage
+\explanation{1}{Afin de trouver la composante d'un vecteur selon un autre vecteur, on réalise le produit scalaire entre les 2}
+\explanation{2}{On écrit les 2 vecteurs en fonction des vecteurs de la base choisie}
+\explanation{3}{Le fait d'avoir choisi des vecteurs de la m\^eme base pour les vecteurs simplifie les calculs et permet de ne pas avoir à chercher l'angle du produit scalaire.}
+\warningInfo{Base utilisée}{La base dans laquelle les vecteurs normal et tangent doit \^etre la m\^eme que la base dans laquelle on connait une expression du vecteur}
+On écrit :
+\begin{flalign*}
+\vec{v} &= v_t\vec{e_t} + v_n\vec{e_n} = v_x\ex + v_y\ey\\
+v_t &= \vec{v}\cdot \vec{e_t}\explain{1}{right}{-0.5}{0.5}{}\\
+&=( v_x\ex + v_y\ey) \cdot (e_{tx}\ex + e_{ty}\ey)\explain{2}{right}{0}{0.5}{}\\
+&= v_x \times e_{tx} + v_y \times  e_{ty}\explain{3}{right}{0}{0.5}{}
+\end{flalign*}
+\explanation{4}{Avec la ligne précédente, on trouve une expression en fonction de plusieurs vecteurs. Pour trouver la valeur de $a_n$, il faut calculer la norme du vecteur en résultant. Si les vecteurs en fonction desquels l'expression obtenue est exprimée sont perpendiculaires, on peut simplement appliquer le théorème de Pythagore !}
+Une fois que l'on connait la composante selon un des vecteurs (normal ou tangent), on peut déterminer l'autre composante sans m\^eme avoir à connaitre l'expression de l'autre vecteur !
+En effet,
+\begin{flalign*}
+\vec{v} &= v_t\vec{e_t} + v_n\vec{e_n}\\
+\vec{v} -v_t\vec{e_t} &=  v_n\vec{e_n}\\
+v_n &= \sqrt{A^2+B^2}\explain{4}{right}{-0.5}{0.5}{}
+\end{flalign*}
+
+\subsection{Donner le rayon de courbure d'une trajectoire}
+
+On applique la formule
+\begin{theorem}[Rayon de courbure]
+ \[R_c = \frac{v^2}{a_n}\]
+\end{theorem}
+
+\end{document}

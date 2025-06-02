@@ -1,0 +1,189 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques - Analyse 2}
+\subtitle{Analyse}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+\setcounter{chapter}{2}
+
+	\chapter{Séries numériques }
+\section{Séries et sommes partielles}
+\subsection{Vocabulaire}
+\begin{definition}
+On appelle érie de terme général \(u_k\) la suite \(S_n\) définie par \(S_n = \sum_{k=0}u_k\). On appelle \(S_n\) la somme partielle de la série.
+\end{definition}
+\begin{definition}
+On dit que la série est convergente si sa somme partielle est une suite convergente. Dans ce cas, on appelle somme de la série la limite de \(S_n\).
+\end{definition}
+\warningInfo{Convergence}{La convergence d'une série ne dépend pas de ses premiers termes. Si on prend 2 séries qui différent d'un nombre fini de terme, elles auront la m\^eme nature. Autrement dit, àa convergen si et seulement si cela converge à partir d'un certain rang.}
+Si une série ne converge pas, elle est divergente.
+\begin{definition}[reste]
+On note le reste d'une série convergente \(R_n = \sum_{k=n+1}^{+\infty}\). On a \(S = S_n+R_n\). C'est ce qui manque pour que \(S_n\) vale la limite de la série, \(S\).
+\end{definition}
+\begin{proposition}
+Si une série est convergente, alors \(\Lim{+\infty} R_n = 0\)
+\end{proposition}
+\checkInfo{Exemple}{Une série géométrique est convergente si \(|q|<1\).}
+\checkInfo{Série harmonique}{On a \(\frac{1}{k} \geq \frac{1}{t}\) si $t\in[k,k+1]$. Donc $\frac{1}{k} \geq \int^{k+1}_{k} \frac{1}{t}\d t$ d'où $\sum^{n}_{k=1}\frac{1}{k} \geq \sum^n_{k=1} \int^{k+1}_{k} \frac{1}{t}\d t = \int^{n +1}_{1} = \frac{1}{t}\d t$ par la relation de Chasles. D'où $H_n = \sum^n_{k=1} \frac{1}{k}\geq \ln(n+1)\to +\infty$.}
+\subsection{Premières propriétés}
+\begin{proposition}[Somme telescopique]
+C'est une série de la forme \(\sum_{k\geq 0} (a_{k+1}-a_k)\). Si la limite l de \(a_k\) existe, la limite vaut \(l-a_0\).
+\end{proposition}
+\checkInfo{Exemple}{\(S_n = \sum^n_{k=0}\frac{1}{(k+1)(k+2)} = \sum^n_{k=0}(\frac{1}{k+1}-\frac{1}{k+2}) = 1 -\frac{1}{n+2}\to1\)}
+\begin{proposition}
+Si $\sum u_k$ est convergent, alors $U_k \to$.
+\warningInfo{Convergence}{Une série dont le terme général ne tend pas vers 0 ne peut converger et est dite grossièrement divergente. La réciproque est fausse (série harmonique). }
+\end{proposition}
+\section{Séries à termes positifs}
+Tous les termes de la suite sont positifs. La suite est donc croissante.
+
+\begin{proposition}
+Une série à terme positif est convergente si et seulement si la suite est majorée.
+\end{proposition}
+\begin{theorem}[Théorème de comparaison]
+ Si \(u_k\leq v_k\), alors
+
+ \begin{itemize}
+  \item Si \(\sum v_k\) converge,  \(\sum u_k\) converge
+   \item Si \(\sum u_k\) diverge,  \(\sum v_k\) diverge
+ \end{itemize}
+\end{theorem}
+\begin{myproof}
+Si \(u_n\leq v_n\) à partir de \(n_0\), on a \(\forall n\geq n_0\) : \(\sum_{k=0}^n u_k = \sum_{k=0}^{n_0-1} u_k + \sum_{k=n_0}^n u_k \leq \sum_{k=0}^{n_0-1} u_k + \sum_{k=n_0}^{+\infty} v_k\). La suite des des sommes partielles est majorée donc CV.
+
+De la m\^eme façon, on a \(\sum^n_{k=0}V_l\geq \sum^n_{k=0} U_k\) avec \(\sum^n_{k=0} U_k\to + \infty\), donc  \(\sum^n_{k=0} v_k\to + \infty\)
+\end{myproof}
+\checkInfo{Convergence de puissance}{Pour \(\alpha \geq 2, \sum \frac{1}{k^{\alpha}}\) converge. À l'inverse, \(\sum \frac{1}{k}\), \(\sum \frac{\ln(k)}{k}\) et \(\sum \frac{1}{\sqrt{k}}\) divergent}
+\begin{theorem}[Théorème des équivalents]
+ Si \(u_k\sim v_k\), alors \(\sum u_k\) et \(\sum v_k\) sont de m\^eme nature.
+\end{theorem}
+\begin{myproof}
+On a alors \(\frac{u_k}{v_k} \to 1\). Il existe donc un rang $k_0$ à partir duquel on a \(|\frac{u_k}{v_k}|\leq 1/2\). On a donc pour \(k\geq k_0\) : \(-1/2\leq \frac{u_k}{v_k}-1\leq 1/2\) puis \(\frac{1}{2}v_k\leq u_k\leq \frac{3}{2}v_k\).
+
+Si \(\sum v_k\) CV, alors par linéarité \(\frac{3}{2}v_k\) converge et \(\sum  u_k\) converge par comparaison.
+
+Si \(\sum v_k\) DV, alors par linéarité \(\frac{1}{2}v_k\) diverge et \(\sum  u_k\) diverge par comparaison.
+\end{myproof}
+\begin{theorem}[Critère de Riemann]
+ Si \(a>1\), alors la série \(\sum_{k=1}^n \frac{1}{k^a}\) converge. Si \(0<a\leq 1\), elle diverge.
+\end{theorem}
+\criticalInfo{Nature}{Ne pas confondre la nature de la suite avec la nature de la série.}
+
+\begin{myproof}
+Soit $t\in [k,k+1]$. On a $k\leq t\leq k+1$ et $\frac{1}{(k+1)^{\alpha}}\leq \frac{1}{k^{\alpha}}\leq \frac{1}{k^{\alpha}}$ puis $\frac{1}{(k+1)^{\alpha}}\leq \int^{k+1}_k \frac{1}{k^{\alpha}}\leq \frac{1}{k^{\alpha}}$
+
+Doù, on somme pour k allant de 1 à n. : $\sum^n_{k=1}\frac{1}{(k+1)^{\alpha}} \leq \frac{\dd t}{t^{-\alpha}}\leq \sum^n_{k=1} \frac{1}{k^{\alpha}}$. De plus, $\sum^n_{k=1} \frac{1}{(k+1)^{\alpha}} = \sum^n_{k=1} \frac{1}{k^{\alpha}} + \frac{1}{(n+1)^{\alpha}} - 1$. Doù $\sum^n_{k+1} \frac{1}{k^{\alpha}} + \frac{1}{(n+1)^{\alpha}} - 1 \leq \int^{n+1}_1 \frac{\dd t}{t^{\alpha}}$.
+
+
+Or, $\int^{n+1}_{1} \frac{1}{t^{\alpha}}\dd t = \ln(n+1) ou \frac{(n+1)^{\alpha+1}}{-\alpha+1} - \frac{1}{-\alpha +1}$
+
+Si $\alpha >1$, la somme partielle est majorée, donc convergente. Dans le cas contraire, on minore par un quelque chose qui diverge vers l'infini.
+\end{myproof}
+\begin{proposition}[Série de Bertrand]
+Soit la série \(\sum_{k=2}^n \frac{1}{k^a(\ln(k))^b}\). Si \(0<a<1\), elle diverge, si \(a>1\) elle converge et si \(a=1\), avec \(b>1\), elle converge, avec \(b\leq 1\), elle diverge.
+\end{proposition}
+\begin{myproof}[Critère de D'Alembert]
+Pour l<1
+
+
+On applique la définition avec $\varepsilon = \frac{1-l}{2}$. Il existe un rang $n_0$ à partir duquel $|\frac{u_{n+1}}{u_n}-l| \leq \frac{1-l}{2}$ et $\frac{1-l}{2} \leq  \frac{u_{n+1}}{u_n}-l \leq \frac{1-l}{2}$, d'où $\frac{u_{n+1}}{u_n} \leq \frac{1+l}{2} < 1$. On a montré qu'il existe a et $n_0$ tel qye $u_{n+1}\leq a u_n$. On a $\forall n\geq n_0, u_n \leq u_{n_0} a^{n-n_0}$ par récurrence.
+
+Initialisation : à $n_0$ : $u_{n_0} \leq u_{n_0}$.
+
+Hérédité : Si $U_n \leq U_{n_0} \times a^{n-n_0}$, alors $u{n+1} \leq a U_n \leq a^{n+1-n_0} \times U_{n_0}$.
+
+Or, $\sum_{n=1} u_{n_0}\times a^{n-n_0}$ est convergente car série géométrique de raison $a=\frac{1+l}{2}<1$. Donc par comparaison, $\sum U_n$ converge.
+
+M\^eme raisonnement si l>1. En effet $U_{n+1} \geq \frac{1+l}{2} U_n$.
+\end{myproof}
+Le théorème se généralise avec l'hypothèse $|\frac{u_{n+1}}{u_n}| \leq q <1$.
+
+Exemple : $u_n = \frac{1}{n^{100}}$ et $\frac{u_{n+1}}{u_n}\to 1$. Le critère de D'Alembret ne permet pas de conclure.
+
+\begin{theorem}[Règle des racines de Cauchy]
+ Soient une série à termes strictement positifs. Si il existe, on note \(l = \lim \sqrt[n]{u_n}\). Si \(l<1\), la série converge, si \(l>1\), la série diverge.
+\end{theorem}
+\begin{theorem}[Comparaison par critère de Riemann]
+Si \(n^a U_n \to 0\) avec \(a>1\), la série est convergente
+
+Si \(n^a U_n \to \infty\) avec \(a<1\), la série converge.
+\end{theorem}
+\section{Séries à termes quelconques}
+\begin{definition}
+Une série de terme général \(|U_n\) est aboslument convergente su la série de terme général \(|U_n|\) est convergente.
+\end{definition}
+La série harmonique alternée n'est pas absolument convergente.
+\begin{definition}
+Une série convergente mais pas absolument convergente est semi-convergente.
+\end{definition}
+\begin{theorem}[]
+ Toute série absolument convergente est convergente.
+\end{theorem}
+\begin{myproof}
+
+\end{myproof}
+\begin{theorem}[Critère de Leibniz]
+ Supposons que le terme général vérifie trois conditions :
+ \begin{enumerate}
+  \item \(u_k \geq 0\)
+  \item il est décroissant
+  \item Sa limite est nulle.
+ \end{enumerate}
+Alors la série alternée \(\sum^{+\infty}(-1)^k u_k\) converge.
+\end{theorem}
+\warningInfo{Remarque}{
+On ne peut pas remplacer \(u_k\) par un équivalent et appliquer le critère de Leibniz !
+}
+\section{Théorème d'Abel}
+\begin{theorem}[Théorème d'Abel]
+ Si la série \(\sum_{k=0}^n\) est bornée et la suite \(b_n\) est bornée, alors la série de terme \(a_n b_n\) converge.
+
+\end{theorem}
+ \section{Produit de cauchy}
+ \begin{definition}
+ \(c_k = \sum_{i=0}^k a_ib_{k-i}\)
+ \end{definition}
+ \begin{theorem}[]
+  Le produit de cauchy de 2 séries absolument convergentes est absolument convergente. La limite vaut le produit des limites
+ \end{theorem}
+ \section{Commutativité et associativité}
+ \begin{theorem}
+ Si \(\sum a_n\) est absolument convergente et si \(\varphi : \N \to \N\) une bijection, alors \(\sum a_{\varphi(n)}\) est convergente et a pour limite \(\sum a_n\).
+ \end{theorem}
+ \begin{theorem}[Théorème de Riemann]
+  Si \(\sum a_n\) est semi-convergente, et \(l\in \bar{R}\), il existe \(\varphi : \N \to \N\) une bijection telle que \(\Lim{n\to + \infty} \sum_{k=0}^, a_{\varphi(k)} = l\).
+ \end{theorem}
+
+\end{document}
+

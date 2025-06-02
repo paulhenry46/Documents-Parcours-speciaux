@@ -1,0 +1,582 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{MPS2}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{J.Daudé}%Jérémi Daudé
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
+\usepackage{verbatim}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\newcommand{\tq}[0]{\text{ tel que }}
+\newcommand{\mc}{\mathcal}
+\begin{document}
+\newcommand{\myunit}{1 cm}
+\tikzset{
+    node style sp/.style={draw,circle,minimum size=\myunit},
+    node style ge/.style={circle,minimum size=\myunit},
+    arrow style mul/.style={draw,sloped,midway,fill=white},
+    arrow style plus/.style={midway,sloped,fill=white},
+}
+%\titleOne
+\setcounter{chapter}{5}
+\chapter{Matrices}
+\section{Définition}
+\begin{definition}
+On appelle matrice un tableau rectangulaire de nombres réels. Elle est dite de taille \(p\times q\) qi le tableau a \(p\) lignes et \(q\) colonnes. Les nombres du tableau sont appellés coefficients de la matrice.
+
+Soit A une matrice. Le coefficient situé en ligne i et colonne j de A est noté \(A_{ij}\).
+
+On note \(\mathcal{M}_{pq}(\R)\) l'ensemble des matrices à p lignes et q colonnes à coefficients réels
+\end{definition}
+Exemple :  $I_n = \begin{bmatrix}
+ 2 & 1 & 4 & 6 \\
+ 3 & 1 & 2 & 4 \\
+-1 & 0 & 2 & 0 \\
+\end{bmatrix}$
+\(a_{32} = 0, a_{14} = 6, a_{22} = 1\)
+\begin{definition}[Matrice ligne/colonne/nulle]
+A est dite matrice ligne si \(p=1\). On parle aussi de vecteur ligne.
+
+A est dite matrice colonne si \(q=1\). On parle aussi de vecteur colonnes
+
+A est dite nulle si tous ses coeffients sont nuls
+\end{definition}
+A et B sont égales si elles ont la meme taille et les memes coefficients
+\section{Structure d'espaces vectoriels}
+\begin{definition}[Addition / Multiplication par un scalaire]
+On additionne que des matrices de m\^eme taille.
+\end{definition}
+\begin{proposition}
+Munie de ces opérations, est un R-espace vectoriel de dimension finie \(p\times q\)
+\end{proposition}
+\begin{definition}
+Soit A une matrice. On appelle transposée de A, notée \(A^T, A^t, t_A,T_A\) la matrice de q lignes et p colonnes. On a \(A^T_{ij} = A_{ji}\).
+\end{definition}
+\begin{proposition}
+L'application de transposition est une application linéaire.
+
+\((A^T)^T = A\)
+\end{proposition}
+\begin{myproof}
+Soit A et B 2 matrices.
+
+$\lambda (A+B)^T_{ij} = (\lambda A+ B)_{ji} = \lambda A_{ji} + B_{ji} = \lambda (A^T)_{ij} + (B^T)_{ij}$
+\end{myproof}
+\begin{definition}[Matrices symétriques /anti-symétriques]
+Si A est une matrice carrée :
+\begin{itemize}
+ \item A est symétrique si \(A^T = A\). On note S l'ensemble des matrices symétriques
+ \item  A est anti-symétrique si \(A^T = -A\) On note AS cet ensemble
+\end{itemize}
+\end{definition}
+\begin{proposition}
+S et AS sont des SEV de \(\mc{M}_C(\R)\) et \(\mc{M}_C\ = S\oplus AS\)
+\end{proposition}
+\begin{myproof}
+ On note \(s : A \to A^T\) une application. Alors s est linéaire. En effet, \((A_1+\lambda A_2)_{ij} = (A_1+\lambda A_2)_{ji} = (A_1)_{ji}+\lambda (A_2)_{ji} = (A^T)_{ij}+\lambda (A_2^T)_{ij} = s(A_1)+\lambda s(A_2) = \)
+
+ De plus, s est une symétrie, donc \(\mc{M}_p(\R) = Ker(s+Id)\oplus Ker(s-Id)\). Or, \(Ker(s-Id) = S\). De m\^eme, \(Ker(s-Id) = AS\).
+\end{myproof}
+\warningInfo{Décomposition}{On a \[A = 0.5(A+A^T) + 0.5(A-A^T)\]}
+\begin{definition}[Matrices triangulaires supérieures/inférieures ou  diagonales]
+Soit \(A\in \mc{M}_p(\R)\). On dit qu'elle est triangulaire supérieure si \(A_{ij}=0, \forall i>j\) (que des 0 sous la diagonale), triangulaire inférieure si \(A_{ij}=0, \forall i<j\), diagonale si \(A_{ij}=0, \forall i\neq j\)
+\end{definition}
+\begin{proposition}
+L'ensemble des matrices triangulaires et diagonales sont des sev de \(\mc{M}_p(\R)\)
+\end{proposition}
+\begin{definition}[Trace]
+Soit une matrice carrée. La trace est la somme des éléments diagonaux. Cette application est une forme linéaire
+\end{definition}
+\begin{myproof}
+ \(tr(\lambda A+B) = \sum^p_{k=1}(\lambda A+B)_{ll} = \lambda \sum A_{ll}+\sum b_{ll}=\lambda tr(A)+tr(B)\). De plus, elle est à valeurs réelles, donc c'est une forme.
+\end{myproof}
+\section{Produit matriciel}
+\subsection{Définition}
+\begin{definition}[Produit de 2 matrices]
+Prenons 2 matrices de tailles quelconques. On appelle produit des matrices \(A_{pq}\) et \(B_{qr}\) la matrice C définie par \[C_{ij} = \sum^{q}_{k=1} A_{ik}B_{kj}\]
+\end{definition}
+Le nombre de {\color{Red}colonnes de la premi\`ere} doit valoir le {\color{blue}nombre de ligne de la seconde}. Le r\'esultat sera une matrice avec le m\^eme {\color{orange}nombre de ligne que la premi\`ere} et le m\^eme {\color{green}nombre de colonnes de la deuxi\`eme}.
+
+$A = \left(\begin{array}{>{\columncolor{yellow!40}}ccc}
+    \rowcolor{red!40}
+    \cellcolor{orange!40}5  & 5 & 1 \\
+5  & 6 & 1 \\
+0   & 1 & 1 \\
+3   & 0  & 1 \\
+1  &  c &  d\\
+  \end{array}\right) B = \left(\begin{array}{>{\columncolor{blue!40}}ccc}
+    \rowcolor{green!40}
+    \cellcolor{purple!40}5  & 5 & 1 \\
+5  & 6 & 1 \\
+0   & 1 & 1 \\
+  \end{array}\right)$
+
+  On peut faire $A \times B$
+
+\begin{tikzpicture}[>=latex]
+% les matrices
+\matrix (A) [matrix of math nodes,
+             nodes = {node style ge},
+             left delimiter  = (,
+             right delimiter = )] at (0,0)
+{
+  a_{11} & a_{12} & \ldots & a_{1p}  \\
+  |[node style sp]| a_{21}
+         & |[node style sp]| a_{22}
+                  & \ldots
+                           & |[node style sp]| a_{2p} \\
+  \vdots & \vdots & \ddots & \vdots  \\
+  a_{n1} & a_{n2} & \ldots & a_{np}  \\
+};
+\node [draw,below=10pt] at (A.south)
+    { $A$ : \textcolor{red}{$n$ rows} $p$ columns};
+
+\matrix (B) [matrix of math nodes,
+             nodes = {node style ge},
+             left delimiter  = (,
+             right delimiter = )] at (6*\myunit,6*\myunit)
+{
+  b_{11} & |[node style sp]| b_{12}
+                  & \ldots & b_{1q}  \\
+  b_{21} & |[node style sp]| b_{22}
+                  & \ldots & b_{2q}  \\
+  \vdots & \vdots & \ddots & \vdots  \\
+  b_{p1} & |[node style sp]| b_{p2}
+                  & \ldots & b_{pq}  \\
+};
+\node [draw,above=10pt] at (B.north)
+    { $B$ : $p$ rows \textcolor{red}{$q$ columns}};
+% matrice résultat
+\matrix (C) [matrix of math nodes,
+             nodes = {node style ge},
+             left delimiter  = (,
+             right delimiter = )] at (6*\myunit,0)
+{
+  c_{11} & c_{12} & \ldots & c_{1q} \\
+  c_{21} & |[node style sp,red]| c_{22}
+                  & \ldots & c_{2q} \\
+  \vdots & \vdots & \ddots & \vdots \\
+  c_{n1} & c_{n2} & \ldots & c_{nq} \\
+};
+% les fleches
+\draw[blue] (A-2-1.north) -- (C-2-2.north);
+\draw[blue] (A-2-1.south) -- (C-2-2.south);
+\draw[blue] (B-1-2.west)  -- (C-2-2.west);
+\draw[blue] (B-1-2.east)  -- (C-2-2.east);
+\draw[<->,red](A-2-1) to[in=180,out=90]
+	node[arrow style mul] (x) {$a_{21}\times b_{12}$} (B-1-2);
+\draw[<->,red](A-2-2) to[in=180,out=90]
+	node[arrow style mul] (y) {$a_{22}\times b_{22}$} (B-2-2);
+\draw[<->,red](A-2-4) to[in=180,out=90]
+	node[arrow style mul] (z) {$a_{2p}\times b_{p2}$} (B-4-2);
+\draw[red,->] (x) to node[arrow style plus] {$+$} (y)%
+    to node[arrow style plus] {$+\raisebox{.5ex}{\ldots}+$} (z)
+    to (C-2-2.north west);
+
+
+\node [draw,below=10pt] at (C.south)
+    {$ C=A\times B$ : \textcolor{red}{$n$ rows}
+                      \textcolor{red}{$q$ columns}};
+
+\end{tikzpicture}
+\begin{proposition}
+Soit \(A_{np}, B_{pq}, C_{qr}\).
+
+Alors \((AB)C=A(BC)\). L'ordre n'a pas d'importance.
+
+De plus, \(A(B+C) = AB+AC\).
+
+Enfin, \(OA = O = AO\)
+\end{proposition}
+\begin{myproof}
+ \((AB)C \in \mc{M}_{nr}, A(BC)\in \mc{M}_{nr}\)
+
+ On a \((AB)C = \sum^q_{k=1} (AB)_{ik}C_{kj} = \sum^q_{k=1} \sum^p_{l=1} A_{il}B_{lk}C_{kj} = \sum^p_{l=1} \sum^q_{k=1} A_{il}B_{lk}C_{kj} = \sum^p_{l=1} A_{il} \sum^q_{k=1} B_{lk}C_{kj} = (A(BC))_{ij} \)
+
+ III/2 : \(\sum^q_{k=1} = \sum^q_{k=1} A_{ik} 0 = 0\)
+\end{myproof}
+\begin{proposition}[Commutativité / intégrité]
+Il n'est ni commutatif ni intègre : On a pas AB = BA m\^eme quand les 2 produits sont définis.
+
+Si AB = 0, cela n'implique pas A est nul ou B est nul.
+
+AB = AC n'implique pas que B = C.
+\end{proposition}
+Avec,
+\begin{myproof}
+ \(A = \begin{bmatrix}
+ 5& 6 \\
+ 3&-2 \\
+\end{bmatrix}, B = \begin{bmatrix}
+ 2&0 \\
+ 4&3 \\
+\end{bmatrix}\), \(AB=BA\)
+
+Avec \(A = \begin{bmatrix}
+ 0&-1 \\
+ 0&5 \\
+\end{bmatrix}, B = \begin{bmatrix}
+ 2&-3 \\
+ 0&0 \\
+\end{bmatrix}\), AB = 0.
+
+Avec
+\(A = \begin{bmatrix}
+ 0& -1 \\
+ 0&3 \\
+\end{bmatrix}, B = \begin{bmatrix}
+ 4&-1 \\
+ 5&4 \\
+\end{bmatrix}, C = \begin{bmatrix}
+ 2&5 \\
+ 5&4 \\
+\end{bmatrix}\)
+\end{myproof}
+\begin{definition}[Matrice identité]
+On appelle matrice identité, notée \(I_p\) la matrice \(\begin{bmatrix}
+ 1&0&0 \\
+ 0&1&0 \\
+ 0&0&1
+\end{bmatrix}\)
+\end{definition}
+\begin{myproof}
+ \((I_PA)_{ij} = \sum_{m=1}^p (I_p)_{im} A_{mj} = (I_p)_{ii} A_{ij} = 1 A_{ij} = A_{ij}\)
+\end{myproof}
+\begin{proposition}[transposition / trace]
+\((AB)^T = B^TA^T\)
+
+\(A_{pq}, B_{qp}, tr(AB) = tr(BA)\)
+\end{proposition}
+\begin{myproof}
+ \(tr(AB) = \sum_{m=1^p }(AB)_{mm} = \sum^p_{m=1} (\sum^q_{k=1}A_{mk} B_{km}) = \sum^p_{m=1}\sum^q_{k=1} A_{ml} B_{km} = \sum^q_{k=1}\sum^p_{m=1} A_{mk}B_{km} = \sum^q_{k=1} (BA)_{kk} = tr(BA)\)
+\end{myproof}
+\subsection{Produit de matrices carrée}
+\begin{proposition}
+Le produit matriciel est une opération interne de \(\mc{M}_P(\R)\). En effet, on obtient une matrice avec le m\^eme nombre de ligne et de colonnes.
+\end{proposition}
+\begin{definition}[Puissance d'une matrice]
+On appelle puissance 'k-ieme' notée \(A^k\) définie par \(A^k = Id\) si \(k=0\), \(AA^{k-1}\) sinon.
+\end{definition}
+\begin{myproof}
+ On démontre facilement que \(A^m = AAAAAAAAAAAA\) si \(m\geq 1\) et \(\forall m\in \N, \forall k\in \{0,\dots, m\}, A^m = A^{m-k}A^k\)
+\end{myproof}
+\begin{definition}[Polyn\^omes de matrice]
+On prend une matrice carrée et un polyn\^ome. Le polynome de la matrice est toujours une matrice carrée.
+\end{definition}
+\begin{definition}[Matrice nilpotente]
+Une matrice carrée est site nilpotente si \(\exists k\in \N, \tq A^k = 0\)
+\end{definition}
+\begin{definition}[Matrices commutantes]
+Pour ces matrices là, on peut appliquer la formule du binome de Newton.
+
+Soit 2 matrices carrées. On dit que A et B commutent si \(AB = BA\). On a alors \(\forall m \in \N, (A+B)^m  = \sum^m_{k=1}C^k_M A^kB^{m-k}\).
+\end{definition}
+\subsection{Lien entre produit matriciel et systèmes linéaires}
+Soit \(S_A\) le système linéaire de p équations à q inconnues. Il est de la forme \(a_{11}x_1+a_{12}x_2 + a_{13}x_4+\dots+a_{1q}x_q = y_1, \dots a_{p1}x_1 + \dots + a_{pq}x_q  = y_p\).
+
+On pose \(Y = \begin{bmatrix}
+ y_1 \\
+ \dots\\
+ y_p
+\end{bmatrix}, X = \begin{bmatrix}
+ x_1 \\
+ \dots\\
+ x_q
+\end{bmatrix}, A = \begin{bmatrix}
+ a_{11}&\dots&a_{1q} \\
+a_{p1}&\dots&a_{pq}
+\end{bmatrix}\)
+
+Il faut trouver X tel que \(AX=Y\)
+\begin{definition}
+Pour A, on pose \(f:X\in \mc{M}_Q(\R)\to AX\mc{M}(\R)\)
+\end{definition}
+\begin{proposition}
+\begin{itemize}
+ \item Le système \(S_A\) admet au moins une solution \(\iff f_a\) est surjective (rien à démontrer)
+ \item Le système admet au plus une solution si la fonction est injective.
+ \item Le système admet exactement une soltion si la fonction est bijective.
+\end{itemize}
+\end{proposition}
+\begin{proposition}
+\(f_A\) est linéaire, en conséquence :
+\begin{itemize}
+ \item si \(q>p\) (plus d'inconnues que d'équation), f n'est pas injective et si le système admet une solution, il en admet une infinité.
+ \item Si \(q<p\),(plus d'équations qu d'inconnues) f n'est pas surjective et il existe des y tels que le système n' a pas de solution.
+\end{itemize}
+\end{proposition}
+\begin{myproof}
+\(f_A(\lambda X_1+X_2) = A(\lambda X_1)+AX_2\ = \lambda AX_1+AX_2) = \lambda f_A(X_1)+f_A(X_2)\)
+
+\begin{itemize}
+ \item Si \(q = \dim(Mq)>p=\dim(Mp)\), f ne peut etre injective, donc le noyau comporte un élément non nul et \(\exists X\neq 0, f_A(X) = 0\), donc \(A(X_1+\lambda X) = AX_1 = Y\)
+ \item Meme idée avec la dimension
+\end{itemize}
+\end{myproof}
+\subsection{Matrice inversible}
+\begin{definition}
+Soit A carrée. dit que A est inversible si \(\exists B\) de meme taille telle que \(AB = BA = I_d\)
+\end{definition}
+\begin{proposition}
+Si A est inversible, alors B est unique, notée \(A^{-1}\).
+\end{proposition}
+\begin{myproof}
+ Soit B1 et B2 qui vérifient la propriété.
+
+ \(B_1 = B_1 I_d = B_1AB_2 = Id B_2 = B_2\)
+\end{myproof}
+On appelle le groupe linéaire, noté \(GL_p(\R)\) l'ensemble des matrices inversibles de taille p. Ce n'est pas un sev.
+\warningInfo{Inverse}{Pour montrer qu'une matrice est l'inverse d'une autre, on multiplie les 2 pour trouver l'identité}
+\begin{proposition}
+Soit A carrée. Les 4 propositions suivantes sont équivalentes
+\begin{itemize}
+ \item \(A\in GL_p(\R)\)
+ \item \(f_A : X\in \mc{M}_p \to AX \in \mc{M}_{p,1}\) est bijective
+ \item \(\exists B\in M_p, AB=I_d\)
+ \item \(\exists B, BA = Id\)
+\end{itemize}
+\begin{myproof}
+ Preuve circulaire
+
+ \begin{itemize}
+  \item Notons que \(f_A\) est une application linéaire dans le meme espace de meme taille. \(f_A\) est bijective ssi \(f_A\) est injective. Soit \(x\in Ker(f)\), alors \(f_A(X) = AX = 0\). Alors \(0 = A^{-1}0 = I_p X = X\), donc le noyau ne contient que le vecteur nul et \(f_A\) est injective, donc bijective.
+  \item Notons \(c_i\) la matrice colonne remplie de 0 sauf à la i-eme ligne qui contient 1.\(\exists x_i\) tq \(f_A(X_i)=AX_i = C_i\) car \(f_A\) est surjective. Soit B définie par \([X_1, X_2, X_p]\) Alors \(AB = A[X_1,\dots X_p] = [AX_1,\dots, AX_p] = [c_1,c_2\dots, c_p] = I_d\)
+  \item Si \(AB=I_d, f_B\) est inective. En effet, si \(X\in Ker(F_b), 0=BX = 0 = A0 = ABX = I_pX = X\), donc f=\(f_B\) est injective, donc bijective. Comme 2->3, \(\exists C\tq BC=I_p\)
+  Mais \(C = I_d C = AB C = AI_d = A\)
+  \item Si \(\exists B \tq BA = I_d, f_A\) est injective, donc \(\exists C \tq AC = I_d\), alors \(B = BI_d = BAC = I_p C = C\), donc \(BA=AB = I_d\),donc c'est bien inversible.
+ \end{itemize}
+
+\end{myproof}
+
+\end{proposition}
+\(A^{-1}\) est aussi inversible.
+\begin{proposition}
+Soit A une matrice inversible.
+
+Alors \(A^T\) est inversible et \((A^T)^{-1} = (A^{-1})^T\)
+\end{proposition}
+\begin{myproof}
+ \(I_p = I_p^T = (AA^{-1})^T=(A^{-1})^TA^T\)
+\end{myproof}
+\begin{proposition}
+Soient A et B 2 matrices inversibles, alors AB est aussi inversible et l'inverse \(B^{-1}A^{-1}\), c'est dans l'autre sens.
+\end{proposition}
+\begin{myproof}
+\((AB)(B^{-1}A^{-1}) = AI_d A^{-1} = I_d\)
+\end{myproof}
+\begin{proposition}
+Soit A inversible et B et C carrées
+
+\(AB=AC = B=C\Rightarrow B=C\)
+\end{proposition}
+\begin{myproof}
+ \(B = A^{-1}AB = A^{-1}AC =C\)
+\end{myproof}
+\begin{proposition}
+Si A a une colonne/ligne remplie de 0, elle n'est pas inversible
+\end{proposition}
+\begin{myproof}
+ \(A = [C_1,\dots,C_p] = \begin{bmatrix}L_1\\L_p \end{bmatrix}\)
+
+ Supposons que la ligne \(L_i\) est remplie de 0, alors \(\forall X, AX\) contient un 0 en position i, donc \(f_A\) n'est pas surjective.
+
+ Supposons que la colonne \(c_i\) est remplie de 0. Soit \(X\) la matrice colonne avec que des 0 sauf en i elle contient 1.
+
+ Alors \(f_A(X) = 0\), donc \(f_A\) n'est pas injective.
+\end{myproof}
+\begin{proposition}
+Soit A = \(\begin{bmatrix}a&b\\c&d\end{bmatrix}\) et B =  \(\begin{bmatrix}d&-b\\-c&a\end{bmatrix}\). Alors A est inversible ssi \(ad-bc \neq 0\) et alors \(\frac{1}{ad-bc}B\)
+\end{proposition}
+\begin{theorem}
+ A est inversible ssi \(C_1,C_2\dots C_p\) est une base de \(M_{p1}\) ou ssi \(L_1,L_2\dots L_p\) est une base de \(M_{1,p}\)
+\end{theorem}
+\begin{myproof}
+ A est inversible ssi \(f_A\) est bijective ssi l'image d'une base de \(M_{p,1}\) par fa est une base de \(M_{p,1}\). Prenons les matrices colonnes \(E_1,E_n\) avec des 0 sauf en i ou elles contiennent 1. Alors \(A_1,\dots, E_p\) est une base de \(M_{p,1}\) et \(f_A(E_i) AE_i = C_i\). De plus, sa transposée est aussi inversible  d'où la deuxième assertions
+\end{myproof}
+Si une colonne s'écrit en focntion des autres, cela ne peut pas etre inversible.
+\subsection{Algorithme pour calculer un inverse}
+%TODO À faire
+\subsection{Rang d'une matrice}
+\begin{definition}
+Soit \(A\in M_{p,q}, f_A : X\in M_{q,1}(\R) \to AX \in M_{p,1}(\R)\)
+
+On appelle rang de la matrice A l'entier noté \(rg(A)\) définit par \(rg(A) = rg(f_A)\)
+\end{definition}
+\begin{proposition}
+Soit \(A = [C_1,C_2,\dots,C_q]\). Alors \(rg(A) = \dim(Vect(C_1,C_2,\dots,C_3))\).
+\end{proposition}
+\begin{theorem}
+ \(rg(A) = rg(A^T)\), donc \(rg(A) = \dim(Vect(L_1,L_2,\dots, L_p))\)
+\end{theorem}
+\begin{proposition}
+Soit A une matrice carrée. Elle est invsersible \(\iff rg(A) = p\)
+\end{proposition}
+\chapter{Matrices d'applications linéaires}
+Dans tous ce chapitre, E et F sont deux EV de dimension finie, avec \(\dim(E) = p, \dim(F) = n\)
+
+\section{Matrices d'application linéaire}
+\begin{definition}
+\begin{itemize}
+ \item \(f\in L(E,F)\)
+ \item \(B = \{e_1,e_2,\dots,e_p\}\) une base de E
+ \item \(B_a = \{v_1,\dots, v_n\}\) une base de F
+ \item On note \(c_j\) les applications coordonnées sans ka base \(B_a\) (i.e : \(\forall u\in F, u = c_1(u)v_1+\dots+c_n(u)v_n\))
+
+\end{itemize}
+On appelle matrice de l'application linéaire f dans les bases \(B, B_a\) notée \(M_{B,B_a}(f)\) la matrice de \(M_{np}(\R)\) définie par \(M_{B,B_a}(f)_{ij} = c_i(f(e_j)), \forall i \in \{1,\dots, n\}, j\in \{1,\dots, p\}\)
+\end{definition}
+Exemple : \(E=\R^2, B=\{(1.0),(0.1)\}, F = \R^3 B_a = \{(1.0.0),(0.1.0),(0.0.1)\}, f:(a,b)\in R^2 \to (2a, a+b, 2b)\in \R^3\)
+
+Donc \(M_{B,B_a}(f) = \begin{bmatrix}2&0\\1&1\\0&2\end{bmatrix}\) car \(f(1.0) = (2.1.0),f(0.1) = (0.1.2)\)
+
+Exemple : \(B = ((0.1),(1.0)), B_a = ((0.1.0), (0.0.1), (1.0.0))\)
+
+Donc \(M_{B,B_a}(f) = \begin{bmatrix}1&1\\2&0\\0&2\end{bmatrix}\) car \(f(0.1) = (0.1.2),f(1.0) = (2.1.0)\)
+
+Exemple : \(B = ((1.0), (1.1)), B_a = ((1.0.0),(1.1.0), (1.1.1)) \) donc
+
+Donc \(M_{B,B_a}(f) = \begin{bmatrix}1&0\\1&0\\0&2\end{bmatrix}\) car \(f(1.0) = (2.1.0),f(1.1) = (2.2.2)\)
+
+\begin{proposition}
+Soit B une base de E, \(B_a\) une base de F, et \(F\in L(E,F)\). La connaissance de \(M_{B,B_a}(f)\) est équivalent à connaitre f.
+\end{proposition}
+\begin{myproof}
+ Posons \(B = \{e_1,\dots, e_p\}\). Connaitre est f est équivalent à connaitre les images de la base.
+
+Si on connait \(f(e_i)\), on peut décomposer \(f(e_i)\) dans la base \(B_a \iff f(e_i) = c_1(f(e_i))v_1+\dots\) et on connaite \(M_{B,B_a}(f)\).
+
+Si on connait \(M_{B,B_a}(f)\), on pose \(M_{B,B_a}(f)_{ij} = a_{ij}\) et \(f(e_j) = a_{1j}v_1+\dots+a_{nj}v_j\)
+\end{myproof}
+\section{Opérations}
+\begin{proposition}
+Soient f et g deux éléments de \(L(E,F)\), B est une base de E, \(B_a\) est une base de F, \(\lambda \in R\).
+
+\begin{itemize}
+ \item \(M_{B,B_a}(f+g) = M_{B,B_a}(f) +  M_{B,B_a}(g)\)
+ \item \( M_{B,B_a}(\lambda f) = \lambda  M_{B,B_a}(f)\)
+\end{itemize}
+\end{proposition}
+\begin{myproof}
+ \( M_{B,B_a}(f+g)_{ij} = c_i(f+g(e_j)) = c_i(f(e_j)+g(e_j)) = c_i(f(e_j)) + c_i(g(e_j)) =  M_{B,B_a}(f)_{ij} +  M_{B,B_a}(g)_{ij}\)
+\end{myproof}
+
+\begin{proposition}
+Soient \(f\in L(E,F), g\in L(F,G),\), B une base de E, \(B_a\) une base de F, \(B_b\) une base G
+
+Alors \(g\circ f \in L(E,G)\) et \(M_{B,B_b}(g\circ f) = M_{B_a, B_b}(g) M_{B,B_a}(f)\)
+\end{proposition}
+\begin{myproof}
+ Soit \(B = \{e_1,e_2,\dots, e_p\}, B_a=\{v_1,\dots,v_n\}, B_b = \{w_1,\dots, w_2\}\). On note \(c_j\) les applications coordonnées dans la base \(B_b\)
+
+ On note \(c_k\) les applications coordonnées dans la base \(B_a\)
+
+ \(M_{B,B_a}(g\circ f)_{ij} = c_j(g\circ f)(e_j) = c_j(g(f(e_j))) = c_j(g(\sum_{s=1}^{n}c_s(f(e_j))v_s)) = c_i(\sum c_s(f(e_j))g(v_s)) = \sum c_s(f(e_j)c_i(g(v_s))) = \sum M_{B_a,B_b}(g)_{is} M_{B,B_a}(f)_{sj} = (M_{b_a,B_b}M_{B,B_a})_{ij}\) par linéarité de g et c et définition du produit matriciel.
+\end{myproof}
+\subsection{Matrices d'endomorphisme (isomorphismes)}
+\(f\in L(E), B, B_a\) 2  bases de E. Alors \(M_{B,B_a}\in M_{pp}(\R)\)
+
+Notation : \(M_B(f) = M_{B,B}(f)\)
+
+\warningInfo{Remarque}{Cosidérons \(f = I_dE\), alors \(\forall B, M_B(f) I_p\). En revanche, si on choisit \(B_a\) une seconde base de E, on na`` a pas necessairement \(M_{B,B_a} = I_p\).
+
+Exemple : \(E = \R^2, B=((1.0),(0.1)), B_a=((0.1),(1.0)), B_b = ((1.0), (1.1))\).}
+\begin{proposition}
+\(f\in L(E), q\in \N, f^q = f\circ f \circ f\dots\)
+
+\(M_B(f) = M_{B}(f)^q\)
+\end{proposition}
+\begin{myproof}
+ Ini pour q=0
+
+ Recurrence : \(M_B(f^{q+1}) = M_B(f^q\circ f) = M_B(f^q)M_B(f) = M_B(f)^qM_B(f) = M_B(q+1)\)
+\end{myproof}
+\subsection{Matrices d'un isomorphisme}
+On suppose que \(\dim(E) = \dim(F)\).
+\begin{proposition}
+\(f\in L(E, F), B,B_a, A = M_{B,B_a}(f) \in M_{p}(\R)\).
+
+\(f\) est un isomorphisme \(\iff A\) est inversible
+
+Si f est un isomorphisme, \(M_{B_a, B}(f^{-1}) = A^{-1}\)
+\end{proposition}
+\begin{myproof}
+Supposons que f est un isomorphisme, alors \(f^{-1}\) existe et \(f^{-1}\circ f = I_dE\). Alors \(I_p = M_B(Id_E) = M_B(f^{-1}\circ f)= M_{B_a,B}(f^{-1}M_{B,B_a}(f)) = M_{B_a,B}(f^{-1})A\)
+
+Donc \(M_{B_a,B}(f^{-1})A = I_p\), donc A est inversible d'inverse \(M_{B_a,B}(f^{-1})\).
+
+
+On suppose A inversible, d'inverse \(\bar{A}\). Soit \(B= (e_1,\dots, e_p), B_a = (v_1\dots, v_p)\). On définit \(g \in L(F,E)\) par \(\forall i\in \{1,\dots, p\}, g(v_i) = \bar{A1,i}e_1+\dots \bar{A}_{pi}e_p\)
+
+Par définition, \(M_{Ba,B}(g) = \bar{A}\)
+
+\(M_B(g\circ f) = M_{B_a,B}(g)M_{B,B_a}(f) = \bar{A}A = I_p \Rightarrow g\circ f = I_dE \Rightarrow f\) est bijective.
+\end{myproof}
+\begin{proposition}
+\(f\in l(E), B\). f est bijective \(\iff M_B(f)\) est inversible et \(M_B(f^{-1}) = M_B(f)^{-1}\)
+\end{proposition}
+\subsection{Image d'un vecteur : changement de base}
+Soit \(B = (e_1,\dots,e_p), c_j\) l'application coordonnées. \(B_a = (v_1,\dots, v_n)\) et \(c_{a,j}\) les applications coordonnées
+\begin{proposition}
+On pose, pour \(u\in E\) \(X = \begin{bmatrix}c_1(u)\\c_2(u)\\\dots\\c_p(u)\end{bmatrix}, Y = \begin{bmatrix}c_{a,1}(f(u))\\c_{a2}(f(u))\\\dots\\c_{ap}(f(u))\end{bmatrix}\). Alors\(Y = M_{B,B_a}(f)X\)
+\end{proposition}
+\begin{myproof}
+ \(Y_{i,1} = c_{ai}(f(u)) =  c_{ai}(f(\sum^p_{k=1} c_k(u)e_k)) = \sum^p_{k=1} c_k(u) c_{ai}(f(e_k)) = \sum^p_{k=1} c_{ai}(f(e_k)) c_k(u) = \sum^p_{k=1}(M_{B,b_a}(f))_{ik}X_{k1} = (M_{B,B_a}X)_{i1}\)
+\end{myproof}
+\begin{definition}[Matrices de changement de base]
+Soit B et \(B_a\) 2 bases de E. On appelle matrice de passage de la base B à la base \(B_a\) la matrice \(M_{B_a,B}(I_dE)\)
+\end{definition}
+\begin{proposition}
+Posons \(B  = (v_1, \dots,v_p), c_j\) les applications coordonnées dans la base B. Notons \(M_{B_a,B}(Id_e) = (c_1,\dots, c_p)\). Alors \((c_k)i = c_i(v_k)\)
+\end{proposition}
+\begin{proposition}
+\(M_{B_a,B}(Id_E)\) est toujours inversible et \(M_{B_a,B}(I_dE)^{-1} = M_{B,B_a}(Id_E)\)
+\end{proposition}
+\begin{myproof}
+ \(I_dE = Id_E\circ Id_E\), donc \(I_p = M_B(Id_E) = M_{B_a,B}(Id_E)M_{B,B_a}(Id_E)\)
+\end{myproof}
+\begin{proposition}
+Soient 3 bases de E.
+
+On cherche \(M_{B1,B3}(Id_E) = M_{B2,B3}(Id_E)M_{B1,B2}(Id_E)\)
+\end{proposition}
+\begin{proposition}
+Soient B et \(B_a, c_{aj}\) les applicationz coordonnées dans la base B. Soit \(u \in E, X = \begin{bmatrix}c_1(u)\\c_2(u)\\\dots\\c_p(u)\end{bmatrix},  \bar{X} = \begin{bmatrix}\bar{c}_1(u)\\\bar{c}_2(u)\\\dots\\\bar{c}_p(u)\end{bmatrix}\). Alors \(\bar{X} = M_{B, \bar{B}}(Id_E)X\)
+\end{proposition}
+\begin{proposition}[Formules de changement de base]
+Soient \(B_1,B_2,\bar{B_1}, \bar{B_2}, f\in L(E,F)\). Alors
+
+\(M_{B_2,\bar{B_2}}(f) = M_{\bar{B_1}, \bar{B_2}}M_{B_1, \bar{B_1}}(f)M_{B_2, B_1}(Id_E)\)
+\end{proposition}
+\begin{proposition}
+\(B_1,B_2\) 2 bases de E, \(P = M_{B_1,B_2}(Id_E)\). Alors \(M_{B_2} = PM_{B_1}P^{-1}\)
+\end{proposition}
+
+
+\end{document}

@@ -1,0 +1,101 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques - Analyse 2}
+\subtitle{Analyse}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+\setcounter{chapter}{2}
+
+	\chapter{Séries numériques }
+\section{Séries et sommes partielles}
+\subsection{Vocabulaire}
+\begin{definition}[Série]
+On appelle série de terme général \(u_k\) la suite \(S_n\) définie par \(S_n = \sum_{k=0}u_k\). On appelle aussi \(S_n\) la somme partielle de la série.
+\end{definition}
+\begin{definition}[Somme]
+On dit que la série est convergente si sa somme partielle est une suite convergente. Dans ce cas, on appelle somme de la série la limite de \(S_n\). On le note \(\sum^{+\infty}_{k=0}\).
+\end{definition}
+\warningInfo{Convergence}{La convergence d'une série ne dépend pas de ses premiers termes. Si on prend 2 séries qui différent d'un nombre fini de terme, elles auront la m\^eme nature. Autrement dit, àa convergen si et seulement si cela converge à partir d'un certain rang.}
+Si une série ne converge pas, elle est divergente.
+\begin{definition}[reste]
+On note le reste d'une série convergente \(R_n = \sum_{k=n+1}^{+\infty}\). On a \(S = S_n+R_n\). C'est ce qui manque pour que \(S_n\) soit égale à la limite de la série, \(S\). C'est en quelque sorte le ``complémentaire'' de la série.
+\end{definition}
+\begin{proposition}
+Si une série est convergente, alors \(\Lim{+\infty} R_n = 0\)
+\end{proposition}
+\checkInfo{Exemple}{Une série géométrique est convergente si \(|q|<1\).}
+\checkInfo{Série harmonique}{On a \(\frac{1}{k} \geq \frac{1}{t}\) si $t\in[k,k+1]$. Donc $\frac{1}{k} \geq \int^{k+1}_{k} \frac{1}{t}\dd t$ d'où $\sum^{n}_{k=1}\frac{1}{k} \geq \sum^n_{k=1} \int^{k+1}_{k} \frac{1}{t}\dd t = \int^{n +1}_{1} = \frac{1}{t}\dd t$ par la relation de Chasles. D'où $H_n = \sum^n_{k=1} \frac{1}{k}\geq \ln(n+1)\to +\infty$.}
+\subsection{Premières propriétés}
+\begin{proposition}[Somme telescopique]
+C'est une série de la forme \(\sum_{k\geq 0} (a_{k+1}-a_k)\). Si la limite l de \(a_k\) existe, la somme de la série vaut \(l-a_0\).
+\end{proposition}
+\checkInfo{Exemple}{\(S_n = \sum^n_{k=0}\frac{1}{(k+1)(k+2)} = \sum^n_{k=0}(\frac{1}{k+1}-\frac{1}{k+2}) = 1 -\frac{1}{n+2}\to1\)}
+\begin{proposition}
+Si $\sum u_k$ est convergent, alors $U_k \to 0$.
+\end{proposition}
+\warningInfo{Convergence}{Une série dont le terme général ne tend pas vers 0 ne peut converger et est dite grossièrement divergente. La réciproque est fausse (série harmonique). }
+
+\begin{proposition}
+Toute combinaison linéaire de série convergente est une série convergente.
+\end{proposition}
+\subsection{Critère de Cauchy}
+\begin{proposition}
+Une série converge \(\iff \forall \varepsilon >0, \exists n_0\in\mathbb{N}, \forall m,n \geq n_0, |u_n+\dots+u_m|<\varepsilon\)
+\end{proposition}
+\section{Série à termes positifs}
+\begin{proposition}
+Une série à termes positifs converge si et seulement si la suite des sommes partielles est majorée.
+\end{proposition}
+\begin{theorem}[Théorème de comparaison]
+ Pour 2 séries à termes postifs, \(u_k\leq v_k\), alors si \(\sum v_k\) converge,  \(\sum v_k\) converge. Inversement, si \(\sum u_k\) diverge, \(\sum v_k\) diverge.
+\end{theorem}
+\begin{theorem}[Théorème des équivalents]
+ Soient 2 suites à termes strictement positifs. Si \(u_k \sim v_k\), alors les séries associées sont de m\^eme nature.
+\end{theorem}
+\subsection{Séries de référence}
+\begin{proposition}[Séries de Riemann]
+Si \(a>1\), alors la série \(\sum_{k=1}^n \frac{1}{k^a}\) converge. Si \(0<a\leq 1\), elle diverge.
+\end{proposition}
+\begin{proposition}[Série de Bertrand]
+Soit la série \(\sum_{k=2}^n \frac{1}{k^a(\ln(k))^b}\). Si \(0<a<1\), elle diverge, si \(a>1\) elle converge et si \(a=1\), avec \(b>1\), elle converge, avec \(b\leq 1\), elle diverge.
+\end{proposition}
+\subsection{Règles}
+\begin{theorem}[Règle du quotient de D'Alembert]
+ Soient une série à termes strictement positifs telle que \(\frac{u_{k+1}}{u_k} \to l\). Si \(l<1\), la série converge, si \(l>1\), la série diverge.
+\end{theorem}
+\begin{theorem}[Règle des racines de Cauchy]
+ Soient une série à termes strictement positifs. Si il existe, on note \(l = \lim \sqrt[n]{u_n}\). Si \(l<1\), la série converge, si \(l>1\), la série diverge.
+\end{theorem}
+
+\end{document}
+

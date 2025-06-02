@@ -1,0 +1,62 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mécanique}
+\subtitle{Mécanique du point}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{S.Deheuvels}%sebastien.deveuhels.irap.omp.eu
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{cancel}
+\usepackage{xcolor}
+\newcommand\Ccancel[2][black]{\renewcommand\CancelColor{\color{#1}}\cancel{#2}}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\dd}[0]{\mathrm{d}}
+\newcommand{\ddp}[0]{\partial}
+%\DeclareMathOperator\arctanh{arctanh}
+\DeclareMathOperator\grad{grad}
+\begin{document}
+
+%\titleOne
+\setcounter{chapter}{2}
+	\chapter{Moment de force - Méthode}
+	\section{Calculer un moment de force}
+	On a \[\vec{M_O}(\vec{f}) = \vec{OM}\wedge \vec{f}\]
+	\begin{itemize}
+	 \item Si les 2 vecteurs sont colinéaires, le moment de force est nul
+	 \item Si les 2 vecteurs sont orthogonaux, le moment de force est selon le troisème axe avec comme norme le produit des normes des 2 vecteurs
+	 \item Si les 2 vecteurs sont quelconques, on le calcule, quelque soit la base, avec :
+
+	 \[\vec{u}\wedge \vec{v}=\begin{pmatrix}
+u_yv_z-u_zv_y\\
+u_zv_x-u_xv_z\\
+u_xv_y-u_yv_x
+\end{pmatrix}\]
+	\end{itemize}
+
+\end{document}
+

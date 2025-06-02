@@ -1,0 +1,318 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{MPS2}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{J.Daudé}%Jérémi Daudé
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\begin{document}
+
+%\titleOne
+
+	\chapter{Suites}
+%Analyse (Suites, Dev Lim) et Algèbre (Espaces vecoriels, applications linéaires, matrices, déterminants)
+\section{Rappels}
+\begin{definition}[Suite réelle/complexe]
+Une suite réelle réelle est une application de $\N$ dans $\R$ ou $\C$. L'ensemble des suites réelles est noté $\R^{\N}$.
+\end{definition}
+\begin{definition}[Suites réelles majorées/minorées]
+Une suite réelle est \begin{itemize}
+               \item majorée si $\exists C\in\R, \forall p\in\N,u_p \leq C$
+               \item minorée si $\exists C\in\R, \forall p\in\N,u_p \geq C$
+              \end{itemize}
+
+\end{definition}
+\begin{definition}[Suite réelle/complexe bornée]
+Si $\exists C\in\R, \forall p\in\N, |u_p|\leq C$.
+\end{definition}
+\begin{definition}[Suite convergente/divergente]
+Une suite est dite convergente si $\exists l\in\R \setminus {\infty}, \forall \varepsilon >0,\exists N\in\N, \forall p\geq N, |u_p-l|\leq \varepsilon$. On dit que $l$ est la limite de la suite. On le note $u_p \to l$.
+\end{definition}
+On n'écrit pas $\lim u_p = l$ car en faisant ça on suppose que la limite existe vant m\^eme de commencer à l'étudier. Il ne faut pas l'écrire en début de calcul.
+\begin{definition}[Suite divergente]
+Elle est divergente i elle n'est pas convergente.
+\end{definition}
+\begin{proposition}
+Soit $(u)$ une suite convergente. On suppose qu'il existe $l_1,l_2$ telle que $u_p\to l_1$ et $u_p\to l_2$. Alors $l_1=l_2$.
+\end{proposition}
+\begin{myproof}
+On suppose qu'il existe $l_1,l_2$ telle que $u_p\to l_1$ et $u_p\to l_2$. Par définition de la convergence d'une suite :
+
+$\forall \varepsilon >0,\exists N_1\in\N, \forall p\geq N_1, |u_p-l_1|\leq \varepsilon$
+
+$\forall \varepsilon >0,\exists N_2\in\N, \forall p\geq N_2, |u_p-l_2|\leq \varepsilon$
+
+On pose $N=\max(N_1,N_2)$. On a alors $\forall p\geq N, |u_p-l_1|\leq \varepsilon$ et $\forall p\geq N, |u_p-l_2|\leq \varepsilon$
+
+$|l_1-l_2| = |l_1-u_n+u_n-l_2|\leq |l_1-u_n|+|u_n-l_2| < \varepsilon + \varepsilon = 2 \varepsilon$
+
+$|l_1-l_2| < 2\varepsilon \iff l_1=l_2$
+\end{myproof}
+\begin{proposition}
+Soit $u$ une suite convergente. Alors elle est bornée. La réciproque est fausse. En effet, $u_n = (-1)^p$ à démontrer avec la def de la limite
+\end{proposition}
+\begin{myproof}
+Soit $u$ CV et $l$ sa limite. Prenons $\varepsilon = 36$. $\exists N, \forall p\geq N, |u_p-l|\leq 36$. Mais $|u_p-l|\leq 36 \Rightarrow |u_p|\leq 36+|l|$ par inégalité triangulaire.
+
+Posons $M = \max(|u_0|,|u_1|\dots |u_N|)$ et $C = \max(M,36+|l|)$
+
+Soit $p\in \N$, on a :
+\begin{itemize}
+ \item $p\leq N, |u_p|\leq M\leq C$
+ \item $p\geq N, |u_p|\leq 36+|l|\leq C$
+\end{itemize}
+
+\end{myproof}
+\begin{definition}[Limite infinie de suites réelles]
+On dit que la suite tend vers \begin{itemize}
+                               \item $+\infty$ si $\forall A\in\R,\exists N\in\N, \forall n\geq N, u_p \geq A$
+                               \item $-\infty$ si $\forall A\in\R,\exists N\in\N, \forall n\geq N, u_p \leq A$
+                              \end{itemize}
+
+\end{definition}
+\begin{definition}[Propriété vraie à partir d'un certain rang]
+On dit qu'une suite vérifie une propriété à partir d'un certain rang, si $\exists n, \forall p\geq n, u_p$ vérifie la propriété.
+\end{definition}
+\begin{definition}[Suites réelles monotones]
+Soit $u$ une suite réelle. On dit que $u$ est croissante (à partir d'un certain rang) si ($\exists N$,) $\forall p (\geq N), u_{p+1} \geq u_p$.
+\end{definition}
+\begin{proposition}
+Toute suite réelle croissante à partir d'un certain rang tend vers une limite finie ou infinie.
+
+Si elle est en plus majorée, elle tend vers une limite finie.
+\end{proposition}
+Exemple : $w_p = \frac{p^2}{2^p} \geq -70$ Elle est minorée.
+
+$w_{p+1} - w_p = \frac{p^2+2p+1-2p^2}{2^{p+1}} = -\frac{(p-1)^2-2}{2^{p+1}} \leq 0$ dès que $p\geq 3$. Donc elle est décroissante à partir du rang 3. Donc elle est convergente et admet une limite.
+\section{Notations de Landau}
+\begin{definition}[Suites néglieables]
+Soit $u$ et $v$ deux suites. On dit que $u$ est néglieable devant $v$ (en + $\infty$), noté $u_p o_{p\to\infty} (v_p)$. Il existe une suite $\varepsilon$ telle que $\varepsilon_p\to 0$ et $u_p = v_p\varepsilon_p$ à partir d'un certain rang.
+\end{definition}
+\begin{proposition}
+$u$ et $v$ deux suites. On suppose qu'il existe $N\in\N,\forall p\geq N, v_p\neq 0$. Alors $u_p = o(v_p)⁾ \iff \frac{u_p}{v_p}\to 0$.
+\end{proposition}
+\begin{myproof}
+Supposons $u_p = o(v_p)$. Alors $\exists (\varepsilon_p), \varepsilon\to 0$ et $u_p \varepsilon_pv_p$ à partir d'un certain rang $M$.
+
+$\forall p\geq \max(M,N), \frac{u_p}{v_p} = \varepsilon_p \to 0$.
+
+Supposons $\frac{u_p}{v_p} \to 0$. Définissons $\varepsilon_p = \frac{u_p}{v_p}$ si $p\geq N$ et $1$ dans le cas contraire. Alors $\varepsilon_p \to 0$ et $\forall p\geq N, u_p = \varepsilon_pv_p$, donc $u_p = o(v_p)$.
+\end{myproof}
+Exercice : Montrer que $u_p = o(v_p) \iff |u_p| = o(|v_p|)$. en utilisant la definition
+
+$u_p = v_p \varepsilon_p \Rightarrow |u_p| = |\varepsilon_pv_p| = |o||v_p| = o(|v_p|)$ car $\varepsilon_p>0$.
+
+$|u_p| = o(|v_p|) \iff \frac{|u_p|}{|v_p|} \to 0$ Si $u_p$ et $v_p$ sont de m\^eme signe, $\frac{u_p}{v_p} \geq 0$ et $\frac{u_p}{v_p} \to 0+$. Dans le cas contraire, $\frac{u_p}{v_p} \to 0-$. Dans tous les cas, $\frac{u_p}{v_p} \to 0-$, donc $u_p = o(v_p)$.
+
+
+
+
+Exemple : $p^3 = o(p^5)$.
+
+Exemple : $p^k = o(p^m) \iff m > k$.
+
+On a jamais $u_p = o(u_p)$ sauf si la suite est nulle à partir d'un certain rang.
+\begin{proposition}
+Si $u = o(v), v=o(w)$, alors $u=o(w)$.
+\end{proposition}
+\begin{myproof}
+Il existe 2 suites $\varepsilon$ et $\eta$ qui tendent vers 0 telles que $u_p = \varepsilon_pv_p \forall p\geq N_1$ et $v_p = \eta_pw_p \forall p\geq N_2$
+
+$\forall p\geq \max(N_1,N_2), u_p = \varepsilon_pv_p = \varepsilon_p\eta_pw_p$. On pose $\delta_p = \varepsilon_p\eta_p \to 0$.
+\end{myproof}
+\begin{definition}[Suite dominée]
+Soient $u$ et $v$ deux suites, on dit que $u$ est dominée par $v$, noté $u = O(v)$ si $\exists \eta $ une suite \emph{bornée} telle que $u_p = \eta_pv_p$ à partir d'un certain rang.
+\end{definition}
+\begin{proposition}
+Si $u = o(v)$, alors $u=O(v)$.
+\end{proposition}
+\begin{myproof}[À faire]
+$u_p = o(v_p) = \varepsilon_pv_p$ avec $\varepsilon_p\to 0$. Elle est convergente, donc bornée. On peut donc poser $\eta_p = \varepsilon_p$ et $u_p = \eta_pv_p = O(v_p)$
+\end{myproof}
+\begin{proposition}
+Si $v_p \neq 0, \forall p\geq N_1$, on a :
+$u = O(v)  \iff \exists C \in\R tq \forall p\geq N, |\frac{u_p}{v_p}| \leq C$.
+\end{proposition}
+\begin{myproof}
+$(u_p) = O(v_p) = \eta_pv_p$, donc $\frac{u_p}{v_p} = \frac{\eta_pv_p}{v_p} = \eta_p$ qui est bornée. Donc par définition, $\exists C \in\R tq \forall p\geq N, |\frac{u_p}{v_p}| \leq C$
+
+Autre sens ?
+\end{myproof}
+-------
+\begin{proposition}
+Soient $u,v,w$ trois suites. Si $u=O(v)$ et $v=O(w)$, alors $u=O(w)$.
+\end{proposition}
+\begin{proposition}
+Soient $u = O(v) \wedge v_p\to 0 \Rightarrow u_p\to 0$.
+\end{proposition}
+\begin{myproof}
+$\exists \eta$ suite bornée et $N\in\N$ tel que $u_p =\eta_pv_p,\forall p\geq N$. Alors $\forall p\geq N, |u_p| = |\eta_pv_p| = |\eta_p||v_p|$. Comme $\eta$ est bornée, $\exists C\in\R$ tel qye $\forall p\in\N, |\eta_p|\leq C$.
+
+Donc $ \forall p\geq N, |u_p|\leq c|v_p| \to 0$, donc $u_p\to 0$.
+\end{myproof}
+Exemple : $u_p = p^2 + 3p +2$ et $v_p = p^2+6p-3$. On remarque que $v_p\to \infty$ donc $\exists N, \forall n\geq N, v_p\geq 1$. Pour $p\geq N, \frac{u_p}{v_p}\to 1$. La suite converge, donc elle est bornée.
+\begin{definition}[Suite équivalente]
+Soient $u$ et $v$ 2 suites équivalentes. La suite $u$ est éuivalente à $v_p$, noté $u\sim v$ si $u_p = v_p + o(v_p)$ ou encore $\exists \varepsilon \to 0, \forall p\geq N, u_p = v_p + \varepsilon_pv_p = (1+\varepsilon_p)v_p$
+\end{definition}
+\begin{proposition}
+Soient $u$ et $v$ deux suites. $u_p \sim v_p \iff \frac{u_p}{v_p} \to 1$
+\end{proposition}
+\begin{myproof}
+Si $u_p \sim v_p, \exists N_1,\varepsilon \to 0$ telle que $u_n = v_n(1+\varepsilon) \forall p\geq N_1$. Donc $\forall p\geq N_1+N, \frac{u_p}{v_p} = 1+\varepsilon_p \to 1$.
+
+Récirpoquement, on suppose $\frac{u_p}{v_p}\to 1$. Pour $p\geq Nu_p = v_p \frac{u_p}{v_p} = v_p(1+ \frac{u_p}{v_p} -1) $. posons $\varepsilon_p = 42 si p<N, \frac{u_p}{v_p}-1$ sinon. Alors $\varepsilon_p \to 0$ et $\forall p\geq N, u_p = v_p(1+\varepsilon_p)$.
+\end{myproof}
+\begin{proposition}
+Soient $u,v,w$ trois suites. On a :
+\begin{itemize}
+ \item $u\sim u$
+ \item $u_p \sim v_p \iff v_p\sim u_p$
+ \item $u_p\sim v_p$ et $v_p\sim w_p$ alors $u_p\sim w_p$.
+\end{itemize}
+\end{proposition}
+\begin{myproof}
+$u_p = (1+0)u_p$ avec $0=\varepsilon_p$.
+
+Supposons que $u_p\sim v_p$, alors $\exists \varepsilon_p \to 0$ et $N$ tel que $\forall p\geq N, u_p = (1+\varepsilon_p)v_p$. Comme $\varepsilon_p \to 0,\exists N_3, \forall p\geq N_3, |\varepsilon_p|\leq 1/2$, et donc $1+\varepsilon_p \geq 1-|\varepsilon_p| \geq 1/2>0$. Donc $\forall n\geq \max(N,N_3)$, on a $v_p = u_p \frac{1}{1+\varepsilon_p} = u_p(1+\frac{1}{1+\varepsilon_p}-1) = u_p(1+\frac{-\varepsilon_p}{1+\varepsilon_p})$. Posons alors $\varepsilon_q = \frac{-\varepsilon_p}{1+\varepsilon_p} si p\geq \max(N,N_3)$. Alors $\varepsilon_q \to 0$ e $\forall p\geq \max(N,N_3), v_p (1+\varepsilon_p)u_p$.
+\end{myproof}
+Exemple : Soit $u_p, |u_p|<1$ et $u_p\to 0$. Alors $\ln(1+u_p) \sim u_p$.
+
+$v_p = \ln(1+u_p) = \ln(1+up) - \ln(1)$. D'après le TAF :$\exists c_p\in[1-|u_p|,1+|u_p|]$ tel que $\ln(1+u_p) - \ln(1) = \ln'(c_p)(1+u_p-1) = \frac{u_p}{c_p} = u_p(1+\frac{1}{c_p} -1) = u_p(1+\frac{1-c_p}{c_p})$. Or, $c_p \to 1, 1-|u_p| \leq c_p\leq 1+|u_p|$.
+\begin{proposition}
+Soient $u$ et $v$ 2 suites. On suppose que $u_p\sim v_p$ et $v$ converge vers $l$. Alors $u_p\to l$.
+\end{proposition}
+\begin{myproof}[À faire]
+$v_p \to l \wedge u_p = (1+\varepsilon)v_p$, donc $u_p \to l \times 1 = l$.
+\end{myproof}
+\begin{proposition}
+$u$ et $v$ deux suites réelles. Si $u\sim v$ et $v_p\to\infty$, alors $u_p\to \infty$.
+\end{proposition}
+\section{Sous-suites}
+\begin{definition}
+On dit que $v$ est une suite extraite de $u \iff \exists \varphi : \N \to \N$ strcutement croissante telle que $\forall p\in\N, v_p = u_{\varphi(p)}$.
+
+\end{definition}
+
+Exemple : $u_0,u_1,u_2,\dots,u_p$ Si on prend $v_0 = u_2, \varphi(0) = 2$
+
+C'est $\varphi$ qui définit la sous-suite, la suite $u$ est une suite extraite de $u$. Il suffit de prendre $\varphi(p) = p$.
+\begin{proposition}
+On a $\varphi(p) \geq p$.
+\end{proposition}
+\begin{myproof}[Laissée en exo]
+\end{myproof}
+\begin{proposition}
+Une suite converge vers $l$ $\iff$ toutes ses suites extraites cobvergent ver $l$.
+\end{proposition}
+\begin{myproof}
+$u$ est une suite extraite de $u$
+
+Dans l'autre sens : $u$ CV vers $l$ donc $\forall \varepsilon >0\exists N\forall n\geq N, |u_p|-l<\varepsilon$. Soit $v$ une suite extraite de $u$. $\exists \varphi N\to\N, \forall n\in\N, v_p = u_{\varphi(p)}$. $\forall p\geq N,\varphi(p) \leq p, |v_p-l| = |u_{\varphi}-l| <\varepsilon$.
+\end{myproof}
+\begin{definition}[Valeur d'adhérence]
+$l$ est une valeur d'adhérence $\iff$ $l$ est une limite finie d'une suite extraite de $u$.
+\end{definition}
+\begin{proposition}
+Toute suite admet une sous-suite monotone.
+\end{proposition}
+\begin{theorem}[Bolzano Weitrass]
+ Toute suite réelle bornée admet une sous-suite convergente.
+\end{theorem}
+\begin{myproof}
+Soit une sous-suite réelle/complexe bornée. Elle admet une sous-suite monotone qui sera aussi bornée (pourquoi ?), donc convergente
+\end{myproof}
+\section{Suite de Cauchy}
+\begin{definition}[Suite de Cauchy]
+Soit $u$ une suite. On dit que $u$ est de Cauchy si elle vérifie une des 2 prorpiétés suivantes équivalentes :
+\begin{itemize}
+ \item $\forall \varepsilon>0, \exists N\in\N, \forall p\>N, q>N, |u_p-u_q|\leq\varepsilon$
+  \item $\forall \varepsilon>0, \exists N\in\N, \forall p\>N, q>N, |u_{p+q}-u_p|\leq\varepsilon$
+\end{itemize}
+\end{definition}
+\begin{proposition}
+Toute suite convergente est de Cauchy
+\end{proposition}
+\begin{myproof}
+On prend une suite et sa limite $l$. Alors $\forall \varepsilon >0, \exists N\in\N, \forall p\leq N, |u_p-l| \leq \frac{\varepsilon}{2}$. D'où $\forall p,q\geq N, |u_p-u_q| = |u_p-l+l-u_q| \leq |u_p-l|+|l-u_q| \leq \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon$.
+\end{myproof}
+\begin{proposition}
+Toute suite de Cauchy est bornée.
+\end{proposition}
+\begin{myproof}
+Prenons $\varepsilon = 1, \exists N,\forall p,q\geq N, |u_p-u_q|\leq 1$.
+
+Alors ,$\forall p\geq N, |u_p-u_N+u_N|\leq |u_p-U_n|+|u_N|\leq 1 + |u_N|$. On a bien écrit que la suite $u_p$ est bornée.
+
+Posons $C=\max(|u_0|,|u_1|,\dots|U_n|, 1+|U_N|)$. Si $p\leq N, |u_p \leq C$. Si $p\geq N, |u_p|\leq C$. Donc $u$ est bornée.
+\end{myproof}
+\begin{proposition}
+Si $u$ est de Cauchy et admet une sous-suite convergente, alors $u$ converge.
+\end{proposition}
+\begin{myproof}
+Il existe $\varphi : \N \to \N$ strcitement croissant et un $l$ tel que $\forall \varepsilon >0,\exists N_1,\forall p\geq N_1, |u_{\varphi(p)}-l|\leq \frac{\varepsilon}{2}$.
+
+Comme la suite est de Cauchy, $\exists N_2,\forall p;q\geq N_2,|u_p-u_q|\leq \frac{\varepsilon}{2}$.
+
+Soit $N = \max(N_1N_2),\forall p\geq N,\varphi(p)\geq N$, d'où $|u_p-l| = |u_p-u_{\varphi(p)}+u_{\varphi(p)}-l| \leq |u_p-u_{\varphi(p)}| + |u_{\varphi(p)}-l| \leq \varepsilon/2 + \varepsilon/2 = \varepsilon$.
+
+Donc $u$ converge vers $l$.
+\end{myproof}
+\begin{theorem}
+ Toute suite de Cauchy converge. On dit que $\R$ et $\C$ sont complets.
+\end{theorem}
+\begin{myproof}
+Soit $u$ de Cauchy. Alors $u$ est bornée. Par BW, elle admet une sous-suite convergente, donc elle converge.
+\end{myproof}
+\subsection{Types de suite}
+\subsubsection{Suites géométriques, arithmétiques}
+\begin{definition}
+\begin{itemize}
+ \item arithmétique : $u_{n+1} = u_n + r \Rightarrow u_n = u_0+nr$
+ \item géométrique : $u_{n+1} = u_n \times q \Rightarrow u_n = u_0\times q^n$
+ \item arithmético-géométrique : $u_{n+1} = q u_n +a \Rightarrow u_n = q^n u_0 + \frac{1-q^n}{1-q}a$
+\end{itemize}
+\end{definition}
+\begin{definition}[Suite linéaire d'ordre 2]
+C'est une suite de la forme : $u_{n+2} = au_{n+1} + bu_{n}$
+
+On associe le polynomes $x^2-ax-b$ dont on doit trouver les solutions pour avoir l'expression de $u_n$.
+
+
+\end{definition}
+\begin{theorem}[Écriture d'une telle suite]
+ Si les racines $\lambda$ sont réelles : $u_n = \alpha\lambda_1^n+\beta\lambda_2^n$
+
+ Si les racines sont complexes, on en met une sous la forme $re^{i\theta}$ et on écrit $u_n = \alpha r^n \cos(n\theta)+\beta r^n \sin(n\theta)$
+\end{theorem}
+
+\end{document}
+

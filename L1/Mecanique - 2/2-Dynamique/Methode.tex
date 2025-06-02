@@ -1,0 +1,133 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mécanique}
+\subtitle{Mécanique du point}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{S.Deheuvels}%sebastien.deveuhels.irap.omp.eu
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{cancel}
+\usepackage{xcolor}
+\newcommand\Ccancel[2][black]{\renewcommand\CancelColor{\color{#1}}\cancel{#2}}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\dd}[0]{\mathrm{d}}
+\newcommand{\ddp}[0]{\partial}
+%\DeclareMathOperator\arctanh{arctanh}
+\DeclareMathOperator\grad{grad}
+\begin{document}
+
+%\titleOne
+\setcounter{chapter}{1}
+	\chapter{Travail - Énergie}
+\section{Exprimer le travail d'une force}
+\subsection{Déplacement élémentaire}
+On réécrit le déplacement élémentaire dans la base considérée (souvent la cartésienne) : $W_{AB}(\vec{F_i}) = \int_{C,AB}(\vec{F_i})\cdot (\dd x \vec{e_x} + \dd y \vec{e_y} + \dd z \vec{e_z})$
+
+Le but est ensuite d'écrire le déplacement élémentaire en fonction d'une seule composante $\dd x, \dd y$ ou $\dd z$. Pour cela,
+\begin{itemize}
+ \item soit on remarque le déplacement s'effectue selon un axe seulement (cas d'un déplacement horizontal ou vertical): on peut alors supprimer les $\dd y, \dd x, \dd z$ où il n'y a pas de déplacement
+ \item soit on utilise l'équation du mouvement (équation de droite, de parabole)
+\end{itemize}
+Dans le deuxième cas, on va se servir de l'équation fournie ou à créer.
+\subsubsection{Droite}
+Dans le cas d'une droite (on suppose dans notre exemple qu'elle est contenue dans le plan (oxy)), on peut écrire une relation entre les 2 axes de la forme \(y = ax+b\).
+
+Pour déterminer $b$, qui est l'ordonnée à l'origine, on utilise la valeur de y quand $x=0$.
+
+Pour déterminer $a$, il faut déterminer la pente de la droite. Pour cela, on prend 2 points dont on connait la valeur en y et on applique la formule : $a = \frac{y_2-y_1}{x_2-x_1}$
+
+Une fois l'équation obtenue, on va exprimer le déplacement élémentaire en fonction de $\dd y$ puis en fonction de $\dd x$ :
+\begin{flalign*}
+&y = ax+b\\
+&\Rightarrow \dd y = a \dd x\\
+&\Rightarrow \dd r = \dd x(\vec{e_x} + a\vec{e_y})\\
+&x = \frac{y-b }{a}\\
+&\Rightarrow \dd x = \frac{1}{a}\dd y\\
+&\Rightarrow \dd r = \dd y(\vec{e_y} + \frac{1}{a}\vec{e_x})
+\end{flalign*}
+\subsubsection{Autre fonction donnée}
+On a une trajectoire dans le plan dont l'équation est définie par une expression quelconque. Pour notre exemple, nous prendrons $y = ax^2$
+
+Ici, aussi on va exprimer le déplacement élémentaire en fonction de $\dd y$ puis en fonction de $\dd x$ :
+\begin{flalign*}
+&y = ax^2\\
+&\Rightarrow \dd y = 2ax \dd x\\
+&\Rightarrow \dd r = \dd x(\vec{e_x} + 2ax\vec{e_y})\\
+&x = \sqrt{\frac{y}{a}} = \frac{1}{\sqrt{a}} \sqrt{y}\\
+&\Rightarrow \dd x =\frac{1}{\sqrt{a}} \frac{1}{2\sqrt{y}}\dd y\\
+&\Rightarrow \dd r = \dd y(\vec{e_y} + \frac{1}{\sqrt{a}} \frac{1}{2\sqrt{y}}\vec{e_x})
+\end{flalign*}
+\subsection{Calcul du travail}
+On applique la formule $W_{AB}(\vec{F_i}) = \int_{C,AB}\vec{F}\cdot \dd \vec{r}$ en remplaçant le déplacement élémentaire par celui obtenu juste avant et la force par sa décomposition en fonction des vecteurs de la base utilisée.\marginTips{On préférera utiliser la décomposition du déplaceent élémentaire dont la variable $\dd$ apparait dans l'expression de la force. Par exemple, si la force dépend des coordonnées x, on utilise plutot l'expression avec $\dd x$}
+
+\warningInfo{Remplacement du déplacement élémentaire}{Lorsque l'on remplace le déplacement élémentaire par son expression en fonction de  $\dd y, \dd x, \dd z$, il faut changer les bornes de l'intégrale par les coordonnées selon $y,x $ ou $z$ des point de départ et d'arrivée. En effet, nous n'intégrons plus sur le chemin mais selon une seule composante !  }
+Exemple avec $\vec{F} = (ay^2+b)\vec{e_x}+cy\vec{e_y}$ et des $\dd$ calculés avec la méthode précédente de la forme $\dd r = \dd x(\vec{e_x}+\alpha \vec{e_y}) = \dd y(\frac{1}{\alpha}\vec{e_x} + \vec{e_y})$
+\newpage
+\explanation{1}{On remarque ici que la force s'exprime en fonction de y. Nous allons donc utiliser le déplacement élémentaire en fonction de y dans la prochaine étape }
+\explanation{2}{On n'oublie le changement des bornes. Dans cet exemples, on suppose que les cordonnées en y du point de départ sont h et 0}
+\explanation{3}{On fait le produit scalaire en se rappelant que dans la base cartésienne $\vec{e_x}\cdot \vec{e_y} = 0$ et que $\vec{e_y}\cdot \vec{e_y} =1$ }
+\explanation{4}{Il ne nous reste plus qu'à intégrer}
+On a :
+\begin{flalign*}
+W &= \int_C \vec{F} \cdot \dd \vec{r}\\
+&= \int_C ((ay^2+b)\vec{e_x}+cy\vec{e_y}) \cdot \dd \vec{r}\explain{1}{right}{0}{0.5}{×}\\
+&= \int_h^0 ((ay^2+b)\vec{e_x}+cy\vec{e_y}) \cdot (\dd y(\frac{1}{\alpha}\vec{e_x} + \vec{e_y}))\explain{2}{right}{0}{0.5}{×}\\
+&= \int_h^0 \frac{1}{\alpha}(ay^2+b)+cy (\dd y)\explain{3}{right}{0}{0.5}{×}\\
+&= \int_h^0 \frac{1}{\alpha}(ay^2) + \frac{1}{\alpha}(b)+cy (\dd y)\explain{4}{right}{0}{0.5}{×}\\
+&= [ \frac{1}{3\alpha}(ay^3) + \frac{1}{\alpha}(by)+c\frac{y^2}{2} ]^0_h\\
+&= \frac{1}{3\alpha}(ah^3) + \frac{1}{\alpha}(bh)+c\frac{h^2}{2}\\
+\end{flalign*}
+\section{Énergie potentielle}
+\subsection{Déterminer l'énergie potentielle à partir d'une force}
+\checkInfo{Méthode}{On sait que \(\vec{F} = -\nabla E_p\)
+
+Donc, dans un repère cartésien,  \(E_p = -\int \vec{F}\cdot \vec{e_x}\dd x -\int \vec{F}\cdot \vec{e_y}\dd y -\int \vec{F}\cdot \vec{e_z}\dd z +Cst\)
+
+Pour déterminer la constante, on peut se servir de la valeur de l'énergie potentielle en un point ou à l'infini.}
+Exemple avec $\vec{F} = -a\cos(\alpha)\vec{e_x} - a\sin(\theta)\vec{e_y} - b\cos(\beta)\vec{e_z}$. On sait que l'objet reste sur l'axe z=0.
+
+En intégrant, on obtient :
+\[E_p = a \cos(\alpha)x + a\sin(\alpha)y + b\cos(\beta)z + K\]
+
+Si l'on suppose que l'énergie potentielle est nulle à l'origine du repère, K = 0.
+
+Comme on sait que z=0, on peut simplifier :
+
+\[E_p = a \cos(\alpha)x + a\sin(\alpha)y\]
+\subsection{Étudier des positions d'équilibre}
+On a une force dont on connait l'énergie potentielle. On aimerait connaitre, en supposons que l'objet est uniquement soumis à cette force, ses positions d'équilibres.
+
+Pour cela, il faut résoudre \(\vec{F} = \vec{0}\)
+
+Pour connaitre la nature des positions d'équilibre trouvées, il faut calculer la dérivée seconde de l'énergie potentielle trouvée.
+
+Si au point étudiée, la dérivée est positive, l'équilibre est stable. Dans le cas contraire, il est instable.
+
+Autrement dit, si \(\frac{\dd E_p(x_0)}{\dd x} >0\), l'équilibre est stable, et si \(\frac{\dd E_p(x_0)}{\dd x} <0\) l'équilibre est instable.
+\end{document}
+

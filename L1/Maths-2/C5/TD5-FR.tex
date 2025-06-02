@@ -1,0 +1,211 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{MPS2}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{J.Daudé}%Jérémi Daudé
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{yFlatTable}
+\usepackage{multicol}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\newcommand{\tq}[0]{\text{ tel que }}
+\begin{document}
+
+%\titleOne
+\setcounter{chapter}{4}
+	\chapter{Applications linéaires}
+\section{Dimension quelconque}
+\subsection{Définition}
+On prend $E,F$ 2 R-ev
+\begin{definition}
+\(f:E\to F\) est une application linéaire si
+\begin{itemize}
+ \item \(f(u+_Ev) = f(u)+_Ff(v)\)
+ \item \(f\lambda \cdot_E u = \lambda \cdot_F f(u)\)
+\end{itemize}
+\end{definition}
+Exemple : \(f:p\in R[X]\to (P(0),P(1),P(2))\in \R^3\) est une application linéaire. En effet, \(f(p+q) = (p+q)(0)+(p+q)(1)+(p+q)(2)= (p(0)+p(1)+p(2))+(q(0)+q(1)+q(2)) = f(p)+f(q)\)
+
+Soit $P \in \R[X]$ et $\lambda \in \R$ : $f(\lambda p) = (\lambda (P(0),P(1),P(2)))$
+
+Exemple : $g : p\in\R[X]\to (p(0),p(1),p(0)p(1))$
+
+Prenons $P(X)=1,\lambda=2 : \lambda g(P) = (2.2.2), g(\lambda P) = (2.2.4)$.
+\warningInfo{Remarque}{On peut au\(\iff\) vérifier les 2 propriétés en m\^eme temps. On montre alors que \(f(\lambda u + v)= \lambda f(u)+f(v)\)}
+\begin{proposition}
+Soit \(f:E\to F\) linéaire. Alors \(f(0_E) = 0_F\)
+\end{proposition}
+\checkInfo{Notation}{On note \(L(E,F)\) l'ensemble des applications linéaires de E dans F et \(L(E) = L(E,E)\).}
+\begin{definition}[Formes linéaires]
+On dit que f est une forme linéaire si \(f\in L(E,\R)\).
+
+Si une application linéaire est bijective, on dit que \(f\) est isomorphisme d'espace vectoriel.
+
+Si \(f\in L(E)\), c'est un endomorphisme.
+
+Si la fonction vérifie les 2, c'est un automorphisme.
+\end{definition}
+\begin{definition}
+Soit \(f\in L(E,F)\).
+
+On appelle image de \(f\), noté \(Im(f)\) ou \(R(f)\) l'ensemble \(\{f(x),x\in E \}\subset F\).
+
+On appelle noyau \(f\), noté \(Ker(f)\) l'ensemble des antécédants du vecteur nul \(\{x\in E, f(x)=0_F\}\subset E\).
+\end{definition}
+\begin{proposition}
+\(f\in L(E,F)\). Alors \(Ker(f)\) est sev de E et \(Im(f)\) est un sev de F.
+\end{proposition}
+\begin{proposition}
+Soit \(f\in L(E,F)\). Alors \(f\) est surjective \(\iff\) \(Im(f)=F\). Elle est injective \(\iff\) \(Ker(f) = \{0_E\}\).
+\end{proposition}
+\begin{proposition}
+la composée de 2 applications linéaires est une application linéaire
+\end{proposition}
+\begin{proposition}
+Soit f un isomorphisme de E dans F. Alors \(f^{-1} \in L(F,E)\)
+\end{proposition}
+\begin{proposition}
+Soit E et F des ev. \(L(E,F)\) est un ev dont le vecteur nul est l'application dont l'image est le vecteur nul de F.
+\end{proposition}
+\subsection{Exemples}
+\begin{itemize}
+ \item \(Id_E : x\in E \to x\in E\)
+ \item les homotéthies : \(f_{\mu} : x\in E \to \mu X\in E\) (automorphisme si \(\mu\neq 0\))
+ \item Les projecteur / projections
+\end{itemize}
+\subsubsection{Projecteurs}
+\begin{definition}[Projecteurs]
+On dit que \(p\in L(E)\) est un projecteur \(\iff p^2 (= p\circ p) = p\)
+\end{definition}
+Exemple : $p(a,b,c)\in \R^3 \to (a,b,0)$
+
+Exemple : $Q = \sum_{m=0}^N a_mX^m \to \sum_{m=0}^{\min(K,N)} a_mX^m$
+
+\begin{proposition}
+Soit p un projecteur de E. Alors
+\begin{enumerate}
+ \item \(\forall v \in Im(p), p(v) = v\)
+ \item \(E = Im(p)\oplus Ker(p)\)
+\end{enumerate}
+\end{proposition}
+\begin{definition}[Projection]
+E un ev, F et G supplémentaires dans E : \(\forall u \in E, \exists! u_F,u_G tq u = u_F+u_G\). On appelle projection sur F parallèlement à G l'application \(p: u_F+u_G \to u_F\). Alors
+\begin{enumerate}
+ \item \(p\in L(E)\)
+ \item \(p^2=p\)
+ \item Im(p) = F, Ker(p) = G
+\end{enumerate}
+\end{definition}
+\begin{proposition}[Corollaire]
+Soit \(p\in L(E)\)
+
+\(p\) est un projecteur \(\iff\) p est une projecion sur Im(p) parallèlement à Ker(p).
+\end{proposition}
+\begin{proposition}
+\(p\in L(E)\) est un projecteur \(\iff Id_E-p\) est un projecteur.
+\end{proposition}
+\begin{proposition}[Corollaire]
+Si p est une projection, \(Im(p) = Ker(Id_E-p), Ker(p) = Im(Id_E-p)\)
+\end{proposition}
+\subsubsection{Symétrie}
+\begin{definition}
+Soit \(s\in L(E)\). C'est une symétrie \(s^2 = Id_E\).
+\end{definition}
+\begin{proposition}[Lien entre symétrie et projecteur]
+\begin{enumerate}
+ \item si s est une symétrie, \(p = 0.5(s+Id_E)\) est un projecteur
+ \item si p est un projecteur, alors \(s = 2p-Id_E\) est une symétrie
+\end{enumerate}
+\end{proposition}
+\begin{proposition}[Corollaire]
+Soit s une symétrie. ALors \(E = Ker(s+Id_E)\oplus Ker(s-Id_E)\).
+\end{proposition}
+\begin{proposition}
+Soit E un ev, F et G 2 sev supplémentaires de E. On définit
+
+\(s : u = u_F+u_G\in E \to u_F-u_G\in E\).
+
+On appelle s symétrie par rapport à F parallèlement à G.
+
+Alors \begin{enumerate}
+       \item \(s\in L(E)\)
+       \item \(s^2=Id_E \Leftarrow s est une symétrie\)
+       \item \(Ker(s-Id_E) = F, Ker(s+Id_E) =G\)
+      \end{enumerate}
+\end{proposition}
+\begin{proposition}[Corollaire]
+Soit \(s\in L(E) tq s^2 = Id_E\). Alors s est une symétrie par rapport à \(Ker(s-Id_E)\) parallèlement à \(Ker(s+Id_E)\)
+\end{proposition}
+Exemple : $(a,b,c)\to (a,b,-c)$
+
+Exemple : $\sum a_k X^k \to \sum (-1)^k a_k X_k$
+\section{Dimension finie}
+E est un R-EV de dimension finie et F de dimension quelconque
+
+On note N la dimension de E
+
+\begin{proposition}
+Soit \(F\in L(E,F)\). Alors \(Im(f)\) est de dimension finie \(\leq N\). On appelle cette dimension rang de \(f\), noté \(rg(f)\).
+\end{proposition}
+\begin{definition}
+Soit B une base de E. Soit \(p\in \{1,\dots,\N\}\). On note \(C_{pi}u = \lambda_1e_1+\dots+\lambda_Ne_N \in E \to \lambda_p\in \R\). Alors \(C_p\) est une forme liénaire, et pour tout \(u\in E, u = c_1(u)e_1+\dots+c_N(u)e_N\). \(C_p\) est appellée application p-ème coordonnée dans la base B.
+\end{definition}
+\begin{theorem}[]
+ Soient B une base de dimension N quelconque de E et F une famille de N vecteur de G.
+
+ Alors Il existe une unique application linéaire telle que \(\forall i \in \{1,\dots,\N\}, f(e_i) = v_i\)
+\end{theorem}
+\begin{proposition}[Corollaire]
+Soit B une base de E et f une application linéaire. Alors f est complètement déterminée par la connaissance de \((f(e_1),\dots,f(e_N))\). En effet, \(f : u\in E \to \sum_{p=1}^N c_p(u)f(e_p)\).
+\end{proposition}
+\begin{proposition}
+Soit f une application linéaire. Si f est un isomorphisme (bijective), alors F a la dimension de E.
+\end{proposition}
+\begin{theorem}[Théorème du rang]
+ Soit \(f\in L(E,F)\). Alors \(\dim(Ker(f))+rg(f) = \dim(E)\)
+\end{theorem}
+\begin{proposition}
+Si f est injective, alors \(\dim(E)\leq \dim(F)\).
+
+Si f est surjective, alors \(\dim(F)\geq \dim(F)\)
+\end{proposition}
+
+\begin{proposition}[Corollaire]
+E et F de dimension finie et égale. Soit \(f\in L(E,F)\). Alors f est bijective \(\iff\) f surjective, \(\iff\) f injective.
+\end{proposition}
+\begin{proposition}[Cororllaire]
+Soit \(f\in L(E)\), alors \(f\) est injective \(\iff\) f est surjective ou surjective
+\end{proposition}
+Exercice : Soit E un EV de dimension finie. Mq toute symétrie de E est bijective et mq le seul projecteur bijectif de E est \(p=Id_E\)
+\begin{proposition}
+Soit f une fonction linéaire de E dans F
+f est bijective \(\iff \) L'image d'une base de E par f est une base de F
+\end{proposition}
+\begin{proposition}
+Supposons \(\dim(F)< +\infty\). Alors \(L(E,F)\) est de dimension finie et \(\dim(L(E,F)) = \dim(E)\times \dim(F)\)
+\end{proposition}
+\end{document}

@@ -1,0 +1,196 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\dd}{\mathrm{d}}
+\begin{document}
+
+\setcounter{chapter}{3}
+
+	\chapter{Intégrales}
+\section{Techniques de base}
+\subsection{Intégration par parties}
+Soient $u,v$ 2 fonctions $C^1$\marginElement{\marginTitle{Classe $C^n$} $f$ est $C^n$ sur $[a,b]$ si $f$ est $n$ fois dérivables sur $[a,b]$ et $f^n$ est continue sur $[a,b]$. $C^{\infty}$ si $\forall n\in\mathbb{N}, f^n$ existe.} (continues de dérivée continues) sur $[a,b]$. Alors
+\begin{theorem}[Formule]
+\[\int_a^b u(x) v'(x) \, dx  = \Big[u(x) v(x)\Big]_a^b - \int_a^b u'(x) v(x) \, dx\]
+\end{theorem}
+\subsection{Changement de variable dans une intégrale}
+\begin{theorem}[]
+Soit $f : [a,b]\to \mathbb{R}$ une fonction intégrable
+
+Soit $\varphi [\alpha,\beta] \to [a,b]$ une application bijective et $C^1$. On note $\varphi^{-1}$ l'application réciproque
+
+Alors $\int^b_a f(t)\mathrm{d}t = \int^{\varphi^{-1}(b)}_{\varphi^{-1}(a)} f(\varphi(u))\varphi'(u)\mathrm{d}u$.
+\end{theorem}
+\subsection{Méthode}
+\warningInfo{Vérifications à faire}{Avant d'intégrer, il faut toujours vérifier que la fonction est intégrable, c'est à dire qu'elle est monotone ou continue sur $[a,b]$.}
+\subsubsection{Première méthode}
+Il faut que la fonction $u$ choisie soit bijective pour appliquer cette méthode !
+\begin{enumerate}
+ \item On pose $t = \varphi(u)$
+ \item $\mathrm{d}t = \varphi'(u)\mathrm{d}u$
+ \item Valeurs aux bornes $t=a \Rightarrow u = \varphi^{-1}(a)$ et $t=b \Rightarrow u = \varphi^{-1}(b)$
+\end{enumerate}
+\subsubsection{Variante}
+Variante dans le calcul de primitive. On n'exige pas le fait que cela soit bijectif
+
+Soit $f$ une fonction continue sur $[a,b]$
+
+\[\int f(t)\mathrm{d}t = \int f\circ \varphi (u) \varphi'(u)\mathrm{d}u\]
+
+On pose $t = \varphi(u)$ et $\mathrm{d}t = \varphi'(u)\mathrm{d}u$
+
+Si $F = \int f$ et $f$ continue sur $[a,b]$, $(F\circ \varphi)' = F'\circ \varphi \times \varphi' = f\circ \varphi \times \varphi'$
+\subsection{En pratique}
+\subsubsection{Exemple 1}
+Calculons : \[\int^1_0 \sqrt{e^x-1}\]
+
+On va effectuer un changement de variable pour tenter d'enlever la racine.
+
+On pose donc $u=\sqrt{e^x-1}$. Calculons maintenant $\mathrm{d}u$ pour en déduire $\mathrm{d}x$ : $\mathrm{d}u = \frac{e^x}{2\sqrt{e^x-1}}\mathrm{d}x = \frac{e^x-1 +1}{2u}\mathrm{d}x = \frac{u^2 +1}{2u}\mathrm{d}x$.\marginTips{Le but est de simplifier l'expression au maximum et l'exprimer le plus possible en fonction de $u$.}
+Finalement, on obtient $\mathrm{d}x = \frac{2u}{u^2+1} \mathrm{d}u$
+\infoInfo{Remarque}{Comme la fonction $u$ est bijective, on aurait aussi pu calculer sa réciproque pour obtenir une nouvelle expression de $x$ : $u = \sqrt{e^x-1} \iff u^2 = e^x-1 \iff u^2+1 = e^x \iff x= \ln(u^2+1)$. On peut ensuite exprimer directement $\mathrm{d}x = \frac{2u}{u^2+1}\mathrm{d}u$}
+
+On applique maintenant la fonction $u$\marginCritical{et non sa réciproque !} aux bornes de l'intégrale : On obtient $x=0 \Rightarrow u(0) =0, x=\ln(2)\Rightarrow u(\ln(2)) = 1$.
+
+On peut maintenant reécrire l'intégrale :
+\begin{flalign*}
+I &= \int^1_0 u \times \frac{2u}{u^2+1}\mathrm{d}u\\
+&= \int^1_0  \frac{2u^2}{u^2+1}\mathrm{d}u\\
+&= 2\int^1_0  \frac{u^2 -1+1}{u^2+1}\mathrm{d}u\\
+&= 2\int^1_0  1-\frac{1}{u^2+1}\mathrm{d}u\\
+&= 2[u -\tan^{-1}(u)]^1_0\\
+&= 2-\frac{2\pi}{4}\\
+\end{flalign*}
+\subsubsection{Exemple 2}
+Calculons : \[\int \sin^5(x)\cos^3(x)\mathrm{d}x\]
+
+On pose $u=\sin(x)$. Calculons maintenant $\mathrm{d}u$ pour en déduire $\mathrm{d}x$ : $\mathrm{d}u = \cos(x)\mathrm{d}x \iff \mathrm{d}x = \frac{\mathrm{d}u}{\cos(x)}$.
+\warningInfo{Remarque}{Comme la fonction $u$ n'est pas bijective, on ne peut pas écrire de manière équivalente que $x=\arcsin(u)$}
+On peut maintenant reécrire l'intégrale :
+\begin{flalign*}
+F(x) &= \int \sin^5(x)\cos^3(x)\mathrm{d}x\\
+&= \int u^5\cos(x)^3\frac{\mathrm{d}u}{\cos(x)}\\
+&=\int u^5\cos(x)^2\mathrm{d}u\\
+&=\int u^5(1-\sin(x)^2)\mathrm{d}u\\
+&=\int u^5(1-u^2)\mathrm{d}u\\
+&=\int u^5-u^7\mathrm{d}u\\
+&= [\frac{u^6}{6}-\frac{u^8}{8}] = [\frac{\sin(x)^6}{6}-\frac{\sin(x)^8}{8}]
+\end{flalign*}
+\subsection{Formulaire}
+\begin{multicols}{2}
+\begin{tabular}{_l^l}
+\tableHeaderStyle%
+Fonction & Primitive\\
+$x^n$ & $\frac{1}{n+1}x^{n+1}+k$ si $n\neq -1$\\
+$\frac{1}{x^n}$ & $-\frac{1}{(n-1)x^{n-1}}+k$\\
+$\frac{a}{x}$ & $a \ln x+k$\\
+$\frac{1}{\sqrt{x}}$ & $2\sqrt{x}+k$\\
+$\cos x$ & $\sin x +k$\\
+$\sin x$ & $-\cos x +k$\\
+$e^x$ & $e^x +k$\\
+$u'u^n$ & $\frac{1}{n+1}u^{n+1}+k$\\
+$\frac{u'}{u^n}$ & $-\frac{1}{n-1}\times\frac{1}{u^{n-1}}+k$\\
+$\frac{u'}{\sqrt{u}}$ & $2\sqrt{u}+k$
+\end{tabular}
+
+\begin{tabular}{_l^l}
+\tableHeaderStyle%
+Fonction & Primitive\\
+$u'\cos u$ & $\sin u+k$\\
+$u'\sin u$ & $-\cos u +k$\\
+$\frac{u'}{u}$ & $\ln u +k$\\
+$u'\sqrt{u}$ & $\frac{2}{3}(u)^{3/2} + k$\\
+$u'e^u$ & $e^u$\\
+$u'\cosh u$ & $\sinh u$\\
+$u'\sinh u$ & $\cosh u$\\
+$\frac{-1}{\sqrt{1-x^2}}$& $\cos^{-1}$\\
+$\frac{1}{\sqrt{1-x^2}}$& $\sin^{-1}$\\
+$\frac{1}{a^2+x^2}$& $\frac{1}{a}\tan^{-1}(\frac{x}{a})$
+\end{tabular}
+\end{multicols}
+\section{Techniques avancées}
+\subsection{Linéarisation}
+\begin{theorem}[Formules d'Euler]
+\[
+\cos(\theta) =\dfrac{e^{i\theta} + e^{-i\theta}}{2}\]
+\[\sin(\theta)= \dfrac{e^{i\theta} - e^{-i\theta}}{2i}\]
+\end{theorem}
+
+On souhaite intégrer $\cos(x)\times\sin(2x)\times\cos(3x)$. Pour cela, on applique les formules d'Euler\marginTips{Dans le cas où les cosinus et sinus ont des puissances, on utilise le triangle de Pascal pour déterminer les coefficients du développement !} pour obtenir une somme de cosinus et de sinus que l'on peut intégrer sans problèmes :
+\begin{flalign*}
+f&=\cos(x)\times\sin(2x)\times\cos(3x)\\
+&=\frac{1}{2}\left(e^{ix}+e^{-ix}\right) \times \frac{1}{2i}\left(e^{2ix}-e^{-2ix}\right) \times \frac{1}{2}\left(e^{3ix}+e^{-3ix}\right) \\
+&=\dfrac{1}{8i}\left(e^{3ix}-e^{-ix}+e^{ix}-e^{-3ix}\right)  \left(e^{3ix}+e^{-3ix}\right) \\
+&=\dfrac{1}{8i}\left(e^{6ix}+e^0-e^{2ix}-e^{-4ix}+e^{4ix}+e^{-2ix}-e^0-e^{-6ix}\right) \\
+&=\dfrac{1}{8i}\left(e^{6ix}-e^{-6ix}+e^{4ix}-e^{-4ix}-e^{2ix}+e^{-2ix}\right)\\
+&=\frac{1}{8i}\left[2i\sin(6x)+2i\sin(4x)-2i\sin(2x)\right]\\
+&=\frac14\left[\sin(6x)+\sin(4x)-\sin(2x)\right]\\
+F(x) &=\frac14\left[-\dfrac16\cos(6x)-\dfrac14\cos(4x)+\frac{1}{2}\cos(2x)\right]\\ &=\frac{1}{18}\left[-2\cos(6x)-3\cos(4x)+6\cos(2x)\right]
+\end{flalign*}
+\subsection{Décomposition en éléments simples}
+On cherche à obtenir une primitive de \[f(x) = \frac{1}{x^2-x-2}\]
+
+En factorisant le dénominateur, on reconnait une fraction rationnelle, il ne nous reste plus qu'à déterminer a et b:
+\[f(x) = \frac{1}{(x+1)(x-2)} = \frac{a}{x+1}+\frac{b}{x-2}\]
+Calculons a en multipliant par \(x+1\) deux 2 membres de l'égalité :
+\[\frac{1}{x-2} = a+(x-1)\frac{b}{x-2}\]
+Il nous suffit pour éliminer le membre avec b de donner à x une valeur qui annule \(x+1\), c'est à dire -1. On obtient alors :
+\[\frac{1}{(-1)-2} = \frac{1}{-3} = a\]
+On procède de la m\^eme manière pour déterminer b. En multipliant par \(x-2\) de 2 c\^otés et en donnant la valeur 2 à $x$, on trouve
+\[\frac{1}{2+1} = \frac{1}{3} = b\]
+Finalement, notre décomposition est :
+\[f(x) = \frac{-1}{3(x+1)} + \frac{1}{3(x-2)}\]
+Son intégrale vaut alors
+\[\int f \dd x = -\frac{1}{3}\int \frac{1}{x+1}\dd x + \frac{1}{3} \int \frac{1}{x-2}\dd x = \frac{1}{3} \ln(|\frac{x-2}{x+1}|)\]
+\subsection{Forme canonique}
+\begin{theorem}[Forme canonique]
+ La forme canonique d'une équation du second degré de la forme \(ax^2+bx+c\) est \[a(x+\frac{b}{2a})^2 - \frac{b^2-4ac}{4a}\]
+\end{theorem}
+Cette forme permet d'utiliser la formule de arctan pour calculer des intégrales avec un polyn\^ome du second degré en dénominateur.
+
+On cherche l'intégrale de \(f(x) = \frac{2x}{x^2+x+1}\). On aimerait décomposer cette fraction en éléments simples mais le polyn\^ome du dénominateur n'admet pas de racines réelles.
+
+On va donc ré-écrire le numérateur pour faire apparaitre la dérivée du dénominateur :
+
+\[f(x) = \frac{2x+1-1}{x^2+x+1} = \frac{2x+1}{x^2+x+1}-\frac{1}{x^2+x+1}\]
+
+La première fraction étant de la forme u'/u, sa primitive est triviale. Pour la seconde, on va mettre le dénominateur sous forme canonique pour utiliser la dérivée d'arctan :
+\[f(x) = \frac{2x+1-1}{x^2+x+1} = \frac{2x+1}{x^2+x+1}-\frac{1}{(x+\frac{1}{2}^2)+\frac{3}{4}}\]
+
+On applique la dernière formule de 4.1.5 avec \(a = \frac{\sqrt{3}}{2}\) pour obtenir la primitive de la fonction :
+\[F = \ln(x^2+x+1) - \frac{2}{\sqrt{3}}\arctan(\frac{2}{\sqrt{3}(x+1\frac{1}{2})})\]
+\subsection{Intégration par parties Tabulaire}
+En plus d'\^etre plus rapide que la méthode classique quand elle est ma\^itrisée, cette façon de faire est aussi plus fiable et simples à mémoriser. Voir la fiche dédiée.
+\end{document}
+
+

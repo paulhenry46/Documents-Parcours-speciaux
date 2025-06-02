@@ -1,0 +1,101 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mécanique 2}
+\subtitle{Chimie}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{IHallery}%isabelle.hallery@univ-tlse3.fr
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\begin{document}
+\setcounter{chapter}{3}
+%Controle après les vacances (c1,c2,(c3 mais basique))
+\chapter{Systèmes à plusieurs corps}
+\section{Éléments cinétiques du système}
+\subsection{Rappels}
+\warningInfo{Conservation de l'impulsion}{Dans un système fermé, l'impulsion totale du système est conservée.}
+\begin{definition}[Système élastique]
+C'est un système où l'impulsion et l'énergie mécanique totale est conservée.
+\end{definition}
+\subsection{Centre de masse}
+On appelle centre de masse C, ou centre d'inertie, d'un système S de plusieurs points matériels le barycentre des points A, qui le constituent, affectés de leurs masses respectives \(m_i\).\marginCheck{Le centre de masse se rapproche du point le plus lourd}
+\begin{proposition}[Caractérisation du centre de masse]
+\[\sum_i m_iCA_i = 0\]
+\end{proposition}
+\begin{theorem}[Centre de masse]
+ \[\vec{OC} = \frac{\sum_i m_i OA_i}{M_{total}}\]
+\end{theorem}
+\subsection{Quantité de mouvement}
+Par rapport à un référentiel R, la quantité de mouvement totale du système S est la somme vectorielle des quantités de mouvement de chacun de ses points A :
+\begin{theorem}[Quantité de mouvement]
+ \[\vec{P} = \sum\vec{p}_i = \sum m_i \vec{v}_i\]
+\end{theorem}
+\begin{proposition}[Quantité de mouvement du centre de masse]
+\[\vec{P} = M_{total}\vec{V}_C\]
+\end{proposition}
+\subsubsection{Forces internes}
+% \begin{flalign*}
+% \frac{\dd \vec{P}}{\dd t} &= \sum^n_{i=1} \frac{\dd \vec{p_i}}{\dd t}\\
+% &= \sum \vec{F_i} = 0
+% \end{flalign*}
+\begin{proposition}[Qt de mouvement dans un système isolé]
+Les forces internes se compensent et il n'y a pas de forces externes, donc la quatité de mouvement reste constante
+\end{proposition}
+\subsection{Référentiel du centre de masse}
+\warningInfo{Nouveau référentiel}{On intoduit le nouveau référentiel R* dont C, le centre de masse est l'origine}
+\criticalInfo{Quantité de mouvement dans le référentiel du centre de masse}{On a : \[\vec{P*} = M\vec{v*_c} = \vec{0}\]}
+
+\subsection{Moment cinétique}
+\subsubsection{Référentiel normal}
+Par rapport au référentiel R, le moment cinétique total de S, au point O, est la somme vectorielle des moments cinétiques des points A qui le constituent :
+\begin{theorem}[Moiment cinétique total]
+ \[\vec{L_O} = \sum\vec{L_{O,i}} = \sum \vec{OA_i}\wedge \vec{p_i}\]
+\end{theorem}
+\begin{proposition}[Transport du mouvement]
+% \[\vec{L_O} = L_{O'} + \vec{OO'}\wedge \vec{P}\] d'où l'on déduit la relation entre le moment cinétique au point O et au centre de masse :
+\[\vec{L_O} = \vec{L_C} + \vec{OC}\wedge \vec{P}\]
+\end{proposition}
+\subsubsection{Référentiel R*}
+Écrivons, par rapport à R*, la relation entre le moment cinétique en un point quelconque Q et le moment cinétique au centre de masse. Il vient, d'après ce qui précède : \(\vec{L*_Q} = \vec{L*C} + \vec{QC}\wedge \vec{P*}\). Or, comme dans ce référentiel, \(\vec{P} = \vec{0}\), on obtient :
+\[\vec{L*_Q} = \vec{L*_C} = \vec{L*}\]
+
+\section{Théorèmes de Koening}
+\begin{theorem}[Théorème de Koeing du moment cinétique]
+\[\vec{L_O} = \vec{L*}+\vec{OC}\wedge \vec{P}\]
+\end{theorem}
+On appelle \(\vec{OC}\wedge \vec{P}\) le moment cinétique orbital et \(\vec{L*}\) le moment cinétique intrinsèque.
+\begin{theorem}[Théorème de Koeing de l'énergie cinétique]
+L'énergie cinétique dans R est l'énergie cinétique dans R* augmentée de l'énergie cinétique du centre de masse dotée de la masse totale :
+ \[E_k = E_k*+0.5MV^2_C\] avec \(E_k*\) l'énergie cinétique interne et \(0.5MV^2_C\) l'énergie cinétique externe.
+\end{theorem}
+\section{Théorème du moment cinétique}
+\begin{theorem}[Théorème du moment cinétique]
+Par rapport à un référentiel galiléen, la dérivée par rapport au temps du moment cinétique est égale à la somme des seuls moments des forces extérieures qui s'exercent sur le système. Les forces internes se compensent.
+ \[\frac{\dd \vec{L_O}}{\dd t} = \vec{M_{O,ex}}\]
+\end{theorem}
+
+%TODO : Faire schema pour relation de chales pour v_i et v_c
+\end{document}

@@ -1,0 +1,72 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Méthode}
+\subtitle{Méthode}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%Au programme de l'examen
+\professor{J.Daudé}%Jérémi Daudé
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{yFlatTable}
+\usepackage{multicol}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+
+%\titleOne
+\setcounter{chapter}{3}
+	\chapter{Espaces vectoriels}
+\section{Espace vectoriel}
+\checkInfo{Montrer qu'un ensemble est un EV}{
+\begin{itemize}
+ \item On revient à la définition avec les 8 axiomes (non)
+ \item On démontre que F est un SEV d'un EV déjà connu (oui)
+\end{itemize}
+Pour ce faire, on détermine une famille génératrice des F, ou on montre que que l'ensemble vérifie les propriétés de linéarités (\(\lambda u_1 + u_2 \in F\)).
+}
+\checkInfo{Montrer qu'une famille est libre}{
+On revient à la définition. On doit donc montrer que
+
+\(\forall (\lambda_1,\dots,\lambda_N),  \lambda_1v_1+\dots+\lambda_Nv_N = 0_E \Rightarrow \lambda_1=\lambda_N = 0\)
+}
+\checkInfo{Trouver la dimension d'un EV}{Il faut trouver une base E. Le cardinal de cette famille est la dimension de E.}
+\checkInfo{Montrer que 2 SEV sont égaux}{
+\begin{itemize}
+ \item On montre que \(F\subset G \wedge G\subset F\)
+ \item On montre que \(\dim(F) = \dim(G)\) et que \(F\subset G\) ou \(G\subset F\)
+\end{itemize}
+}
+\checkInfo{Montrer que 2 SEV sont supplémentaires}{On peut
+\begin{itemize}
+ \item Revenir à la définition, i.e montrer que \(E=F+G\) et que \(F\cap G = \{0_E\}\)
+ \item Montrer que tout élément de E se décompose de manière unique comme une somme d'un vecteur de F et d'un vecteur G
+ \item Si E est de dimension finie, montrer que (\(F\cap G = \{0_E\}\) ou \(E=F+G\)) et \(\dim(E) = \dim(F)+\dim(G)\)
+\end{itemize}
+}
+\section{Famille}
+\checkInfo{Montrer qu'une famille est une base}{
+En dimension quelconque, on montre que la famille est libre et génératrice dans E.
+
+En dimension finie, on montre que \(Card(F)=\dim(E)\), puis que F est libre}
+\end{document}

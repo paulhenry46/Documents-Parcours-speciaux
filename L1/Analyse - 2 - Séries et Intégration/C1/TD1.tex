@@ -1,0 +1,185 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques - Analyse 2}
+\subtitle{Analyse}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\R}[0]{\mathbb{R}}
+\begin{document}
+
+
+	\chapter{Révisions }
+\section{Majorant et minorant}
+Évaluations
+cc1 : 4 controles de 15 min (questions de cours + exemple et contre exemple) 33\%
+cc2 : interro de 40min : dem du cours + exemple 33\% (semaine 9)
+cc3 : ds de 1h30 33\% (semaine 21)
+cc4 : seconde chance à 0\%
+
+$M = \sup(A) \iff \forall \varepsilon >0, \exists x\in A, x>M-\varepsilon$
+\subsection{Suites extraites et valeurs d'adhérence}
+\subsubsection{Suite extraite}
+Une suite de la forme $(u_{\varphi(n)})_{n\in\mathbb{N}}$ où $\varphi : \mathbb{N} \to \mathbb{N}$ est croissante.
+
+Exemple : $(U_{2n})$ et $(U_{2n+1})$ sont des suites extraites. Si $(U_n) = -1^n$. On a $U_{2n} = 1$ et $U_{2n+1} = -1$.
+
+\begin{theorem}
+ $U_n \to l \Rightarrow U_{\varphi} \to l$. Toute sous suite d'une suite convergente est convergente vers la limite de la suite.
+\end{theorem}
+\begin{myproof}
+Avec $\varphi \in \mathbb{R}$ Soit $\varphi : \mathbb{N} \to \mathbb{N}$ strictement croissante.
+
+Definition de la limite : $\forall \varepsilon >0,\exists n \in \mathbb{N}, \forall n\in\mathbb{N}, x\geq N \Rightarrow |u_n-l| \leq \varepsilon$.
+
+Soit $\varepsilon >0$. On sait qu'il exisye $N$ tel que pour tout $n\in\mathbb{N}, n\geq N \Rightarrow |U_n -l|\leq \varepsilon$.
+
+Or, $\varphi$ est strciteent croissante donc $\varphi(n) \geq n$.
+
+Donc $n\geq N \Rightarrow \varphi(n) \geq N$ et $|U_{\varphi}| - l| \leq \varepsilon$.
+\end{myproof}
+\begin{theorem}[Corrolaire 1]
+ Si il existe 2 suites extraites de $(U_n)$ convergent vers 2 limites distinctes, alors $(U_n)$ diverge.
+\end{theorem}
+\begin{theorem}
+ Si une sous-suite diverge, la suite diverge.
+\end{theorem}
+
+\begin{theorem}
+ Si $U_{2n} \to l \wedge U_{2n+1}$, alors $U_n \to l$
+\end{theorem}
+\begin{myproof}
+On traduit les hypothèses : $\exists N_1\in\mathbb{N}, \forall n\geq N_1, |U_{2n} - l|\leq \varepsilon$ et  $\exists N_2\in\mathbb{N}, \forall n\geq N_2, |U_{2n+1} - l|\leq \varepsilon$
+
+Posons $N = \max(2N_1,2N_2+1)$.
+Si $n\geq N$, alors
+\begin{itemize}
+ \item si $n$ est pair, $n=2k$ et $n\geq 2N_1$ d'où $k\geq N_1$ donc $|U_n-l| = |U_{2k} - l| \leq \varepsilon$
+ \item si $n$ est impair, $n=2k''+1$ et $n\geq 2N_2+1$ d'où $k'\geq N_2$ donc $|U_n-l| = |U_{2k'+1'} - l| \leq \varepsilon$
+\end{itemize}
+\end{myproof}
+\begin{theorem}[Valeur d'adhérence]
+ Une valeur d'adhérence de la suite est la limite d'une sous-suite convergente.
+\end{theorem}
+Exemple : $-1^n$ a pour v.a $-1$ et $1$.
+\section{Négligeable et équivalent}
+\subsection{Comparaison}
+Les suites ne s'annulent jamais.
+On dit qu'une suite $U_n$ est négligeable devant $v_n$ si $\lim \frac{u_n}{v_n} = 0$. On note alors $U_n = o(V_n)$.
+
+Exemple : $U_n = n$ et $v_n = n^2$ car $\lim \frac{n}{n^2} =0$.
+\begin{theorem}
+ $U_n = 0(V_n) \iff \exists \varepsilon_n \to 0, u_n = v_n \varepsilon_n$. Cette définition est à utiliser dans les calculs.
+\end{theorem}
+\begin{theorem}
+ $\lambda o(U_n) = o(U_n)$
+
+ $o(U_n) - o(U_n) = o(U_n)$
+\end{theorem}
+Remarque : $U_n = o(1) \iff \lim u_n = 0$
+\begin{theorem}[Équivalent]
+ $U_n$ est équivaent à $V_n$ si $\lim \frac{u_n}{v_n} = 1$.
+\end{theorem}
+Exemple : $u_n = n+1$ et $v_n = n$ donc $u_n~v_n$
+\begin{theorem}[Équivalent]
+ $U_n~v_n \iff \exists w_n \to 1, u_n = v_nw_n$.
+\end{theorem}
+
+\begin{theorem}[Équivalent]
+ $~$ est une relation d'équivalence ($u_n~u_n$), ($u_n~v_n \iff v_n~u_n$) ($u_n~v_n \wedge v_n~w_n \Rightarrow w_n$)
+\end{theorem}
+\subsection{Propriétés}
+On peut multiplier et diviser, élever avec des puissances constantes (donc pas $n$ d'une suite)
+
+On ne peut pas additionner et soustraire. (Ex: $u_n = n+1, V_n = n, W_n = -n, Z_n = -n+2$)
+
+On ne peut pas composer (i.e. appliquer des fonctions) (Ex : $e^n not \sim e^{n+1}$)
+\begin{proposition}
+Pour des fractions rationnelles, on peut donner un équivalent de la forme $\frac{a^p}{b^n}$ avec les polyn\^omes les plus haut du numérateur et dénominateur
+\end{proposition}
+\warningInfo{Aucune suite n'est équivalente à 0}
+
+\begin{proposition}
+\(U_n\sim V_n \iff U_n-V_n = o(U_n))\)
+\end{proposition}
+\begin{myproof}
+On démontre les implications, l'une après l'autre.
+On suppose $u_n\sim v_n$. On a $\frac{u_n-v_n}{u_n} = 1 -\frac{u_n}{v_n} \to 1-1 = 0 \Rightarrow u_n-v_n = o(u_n)$
+
+On suppose $u_n-v_n = o(u_n)$ donc $\frac{u_n-v_n}{u_n} \to 0$ donc $1-\frac{v_n}{u_n} \to 0$ d'où $\frac{v_n}{u_n} \to 1 $ donc $v_n \sim u_n$.
+\end{myproof}
+\section{Fonctions équivalentes}
+On applique les définitions de négligeabilité aux fonctions.
+\begin{definition}
+$f$ est négligeable devant $g$ en $a$ si \(\lim_{a} \frac{f}{g} = 0)\) et $f$ est équivalente à $g$ en $a$ si $\lim_{a} = \frac{f}{g} = 1$
+\end{definition}
+Exemple : $g = x^3$ et $f=x^2$. On a $g=o(f)$ en 0 et $f=o(g)$ en $+\infty$ en 1 on a $f\sim g$ car $\Lim{1} \frac{f}{g} = 1$.
+
+\section{Les DL}
+\subsection{Rappel de la caractérisation séquentielle}
+Si $\Lim{x\to a} f(x) = l$, alors $u_n\to a \Rightarrow f(u_n) \to l$
+
+Si $f : \R \to \R$ et $a\in\R$, avec $f$ dérivable en $a$. On a $\Lim{x\to a} \frac{f(x)-f(a)}{x-a} = f'(a)$.
+
+On a $\Lim{x\to a} \frac{f(x)-f(a)}{x-a} - f'(a) = 0$
+
+d'où $\frac{f(x)-f(a)}{x-a} - f'(a) = \varepsilon(x)$ avec $\varepsilon(x) \to 0$
+
+on multiplie par $x-a$ : $f(x)-f(a) - f'(a)(x-a) = (x-a)\varepsilon(x)$.
+
+On a : $f(x) = f(a)+f'(a)(x-a) + (x-a)\varepsilon(x)$
+
+
+On a : $f(x) = f(a)+f'(a)(x-a) + o((x-a)^1)$ Il s'agit du développement limité de $f$ en $a$ à l'ordre 1.
+
+En prenant $a=0$, $f(x) = f(0)+ f'(0) + 0(x)$.
+
+En particulier si $U_n$ est une suite qui converge vers $0$, on a
+
+\[f(u_n) = f(0) + f'(0)U_n + o(U_n)\]
+
+\begin{theorem}[Forume de Taylor-Young]
+ Si $f : I \to R$ est de classe $C^n$ sur $I$ avec $0\in I$, on a :
+
+ \[ f(x) = \sum^n_{k=0} \frac{f(o)^k}{k!}x^k + o(x^n)\]
+
+ Exemple : $b_n = (1+\frac{1}{n})^n$
+
+ $b_n = (1+\frac{1}{n})^n = e^{n\ln(1+\frac{1}{x})}$
+
+ Si $u_n\to 0$ :
+ $\ln(1+u_n) = u_n + o(U_n)$
+
+ $(1+\frac{1}{n})^n = e^{n(\frac{1}{n}+o(\frac{1}{n}))} = e^{1+no(\frac{1}{n})} = e^{1 + o(1)}$. Mais $1+o(1) \to 1$, donc $b_n \to e$.
+
+ Remarque : $u_n \sim v_n not \Rightarrow u_n^n \sim v_n^n$
+\end{theorem}
+
+\end{document}
+

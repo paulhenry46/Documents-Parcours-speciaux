@@ -1,0 +1,100 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\dd}{\mathrm{d}}
+\begin{document}
+
+\setcounter{chapter}{3}
+
+	\chapter{IPP tabulaire}
+En plus d'\^etre plus rapide que la méthode classique quand elle est ma\^itrisée, cette façon de faire est aussi plus fiable et simples à mémoriser. Voir la fiche dédié.
+\section{Explications}
+Nous allons traiter 2 cas de figures : une intégration totale et une intégration partielle. Dans les 2 cas, la méthode utilise un tableau
+\subsection{Intégration totale}
+Prenons l'intégrale \[F = \int x^3\cos(x)\dd x\]
+
+Nous allons choisir de dériver $x^3$ et d'intégrer $\cos(x)$.
+
+Nous pouvons réaliser ce tableau :\begin{center}
+\begin{tabular}{llll}
+\tableHeaderStyle
+i & S & D & I\\
+0 & + & $x^3$ & $\cos(x)$\\
+1 & - & $3x^2$ & $\sin(x)$\\
+2 & + & $6x$ & $-\cos(x)$\\
+3 & - & $6$ & $-\sin(x)$\\
+4 & + & $0$ & $\cos(x)$
+\end{tabular}
+\end{center}
+Nous avons créé un tableau où on liste les dérivées et primitives successives des 2 fonctions jusqu'à ce que la dérivée soit nulle. À chaque nouvelle ligne, on change de signe.
+
+Pour obtenir notre résultat, on somme ou soustrait selon le signe de la ligne i les produits de la dérivée i et de la primitive i+1. Une fois fait, on ajoute la primitive du produit de la dernière primitive et de la dernière dérivée. Dans le cas d'une intégrale totale, le produit est nul, et cette intégrale aussi.
+
+Mettons en application :
+\begin{flalign*}
+F &= (+1)(x^3)(\sin x)\\
+&+ (-1)(3x^2)(-\cos x)\\
+&+ (+1)(6x)(-\sin x)\\
+&+ (-1)(6)(\cos (x))\\
+&+ \int (+1)(0)(\cos x)\dd x
+\end{flalign*}
+On obtient :
+\[F = x^3\sin x + 3x^2\cos x-6x\sin x-6\cos x\]
+\subsection{Intégration partielle}
+Lorsque, durant le processus d'intégration et de dérivation, on retombe sur un l'intégrale d'origine (sur une ligne) ou un multiple, on peut aussi s'arreter.
+
+Prenons \[G = \int e^x \cos(x)\]
+
+On a le tableau suivant, où l'on obtient un multiple de l'intégrale sur la dernière ligne :
+\begin{center}
+\begin{tabular}{llll}
+\tableHeaderStyle
+i & S & D & I\\
+0 & + & $e^x$ & $\cos(x)$\\
+1 & - & $e^x$ & $\sin(x)$\\
+2 & + & $e^x$ & $-\cos(x)$
+\end{tabular}
+\end{center}
+
+On calcule notre intégrale de la m\^eme façon que dans la partie précédente :
+\begin{flalign*}
+G &= (+1)(e^x)(\sin x)\\
+&+ (-1)(e^x)(-\cos x)\\
+&+ \int (+1)(e^x)(-\cos x)\dd x
+\end{flalign*}
+
+En amenant l'intégrale du c\^oté de G, on obtient \[2 \int e^x \cos x \dd x = e^x\sin x + e^x \cos x\]
+soit \[ \int e^x \cos x \dd x = \frac{1}{2}(e^x\sin x + e^x \cos x) = G\]
+\end{document}
+
+

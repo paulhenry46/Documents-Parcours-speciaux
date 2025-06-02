@@ -1,0 +1,198 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Séries - Analyse 2}
+\subtitle{Chimie}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{IHallery}%isabelle.hallery@univ-tlse3.fr
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\begin{document}
+\setcounter{chapter}{1}
+\chapter{Démonstrations }
+\begin{theorem}[Théorème de comparaison]
+Soient $\sum u_k$ et $\sum v_k$ deux séries à termes positifs ou nuls. On
+suppose qu'il existe $k_0\ge 0$ tel que, pour tout $k\ge k_0$,
+$u_k \le v_k$.
+\begin{itemize}
+\item Si $\sum v_k$ converge alors $\sum u_k$ converge.
+\item Si $\sum u_k$ diverge alors $\sum v_k$ diverge.
+\end{itemize}
+\end{theorem}
+\begin{myproof}
+La convergence ne dépendant pas des
+premiers termes, on peut donc supposer $k_0=0$.
+
+
+\begin{itemize}
+\item Notons $S_n=u_0+\dots+u_n$ et $S'_n = v_0+\dots+v_n$.
+Les suites $(S_n)$ et $(S'_n)$ sont croissantes, et de plus, pour tout $n \ge 0$,
+$S_n\le S'_n$.
+\item Si la série $\sum v_k$ converge, alors la suite
+$(S'_n)$ converge. Soit $S'$ sa limite.
+ \item La suite $(S_n)$ est croissante
+et majorée par $S'$, donc elle converge, et ainsi la série $\sum u_k$
+converge aussi.
+ \item Inversement, si la série $\sum u_k$ diverge, alors
+la suite $(S_n)$ tend vers $+\infty$, et il en est de même pour la
+suite $(S'_n)$ et ainsi la série $\sum v_k$ diverge.
+\end{itemize}
+\end{myproof}
+\begin{theorem}[Théorème des équivalents]
+Soient $(u_k)$ et $(v_k)$ deux suites à termes strictement positifs.
+Si $u_k \sim v_k$ alors les séries $\sum u_k$ et $\sum v_k$ sont de même nature.
+\end{theorem}
+
+\begin{myproof}
+Comme les 2 suites sont équivalents, la limite de leur quotient vaut 1. Donc pour tout $\epsilon>0$, il existe $k_0$ tel que, pour
+tout $k \ge k_0$,
+$$\left|\frac{u_k}{v_k} -1\right| < \epsilon,$$
+ou autrement dit
+$$(1-\epsilon)v_k < u_k <(1+\epsilon) v_k.$$
+
+Fixons un $\epsilon <1$.
+
+Si $\sum u_k$ converge, alors par le théorème de comparaison,
+$\sum(1-\epsilon) v_k$ converge, donc $\sum v_k$ également.
+
+Réciproquement, si $\sum u_k$ diverge, alors
+$\sum (1+\epsilon)v_k$ diverge, et $\sum v_k$ aussi.
+\end{myproof}
+\begin{theorem}
+Toute série absolument convergente est convergente.
+\end{theorem}
+
+\begin{myproof}
+Utilisons le critère de Cauchy.  Soit $\sum u_k$ une série absolument convergente.
+
+La série $\sum |u_k|$ est convergente, donc la suite des sommes partielles $(S'_n)$ avec
+$S'_n = \sum_{k=0}^{n} |u_k|$ est une suite
+convergente, donc de Cauchy.
+
+Soit $\epsilon>0$ fixé. Il existe donc $n_0 \in \N$ tel que
+pour tout $n \geq n_0$ et pour tout $p \geq 0$ :
+$$S'_{n+p}-S'_n=|u_n|+|u_{n+1}|+\dots+|u_{n+p}| < \epsilon.$$
+
+Par suite, pour $n \geq n_0$ et  $p \geq 0$ on a par l'inégalité triangulaire :
+$$\big|u_n+u_{n+1}+\dots+u_{n+p}\big| \leq |u_n|+|u_{n+1}|+\cdots+|u_{n+p}| < \epsilon.$$
+Donc, d'après le critère de Cauchy,  $\sum u_k$ est convergente.
+\end{myproof}
+
+\begin{theorem}[Règle du quotient de d'Alembert]
+Soit $\sum u_k$ une série à termes strictement positifs telle que \(\big(\frac{u_{k+1}}{u_{k}}\big)\) converge vers \(l\)
+\begin{enumerate}
+\item Si \(l < 1\), la série converge.
+\item Si \(l > 1\), la série diverge.
+\item Si \(l = 1\), on ne peut conclure.
+\end{enumerate}
+\end{theorem}
+\begin{myproof}
+Rappelons tout d'abord que la série géométrique $\sum q^k$
+converge si $|q|<1$, diverge sinon.
+\begin{itemize}
+ \item Dans le premier cas du théorème, soit un réel q tel que \(l<q<1\). On a $\left|\frac{u_{k+1}}{u_k}\right| \leq q$ à partir d'un certain rang N, et donc \(u_{k+1}\leq u_kq\). Par récurrence, on obtient que \[u_k \leq u_{k-(k-N)}q^{k-N}=u_Nq^{-N}q^k=cq^k\], avec c constant.
+
+Comme $0 < q < 1$, alors la série $\sum q^k$ converge, et,
+par le théorème de comparaison :
+la série $\sum u_k$ converge.
+ \item Si $\left|\frac{u_{k+1}}{u_k}\right| > 1$, la suite $(|u_k|)$ est croissante : elle ne
+peut donc pas tendre vers $0$ et la série diverge.
+\end{itemize}
+\end{myproof}
+\begin{theorem}[Règle des racines de Cauchy]
+ Soit une série à termes strictement positifs. Si il existe, on note \(l = \lim \sqrt[n]{u_n}\).
+ \begin{itemize}
+  \item  Si \(l<1\), la série converge
+  \item Si \(l>1\), la série diverge.
+ \end{itemize}
+\end{theorem}
+\begin{myproof}
+Rappelons que la nature de la série ne dépend pas de ses premiers
+termes. On peut ainsi trouver trouver un certaing rang $N$ à partir duquel les assertions suivantes sont vérifiées.
+
+Dans le premier cas, soit un réel q tel que \(l<q<1\). On a $\sqrt[k]{|u_k|} \le q$
+implique  $|u_k| \le q^k$. Comme $0<q<1$, alors $\sum q^k$ converge, donc la série aussi
+par le théorème  de comparaison.
+
+Dans le second cas, $\sqrt[k]{|u_k|} > 1$, donc $|u_k| > 1$.
+Le terme général ne tend pas vers $0$, donc la série diverge.
+
+% Enfin pour le dernier point du corollaire, on pose
+% $u_k=\frac{1}{k}$, $v_k=\frac{1}{k^2}$.
+% On a $\sqrt[k]{u_k}\to 1$ de même que $\sqrt[k]{v_k}\to 1$.
+% Mais $\sum u_k$ diverge alors que $\sum v_k$ converge.
+\end{myproof}
+\begin{theorem}[Critère de Leibniz]
+Supposons que $(u_k)_{k\ge0}$ soit une suite qui vérifie :
+\begin{enumerate}
+  \item $u_k  \ge 0$ pour tout $k \ge 0$,
+  \item la suite $(u_k)$ est une suite décroissante,
+  \item et $\Lim{k\to+\infty} u_k=0$.
+\end{enumerate}
+Alors la série alternée $\displaystyle \sum_{k=0}^{+\infty} (-1)^k u_k$ converge.
+
+De plus, Soit $S$ la somme de cette série et soit $(S_n)$ la suite des sommes partielles.
+\begin{enumerate}
+  \item La somme $S$ vérifie les encadrements :
+  $$ S_1\le S_5\le \cdots \le S_{2n+1} \le \cdots \le S
+  \le  \cdots\le S_{2n} \le \cdots\le S_4\le S_0.$$
+  \item En plus, si $\displaystyle R_n=S-S_n =\sum_{k=n+1}^{+\infty} (-1)^k u_k$ est le reste d'ordre $n$, alors on  a
+$$\big|R_n\big|\le u_{n+1}.$$
+\end{enumerate}
+\end{theorem}
+
+\begin{myproof}
+Nous allons nous ramener à deux suites adjacentes.
+\begin{itemize}
+  \item La suite $(S_{2n+1})$ est croissante car
+  $S_{2n+1}-S_{2n-1}=u_{2n}-u_{2n+1}\ge 0$.
+
+  \item La suite $(S_{2n})$ est décroissante car
+  $S_{2n}-S_{2n-2}= u_{2n}-u_{2n-1}\le 0$.
+
+%   \item $S_{2n} \ge S_{2n+1}$ car
+%   $S_{2n+1} - S_{2n} = -u_{2n+1} \le 0$.
+
+  \item Enfin $S_{2n+1} - S_{2n}$ tend vers $0$
+  car $S_{2n+1} - S_{2n} = -u_{2n+1} \to 0$
+  (lorsque $n\to+\infty$).
+\end{itemize}
+En conséquence $(S_{2n+1})$ et $(S_{2n})$ convergent vers la même limite $S$.
+Donc $(S_n)$ converge vers $S$.
+\bigskip
+
+De plus, comme les suites \(S_{2n+1}\) et \(S_{2n}\) sont adjacentes,  $S_{2n+1} \le S \le S_{2n}$ pour tout $n$.
+
+Enfin on a aussi
+ $$0\ge R_{2n}= S-S_{2n} \ge S_{2n+1}-S_{2n}=-u_{2n+1}$$ pour n pair et, pour n impair
+ $$0\le R_{2n+1}= S-S_{2n+1} \le  S_{2n+2} -S_{2n+1}= u_{2n+2}.$$
+
+ Ainsi, quelle que soit la parité de $n$, on a
+ $|R_n|=|S-S_n|\le  u_{n+1}$.
+ \end{myproof}
+\end{document}
+

@@ -1,0 +1,162 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mathématiques}
+\subtitle{MPS2}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{J.Daudé}%Jérémi Daudé
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+
+%\titleOne
+
+	\chapter{Développements limités}
+\section{Défintion et premières propriétés}
+\begin{definition}[Développement limité en 0]
+Soit $I$ un intervalle ouvert de \(\R\) tel que \(0\in I\). Soit \(f:I\to \R\). On dit que f ademet un développement limité en 0 à l'ordre m si il existe un p\^olynome \(P\in\R_m[X]\) et une fonction \(\varepsilon : I\to \R\) telle que \(\varepsilon \to 0\) tel que \(\forall x\in I, f(x) = P(x) + x^m\varepsilon(x)\).
+\end{definition}
+On appelle le p\^olynome la partie régulière du développement et le \(o(\dots)\) est le reste. Les coefficients du polynome sont appelés les coefficient du développement limité.
+\begin{definition}[En $x\neq 0$]
+Soit \(f : I-\{x_0\} \to \R, t\to g(t+x_0)\) Alors \(g\) admet un DL à l'ordre $m$ en $x_0 \iff$ f admet un DL à l'ordfe m en 0.
+\end{definition}
+On peut donc faire un changement de variable $t+x_0 = x$.
+\begin{lemma}
+Si f admet un DL à l'ordre m en 0, alors il admet un DL à l'odre k en 0 \(\forall k \in \{0,\dots,m\}\) qui s'obtient en troquant le DL initial à partir du coeffcient k
+\end{lemma}
+
+\begin{theorem}[Unicité du DL]
+ Les coeffcicients du DL d'une fonction sont unique.
+\end{theorem}
+
+\begin{lemma}
+\(f\) admet un DL limité en 0 à l'ordre 0 \(\iff f\) est continue en 0. Dans ce cas, \(a_0 = f(0)\)
+\end{lemma}
+\begin{lemma}
+\(f\) admet un DL à l'ordre 1 en 0 \(\iff f\) est dérivable en 0. Dans ce cas, \(a_1 = f'(0)\).
+\end{lemma}
+Exemples :\begin{itemize}
+           \item  \(\sin(x) = 0 + 1x + o(x) = x+o(x)\)
+           \item \(\cos(x) = 1+o(x)\)
+           \item \(e^x = 1+x+o(x)\)
+          \end{itemize}
+          %\TODO
+% Exercice : Soit $f :I\to \R$ admettant un DL à l'ordre $p$ en 0. Alors $f$ est paire $\Rightarrow a_{2k+1} =0$. et Alors $f$ est impaire $\Rightarrow a_{2k} =0$. Montrer ce résultat.
+\begin{proposition}[DL et ``primitivation'']
+Soit \(f : I\to \R\). On suppose qu'elle admet une primitive \(F\). Si \(f\) admet un DL en 0 à l'ordre \(p\) : \(f(x) = a_0+a_1x+\dots+a_px^p+o(x^p)\), alors \(F\) admet un DL à l'ordre \(p+1\) : \(F(x) = F(0) + a_0x+a_1\frac{x^2}{2}+a_2\frac{x^3}{3}+\dots+a_p\frac{x^{p+1}}{p+1}+o(x^{p+1})\)
+\end{proposition}
+\begin{proposition}
+Soit \(f : I\to \R\), dérivable sur I, tel que \(\exists p\in\N, f'(x) = o(x^p)\). Alors \(f(x) = f(0) + o(x^{p+1}) = f(0) + (x^{p+1})\varepsilon_2(x)\)
+\end{proposition}
+\section{Notation de Landeau}
+\begin{definition}
+Soit \(I\) intervalle de \(\mathbb{R}\).
+
+On dit que f est négligeable devant g en \(x_0\), noté \(f= o_{x\to x_0}(g)\) si il existe \(\eta >0\) et \(\varepsilon : ]x_0-\eta,x_0+\eta[\to \R\) telle que \(\varepsilon \to x\) et \(\forall x\in]x_0-\eta,x_0+\eta[, f(x) = g(x)\varepsilon\)
+
+On dit que f est dominée par g en \(x_0\), noté \(f = O(g)_{x\to x_0}\)  si il existe \(\eta >0\) et \(\varepsilon : ]x_0-\eta,x_0+\eta[\to \R\) telle que \(|\varepsilon| \leq C\) et \(\forall x\in]x_0-\eta,x_0+\eta[, f(x) = g(x)\varepsilon\)
+
+On dit que f est dominée par g en \(x_0\), noté \(f \sim_{x\to x_0} g\)  si il existe \(\eta >0\) et \(\varepsilon : ]x_0-\eta,x_0+\eta[\to \R\) telle que \(\varepsilon \to 0\) et \(\forall x\in]x_0-\eta,x_0+\eta[, f(x) = g(x)(1+\varepsilon)\)
+\end{definition}
+
+\criticalInfo{Sommes}{
+$o(x^m) + o(x^m) = o(x^m)$ mais on a aussi $o(x^m)-o(x^m) = o(x^m) \neq 0$.}
+\section{Fonctions p fois dérivables}
+Dans cette partie, on note I un intervalle ouvert non vide de $\R$.
+\begin{definition}
+pour $p\in \N,$ la dérivée $p^{ene}$ de $f:I\to \R$, notée $f^{(p)}$ est définie récursivement : $f^{(0)} = f$ et si $f^{(p-1)}$ est dérivable sur I, alors $f^{(p)}  = (f^{(p-1)})'$.
+\end{definition}
+On dit que $f$ est p fois dérivable si $f^{(p)}$ est définie. Comme la dérivabilité implique la continuité, et $f^{(p)}$ déifinie, les dérivées précédentes sont continues sur tout l'intervalle.
+\begin{definition}[Fonction p fois dérivables en un point]
+On dit que f est p fois dérivabilité en \(x_0 \in I\) si \(\exists I_1\) intervalle ouvert tel que \(x_0\in\i_1\in I\) tel que f est p-1 fois dérivable sur \(I_1\) et \(f^{(p-1)}\) est dérivable en \(x_0\).
+\end{definition}
+\begin{definition}[Classe ]
+On dit que f est de classe \(C^p\) sur I si f est p fois dérivable sur I et la dérivée pème est continue.
+
+On dit que f est de classe \(C^{\infty}\) si \(f\in C^p \forall p\in\N\).
+\end{definition}
+\begin{proposition}
+Soit \(f\) et \(g\) p fois dérivables sur I. Alors $f+g$ p fois dérivables sur $I$ et $(f+g)^{(p)} = f^{(p)} + g^{(p)}$.
+\end{proposition}
+Cela fonctionne aussi pour $f$ et $g$ p fois dérivables en un point et de classe $C^p$.
+
+\begin{proposition}
+\(\lambda f\) est p fois dérivables et \(\lambda f^{(p)} = (\lambda f)^{(p)}\).
+\end{proposition}
+\begin{proposition}
+\(fg\) est p fois dérivable sur I et \((fg)^{(p)} = \sum^p_{m=0} C^m_p f^{(m)}g^{(p-m)}\)
+\end{proposition}
+\begin{proposition}
+Soient \(I,J\) 2 intervalles ouverts non vides de \(\mathbb{R}\). \(f:I\to J\subset \mathbb{R}\) et \(g : J\to \mathbb{R}\). Si f est n fois dérivable sur I et g est n fois déruvable sur J, alors \(g\circ f : I\to \mathbb{R}\) est n fois dérivable sur I.
+\end{proposition}
+
+\begin{proposition}
+Si \(g : I\to \mathbb{R}\) est n fois dérivable sur I et ne s'annule pas sur I, alors la fonction \(f: x\in I\to \frac{1}{g(x)}\) est n fois dérivable aussi.
+\end{proposition}
+% \begin{myproof}[En exercice]
+% Par récurrence : Idée : $f' = \frac{-g'}{g^2}$.
+% \end{myproof}
+\begin{proposition}[]
+Soit \(f:I\to\mathbb{R}\) $n\neq 0$ fois dérivable telle que f' ne s'annule pas sur I. Alors f est une bijection de I dans \(f(I) = J\in\mathbb{R}\). On a alors l'application réciproque \(f^{-1}\) est n fois dérivable. On a aussi \(f^{-1} : J\to I\)
+\end{proposition}
+
+\section{Formules de Taylor}
+\begin{theorem}[Théorème de Taylor-Young]
+ Si f est $(n\geq 1)$ fois dérivable en 0, alors \(f(x) = f(0)+xf'(0)+\frac{x^2}{2} f''(0)+\dots + \frac{x^n}{n!}f^{(n)}(0)+o(x^n)\)
+\end{theorem}
+
+\begin{theorem}[Théorème de taylor-Lagranges]
+ Si f est \((n\geq 1)\) fois dérivable sur I, alors
+
+ \(\forall x\in I, \exists c_x\)\( \in[\min(0,x), \max(0,x)]\) tel que \(f(x) = f(0) + xf'(0) + \frac{x^2}{2}f''(0)+\dots+\frac{x^{n-1}}{(n-1)!}f^{(n-1)}(0)\frac{x^n}{n!}f^{(n)}(c_x)\)
+\end{theorem}
+\warningInfo{Remarques}{Quand n=1, on obtient le TAF
+
+Si $x\neq0,c_x\in$ l'intervalle ouvert.}
+\begin{theorem}[Formule de Taylor-Laplace (avec reste intégrale)]
+ Si f \(I\to \R\) tel que f tes de classe \(C^p(I)\), alors \(\forall x\in I\), \(f(x) = f(0)+xf'(0)+\dots+\frac{x^{p-1}}{(p-1)!}f^{(p-1)}(0) + \)
+ \[\int^x_0f^{(p)}(s) \frac{(x-s)^{p-1}}{(p-1)!}\dd s\]
+\end{theorem}
+\subsection{DL de fonctions usuelles}
+\begin{eqnarray*}
+e^x&=&1+x+\frac{x^2}2+\dots+\frac{x^n}{n!}+o(x^n)\\
+\cos x&=&1-\frac{x^2}{2!}+\dots+\frac{(-1)^n x^{2n}}{(2n)!}+o(x^{2n+1})\\
+\sin x&=&x-\frac{x^3}{3!}+\dots+\frac{(-1)^n x^{2n+1}}{(2n+1)!}+o(x^{2n+2})\\
+\cosh x&=&1+\frac{x^2}{2!}+\dots+\frac{x^{2n}}{(2n)!}+o(x^{2n+1})\\
+\sinh x&=&x+\frac{x^3}{3!}+\dots+\frac{ x^{2n+1}}{(2n+1)!}+o(x^{2n+2})\\
+\frac{1}{1-x}&=&1+x+x^2+\dots+x^n+o(x^n)\\
+\frac{1}{1+x}&=&1-x+x^2+\dots+(-1)^nx^n+o(x^n)\\
+\ln(1+x)&=&x-\frac{x^2}2+\dots+\frac{(-1)^{n+1}}{n}x^n+o(x^n)\\
+(1+x)^\alpha&=&1+\alpha x+\frac{\alpha(\alpha-1)}2x^2+\dots+\frac{\alpha(\alpha-1)\cdots (\alpha-n+1)}{n!}x^n+o(x^n)\\
+\tan(x) &=& x+\frac{x^3}{3}+o(x^4)\\
+\end{eqnarray*}
+\end{document}
+

@@ -1,0 +1,194 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mécanique 2}
+\subtitle{Chimie}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{IHallery}%isabelle.hallery@univ-tlse3.fr
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\begin{document}
+\setcounter{chapter}{5}
+
+\chapter{Référentiels non galiléens}
+Soit \(R_1\) galiléen et \(R_2\) le référentiel quelconque
+\section{Rappels}
+\begin{itemize}
+ \item \(\omega = \frac{2\pi}{T}\) avec T le temps mis pour faire un tour.
+ \item \(v = R_c\times \omega\) dans un mouvement circulaire.
+ \item Dans un mouvement circulaire, l'angle parcouru vaut \(\varphi = \omega \times t\)
+\end{itemize}
+
+\section{Passage d'un référentiel à un autre}
+\begin{theorem}[Égalité du vecteur position]
+ \[\vec{O_1M} = \vec{O_1O_2}+\vec{O_2M}\]
+\end{theorem}
+\begin{flalign*}
+\vec{V_1} &= \frac{\dd \vec{OM_1}}{\dd t} \\
+&=  {\color{criticalColor}\frac{\dd \vec{O_1O_2}}{\dd t}_{R1}} +  \frac{\dd \vec{OM_2}}{\dd t}_{R1} \\
+&= {\color{criticalColor}\vec{V_0}}+\frac{\dd}{\dd t}(x_2\vec{e_{x2}} + y_2\vec{e_{y2}} + z_2\vec{e_{z2}}) \\
+&= {\color{warningColor}\vec{V_0}}+{\color{questionColor}(\dot{x_2}\vec{e_{x2}} + \dot{y_2}\vec{e_{y2}} + \dot{z_2}\vec{e_{z2}})} + {\color{warningColor}(x_2\vec{\dot{e_{x2}}} + y_2\vec{\dot{e_{y2}}} + z_2\vec{\dot{e_{z2}}})}\\
+&= {\color{warningColor}\vec{v_e}}+{\color{questionColor}\vec{v_2}}
+\end{flalign*}
+\begin{theorem}[Égalité du vecteur vitesse]
+ \[\vec{v_1} = \vec{v_e}+\vec{v_2}\] avec \(\vec{v_e} = \vec{v_0} + (x_2\vec{\dot{e_{x2}}} + y_2\vec{\dot{e_{y2}}} + z_2\vec{\dot{e_{z2}}})\) et \(\vec{v_2} = \dot{x_2}\vec{e_{x2}} + \dot{y_2}\vec{e_{y2}} + \dot{z_2}\vec{e_{z2}}\)
+\end{theorem}
+ \[\vec{a_1} = {\color{mathematicalColor} \frac{\dd}{\dd t}(\vec{V_0})} + (\ddot{x_2}\vec{e_{x2}} + \ddot{y_2}\vec{e_{y2}} + \ddot{z_2}\vec{e_{z2}}) + {\color{informationColor}2 (\dot{x_2}\vec{\dot{e_{x2}}} + \dot{y_2}\vec{\dot{e_{y2}}} + \dot{z_2}\vec{\dot{e_{z2}}})} + {\color{mathematicalColor}(x_2\vec{\ddot{e_{x2}}} + y_2\vec{\ddot{e_{y2}}} + z_2\vec{\ddot{e_{z2}}})}\]
+ \[{\color{mathematicalColor}\vec{a_e}} = \vec{a_0}+ (x_2\vec{\ddot{e_{x2}}} + y_2\vec{\ddot{e_{y2}}} + z_2\vec{\ddot{e_{z2}}})\]
+ \[{\color{informationColor}\vec{a_c}} = 2 (\dot{x_2}\vec{\dot{e_{x2}}} + \dot{y_2}\vec{\dot{e_{y2}}} + \dot{z_2}\vec{\dot{e_{z2}}}) \]
+   \explanation{1}{Accélération d'entrainement}
+  \explanation{2}{Accélération de coriolis}
+ On a \[\vec{a_1} = \vec{a_2} + {\color{mathematicalColor}\vec{a_e}}\explain{1}{left}{0}{0.5}{}+{\color{informationColor}\vec{a_c}}\explain{2}{left}{0}{0.5}{}\]
+ \begin{theorem}[Égalité du vecteur accelération]
+  \[\vec{a_1} = \vec{a_2} + \vec{a_e}+\vec{a_c}\] avec \(\vec{a_e} = \vec{a_0}+ (x_2\vec{\ddot{e_{x2}}} + y_2\vec{\ddot{e_{y2}}} + z_2\vec{\ddot{e_{z2}}})\) et \(\vec{a_c} = 2 (\dot{x_2}\vec{\dot{e_{x2}}} + \dot{y_2}\vec{\dot{e_{y2}}} + \dot{z_2}\vec{\dot{e_{z2}}})\)
+ \end{theorem}
+
+\warningInfo{Propriétés}{
+\begin{itemize}
+ \item Si les 2 référentiels sont galiléens, les 2 accélérations sont égales : \(\vec{a_1} = \vec{a_2}\)
+ \item Si \(\vec{v_2} = 0, \vec{a_c} = 0\)
+ \item Si \(\vec{e_1}//\vec{e_2}, \vec{a_c} = 0, \vec{a_e} = 0, \vec{a_1} = \vec{a_0}+\vec{a_2}\)
+\end{itemize}}
+
+\section{Référentiel tournant}
+On définit un axe de rotation \(\vec{n}\) et un angle \(\alpha\). Soit \(\vec{\mu'}\) le vecteur de changement de dircetion.
+
+On a \[\vec{\mu'} = \vec{\mu}+\dd \vec{\mu_{\alpha}} \Rightarrow \frac{\dd \vec{\mu}}{\dd t} = \frac{\dd \alpha}{\dd t} \vec{n}\wedge \vec{\mu} = \omega \vec{n}\wedge \vec{\mu} = \vec{\omega}\wedge \vec{\mu} = \dot{\vec{\mu}}\] avec \(\vec{\omega} = \vec{n}\cdot \omega\)
+
+On a alors : \[\dot{\vec{e_{x2}}} = \vec{\omega}\wedge \vec{e_{x2}}, \dots\]
+
+Puis : \[\vec{v_e} = \vec{v_0} + (x_2\dot{\vec{e_{x2}}}+\dots) = \vec{v_0} + \vec{\omega}\wedge \vec{OM_2}\]
+\begin{flalign*}
+\vec{a_e} &= \vec{a_0}(x_2\ddot{\vec{e_{x2}}}+\dots) + (x_2\frac{\dd }{\dd t}(\vec{\omega}\wedge \vec{e_{x2}})+\dots)\\
+&= \vec{a_0} + (x_2\dot{\vec{\omega}}\wedge \vec{e_{x2}}+\dots)\\
+&= \vec{a_0}+ \dot{\vec{\omega}}\wedge \vec{O_2M} + \vec{\omega}\wedge(\vec{\omega} \wedge \vec{O_2M})
+\end{flalign*}
+
+Donc \[\vec{a_c} = 2\vec{\omega}\wedge \vec{v_2}\]
+\begin{theorem}[Vitesse d'entrainement dans un référenriel tournant]
+ \[\vec{v_e} = \vec{v_0} + \vec{\omega}\wedge \vec{OM_2}\] avec \(\vec{\omega} = \vec{n}\cdot \omega\) et \(\vec{n}\) le vecteur unitaire de l'axe de rotation et \(\omega\) la pulsation.
+\end{theorem}
+
+\begin{theorem}[Accélération d'entrainement dans un référenriel tournant]
+ \[\vec{a_e} = \vec{a_0}+ \dot{\vec{\omega}}\wedge \vec{O_2M} + \vec{\omega}\wedge(\vec{\omega} \wedge \vec{O_2M})\] avec \(\vec{\omega} = \vec{n}\cdot \omega\) et \(\vec{n}\) le vecteur unitaire de l'axe de rotation et \(\omega\) la pulsation.
+\end{theorem}
+
+\begin{theorem}[Accélération de coriolis dans un référenriel tournant]
+ \[\vec{a_c} = 2\vec{\omega}\wedge \vec{v_2}\] avec \(\vec{\omega} = \vec{n}\cdot \omega\) et \(\vec{n}\) le vecteur unitaire de l'axe de rotation et \(\omega\) la pulsation.
+\end{theorem}
+\section{Forces d'inertie}
+\subsection{Principe}
+Quand R2 se déplace avec une accélération par rapport à R1, le référentiel est non galiléen. On peut simuler les accelérations du nouveau référentiel avec les forces d'entrainement et de coriolis.
+\begin{flalign*}
+m\vec{a_1} &= \vec{F}\\
+m(\vec{a_2}+\vec{a_e}+\vec{a_c})&\\
+m\vec{a_2}&= \vec{F}-m\vec{a_e}-m\vec{a_c}\\
+&= \vec{F}+\vec{F_e}+\vec{F_c}
+\end{flalign*}
+
+\begin{theorem}[Accélération et forces dans un référenriel non galiléen]
+ \[m\vec{a_2} = \vec{F}+\vec{F_e}+\vec{F_c}\] avec \(\vec{F_e} = -m\vec{a_e}\) et \(\vec{F_c} = -m\vec{a_c}\) les 2 forcees d'intertie d'entrainement et de coriolis
+\end{theorem}
+\subsection{Exemples}
+\subsubsection{Accélération linéaire}
+Comme \(\vec{\omega} = 0, \vec{a_c} = 0\) mais on a \(\vec{a_e} = \vec{a_0}\), donc \(\vec{F_e} = -m\vec{a_0}\).
+\subsubsection{Pendule}
+On a \(m\vec{a_2} = 0 = m\vec{g}+\vec{T}-m\vec{a_0}\). On en déduit que
+\begin{itemize}
+ \item \(\tan \alpha = \frac{a_0}{g}\)
+ \item \(-\vec{T} = m(\vec{g}-\vec{a_0}) = m\vec{a_{app}}\) : Le poids apparent devient plus grand.
+\end{itemize}
+\subsubsection{Ascensseur}
+\(m\vec{a_2} = 0 = m\vec{g}+\vec{R}-m\vec{a_0}\) car par rapport à R2 l'accélération est nulle. On en déduit que \(-\vec{R}=m(\vec{g}-\vec{a_0})\)
+
+Dans le cas d'une chute libre, \(\vec{a_0} = \vec{g}\) et la force de réaction est nulle
+\subsubsection{Rotation uniforme}
+Dans ce cas, \(\vec{a_c} = \dot{\vec{\omega}} = 0\). De plus, \(\vec{a_0} = 0\), donc \(\vec{a_e} = \vec{\omega}\wedge (\vec{\omega}\wedge \vec{O_2M}) =- \omega^2\wedge \vec{HM}\) avec HM le rayon de rotation.
+
+Dans ce cas, \(\vec{F_e} =  m\omega^2\vec{HM}\)
+\section{Application : Exercice 21}
+Sur la surface de la terre, à une lattitude nord donnée par un angle \(\theta\), on choisit un choisit un repère solidaire à la Terre, associé au repère orthonormé direct R où \(\vec{e_z}\) est selon la direction radiale sortnte du centre de la Terre, \(\vec{e_x}\) est selon la direction de l'ouest et \(\vec{e_y}\) vers le sud. On lance une pierre verticalement à partir de O avec une vitesse initiale \(v_0 = v_0\vec{e_z}\). On néglige les frottements de l'air.
+\begin{enumerate}
+ \item Calculer la composante selon \(\vec{e_z}\) de l'accélération d'entrainement
+ \item Donner position et vitesse de la pierre selon z.
+ \item Calculer \(\vec{a_c}\) selon x
+ \item Donner le décalage vers l'ouest.
+\end{enumerate}
+\subsection{Accélération d'entrainement}
+\(\omega = \frac{2\pi}{T} = \frac{2\pi}{24\times60\times 60}\)
+
+On a : \(\vec{a_e} = \vec{\omega}\wedge (\vec{\omega}\wedge \vec{CO})\)
+
+De plus \(\vec{a_0} = 0\) car il n'y a pas de déplacement du référentiel, et \(\dot{\vec{\omega}} = 0\) car la pulsation est constante.
+
+On donne l'expression de \(\omega = 0\vec{e_x}-\sin(\theta)\vec{e_y}+\cos(\theta)\omega \vec{e_x}\) et de \(\vec{CO} = R \vec{e_z}\)
+
+Donc :
+\begin{flalign*}
+\vec{a_e} &= \vec{\omega}\wedge (\vec{\omega}\wedge \vec{CO})\\
+&= \vec{\omega}\wedge ((-\omega \sin(\theta) \vec{e_y}+\omega\cos(\theta)\vec{e_z})\wedge R\vec{e_z})\\
+&= \vec{\omega}\wedge (-\omega R\sin(\theta)\vec{e_x})\\
+&= -\omega^2\sin^2(\theta)R \vec{e_z}-\omega^2R\cos(\theta)\sin(\theta)\vec{e_y}\\
+\end{flalign*}
+Donc \[\vec{a_e} = -\omega^2R(\cos(\theta)\sin(\theta)\vec{e_y}+\sin^2(\theta)\vec{e_z})\]
+\(a_{e,z} = -\omega^2R\sin^2(\theta)\)
+
+On remarque que l'accélération due à l'accélération d'entrainement est 3 odg fois plus petit que celle due à la gravité.
+\subsection{Position et vitesse}
+\(z(t) = v_z = \dot{z}\)
+
+On applique la PFD : \(m\vec{a} = -mg\vec{e_z}-m\vec{a_c}\). On ne met pas la force d'entrainement car on l'a négligée dans la partie précédente. Donc :
+\begin{flalign*}
+m\vec{a} &= -mg\vec{e_z}-m\vec{a_c}\\
+-mg\vec{e_z}-m2\vec{\omega}\wedge \vec{v}
+\end{flalign*}
+On peut décomposer selon les 3 axes :
+
+Selon z :
+\explanation{3}{On ne met pas l'accélération de coriolis car celle-ci s'exprime selon le vecteur x  ( \(\omega,v \in Ozy\)) }
+\begin{flalign*}
+&m\ddot{z} = -mg\explain{3}{right}{0}{0.5}{}\\
+&\Rightarrow v_z = v_0-gt\\
+&\Rightarrow z(t) = v_0t-\frac{gt^2}{2}
+\end{flalign*}
+Le temps de chute est de \(T= \frac{2v_0}{g}\)
+
+\subsection{Accélération de coriolis}
+\explanation{4}{On fait une approximation en supposant que la vitesse est seulement selon l'axe z. }
+\begin{flalign*}
+\vec{a_c} &= 2\vec{\omega}\wedge \vec{v}\\
+&= 2\omega (-\sin(\theta)\vec{e_y}+\cos(\theta)\vec{e_z}) \wedge (v_0-gt)e_z\explain{4}{right}{0}{0.5}{}\\
+&= -2\omega \sin(\theta)(v_0-gt)\vec{e_x}
+\end{flalign*}
+\subsection{Décalage vers l'ouest du point de chute}
+\begin{flalign*}
+m\ddot{x} &= -ma_{c,x} \vec{e_x}\\
+\ddot{x} &= 2\omega \sin(\theta)(v_0-gt)\\
+\dot{x} &= 2\omega \sin(\theta)(v_0t)-\omega \sin(\theta)gt^2\\
+x &= \omega\sin(\theta)v_0t^2-\omega\sin(\theta)g\frac{t^3}{3}
+\end{flalign*}
+En utilisant le temps trouvé dans les questions précédentes, on trouve que \[x(T) = \frac{4}{3}\frac{\omega v_0^3}{g^2}\sin(\theta)\]
+\end{document}
