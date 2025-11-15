@@ -1,0 +1,126 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mécanique du solide}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+
+\usepackage{multicol}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\begin{document}
+\setcounter{chapter}{3}
+\chapter{Dynamique des solides en contact - Lois de Coulombs}
+On appelle action de contact les actions mécaniques (forces ou moments de force) qu'exercent  deux solides en contact l'un sur l'autre dont les surfaces sont en contact. Dans ce chapitre, nous étudions les lois de Coulomb sur le frottement solide qui décrivent de manière rigoureuse les données observées expérimentalement : Ce sont des lois empiriques.
+\section{Actions de contact}
+\subsection{Composante tangentielles et normales de l'action mécanique}
+On considère 2 solides en contact dans le plan P. L'action mécanique est modélisée par
+\begin{itemize}
+ \item La résultante des forces de contact
+ \item la somme des moments des actions de contact (normales et dans le plan)
+\end{itemize}
+On désigne par \(\vec{T}\) la composante tangentielle des actions de contact\marginInfo{Souvent appelé le frottement}, \(\vec{N}\) la composante normale des actions de contact avec \(\vec{N}\cdot \vec{n_{2/1}}\geq 0\), \(\vec{M_{I,N}}\) le moment qui s'oppose au mouvement de rotation autour de \(\vec{n}\) et \(\vec{M_{I,T}}\) le moment qui s'oppose au mouvement de torsion dans le plan P
+\subsection{Approximation du contact rigoureuseent ponctuel}
+Cela correspond aux situations où le contact est considéré s'effectuer en un point I. Très souvent, ce point appartient au plan contenant le centre de masse. Par exemple, on peut dire qu'un cylindre est dans ce cas modélisé dynamiquement par celui d'un disque car \(\sum\vec{F}\) vaut la pesanteur terrestre\marginCheck{Qui est équivalent à \(\vec{P}\) en C} et les actions de contact appliquées en I.
+
+Lorsque le moment en un point I des actions mécaniques de contact est nul, tout se passe comme si ces actions de contact étaient une seule force appliquée en I : le contact ponctuel.
+
+\warningInfo{Conditions pour choisir I}{Pour un cube sur une pente, I vérifie la condition \(\vec{M_I} = \vec{0}\). À l'équilibre \(\vec{M_I}(Poids)+\vec{M_i}(Actions de Contact) = \vec{0}\)
+%TODO pourquoi le moment des actions de contact est nul ?
+et donc \(\vec{M_i}=\vec{0}\), donc \(\vec{IC}\wedge \vec{P} = \vec{O}\), donc \((IC//\vec{P})\)
+}
+\section{Lois de Coulombs}
+\subsection{Cas sans glissement}
+On a alors \(\vec{v_g}=\vec{0}\)
+
+\begin{theorem}[Lois de coulombs sans glissement]
+ La vitesse de glissement reste nulle tant que la force de traction \(\vec{F}\) situé dans le plan P tangent en I aux surfaces limitant les 2 solides n'atteint pas une valeur limite \(\norm{T_{max}}\) définie par \(\norm{T_{max} = \mu_S \norm{N}}\) avec \(\mu_S\) le coefficient de frottement statique indépendant de l'aire de contact.
+\end{theorem}
+On a alors \(\norm{T}\leq \mu_S \norm{N}\) et \(\vec{v_g}=\vec{0}\).
+
+\subsubsection{Remarques / exemples}
+On étudie un cube sur un chemin pentu d'angle \(\alpha\) avec l'horizontale.
+
+Il ne faut pas confondre \(\vec{T}\) le frottement et \(\vec{v_g}\) le glissement. Dans ce cas, \(\vec{v_g} = 0, \vec{T}\neq 0\).
+\subsection{Cas avec du glissement}
+On a \[\vec{T} = -\mu_d \norm{N} \frac{\vec{v_g}}{\norm{v_g}}\] avec \(\mu_d\) le coefficient de frottement dynamique. En pratique \(\mu_d = \mu_s\) m\^eme si c'est en général différent.
+
+\subsection{En résumé}
+\criticalInfo{À retenir}{
+\begin{itemize}
+ \item Pas de glissement : \(\vec{v_g}=\vec{0} : \norm{T}\leq \mu_S \norm{N}\)
+ \item Glissement: \(\vec{T} = -\mu_d\norm{N}\frac{\vec{v_g}}{\norm{v_g}}\)
+\end{itemize}
+}
+\section{Application}
+On va comparer le déplacement d'un solide cubique et d'une roue. On cherche à déterminer la force à appliquer à un solide cubique et à une roue pour les déplacer à vitesse constante, les 2 solides ayant la m\^eme masse
+\subsection{Cas du cube}
+On étudie le cube de centre de lasse C et de masse M avec le référentiel d'étude galiléen. On fait le bilan des forces :
+\(\sum \vec{F} = \vec{P_C}+\vec{T_I}+\vec{N_I}\)
+
+On applique le PFD :
+\[M\vec{a_c} = \sum \vec{F_{ext}} = \vec{P}+\vec{T}+\vec{N}\]
+On projette :
+\begin{flalign*}
+M\ddot{x}&= T+f
+M\ddot{y} &= -Mg + N = 0\text{ car contact permanent}
+\end{flalign*}
+On en déduit que \(F = -T\) car le mouvement est à vitesse constante.
+
+On applique le TMC en C : \(\frac{\dd \vec{L_C}}{\dd t} = \sum \vec{M_C}\). Ce théorème n'apporte rien car on est en mouvement de translation
+
+On peut appliquer les lois de Coulomb : \(\vec{v_i} = \vec{v_c} = \dot{x}\vec{e_x}, \dot{x}>0\). On sait que \(\vec{v_g} = \vec{v_{i1}}-\vec{v_{i2}} = \dot{x}\vec{e_x}\). On en déduit que \(\vec{T} = -\mu Mg \vec{e_x}\)
+
+\subsection{Cas de la roue sans glissement}
+On fait le bilan des forces \(P, T,N, F\).
+
+On applique le théorème du centre de masse : \(M\vec{ac} = \sum \vec{F_{ext}}\), donc en projetant :
+\(F = -T, N = -Mg\) car la vitesse est constante et on a un contact permanent avec le sol.
+
+On applique le théorème du moment cinétique en C :
+
+\[\frac{\dd \vec{L_c}}{\dd t} = \vec{M_{c,ex}}\] avec \(\vec{L_c} = [I]_c \omega \vec{e_z} = I_{cz}\omega \vec{e_z} = \frac{MR^2}{2}\omega \vec{e_z}\) et \(\vec{M_{e,ex}} = \vec{M_C(\vec{P})}\vec{M_c(F)}+\vec{M_c(T)}+\vec{M_c(N)} = \vec{CC}\wedge \vec{P}+\vec{CC}\wedge \vec{F}+CI \wedge \vec{T}+\vec{CI}\wedge \vec{N} = \vec{CI}\wedge (\vec{T}+\vec{N}) = \vec{CI}\wedge \vec{T} = -R\vec{e_y}\wedge T\vec{e_x} = RT\vec{e_z}\)
+
+Donc \(mR^2\dot{\omega}\vec{e_z} = RT \Rightarrow T = m\dot{\omega}\). Comme le solide est en CRSG, on a \(\vec{v_i} = (\dot{x}+R\omega)\vec{e_x}\), donc \(\ddot{x_c} = -R\dot{\omega}\Rightarrow T=0, F=0\)
+
+\checkInfo{Commentaire}{Si la roue n'est pas en CRSG, alors \(\norm{T}=\mu\norm{N}\Rightarrow \norm{T}=\mu Mg\Rightarrow F = \mu Mg\) et on retrouve le cas du cube}
+%TODO Pas de réciprocité en vitesse de glissement et force de frottement
+
+\warningInfo{Application le TMC à un point mobile}{On choisit I le point d'application des actions de contact, donc \(\vec{M_I}(\vec{T}+\vec{N}=\vec{0})\). De plus, so on applique le TMC en I, ona \[\frac{\dd \vec{L_I}}{\dd t}+\vec{v_i}\wedge \vec{p_s} = \vec{M_I}\] avec \(\vec{L_I} = [I]_I \vec{\Omega} = I_{iz}\omega \vec{e_z}\). \(I_{iz}\) est obtenu avec Huygens. De plus \(\vec{M_{i,ext}} = \vec{M(P)}+\vec{M_i(T+N)} + M_i{F} = \vec{IC}\wedge \vec{P}+\vec{0} = \vec{IC}\wedge \vec{F} = R\vec{e_y}\wedge (-Mg\vec{e_y})+R\vec{e_y}\wedge F\vec{e_x} \)
+
+\(\vec{v_i}\wedge \vec{p_s} = \dot{x}\vec{e_x}\wedge M\dot{x}\vec{e_x}=\vec{0}\)
+
+On obtient finalement le TMC : \[2MR^2\dot{\omega}\vec{e_z}= -RF\vec{e_z}\Rightarrow F = -2MR\dot{\omega}\]
+
+On aurait également pu déterminer \(\vec{L_I}\) avec Koenig}
+ \end{document}

@@ -1,0 +1,149 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mécanique du solide}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+
+\usepackage{multicol}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\ex}{\vec{e_x}}
+\newcommand{\ey}{\vec{e_y}}
+\newcommand{\ez}{\vec{e_z}}
+\begin{document}
+\setcounter{chapter}{4}
+\chapter{Aspect énergétique des solides}
+\section{Puissance et Travail des Actions Mécaniques}
+
+\subsection{Puissance et Travail des Actions Extérieures}
+\begin{theorem}[Puissance totale]
+$$P = \sum_i \vec{F_i}\cdot \vec{v_{A_i}}$$
+\end{theorem}
+\begin{theorem}[Travail élémentaire]
+$$\delta W_{ex}=\sum_i \vec{f_{ex}}\cdot \dd \vec{OA_i}$$
+\end{theorem}
+
+\subsection{Formule Générale}
+La puissance $P$ des actions mécaniques agissant sur le solide $S$ est donnée par :
+\begin{theorem}[Puissance d'une action mécanique]
+$$P = \vec{R} \cdot \vec{v_A} + \vec{M_A} \cdot \vec{\Omega}$$
+\end{theorem}
+\begin{itemize}
+    \item $\vec{R} = \sum \vec{F}$ (Résultante), $\vec{M_A}$ (Moment en A), $\vec{v_A}$ (Vitesse en A), $\vec{\Omega}$ (Vecteur Rotation).
+\end{itemize}
+\warningInfo{Simplifications}{\begin{itemize}
+    \item \textbf{Force Ponctuelle} : Si l'action mécanique est appliquée en $A$ ($\vec{M_A}(\vec{F}) = \vec{0}$), alors $P = \vec{F}\cdot \vec{V_{A/R}}$.
+    \item \textbf{Couple pur ($\vec{\gamma}$)} : La puissance associée est $P = \vec{\Omega}\cdot \vec{\gamma}$.
+\end{itemize}}
+
+\section{Cas Spécifiques de Puissance et Travail}
+
+\subsection{Puissance des Actions Intérieures}
+\begin{theorem}[Puissance des forces intérieures dans un solide]
+Dans un solide, la puissance des forces intérieures est nulle.
+$$P_{int} = 0$$
+\end{theorem}
+(Rappel: La puissance des forces intérieures ne dépend pas du référentiel d'étude.)
+
+\subsection{Puissance et Travail du Poids ($M\vec{g}$)}
+Le poids agit comme une force unique $M\vec{g}$ appliquée au Centre de Masse ($C$).
+\begin{theorem}[Puissance du Poids]
+$$P_{poids} = M\vec{g}\cdot \vec{v_c}$$
+\end{theorem}
+\begin{theorem}[Travail du Poids]
+$$W(Poids) = M\vec{g}\cdot \vec{OC} + Cst$$
+\end{theorem}
+
+\subsection{Puissance des Actions de Contact (AC)}
+Soient $S_1$ et $S_2$ en contact ponctuel en $I$.
+\begin{theorem}[Puissance totale des Actions de Contact]
+$$P_t^{AC} = \vec{R_{S_2 \to S_1}}\cdot \vec{v_{g_{1/2}}}$$
+\end{theorem}
+$P_t^{AC}$ est nulle si :
+\begin{itemize}
+ \item Pas de glissement ($\vec{v_{I_{1/2}}} = \vec{0}$) OU
+ \item Pas de frottement ($T = 0$).
+\end{itemize}
+\section{Liaisons Parfaites}
+
+\subsection{Définition}
+\begin{definition}[Liaison Parfaite]
+C'est une action de contact entre 2 solides. Elle est parfaite quand les actions mécaniques qu'elle exerce ont une puissance nulle.
+\end{definition}
+
+\subsection{Liaison Pivot Parfaite}
+Une liaison pivot parfaite s'effectuant en un point fixe $O$ implique :
+\begin{theorem}[Propriété d'une liaison pivot]
+$$\vec{M_O^{AC}}\cdot \vec{\Omega} = 0$$
+\end{theorem}
+\warningInfo{Conséquences}{
+\begin{itemize}
+ \item Le moment $\vec{M_O^{AC}}$ est \textbf{perpendiculaire} au vecteur rotation $\vec{\Omega}$.
+ \item Si $\vec{\Omega}$ est porté par $(Oz)$, alors $M_{O,z}^{AC} = 0$.
+\end{itemize}
+}
+\section{Théorèmes Énergétiques}
+
+\subsection{Théorème de la Puissance Cinétique}
+On note $E_k$ l'énergie cinétique du solide par rapport à $R$.
+\begin{theorem}[Théorème de la puissance cinétique]
+$$\frac{\dd E_k}{\dd t} = P_{ex}+P_{in} = P_{ex} \quad (\text{pour un solide indéformable})$$
+\end{theorem}
+
+\subsection{Théorème de l'Énergie Cinétique}
+\begin{theorem}[Théorème de l'énergie cinétique]
+$$\Delta E_k = W_{in} + W_{ex} = W_{ex} \quad (\text{pour un solide indéformable})$$
+\end{theorem}
+L'expression élémentaire est $\dd E_k = \delta W^{in}+\delta W^{ex}$.
+
+\section{Énergie Potentielle ($E_p$)}
+
+\subsection{Forces Conservatives}
+\begin{definition}[Force Conservative]
+Une force est conservative si le travail élémentaire qu'elle produit se met sous la forme d'une différentielle d'une fonction, i.e., $\delta W(\vec{F})= -\dd E_p$. $E_p$ est l'énergie potentielle associée à cette force.
+\end{definition}
+
+\subsection{Énergie Potentielle de Pesanteur ($E_{pp}$)}
+\begin{theorem}[Énergie Potentielle de Pesanteur]
+$$E_{pp} = -M\vec{g}\cdot \vec{OC} + Cst$$
+\end{theorem}
+\subsection{Énergie potentielle liée aux forces d'inertie}
+\begin{theorem}[Énergie potentielle d'entrainement]
+Pour une transalatiobn :
+      \[E_{pie} = M\vec{a_o}\cdot \vec{OC}+Cst\]
+Pour une rotation autour d'un axe (Oz, ici) :
+\[E_{pie} = -\frac12 \omega^2 I_{oz}\]
+\end{theorem}
+
+\end{document}

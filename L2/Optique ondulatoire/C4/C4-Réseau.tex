@@ -1,0 +1,148 @@
+% !TeX spellcheck = fr_FR
+\documentclass[french]{yLectureNote}
+
+\title{Optique ondulatoire}
+\subtitle{Réseaux de Diffraction}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+\usepackage{tikz}%---pour deiffner + dépendance de chemfig
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-tête personnalisées
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (à mettre en dernier)
+\usepackage{caption}%---pour la francisation de la légende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\mpsi}{\(\psi\)}
+\newcommand{\und}{\underline}
+\DeclareMathOperator{\sinc}{sinc}
+
+% Définition de la fonction de la fente unique pour plus de clarté
+\newcommand{\psifente}{\und{\psi}_{\mathrm{fente}}}
+
+\begin{document}
+
+\setcounter{chapter}{3}
+\chapter{Méthode - Étude d'un réseau}
+\subsection{ Calcul de la Différence de Marche Optique ($\delta$)}
+
+On considère deux fentes successives, $F_n$ et $F_{n+1}$, séparées par une distance $p$ (le pas du réseau). La différence de marche totale ($\delta$) entre les ondes issues de ces deux fentes est la somme de deux contributions :
+\begin{itemize}
+ \item La différence de marche due à l'**incidence** ($\delta_{inc}$) de l'onde plane sur le réseau.
+ \item La différence de marche due à la **diffraction** ($\delta_{d}$) vers l'observateur.
+\end{itemize}
+\subsubsection{Contribution due à l'incidence ($\delta_{inc}$)}
+
+L'onde incidente est plane et arrive avec un angle $\theta_i$ par rapport à la normale au réseau.
+
+Considérons le front d'onde incident qui arrive au point $A$. Le rayon qui arrive au point $B$ (correspondant à la fente suivante) doit parcourir une distance supplémentaire $AC$ pour atteindre le même front d'onde.
+
+$$AC = p \cdot \sin(\theta_i)$$
+
+$$\mathbf{\delta_{inc} = p \sin(\theta_i)}$$
+
+\subsubsection{Contribution due à la diffraction ($\delta_{d}$)}
+
+Les ondes diffractées se propagent dans la direction $\theta_d$ (angle de diffraction).
+
+Considérons un front d'onde diffracté. Le rayon issu de $A$ parcourt une distance supplémentaire pour rejoindre le front d'onde de référence par rapport au rayon issu de $A$ (fente $F_n$).
+
+$$AD = p \cdot \sin(\theta_d)$$
+
+$$\mathbf{\delta_{d} = p \sin(\theta_d)}$$
+
+\subsubsection{Différence de Marche Totale ($\delta$)}
+
+La différence de marche totale est la somme algébrique des deux contributions :
+
+$$\delta = \delta_{inc} - \delta_{d}$$
+
+$$\mathbf{\delta = p (\sin \theta_i - \sin \theta_d)}$$
+
+\subsection{Calcul du Déphasage ($\phi$)}
+
+Le déphasage $\phi$ est directement lié à la différence de marche $\delta$ par la relation fondamentale :
+
+$$\phi = \frac{2\pi}{\lambda} \delta$$
+
+En substituant l'expression de $\delta$ trouvée précédemment :
+
+$$\mathbf{\phi = \frac{2\pi p}{\lambda} (\sin \theta_i - \sin \theta_d)}$$
+
+Ce déphasage $\phi$ est l'argument utilisé dans la fonction réseau :
+
+$$I(\theta) \propto \left(\frac{\sin(N\phi/2)}{N\sin(\phi/2)}\right)^2$$
+
+On rappelle que les maxima principaux (raies brillantes) se produisent lorsque le déphasage $\phi$ est un multiple entier de $2\pi$, ce qui ramène à la formule du réseau :
+
+$$\phi = 2m\pi \implies \frac{2\pi p}{\lambda} (\sin \theta_i + \sin \theta_d) = 2m\pi$$
+$$m\lambda = p (\sin \theta_i + \sin \theta_d)$$
+\subsection{Annulation de la fonction réseau}
+On souhaite exprimer la valeur de \(u = \frac{\sin\theta_d-\sin\theta_i}{\lambda}\) correspondant à la première annulation de la fonction réseau. En déduire
+la demi-largeur angulaire \(\Delta \theta_a\) de ce pic quand on l’exprime en fonction de \(\theta_d\) .
+
+La fonction réseau est nulle quand l'argument du sinus du numérateur est un multiple de \(\pi\). Donc \(N\frac{\phi}{2} =\pi \Rightarrow
+\phi = \frac{2\pi}{N}\).
+
+Or, \(\phi = 2\pi up = \frac{2\pi}{N} \Rightarrow u = \frac{1}{NP} \). On le note \(\Delta u\) car c'est la varitaion depuis le centre du pic : \[\Delta u = \frac{1}{NP}\]
+
+Mais on sait aussi que \(u = \frac{\sin\theta_d-\sin\theta_i}{\lambda}\). Pour faire apparaitre \(\Delta \theta_a\) qui est la variation de \(\theta\) depuis le centre du pic, on va différention la relation.
+
+On sait que\marginCheck{cf Outils Mathématiques 1} \(\dd f(x) = f'(x)\dd x\). C'est cette relation que l'on va utiliser, avec comme variable \(\theta_d\) pour exprimer \(f(\theta_d) = u(\theta_d)\).
+
+On écrit donc, en traitant \(\sin(\theta_i)\) comme uns constante :
+\begin{flalign*}
+u(\theta_x) = \frac{\sin(\theta_d) - \sin(\theta_i)}{\lambda}\\
+\dd u(\theta_x) = \frac{\cos(\theta_d)}{\lambda} \dd \theta_d
+\end{flalign*}
+Comme la variation de u et \(\theta_d\) sont petites, on peut raisonnablement écrire, avec \(\Delta \theta_d = \Delta \theta_a\) \[\Delta u = \frac{\cos(\theta_d)}{\lambda}\Delta \theta_a\]
+
+En combinant les 2 expressions de \(\Delta u\), on obtient \(\Delta \theta_a = \frac{\lambda}{pN\cos(\theta_d)}\)
+\subsection{Écart entre les pics de diffraction}
+La relation fondamentale des réseaux permet de voir comment, pour un ordre de diffraction m
+donné, l’angle \(\theta_d\) donnant un pic de diffraction est fonction de la longueur d’onde \(\lambda\). En prenant
+la différentielle de cette relation, exprimer l’écart \(\Delta \theta\) entre les pics de diffraction à l’ordre m pour
+deux longueurs d’ondes \(\lambda\) et \(\lambda+\Delta \lambda\) proches.
+
+On va différencier de la m\^eme façon pour obtenir la relation :
+\begin{flalign*}
+p(\sin\theta_d-\sin\theta_i) &= m\lambda\\
+\dd (p(\sin\theta_d-\sin\theta_i)) &= \dd (m\lambda)\\
+p \cos(\theta_d)\dd \theta_d &= m\dd \lambda\\
+p \cos(\theta_d)\Delta \theta &= m\Delta \lambda\\
+\Delta \theta &= \frac{m\Delta \lambda}{p\cos(\theta_d)}
+\end{flalign*}
+\subsection{Séparation de longueurs d'onde par le réseau}
+ Deux longueurs d’ondes sont séparables avec le réseau si les pics de diffraction correspondant sont séparés par un écart angulaire supérieur à la demi largeur de chaque pic. Exprimer
+cette condition en fonction de $\Delta \theta_a$ et $\Delta \theta$ définis précédemment.
+
+L'écart minimal est défini par \(\Delta \theta_a = \Delta \theta\), soit en remplaçant par les expressions : \[\Delta \lambda = \frac{\lambda}{mN}\]
+
+\criticalInfo{Commentaires sur l'expression trouvée}{
+\begin{itemize}
+ \item Plus le réseau a de fentes illuminées (N grand), plus les pics sont fins, et donc plus le réseau est capable de séparer des longueurs d'onde proches.
+ \item Plus l'ordre de diffraction (m) est élevé, plus les pics sont angulairement espacés, et plus le pouvoir de résolution est élevé. C'est pourquoi les réseaux sont souvent utilisés à des ordres m élevés pour la spectroscopie de haute précision.
+  \item Remarquablement, le pouvoir de résolution du réseau ne dépend pas directement de la longueur d'onde λ, mais uniquement des caractéristiques du dispositif (N) et de l'ordre utilisé (m).
+\end{itemize}}
+\end{document}

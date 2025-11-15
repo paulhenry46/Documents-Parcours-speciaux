@@ -1,0 +1,233 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mécanique du solide : Lois de Coulomb}
+\subtitle{Dynamique des solides en contact}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+
+\usepackage{multicol}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\begin{document}
+\setcounter{chapter}{3}
+\chapter{Dynamique des solides en contact - Lois de Coulombs}
+Ce chapitre étudie les lois de Coulomb sur le frottement solide qui décrivent de manière rigoureuse les données observées expérimentalement : Ce sont des lois empiriques.
+
+\section{Actions de contact et Modélisation}
+\begin{definition}[Action de contact]
+Les actions mécaniques (forces ou moments de force) qu'exercent deux solides en contact l'un sur l'autre dont les surfaces sont en contact.
+\end{definition}
+\subsection{Composantes de l'action mécanique de contact}
+L'action mécanique entre deux solides en contact dans le plan $P$ est modélisée par:
+\begin{itemize}
+ \item La résultante des forces de contact
+ \item La somme des moments des actions de contact (normales et dans le plan)
+\end{itemize}
+
+\begin{tabular}{|l|c|l|}
+\hline
+\textbf{Composante} & \textbf{Vecteur} & \textbf{Description} \\
+\hline
+Tangentielle (Frottement) & $\vec{T}$ & Composante tangentielle des actions de contact \\
+\hline
+Normale (Pression) & $\vec{N}$ & Composante normale des actions de contact avec $\vec{N}\cdot \vec{n_{2/1}}\geq 0$. \\
+\hline
+Moment Normal & $\vec{M_{I,N}}$ & Moment qui s'oppose au mouvement de rotation autour de $\vec{n}$. \\
+\hline
+Moment Tangentiel & $\vec{M_{I,T}}$ & Moment qui s'oppose au mouvement de torsion dans le plan $P$. \\
+\hline
+\end{tabular}
+
+\subsection{Approximation du contact rigoureusement ponctuel}
+Cela correspond aux situations où le contact est considéré s'effectuer en un point $I$. Très souvent, ce point appartient au plan contenant le centre de masse.
+
+\criticalInfo{Définition du Contact Ponctuel}{
+Lorsque le moment en un point $I$ des actions mécaniques de contact est nul, tout se passe comme si ces actions de contact étaient une seule force appliquée en $I$ : on parle de contact ponctuel.
+}
+
+\warningInfo{Condition pour choisir I (Exemple du Cube sur pente)}{
+Pour un cube sur une pente, $I$ vérifie la condition $\vec{M_I} = \vec{0}$.
+À l'équilibre $\vec{M_I}(Poids)+\vec{M_i}(\text{Actions de Contact}) = \vec{0}$ et donc $\vec{M_i}(\text{Actions de Contact})=\vec{0}$.
+}
+
+\section{Lois de Coulombs}
+
+\subsection{Cas sans glissement (Adhérence)}
+On a alors une vitesse de glissement $\vec{v_g}=\vec{0}$.
+
+\begin{theorem}[Lois de Coulombs sans glissement]
+La vitesse de glissement reste nulle tant que la force de traction $\vec{F}$ situé dans le plan $P$ tangent en $I$ aux surfaces limitant les 2 solides n'atteint pas une valeur limite $\norm{T_{max}}$ définie par :
+$$\norm{T_{max}} = \mu_S \norm{N}$$
+Avec $\mu_S$ le coefficient de frottement statique indépendant de l'aire de contact.
+\end{theorem}
+\criticalInfo{Condition d'Adhérence}{
+On a alors : $$\norm{T}\leq \mu_S \norm{N}$$ et $\vec{v_g}=\vec{0}$.
+}
+\subsubsection{Remarques / exemples}
+On étudie un cube sur un chemin pentu d'angle $\alpha$ avec l'horizontale. Il ne faut pas confondre $\vec{T}$ le frottement et $\vec{v_g}$ le glissement. Dans ce cas, $\vec{v_g} = \vec{0}$ mais $\vec{T}\neq \vec{0}$.
+
+\subsection{Cas avec glissement (Glissement effectif)}
+On a une vitesse de glissement $\vec{v_g} \neq \vec{0}$.
+
+\begin{theorem}[Force de Frottement en Glissement]
+$$\vec{T} = -\mu_d \norm{N} \frac{\vec{v_g}}{\norm{v_g}}$$
+Avec $\mu_d$ le coefficient de frottement dynamique.
+\end{theorem}
+
+\subsubsection{Remarque}
+En pratique, on considère souvent que $\mu_d = \mu_s$ même si c'est en général différent.
+
+\subsection{Synthèse des Lois de Coulombs}
+\criticalInfo{À retenir}{
+\begin{itemize}
+ \item Pas de glissement (Adhérence) : $\vec{v_g}=\vec{0} \quad \Rightarrow \quad \norm{T}\leq \mu_S \norm{N}$
+ \item Glissement effectif : $\vec{v_g}\neq\vec{0} \quad \Rightarrow \quad \vec{T} = -\mu_d\norm{N}\frac{\vec{v_g}}{\norm{v_g}}$
+\end{itemize}
+}
+
+\section{Application : Déplacement d'un Solide à Vitesse Constante}
+On va comparer le déplacement d'un solide cubique et d'une roue pour déterminer la force $\vec{F}$ à appliquer pour les déplacer à vitesse constante ($\vec{a}_C = \vec{0}$), les 2 solides ayant la même masse $M$.
+
+\subsection{Cas du Cube (Glissement)}
+Le contact est ponctuel en $I$. La vitesse du point $I$ est $\vec{v}_I = \dot{x}\vec{e_x}$ (glissement effectif).
+\subsubsection{Bilan des Forces et PFD}
+Le référentiel d'étude est Galiléen. Bilan des forces : $\sum \vec{F} = \vec{P_C}+\vec{T_I}+\vec{N_I}+\vec{F}$ (où $\vec{F}$ est la force appliquée).
+Application du PFD ($M\vec{a}_C = \sum \vec{F}_{ext} = \vec{0}$ car vitesse constante) :
+\begin{flalign*}
+M\ddot{x}&= F+T = 0 \quad \Rightarrow \quad F = -T \\
+M\ddot{y} &= -Mg + N = 0 \quad \Rightarrow \quad N = Mg \quad \text{(contact permanent)}
+\end{flalign*}
+\subsubsection{Application des Lois de Coulomb}
+On a glissement $\vec{v_g} = \vec{v_{i1}}-\vec{v_{i2}} = \dot{x}\vec{e_x}$ ($\dot{x}>0$).
+$$\vec{T} = -\mu_d \norm{N} \frac{\vec{v_g}}{\norm{v_g}} = -\mu_d Mg \vec{e_x}$$
+\checkInfo{Force à Appliquer pour le Cube}{
+$$F = -T = \mu_d Mg$$
+}
+
+\subsection{Cas de la Roue (CRSG)}
+\subsubsection{Bilan des Forces et PFD}
+Bilan des forces $\vec{P}, \vec{T}, \vec{N}, \vec{F}$.
+Théorème du Centre de Masse ($M\vec{a}_C = \vec{0}$) :
+$$F = -T \quad \text{et} \quad N = Mg \quad \text{(vitesse constante, contact permanent)}$$
+\subsubsection{Théorème du Moment Cinétique (TMC) en C}
+Le TMC en $C$ donne : $\frac{\dd \vec{L_C}}{\dd t} = \sum \vec{M_{C,ex}}$.
+\begin{itemize}
+    \item $\vec{L_C} = [I]_c \vec{\omega} = I_{cz}\omega \vec{e_z} = \frac{MR^2}{2}\omega \vec{e_z}$.
+    \item $\sum \vec{M_{C,ex}} = \vec{M_C}(\vec{T}+\vec{N}) = \vec{CI} \wedge (\vec{T}+\vec{N}) = \vec{CI} \wedge \vec{T} = -R\vec{e_y}\wedge T\vec{e_x} = RT\vec{e_z}$.
+\end{itemize}
+Par identification :
+$$\frac{MR^2}{2} \dot{\omega}\vec{e_z} = RT\vec{e_z} \quad \Rightarrow \quad T = \frac{MR}{2} \dot{\omega}$$
+\subsubsection{Condition de Roulement Sans Glissement (CRSG)}
+En CRSG, $\vec{v}_I = \vec{v}_C + \vec{\Omega} \wedge \vec{CI} = \vec{0}$.
+La vitesse de glissement est nulle $\vec{v_g}=\vec{0}$.
+$$\vec{v}_I = (\dot{x}_C + R\omega)\vec{e_x} = \vec{0} \quad \Rightarrow \quad \ddot{x_c} = -R\dot{\omega}$$
+Puisque le mouvement est à vitesse constante, $\ddot{x}_C = 0$, donc $\dot{\omega} = 0$.
+\checkInfo{Force à Appliquer pour la Roue en CRSG}{
+Si $\dot{\omega} = 0$, alors $T = 0$, et donc $\boldsymbol{F = 0}$.
+}
+\infoInfo{Commentaire}{
+Si la roue n'est pas en CRSG (elle glisse), alors on applique la loi de Coulomb avec glissement $\norm{T}=\mu\norm{N}$. On retrouve $\norm{T}=\mu Mg \Rightarrow F = \mu Mg$, soit le cas du cube.
+}
+%
+% \subsection{Application du TMC à un point mobile I}
+% On peut appliquer le TMC au point mobile $I$ (point d'application des actions de contact), pour lequel $\vec{M_I}(\vec{T}+\vec{N}=\vec{0})$.
+% La formule est :
+% $$\frac{\dd \vec{L_I}}{\dd t}+\vec{v_i}\wedge \vec{p_s} = \sum \vec{M_{I,ext}}$$
+% \begin{itemize}
+%     \item $\vec{L_I} = [I]_I \vec{\Omega} = I_{iz}\omega \vec{e_z}$ ($I_{iz}$ est obtenu avec Huygens).
+%     \item $\vec{v_i}\wedge \vec{p_s} = \dot{x}\vec{e_x}\wedge M\dot{x}\vec{e_x}=\vec{0}$ (si $\vec{v}_I$ est colinéaire à $\vec{p}_S = M\vec{v}_C$).
+%     \item $\sum \vec{M_{I,ext}} = \vec{M}(\vec{P})+\vec{M_i}(\vec{F}) = \vec{IC}\wedge \vec{P} + \vec{IC}\wedge \vec{F}$ (où $\vec{M_i}(\vec{T}+\vec{N}) = \vec{0}$).
+% \end{itemize}
+
+\subsection{Application du TMC à un point mobile I}
+Le Théorème du Moment Cinétique (TMC) est généralement appliqué à un point fixe ou au centre de masse $C$. Cependant, il peut également être appliqué à un point mobile $I$, à condition d'ajouter un terme correctif.
+
+\criticalInfo{Formule du TMC en un Point Mobile $I$}{
+$$\frac{\dd \vec{L_I}}{\dd t}+\vec{v_I}\wedge \vec{p_S} = \sum \vec{M_{I,ext}}$$
+}
+Où :
+\begin{itemize}
+    \item $\frac{\dd \vec{L_I}}{\dd t}$ est la dérivée temporelle du moment cinétique du solide en $I$.
+    \item $\vec{v_I}$ est la vitesse du point mobile $I$.
+    \item $\vec{p_S} = M\vec{v_C}$ est la quantité de mouvement du solide $S$ de masse $M$ et de centre de masse $C$.
+    \item $\vec{v_I}\wedge \vec{p_S}$ est le terme correctif, souvent appelé moment de transport.
+    \item $\sum \vec{M_{I,ext}}$ est la somme des moments des forces extérieures appliquées au solide, calculés au point $I$.
+\end{itemize}
+
+\subsubsection{Application au cas de la Roue en Translation Pure}
+Dans le cas de la roue étudiée :
+\begin{itemize}
+    \item Point $I$ : On choisit $I$ comme le point d'application des actions de contact $\vec{T}$ et $\vec{N}$.
+    \item Moment des actions de contact en $I$ : Par définition du point d'application, le moment des actions de contact est nul en $I$ :
+    $$\vec{M_I}(\vec{T}+\vec{N}) = \vec{0}$$
+    \item Moment de transport ($\vec{v_I}\wedge \vec{p_S}$) :
+    La vitesse du point $I$ est $\vec{v_i} = \dot{x}\vec{e_x}$ (vitesse de translation).
+    La quantité de mouvement est $\vec{p_S} = M\vec{v_C} = M\dot{x}\vec{e_x}$.
+    Les deux vecteurs sont colinéaires, donc leur produit vectoriel est nul :
+    $$\vec{v_i}\wedge \vec{p_s} = \dot{x}\vec{e_x}\wedge M\dot{x}\vec{e_x}=\vec{0}$$
+    \item Moment Cinétique en $I$ ($\vec{L_I}$) :
+    $\vec{L_I}$ est donné par : $$\vec{L_I} = [I]_I \vec{\Omega} = I_{iz}\omega \vec{e_z}$$
+    $I_{iz}$ est le moment d'inertie du solide par rapport à l'axe $(I, \vec{e_z})$. Il peut être obtenu grâce au théorème de Huygens : $I_{iz} = I_{Cz} + M R^2$. Pour un disque ($I_{Cz} = \frac{1}{2}MR^2$), on a $I_{iz} = \frac{1}{2}MR^2 + MR^2 = \frac{3}{2}MR^2$.
+    \item Somme des Moments Extérieurs en $I$ :
+    $$\sum \vec{M_{I,ext}} = \vec{M_I}(\vec{P})+\vec{M_i}(\vec{T}+\vec{N}) + \vec{M_i}(\vec{F})$$
+    $$\sum \vec{M_{I,ext}} = \vec{IC}\wedge \vec{P} + \vec{0} + \vec{IC}\wedge \vec{F}$$
+    Avec $\vec{IC} = R\vec{e_y}$.
+    $$\vec{M_I}(\vec{P}) = R\vec{e_y}\wedge (-Mg\vec{e_y}) = \vec{0}$$
+    $$\vec{M_i}(\vec{F}) = R\vec{e_y}\wedge F\vec{e_x} = -RF\vec{e_z}$$
+\end{itemize}
+\criticalInfo{Équation Finale du TMC en $I$}{
+L'application du TMC se simplifie alors pour donner :
+$$\frac{\dd \vec{L_I}}{\dd t} = \sum \vec{M_{I,ext}}$$
+En utilisant $I_{iz} = \frac{3}{2}MR^2$, on obtient :
+$$\frac{3}{2}MR^2\dot{\omega}\vec{e_z}= -RF\vec{e_z} \quad \Rightarrow \quad F = -\frac{3}{2}MR\dot{\omega}$$
+Ce résultat est différent de celui obtenu en $C$ ($T = \frac{1}{2}MR\dot{\omega}$) mais permet, combiné au PFD, de résoudre le système.
+}
+\subsubsection{Cohérence des Résultats : Le Rôle du PFD}
+Les résultats obtenus par l'application du TMC au centre de masse $C$ et au point de contact $I$ sont a priori différents, mais ils décrivent le même mouvement et sont parfaitement cohérents lorsqu'ils sont combinés avec le Principe Fondamental de la Dynamique (PFD) en translation.
+
+\paragraph{Démonstration de la cohérence :}
+En substituant l'expression de $T$ (issue du TMC en $C$) et de $\ddot{x}_C$ (issue de la condition CRSG) dans l'équation du PFD, on retrouve l'expression obtenue par le TMC en $I$.
+
+\begin{align*}
+F &= M \ddot{x}_C - T \\
+F &= M (-R \dot{\omega}) - \left( \frac{1}{2} M R \dot{\omega} \right) \quad \text{(Substitution des expressions)} \\
+F &= -M R \dot{\omega} - \frac{1}{2} M R \dot{\omega} \\
+F &= \left( -1 - \frac{1}{2} \right) M R \dot{\omega} \\
+F &= -\frac{3}{2} M R \dot{\omega}
+\end{align*}
+
+Ce résultat est exactement celui obtenu directement par l'application du TMC au point $I$.
+
+\checkInfo{Conclusion}{
+Les deux approches (TMC en $C$ combiné au PFD, ou TMC en $I$) sont équivalentes et mènent aux mêmes équations du mouvement. L'utilisation du TMC en $I$ est souvent privilégiée car elle annule le moment des forces de contact ($\vec{T}$ et $\vec{N}$), simplifiant le calcul de la somme des moments.
+}
+\end{document}

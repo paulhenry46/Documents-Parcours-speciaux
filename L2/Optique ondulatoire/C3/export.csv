@@ -1,0 +1,8 @@
+Title,Content
+Diffraction,"Étalement transverse d'une onde au cours de sa propagation, en particulier quand l'onde rencontre un onjet dont la taille est comparable à la longueur d'onde "
+Principe de Huygens,\[\underline{\psi(M)} = K \iint_{(P\in S)}\underline{\psi(P)} \frac{e^{ikPM}}{PM}\dd S \] avec P les points de la surface et M le point pour lequel on évalue la fnction d'onde 
+Diffraction à l'infini de Fraunhofer,\[\underline{\psi(M)} \simeq K\frac{e^{ikOM}}{OM}\iint\dd S \underline{\psi(P)}e^{-ik(x\sin(\theta_x)+y\sin(\theta_y))}\] 
+Diffraction à l'infini de Fraunhofer avec les fréquences spatiales,\[\underline{\psi(M)} \simeq K\frac{e^{ikOM}}{OM}\iint\dd S \underline{\psi(P)}e^{-2i\pi(ux+vy)}\] 
+Fréquences spatiales,\[u = \frac{\sin(\theta_x)}{\lambda_0}= \frac{x_M}{\lambda_0 OM}\] et pareil pour v 
+Intensité pour une fente,\[I = \textcolor{orange}{I_0} \times \sinc((\textcolor{blue}{u}-\textcolor{red}{u_0})\textcolor{green}{a})^2\sinc((\textcolor{blue}{v}-\textcolor{red}{v_0})\textcolor{green}{b})^2\] 
+Étalement angulaire,La diffraction conduit à un étalement angulaire de l'ordre de \(\frac{\lambda_0}{a}\) avec a la largeur de la fente. 

@@ -1,0 +1,70 @@
+% !TeX spellcheck = fr_FR
+\documentclass[french]{yLectureNote}
+
+\title{Optique ondulatoire}
+\subtitle{Réseaux de Diffraction}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+\usepackage{tikz}%---pour deiffner + dépendance de chemfig
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-tête personnalisées
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (à mettre en dernier)
+\usepackage{caption}%---pour la francisation de la légende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\mpsi}{\(\psi\)}
+\newcommand{\und}{\underline}
+\DeclareMathOperator{\sinc}{sinc}
+
+% Définition de la fonction de la fente unique pour plus de clarté
+\newcommand{\psifente}{\und{\psi}_{\mathrm{fente}}}
+
+\begin{document}
+
+\setcounter{chapter}{3}
+\chapter{Réseaux de Diffraction}
+\begin{definition}[Réseau optique]
+Un réseau optique est constitué de la répétation périodique d'un motif diffractant
+\end{definition}
+\begin{theorem}[Intensité à l'infini d'un réseau illuminé par une onde plane]
+\[I(u) = I_0 \cdot \underbrace{\sinc^2(ua)}_{\text{Diffraction}} \cdot \underbrace{\frac{\sin^2(\pi N up)}{\sin^2(\pi up)}}_{\text{Interférence}}\] ou
+\[I(u) = N^2 I_0\sinc^2(ua)R(2\pi u p)\]
+\end{theorem}
+\begin{definition}[Fonction Réseau]
+La Fonction Réseau $R(\varphi)$ normalisée est :
+$$R(\varphi) = \frac{\sin^2(N\varphi/2)}{N^2\sin^2(\varphi/2)}$$
+Elle décrit l'intensité de l'interférence de $N$ ondes avec un déphasage successif $\varphi = 2\pi u' p$.
+\end{definition}
+\begin{proposition}[Représentation]
+Une succession de pics centrés en \(2\pi m, m\in \mathbb{Z}\) et de largeur \(\frac{4\pi}{N}\)
+\end{proposition}
+\begin{theorem}[Formule Fondamentale des Réseaux]
+Les angles de diffraction vérifient la relation :
+$$\mathbf{p}(\sin(\theta_d)-\sin(\theta_i))=\mathbf{m}\lambda$$
+\end{theorem}
+\begin{definition}[Pouvoir de réolsution d'un réseau]
+\[PR = \frac{\lambda}{\Delta \lambda} = mN\] avec m l'ordre de diffraction et N le nombre de fentes
+\end{definition}
+\end{document}

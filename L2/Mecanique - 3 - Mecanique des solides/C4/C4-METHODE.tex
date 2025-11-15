@@ -1,0 +1,62 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{FICHE DE RÉVISION - ESSENTIEL}
+\subtitle{Dynamique des solides en contact : Lois de Coulombs}
+\author{Synthèse Générée}
+\date{\today}
+\yLanguage{Français}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{awesomebox}
+\usepackage{amsmath} % Pour align* et la structure des formules
+\usepackage{amssymb}
+\usepackage{yFlatTable}
+
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+
+\begin{document}
+\setcounter{chapter}{3}
+\chapter{C3/4 - Résoudre un problème de dynamique}
+\section{Bilan des forces et LFD}
+On commence toujours par faire le bilan des forces.
+En général, le système est soumis
+\begin{itemize}
+ \item Au poids : \(\vec{P} = m\vec{g}\)
+ \item À la résultante des forces de contact avec le sol ou un autre solide \(\vec{R} = \vec{T}+\vec{N}\)
+\end{itemize}
+
+%TODO Expliquer qu'on peut étudier qu'une tranche du problème
+
+En appliquant le LFD que l'on projette sur les axes, on obtient les 2  premières équations.
+\warningInfo{Simplification}{Si le système reste en contact avec un objet fixe ou le sol, l'accélération selon un axe est nulle !}
+
+\section{CRSG et Lois de Coulombs}
+Pour obtenir une troisième équation, on commence par calculer la vitesse de glissement entre les 2 solides. 2 cas peuvent se présenter.
+\subsection{Vitesse de glissement nulle}
+Si la vitesse de glissement est nulle, les lois de Coulomb ne nous donnent qu'une inégalité, ce qui est inutile pour résoudre le système. On utilise alors l'expression de \(\vec{v_g}\) est le fait que \(\vec{v_g}=\vec{0}\) pour obtenir une nouvelle équation.
+\warningInfo{Conséquence de vitesse de glissement nulle}{Si la vitesse de glissement est nulle, cela signifie que la vitesse du point appartenant au solide 1 est la m\^eme que la vitesse du solide 2. Si le solide 2 ext fixe, sa vitesse est nulle et on en déduit que la vitesse du point du solide 1 est nulle aussi.}
+\subsection{Vitesse de glissement non nulle}
+Les lois de Coulombs nous donnent alors une égalité dont on se sert pour obtenir une troisème équation :
+\begin{theorem}[Loi de Coulomb]
+\[\vec{T} = -\mu_d \norm{N} \frac{\vec{v_g}}{\norm{v_g}}\]
+\end{theorem}
+\section{Application du moment cinétique}
+Parfois, le système a aussi un moment de force, quand  il est soumis à un couple. Dans ce cas, il faut rajoyter le moment du couple aux moments de forces dans les équations suivantes.
+\criticalInfo{Rappel : Propriété d'un moment de force}{On peut simplement le rajouter car le moment résultant d'un couple de forces (deux forces opposées appliquées en deux points distincts du système) est un vecteur  qui est indépendant du point par rapport auquel on le calcule.}
+\subsection{En un point fixe}
+On utilise la relation \[\frac{\dd \vec{L_C}}{\dd t} = \sum \vec{M_{C,ex}}\]
+\subsection{En un point mobile}
+On utilise \[\frac{\dd \vec{L_I}}{\dd t}+\vec{v_I}\wedge \vec{p_S} = \sum \vec{M_{I,ex}}\]
+\warningInfo{Simplification}{M\^eme si la vitesse du point sur lequel on applique le TMC est non nulle, la composante  \(\vec{v_I}\wedge \vec{p_S}\) peut s'annuler si le point va exactement dans la m\^eme direction que le solide (les 2 vecteur sont alors colinéaires et le produit vectoriel est nul).}
+\subsection{Dans les 2 cas}
+\subsubsection{Point ponctuel}
+Si on cherche à appliquer le TMC pour un point ponctuel M, on peut toujours utiliser la formule de mécanique du point : \[\vec{L_O} = \vec{OM} \wedge \vec{p} = \vec{OM} \wedge m \vec{v_M}\] et on a aussi la relation \(\vec{L_O'} = \vec{O'O}\wedge \vec{p}+\vec{L_O}\)
+\subsubsection{Moment d'une force}
+Pour calculer le moment des forces en un point (O dans la formule), on utilise \[\vec{M_O}(\vec{f}) = \vec{OM}\wedge \vec{f}\] avec $M$ le point matériel sur lequel s'applique la force.
+
+On choisit ici sur quel point l'appliquer pour simplifier les équations obtenues. Par exemple, pour enlever les équations liées aux forces de contact, on peut l'appliquer au point de contact géométrique. Si on l'appliquer au centre de masse, le moment du poids sera nul.
+\end{document}

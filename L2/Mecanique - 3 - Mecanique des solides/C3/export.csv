@@ -1,0 +1,18 @@
+Title,Content
+Somme de Forces dans un solide,\[\sum \vec{F} = \int \vec{fv}\cdot \dd v\] avec fv la densité volumique de Force qui s'exerce sur le volume élémentaire. 
+Moment de force,\[\vec{M_O}(\sum\vec{F}) = \int OA \wedge \vec{fv}\cdot \dd v\] avec O un point quelconque et A qui appartient à S. fv s'applique en A. 
+Théorème de la quantité de mouvement,\(M\vec{a_c}=\sum\vec{F_{ext}}\) avec C le CDM 
+Théorème du moment cinétique avec O fixe ou C centre de masse (fixe ou mobile),"\[(\frac{\dd \vec{L_O}}{\dd t}) = \sum \vec{M_{O,ext}}\] "
+Théorème du moment cinétique avec O mobile,"\[(\frac{\dd \vec{L_O}}{\dd t}) + \vec{v_o}\wedge M\vec{v_c}= \sum \vec{M_{O,ext}}\] avec vc la vitesse du centre de masse "
+Point de contact des actions de contact,"Quand le moment en un point I des actions mécaniques de contact est nul, on les modélise comme une force appliquée en I. Il faut donc que \(\vec{M_I^{AC} = \vec{0}}\) "
+Vitesse de glissement nulle,\(T \leq \mu_s N\) 
+Vitesse de glissement non nulle,\(\vec{T} = \mu_d N \vec{e_{vg}}\) avec \(\vec{e_{vg}}\) le vecteur unitiare de la vitesse de glissement. 
+Puissance extérieure,\[P_{ex} = \sum_i \vec{F_{ex\to i}}\cdot \vec{V_{Ai}}\] 
+Travail des forces extérieure,\[\delta W_{ex} = \sum_i \vec{F_{ex\to i}}\cdot \dd \vec{OA_i}\] 
+Puissance appliquée à un solide,\[P = \sum \vec{F} \cdot \vec{v_A}+\vec{\omega}\cdot \vec{M_A}(\sum(\vec{F}))\] 
+Puissance du poids,\[P_{poids} = M\vec{g}\cdot \vec{v_c}\] et \[W_{poids} = M\vec{g}\cdot \vec{OC}\] 
+Puissance totale des actions de contact,\[P_t^{ac} = \vec{R_{S_2\to S_1}}\cdot \vec{v_{g12}}\] 
+Liaison pivot parfaite,Une liaison qui autorise juste un mouvement de rotation autour d'un axe fixe 
+Théçrème de l'énergie cinétique,\[\frac{\dd E_k}{\dd t} = P_{ex}\] et \[\dd E_k = \delta W^{ex}\] 
+Énergie potentillle de pesanteur,\[E_{pp} = -M\vec{g}\cdot \vec{OC}+Cst\] 
+Accélération d'entrainement,\[\vec{a_e} = -\omega^2 \vec{H_iA_i}\] avec Hi le projeté de Ai sur l'axe de rotation. 

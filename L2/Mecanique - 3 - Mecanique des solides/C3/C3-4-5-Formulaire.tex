@@ -1,0 +1,108 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mécanique du solide}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+
+\usepackage{multicol}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\begin{document}
+\setcounter{chapter}{3}
+\chapter{Éléments dynamiques et énergétiques / Formulaire}
+\section{Dynamique générale}
+\subsection{Moment de forces}
+\begin{definition}[Somme de Forces dans un solide]
+\[\sum \vec{F} = \int \vec{fv}\cdot \dd v\] avec fv la densité volumique de Force qui s'exerce sur le volume élémentaire.
+\end{definition}
+\begin{definition}[Moment de force]
+\[\vec{M_O}(\sum\vec{F}) = \int OA \wedge \vec{fv}\cdot \dd v\] avec O un point quelconque et A qui appartient à S. fv s'applique en A.
+\end{definition}
+\warningInfo{Point du solide}{Le point A ne doit pas \^etre obligatorement le m\^eme dans l'ensemble de la somme. Ainsi, pour un cube posé sur le sol, A est le centre de Masse C pour le poids et I pour la réaction du support. On a alors \(\vec{M_O} = \vec{OC}\wedge \vec{P}+\vec{OI}\wedge \vec{N}\)}
+\subsection{PFD}
+\begin{theorem}[Théorème de la quantité de mouvement]
+ \(M\vec{a_c}=\sum\vec{F_{ext}}\) avec C le CDM
+\end{theorem}
+\begin{theorem}[Théorème du moment cinétique avec O fixe ou C centre de masse (fixe ou mobile)]
+ \[(\frac{\dd \vec{L_O}}{\dd t}) = \sum \vec{M_{O,ext}}\]
+\end{theorem}
+\begin{theorem}[Théorème du moment cinétique avec O mobile]
+ \[(\frac{\dd \vec{L_O}}{\dd t}) + \vec{v_o}\wedge M\vec{v_c}= \sum \vec{M_{O,ext}}\] avec vc la vitesse du centre de masse
+\end{theorem}
+\section{Lois de Coulombs}
+\begin{definition}[Point de contact des actions de contact]
+Quand le moment en un point I des actions mécaniques de contact est nul, on les modélise comme une force appliquée en I. Il faut donc que \(\vec{M_I^{AC} = \vec{0}}\)
+\end{definition}
+\begin{theorem}[Vitesse de glissement nulle]
+ \(T \leq \mu_s N\)
+\end{theorem}
+\begin{theorem}[Vitesse de glissement non nulle]
+ \(\vec{T} = \mu_d N \vec{e_{vg}}\) avec \(\vec{e_{vg}}\) le vecteur unitiare de la vitesse de glissement.
+\end{theorem}
+\section{Aspect énergétiques}
+\subsection{Puissance et travail}
+\subsubsection{Généralités}
+\begin{theorem}[Puissance extérieure]
+ \[P_{ex} = \sum_i \vec{F_{ex\to i}}\cdot \vec{V_{Ai}}\]
+\end{theorem}
+\begin{theorem}[Travail des forces extérieure]
+ \[\delta W_{ex} = \sum_i \vec{F_{ex\to i}}\cdot \dd \vec{OA_i}\]
+\end{theorem}
+\subsubsection{Application à un solide}
+\begin{theorem}[Puissance appliquée à un solide]
+ \[P = \sum \vec{F} \cdot \vec{v_A}+\vec{\omega}\cdot \vec{M_A}(\sum(\vec{F}))\]
+\end{theorem}
+\subsection{Exemples de travail}
+\begin{theorem}[Puissance du poids]
+ \[P_{poids} = M\vec{g}\cdot \vec{v_c}\] et \[W_{poids} = M\vec{g}\cdot \vec{OC}\]
+\end{theorem}
+\begin{theorem}[Puissance totale des actions de contact]
+ \[P_t^{ac} = \vec{R_{S_2\to S_1}}\cdot \vec{v_{g12}}\]
+\end{theorem}
+\begin{definition}[Liaison pivot parfaite]
+Une liaison qui autorise juste un mouvement de rotation autour d'un axe fixe
+\end{definition}
+\subsection{Théorèmes cinétiques}
+\begin{theorem}[Théçrème de l'énergie cinétique]
+ \[\frac{\dd E_k}{\dd t} = P_{ex}\] et \[\dd E_k = \delta W^{ex}\]
+\end{theorem}
+\subsection{Énergies potentielles}
+\begin{theorem}[Énergie potentillle de pesanteur]
+ \[E_{pp} = -M\vec{g}\cdot \vec{OC}+Cst\]
+\end{theorem}
+\begin{theorem}[Accélération d'entrainement]
+ \[\vec{a_e} = -\omega^2 \vec{H_iA_i}\] avec Hi le projeté de Ai sur l'axe de rotation.
+\end{theorem}
+
+ \end{document}

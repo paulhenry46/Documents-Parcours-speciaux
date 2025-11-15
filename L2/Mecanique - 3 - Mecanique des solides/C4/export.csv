@@ -1,0 +1,5 @@
+Title,Content
+Action de contact,Action mécanique (force ou moment de force) exercée par deux solides dont les surfaces sont en contact. 
+Condition d'Adhérence,La vitesse de glissement est nulle (\(\vec{v_g}=\vec{0}\)) tant que : \[\norm{T}\leq \mu_S \norm{N}\] 
+Force de Frottement en Glissement,"La vitesse de glissement est non nulle (\(\vec{v_g} \neq \vec{0}\)), et la force de frottement \(\vec{T}\) s'oppose au mouvement : \[\vec{T} = -\mu_d \norm{N} \frac{\vec{v_g}}{\norm{v_g}}\] "
+TMC à un Point Mobile \(I\) (Formule Générale),"\[\frac{\dd \vec{L_I}}{\dd t}+\vec{v_I}\wedge \vec{p_S} = \sum \vec{M_{I,ex}}\] Où \(\vec{p_S} = M\vec{v_C}\) est la quantité de mouvement et \(\vec{v_I}\wedge \vec{p_S}\) est le moment de transport. "

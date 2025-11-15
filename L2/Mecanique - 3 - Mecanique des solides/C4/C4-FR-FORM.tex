@@ -1,0 +1,82 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{FICHE DE RÉVISION - ESSENTIEL}
+\subtitle{Dynamique des solides en contact : Lois de Coulombs}
+\author{Synthèse Générée}
+\date{\today}
+\yLanguage{Français}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{awesomebox}
+\usepackage{amsmath} % Pour align* et la structure des formules
+\usepackage{amssymb}
+\usepackage{yFlatTable}
+
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+
+\begin{document}
+\setcounter{chapter}{3}
+\chapter{Lois de Coulombs et TMC}
+
+\section{Actions de Contact et Modélisation}
+
+\begin{definition}[Action de contact]
+Action mécanique (force ou moment de force) exercée par deux solides dont les surfaces sont en contact.
+\end{definition}
+
+
+\begin{tabular}{|l|c|l|}
+\hline
+\textbf{Composante} & \textbf{Vecteur} & \textbf{Rôle / Condition} \\
+\hline
+Tangentielle (Frottement) & \(\vec{T}\) & Dans le plan tangent (\(P\)). \\
+\hline
+Normale (Pression) & \(\vec{N}\) & Perpendiculaire au plan (\(P\)) : \(\vec{N}\cdot \vec{n_{2/1}}\geq 0\). \\
+\hline
+Moment Normal & \(\vec{M_{I,N}}\) & S'oppose à la rotation autour de la normale \(\vec{n}\). \\
+\hline
+Moment Tangentiel & \(\vec{M_{I,T}}\) & S'oppose à la torsion dans le plan de contact \(P\). \\
+\hline
+\end{tabular}
+
+\criticalInfo{Définition du Contact Ponctuel}{
+Le contact est ponctuel en \(I\) si le moment des actions mécaniques de contact est nul en \(I\) : \(\vec{M_I}(\text{actions de contact}) = \vec{0}\).
+}
+
+\section{Les Lois Empiriques de Coulombs}
+
+\subsection{Cas sans Glissement (Adhérence)}
+\begin{theorem}[Condition d'Adhérence]
+La vitesse de glissement est nulle (\(\vec{v_g}=\vec{0}\)) tant que :
+\[\norm{T}\leq \mu_S \norm{N}\]
+\end{theorem}
+\checkInfo{Notions Clés}{
+\(\vec{T}\) est une force de réaction. \(\mu_S\) est le \textbf{coefficient de frottement statique}.
+}
+
+\subsection{Cas avec Glissement (Glissement Effectif)}
+\begin{theorem}[Force de Frottement en Glissement]
+La vitesse de glissement est non nulle (\(\vec{v_g} \neq \vec{0}\)), et la force de frottement \(\vec{T}\) s'oppose au mouvement :
+\[\vec{T} = -\mu_d \norm{N} \frac{\vec{v_g}}{\norm{v_g}}\]
+\end{theorem}
+\criticalInfo{Utilisation pour résoudre un système}{Dans le cas sans glissement, on utilise \(\vec{v_g}=\vec{0}\) et dans l'autre \(\vec{T} = -\mu_d \norm{N} \frac{\vec{v_g}}{\norm{v_g}}\).}
+
+\section{Théorèmes de la Mécanique et Roulement}
+
+\subsection{Théorème du Moment Cinétique (TMC)}
+
+\criticalInfo{TMC au Centre de Masse \(C\)}{
+\[\frac{\dd \vec{L_C}}{\dd t} = \sum \vec{M_{C,ex}}\]
+Pour un disque en rotation autour de  C : \[\frac{1}{2} M R^2 \dot{\omega} = R T \quad \Rightarrow \quad T = \frac{1}{2} M R \dot{\omega}\]
+}
+
+\begin{theorem}[TMC à un Point Mobile \(I\) (Formule Générale)]
+\[\frac{\dd \vec{L_I}}{\dd t}+\vec{v_I}\wedge \vec{p_S} = \sum \vec{M_{I,ex}}\]
+Où \(\vec{p_S} = M\vec{v_C}\) est la quantité de mouvement et \(\vec{v_I}\wedge \vec{p_S}\) est le moment de transport.
+\end{theorem}
+
+\end{document}

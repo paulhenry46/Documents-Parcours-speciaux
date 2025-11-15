@@ -1,0 +1,77 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mécanique du solide}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+
+\usepackage{multicol}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\begin{document}
+\setcounter{chapter}{1}
+\chapter{Éléments cinétiques et cinématiques des solides}
+\section{Cinématique des solides}
+\begin{theorem}[Formule du champ des vitesses]
+\[\vec{v_B} = \vec{v_A}+\vec{BA}\wedge \vec{\omega}\]
+ avec B et A 2 points quelconques du solide
+\end{theorem}
+\begin{theorem}[Vitesse de glissement des solides]
+\[\vec{g} = \vec{v_{i\in S_1}}-\vec{v_{i\in S_2}}\]
+\end{theorem}
+\begin{theorem}[Condition de roullement sans glissement]
+\[\vec{g} =\vec{0}\]
+\end{theorem}
+\section{Cinétique des solides}
+\begin{definition}[Moment d'inertie]
+\[I_{\Delta} = \int_{(Solide)} \vec{HA}^2 \dd m\] avec \(\dd m\) l'élément élémentaire de matière.
+\end{definition}
+\begin{theorem}[Théorème de Huygens]
+ \[I_{o\Delta}=I_{c\Delta}+Md^2\] avec O un point quelconque et C le centre de masse
+\end{theorem}
+\subsection{Ëéterminer le moment cinétique}
+\begin{theorem}[Moment cinétique d'un point fixe lié au solide]
+ \[\vec{L_{O}} = [I(S)]_O \vec{\Omega}\]
+\end{theorem}
+\begin{theorem}[Moment cinétique d'un point pas fixe ou pas lié au solide avec Koening]
+ \[\vec{L_{O}} =\vec{L^*}+\vec{OC}\wedge M\vec{v_c}\] avec \(\vec{L^*} = \vec{L_{c}} = [I(S)]_C\vec{\omega}\).
+\end{theorem}
+%TODO demander différence et coexistence des 2 formules
+\subsection{Déterminer l'énergie cinétique}
+\begin{theorem}[Énergie cinétique avec un point fixe et lié]
+ \[E_k(S) = \frac12 \vec{L_O}\cdot \vec{\Omega} = \frac12([I]_O \vec{\Omega})\cdot \vec{\Omega}\]
+\end{theorem}
+\begin{theorem}[Énergie cinétique avec un point non fixe ou non lié]
+ \[E_k(S) = E_k^*+\frac12 M\vec{v_c}^2\] avec \(E_k^* = \frac12 \vec{L_C}\cdot \vec{\Omega} = \frac12([I]_C\vec{\omega})\cdot\vec{\Omega}\)
+\end{theorem}
+ \end{document}

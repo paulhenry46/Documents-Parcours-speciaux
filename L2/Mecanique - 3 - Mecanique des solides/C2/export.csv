@@ -1,0 +1,10 @@
+Title,Content
+Formule du champ des vitesses,\[\vec{v_B} = \vec{v_A}+\vec{BA}\wedge \vec{\omega}\]  avec B et A 2 points quelconques du solide 
+Vitesse de glissement des solides,\[\vec{g} = \vec{v_{i\in S_1}}-\vec{v_{i\in S_2}}\] 
+Condition de roullement sans glissement,\[\vec{g} =\vec{0}\] 
+Moment d'inertie,\[I_{\Delta} = \int_{(Solide)} \vec{HA}^2 \mathrm{d} m\] avec \(\mathrm{d} m\) l'élément élémentaire de matière.
+Théorème de Huygens,\[I_{o\Delta}=I_{c\Delta}+Md^2\] avec O un point quelconque et C le centre de masse 
+Moment cinétique d'un point fixe lié au solide,\[\vec{L_{O}} = [I(S)]_O \vec{\Omega}\] 
+Moment cinétique d'un point pas fixe ou pas lié au solide avec Koening,\[\vec{L_{O}} =\vec{L^*}+\vec{OC}\wedge M\vec{v_c}\] avec \(\vec{L^*} = \vec{L_{c}} = [I(S)]_C\vec{\omega}\). 
+Énergie cinétique avec un point fixe et lié,\[E_k(S) = \frac12 \vec{L_O}\cdot \vec{\Omega} = \frac12([I]_O \vec{\Omega})\cdot \vec{\Omega}\] 
+Énergie cinétique avec un point non fixe ou non lié,\[E_k(S) = E_k^*+\frac12 M\vec{v_c}^2\] avec \(E_k^* = \frac12 \vec{L_C}\cdot \vec{\Omega} = \frac12([I]_C\vec{\omega})\cdot\vec{\Omega}\) 

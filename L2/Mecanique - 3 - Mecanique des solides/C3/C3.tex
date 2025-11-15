@@ -1,0 +1,138 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mécanique du solide}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+
+\usepackage{multicol}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\begin{document}
+\setcounter{chapter}{2}
+\chapter{Dynamique des systèmes de points matériels et des solides}
+La dynamique des solides repose sur le PFD qui est une généralisation de la LFP du point matériel. Le PFD exprime la relation entre les grandeurs cinétiques (\(\vec{p} = M\vec{v_{c/R}}, \vec{L_{O/R}}\)) et les actions mécaniques  (forces et moments)
+\section{Forces et moments appliqués à un système}
+\subsection{Somme des forces et moment des forces}
+On définit \(\sigma \vec{F} = \int \vec{f_v}\dd v\) avec \(\vec{f_v}\) la densité volumique de force qui s'exerce sur un volume. On a \[\sum \vec{M_O} = \int \vec{OA}\wedge \vec{f_v}\dd v\] avec O un point quelconque, A un point de F et \(\vec{f_v}\) la force appliquée au point A et \(\vec{M_O}\) le moment au point O.
+\subsection{Torseur-Force}
+Pour décrire les actions mécaniques qui s'excercent sur S, on introduit  le torseur force qui contient la somme des forces et le moment en O de la somme des forces. Le moment des forces vérifie les propriétés de transport :
+\[\vec{M_B}(\sum \vec{F}) = \vec{M_A}(\sum \vec{F}) + \vec{BA}\wedge \sum \vec{F}\]
+\subsection{Notion de couple}
+
+\begin{definition}[Couple]
+Noté \(\Gamma\), c'est un système de forces dont la somme est nulle (\(\sum \vec{F} = \vec{0}\)), mais dont le moment ne l'est pas \(\vec{M_O(\sum \vec{F})} \neq 0\).
+\end{definition}
+Un exemple de couple est la rotation d'un volant de voiture.\marginCheck{les deux mains appliquent des forces égales et opposées, ce qui annule la résultante des forces mais crée un moment qui fait tourner le volant.}
+\subsection{Assimilation  d'une force à un point matériel}
+\begin{theorem}[Condition d'assimilation d'une force à un point matériel]
+Si \(\vec{M_O}(\sum \vec{F}) = \vec{O}\), l'ensemble du torseur de force associé est assimilable à une force unique appliquée en O.
+\end{theorem}
+
+Exemple du torseur des forces de pesanteur terrestre :
+% \[\vec{P} = \int \dd m \vec{g} = M\vec{g}\]
+%
+% % \(\vec{M_C} = \int_{(S)}\vec{CA}\wedge \dd m \vec{g} = \vec{O}\) car C est le centre de masse. On en déduit que le point d'application est confondu avec le centre de masse.
+% %
+% % Tout se passe comme si les forces de pesanteur terrestre étaient une force unique s'exerçant sur le centre de masse.
+
+Les forces de pesanteur sont un ensemble de forces distribuées, chaque particule de masse $dm$ du solide étant soumise à une force $d\vec{P} = \vec{g}dm$.
+La résultante de ces forces est\marginWarning{si \(\vec{g}\) est constant à l'échelle du solide.} :
+\[\vec{P} = \int \dd m \vec{g} = M\vec{g}\]
+Le moment de ces forces par rapport au centre de masse C est\marginTips{par définition du centre de masse C, l'intégrale de $\vec{CA} dm$ est nulle} :
+\[\vec{M_C} = \int_{(S)}\vec{CA}\wedge \dd m \vec{g} = \vec{O}\]
+On en déduit que le point d'application de la résultante de la gravité est confondu avec le centre de masse. Tout se passe comme si les forces de pesanteur terrestre étaient une force unique, $\vec{P} = M\vec{g}$, s'exerçant sur le centre de masse.
+
+On distinguera les forces intérieures des force extérieures\marginInfo{Pour un solide indéformable, les forces intérieures sont nulles.}.
+\section{Principe fondamental de la dynamique}
+\subsection{Énoncé}
+\begin{theorem}[PFD]
+ Le mouvement d'un solide S par rapport à un référentiel R soumis à un torseur de forces extérieures vérifie \[\frac{\dd }{\dd t}[P_0] = [F_{ex}]\] avec \([P_0]\) le torseur cinétique et \([F_{ex}]\) qui contient la somme des forces extérieures et le moment des forces extérieures.
+\end{theorem}
+En pratique, on n'utile pas cet énoncé mais les 2 théorèmes généraux qui le composent.
+\subsection{Théorèmes généraux}
+\subsubsection{Théorème de la Qt de mouv}
+\begin{theorem}[Théorème de la QT Mouv / Centre de masse / Résultante cinétique / Relation fondamentale de la dynamique]
+  \[\frac{\dd \vec{p}}{\dd t} = \sum\vec{f_{ext}}\iff \frac{\dd M\vec{v_c}}{\dd t} = \sum \vec{f_{ext}}\iff M\vec{a_c}=\sum \vec{F_{ext}}\] avec C le centre de Masse M du solide.
+\end{theorem}
+\subsubsection{Théorème du moment cinétique}
+\begin{theorem}[Théorème du moment cinétique en un point O fixe dans R]
+ \[\frac{\dd \vec{L_O}}{\dd t}= \sum \vec{M_{O,ext}}\]
+\end{theorem}
+\warningInfo{Cas particulier}{On sera toujours dans cette situation dans la majorité des exercices}
+\begin{theorem}[Théorème du moment cinétique en un point O' mobile dans R]
+  \[\frac{\dd \vec{L_O}}{\dd t}+ \vec{v_{O'}}\wedge \vec{p_{s}}= \sum \vec{M_{O,ext}}\]
+\end{theorem}
+\begin{myproof}
+ \begin{flalign*}
+ (\frac{\dd \vec{L_o}}{\dd t}) &= \frac{\dd }{\dd t}(\vec{L_O} + \vec{OO'}\wedge \vec{p_{s}})\\
+ &= \frac{\dd \vec{L_O}}{\dd t} + \frac{\dd \vec{OO'}}{\dd t}\wedge \vec{p_s} + \vec{OO'}\wedge \frac{\dd \vec{p_s}}{\dd t}\\
+ &= \sum \vec{M_O}-\vec{v_{O'}}\wedge \vec{p_s}+\vec{OO'}\wedge \sum\vec{F_{ext}}\\
+ (\frac{\dd \vec{L_o}}{\dd t}) + \vec{V_{O'}}\wedge \vec{p_s} &= \sum \vec{M_O}+\vec{O'O}\wedge \sum \vec{F_{ext}}\\
+ &= \sum \vec{M_{O'}}
+ \end{flalign*}
+\end{myproof}
+%  \checkInfo{Exemple d'application au point de contact I d'un cerceau sur le sol.}{
+%  \includegraphics[scale=0.5]{path1}
+%  On applique le TMC sur le point I géométrique. Mais le point I géométrique est en mouvement selon \((Ox)\). Donc \(\vec{V_i} = V_i \vec{e_x}\), donc \(\vec{I}\wedge \vec{p} = \vec{v_i}\wedge M\vec{V_c}=\vec{0}\).}
+
+
+ \checkInfo{Exemple d'application au point de contact I d'un cerceau sur le sol.}{
+  \includegraphics[scale=0.5]{path1}
+
+  On applique le TMC sur le point I, le point de contact géométrique du cerceau avec le sol.
+
+  \subparagraph{Justification du choix du point I :}
+  Le point de contact I est un point mobile par rapport au référentiel du sol (il se déplace selon \(Ox\)). Par conséquent, le théorème du moment cinétique s'écrit :
+  \[\frac{\dd \vec{L_I}}{\dd t}+ \vec{v_I}\wedge \vec{p_{s}}= \sum \vec{M_{I,ext}}\]
+  où $\vec{v_I}$ est la vitesse du point de contact. Pour un roulement sans glissement, la vitesse du point de contact instantané est nulle (\(\vec{v_I}=\vec{0}\)), ce qui simplifie l'équation à \[\frac{\dd \vec{L_I}}{\dd t} = \sum \vec{M_{I,ext}}\]
+
+  \subparagraph{Intérêt du calcul au point I :}
+  Les forces qui s'exercent sur le cerceau sont le poids (\(\vec{P}\)), la force de réaction normale du sol (\(\vec{N}\)), et la force de frottement (\(\vec{f}\)).
+
+  Le moment d'une force est nul si son point d'application coïncide avec le point de calcul.
+  \begin{itemize}
+    \item La force de réaction normale \(\vec{N}\) et la force de frottement \(\vec{f}\) s'appliquent toutes deux au point de contact I. Leurs moments par rapport à I sont donc nuls :
+    \[\vec{M_I}(\vec{N}) = \vec{0} \quad\text{et}\quad \vec{M_I}(\vec{f}) = \vec{0}\]
+    \item La seule force dont le moment n'est pas nul est le poids \(\vec{P}\) qui s'applique au centre de masse C.
+    \[\vec{M_I}(\vec{P}) = \vec{IC} \wedge \vec{P}\]
+  \end{itemize}
+
+  L'application du TMC en I permet donc d'éliminer les moments des forces de contact, ce qui simplifie la résolution du problème en évitant de devoir déterminer la valeur des forces de frottement.
+}
+
+
+
+ \warningInfo{Cas du TMC appliqué au centre de masse}{On a \[\frac{\dd \vec{L_c}}{\dd t}=\sum \vec{F_{ext}}\] que C soit fixe ou mobile.}
+
+ \end{document}

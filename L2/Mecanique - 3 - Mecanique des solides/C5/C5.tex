@@ -1,0 +1,255 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mécanique du solide}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+
+\usepackage{multicol}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\ex}{\vec{e_x}}
+\newcommand{\ey}{\vec{e_y}}
+\newcommand{\ez}{\vec{e_z}}
+\begin{document}
+\setcounter{chapter}{4}
+\chapter{Aspect énergétiques des solides}
+\section{Puissance et travail d'une action mécanique}
+Le système étudié peut ne pas \^etre indéformable. On distingue également les forces extérieures du système des forces intérieures.
+\section{Puissnce et travail des actions extérieures}
+\subsection{Puissance et travail des actions extérieures}
+\[P = \sum_i \vec{F_i}\cdot \vec{v_{Ai}}\] et \[\delta W_{ex}=\sum_i \vec{f_{ex}}\cdot \dd \vec{OA_i}\]
+\subsection{Forces intérieures}
+\[P_{in} = \sum_{ij}\vec{F_{i,j}}\cdot \vec{OA_i}\]
+\warningInfo{Propriété}{\[P_{in/R} = P_{in/R'}\] avec R' en translation /R. Ainsi, la puissance des forces intérieures ne dépend pas du référenrentiel d'étude : on peut donc l'appliquer au référentiel du solide.}
+\section{Puissance et travail des actions mécaniques appliquées à un solide}
+\subsection{Formule générale}
+On considère 2 points A et P appartenants au solide S. A est un point particulier et P quelconque de S.
+
+Le solide S est soumis à l'ensemble de forces volumiques décrit par une densité volumique de force \(\vec{f_v}\). On cherche la puissance associée à cet ensemble de forces dans le référentiel d'étude R : \(P = \int_{(S)}\vec{f_v}\cdot \vec{v_{P\in S}}\dd V\). On applique la formule de Varignon :
+\[\vec{V_{P}} = \vec{v_A} + \vec{PA}\wedge \vec{\Omega}\]
+Donc \[P = \int (\vec{f_v}\dd v)\cdot \vec{V_A}+\vec{\Omega}\cdot (\int(\vec{AP}\wedge \vec{f_v})\dd v)\]
+On en déduit que \(P = \sum\vec{F}\cdot \vec{v_A}+\vec{\Omega}\cdot \vec{M_A}(\sum \vec{F})\)
+
+\warningInfo{Remarque}{
+\begin{itemize}
+%  \item La puissance de l'ensmble des forces s'exerçants sur le solide est le produit du torseur force par le torseur cinématique
+ \item Lorsque l'action mécanique est appliquée en un point A : \[\vec{M_A(\vec{F})} = \vec{0} \Rightarrow \vec{F}\cdot \vec{V_{A/R}}\]
+ \item Si l'action mécanique est un couple \(\gamma\), la puissance associée est \(P = \vec{\Omega}\cdot \vec{\gamma}\)
+\end{itemize}
+}
+\subsection{Puissance et travail des actions intérieures}
+On choisit R' le référentiel lié au solide et on utilise la propriété \(P_{in/R} = P_{in/R'}\)
+\criticalInfo{Puissance de force intérieure}{
+Dans un solide, la puissance des forces intérieures est nulle.}
+\subsection{Puissance et travail des forces de pesnateur terrestre}
+Le poids est une force extérieure de densité volumique \(\vec{f_v} = \rho \vec{g}\)
+
+Donc \[P_{poids} = \int_v \vec{v_a}\cdot \rho \vec{g}\dd v = \int_v \vec{v_a}\cdot \rho \dd v\cdot \vec{g} = \int \vec{v_a}\cdot \dd m \cdot \vec{g} = M\vec{v_c}\cdot \vec{g} = M\vec{g}\cdot \vec{v_c}\]
+
+Tout se passe comme s'il n'y avait qu'une seule force appliquée au centre de masse.
+
+Donc \(\delta w(Poids) = \int_v \rho \vec{g}\cdot \dd \vec{OA} = \int \dd m \dd \vec{AO}\cdot \vec{g} = M\dd \vec{OC}\cdot \vec{g} = M\vec{g}\cdot \dd \vec{OC} \Rightarrow w(Poids) = M\vec{g}\cdot{OC}+Cst\)
+
+On utilisera en pratique ces 2 formules :
+\[P_{poids} = M\vec{g}\cdot \vec{v_c}, W(Poids) = M\vec{g}\cdot \vec{OC}+Cst\]
+\subsection{Puissance et travail des actions de contact}
+On considère 2 solides en contact pontuel en I.
+\subsubsection{Puissance de l'action de S2 sur S1 /R}
+On applique la formule : \(P(S2\to S1) = \vec{R}\cdot \vec{V_{I_1}}+ M_i\cdot \vec{\Omega}\) avec \(\vec{R}\) la résultante des actions de contact (\(T+N\)) et \(\vec{M_I}\) le moment des actions de contact (AC) qui vaut 0.
+\subsubsection{Puissance de l'action mécanique de S1 sur S2/R}
+De la m\^eme façon, on a \(\vec{R_{S1\to S2}}\cdot \vec{V_{i2}}+(M_{i}\cdot \omega = \vec{0})\)
+
+\subsubsection{puissance totale}
+\[P_t^{AC} = \vec{R_{S2\to S_1}}\cdot \vec{V_{I_1}}+\vec{R_{S1\to S_2}} = \vec{R_{S2\to S1}}\cdot \vec{v_{g1/2}}\]
+
+La puissance totale des actions de contact est nulle lorsque :
+\begin{itemize}
+ \item Il n'y a pas de glissement
+ \item Il n'y a pas de frottement : \(\mu = 0\) ou \(T = 0\) o u \(\vec{R} = \vec{T}+\vec{N}\)
+\end{itemize}
+Lorsqu'il y a du glissement et T non nul : \(P_t^{AC}<0\).
+
+Lorsque le support est fixe\marginCritical{i.e. 1 des 2 solides}, \(P_{support\to solide} = P^{AC} = \vec{R_0}\cdot \vec{v_g}=\vec{T}\cdot \vec{V}\)
+\subsection{Notion de liaison pivot parfaite}
+\subsubsection{Définition}
+\begin{definition}[Liaison]
+C'est une action de contact entre 2 solides. Elle est parfaite quand les actions mécaniques ont une puissance nulle
+\end{definition}
+\subsubsection{Liaison double parfaite}
+Une liaison pivot autorise uniquement un mouvement de rotation autour d'un axe fixe \(\Delta\) passant par O. Si cette liaison est parfaite, \(P_{liaison} = 0 = \vec{R}\cdot \vec{V_O} + \vec{M_O^{AC}}\cdot \vec{\Omega}\). Si O est fixe car la liaison s'effectue en O : \(\vec{V_{O/R}}\) et on peut écrire \(P_{liaison} = 0 = \vec{M_O^{AC}}\cdot \vec{\Omega} \Rightarrow \vec{M_O}\perp \vec{\Omega}\).
+
+Si \(\vec{\Omega}\) est porté par un axe \((Oz)\) : \(M_{oz} = 0\)
+
+Conséquence : Avec \(M_{oz} = 0\), on applique le TMC en O que l'on projette :
+
+\(\vec{M_{o,z}^{AC}} = 0, (\frac{\dd \vec{L_o}}{\dd t})\cdot \vec{e_z} = M_{o,z}(autres forces)\).
+
+\section{Théorèmes énergétiques}
+\subsection{Théorème de la puissance cinétique}
+On note \(E_k\) l'énergie cinétique du solide par rapport à R.
+
+\begin{theorem}[Théorème de la puissance cinétique]
+\[\frac{\dd E_k}{\dd t} = P_{ex}+P_{in} = P_{ex}\] pour un solide indéformable
+\end{theorem}
+\subsection{Théorème de l'énergie cinétique}
+\begin{theorem}[Théorème de l'énergie cinétique]
+ \[\dd E_k = \delta W^{in}+\delta \omega^{ex}\] pour un solide indéformable
+\end{theorem}
+On peut bien sur intégrer pour trouver la variation totale :
+\[\Delta E_k = W_{in} + W_{ex} = W_{ex}\]
+Cest 3 formules sont appelées théorème de l'énergie cinétique.
+
+\section{Théorème de la puissance mécanique et de l'énergie cinétique}
+
+\subsection{Énergie potentielle}
+Lorsque le travail élémentaire des forces peut se mettre sous la forme d'une différentielle d'une fonction, i.e. \(\delta W(\vec{F})= -\dd E_p\), alors \(E_p\) est l'énergie potentielle associée à cette force. Ces forces sont donc conservatives
+\subsection{Exemples de forces}
+\subsubsection{Énergie potentielle de pesanteur}
+\(\dd E_{p,p}=-\delta W = -\int_{solide}\rho \vec{g}\dd v \cdot \dd \vec{OP} = -\vec{g}\int_{solide}\rho \dd v \dd \vec{OP} = -\vec{g}\int \dd m \dd \vec{OP}\). P est un point du solide de masse \(\dd m = \rho \dd v \Rightarrow \dd E_{pp} = -\vec{g}M\dd \vec{OC}\)
+
+Donc \[E_{pp} = -M\vec{g}\cdot \vec{OC} + Cst\]
+\subsubsection{Énergie potentielle aux forces d'inertie}
+On rencontre des forces d'inertie lorsqu'on travaille dans un référentiel en mouvement par rapport à un référentiel galiléen.
+
+\begin{enumerate}
+ \item Rotation uniforme de R : \[\vec{a_e} = \vec{a_{e, R'/R}}= \vec{\Omega}\wedge \vec{\Omega}\wedge \vec{OA_i} = -\omega^2 \vec{H_iA_i}\]avec \(H_i\) est le projeté orthogonal de $A_i$ suivant l'axe de rotation.
+\end{enumerate}
+---------------Fin Eval Jeudi-------------
+Pour le point matériel \(A_i\) : \(\dd E_{pie}(A_i) = -F_{ie}\cdot \dd \vec{OA_i}\) et \(\dd E_{pie} = -\vec{F_{ie}}\cdot-\dd \vec{OH_i}+\dd \vec{H_iA_i} = -m_i\omega^2 \vec{H_iA_i}\cdot \vec{\dd H_iAi} = -m_i\omega^2 \dd(\frac12 \vec{H_iA_i}^2)\)
+
+Si on considère un solide S, alors \[\dd E_{pie} = \sum_i \dd E_{pie}(A_i) = \sum_i(-m_i\omega^2 \dd (\frac12 \vec{H_iA_i}^2))= -\frac12 \omega^2 \sum_i m_i \vec{H_iA_i}^2 + Cst = -\frac12 \omega^2 I_{oz}+Cst\]
+
+On a donc trouvé l'énergue potentielle d'entrainement du solide
+
+\begin{theorem}[Énergie potentielle d'entrainement pour un solide]
+ \[E_{pie} = -\frac12 I_{\delta}\omega^2 + Cst\] avec \(\Delta\) l'axe de rotation du ref du solide par rapport à R
+\end{theorem}
+
+Si R' est en translation par rapport à R avec O' l'origine de R'.
+
+Dans ce cas, l'accélération d'entrainement vaut \(\vec{ac'} = \vec{a_0}\) et donc \[\vec{Fie}(A_i) = -m_i \vec{a_e} = -m_i \vec{a_0}\] et on écrit
+\[\dd E_{pie}(Solide) = \vec{a_0}\cdot M\dd \vec{OC} = M\vec{a_o}\cdot \vec{OC}+Cst\]
+Donc \begin{theorem}[Énergie potentielle d'entrainemnt]
+      \[\dd E_{pie}(Solide) = M\vec{a_o}\cdot \vec{OC}+Cst\]
+     \end{theorem}
+Remarque : Quand on étudie le mouvement dans R' on doit prendre en compte la force de coriolis. Mais d'un point de vue énergétique, cette force ne travaille pas.
+\subsection{Énergie mécanique}
+\subsubsection{Définition}
+\begin{definition}[Énergie mécanique]
+\(E_m = E_k+E_p\)
+\end{definition}
+\subsubsection{Théorème de la puissance mécanique et de l'énergie mécanique}
+\begin{theorem}[Théorème de la puissance mécanique et de l'énergie mécanique]
+\[\frac{\dd E_m}{\dd t} = M^{nc} \iff \dd E_m = \delta W^{nc}\]
+\end{theorem}
+\subsection{Application}
+%TODO La puissance des forces non conservatives est nulle donc l'énrgie mécanique se conserve.
+\subsubsection{Cylindre de centre sur un tapis roulant}
+Soit S un cilindre plain, de centre C de masse M, de rayon a, posé sans vitesse initiale à t=0 sur un tapis roulant animé d'une vitesse \(\vec{v_0}=v_0\vec{e_x}\) par rapport au ref terrestre R. On considère que le contact du cylindre sur le tapis est caractérisé par le coefficient de frottement \(\mu\) et qu'il est ponctuel.
+
+On fait le bilan des forces :
+
+\(\vec{P} = M\vec{g}\) appliqué en C et \(\vec{R}=\vec{T}+\vec{N}\) en I.
+
+Les forces et vitesses initiales sont dans le plan \((Cxy)\), on peut donc étudier la coupe du système.
+
+Objectif : Déterminer la puissance des actions de contact
+
+Dans ce problème, on a 3 inconnues : x, la position du centre de masse, \(\omega\) la rotation, T et N. On utlise le PFD et les lois de Coulomb
+
+On utilise d'abord the TH de la quantité de mouvement : \(M\vec{a_c} = \vec{P}+\vec{T}+\vec{N}\)
+
+Donc \(M\ddot{x} = T, M\ddot{y} = -Mg+N\)
+
+On utilise maintenant le TMC appliqué en C : \(\frac{\dd \vec{L_c}}{\dd t} = \sum\vec{M_c,ex} = \vec{M_c(P)+\vec{M_c}(T+N)}\).
+
+On a \(\vec{L_c} = [I]_C \vec{\omega} = I_{cz}\dot{\omega}\vec{e_z}\)
+
+On a aussi \(\vec{M_C}(P) = 0, \vec{M_c}(T+N) = aT \vec{e_z}\)
+
+On en déduit que \(T = \frac{I_{cz}}{a}\dot{\omega}\)
+
+On utilise la loi de Coulomb pour la dernière relation :
+
+On détermine d'abord \(\vec{v_g}\) au cours du temps. \(\vec{v_g} = \vec{v_{i1}}-\vec{v_{i2}}\).
+
+On utilise Varignon pour déterminer \(\vec{v_1}\) et \(\vec{v_{i2}}=v_0\vec{e_x}\)
+
+Donc \(\vec{v_g} = ((\dot{x}+a\omega)-v_0)\vec{e_x}\).
+
+A t=0, \(\vec{v_g} = -v_0\vec{e_x}< 0\)
+
+Donc T>0 et \(\vec{T} = \mu Mg \vec{e_x}\)
+
+On déduit des relations 1 et 4 que  \(M\ddot{x} = T = \mu Mg \Rightarrow x(t) = \frac12 \mu gt^2\)
+
+Avec les relations 3 et 4 : \(T = \frac{Ma\dot{\omega}}{2} = \mu Mg \Rightarrow w(t) = \frac{2}{a} \mu gt\).
+
+On en déduit la vitesse de glissement : \((3\mu gt-v_0)\vec{e_x}\)
+
+Partie énergétique
+
+
+On cherche la puissance du tapis roulant sur le solide.
+
+Donc \((\vec{T}+\vec{N})\cdot \vec{v_i1}  =\vec{T}\cdot \vec{v_i1} = 3\mu^2Mg^2t\)
+
+On cherche maintenant la puissance du solide sur le tapis roulant. On a donc \(-\vec{T}\cdot v_0\vec{e_x} = -\mu Mg \vec{e_x} = T(\dot{x}+a\omega -v_0)<0\)
+
+
+Application du TH de l'énergie cinétique
+
+On travaille avec \(t_1\) l'instant pour lequel \(\vec{v_g}\) s'annule.
+
+On cherche la variation d'énergie cinétique entre t=0 et t=t1.
+
+On a \(v_g(t=0) = -v_0, V_g(t) = 0 \Rightarrow t_1 = \frac{v_0}{3\mu g}\)
+
+Avec \(E_k = E_k*+\frac12MV_c^2 = \frac12 I_{cz}\omega^2+\frac12 M\dot{x}\). On a \(\omega(t1) = \frac{2}{a} \mu gt_1 = \frac{2}{3a}v_0\)
+
+Et \(E_k(t_1) = \frac16MV_0^2\) et donc \(Delta E_k = \frac16 MV_0^2\)
+
+On cherche \(W_{0\to t_1}(P+T+N)=\int^{t}P\dd t = 3m\mu^2Mg \frac12 (\frac{V_0}{3\mu g})^2\)
+
+On trouve que \(W_{0\to t_1} = \Delta e_k\)
+
+\subsubsection{Différents énergie potneitllees}
+\begin{itemize}
+ \item \(E_pp = -M\vec{g}\cdot \vec{OC}+Cst\)
+ \item \(E_{pie} = -\frac12 I_{\Delta}\vec{\omega}^2 + Cst\) % Savoir démontrer
+ \item \(E_{pe} = \frac12 k\Delta l^2 \) avec k la raudeu et \(\Delta l\) l'énergie du ressort.
+\end{itemize}
+
+
+\end{document}

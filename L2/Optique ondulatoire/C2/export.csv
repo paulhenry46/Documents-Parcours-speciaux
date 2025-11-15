@@ -1,0 +1,8 @@
+Title,Content
+Principe de superposition,"Pour 2 ondes de m\^eme pulsation, on n'additionne pas les intensités I mais les fonctions d'onde. "
+Intensité résultantes du principe de superposition,"Pour \(\underline{\fo_1} = \psi_{10}(\vec{r})e^{-i(\omega t + \phi_1(\vec{r}))}\) et  \(\underline{\fo_2} = \psi_{20}(\vec{r})e^{-i(\omega t + \phi_1(\vec{r}))}\),  on a \(I(\vec{r}) = I_1(\vec{r})+I_2(\vec{r}) + 2\sqrt{I_1(\vec{r})+I_2(\vec{r})}\cos(\phi_2(\vec{r})-\phi_1(\vec{r}))\) avec \(\Delta \phi = \phi_1-\phi_2\) le terme d'interférence "
+Interférences constructives,"Si \(\cos(\Delta \phi) > 0\), on a des interférences constructives, dans le cas contraire, elles sont destructives. "
+Ordre d'interférence,"\(p = \frac{\Delta \phi}{2\pi}\). Quand il est entier, \(I\) est maximal, quand il est demi-entier, \(I\) est minimal "
+Visibilité,\[V = \frac{I_{max}-I_{max}}{I_{max}+I_{min}}\] 
+Interfrange de 2 ondes planes,"C'est la distance entre les franges, notée \(i\) avec \[i = \frac{2\pi}{2k\sin(\theta)} = \frac{\lambda}{2\sin(\theta)}\] "
+Intensité d'interférence sur un tableau,\[I_M  = 2I_0(1+\cos(\frac{2\pi az}{\lambda D}))\] 

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="143.933mm"
+   height="83.960945mm"
+   viewBox="0 0 143.933 83.960945"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (1:1.4.2+202505120737+ebf0e940d0)"
+   sodipodi:docname="drawing.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="1.0066252"
+     inkscape:cx="325.34453"
+     inkscape:cy="42.220282"
+     inkscape:window-width="1920"
+     inkscape:window-height="1008"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid1"
+       units="mm"
+       originx="-20.637667"
+       originy="-89.429336"
+       spacingx="0.26458333"
+       spacingy="0.26458334"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-20.637666,-89.429335)">
+    <path
+       style="fill:none;stroke:#a527b0;stroke-width:1.058;stroke-linecap:round;stroke-linejoin:round"
+       d="m 21.166666,111.125 c 58.208332,0 105.833334,0 142.874994,-21.166665"
+       id="path1"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="../etal.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#a527b0;stroke-width:1.058;stroke-linecap:round;stroke-linejoin:round"
+       d="m 21.166666,127 c 63.499998,0 101.824274,-0.0453 142.874984,26.45834"
+       id="path2"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#d32f2f;stroke-width:1.058;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1.058, 3.174;stroke-dashoffset:0"
+       d="M 29.104166,137.58334 V 100.54167"
+       id="path3" />
+    <path
+       style="fill:none;stroke:#d32f2f;stroke-width:1.058;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1.058, 3.174;stroke-dashoffset:0"
+       d="M 137.58333,95.250001 V 164.04167"
+       id="path4" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;font-family:arial;-inkscape-font-specification:arial;text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:none;stroke:#d32f2f;stroke-width:1.058;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1.058, 3.17399;stroke-dashoffset:0"
+       x="31.749998"
+       y="145.52084"
+       id="text4"><tspan
+         sodipodi:role="line"
+         id="tspan4"
+         style="fill:#d32f2f;stroke:none;stroke-width:1.058"
+         x="31.749998"
+         y="145.52084">X<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan7">1</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;font-family:arial;-inkscape-font-specification:arial;text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#d32f2f;stroke:none;stroke-width:1.058;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1.058, 3.17399;stroke-dashoffset:0"
+       x="142.875"
+       y="171.97917"
+       id="text5"><tspan
+         sodipodi:role="line"
+         id="tspan5"
+         style="stroke-width:1.058"
+         x="142.875"
+         y="171.97917">X<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan6">2</tspan></tspan></text>
+    <path
+       style="fill:#d32f2f;stroke:#a527b0;stroke-width:1.058;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+       d="M 21.166665,119.0625 H 164.04165"
+       id="path7" />
+    <path
+       style="fill:none;stroke:#d32f2f;stroke-width:1.058;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1.058, 4.232;stroke-dashoffset:0"
+       d="m 145.52082,97.895838 c 7.9375,7.937502 10.58333,7.937502 10.58333,21.166662"
+       id="path8"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>

@@ -1,0 +1,352 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Optique ondulatoire}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---désactivé pour les TP de PC
+\usepackage{tikz}%---pour deiffner + dépendance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-têtes personnalisées
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la légende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\mpsi}{\(\psi\)}
+\newcommand{\und}{\underline}
+\newcommand{\dph}{\Delta\varphi}
+\begin{document}
+\setcounter{chapter}{1}
+\chapter{Interférences d'ondes lumineuses - Méthode}
+\section{Miroir de Loyd}
+
+\subsection{Sources d'interférence}
+
+Dans le dispositif du miroir de Lloyd, deux ondes interfèrent :
+\begin{itemize}
+   
+  \item Une onde qui vient directement de la source réelle $S$.
+  \item Une onde qui est réfléchie par le miroir et qui provient de l'image virtuelle $S'$ de la source $S$.
+  \marginInfo{Pour obtenir des interférences stables (c'est-à-dire qui ne varient pas aléatoirement dans le temps), les deux ondes doivent être \textbf{cohérentes}. Le miroir de Lloyd assure cette cohérence en utilisant la source réelle $S$ et son image virtuelle $S'$ comme deux sources secondaires issues de la même source primaire $S$. C'est une méthode de \textbf{division du front d'onde}.}
+  \end{itemize}
+Ces deux ondes sont cohérentes car elles proviennent de la même source.
+ Les deux "sources" qui interfèrent sont donc la source réelle $S$ et son image virtuelle $S'$.
+ \subsection{Marche des rayons lumineux}
+
+L'interférence au point $M$ de l'écran est due à la superposition de deux rayons :
+\begin{itemize}
+    \item Un rayon direct issu de la source $S$ qui se propage vers $M$.
+  \item Un rayon issu de $S$, réfléchi par le miroir en un point $I$, puis se propageant vers $M$.
+  \marginInfo{Le grand intérêt d'utiliser l'image virtuelle $S'$ est que le \textbf{chemin optique réel} ($S \to I \to M$) est \textbf{identique} au \textbf{chemin optique direct} ($S' \to M$). Cela simplifie énormément le calcul de la différence de marche $\delta$, qui devient simplement $\delta = S'M - SM$ (avant de considérer le déphasage par réflexion).}
+  \end{itemize}
+Le trajet optique du second rayon est équivalent au trajet direct de la source virtuelle $S'$ vers $M$.
+%TODO schema
+% \begin{figure}[h!]
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{Miroir_de_Lloyd_schema}
+%     \caption{Schéma de la marche des rayons dans le dispositif de Lloyd}
+% \end{figure}
+
+\subsection{Champ d'interférence}
+
+Le champ d'interférence est la zone où les deux ondes (directe et réfléchie) se superposent.
+ Cette zone est la région triangulaire délimitée par la source $S$, le miroir et l'écran.
+\marginInfo{Une partie de l'onde issue de $S$ est bloquée par le miroir et l'autre par l'écran. Le champ d'interférence est limité aux zones de l'espace où \textbf{à la fois} l'onde directe de $S$ et l'onde réfléchie (provenant de $S'$) peuvent se propager.}
+ \subsection{Équivalence avec les trous de Young}
+
+Le dispositif du miroir de Lloyd est équivalent à celui des trous de Young car il met en jeu l'interférence de deux sources ponctuelles cohérentes : la source réelle $S$ et son image virtuelle $S'$.
+ La distance entre ces deux sources est de $2a$, où $a$ est la distance entre la source réelle et le miroir.
+ Le principe physique de superposition d'ondes est le même.
+\marginCheck{Pour utiliser les formules de Young, il faut identifier les paramètres : l'écartement des sources $e$ devient $2a$, et la distance $D$ entre les sources et l'écran reste $D$.}
+
+\subsection{Différence de marche et de phase}
+
+En utilisant les mêmes approximations que pour l'exercice 2.1, la différence de marche $\delta$ en un point $M$ de l'écran (avec $y$ sa coordonnée verticale) est :
+$$ \delta = S'M - SM \approx \frac{2ay}{D} $$
+Cependant, la réflexion sur le miroir introduit un déphasage supplémentaire de $\pi$\marginCritical{Si dans l'énoncé, cette information est présentée à la fin et ne doit pas avoir d'influence dans ces questions, nous choissions de l'utiliser pour décrire le phénomène au mieux.} (ou $\lambda_0/2$).
+\marginWarning{Lorsqu'une onde lumineuse se réfléchit sur l'interface entre un milieu d'indice $n_1$ et un milieu d'indice $n_2$, si $n_2 > n_1$ (par exemple, la lumière dans l'air se réfléchit sur un miroir métallique ou diélectrique), il y a un saut de phase de $\pi$. Cela correspond à une augmentation de la différence de marche de $\lambda_0/2$.}
+ La différence de phase totale $\phi(M)$ est donc :
+$$ \phi(M) = \frac{2\pi}{\lambda_0}\delta + \pi = \frac{2\pi}{\lambda_0}\frac{2ay}{D} + \pi $$
+L'ordre d'interférence $p(M)$ est donné par :
+$$ p(M) = \frac{\phi(M)}{2\pi} = \frac{2ay}{\lambda_0 D} + \frac{1}{2} $$
+
+\subsection{Intensité et figure d'interférence}
+
+L'intensité en un point $M(y)$ de l'écran est :
+$$ I(y) = 2I_0\left(1+\cos\left(\phi(y)\right)\right) = 2I_0\left(1+\cos\left(\frac{4\pi ay}{\lambda_0 D} + \pi\right)\right) $$
+En utilisant la relation $\cos(x+\pi) = -\cos(x)$, on obtient\marginInfo{On trouverait le même résultat final quelque soit le déphasage, qui soit nul ou non.} :
+$$ I(y) = 2I_0\left(1-\cos\left(\frac{4\pi ay}{\lambda_0 D}\right)\right) $$
+Cette expression montre que l'intensité est nulle pour $y=0$ (la frange centrale est sombre).
+ L'interférogramme est constitué de franges rectilignes et parallèles, mais le motif est inversé par rapport aux trous de Young.
+ L'interfrange $i$ est\marginCheck{Pour le trouver, on écrit que \(i = y_2-y_1\) avec \(2k\pi = \frac{4\pi y_1a}{\lambda_0D}\) et \(2(k+1)\pi = \frac{4\pi y_2a}{\lambda_0D}\)} :
+$$ i = \frac{\lambda_0 D}{2a} $$
+\marginTips{L'interfrange $i$ est la distance entre deux maxima consécutifs, déterminée par la partie périodique de l'intensité. On pose $I(y)$ maximale lorsque $\cos\left(\frac{4\pi ay}{\lambda_0 D}\right) = -1$ (à cause du signe moins) soit $\frac{4\pi ay}{\lambda_0 D} = (2k+1)\pi$. L'interfrange correspond à une variation de $\Delta y$ telle que $\frac{4\pi a \Delta y}{\lambda_0 D} = 2\pi$, ce qui donne $i = \Delta y = \frac{\lambda_0 D}{2a}$. C'est la formule des trous de Young avec $e=2a$.}
+\subsection{Valeurs réalistes}
+
+Pour que l'interfrange $i$ soit observable (par exemple, $i=1$ mm), on peut choisir des valeurs typiques :
+\begin{itemize}
+    \item Longueur d'onde $\lambda_0 \approx 500$ nm
+    \item Distance source-miroir $a \approx 0.5$ mm
+    \item Distance miroir-écran $D \approx 2$ m
+\end{itemize}
+Ces valeurs donnent un interfrange $i = \frac{(500 \cdot 10^{-9})(2)}{2(0.5 \cdot 10^{-3})} = 10^{-3}$ m = 1 mm.
+ \subsection{Conséquence du déphasage par réflexion}
+
+Sans calcul, l'ajout d'un déphasage de $\pi$ (ou $\lambda_0/2$) par la réflexion sur le miroir a pour conséquence directe d'inverser la figure d'interférence.
+ Les maxima d'intensité deviennent des minima et les minima deviennent des maxima.
+ Ainsi, la frange centrale, qui est un maximum dans le cas des trous de Young, devient un minimum (une frange sombre) dans le cas du miroir de Lloyd.
+ \section{Mesure de l'indice de l'air}
+\subsection*{1. Montrer que les deux sources ponctuelles sont déphasées.}
+L'interféromètre utilise une division d'amplitude, séparant une onde en deux faisceaux.
+ Un faisceau se propage à travers l'enceinte de longueur $l$ contenant de l'air, tandis que l'autre se propage à travers un milieu de référence (l'air ambiant dans l'autre bras).
+ Le chemin optique dans l'enceinte est $\delta = 2n_{air}l$. Puisque $n_{air} > 1$, ce chemin optique est différent de celui parcouru dans le vide ou un autre milieu, créant ainsi un déphasage entre les deux faisceaux.
+\marginWarning{Le chemin optique $\mathcal{L}$ entre deux points A et B dans un milieu d'indice $n$ est $\mathcal{L} = \int_{A}^{B} n \, \mathrm{d}s$. Il représente la distance que la lumière parcourrait dans le vide pendant le même temps. La différence de chemin optique $\Delta \mathcal{L}$ est directement reliée au déphasage $\Delta \varphi = \frac{2\pi}{\lambda_0} \Delta \mathcal{L}$.}
+ \subsection*{2. Exprimer l'intensité au point A en fonction de $\varphi_{0}$.}
+L'intensité résultante de la superposition de deux ondes cohérentes est donnée par la formule d'interférence :
+$$ I = 2I_{0}(1 + \cos(\varphi_{0})) $$
+où $I_0$ est l'intensité d'une seule onde\marginCritical{Les intéfrences ne sont dus qu'à la cuve et ne sont pas d'origine géométrique  car le point est à égale distance des 2 sources}.
+ \subsection*{3. Comment varie qualitativement la phase par rapport à $\varphi_{0}$ ?}
+On vide la cuve pour faire le vide et on cherche à savoir comment va évoluer la phase.
+ % Lorsque l'on fait le vide dans l'enceinte, l'indice de réfraction du milieu passe de $n_{air}$ à $n_{vide} = 1$.
+ Comme $n_{air} > n_{vide}$, le chemin optique dans ce bras de l'interféromètre diminue.
+ La phase $\varphi$ étant directement proportionnelle au chemin optique ($\varphi \propto \delta$), elle diminue par rapport à sa valeur initiale $\varphi_0$.
+ Mathématiquement, on va définir la nouvelle phase quand le vide est fait : \(\varphi_B = \varphi_{S_1'}-\varphi_{S2}\).
+ Comme \(\varphi_{S_1'} = \varphi_{S_1}+\frac{2\pi}{\lambda_0}l (n_v-n_a)\). On peut donc écrire \(\varphi_B = \varphi_{S_1}+\frac{2\pi}{\lambda_0}l (n_v-n_a)-\varphi_{S_2} = \varphi_{0}+\frac{2\pi}{\lambda_0}l (n_v-n_a)\) qui est plus petit que \(\varphi_0\) car le secon terme est négatif.
+ On en déduit que la phase diminue.
+\marginInfo{Puisque $n_{air} > n_{vide} = 1$, vider la cuve (passer de l'air au vide) remplace un milieu plus réfringent par un milieu moins réfringent. La lumière se propage alors "plus vite" (le chemin optique diminue) dans ce bras, ce qui entraîne une \textbf{diminution} de la phase.}
+ C'est cohérent car comme n se rapproche du vide, le chemin optique diminue et la phase avec.
+ % Mathématiquement, on peut justifier avec \(\varphi_0 = \varphi_1-\varphi_2 = \varphi_1 + \frac{2\pi}{\lambda_0}l(n_v-n_a)-\varphi_2\)
+\subsection*{4.
+ Dans quel sens le défilement des franges a-t-il lieu ?}
+Suivons la frange associée au point A initialement.
+ \(\varphi_0 = \varphi+\frac{2\pi}{\lambda_0}\delta'(A)\) la nouvelle frange est située au point A'.
+ Donc \(\delta(A') = (S_1A')-(S_2A')\) et \((S_1A')>(S_2A')\), donc A est dans le demi-plan inéfrieur, donc les franges défilent vers le bas.
+ % Le défilement des franges a lieu dans le sens des ordres d'interférence décroissants.
+ C'est-à-dire que la frange centrale ($p=0$) se décale pour faire place à des franges d'ordres négatifs, ou les franges de rang élevé se décalent pour faire place à des franges de rang inférieur.
+\marginCheck{Si la différence de phase $\Delta\varphi$ \textbf{diminue} (comme ici), il faut que les franges se déplacent vers la région où la différence de marche \textbf{géométrique} $\delta$ est plus grande (pour compenser la diminution due au changement d'indice). Si $\Delta\varphi$ \textbf{augmente}, les franges se déplacent vers la région où $\delta$ est plus petite. Le défilement est dans le sens des ordres d'interférence \textbf{décroissants} (d'où le signe négatif dans la Q5).}
+ \subsection*{5. Exprimer $\varphi_{0}-\varphi_{1}$ en fonction de N, puis en fonction de l, $\lambda_{0}$ et $\Delta n$.}
+% Un défilement de $N$ franges correspond à une variation de phase de $2\pi N$.
+% $$ \varphi_0 - \varphi_1 = 2\pi N $$
+% Cette variation de phase est due au changement de la différence de marche $\Delta\delta = \delta_{initial} - \delta_{final}$ :
+% $$ \Delta\delta = (n_{air}-1)l - (n_{vide}-1)l = 2(n_{air}-1)l $$
+% Avec $\Delta n = n_{air}-1$, on a :
+% $$ \Delta\delta = l\Delta n $$
+% Le changement de phase correspondant est :
+% $$ \varphi_0 - \varphi_1 = \frac{2\pi}{\lambda_0}\Delta\delta = \frac{2\pi l}{\lambda_0}\Delta n $$
+% En combinant les deux expressions, on obtient la relation :
+% $$ 2\pi N = \frac{\pi l}{\lambda_0}\Delta n $$
+
+On sait que \(\varphi_0-\varphi_1 = -2\pi N = \frac{2\pi}{\lambda_0}l\Delta n \iff \Delta n = 
+ \frac{N\lambda_0}{l}\).
+\marginInfo{Un défilement de $N$ franges correspond à une variation de l'ordre d'interférence de $N$, soit une variation de la différence de phase $\Delta\varphi = 2\pi N$ (en valeur absolue). Le signe dépend du sens de défilement. La variation de phase est aussi donnée par le changement de chemin optique : $\Delta\varphi = \frac{2\pi}{\lambda_0} \Delta \mathcal{L}$.  Le texte original utilisait $\Delta\mathcal{L} = l\Delta n$ et $\Delta\varphi = 2\pi N$ ce qui impliquait un seul passage dans la cuve.}
+
+\subsection*{6. En déduire $\Delta n$ puis $n_{air}$.}
+D'après la question précédente, on peut isoler $\Delta n$ :
+$$ \Delta n = \frac{N\lambda_0}{l} $$
+Avec les valeurs données ($N=53.5$, $\lambda_0=546.07$ nm, $l=10$ cm) :
+$$ \Delta n = \frac{53.5 \times (546.07 \times 10^{-9})}{ 0.10} \approx 1.46 \times 10^{-4} $$
+L'indice de l'air est :
+$$ n_{air} = 1 + \Delta n = 1 + 1.46 \times 10^{-4} = 1.000146 $$
+
+\subsection*{7.
+ Évaluer l'incertitude sur ce résultat.}
+La formule pour l'incertitude sur $\Delta n$ est :
+$$ u(\Delta n) = \Delta n \sqrt{\left(\frac{u(N)}{N}\right)^2 + \left(\frac{u(l)}{l}\right)^2} $$
+Avec $u(N)=0.25$, $N=53.5$, $u(l)=0.5$ mm$=5 \times 10^{-4}$ m, $l=0.10$ m :
+\begin{flalign*}
+u(\Delta n) &= (1.46 \times 10^{-4}) \sqrt{\left(\frac{0.25}{53.5}\right)^2 + \left(\frac{5 \times 10^{-4}}{0.10}\right)^2}\\
+&= (1.46 \times 10^{-4}) \sqrt{2.18 \times 10^{-5} + 2.5 \times 10^{-5}}\\
+&\approx (1.46 \times 10^{-4}) \times (6.84 \times 10^{-3}) \approx 9.99 \times 10^{-7} \\
+\end{flalign*}
+L'incertitude sur $n_{air}$ est la même que sur $\Delta n$, soit $u(n_{air}) \approx 1 \times 10^{-6}$.
+ $$ n_{air} = 1.000146 \pm 0.000001 $$
+\marginCheck{Pour une fonction $f(X, Y) = C \frac{X}{Y}$ (comme $\Delta n = \frac{N\lambda_0}{l}$), l'incertitude relative est : $\frac{u(f)}{|f|} = \sqrt{\left(\frac{u(X)}{|X|}\right)^2 + \left(\frac{u(Y)}{|Y|}\right)^2}$. On néglige $u(\lambda_0)$ car elle est souvent très petite. L'incertitude sur $n_{air} = 1 + \Delta n$ est $u(n_{air}) = u(\Delta n)$ car la constante $1$ n'a pas d'incertitude.}
+\section{Interférence dans une lame à face parallèle}
+\subsection{Type de division}
+Ce dispositif fonctionne par \textbf{division d'amplitude}.
+ L'onde incidente est divisée en plusieurs ondes réfléchies et transmises à chaque interface, créant ainsi les conditions pour les interférences.
+ \subsection{Intensité}
+Les deux ondes qui interfèrent ont la même amplitude $A$. L'intensité d'une seule onde est donc $I_{0} = A^2$.
+ L'intensité résultante de la superposition des deux ondes est donnée par la formule générale :
+$$I = I_1 + I_2 + 2\sqrt{I_1 I_2}\cos(\varphi)$$
+Puisque $I_1 = I_2 = I_0$, on obtient :
+$$I = I_0 + I_0 + 2\sqrt{I_0 I_0}\cos(\varphi) = 2I_0(1+\cos\varphi)$$
+où $\varphi$ est le déphasage entre les ondes.
+\marginWarning{L'intensité maximale $I_{max}$ est obtenue lorsque $\cos\varphi = 1$, soit $I_{max} = 4I_0$. L'intensité minimale $I_{min}$ est obtenue lorsque $\cos\varphi = -1$, soit $I_{min} = 0$. On a des franges de \textbf{haut contraste}.}
+ \subsection{Différence de marche $\delta$ entre les rayons}
+La différence de marche est la différence de chemin optique entre le rayon 2 et le rayon 1. En utilisant les points A, B, C, D et H de la figure\marginCritical{On peut arreter le calcul à la droite DH car le déphase des ondes ne change plus à partir de ce point.
+ De plus, si on envoyait les rayons lumineux dans l'autre sens (principe du retour inverse de la lumière), ces derniers seraient en phase jusqu'à cette droite} :
+$$\delta = n(BC+CD) - n_{air}(BH)$$
+
+\subsection*{4.
+ Montrer que $\delta=2ne~cos~r$.}
+On utilise la relation de Snell-Descartes : \[\sin(i)=n\sin(r)\]
+
+
+Dans le triangle $ABC$, le chemin optique de l'onde 2 à l'intérieur de la lame est $n(BC+CD) = 2n(BC)$ puisque $BC=CD$\marginInfo{Car on se trouve dans un triangle isocèle}.
+ Dans le triangle rectangle formé par les points B et la projection de A sur la seconde face, on a $AB = e/\cos r$.
+ Donc, le chemin optique dans la lame est $2ne/\cos r$.
+ De plus, \(BH = BD\sin(i)=nAC\sin(r), BD = 2e\tan(r)\)
+
+On en déduit que \((BH) = 2ne \tan(r)\sin(r) = \frac{2ne\sin^2(r)}{\cos(r)}\)
+
+% Le chemin optique parcouru par l'onde 1 dans l'air est $n_{air}(BH)$.
+ Dans le triangle $A C'H$ (où $C'$ est la projection de C sur l'onde émergente), on peut montrer que $AH = AC' \sin i$.
+ Donc \[\delta = (BC)+(CD)-(BH) = 2ne(\frac{1}{\cos(r)}-\frac{\sin^2(r)}{\cos(r)}) = 2ne\cos(r)\]
+
+On a est bien $\delta = 2ne \cos r$.
+
+\subsection*{5.Nouvelle expression du déphasage.}
+Le déphasage $\varphi$ est relié à la différence de marche $\delta$ par la relation:
+$$\varphi = \frac{2\pi}{\lambda_0}\delta = \frac{2\pi}{\lambda_0} (2ne \cos(r))$$
+\marginInfo{Dans le cas des interférences par transmission (comme la lumière transmise par la lame), il n'y a pas de réflexion sur un milieu plus réfringent, et donc pas de déphasage supplémentaire de $\pi$. Cependant, pour des interférences par réflexion (avec une lame dans l'air), la première réflexion (Air $\to$ Lame) introduit un $\pi$, mais la seconde réflexion (Lame $\to$ Air) n'en introduit pas (si $n_{lame}>n_{air}$). La différence de phase totale est alors $\varphi = \frac{2\pi}{\lambda_0} \delta + \pi$. (pas à savoir)}
+
+\subsection*{6.
+ Observation des interférences}
+Les interférences se produisent à l'infini. En effet, les deux rayons émergents sont parallèles.
+ Pour les observer, on doit utiliser une lentille convergente qui va faire converger les rayons parallèles dans son plan focal image, où la figure d'interférence sera visible.
+ \subsection*{7. Interférogramme}
+La différence de marche $\delta = 2ne \cos r$ dépend de l'angle de réfraction $r$.
+ Via la loi de Snell-Descartes ($n_0 \sin i = n \sin r$), $r$ est fonction de l'angle d'incidence $i$.
+ Tous les rayons qui arrivent sur la lame avec le même angle d'incidence $i$ auront la même différence de marche, donc la même différence de phase et la même intensité.
+ Dans le plan focal de la lentille, ces rayons convergent sur un cercle.
+ Ainsi, la figure d'interférence est constituée d'\textbf{anneaux concentriques}. Le centre de la figure correspond à l'incidence normale, où $i = 0$, et par conséquent $r = 0$.
+\marginWarning{Ce type de franges (anneaux) est appelé \textbf{franges d'égale inclinaison} car elles relient les points $M$ correspondant au même angle d'incidence $i$ (et donc même différence de marche $\delta$). Elles sont observées avec une source étendue (non ponctuelle) à l'infini ou dans le plan focal d'une lentille.}
+
+\subsection*{8. Ordre d'interférence}
+L'ordre d'interférence est défini par :
+$$p = \frac{\varphi}{2\pi}  = \frac{2ne \cos(r)}{\lambda_0}$$
+L'intensité est maximale lorsque $p$ est un entier.
+ Au centre de la figure, $r=0$, donc $\cos(r)=1$. La condition pour une intensité maximale est que l'ordre d'interférence $p_0$ soit un entier :
+$$p_0 = \frac{2ne}{\lambda_0} = \text{entier}$$
+
+\subsection*{9.
+ Quel est l'ordre d'interférence du plus petit anneau suivant ?}
+Lorsque l'angle $i$ (et donc $r$) augmente, le terme $\cos(r)$ diminue.
+ Par conséquent, l'ordre d'interférence $p$ diminue. Le plus petit anneau suivant le centre (qui correspond au maximum d'ordre $p_0$, et doit donc être entier) est l'anneau brillant correspondant à l'ordre d'interférence immédiatement inférieur, soit $p_1 = p_0 - 1$
+\marginTips{Au centre ($r=0$), l'ordre $p_0$ est le plus grand possible car $\cos(r)$ est maximal. Lorsque $r$ augmente (on s'éloigne du centre), $p$ diminue. Les anneaux brillants correspondent aux ordres entiers décroissants : $p_0, p_0-1, p_0-2, \dots$}
+\section{Superposition de 2 OPPM}
+
+On considère deux ondes planes monochromatiques de même pulsation $\omega$ et de même amplitude $A$.
+ Leurs fonctions d'ondes sont :
+$$
+\psi_1 (\vec{r}, t) = A e^{-i(\omega t - \vec{k}_1 \cdot \vec{r})} \quad \text{et} \quad \psi_2 (\vec{r}, t) = A e^{-i(\omega t - \vec{k}_2 \cdot \vec{r})}
+$$
+avec les vecteurs d'onde :
+$$
+\vec{k}_1 = \alpha \vec{e}_x + \beta \vec{e}_z \quad \text{et} \quad \vec{k}_2 = -\alpha \vec{e}_x + \beta \vec{e}_z
+$$
+On place un écran $E$ perpendiculaire à l'axe $Oz$ à une distance $L$ de l'origine.
+ Un point $M$ de l'écran a pour coordonnées $(x, y, L)$.
+ \begin{enumerate}
+    \item Déterminer l'expression de l'onde résultante en un point $M$ de coordonnées $(x, y, L)$ de l'écran.
+    \item Montrer que l'intensité totale au point $M$ s'écrit $I(M) = 2I_0 (1 + \cos \phi)$ et déterminer la phase $\phi$ en fonction de $x$ et de $\alpha$.
+    \item Quelle est alors la forme des franges d'interférences ? Déterminer l'interfrange.
+    \item Comment est modifié l'interférogramme si on ajoute un déphasage $\theta$ à la deuxième onde mais sans changer la première ?
+    \end{enumerate}
+
+\subsection*{Question 1 : Onde Résultante $\psi_R(\vec{r}, t)$}
+
+L'onde résultante est $\psi_R(\vec{r}, t) = \psi_1(\vec{r}, t) + \psi_2(\vec{r}, t)$.
+ Pour le point $M$ où $\vec{r} = x\vec{e}_x + L\vec{e}_z$, on calcule les produits scalaires :
+\begin{align*}
+\vec{k}_1 \cdot \vec{r} &= (\alpha \vec{e}_x + \beta \vec{e}_z) \cdot (x\vec{e}_x + L\vec{e}_z) = \alpha x + \beta L \\
+\vec{k}_2 \cdot \vec{r} &= (-\alpha \vec{e}_x + \beta \vec{e}_z) \cdot (x\vec{e}_x + L\vec{e}_z) = -\alpha x + \beta L
+\end{align*}
+L'onde résultante s'écrit :
+\explanation{q1}{Pour simplifier l'expression, on factorise par les termes communs et par la moyenne des phases : $\psi_R = A e^{-i(\omega t - \beta L)} \left[ e^{i\alpha x} + e^{-i\alpha x} \right]$. La partie entre crochets se simplifie avec la formule d'Euler : $e^{i\theta} + e^{-i\theta} = 2 \cos(\theta)$.}
+\begin{align*}
+\psi_R(\vec{r}, t) &= A e^{-i(\omega t - (\alpha x + \beta L))} + A e^{-i(\omega t - (-\alpha x + \beta L))} \\
+&= A e^{-i\omega t} e^{i\beta L} \left[ e^{i\alpha x} + e^{-i\alpha x} 
+ \right]\\
+&= 2A \cos(\alpha x) e^{-i(\omega t - \beta L)}\explain{q1}{right}{0}{0.5}{×}
+\end{align*}
+
+\subsection*{Question 2 : Intensité $I(M)$ et Phase $\phi$}
+
+L'intensité est proportionnelle à $I(M) \propto |\psi_R|^2 = \psi_R \psi_R^*$.
+ En posant $I_0 = A^2$ (intensité d'une onde seule), on a :
+\explanation{q2}{On utilise ensuite l'identité trigonométrique $\cos^2(\theta) = \frac{1 + \cos(2\theta)}{2}$.}
+\begin{flalign*}
+I(M) &= \left( 2A \cos(\alpha x) e^{-i(\omega t - \beta L)} \right) \left( 2A \cos(\alpha x) e^{+i(\omega t - \beta L)} \right) \\
+&= 4A^2 \cos^2(\alpha x)\\
+&= 4 I_0 \cos^2(\alpha x)\\
+&= 4 I_0 \left( \frac{1 + \cos(2\alpha x)}{2} \right)\explain{q2}{right}{0}{0.5}{×}\\
+&= 2I_0 (1 + \cos(2\alpha x))
+\end{flalign*}
+Par identification avec $I(M) = 2I_0 (1 + \cos \phi)$, la phase $\phi$ est :
+$$
+\phi = 2\alpha x
+$$
+\marginCheck{La différence de phase $\phi$ entre les deux ondes est $\phi = \vec{k}_1 \cdot \vec{r} - \vec{k}_2 \cdot \vec{r} = (\alpha x + \beta L) - (-\alpha x + \beta L) = 2\alpha x$. La relation $I(M) = 2I_0 (1 + \cos \phi)$ est la formule générale pour deux ondes de même intensité $I_0$.}
+
+\subsection*{Question 3 : Forme des Franges et Interfrange}
+
+\subsubsection*{Forme des Franges}
+Les maxima d'intensité (franges brillantes) sont obtenus 
+ lorsque $\cos \phi = 1$, soit $\phi = 2p\pi$, $p \in \mathbb{Z}$.
+ $$
+2\alpha x = 2p\pi \implies x = \frac{p\pi}{\alpha}
+$$
+Puisque la position $x$ ne dépend que de $p$ et non de $y$, les franges sont des \textbf{lignes droites} (bandes) \textbf{parallèles à l'axe $Oy$}.
+\marginInfo{La frange est définie par une phase $\phi = \text{constante}$. Si $\phi$ ne dépend que de $x$, alors $\phi=\text{constante}$ implique $x=\text{constante}$. Dans le plan $(x, y)$, ceci représente une droite parallèle à l'axe $Oy$. Si $\phi$ dépendait de $x^2+y^2$, les franges seraient des anneaux.}
+ \subsubsection*{Interfrange $i$}
+L'interfrange $i$ est la distance entre deux franges brillantes consécutives (d'ordres $p+1$ et $p$) :
+$$
+i = x_{p+1} - x_p = \frac{(p+1)\pi}{\alpha} - \frac{p\pi}{\alpha}
+$$
+$$
+i = \frac{\pi}{\alpha}
+$$
+\marginWarning{Le paramètre $\alpha$ est lié à l'angle $\theta$ entre les deux vecteurs d'onde par $\alpha = |\vec{k}| \sin(\theta/2)$. L'interfrange $i$ est donc inversement proportionnel à cet angle.}
+
+\subsection*{Question 4 : Modification avec Déphasage $\theta$}
+
+Si l'on ajoute un déphasage $\theta$ à la deuxième onde, la nouvelle différence de phase $\phi'$ devient :
+$$
+\phi' = \phi_{initial} + \theta = 2\alpha x + \theta
+$$
+La nouvelle intensité $I'(M)$ est :
+$$
+I'(M) = 2I_0 (1 + \cos \phi') = 2I_0 (1 + \cos(2\alpha x + \theta))
+$$
+
+La position des nouvelles franges brillantes $x'$ est donnée par $\phi' = 2p\pi$ :
+$$
+2\alpha x' + \theta = 2p\pi \implies x' = \frac{2p\pi - 
+ \theta}{2\alpha} = \frac{p\pi}{\alpha} - \frac{\theta}{2\alpha}
+$$
+Le nouvel interfrange $i'$ est :
+$$
+i' = x'_{p+1} - x'_p = \left( \frac{(p+1)\pi}{\alpha} - \frac{\theta}{2\alpha} \right) - \left( \frac{p\pi}{\alpha} - \frac{\theta}{2\alpha} \right) = \frac{\pi}{\alpha}
+$$
+
+L'interférogramme est modifié par une \textbf{translation} dans la direction $Ox$ d'une quantité $\Delta x = -\frac{\theta}{2\alpha}$.
+ L'interfrange et la forme des franges restent \textbf{inchangées}.
+
+
+ \end{document}

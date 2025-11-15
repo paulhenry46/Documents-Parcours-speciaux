@@ -1,0 +1,101 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Optique ondulatoire}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---désactivé pour les TP de PC
+\usepackage{tikz}%---pour deiffner + dépendance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-tête personnalisées
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\à mettre en dernier)
+\usepackage{caption}%---pour la francisation de la légende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}[1]{\overrightarrow{#1}} % Correction pour que \vec prenne un argument
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\mpsi}{\psi} % Correction : pas besoin de \( \) dans \newcommand
+\newcommand{\und}{\underline}
+\newcommand{\dph}{\Delta\varphi}
+\newcommand{\sinc}{\mathrm{sinc}}
+\begin{document}
+%TODO réviser optique géométrique
+\setcounter{chapter}{2}
+\chapter{Interférences d'ondes lumineuses}
+\begin{definition}[Diffraction]
+Étalement transverse d'une onde au cours de sa propagation, en particulier quand l'onde rencontre un onjet dont la taille est comparable à la longueur d'onde
+\end{definition}
+\section{Calcul général}
+\begin{theorem}[Principe de Huygens]
+  \[\und{\psi(M)} = K \iint_{(P\in S)}\und{\psi(P)} \frac{e^{ikPM}}{PM}\dd S \] avec P les points de la surface et M le point pour lequel on évalue la fnction d'onde
+\end{theorem}
+\begin{theorem}[Diffraction à l'infini de Fraunhofer]
+\[\und{\psi(M)} \simeq K\frac{e^{ikOM}}{OM}\iint\dd S \und{\psi(P)}e^{-ik(x\sin(\theta_x)+y\sin(\theta_y))}\]
+\end{theorem}
+\begin{theorem}[Diffraction à l'infini de Fraunhofer avec les fréquences spatiales]
+\[\und{\psi(M)} \simeq K\frac{e^{ikOM}}{OM}\iint\dd S \und{\psi(P)}e^{-2i\pi(ux+vy)}\]
+\end{theorem}
+\begin{definition}[Fréquences spatiales]
+\[u = \frac{\sin(\theta_x)}{\lambda_0}= \frac{x_M}{\lambda_0 OM}\] et pareil pour v
+\end{definition}
+\section{Calcul pour une fente}
+\explanation{f1}{On utilise \(\sin(\theta) = \frac{e^{i\theta}-e^{-i\theta}}{2i} \)}
+\explanation{f2}{On utilise la fonction sinus cardinal.
+Les a et b apparaissent car dans l'expression, on divise par tout l'argument du sinus, mais a et b n'apparaissent déjà au dénominateur.
+Il faut donc artificiellement les introduire pour utiliser la fonction}
+\begin{flalign*}
+\und{\psi(u,v)} &= \textcolor{warningColor}{K}\iint \dd x \dd y \und{\psi(P)} \textcolor{checkColor}{e^{-2i\pi(ux+vy)}}\\
+&= \textcolor{warningColor}{K}\int_{\textcolor{informationColor}{-a/2}}^{\textcolor{informationColor}{a/2}}\dd x\int_{\textcolor{informationColor}{-b/2}}^{\textcolor{informationColor}{b/2}}\dd y \textcolor{warningColor}{\psi_0 e^{-i\omega t}} \textcolor{criticalColor}{e^{2i\pi(u_0x+v_0y)}}\times \textcolor{checkColor}{e^{-2i\pi(ux+vy)}}\\
+&= \textcolor{warningColor}{K\psi_0e^{-i\omega t}}\int_{\textcolor{informationColor}{-a/2}}^{\textcolor{informationColor}{a/2}}\dd x e^{-2i\pi (\textcolor{checkColor}{u}-\textcolor{criticalColor}{u_0})x}\int_{\textcolor{informationColor}{-b/2}}^{\textcolor{informationColor}{b/2}}\dd y e^{-2i\pi (\textcolor{checkColor}{v}-\textcolor{criticalColor}{v_0})y}\\
+&= \textcolor{warningColor}{K\psi_0e^{-i\omega t}} \left[\frac{e^{-2i\pi (\textcolor{checkColor}{u}-\textcolor{criticalColor}{u_0})x}}{-2i\pi (\textcolor{checkColor}{u}-\textcolor{criticalColor}{u_0})}\right]_{\textcolor{informationColor}{-a/2}}^{\textcolor{informationColor}{a/2}} \times \left[\frac{e^{-2i\pi (\textcolor{checkColor}{v}-\textcolor{criticalColor}{v_0})y}}{-2i\pi (\textcolor{checkColor}{v}-\textcolor{criticalColor}{v_0})}\right]_{\textcolor{informationColor}{-b/2}}^{\textcolor{informationColor}{b/2}}\\
+&= \textcolor{warningColor}{K\psi_0e^{-i\omega t}} \times \frac{-1}{2i\pi (\textcolor{checkColor}{u}-\textcolor{criticalColor}{u_0})}(\underbrace{e^{-i\pi (\textcolor{checkColor}{u}-\textcolor{criticalColor}{u_0})\textcolor{informationColor}{a}}- e^{+i\pi (\textcolor{checkColor}{u}-\textcolor{criticalColor}{u_0})\textcolor{informationColor}{a}}}_{= -2i \sin(\pi (\textcolor{checkColor}{u}-\textcolor{criticalColor}{u_0})\textcolor{informationColor}{a})})\\
+&\quad \times \frac{-1}{2i\pi (\textcolor{checkColor}{v}-\textcolor{criticalColor}{v_0})}(\underbrace{e^{-i\pi (\textcolor{checkColor}{v}-\textcolor{criticalColor}{v_0})\textcolor{informationColor}{b}}- e^{+i\pi (\textcolor{checkColor}{v}-\textcolor{criticalColor}{v_0})\textcolor{informationColor}{b}}}_{= -2i \sin(\pi (\textcolor{checkColor}{v}-\textcolor{criticalColor}{v_0})\textcolor{informationColor}{b})})\\
+&= \textcolor{warningColor}{K\psi_0e^{-i\omega t}} \times \frac{1}{\pi (\textcolor{checkColor}{u}-\textcolor{criticalColor}{u_0})}\sin(\pi(\textcolor{checkColor}{u}-\textcolor{criticalColor}{u_0})\textcolor{informationColor}{a})\\
+&\quad \times\frac{1}{\pi (\textcolor{checkColor}{v}-\textcolor{criticalColor}{v_0})}\sin(\pi(\textcolor{checkColor}{v}-\textcolor{criticalColor}{v_0})\textcolor{informationColor}{b})\explain{f1}{right}{0}{0.5}{}\\
+&= \textcolor{warningColor}{K'}\times \textcolor{informationColor}{a}\sinc((\textcolor{checkColor}{u}-\textcolor{criticalColor}{u_0})\textcolor{informationColor}{a})\textcolor{informationColor}{b}\sinc((\textcolor{checkColor}{v}-\textcolor{criticalColor}{v_0})\textcolor{informationColor}{b})\explain{f2}{right}{0}{0.5}{}\\
+&= \textcolor{warningColor}{K' ab} \times \sinc((\textcolor{checkColor}{u}-\textcolor{criticalColor}{u_0})\textcolor{informationColor}{a})\sinc((\textcolor{checkColor}{v}-\textcolor{criticalColor}{v_0})\textcolor{informationColor}{b})
+\end{flalign*}
+
+Donc
+\begin{theorem}[Intensité pour une fente]
+ \[I = \textcolor{warningColor}{I_0} \times \sinc((\textcolor{checkColor}{u}-\textcolor{criticalColor}{u_0})\textcolor{informationColor}{a})^2\sinc((\textcolor{checkColor}{v}-\textcolor{criticalColor}{v_0})\textcolor{informationColor}{b})^2\]
+\end{theorem}
+\section{Interprétation physique}
+\subsection{Représentation de la fonction sinc}
+\includegraphics[scale=0.5]{sinc}
+
+avec sinc en violet et sinc\(^2\) en jaune.
+
+La courbe du sinus cardinal  présente un pic autour de l'origine suivi d'oscillations d'amplitude décroissantes.
+Elle s'annule quand \(s\neq 0\) et entier avec des extremas proche de s demi-entier.
+L'effet de la multiplication par a ou b dilate ou comprime l'axe des abscisses d'un facteur a ou b\marginTips{(pour a>1, c'est comprimé, pour a<1, c'est étiré)}.
+\subsection{Conséquences}
+\begin{proposition}[Étalement angulaire]
+La diffraction conduit à un étalement angulaire de l'ordre de \(\frac{\lambda_0}{a}\) avec a la largeur de la fente.
+\end{proposition}
+ La tache de diffraction est centrée sur l'image géométrique  \(x_0,y_0\)
+
+ La tache de diffraction est d'autant plus large que la fente est petite.
+\end{document}

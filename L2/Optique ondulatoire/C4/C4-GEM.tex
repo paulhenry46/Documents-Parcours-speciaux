@@ -1,0 +1,165 @@
+% !TeX spellcheck = fr_FR
+\documentclass[french]{yLectureNote}
+
+\title{Optique ondulatoire}
+\subtitle{Réseaux de Diffraction}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+\usepackage{tikz}%---pour deiffner + dépendance de chemfig
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-tête personnalisées
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (à mettre en dernier)
+\usepackage{caption}%---pour la francisation de la légende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\mpsi}{\(\psi\)}
+\newcommand{\und}{\underline}
+\DeclareMathOperator{\sinc}{sinc}
+
+% Définition de la fonction de la fente unique pour plus de clarté
+\newcommand{\psifente}{\und{\psi}_{\mathrm{fente}}}
+
+\begin{document}
+
+\setcounter{chapter}{3}
+\chapter{Réseaux de Diffraction}
+\section{Diffraction par un réseau}
+\subsection{Principe du montage}
+On considère un ensemble de $\mathbf{N}$ fentes de largeur $\mathbf{a}$ dans un plan, répétées périodiquement avec un pas $\mathbf{p}$ (distance entre les \textbf{centres} des fentes).
+\marginCritical{Le pas $p$ (parfois noté $d$) est la constante du réseau. La quantité $\mathbf{n = 1/p}$ est la fréquence spatiale (nombre de traits par unité de longueur).}
+Le réseau est éclairé par une onde plane en incidence $\mathbf{\theta_i}$ par rapport à la normale (Oz). On étudie la diffraction à l'infini dans la direction $\mathbf{\theta_d}$.
+
+\subsection{Diffraction par une fente unique}
+L'onde diffractée par une fente de largeur $a$ centrée en $x=0$, observée dans la direction $\theta_d$ (avec la fréquence spatiale $u = \frac{\sin(\theta_d)}{\lambda}$), est proportionnelle à la fonction $\sinc(ua)$.
+$$\psifente(u) \propto a \sinc(ua)$$
+Pour une fente centrée en $x_n = np$, son amplitude diffractée $\und{\psi_n}(u)$ est la même, multipliée par un terme de phase dû à son décalage spatial :
+$$\und{\psi_n}(u) = \psifente(u) \cdot e^{-2i \pi u (np)}$$
+\warningInfo{Calcul}{En effet, on a  l'intégrale suivante pour un éclairage en incidence normale :
+
+\begin{flalign*}
+\und{\psi_n(u)} &= \int^{np+a/2}_{np-a/2} \und{\psi_0}e^{-i\omega t}e^{-2i \pi u x}\dd x\\
+&= K \und{\psi_0}e^{-i\omega t} \int^{np+a/2}_{np-a/2} e^{-2i \pi u x}\dd x\\
+&= K \und{\psi_0}e^{-i\omega t} \int^{a/2}_{a/2} e^{-2i \pi u (s+np)}\dd s \text{ avec s= x-np (changement de variable)}\\
+&= K \und{\psi_0}e^{-i\omega t}e^{-2i \pi u (np)} \int^{a/2}_{a/2} e^{-2i \pi u (s)}\dd s\\
+\end{flalign*}
+}
+De la m\^eme façon, on trouve pour la fente suivante \[\und{\psi_{n+1}} = \und{\psi_0}(u)e^{-2i\pi u(n+1)p}\]
+
+On additionne les 2 ondes pour décrire les interférences à l'infini :
+\[\und{\psi_n} + \und{\psi_{n+1}} = \psi_0 e^{-i\omega t}a \sinc(ua)(e^{-2i\pi nup})(1+e^{-2i\pi up})\]
+\subsection{Déphasage et Interférences}
+Le déphasage entre les 2 ondes vaut donc \(2\pi up = 2\pi \sin(\theta_x)\frac{p}{\lambda}\)
+% \marginInfo{On peut le retrouver géométriquement en trouvant la diff de marche entre les rayons émis par le centre des 2 fentes, calculée à l'infini pour trouver \(\delta = p\sin(\theta_x)\) puis \(\Delta \phi = \frac{2\pi}{\lambda}p\sin(\theta_x)\)}
+% Le déphasage $\Delta \phi$ entre les ondes issues de deux fentes successives est crucial pour déterminer les interférences.
+
+En effet :
+\marginInfo{Le $\delta$ est la différence de chemin optique entre deux rayons homologues des fentes $n$ et $n+1$. Si l'incidence est $\theta_i$ et l'observation $\theta_d$ : $\delta = p(\sin(\theta_d) - \sin(\theta_i))$.}
+Pour une incidence normale ($\theta_i=0$ et $u'=u$), la différence de marche est $\delta = p\sin(\theta_d) = p \lambda u$.
+Déphasage $\Delta \phi$ :
+$$\Delta \phi = \frac{2\pi}{\lambda}\delta = \frac{2\pi}{\lambda} (p\lambda u) = 2\pi up$$
+
+\subsection{Fonction d'onde diffractée pour N fentes}
+L'onde diffractée totale $\und{\psi}(u)$ est la somme des ondes $\und{\psi_n}(u)$ des $N$ fentes ($n=0$ à $N-1$) :
+$$\und{\psi(u)} = \sum_{n=0}^{N-1} \und{\psi_n}(u) = \psifente(u) \sum_{n=0}^{N-1} (e^{-2i\pi up})^n$$
+\criticalInfo{Somme géométrique}{La somme est une série géométrique de raison $q = e^{-2i\pi up}$. Le terme d'interférence $S$ est :
+$$S = \sum_{n=0}^{N-1} q^n = \frac{1-q^N}{1-q} = e^{-i\pi(N-1)up}\frac{\sin(\pi N up)}{\sin(\pi up)}$$}
+
+Finalement :
+$$\und{\psi}(u) = \left( \psi_0 e^{-i\omega t}a\sinc(ua) \right) \cdot \left( e^{-i\pi (N-1)up}\frac{\sin(\pi N up)}{\sin(\pi up)} \right)$$
+
+\subsection{Intensité Diffractée}
+L'intensité $I(u)$ est proportionnelle au module carré de l'amplitude $\und{\psi}(u)$ :
+$$I(u) = I_0 \cdot \underbrace{\sinc^2(ua)}_{\text{Diffraction}} \cdot \underbrace{\frac{\sin^2(\pi N up)}{\sin^2(\pi up)}}_{\text{Interférence}}$$
+\marginInfo{L'intensité résultante est le produit de :
+\begin{enumerate}
+    \item La figure de diffraction d'une seule fente ($\sinc^2(ua)$).
+    \item La figure d'interférence de $N$ ondes ($\propto \frac{\sin^2}{\sin^2}$).
+\end{enumerate}}
+Si l'incidence est $\theta_i \ne 0$, on remplace la fréquence spatiale $u$ par $u' = u-u_0$, où $u_0 = \frac{\sin(\theta_i)}{\lambda}$.
+
+\subsection{Fonction Réseau}
+\subsubsection{Définition}
+\begin{definition}[Fonction Réseau]
+La Fonction Réseau $R(\varphi)$ normalisée est :
+$$R(\varphi) = \frac{\sin^2(N\varphi/2)}{N^2\sin^2(\varphi/2)}$$
+Elle décrit l'intensité de l'interférence de $N$ ondes avec un déphasage successif $\varphi = 2\pi u' p$.
+\end{definition}
+\begin{itemize}
+    \item La fonction $R(\varphi)$ présente des maxima principaux lorsque le déphasage $\varphi$ est un multiple de $2\pi$ : $$\varphi = 2\pi m, \quad m \in \mathbb{Z}$$
+    \item La largeur des pics est inversement proportionnelle au nombre de fentes $N$ ($\propto 1/N$). Plus $N$ est grand, plus les maxima sont fins.
+\end{itemize}
+\subsubsection{Nouvelle expression de l'intensité}
+Pour \(u' = u-u_0\), on a \[I(u') = N^2 I_0\sinc^2(u'a)R(2\pi u' p)\] avec R la fonction réseau. La fonction obtenue est la fonction réseau enveloppée de la fonction sinus cardinal au carré. I(u') présente une succession de pics de diffractions chacun associés à l'interférence constrcive des ondes diffractées par chaque fente.
+\section{Formule fondamentale des réseaux}
+\subsection{Formule}
+Les maxima d'intensité se produisent lorsque l'argument du terme d'interférence vérifie la condition :
+$$2\pi u' p = 2\pi m \quad \Rightarrow \quad u' p = m$$
+En substituant l'expression de $u'$ (avec $u' = \frac{\sin(\theta_d)}{\lambda} - \frac{\sin(\theta_i)}{\lambda}$), on obtient :
+
+\begin{theorem}[Formule Fondamentale des Réseaux]
+On a des pics de diffraction si
+$$\mathbf{p}(\sin(\theta_d)-\sin(\theta_i))=\mathbf{m}\lambda$$
+\end{theorem}
+Cette relation donne la direction $\theta_d$ de l'ordre de diffraction $\mathbf{m}$ (maximum principal) pour une longueur d'onde $\lambda$ et une incidence $\theta_i$. Elle exprime la condition d'interférence constructive totale.
+
+\subsection{Interprétation physique}
+\begin{itemize}
+ \item $\mathbf{m}$ est l'ordre de diffraction ($m \in \mathbb{Z}$). Pour $m$ entier, le déphasage $\Delta \phi$ est un multiple de $2\pi$ et produit des interférences constructives.
+ \item $\mathbf{m}$ est limité par la condition géométrique : $\mathbf{|\sin(\theta_d)| \le 1}$. Le nombre d'ordres visibles est donc fini.
+\end{itemize}
+
+\section{Performance spectrale d'un réseau optique}
+\subsection{Éclairage en lumière polychromatique}
+Le réseau est un instrument dispersif.
+\marginCritical{Pour $m=0$, la formule devient $\sin(\theta_d) = \sin(\theta_i)$. L'angle $\theta_d$ est indépendant de $\lambda$. Toutes les longueurs d'onde se superposent : c'est l'ordre non dispersif (lumière blanche).}
+Pour les ordres $m \ne 0$, $\sin(\theta_d) = \sin(\theta_i) + m\frac{\lambda}{p}$.
+
+On remarque que $\theta_d$ est fonction de $\lambda$. Le réseau sépare les longueurs d'onde : on fait de la spectroscopie.
+
+\subsection{Pouvoir de résolution du réseau}
+Le Pouvoir de Résolution $R$ mesure l'aptitude du réseau à séparer spatialement deux longueurs d'onde très proches, $\lambda$ et $\lambda+\Delta \lambda$.
+\begin{theorem}[Critère de Rayleigh]
+Deux pics (longueurs d'onde) sont considérés comme séparables si le maximum du premier ($\lambda$) coïncide avec le premier minimum du second ($\lambda+\Delta \lambda$).
+\end{theorem}
+Nous devons comparer :
+\begin{itemize}
+ \item L'Écart Angulaire $\mathbf{\Delta \theta_d}$ entre les pics des deux longueurs d'onde. (Obtenu par différentiation de la formule fondamentale).
+ $$\Delta \theta_d = \frac{m\Delta \lambda}{\cos(\theta_d)p}$$
+ \item La Demi-Largeur Angulaire $\mathbf{\Delta \theta_a}$ d'un pic (distance angulaire entre le max et le premier zéro de la fonction réseau).
+La première annulation de l'intensité a lieu lorsque $\sin(\pi N u' p) = 0$, soit $\pi N u' p = \pi$. En remplaçant $u'$, on obtient :
+$$u' = \frac{1}{Np}$$ puis en différentiant la relation entre u et \(\theta_d\) :
+
+ $$\Delta \theta_a = \frac{\lambda}{Np \cos(\theta_d)}$$
+\end{itemize}
+Le critère de Rayleigh est satisfait lorsque $\Delta \theta_d \ge \Delta \theta_a$. En égalisant pour trouver la résolution limite $\Delta \lambda_{\min}$ :
+$$\frac{m\Delta \lambda_{\min}}{\cos(\theta_d)p} = \frac{\lambda}{Np \cos(\theta_d)}$$
+On obtient : $m\Delta \lambda_{\min} = \frac{\lambda}{N}$
+
+\begin{theorem}[Pouvoir de Résolution du Réseau]
+Le Pouvoir de Résolution $R$ est défini par $\mathbf{R = \frac{\lambda}{\Delta \lambda_{\min}}}$.
+$$R = \mathbf{mN}$$
+\end{theorem}
+Le pouvoir de résolution est proportionnel à l'ordre de diffraction $m$ et au nombre total de fentes $N$ éclairées par le faisceau incident.
+\end{document}

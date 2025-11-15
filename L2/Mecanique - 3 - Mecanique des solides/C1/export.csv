@@ -1,0 +1,9 @@
+Title,Content
+Solide indéformable,C'est un solide (S) ``idéal'' dans lequel les atomes sont rigouresuement fixes les uns par rapport aux autres. Tous les points A et B lui appartenant ont une distance constante au cours du temps. 
+Point lié,"C'est un point, à l'interieur ou l'extérieur du solide, restant à une distance fixe de tous les autres points du solide (S). "
+Degrès de liberté,Ce sont des coordonnées importantes indépendants qui définissent la position d'un solide dans l'espace au cours du temps 
+Relation du champ des vitesses dans un solide (Varignon),\[\vec{v_{B\in S/R}} =  \vec{v_{A\in S/R}} + \vec{BA}\wedge \vec{\omega_{S/R}}\] avec \(\vec{\Omega}\) le vecteur rotation du solide par rapport à R. 
+Vitesse de glissement,"Notée \(\vec{v_g}\), elle est définie par \(\vec{v_{g1/2}} = \vec{v_{I_1\in S_1/R}} - \vec{v_{I_2\in S_2/R}}\) "
+Condition de roulement sans glissement,Elle correspond à \(\vec{V_g} = 0\). On a alors \(\vec{v_{I_1\in S_1/R}} = \vec{v_{I_2\in S_2/R}}\) 
+Mouvement plan,C'est un mouvement tel que chaque point du solide S se déplace dans un plan parallèle à un plan fixe Q dans le référentiel R 
+Centre instantanné de rotation,On appelle CIR du plan Q' (plan invariablement lié à la section du solide (S) par Q) à l'instant t le point I du solide (S) dont la vitesse par rapport à R est nulle. On a donc \[\vec{v_{i\in  S}} = \vec{0}\]

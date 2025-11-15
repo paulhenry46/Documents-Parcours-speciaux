@@ -1,0 +1,271 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mécanique du solide}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+
+\usepackage{multicol}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\begin{document}
+\setcounter{chapter}{1}
+\chapter{Éléments cinétiques des solides}
+\section{Centre de masse}
+% On considère un solide qui correspond à uen distribution continue de points matériels. La masse est définie par \[M = \int\int\int \rho(A)\dd V\] si le solide est un volume avec A un point quelconque de S et \(\rho(A)\) une masse volumique autour de A.
+\subsection{Centre de masse}
+\begin{definition}[Centre de masse ou centre d'inertie]
+Noté C ou G, il est défini par \[M\vec{OC} = \int_{S} \vec{OA}\cdot \dd m = \int_V \vec{OA} \cdot \rho(A)\dd V\]
+Il correspond au barycentre des points matériels affectés de leur masse respective : \[\int_S \vec{CA}\dd m = \vec{0}\]
+\end{definition}
+La première expression permet de déterminer les coordonnées de C. Il ne faut pas confondre centre de masse et centre d'inertie et centre de gravité\marginTips{Le centre de gravité est confondu avec le centre de masse uniquement si le champ de gravitation uniforme.}
+\subsection{Propriétés}
+\subsubsection{Symétries du système}
+Le centre de masse respecte les symétries du système. Si il existe un élément de symétrie (plan, centre, axe), ce dernier contient le centre de masse.
+\subsubsection{Associativité}
+\begin{theorem}[Associativité du centre de masse]
+\[\vec{OC} = \frac{M_1\vec{OC_1}+M_2\vec{OC_2}}{M_1+M_2}\]
+\end{theorem}
+\section{Moment d'inertie}
+\subsection{Par rapport à un axe}
+\begin{definition}[Moment d'inertie]
+C'est la quantité \[I_{\Delta} = \sum_i d_i^2 = \sum_i m_i\vec{H_iA_i}^2\] avec \(H_i\) le projeté orthogonal de \(A_i\) selon l'axe \(\Delta\)
+\end{definition}
+Pour un solide, on a \[I_{\Delta} = \int\int\int_S \vec{HA}^2 \rho \dd V = \int\int\int \vec{r}^2 \dd m\] avec \(r\) la distance de particule par rapport à l'axe\marginCheck{Le moment d'inertie est un obstacle au mouvement circulaire autour de l'axe. Le moment d'inertie a la dimension d'une masse multipliée par une distance au carrée.}.
+
+
+\subsection{Méthode de calcul (symétrie de révolution)}
+\subsubsection{Généralités}
+\begin{theorem}[Relation des moment d'un système à symétrie de révolution]
+\[I_{ox} + I_{oy} = I_{oz} + 2\int_{(S)}z^2\dd m\]
+\end{theorem}
+\begin{myproof}[À savoir démontrer]
+ On étudie le cas d'un cylindre creux ou plein et d'un disque ou cerceau. Dans les 2 cas, l'axe Oz est l'axe de symétrie de révolution. Pour des raisons de symétrie, les moments d'inertie \(I_{ox}\) et \(I_{oy}\) sont les m\^emes. Ainsi
+ \begin{flalign*}
+ I_{ox} &= \int_{(S)} (y^2+z^2)\dd m\\
+ I_{oy} &= \int_{(S)} (x^2+z^2)\dd m\\
+ I_{ox}+I_{oy} &= \int_{(S)} (y^2+x^2)\dd m + 2\int z^2\dd m\\
+ &=I_{oz} + 2\int_{(S)} z^2\dd m
+ \end{flalign*}
+\end{myproof}
+\subsubsection{Tableau récapitulatif}
+\begin{center}
+\begin{tabular}{lll}
+\tableHeaderStyle
+Forme & Axe de rotation & Valeur\\
+Disque & Oui & \(\frac12 MR^2\)\\
+Disque & Perpendiculaire & \(\frac14 MR^2\)\\
+Anneau & Oui & \(MR^2\)\\
+Anneau & Perpendiculaire & \(\frac12 MR^2\)\\
+Cylindre & Oui & \(\frac12 MR^2\)\\
+Cylindre & Perpendiculaire & \(\frac14 MR^2 + \frac{1}{12}ML^2\)\\
+Tube & Oui & \(MR^2\)\\
+Tube & Perpendiculaire & \(\frac12 MR^2+ \frac{1}{12}ML^2\)\\
+Boule & Oui & \(\frac25 MR^2\)\\
+Coque & Oui & \(\frac23MR^2\)\\
+Tige & Perpendiculaire & \(\frac{1}{12}ML^2\)\\
+Tige & Perp. + Extremité & \(\frac{1}{3}ML^2\)
+\end{tabular}
+\end{center}
+\subsection{Opérateurs d'intertie}
+On souhaiter déterminer les moments d'inertie d'une solide par rapport  à une droite passant par O.
+L'opérateur d'inertie est une matrice $3 \times 3$ qui relie la \textbf{vitesse angulaire} $\vec{\omega}$ d'un corps rigide à son \textbf{moment cinétique} $\vec{L}$ par la relation vectorielle :
+
+$$ \vec{L} = \mathbf{I} \vec{\omega} $$
+
+où $\mathbf{I}$ est le tenseur d'inertie\marginWarning{Contrairement au moment d'inertie scalaire qui ne s'applique qu'à une rotation autour d'un axe fixe, le tenseur d'inertie prend en compte la complexité du mouvement de rotation dans l'espace. En général, le moment cinétique $\vec{L}$ et la vitesse angulaire $\vec{\omega}$ ne sont pas parallèles, sauf si la rotation se fait autour d'un axe de symétrie particulier.}.
+
+
+Le tenseur d'inertie $\mathbf{I}$ est représenté par une matrice symétrique de la forme :
+
+$$ \mathbf{I} = \begin{pmatrix}
+I_{xx} & I_{xy} & I_{xz} \\
+I_{yx} & I_{yy} & I_{yz} \\
+I_{zx} & I_{zy} & I_{zz}
+\end{pmatrix} $$
+\subsection{Axes principaux d'intertie}
+\subsubsection{Définition}
+% Il est possible par changement de base de trouver une matrice diagonale, pour laquelle les produits d'inertie sont nuls. Cette base s'appelle la base principale d'inertie. Les axes sont les axes principaux d'inertie.
+%
+% Il sera très utile de travailler dans cette base car cela revient à travailler dans le repère lié au solide.
+
+Pour tout corps rigide, il existe un système de coordonnées spécifique, appelé \textbf{axes principaux d'inertie}, où le tenseur d'inertie est une matrice diagonale. Dans ce système, tous les produits d'inertie sont nuls, et la relation devient :
+
+$$ \vec{L} = \begin{pmatrix}
+I_1 & 0 & 0 \\
+0 & I_2 & 0 \\
+0 & 0 & I_3
+\end{pmatrix} \vec{\omega} $$
+
+où $I_1, I_2, I_3$ sont les moments d'inertie principaux\marginCheck{Lorsque la rotation se fait autour de l'un de ces axes, le moment cinétique est parallèle à la vitesse angulaire, ce qui se traduit par un mouvement de rotation stable.}.
+
+
+\subsubsection{Détermintaion des API}
+% Lorsqu'il existe un plan de symétrie matérielle, tout axe perpendiculaire à ce plan est axe principal d'inertie, quand c'est un axe de symétrie, il est aussi   API.
+
+% Par exemple, si \(Oz\) est un axe principal d'inerie, on aura \(I_{xz} = I_{yz} = 0\)
+%
+% Tout triède rectangle dont 2 de ses axes sont des API, est un trièdre principal d'inertie.
+
+
+Pour un corps rigide, il existe une connexion directe entre sa symétrie et ses axes principaux d'inertie (API).
+\begin{enumerate}
+    \item \textbf{Plan de symétrie :} Si un objet a un plan de symétrie, alors tout axe qui est \textbf{perpendiculaire} à ce plan et qui passe par le centre de masse est un API.\marginTips{L'axe central est perpendiculaire à la base circulaire, qui est un plan de symétrie. Cet axe central est donc un API.}
+
+    \item \textbf{Axe de symétrie :} Si un objet peut être tourné sur lui-même autour d'une ligne droite pour se superposer parfaitement, cette ligne est un \textbf{axe de symétrie}, et elle est donc aussi un API\marginCheck{L'axe de rotation d'une toupie bien équilibrée est un exemple parfait.}.
+\end{enumerate}
+
+% Si l'axe $Oz$ est un API, alors les termes $I_{xz}$ et $I_{yz}$ du tenseur d'inertie sont nuls. Cela signifie que la masse est distribuée de manière équilibrée par rapport à cet axe, ce qui simplifie les calculs. En fait, si un objet tourne autour d'un API, la rotation est plus stable car le moment cinétique est aligné avec la vitesse angulaire.
+
+\warningInfo{Propriété pour trouver les API}{Si on a trouvé deux axes perpendiculaires qui sont des API, alors le troisième axe, perpendiculaire aux deux premiers, est automatiquement un API. Il suffit de trouver deux axes de symétrie pour trouver le troisième, sans calculs supplémentaires.}
+
+\subsection{Théorème d'Huygens}
+\subsubsection{Théorème}
+\begin{theorem}[Théorème d'Huygens]
+ \[I_{oz} = I_{cz} + Md^2_{cz,oz}\]
+\end{theorem}
+Où :
+\begin{itemize}
+    \item $I_{oz}$ est le moment d'inertie par rapport au nouvel axe de rotation.
+    \item $I_{cz}$ est le moment d'inertie par rapport à l'axe parallèle passant par le \textbf{centre de masse} du corps.
+    \item $M$ est la masse totale du corps.
+    \item $d$ est la distance perpendiculaire entre les deux axes parallèles.
+\end{itemize}
+
+
+Ce théorème n'est valable qu'avec \(I_{cz}\) passant par C, le centre de masse du solide et O un point quelconque\marginInfo{Ce théorème repose sur l'idée que la résistance d'un corps à la rotation est plus grande quand il est éloigné de son axe de rotation. Le terme $M d^2$ ajoute l'inertie supplémentaire due à la translation de l'axe de rotation. Il représente l'inertie de l'ensemble du corps si on le considérait comme une masse ponctuelle située au centre de masse, et tournant autour du nouvel axe.}.
+
+% On a toujours \(M\) la masse du solide et \(d^2_{cz,oz}\) la distance entre les axes \(Cz\) et \(Oz\)
+
+% Ici, le centre de mest \(O\) et on cherche \(I_{Ax}, I_{Az}\). On aura donc \[I_{AZ} = I_{oz} + Md^2 = I_{oz} + Md_1^2\] et \[I_{AX} = I_{ox} + Md^2_2\]
+
+\subsubsection{Utilisation}
+Soit A et B sont quelconques et C le centre de masse de S. Si on connait \(I_{az}\) et que l'on cherche \(I_{bz}\), on écrit \(I_{az} = I_{cz}+Md^2_{az,cz}\) puis \(I_{bz} = I_{cz}+Md^2_{bz, cz}\) dans lequel on injcete \(I_Cz\) trouvé avec l'équation précédente.
+\criticalInfo{À ne pas faire}{Il ne faut pas écrire \(I_{bz} = I_{az}+Md^2_{bz, az}\) car \(I_{az}\) car A n'est pas le centre de masse.}
+\subsubsection{Exemple de la tige}
+
+% \(O_z\) est axe de symétrie matériele, donc API. De plus, on a \(\dd m = \lambda \dd \rho\). Ainsi, \(I_{oz} = \int \rho^2\lambda = \lambda \frac{l^3}{3 = M\frac{l^2}{3}}\) et \(I_{cz} = \int_{-l/2}^{l/2} \rho^2 \lambda \dd \rho = \lambda \frac{l^3}{12}\)
+%
+% Si on applique Huygens, on connait par exemple \(I_{cz}\) et on cherche \(I_{oz}\). On a \(I_{cz} + Md^2 = M\frac{l^2}{12}+ M\frac{l^2}{4} = M\frac{l^2}{3}\)
+
+Considérons une tige mince, homogène, de masse $M$ et de longueur $L$. Le moment d'inertie par rapport à un axe perpendiculaire passant par son centre de masse est connu :
+
+$$ I_{\text{cm}} = \frac{1}{12} M L^2 $$
+
+Pour trouver le moment d'inertie par rapport à un axe parallèle passant par l'une de ses extrémités, la distance entre les deux axes est $d = \frac{L}{2}$. En appliquant le théorème d'Huygens :
+\begin{flalign*}
+I &= I_{\text{cm}} + M d^2\\
+&= \frac{1}{12} M L^2 + M \left(\frac{L}{2}\right)^2\\
+&= \frac{1}{12} M L^2 + \frac{1}{4} M L^2 = \frac{1}{12} M L^2 + \frac{3}{12} M L^2\\
+&= \frac{4}{12} M L^2 = \frac{1}{3} M L^2
+\end{flalign*}
+Cela correspond au résultat attendu pour le moment d'inertie d'une tige en rotation autour de l'une de ses extrémités\marginTips{Ce théorème est un outil puissant pour éviter de refaire des calculs d'intégrale complexes pour chaque nouvel axe de rotation.}.
+\section{Moment cinétique et quantité de mouvement}
+\subsection{Quantité de mouvement}
+\begin{definition}[Qt de mouvement / résultante cinétique]
+C'est la somme des quantités de mouvement de chacun des points du solide : \[\vec{P_{(S)}} = \int_{(S)}v_{A\in S} \dd m \]
+\end{definition}
+% Soit \(\vec{v_{A\in S}}\) la vitesse d'un point A appartenant au solide S, la quantité de mouveent de S est donnée par \[\vec{p_s} = \int_{(S)}\dd m V_{A\in S}\]
+On peut écrire \[\vec{P_{(S)}} = \int_{(S)} (\frac{\dd \vec{OA}}{\dd t})\dd m = \frac{\dd }{\dd t}\int_{(S)}\vec{OA}\dd m = \frac{\dd}{\dd t}M \vec{OC}\] pour en déduire
+\begin{proposition}[Qt de mouvement avec le centre de masse]
+\[\vec{P} = M\vec{v_C}\] avec C le centre de masse et M la masse du solide.
+\end{proposition}
+\subsection{Moment cinétique}
+\begin{definition}[Moment cinétique (à ne pas utiliser)]
+C'est la somme des moments cinétiques de chacun des points du solide. Pour un moment défini en O, on a \[\vec{L_O} = \int_{(S)} \vec{OA}\wedge \vec{v_A} \dd m \]
+\end{definition}
+\subsection{Torseur cinétique}
+% \begin{definition}[Torseur cinétique]
+% Noté \([p(S)]_O =  [\vec{p_S}/ \vec{L_O}]\), avec \(\vec{p_S}\) la résultante cinétique et \(\vec{L_O}\) le moment cinétique.
+% %TODO à revoir
+% \end{definition}
+Le torseur vérifie la règle de transport du moment :
+\begin{theorem}[Règle de transport du moment cinétique]
+\[\vec{L_{B}} = \vec{L_A}+\vec{BA}\wedge \vec{P_{(S)}}\]
+\end{theorem}
+\subsection{Quantité de mouvement et moment cinétique dans R*}
+\begin{definition}[Référentiel R*]
+C'est le référentiel du centre de masse associé au solide (S) en translation par rapport au référentiel R et dans lequel \(\vec{v_c} = \vec{0}\) avec C Le centre de masse et origine de R*.
+\end{definition}
+On sait que
+\[L_{B/R*} = \vec{L_{A/R*}}(S)+\vec{BA}\wedge \vec{p_{S/R*}}\]
+Mais \(\vec{p_{S/R}} = M\vec{v_{C/R*}} = \vec{0}\). Donc
+\begin{proposition}[Conséquence du théorème de transport du moment cinétique]
+\[\vec{L*} = \vec{L_C*} = \int_{(S)} \vec{CA}\wedge \vec{v_{A\in S/R*}} \dd m \]
+\end{proposition}
+\subsection{Théorème de Koeing relatif au moment cinétique}
+\begin{theorem}[Théorème de koeing relatif au moment cinétique]
+ \[\vec{L_{O/R}} = \vec{L*}+\vec{OC}\wedge \vec{v_{C/R}} M\]
+\end{theorem}
+Si on applique ce théorème au point C, à la place de O, point quelconque du solide ou pas :
+\begin{flalign*}
+\vec{L_{C/R}} &= \vec{L*}+\vec{CC}\wedge M\vec{v_C/R}\\
+&= \vec{L*}
+\end{flalign*}
+\begin{definition}[Définition du moment cinétique avec les API]
+ \(\vec{L_{C/R}} = [I]_C \vec{\omega}\)
+\end{definition}
+% Cette définition est utile car on aura souvent \(\vec{\omega}\) porté par un API, donc on aura par exemple \(\vec{\Omega} = \omega \vec{e_z}\Rightarrow [I]_C \vec{\Omega} = I_{cz}\omega \vec{e_z}\).
+\criticalInfo{Théorème de transport et théorème de Keoning}{
+M\^eme si les 2 théorèmes peuvent aboutir à la m\^eme chose, il ne faut pas les confondre :
+\begin{itemize}
+ \item Transport : \(\vec{L_O/R} = \vec{L_{C/R}} + \vec{OC}\wedge M\vec{v_{C/R}}\)
+  \item Koening : \(\vec{L_O/R} = \vec{L*} + \vec{OC}\wedge M\vec{v_{C/R}}\)
+\end{itemize}
+qui donnent la m\^eme chose car \(\vec{L*} = \vec{L_{C/R}}\)
+}
+\section{Énergie cinétique}
+\subsection{Définition}
+\begin{definition}[Énergie cinétique]
+C'est la somme des énergies cinétiques de chaque point appartenant à S : \[E_k(S)\int_{(S)}\frac12 \vec{v_{A\in S/R}}^2\dd m \]
+\end{definition}
+\subsection{Théorème de Koeing}
+\begin{theorem}[Koeing pour l'énergie cinétique]
+ \[E_k(S) = E_k^*(S) + \frac12 M\vec{v_{C/R}}^2\]
+ avec \(E_k(S)\) l'énergie cinétique de (S) dans R, \(E_k^*(S)\) l'énergie cinétique de (S) dans R*, et C le centre de masse.
+\end{theorem}
+\subsubsection{Analayse}
+\(E_k*\) est l'énergie cinétique de rotation définie par \[E_k^* = \int_{(S)} \frac12 \vec{v_{A\in S /R*}}^2 \dd m = \frac12 \vec{L_{C/R}}\cdot \vec{\Omega} = \frac12([I]_C\cdot \vec{\Omega_{S/R}})\vec{\Omega_S/R}\]
+
+\tipsInfo{Vecteur rotation porté par un API}{La plupart du temps, \(\vec{\Omega}\) est porté sur un API, donc \[E_k^*(S) = \frac12(I_{\Delta}\omega \vec{e_{\Delta}})\vec{\Omega}\vec{e_{\Delta}} = \frac12 I_{c\Delta}\omega^2\]}
+
+On en déduit que terme \(\frac12 M\vec{v_{c/R}}\) correspond à l'énergie cinétique de translation.
+\subsection{Cas d'un solide ayant un point fixe O}
+Si S a un point fixe O\marginInfo{Si de plus \(\vec{\Omega}\) est porté par un API, on aura \(E_k(S) = \frac12(I_{oz}\cdot\vec{\Omega_{S/R}})\omega\vec{e_z} = \frac12 I_{oz}\Omega^2\)}, alors
+\begin{proposition}[Énergie cinétique d'un solide avec pt fixe]
+\(E_k(S) = \frac12 \vec{L_{O/R}}(S)\cdot \vec{\Omega_{S/R}}\)
+\end{proposition}
+
+\warningInfo{Rappel utile : Double produit}{On a \[\vec{a}\cdot (\vec{b}\wedge \vec{c}) = (\vec{b}\wedge \vec{c})\vec{a} = \vec{c}(\vec{a}\wedge \vec{b}) = (\vec{a}\wedge \vec{b})\vec{c} = (\vec{c}\wedge \vec{a})\vec{b}\]}
+Très souvent, on aura \(E_k = \frac12 I_{oz}\Omega^2\) si \(\vec{\Omega} = \Omega \vec{e_z}\) car  c'est alors porté par un API.
+ \end{document}

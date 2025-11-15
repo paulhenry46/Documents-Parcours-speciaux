@@ -1,0 +1,166 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Optique ondulatoire}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\mpsi}{\(\psi\)}
+\newcommand{\und}{\underline}
+\DeclareMathOperator{\sinc}{sinc}
+\begin{document}
+%Voir les notes de cours  à synthétiser
+% Les rayons se propagent en ligne droite, sous les hypothèses :
+% \begin{itemize}
+%  \item milieu homogène
+%  \item Diffraction négligée
+%  \item Pas d'intéraction des rayons lumineux
+% \end{itemize}
+% Elles ont permis l'étude de la formtion d'image. L'Optique ondulatoire vise à comprendre les phénonèmes ondulatoires\marginCheck{Valable aussi pour d'autres ondes (son, onde gravitationnelle)}.
+\setcounter{chapter}{3}
+\chapter{Réseaux}
+\section{Diffraction par un réseau}
+\subsection{Principe du montage}
+On prend un ensemble de N fentes de diffraction dans un plan, de largeur \(a\) et répétées périodiquement avec une période \(p\) (distance entre les fentes)\marginCritical{On peut alors intriduire le nombre de fente par unité de longueur \(\frac{1}{p}\)}. On prend le réseau dans le plan x et le plan ortigonal plan z\marginCheck{Dans la direction y, sont suffisament longues pour que l'on puisse négliger la diffraction dans cette direction}.
+
+Le réseau est éclairé par une onde plane avec un angle d'incidence \(\theta_i\) par rapport à la normale (Oz) qui illumine \(N\) fentes\marginInfo{N est souvent très grand (10 000)}. On s'interesse à la diffraction à l'infini dans la direction \(\theta_x = \theta_d\).
+
+\subsection{Étude de 2 fentes successives}
+On prend une fente centrée en \(x_n = np, x_{n+1}=(n+1)p\) éclairées par une onde en incidence normale.
+
+On a l'intégrale suivante !
+\begin{flalign*}
+\und{\psi_n(u)} &= \int^{np+a/2}_{np-a/2} \und{\psi_0}e^{-i\omega t}e^{-2i \pi u x}\dd x\\
+&= K \und{\psi_0}e^{-i\omega t} \int^{np+a/2}_{np-a/2} e^{-2i \pi u x}\dd x\\
+&= K \und{\psi_0}e^{-i\omega t} \int^{a/2}_{a/2} e^{-2i \pi u (s+np)}\dd s \text{ avec s= x-np (changement de variable)}\\
+&= K \und{\psi_0}e^{-i\omega t}e^{-2i \pi u (np)} \int^{a/2}_{a/2} e^{-2i \pi u (s)}\dd s\\
+\end{flalign*}
+On trouve donc la diffraction par une fente centrée au O multipliée par un terme de phase \(e^{-2i \pi u (np)}\).
+
+De la m\^eme façon, on trouve pour la fente suivante \[\und{\psi_{n+1}} = \und{\psi_0}(u)e^{-2i\pi u(n+1)p}\]
+
+On additionne les 2 ondes pour décrire les interférences à l'infini :
+\[\und{\psi_n} + \und{\psi_{n+1}} = \psi_0 e^{-i\omega t}a \sinc(ua)(e^{-2i\pi nup})(1+e^{-2i\pi up})\]
+
+Le déphasage entre les 2 ondes vaut donc \(2\pi up = 2\pi i\sin(\theta_x)\frac{p}{\lambda}\)\marginInfo{On peut le retrouver géométriquement en trouvant la diff de marche entre les rayons émis par le centre des 2 fentes, calculée à l'infini pour trouver \(\delta = p\sin(\theta_x)\) puis \(\Delta \phi = \frac{2\pi}{\lambda}p\sin(\theta_x)\)}
+\subsection{Fonction d'onde diffractée pour N fentes}
+\begin{flalign*}
+\und{\psi(u)} &= \und{\psi_0}(u)+\und{\psi_1}(u)+\dots+\und{\psi_{N-1}}(u)\\
+&= \psi_0e^{-i\omega t}a\sinc(ua)(1+e^{-2i\pi up}+e^{-2i\pi u(2p)}+\dots+e^{-2i\pi (N-1)up})
+\end{flalign*}
+\warningInfo{Intégrale de Fraunhofer}{On peut arriver au m\^eme résultat in intégrant sur toutes les fentes, et en scindat en N intégrales que l'on somme.}
+
+On obtient une expression compososée de l'expression de la diffraction par une fente et les interférences liées aux N ondes.
+\criticalInfo{Somme géométrique}{Le terme d'interférence correspond à la somme des termes d'une suite géométrique  avec \(q = e^{-2i\pi up}\)
+\begin{flalign*}
+S &= \frac{1-ae^{-2i\pi N up}}{1-e^{-2i\pi up}}\\
+&= \frac{e^{-i\pi N up}(e^{i\pi N up}-e^{-i\pi N up})}{e^{-i\pi up}(e^{i\pi  up}-e^{-i\pi  up})}\\
+&= e^{-i\pi(N-1)up}\frac{\sin(\pi N up)}{\sin(\pi up)}
+\end{flalign*}
+}
+
+On obtient : \[\und{\psi}(u) = \psi_0 e^{-i\omega t}s\sinc(ua)e^{-i\pi (N-1)up}\frac{\sin(\pi N up)}{\sin(\pi up)}\] où l'on trouve un produit de diffraction par une fente et des interférences de N ondes.
+
+L'intensité vaut alors \[I(u) = I_0\sinc^2(ua)\frac{\sin^2(\pi N up)}{\sin^2(\pi up)}\]
+
+Si l'onde incidente n'est pas normale, on replace simplement \(u\) par \(u-u_0\) avec \(u_0 \frac{\sin(\theta_i)}{\lambda}\).
+
+\subsection{Fonction réseaux}
+\begin{definition}[Fonction réseau]
+\[R(\varphi) = \frac{\sin^2(N\varphi/2)}{N^2\sin^2(\varphi/2)}\]
+\end{definition}
+Elle décrit l'intensté associée à l'interférence de N ondes dont le déphasage successif vaut \(\varphi\).
+
+La fonction est \(2\pi\) périodique et paire. On va donc l'étudier entre 0 et \(\pi \) autour de \(\varphi\)
+
+On obtient que \(R(\varphi)\) présente une succession de pics pour \(\varphi\) multiple de \(2\pi\). La largeur de tous les pics est donc proportionnelle à \(\frac{1}{N}\).\marginInfo{Si \(\varphi\) n'est pas proche d'un multiple de 2 pi et que N est grand, on fait interféren un grand nombre d'onde avec un déphasage quelconque et la somme ne peut \^etre grande}
+
+Si \(\varphi\) est suffisament proche de 0, on ajoute des nombres complexes presque alognés et le module de la somme est maximal. Dans le cas contraire, les argument se compensent et le module de la somme est minimal.
+
+%TODO Tracer sur goegebra
+
+\subsection{Intensité diffractée}
+Pour \(u' = u-u_0\), on a \[I(u') = N^2 I_0\sinc^2(u'a)R(2\pi u' p)\] avec R la fonction réseau. La fonction obtenue est la fonction réseau enveloppée de la fonction sinus cardinal au carré. I(u') présente une succession de pics de diffractions chacun associés à l'interférence constrcive des ondes diffractées par chaque fente.
+\section{Formule fondamentale des réseaux}
+\subsection{Formule}
+L'ordre d'intéférence est alors défini par \(m = u'p = \frac{\varphi}{2\pi}\)
+
+\begin{theorem}[Formule fondamentale des réseaux]
+On a des pics de diffraction si  \[\sin(\theta_x)-\sin(\theta_i)=m\frac{\lambda}{p}\]
+\end{theorem}
+Cela donne la direction \(\theta_d\)  du pic associé àl'odre m pour une onde incidente de longueur d'onde \(\lambda\) sous incidence \(\theta_i\).
+\subsection{Interprétation physique}
+\begin{itemize}
+ \item m est l'odre de de diffraction. Pour m entier, le dépasafe vaut 2 pi et produit des interférences constructives.
+ \item m ne peut pas prendre toutes les valeurs entières possibles car \(\sin(\theta_d)\) est bornée.
+ \item
+\end{itemize}
+\section{Performance spectrale d'un réseau optique}
+\subsection{Éclairage en lumière polychromatique}
+Si l'onde comporte plusieurs longueurs d'onde \(\lambda\), à l'odre 0, les différents \(\lambda\) correspondet au m\^eme \(\theta_d\). Ce n'est pas vrai pour les ordre plus grands car \(\theta_d\)
+ est fonction de \(\lambda\) . On peut le représenter %TODO schema
+
+À l'odre 0 \(\theta_d=\theta_i\) pour toutes les longueurs d'onde. Dans les autres cas, le réseau sépare les longueurs d'onde : on fait de la spectroscopie.
+
+ \subsection{Pouvoir de résolution du réseau}
+ On veut savoir à quel point le réseau est-il capable de séparer spatialement 2 longueurs d'onde très proches.
+
+ On va donc comparer la largeur angulaire de chaque pic de diffraction à l'epsaceme,t entre les pics pour ces deux longueurs d'onde. On représente par exemple l'intensité diffractée autour d'un ordre m en focntion de \(\theta_d\) (et non plus en fonction de la fréquence spatiale) pour ces deux longueurs d'onde et pour un ordre donné.
+
+ On peut distinguer \(\lambda_0, \lambda_0+\Delta \lambda\) si l'écart entre les pics est supérieur à leur largeur.
+
+ On note
+ \begin{itemize}
+  \item \(\Delta \theta_d\) l'écart entre les pics
+  \item \(\Delta \theta_a\) la largeur d'un pic, distance entre le max et le premier 0 de la fonction réseau
+ \end{itemize}
+
+
+ Dans les 2 cas, \(\theta_d\) vérfie la relation des réseaux :
+ \begin{flalign*}
+ \sin(\theta_d)-\sin(\theta_i) &= m\frac{\lambda}{p}\\
+ \dd(\sin_d) &= \cos(\theta_d)\dd \theta_d = \frac{m}{p}\dd \lambda\\
+ \cos(\theta_d)\Delta \theta_d = \frac{m}{p} \Delta \lambda\\
+ \Delta \theta_d = \frac{m\Delta \lambda}{\cos(\theta_d)p}
+ \end{flalign*}
+
+ Pour trouver \(\Delta \theta_a\), on cherche la première annulation de la focntion réseau.
+
+ On a \(\varphi = 2\pi u' p = \frac{2\pi}{N} \Rightarrow u'=\frac{1}{Np}\) qui correspond à \(\Delta u = \frac{1}{Np}\). Donc \(\dd u = \frac{\cos(\theta_d)}{\lambda}\dd\theta_d\)
+
+ On en déduit que \(\Delta \theta_a = \frac{\lambda}{Np \cos(\theta_d)}\)
+
+ Et \(m\Delta \lambda = \frac{\lambda}{N}\)
+
+ \end{document}

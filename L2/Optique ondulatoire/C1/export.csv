@@ -1,0 +1,14 @@
+Title,Content
+Lumière,La lumière est une onde électromagnétique. Il y a donc 2 champs \(\vec{E}+\vec{B}\). 
+Équation d'onde,\[\nabla^2 \psi - \frac{1}{v^2} \frac{\partial ^2 \psi}{\partial t^2} = 0\] avec \(v\) la vitesse de propagation de l'onde \(v = \frac{c}{n}\).
+Période d'oscillation,L'oscillation de \(\psi\) en fonction du temps se fait à une période de \(T = \frac{\lambda}{v} \simeq 10^{-15}\)s.
+Intensité lumineuse,C'est ce qui est mesuré par les capteurs : \(I = \frac{E}{\Delta t \times S} \propto \psi^2\).
+Onde progressive,Elle ``avance'' dans une direction à une vitesse v. 
+Onde monochromatique,La dépendance temporelle est sinusoidale. On a alors \[\psi = A(\vec{r})\cos(\omega t+\varphi(\vec{r}))\]
+Surface d'onde,"Une surface telle que \(\varphi(\vec{r})\) est constant, ce qui implique que \(\cos()\) prend la m\^eme valeur pour un certin temps "
+Onde plane,Les surfaces d'onde sont des plans qui avancent dans une direction à la vitesse v. 
+OPPM,Elle est de la forme \(\psi = A\cos(\omega t - \vec{k}\cdot \vec{r} + \varphi_0)\).
+Relation de dispersion,\[\omega  = \frac{c}{n}k\]
+Onde sphérique,Les surfaces d'onde sont des sphères concentriques. Elles sont de la forme \(\psi = \frac{A}{r} \cos(\omega t-kr)\)
+Différence de phase, \[\frac{2\pi}{\lambda} n \cdot AB\]
+Théorème de Malus,Les rayons lumineux sont orthogonaux aux surfaces d'onde en tout point. 
