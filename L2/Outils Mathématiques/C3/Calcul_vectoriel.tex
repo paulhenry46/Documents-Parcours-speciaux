@@ -1,0 +1,321 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Outils Mathématiques 2}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\mpsi}{\(\psi\)}
+\begin{document}
+\setcounter{chapter}{2}
+\chapter{Calcul vectoriel}
+\section{Flux d'un champ de vecteur}
+\begin{definition}[Flux d'un champ de vecteur]
+\[\iint_S \vec{F}(\vec{r})\cdot \dd \vec{S} = \iint_S \dd S \vec{F}(\vec{r})\cdot \vec{n}\]
+\end{definition}
+\section{Gradient}
+\begin{definition}[Gradient]
+\[\nabla f = \frac{\partial }{\partial x}\vec{e_x}+\frac{\partial }{\partial y}\vec{e_y}+\frac{\partial }{\partial z}\vec{e_z}\]
+\end{definition}
+\begin{theorem}[Plan tangent à une surface]
+L'équation est, avec un point \(M_0\) appartenant  à la surface : \[\nabla f(x_0,y_0,z_0)\cdot (x-x_0, y-y_0,z-z_0) = 0\]
+\end{theorem}
+\begin{theorem}[Plan tangent à une surface de la forme \(z = h(x,y)\)]
+\[z=z_0+(x-x_0)\frac{\partial}{\partial x}(x_0,y_0)+(y-y_0)\frac{\partial h}{\partial y}(x_0,y_0)\]
+\end{theorem}
+
+\begin{theorem}[Condition de conservation]
+En écrivant \(\vec{F} = P\vec{e_x}+ Q\vec{e_y}\) :
+Pour un champ 2D : \(\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}\)
+
+Pour un champ 3D : \(\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial Q}\),  \(\frac{\partial Q}{\partial z} = \frac{\partial R}{\partial y}\), \(\frac{\partial R}{\partial x} = \frac{\partial P}{\partial z}\)
+\end{theorem}
+\section{Autres}
+\begin{definition}[Rotationnel]
+\[rot(\vec{F}) = (\frac{\partial R}{\partial y}-\frac{\partial Q}{\partial z}),  (\frac{\partial P}{\partial z}-\frac{\partial R}{\partial x}),  (\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y})\]
+\end{definition}
+\begin{theorem}[Formule de Green]
+ \[\int_C \vec{F}\cdot \dd \vec{r} = \iint_S \dd x\dd y (\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y})\]
+\end{theorem}
+\begin{definition}[Divergent]
+\[dif(\vec{F})(x,y,z) = \frac{\partial P}{\partial x}(x,y,z) + \frac{\partial Q}{\partial y}(x,y,z) + \frac{\partial R}{\partial z}(x,y,z)\]
+\end{definition}
+\section{Méthode}
+\subsection{Calculer le flux d'un champ de vecteur}
+On cherche à calculer le flux de $\vec{F}(x,y,z)=\frac{1}{1+(z/l)^{2}}(x\vec{e}_{x}+y\vec{e}_{y}+z\vec{e}_{z})$ à travers la surface latérale $\mathcal{S}$ du cylindre infini d'axe $(O, \vec{e}_z)$ et de rayon $R$.
+\subsubsection{Élément de surface orienté ($d\vec{S}$)}
+Sur le cylindre de rayon $R$, $\dd\vec{S} = \vec{e}_\rho \, \dd S = \vec{e}_\rho \, R \, \dd\varphi \, dz$.
+\subsubsection{Produit scalaire}
+    $$\vec{F} \cdot \dd\vec{S} = \frac{1}{1+(z/l)^{2}} (x\vec{e}_{x}+y\vec{e}_{y}+z\vec{e}_{z}) \cdot \vec{e}_\rho \, R \, \dd\varphi \, \dd z$$
+
+    En coordonnées cylindriques, $x\vec{e}_{x}+y\vec{e}_{y} = \rho \vec{e}_\rho$.
+
+    Sur le cylindre, $\rho=R$.
+
+    On en déduit
+    $$(x\vec{e}_{x}+y\vec{e}_{y}+z\vec{e}_{z}) = R\vec{e}_{\rho} + z\vec{e}_{z}$$
+
+    Le produit scalaire donne
+    $$(R\vec{e}_{\rho} + z\vec{e}_{z}) \cdot \vec{e}_\rho = R(\vec{e}_{\rho}\cdot\vec{e}_{\rho}) + z(\vec{e}_{z}\cdot\vec{e}_{\rho}) = R$$
+    $$\vec{F} \cdot \dd\vec{S} = \frac{R}{1+(z/l)^{2}} \, R \, \dd\varphi \, \dd z = \frac{R^2}{1+(z/l)^{2}} \, \dd\varphi \, \dd z$$
+\subsubsection{Calcul du flux}
+L'intégration se fait sur $z \in ]-\infty, +\infty[$ et $\varphi \in [0, 2\pi]$.
+    $$\Phi = R^2 \int_{0}^{2\pi} d\varphi \cdot \int_{-\infty}^{+\infty} \frac{1}{1+(z/l)^{2}} \, dz$$
+    $$\Phi = 2\pi R^2 \cdot (l [\arctan(z/l)]_{-\infty}^{+\infty}) = 2\pi R^2 \cdot (l (\frac{\pi}{2} - (-\frac{\pi}{2}))) =  2\pi^2 l R^2$$
+\subsection{Calculer un plan tangent}
+\subsubsection{Plan Tangent à $z=f(x,y) = x^2 + xy + y^2$ au point $(1, 2, 7)$}
+
+L'équation du plan tangent à la surface $z=f(x,y)$ au point $(x_0, y_0, z_0)$ est donnée par :
+$$
+z - z_0 = \frac{\partial f}{\partial x}(x_0, y_0)(x - x_0) + \frac{\partial f}{\partial y}(x_0, y_0)(y - y_0)
+$$
+
+A. Calcul des dérivées partielles de $f(x,y) = x^{2}+x y+y^{2}$.
+    $$
+    \frac{\partial f}{\partial x} = 2x + y,  \frac{\partial f}{\partial y} = x + 2y
+    $$
+
+B. Évaluation au point $M_0 = (1, 2, 7)$
+
+On a
+
+    $$
+    \frac{\partial f}{\partial x}(1, 2) = 2(1) + 2 = 4, \frac{\partial f}{\partial y}(1, 2) = 1 + 2(2) = 5
+    $$
+C. Équation du plan tangent
+
+En substituant les valeurs dans l'équation du plan, on obtient :
+\begin{flalign*}
+z - 7 &= 4(x - 1) + 5(y - 2)\\
+z - 7 &= 4x - 4 + 5y - 10\\
+4x + 5y - z &= 4 + 10 - 7\\
+4x + 5y - z &= 7\\
+\end{flalign*}
+\subsubsection{Plan Tangent à la surface implicite $f(x,y,z)=0$ au point $M_0=(1, 1, 1)$}
+
+Ici, l'équation du plan tangent est donnée par :
+$$
+\vec{\nabla}f(M_0) \cdot (\vec{r} - \vec{r}_0) = 0
+$$
+soit
+$$
+\frac{\partial f}{\partial x}(M_0)(x - x_0) + \frac{\partial f}{\partial y}(M_0)(y - y_0) + \frac{\partial f}{\partial z}(M_0)(z - z_0) = 0
+$$
+
+La fonction est $f(x,y,z)=2x^{3}-3x^{2}+y^{2}z+yz^{2}+\frac{1}{3}z^{3}-\frac{4}{3}$.
+
+A. Calcul des dérivées partielles :
+    $$
+    \frac{\partial f}{\partial x} = 6x^2 - 6x, \frac{\partial f}{\partial y} = 2yz + z^2,  \frac{\partial f}{\partial z} = y^2 + 2yz + z^2
+    $$
+
+B. Évaluation au point $M_0 = (1, 1, 1)$ :
+    $$
+    \frac{\partial f}{\partial x}(1, 1, 1) =  0, \frac{\partial f}{\partial y}(1, 1, 1) = 3, \frac{\partial f}{\partial z}(1, 1, 1) = 4
+    $$
+Le vecteur normal est donc $\vec{\nabla}f(1, 1, 1) = (0, 3, 4)$.
+
+ C. Équation du plan tangent
+
+Avec $x_0=1, y_0=1, z_0=1$ :
+\begin{flalign*}
+0(x - 1) + 3(y - 1) + 4(z - 1) &= 0\\
+3y - 3 + 4z - 4 &= 0\\
+3y + 4z &= 7
+\end{flalign*}
+\subsection{Déterminer le potentiel d'un champ de vecteurs conservatif}
+\subsubsection{Champ de Vecteurs 2D : $\vec{F}(x,y)=(y-3x^2)\vec{e}_{x}+(x+\sin(y))\vec{e}_{y}$}
+Un champ de vecteurs $\vec{F}(x,y) = P(x,y)\vec{e}_{x} + Q(x,y)\vec{e}_{y}$ défini sur le domaine simplement connexe $\mathbb{R}^2$ est conservatif (ou est un champ de gradient) si la condition de Schwarz est vérifiée :
+$$
+\frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y}
+$$
+
+Ici, $P(x,y) = y-3x^2$ et $Q(x,y) = x+\sin(y)$, et
+
+    $$
+    \frac{\partial P}{\partial y} = \frac{\partial}{\partial y}(y-3x^2) = 1 = \frac{\partial Q}{\partial x} = \frac{\partial}{\partial x}(x+\sin(y))
+    $$
+
+Puisque $\frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y} = 1$, le champ $\vec{F}$ est bien conservatif sur $\mathbb{R}^2$. On peut déterminer son potentiel :
+
+Nous cherchons une fonction scalaire $f(x,y)$ telle que :
+$$
+\frac{\partial f}{\partial x} = P(x,y) = y-3x^2 \quad \mathbf{(1)}
+$$
+$$
+\frac{\partial f}{\partial y} = Q(x,y) = x+\sin(y) \quad \mathbf{(2)}
+$$
+
+1.  Intégration de (1) par rapport à $x$ :
+    $$
+    f(x,y) = \int (y-3x^2) dx = yx - x^3 + C_1(y)
+    $$
+    où $C_1(y)$ est une fonction arbitraire dépendant uniquement de $y$.
+
+2.  Dérivation par rapport à $y$ et identification avec (2) :
+    Nous dérivons le résultat obtenu par rapport à $y$ :
+    $$
+    \frac{\partial f}{\partial y} = \frac{\partial}{\partial y}(yx - x^3 + C_1(y)) = x + C_1'(y)
+    $$
+    En comparant avec l'équation $\mathbf{(2)}$ ($\frac{\partial f}{\partial y} = x+\sin(y)$) :
+    $$
+    x + C_1'(y) = x + \sin(y)
+    $$
+    $$
+    C_1'(y) = \sin(y)
+    $$
+
+3.  Intégration de $C_1'(y)$ pour trouver $C_1(y)$ :
+    $$
+    C_1(y) = \int \sin(y) dy = -\cos(y) + C
+    $$
+    où $C$ est une constante réelle.
+
+4.  Conclusion :
+    En substituant $C_1(y)$ dans l'expression de $f(x,y)$ on trouve l'expression finale de f :
+    $$
+    f(x,y) = yx - x^3 - \cos(y) + C
+    $$
+
+\subsubsection{Champ de Vecteurs 3D : $\vec{F}(x,y,z)=y^2\vec{e}_{x}+(2xy+z)\vec{e}_{y}+(y+3)\vec{e}_{z}$}
+
+Un champ de vecteurs $\vec{F}(x,y,z) = P\vec{e}_{x} + Q\vec{e}_{y} + R\vec{e}_{z}$ est conservatif sur $\mathbb{R}^3$ si son rotationnel est nul : $\vec{\nabla} \wedge \vec{F} = \vec{0}$.
+Les trois conditions à vérifier sont :
+$$
+\frac{\partial R}{\partial y} = \frac{\partial Q}{\partial z}, \quad \frac{\partial P}{\partial z} = \frac{\partial R}{\partial x}, \quad \frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y}
+$$
+Ici, $P = y^2$, $Q = 2xy+z$, $R = y+3$.
+
+On a bien :
+
+\begin{flalign*}
+\frac{\partial R}{\partial y} &= \frac{\partial}{\partial y}(y+3) &= &1 = \frac{\partial}{\partial z}(2xy+z) &= \frac{\partial Q}{\partial z}\\
+\frac{\partial P}{\partial z} &= \frac{\partial}{\partial z}(y^2) &= &0 = \frac{\partial}{\partial x}(y+3) &= \frac{\partial R}{\partial x}\\
+\frac{\partial Q}{\partial x} &= \frac{\partial}{\partial x}(2xy+z) &= &2y =  \frac{\partial}{\partial y}(y^2) &= \frac{\partial P}{\partial y}
+\end{flalign*}
+
+Le champ $\vec{F}$ est bien conservatif sur $\mathbb{R}^3$.
+
+On peut donc déterminer le potentiel $f$ tel que $\vec{F} = \vec{\nabla}f$
+
+Nous cherchons $f(x,y,z)$ telle que :
+\begin{flalign*}
+\frac{\partial f}{\partial x} &= y^2 \quad \mathbf{(1)}\\
+\frac{\partial f}{\partial y} &= 2xy+z \quad \mathbf{(2)}\\
+\frac{\partial f}{\partial z} &= y+3 \quad \mathbf{(3)}
+\end{flalign*}
+
+1.  Intégration de (1) par rapport à $x$ :
+    $$
+    f(x,y,z) = \int y^2 dx = y^2x + C_1(y,z)
+    $$
+
+2.  Dérivation par rapport à $y$ et identification avec (2) :
+    $$
+    \frac{\partial f}{\partial y} = \frac{\partial}{\partial y}(y^2x + C_1(y,z)) = 2yx + \frac{\partial C_1}{\partial y}
+    $$
+    En comparant avec $\mathbf{(2)}$ ($\frac{\partial f}{\partial y} = 2xy+z$) :
+    $$
+    2yx + \frac{\partial C_1}{\partial y} = 2xy+z \quad \Rightarrow \quad \frac{\partial C_1}{\partial y} = z
+    $$
+
+3.  Intégration de $\frac{\partial C_1}{\partial y}$ par rapport à $y$ :
+    $$
+    C_1(y,z) = \int z dy = zy + C_2(z)
+    $$
+    où $C_2(z)$ est une fonction arbitraire dépendant uniquement de $z$.
+    Donc, $f(x,y,z) = y^2x + zy + C_2(z)$.
+
+4.  Dérivation par rapport à $z$ et identification avec (3) :
+    $$
+    \frac{\partial f}{\partial z} = \frac{\partial}{\partial z}(y^2x + zy + C_2(z)) = y + C_2'(z)
+    $$
+    En comparant avec $\mathbf{(3)}$ ($\frac{\partial f}{\partial z} = y+3$) :
+    $$
+    y + C_2'(z) = y + 3 \quad \Rightarrow \quad C_2'(z) = 3
+    $$
+
+5.  Intégration de $C_2'(z)$ pour trouver $C_2(z)$ :
+    $$
+    C_2(z) = \int 3 dz = 3z + C
+    $$
+    où $C$ est une constante réelle.
+
+6.  Conclusion :
+    En substituant $C_2(z)$ dans l'expression de $f(x,y,z)$, on trouve :
+    $$
+    f(x,y,z) = xy^2 + yz + 3z + C
+    $$
+\subsection{Utiliser la formule de Green}
+Le champ est $\vec{F}(x,y) = P\vec{e}_x + Q\vec{e}_y$ avec $P(x,y) = -y^3$ et $Q(x,y) = 2$.
+La courbe $C$ est le cercle $x^2 + y^2 = 4$ (rayon $R=2$). $\mathcal{R}$ est le disque $x^2 + y^2 \le 4$.
+\subsubsection{Calcul direct}
+On calcule d'abord circulation $\int_{\mathcal{C}}\vec{F}\cdot d\vec{r}$
+
+Paramétrisation de $C$ :
+$$
+x = 2\cos t, \quad y = 2\sin t, \quad 0 \le t \le 2\pi
+$$
+$$
+dx = -2\sin t \dd t, \quad dy = 2\cos t \dd t
+$$
+Intégrale :
+\begin{flalign*}
+\int_{\mathcal{C}}\vec{F}\cdot d\vec{r} &= \int_{0}^{2\pi} [P dx + Q dy]\\
+&= \int_{0}^{2\pi} [(-y^3)(-2\sin t) + (2)(2\cos t)] \dd t\\
+&= \int_{0}^{2\pi} [-(2\sin t)^3 (-2\sin t) + 4\cos t] \dd t\\
+&= \int_{0}^{2\pi} [16\sin^4 t + 4\cos t] \dd t
+\end{flalign*}
+L'intégrale de $4\cos t$ sur $[0, 2\pi]$ est nulle. Pour $\sin^4 t$, on utilise l'identité $\int_{0}^{2\pi} \sin^4 t \dd t = \frac{3\pi}{4}$.
+$$
+\int_{\mathcal{C}}\vec{F}\cdot d\vec{r} = 16 \cdot \frac{3\pi}{4} + 0 = 12\pi
+$$
+\subsubsection{Utilisation de Green}
+On calcule l'intégrale double $\iint_{\mathcal{R}}(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y})dx dy$
+
+Rotationnel 2D :
+\begin{flalign*}
+\frac{\partial Q}{\partial x} &= \frac{\partial}{\partial x}(2) = 0\\
+\frac{\partial P}{\partial y} &= \frac{\partial}{\partial y}(-y^3) = -3y^2\\
+\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y} &= 0 - (-3y^2) = 3y^2
+\end{flalign*}
+Intégrale double (en coordonnées polaires) : $x=\rho \cos \varphi$, $y=\rho \sin \varphi$, $\dd A = \rho \dd\rho \dd\varphi$. On a
+\begin{flalign*}
+\iint_{\mathcal{R}} 3y^2 \dd x \dd y &= \int_{0}^{2\pi} \int_{0}^{2} 3(\rho \sin \varphi)^2 \rho \dd\rho \dd\varphi\\
+&= 3 \left(\int_{0}^{2} \rho^3 \dd \rho\right) \left(\int_{0}^{2\pi} \sin^2 \varphi \dd \varphi\right)\\
+&= 3 \cdot \left[\frac{\rho^4}{4}\right]_{0}^{2} \cdot \left[\pi\right]\\
+&=3 \cdot \left(\frac{16}{4}\right) \cdot \pi = 3 \cdot 4 \cdot \pi = 12\pi
+\end{flalign*}
+On trouve bien le m\^eme résultat avec les 2 méthodes.
+ \end{document}

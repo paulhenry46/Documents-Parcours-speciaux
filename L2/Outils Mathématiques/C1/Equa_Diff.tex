@@ -1,0 +1,75 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Outils Mathématiques 2}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\mpsi}{\(\psi\)}
+\begin{document}
+\chapter{Équations différentielles}
+\section{Premier ordre}
+On cherche la solution générale de l'équation \[y'(x)-\alpha(x)y(x) = f(x)\]. La solution est la somme de la solution de l'équation homogène associée et la solution particulière de cette équation.
+\subsection{Solution de l'équation homogène associée}
+\begin{theorem}[Solution d'une EQD du premier ordre]
+La solution d'une équation de la forme \(y'(x)-\alpha(x)y(x) = 0\) est \[Ce^{\int^x \alpha(t)\dd t}\]
+\end{theorem}
+\subsection{Méthode de la variation de la constante}
+\begin{theorem}[Solution particulière d'une EQD du premier ordre inhomogène]
+C'est \[Ce^{\int^x \alpha(t)\dd t}\] avec \[C(x) = \int^x f(y)e^{-\int^y \alpha(t)\dd t}\dd y\]
+\end{theorem}
+\checkInfo{En pratique}{On calcule d'abord \(h(y) = -\int^y \alpha(t)\dd t\) puis on injecte le résultat dans la solution \(\int^x f(y)e^{h(y)}\dd y\)}
+
+\section{Second ordre}
+On cherche à résoudre une équation de la forme \[y''(x)-\alpha(x)y'(x)-\beta(x)y(x) = f(x)\]
+\subsection{Solution de l'équation homogène associée}
+\subsubsection{Première solution}
+On cherche une première sokution ``évidente'', dont la forme sera donnée. Cette solution est notée \(y_1(x)\).
+\subsubsection{Seconde solution}
+On a une équation de la forme \[y_1(x)y_2'(x)-y_2(x)y_1'(x) = C e^{\int^x \alpha(t)\dd t}\]
+avec \(y_1(x), y_1'(x)\) qui sont connus et jouent le r\^ole des coefficients dans cette équation premier ordre que l'on peut résoudre par la section précédente.
+
+\warningInfo{Remarque}{On peut aussi trouver \(y_2(x)\) en calculant \[y_2(x) = y_1(x)\int^x \frac{C e^{\int^t \alpha(m)\dd m}}{y_1^2}\dd t \]}
+\subsubsection{Conclusion}
+La solution générale est ainsi \[c_1y_1(x)+c_2y_2(x) = y(x)\] avec des constantes à déterminer avec les conditions initiales.
+\subsubsection{Solution particulière}
+Une solution particulière est de la forme \[y_p(x) = c_1(x)y_1(x)+c_2(x)y_2(x)\] avec
+\begin{theorem}[Forme des coeffcients de l'EQD inhomogène du second ordre]
+\[c_1(x) = -\int^x \frac{f(t)y_2(t)}{C e^{\int^t \alpha(m)\dd m}}\]
+\[c_2(x) = \int^x \frac{f(t)y_1(t)}{C e^{\int^t \alpha(m)\dd m}}\]
+\end{theorem}
+\subsection{Conclusion}
+La solution de l'équation est donc \(c_1y_1(x)+c_2y_2(x)+y_p(x)\)
+\tipsInfo{Remarque}{L'expression \(C e^{\int^t \alpha(m)\dd m}\) peut \^etre notée \(W(x)\) et se nomme le Wronskien. On le calcule en premier au début de la résolution pour s'en servir dans les étapes suivantes de la résolution.}
+ \end{document}

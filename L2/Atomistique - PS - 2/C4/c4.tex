@@ -1,0 +1,209 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Atomistique 2 - PS}
+\subtitle{Chimie}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{J.Cunny}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\begin{document}
+\setcounter{chapter}{3}
+\chapter{Symétrie moléculaire}
+\section{Opérations}
+\criticalInfo{Élément de symétrie et opération}{L'élément de symétrie est l'élément virtuel avec lequel on applique l'opération.}
+\subsection{Rotation}
+Élément de symétrie : Axe noté \(C_n\) avec \(n\) décrivant l'angle de rotation tel que l'angle vaut \(2\pi/n\).
+
+\begin{tabular}{ll}
+C2 & 180°\\
+C3 & 120°\\
+C4 & 90°\\
+C6 & 60°
+                     \end{tabular}
+
+Cet axe engendre \(n-1\) opérations de symétries notée \(C_n^m\) avec \(m\) le nombre de fois que l'on applique la rotation\marginTips{On peut diviser m et n par le m\^eme entier. Si on tombe dans les 2 cas sur 2 autres entiers, les 2 opérations sont identiques. Par exemple \(C^2_4 = C^1_2\)}.
+\criticalInfo{C22}{\(C_2^2\) n'existe pas car c'est déjà l'opération Identité}
+\warningInfo{Axe principal}{Lorsque la molécule possède plusieurs axes de symétrie, l'axe principal est celui avec le \(n\) le plus élevé. Par convention, il est orienté selon \(z\)}
+\begin{definition}[Molécule très symétrique]
+On dit d'une molécule qu'elle est très symétrique lorsqu'elle possède au moins 2 axes principaux (octaèdre, isocaèdre, icosaèdre)
+\end{definition}
+On peut définir des axes colinéaires à des axes de grand \(n\) en trouvant leur diviseur. Par exemple \(12 = 2\times 2 \times 3\). Ainsi \(C_{12}\) génère des axes \(C_2,C_4,C_3, C_6\).
+\criticalInfo{Axes \(C_2\) multiples}{Dans le cas d'axes \(C_2\) multiples, on note \(C_2\) l'axe engendré par l'axe de plus grand \(n\) si applicable, \(C_2'\) les axes passant par les atomes et \(C_2''\) les axes passant par les milieux des arêtes.}
+\criticalInfo{Benzène}{Le Benzène a un axe \(C_6\)}
+\subsection{Réflexion}
+Élément de symétrie : un plan noté \(\sigma\) qui engendre une seule symétrie. Il n'y a donc pas d'indices. En revanche, on a \(\sigma^m = \sigma\) si \(m\) est impair et \(\sigma^m =E\) si il pair.
+
+Il y a en 3 types :
+\begin{itemize}
+ \item Plans \(\sigma_h\) : perpendiculaire à l'axe principal
+ \item \(\sigma_v\) : contient l'axe principal
+ \item \(\sigma_d\) : contient l'axe principal mais sont bissecteurs de 2 axes \(C_2'\)\marginCritical{Si il n'y a pas d'axes C2', pas de ce type de plan}
+\end{itemize}
+Les centres d'inversion sont le pendant des réflexion sauf que l'élément de symétrie est un point.
+\subsection{Inversion}
+L'élément est un centre d'inversion, un point.
+\subsection{Rotation impropre}
+\begin{definition}Elles se décomposent en 2 opérations :
+\begin{enumerate}
+ \item Une rotation \(C_n^m\) engendrée par un axe \(C_n\)
+ \item Une réflexion par rapport à un plan \(\sigma\) orthogonal à l'axe \(C_n\)
+\end{enumerate}
+\(\sigma, C_n\) ne sont pas obligatoirement des éléments de symétrie de la molécule.
+\end{definition}
+%TODO Faire le schema pour le tétraèdre
+\section{GPS}
+L'ensemble des opérations de Symétrie des molécule constitue un groupe.
+
+On détermine le GPS de chaque molécule avec l'organigramme de détermination des GPS.
+
+Exemple : \begin{center}
+\begin{tabular}{ll}
+Molécule & GPS\\
+H2O & C2V\\
+NH3 & C3V\\
+BH3 & D3H\\
+Benzène & D6H\\
+Diborane (B2H6) & D2H\\
+CH4 & Td\\
+PH5 & D3H\\
+SH6 & Oh
+          \end{tabular}
+          \end{center}
+
+\section{Application aux DOM}
+\subsection{Représentation matricielle}
+\begin{definition}[Représentation matricielle]
+C'est l'ensemble des matrices qui représentent les opérations de symétrie du GPS. Il est noté \(\Gamma_n\) avec \(n\) la dimension du problème
+\end{definition}
+\(n\) correspond donc à la dimension des matrices carrées qui composent \(\Gamma\)
+\subsubsection{3 dimensions}
+Par exemple, la matrice de \(C_2\) selon l'axe z est \( \begin{pmatrix}
+-1 & 0 & 0 \\
+0 & -1 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}\)
+La présence de 1 signifie qu'il n'y a pas de transformions et le \(\-1\) montre que l'on a changé de signe pour la coordonnée sur l'axe. On peut réécrire sous la forme de matrice colonne.
+\( \begin{pmatrix}
+-1 \\
+-1 \\
+1 \\
+\end{pmatrix}\).
+
+la matrice de \(\sigma_v((xz))\) est \( \begin{pmatrix}
+1 & 0 & 0 \\
+0 & -1 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}\)
+\subsubsection{6 dimensions}
+On utilise la base des OA de valence pur obtenir des matrices de dimension 6, dans la base \(\{2s,2p_x,2p_y,2p_z,1s_1,1s_2\}\). Dans cette base, \(C_2\) s'écrit  \( \begin{pmatrix}
+1 & 0 & 0 &0&0&0 \\
+0 & -1 & 0&0&0&0 \\
+0 & 0 &- 1 &0&0&0\\
+0&0&0&0&0&1\\
+0&0&0&0&1&0
+\end{pmatrix}\).
+On regarde ce que fait la transformation pour chaque OA.
+
+On remarque qu'il y a des éléments diagonaux nuls. On va faire une combinaison linéaire des OA qui s'échangent pour enlever les 0.
+
+\subsection{Caractère de la représentation et RI}
+\subsubsection{RI}
+\begin{definition}[RI]
+Chaque n-uplet est une représentation irréductible (RI) du groupe, irréductible car ne peut être
+décomposé en matrices de dimensions plus petites. Ce sont les OS appliquées aux vecteur de la base.
+\end{definition}
+Par exemple, pour \(M(E) = \begin{pmatrix}
+1\\1\\1
+\end{pmatrix}, M(C_2) = \begin{pmatrix}
+-1\\-1\\1
+\end{pmatrix},  M(\sigma_v(xz)) = \begin{pmatrix}
+1\\-1\\1
+\end{pmatrix}, M(\sigma_v(yz)) = \begin{pmatrix}
+-1\\1\\1
+\end{pmatrix}\),
+
+on peut écrire les quadruplets comme \(\begin{bmatrix}
+[+1;-1;+1;-1;]\\
+[+1;-1;-1;+1]\\
+[+1;+1;+1;+1]
+\end{bmatrix}\)
+
+Chaque RI possède une dénomination propre et décrit comment un élément de la base se transforme selon les OS du GPS.
+
+Chaque GPS possède un nombre fini de RI dont le nombre d’éléments dépend du nombre d’opérations de
+symétrie du GPS.
+
+\warningInfo{Représentation matricielle et RI}{La représentation matricielle est une représentation réductible (RR) car elle peut être décomposée
+en une combinaison linéaire à coefficients entiers de RI.}
+
+\subsubsection{Caractère}
+C'est la trace de l'opération dans la base considérée. Ainsi, pour \(M(E), M(C_2), M(\sigma_v(xz)), M(\sigma_v(yz))\), le caractère \(\Gamma\) s'écrit \(\Gamma = \{3,-1,1,1\}\).
+\subsection{Construction d'un DOM}
+\subsubsection{Création du tableau}
+À l'aide de la table de caractère du GPS de la molécule, on crée un tableau pour renseigner le résultat des opérations sur les OA mises en jeu dans la molécule.
+
+Ainsi, pour la molécule d'H2O, on a
+\begin{center}
+\begin{tabular}{lllll}
+ & E & C2 & \(\sigma_v(xz)\) & \(\sigma_v(yz)\)\\
+2s & 1 & 1 & 1 & 1\\
+2px & 1 & -1 & 1 & 1\\
+2py & 1 & -1 & -1 & 1\\
+2pz & 1 & 1 & 1 & 1\\
+1s1 & 1 & 0 & 0 & 1\\
+1s2 & 1 & 0 & 0 & 1
+\end{tabular}
+\end{center}
+\warningInfo{Astuces}{l'opération E produit toujours des 1 et l'OA 2s centrale également car elle possède une symétrie sphérique.}
+On calcule ensuite le caractère \(\Gamma\) pour chaque RI : Ici, on obtient \[\Gamma = \{6, 0, 2, 4\}\]
+\begin{theorem}[Décomposition du Caractère]
+\(n_i = \frac{1}{g}\sum_{k=1}^g \chi(R_K)\chi_i(R_k)\)
+\end{theorem}
+avec g le nombre total d'OS ici 4 car il y a (E, C2, \(\sigma_v(xz)\), \(\sigma_v(yz)\)) et  \(R_K\) une OS.
+
+On utilise la table de caractère et le tableau construit.
+
+Exemple : \(n_{A_1} = \frac{1}{4}(1\times1\times 6 + 1\times1\times 0 + 1\times1\times 2 + 1\times1\times 4) = 3\)
+
+Pour \(n_{A_2} = \frac{1}{4}(1\times1\times 6 + 1\times1\times 0 + -1\times1\times 2 + -1\times1\times 4) = 0\)
+
+\(n_{B1} = \frac{1}{4}(1\times1\times 6 + -1\times1\times 0 + 1\times1\times 2 + -1\times1\times 4) = 2\)
+
+\(n_{B2} = \frac{1}{4}(1\times1\times 6 + -1\times1\times 0 - 1\times1\times 2 + 1\times1\times 4) = 1\)
+
+Donc on peut écrire \(\Gamma_{RI} = 3A_1\oplus 0A_2\oplus 2B_1\oplus 1B_2\) La somme des résultat fait bien la dimension du problème.
+
+On cherche maintenant l'emplacement de x,y, et z en avant dernière colonne du tableau pour déterminer. Ainsi, pour z dans la ligne \(A_1\), on aura \(2p_x = B1\), etc.
+
+On modifie le tableau avec des changements de base pour retrouver le \(\Gamma_{RI}\). On fait des combinaisons linéaires pour trouver le nouveau tableau diagonalisé.
+ \end{document}

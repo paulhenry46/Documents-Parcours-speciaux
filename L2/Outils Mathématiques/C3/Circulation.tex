@@ -1,0 +1,183 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Outils Mathématiques 2}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\mpsi}{\(\psi\)}
+\begin{document}
+\setcounter{chapter}{2}
+\chapter{Calcul vectoriel}
+\section{Circulation et paramétrisation}
+\subsection{Paramétrisation}
+\begin{theorem}[Paramétrisation à savoir]
+Pour un segment AB de A vers B : \(x(s) = x_a\cdot s + (x_b-x_a), y(s) = y_a\cdot s + (y_b-y_a)\) avec \(s\in [0,1]\)
+
+Pour un cercle de centre  \(x_0,y_0\) et de rayon R orienté dans le sens trigonométrique : \(x(\varphi) = x_0+R\cos(\varphi), y(\varphi) = y_0+R\sin(\varphi)\) avec \(\varphi \in [0,2\pi]\)
+\end{theorem}
+\subsection{Valeur moyenne}
+\subsubsection{Formule}
+\begin{theorem}[Valeur moyenne d'un vecteur sur une surface]
+ \[<\vec{V}> = \frac{\iint_S \vec{V}\dd S}{\iint_S \dd S = \text{ Aire}}\]
+\end{theorem}
+\subsubsection{Exemple}
+On souhaire calculer la valeur moyenne de \(\vec{v}(\vec{r}) = \vec{v_{max}}(1-\frac{\rho^2}{R^2})\) sur une section d'un tube de rayon R.
+
+Calculons le :
+\begin{flalign*}
+<\vec{v}(\vec{r})> &=  \frac{\iint_S \vec{v}\dd S}{\iint_S \dd S = \text{ Aire}}\\
+&=  \frac{\iint_S \vec{v}\dd S}{\pi R^2}\\
+&=  \frac{v_{max}\int_0^{2\pi}\dd \varphi\int_0^{R}(1-\frac{\rho^2}{R^2})\rho\dd \rho}{\pi R^2}\\
+&=  \frac{v_{max}2\pi\int_0^{R}(\rho-\frac{\rho^3}{R^2})\dd \rho}{\pi R^2}\\
+&=  \frac{v_{max}2\pi[\frac{\rho^2}{2}-\frac{\rho^4}{4R^2}]_0^{R}}{\pi R^2}\\
+&=  \frac{v_{max}2\pi\frac{R^2}{4}}{\pi R^2}\\
+&=  \frac{v_{max}}{2}\\
+\end{flalign*}
+Autre exemple : On veut calculer la valeur moyenne du vecteur position sur un demi-disque du type \(\{x^+y^2<R^2, y>0\}\)
+
+Nous allons intégrer en utilisant les coordonnées polaires.
+\begin{flalign*}
+<\vec{OM}> &= \frac{\iint_S \vec{OM}\dd S}{\iint_S \dd S = \text{ Aire}}\\
+&= \frac{2}{\pi R^2} \iint_S \vec{OM}\dd S\\
+&=  \frac{2}{\pi R^2} \int_0^{\pi}\dd \varphi \int_0^{R}\rho \dd \rho (x\vec{e_x}+y\vec{e_y})\\
+&=  \frac{2}{\pi R^2} \int_0^{\pi}\dd \varphi \int_0^{R}\rho \dd \rho (\rho\cos(\varphi)\vec{e_x}+\rho\sin(\varphi)\vec{e_y})\\
+&=  \frac{2}{\pi R^2} \int_0^{\pi}\dd \varphi \int_0^{R}\rho^2 \dd \rho (\cos(\varphi)\vec{e_x}+\sin(\varphi)\vec{e_y})\\
+&=  \frac{2}{\pi R^2} \frac{R^3}{3} \int_0^{\pi}\dd \varphi (\cos(\varphi)\vec{e_x}+\sin(\varphi)\vec{e_y})\\
+&=  \frac{2}{\pi R^2} \frac{R^3}{3} [(\sin(\varphi)\vec{e_x}-\cos(\varphi)\vec{e_y})]_0^{\pi}\\
+&=  \frac{2}{\pi R^2} \frac{R^3}{3} 2\vec{e_y}\\
+&=  \frac{4}{3\pi R} \vec{e_y} = \vec{OG}\\
+\end{flalign*}
+\subsection{Circulation}
+On cherche à calculer la circulation d'un vecteur lo long d'un chemin.
+\subsubsection{Paramétrisation du chemin}
+On paramètrise le chemin de circulation (voir partie précédente) en fontion d'un paramètre s.
+\subsubsection{Formule}
+\begin{theorem}[Circulation d'une force]
+\[\int_{\mathcal{C}} \vec{F}\cdot \dd \vec{r} = \int_a^b \dd s \vec{F(r(s))}\cdot \frac{\dd \vec{r}}{\dd s}\]
+\end{theorem}
+\begin{enumerate}
+ \item Calculer \(\frac{\dd \vec{r}}{\dd s}\)
+ \item Faire le produit vectoriel \(\vec{F(r(s))}\cdot\frac{\dd \vec{r}}{\dd s}\)
+ \item Intégrer sur les bornes du paramètre s
+\end{enumerate}
+\subsubsection{Exemple du poids}
+On veut calculer la circulation du poids $\vec{P}$ le long du segment de droite allant du point $A(x_A, y_A, z_A)$ au point $B(x_B, y_B, z_B)$.
+
+Le vecteur force est :
+$$\vec{P} = \begin{pmatrix} 0 \\ 0 \\ -mg \end{pmatrix}$$
+
+On paramètrise le chemin :
+
+Le segment de droite $\mathcal{C}$ allant de $A$ à $B$ peut être paramétré par un paramètre $s \in [0, 1]$ comme suit :
+$$\vec{r}(s) = \vec{r}_A + s (\vec{r}_B - \vec{r}_A)$$
+
+Avec $\vec{r}_A = \begin{pmatrix} x_A \\ y_A \\ z_A \end{pmatrix}$ et $\vec{r}_B = \begin{pmatrix} x_B \\ y_B \\ z_B \end{pmatrix}$, on a :
+
+$$\vec{r}(s) = \begin{pmatrix} x_A \\ y_A \\ z_A \end{pmatrix} + s \begin{pmatrix} x_B - x_A \\ y_B - y_A \\ z_B - z_A \end{pmatrix} = \begin{pmatrix} x_A + s(x_B - x_A) \\ y_A + s(y_B - y_A) \\ z_A + s(z_B - z_A) \end{pmatrix}$$
+
+Le vecteur déplacement infinitésimal $\dd \vec{r}$ est donné par $\dd \vec{r} = \frac{\dd \vec{r}}{\dd s} \dd s$.
+Calculons $\frac{\dd \vec{r}}{\dd s}$ :
+
+$$\frac{\dd \vec{r}}{\dd s} = \frac{\dd}{\dd s} \begin{pmatrix} x_A + s(x_B - x_A) \\ y_A + s(y_B - y_A) \\ z_A + s(z_B - z_A) \end{pmatrix} = \begin{pmatrix} x_B - x_A \\ y_B - y_A \\ z_B - z_A \end{pmatrix}$$
+
+On calcule le produit scalaire $\vec{P}(\vec{r}(s)) \cdot \frac{\dd \vec{r}}{\dd s}$
+
+La force $\vec{P}$ est constante ; elle ne dépend pas de la position $\vec{r}(s)$. On a donc $\vec{P}(\vec{r}(s)) = \vec{P}$.
+
+Le produit scalaire est :
+$$\vec{P} \cdot \frac{\dd \vec{r}}{\dd s} = \begin{pmatrix} 0 \\ 0 \\ -mg \end{pmatrix} \cdot \begin{pmatrix} x_B - x_A \\ y_B - y_A \\ z_B - z_A \end{pmatrix}$$
+
+En effectuant le produit scalaire :
+$$\vec{P} \cdot \frac{\dd \vec{r}}{\dd s} = -mg(z_B - z_A) = mg(z_A - z_B)$$
+
+
+On intègre sur les bornes du paramètre $s$ :
+\explanation{1}{Comme $mg(z_A - z_B)$ est constant, on peut la sortir de l'intégrale}
+\begin{flalign*}
+W &= \int_{s=0}^{1} \left( \vec{P} \cdot \frac{\dd \vec{r}}{\dd s} \right) \dd s\\
+&=\int_{0}^{1} \left[ mg(z_A - z_B) \right] \dd s\\
+&= mg(z_A - z_B) \int_{0}^{1} \dd s\explain{1}{right}{0}{0.5}{} \\
+&= mg(z_A - z_B) (1 - 0)\\
+&= mg(z_A - z_B)
+\end{flalign*}
+\subsubsection{Force de Lorenz}
+La force donnée est :
+$$\vec{F} = \frac{F_0}{R} (-y\vec{e_x} + x \vec{e_y})$$
+
+La courbe $\mathcal{C}$ est le cercle de centre $O$ et de rayon $R$.
+
+1. Calcul de $\frac{\dd \vec{r}}{\dd s}$ (Paramétrisation du cercle)
+
+Pour paramétrer le cercle de rayon $R$ centré à l'origine dans le sens positif, on utilise un angle $\theta$ comme paramètre $s \in [0, 2\pi]$ (que nous noterons $\theta$ pour la clarté) :
+
+$$\vec{r}(\theta) = \begin{pmatrix} x(\theta) \\ y(\theta) \end{pmatrix} = \begin{pmatrix} R \cos \theta \\ R \sin \theta \end{pmatrix}$$
+
+Le vecteur déplacement infinitésimal est obtenu en dérivant par rapport à $\theta$ :
+$$\frac{\dd \vec{r}}{\dd \theta} = \begin{pmatrix} \frac{\dd x}{\dd \theta} \\ \frac{\dd y}{\dd \theta} \end{pmatrix} = \begin{pmatrix} -R \sin \theta \\ R \cos \theta \end{pmatrix}$$
+
+2. Calcul du produit scalaire $\vec{F}(\vec{r}(\theta)) \cdot \frac{\dd \vec{r}}{\dd \theta}$
+
+On exprime d'abord F en fonction du paramètre \(\theta\)
+
+Nous substituons $x = R \cos \theta$ et $y = R \sin \theta$ dans l'expression de la force :
+\begin{flalign*}
+\vec{F}(\vec{r}(\theta)) &= \frac{F_0}{R} (- (R \sin \theta) \vec{e_x} + (R \cos \theta) \vec{e_y})\\
+&= F_0 (- \sin \theta  \vec{e_x} + \cos \theta  \vec{e_y})\\
+&= F_0 \begin{pmatrix} - \sin \theta \\ \cos \theta \end{pmatrix}
+\end{flalign*}
+
+On peut maintenant caculer le produit scalaire :
+
+Maintenant, nous effectuons le produit scalaire $\vec{F} \cdot \frac{\dd \vec{r}}{\dd \theta}$ :
+\begin{flalign*}
+\vec{F} \cdot \frac{\dd \vec{r}}{\dd \theta} &= F_0 \begin{pmatrix} - \sin \theta \\ \cos \theta \end{pmatrix} \cdot \begin{pmatrix} -R \sin \theta \\ R \cos \theta \end{pmatrix}\\
+&= F_0 R (\sin^2 \theta + \cos^2 \theta)\\
+&= F_0 R
+\end{flalign*}
+
+Intégration sur les bornes du paramètre $\theta$
+
+La circulation $W$ est donnée par :
+\begin{flalign*}
+W &= \int_{\theta=0}^{2\pi} \left( \vec{F} \cdot \frac{\dd \vec{r}}{\dd \theta} \right) \dd \theta\\
+&= \int_{0}^{2\pi} F_0 R \, \dd \theta\\
+&=F_0 R \int_{0}^{2\pi} \dd \theta\\
+&=2 \pi R F_0
+\end{flalign*}
+
+La circulation de la force $\vec{F}$ sur le cercle de centre $O$ et de rayon $R$ est :
+$$W = 2 \pi R F_0$$
+
+ \end{document}

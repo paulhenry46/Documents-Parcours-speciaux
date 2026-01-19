@@ -1,0 +1,510 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Algèbre linéaire 2}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+\chapter{Applications linéaires}
+\section{Exercice 1}
+\begin{enumerate}
+    \item Les applications suivantes sont-elles linéaires? Justifier.
+
+    \begin{itemize}
+        \item $f_{1}:\mathbb{R}^{2}\rightarrow\mathbb{R}$, $(x,y)\mapsto x+2y-1$ \\
+        \textbf{Non linéaire.} Une application linéaire doit vérifier $f(\vec{0})=\vec{0}$.
+        Ici, $f_{1}(0,0) = 0+2(0)-1 = -1 \neq 0$.
+
+        \item $f_{2}:\mathbb{R}^{2}\rightarrow\mathbb{R}^{2}$, $(x,y)\mapsto(x-y,2x)$ \\
+        \textbf{Oui, linéaire.}
+        \begin{itemize}
+            \item \textbf{Additivité:} Soient $\vec{u}=(x,y)$ et $\vec{v}=(x',y')$.
+            \begin{align*}
+            f_{2}(\vec{u}+\vec{v}) &= f_{2}(x+x', y+y') \\
+            &= ((x+x')-(y+y'), 2(x+x')) \\
+            &= (x-y+x'-y', 2x+2x')
+            \end{align*}
+            $f_{2}(\vec{u})+f_{2}(\vec{v}) = (x-y, 2x) + (x'-y', 2x') = (x-y+x'-y', 2x+2x')$. \\
+            Les deux expressions sont égales, donc l'additivité est vérifiée.
+
+            \item \textbf{Homogénéité:} Soient $\lambda \in \mathbb{R}$ et $\vec{u}=(x,y)$.
+            \begin{align*}
+            f_{2}(\lambda\vec{u}) &= f_{2}(\lambda x, \lambda y) \\
+            &= (\lambda x - \lambda y, 2\lambda x) \\
+            &= \lambda(x-y, 2x) \\
+            &= \lambda f_{2}(\vec{u})
+            \end{align*}
+            L'homogénéité est vérifiée. L'application est donc linéaire.
+        \end{itemize}
+
+        \item $f_{3}:\mathbb{R}^{2}\rightarrow\mathbb{R}^{2}$, $(x,y)\mapsto x(0,y)$ \\
+        \textbf{Non linéaire.} Prenons $\lambda=2$ et $\vec{u}=(1,1)$.
+        \begin{itemize}
+            \item $f_{3}(\lambda\vec{u}) = f_{3}(2(1,1)) = f_{3}(2,2) = 2(0,2) = (0,4)$.
+            \item $\lambda f_{3}(\vec{u}) = 2 f_{3}(1,1) = 2(1(0,1)) = 2(0,1) = (0,2)$.
+        \end{itemize}
+        Comme $f_{3}(\lambda\vec{u}) \neq \lambda f_{3}(\vec{u})$, l'application n'est pas linéaire.
+    \end{itemize}
+
+    \item Soit $f:\mathbb{R}^{3}\rightarrow\mathbb{R}^{2}$ telle que $f(1,0,0)=(2,1)$; $f(0,1,0)=(1,-1)$; $f(0,0,1)=(0,1)$. Déterminer $f(x,y,z)$.
+
+    Tout vecteur $(x,y,z) \in \mathbb{R}^3$ peut être écrit comme une combinaison linéaire des vecteurs de la base canonique:
+    $$(x,y,z) = x(1,0,0) + y(0,1,0) + z(0,0,1)$$
+    Par linéarité de $f$, on a :
+    \begin{align*}
+    f(x,y,z) &= f(x(1,0,0) + y(0,1,0) + z(0,0,1)) \\
+    &= xf(1,0,0) + yf(0,1,0) + zf(0,0,1) \\
+    &= x(2,1) + y(1,-1) + z(0,1) \\
+    &= (2x,x) + (y,-y) + (0,z) \\
+    &= (2x+y, x-y+z)
+    \end{align*}
+    Donc, $f(x,y,z)=(2x+y, x-y+z)$.
+\end{enumerate}
+\section{Exercice 2}
+Déterminer si les applications suivantes sont linéaires :
+\begin{enumerate}
+    \item $f:\mathbb{R}[X]\rightarrow\mathbb{R}^{2}$ $P(X)\mapsto(P(0),P^{\prime}(1))$ \\
+    \textbf{Linéaire.} \\
+    Soient $P_1, P_2 \in \mathbb{R}[X]$ et $\lambda \in \mathbb{R}$.
+    \begin{itemize}
+        \item \textbf{Additivité:}
+        $f(P_1+P_2) = ((P_1+P_2)(0), (P_1+P_2)'(1)) = (P_1(0)+P_2(0), P_1'(1)+P_2'(1))$
+        $f(P_1)+f(P_2) = (P_1(0), P_1'(1)) + (P_2(0), P_2'(1)) = (P_1(0)+P_2(0), P_1'(1)+P_2'(1))$
+        \item \textbf{Homogénéité:}
+        $f(\lambda P_1) = ((\lambda P_1)(0), (\lambda P_1)'(1)) = (\lambda P_1(0), \lambda P_1'(1))$
+        $\lambda f(P_1) = \lambda(P_1(0), P_1'(1)) = (\lambda P_1(0), \lambda P_1'(1))$
+    \end{itemize}
+
+    \item $f:\mathbb{R}[X]\rightarrow\mathbb{R}[X]$ $P(X)\mapsto A(X)P(X)$ où $A\in\mathbb{R}[X]$ est un polynôme fixé. \\
+    \textbf{Linéaire.} \\
+    Soient $P_1, P_2 \in \mathbb{R}[X]$ et $\lambda \in \mathbb{R}$.
+    \begin{itemize}
+        \item \textbf{Additivité:}
+        $f(P_1+P_2) = A(X)(P_1(X)+P_2(X)) = A(X)P_1(X)+A(X)P_2(X) = f(P_1)+f(P_2)$
+        \item \textbf{Homogénéité:}
+        $f(\lambda P_1) = A(X)(\lambda P_1(X)) = \lambda(A(X)P_1(X)) = \lambda f(P_1)$
+    \end{itemize}
+
+    \item $f:\mathbb{R}[X]\rightarrow\mathbb{R}[X]$, $P(X)\mapsto P(X)^{2}$ \\
+    \textbf{Non linéaire.} \\
+    L'additivité n'est pas vérifiée en général. Par exemple, prenons $P_1(X)=X$ et $P_2(X)=1$.
+    \begin{itemize}
+        \item $f(P_1+P_2) = f(X+1) = (X+1)^2 = X^2+2X+1$
+        \item $f(P_1)+f(P_2) = f(X)+f(1) = X^2+1^2 = X^2+1$
+    \end{itemize}
+    Comme $f(P_1+P_2) \neq f(P_1)+f(P_2)$, l'application n'est pas linéaire.
+
+    \item $f:\mathbb{R}[X]\rightarrow\mathbb{R}[X]$, $P(X)\mapsto XP(X)+P^{\prime}(X)$ \\
+    \textbf{Linéaire.} \\
+    Soient $P_1, P_2 \in \mathbb{R}[X]$ et $\lambda \in \mathbb{R}$.
+    \begin{itemize}
+        \item \textbf{Additivité:}
+        \begin{align*}
+        f(P_1+P_2) &= X(P_1+P_2) + (P_1+P_2)' \\
+        &= XP_1+XP_2+P_1'+P_2' \\
+        &= (XP_1+P_1')+(XP_2+P_2') = f(P_1)+f(P_2)
+        \end{align*}
+        \item \textbf{Homogénéité:}
+        \begin{align*}
+        f(\lambda P_1) &= X(\lambda P_1) + (\lambda P_1)' \\
+        &= \lambda XP_1 + \lambda P_1' \\
+        &= \lambda(XP_1+P_1') = \lambda f(P_1)
+        \end{align*}
+    \end{itemize}
+\end{enumerate}
+\section{Exercice 3}
+
+\begin{enumerate}
+    \item $\varphi_{1}:E\rightarrow E$ $(\varphi_{1}(f))(x)=f(x)^{2}$ \\
+    \textbf{Non linéaire.} \\
+    L'additivité n'est pas vérifiée. Par exemple, si l'on prend $f(x)=x$ et $g(x)=x$:
+    \begin{itemize}
+        \item $(\varphi_{1}(f+g))(x) = ((f+g)(x))^2 = (x+x)^2 = (2x)^2 = 4x^2$
+        \item $(\varphi_{1}(f)+\varphi_{1}(g))(x) = f(x)^2+g(x)^2 = x^2+x^2 = 2x^2$
+    \end{itemize}
+    Comme $4x^2 \neq 2x^2$, l'application n'est pas linéaire.
+
+    \item $\varphi_{2}:E\rightarrow E$ $(\varphi_{2}(f))(x)=f(x^{2})$ \\
+    \textbf{Linéaire.} \\
+    Soient $f, g \in E$ et $\lambda \in \mathbb{R}$.
+    \begin{itemize}
+        \item \textbf{Additivité:}
+        $(\varphi_{2}(f+g))(x) = (f+g)(x^2) = f(x^2)+g(x^2) = (\varphi_{2}(f))(x)+(\varphi_{2}(g))(x)$
+        \item \textbf{Homogénéité:}
+        $(\varphi_{2}(\lambda f))(x) = (\lambda f)(x^2) = \lambda f(x^2) = \lambda(\varphi_{2}(f))(x)$
+    \end{itemize}
+
+    \item $\varphi_{3}:E\rightarrow E$ $(\varphi_{3}(f))(x)=\int_{0}^{x}f(t)dt$ \\
+    \textbf{Linéaire.} \\
+    C'est une propriété de l'intégrale définie. Soient $f, g \in E$ et $\lambda \in \mathbb{R}$.
+    \begin{itemize}
+        \item \textbf{Additivité:}
+        $(\varphi_{3}(f+g))(x) = \int_{0}^{x}(f(t)+g(t))dt = \int_{0}^{x}f(t)dt+\int_{0}^{x}g(t)dt = (\varphi_{3}(f))(x)+(\varphi_{3}(g))(x)$
+        \item \textbf{Homogénéité:}
+        $(\varphi_{3}(\lambda f))(x) = \int_{0}^{x}\lambda f(t)dt = \lambda\int_{0}^{x}f(t)dt = \lambda(\varphi_{3}(f))(x)$
+    \end{itemize}
+\end{enumerate}
+
+\section{Exercice 4}
+
+On définit l'application $D:\mathbb{R}[X]\rightarrow\mathbb{R}[X]$, $P(X)\mapsto P^{\prime}(X)$.
+
+\begin{enumerate}
+    \item Montrer que l'application D est une application linéaire. \\
+   C'est une propriété fondamentale de la dérivation des polynômes.
+    \begin{itemize}
+        \item $D(P+Q) = (P+Q)' = P'+Q' = D(P)+D(Q)$
+        \item $D(\lambda P) = (\lambda P)' = \lambda P' = \lambda D(P)$
+    \end{itemize}
+
+    \item Déterminer le noyau et l'image de D.
+    \begin{itemize}
+        \item \textbf{Noyau:} $Ker(D) = \{ P \in \mathbb{R}[X] \mid D(P)=0 \}$. \\
+        $P'(X)=0$ si et seulement si $P(X)$ est un polynôme constant. Donc $Ker(D) = \mathbb{R}_0[X]$.
+        \item \textbf{Image:} $Im(D) = \{ D(P) \mid P \in \mathbb{R}[X] \}$. \\
+        Pour tout polynôme $Q(X) \in \mathbb{R}[X]$, on peut trouver un polynôme $P(X)$ (une primitive de $Q$) tel que $P'(X)=Q(X)$. Par exemple, si $Q(X) = \sum_{k=0}^{n} a_k X^k$, alors $P(X) = \sum_{k=0}^{n} \frac{a_k}{k+1}X^{k+1}$.
+        Ainsi, $Im(D) = \mathbb{R}[X]$.
+    \end{itemize}
+
+    \item Déterminer l'image réciproque de $\mathbb{R}_{n}[X]$, $\forall n\in\mathbb{N}.$
+    L'image réciproque de $\mathbb{R}_n[X]$ est l'ensemble des polynômes dont la dérivée est dans $\mathbb{R}_n[X]$.
+    Un polynôme $P(X)$ a une dérivée de degré inférieur ou égal à $n$ si et seulement si son propre degré est inférieur ou égal à $n+1$.
+    Donc, $D^{-1}(\mathbb{R}_{n}[X]) = \mathbb{R}_{n+1}[X]$.
+\end{enumerate}
+
+\section{Exercice 5}
+
+Soit $E=C^{1}(\mathbb{R},\mathbb{R})$ l'espace vectoriel des fonctions dérivables sur $\mathbb{R}$ dont la première dérivée est continue.
+
+\begin{enumerate}
+    \item Montrer que $C^{1}(\mathbb{R},\mathbb{R})$ est un s.e.v. de $C^{0}(\mathbb{R},\mathbb{R})$.
+    \begin{itemize}
+        \item $C^{1}(\mathbb{R},\mathbb{R})$ est un sous-ensemble de $C^{0}(\mathbb{R},\mathbb{R})$ car toute fonction dérivable est continue.
+        \item La fonction nulle, $f(x)=0$, est dans $C^{1}(\mathbb{R},\mathbb{R})$ (sa dérivée est la fonction nulle, qui est continue), donc $C^{1}(\mathbb{R},\mathbb{R})$ est non vide.
+        \item \textbf{Stabilité par addition:} Soient $f,g \in C^{1}(\mathbb{R},\mathbb{R})$. $(f+g)' = f'+g'$. Comme $f'$ et $g'$ sont continues, leur somme est continue. Donc $f+g \in C^{1}(\mathbb{R},\mathbb{R})$.
+        \item \textbf{Stabilité par multiplication par un scalaire:} Soient $f \in C^{1}(\mathbb{R},\mathbb{R})$ et $\lambda \in \mathbb{R}$. $(\lambda f)' = \lambda f'$. Comme $f'$ est continue, $\lambda f'$ est continue. Donc $\lambda f \in C^{1}(\mathbb{R},\mathbb{R})$.
+    \end{itemize}
+    Ces conditions montrent que $C^{1}(\mathbb{R},\mathbb{R})$ est bien un sous-espace vectoriel de $C^{0}(\mathbb{R},\mathbb{R})$.
+
+    \item Montrer que la dérivation D: $C^{1}(\mathbb{R},\mathbb{R})\rightarrow C^{0}(\mathbb{R},\mathbb{R})$, $f(x)\mapsto f^{\prime}(x)$ est un épimorphisme (une application linéaire surjective).
+    \begin{itemize}
+        \item \textbf{Linéarité:} Elle a été montrée à l'exercice 4, la propriété est la même pour les fonctions. Soient $f,g \in C^{1}(\mathbb{R},\mathbb{R})$ et $\lambda \in \mathbb{R}$. $D(f+g)=(f+g)'=f'+g'=D(f)+D(g)$ et $D(\lambda f)=(\lambda f)'=\lambda f'=\lambda D(f)$.
+        \item \textbf{Surjectivité:} On doit montrer que pour toute fonction $g \in C^{0}(\mathbb{R},\mathbb{R})$, il existe une fonction $f \in C^{1}(\mathbb{R},\mathbb{R})$ telle que $D(f)=g$. \\
+        D'après le théorème fondamental de l'analyse, la fonction $f(x)=\int_0^x g(t)dt$ est une primitive de $g$. Cette fonction $f$ est dérivable et sa dérivée est $g$, qui est continue. Donc $f \in C^{1}(\mathbb{R},\mathbb{R})$ et $D(f)=g$.
+    \end{itemize}
+    L'application D est linéaire et surjective, c'est donc un épimorphisme.
+\end{enumerate}
+\section*{Exercice 6}
+
+Soient $E, F, G$ trois K-espaces vectoriels, $f\in\mathcal{L}(E,F)$ et $g\in\mathcal{L}(F,G)$.
+
+\begin{enumerate}
+    \item Montrer que $Ker(g\circ f)=f^{-1}(Ker(g))$.
+    \begin{itemize}
+        \item Soit $x \in Ker(g\circ f)$. Par définition, $(g\circ f)(x) = 0_G$, ce qui signifie $g(f(x))=0_G$. Par conséquent, $f(x) \in Ker(g)$, ce qui, par définition de l'image réciproque, signifie que $x \in f^{-1}(Ker(g))$. D'où $Ker(g\circ f) \subset f^{-1}(Ker(g))$.
+        \item Soit $x \in f^{-1}(Ker(g))$. Par définition, $f(x) \in Ker(g)$. Par conséquent, $g(f(x))=0_G$. Comme $(g\circ f)(x)=g(f(x))$, on a $(g\circ f)(x)=0_G$, ce qui signifie que $x \in Ker(g\circ f)$. D'où $f^{-1}(Ker(g)) \subset Ker(g\circ f)$.
+    \end{itemize}
+    Les deux inclusions prouvent l'égalité.
+
+    \item Montrer que $Ker(f)\subset Ker(g\circ f)$.
+    Soit $x \in Ker(f)$, ce qui implique que $f(x)=0_F$. Alors, $(g\circ f)(x) = g(f(x)) = g(0_F)$. Comme $g$ est linéaire, $g(0_F)=0_G$. Donc $(g\circ f)(x) = 0_G$, ce qui signifie que $x \in Ker(g\circ f)$.
+
+    \item Montrer que $Im(g\circ f)=g(Im(f))$.
+    \begin{itemize}
+        \item Soit $y \in Im(g\circ f)$. Il existe $x \in E$ tel que $y=(g\circ f)(x)=g(f(x))$. Soit $z=f(x) \in Im(f)$. Alors $y=g(z)$ avec $z\in Im(f)$, ce qui signifie $y \in g(Im(f))$. D'où $Im(g\circ f) \subset g(Im(f))$.
+        \item Soit $y \in g(Im(f))$. Il existe $z \in Im(f)$ tel que $y=g(z)$. Comme $z \in Im(f)$, il existe $x \in E$ tel que $z=f(x)$. En substituant, on obtient $y=g(f(x))=(g\circ f)(x)$, ce qui signifie que $y \in Im(g\circ f)$. D'où $g(Im(f)) \subset Im(g\circ f)$.
+    \end{itemize}
+    Les deux inclusions prouvent l'égalité.
+
+    \item Montrer que $Im(g\circ f)\subset Im(g)$.
+    Soit $y \in Im(g\circ f)$. Il existe $x \in E$ tel que $y=(g\circ f)(x)=g(f(x))$. Soit $z=f(x) \in F$. On a donc $y=g(z)$ avec $z \in F$, ce qui par définition signifie que $y \in Im(g)$.
+\end{enumerate}
+
+\section*{Exercice 7}
+
+Soit $E$ un K-espace vectoriel de dimension finie, et soit $f\in\mathcal{L}(E)$. Montrer l'équivalence : $E=Im(f)\oplus Ker(f)\iff Im(f)=Im(f^{2})$.
+
+\begin{itemize}
+    \item \textbf{Preuve de $\Rightarrow$:} Supposons $E=Im(f)\oplus Ker(f)$. Montrons que $Im(f)=Im(f^2)$.
+
+    On sait que $Im(f^2) \subset Im(f)$.
+
+    Soit $y \in Im(f)$, il existe $x \in E$ tel que $y=f(x)$. Comme $E = Im(f) \oplus Ker(f)$, on peut écrire $x=u+v$ avec $u \in Im(f)$ et $v \in Ker(f)$.
+
+    Alors $y=f(x)=f(u+v)=f(u)+f(v)=f(u)+0_E=f(u)$.
+
+    Comme $u \in Im(f)$, il existe $z \in E$ tel que $u=f(z)$. Donc $y=f(u)=f(f(z))=f^2(z)$.
+    Ceci montre que $y \in Im(f^2)$. Ainsi, $Im(f) \subset Im(f^2)$.
+
+    L'égalité est donc prouvée.
+
+    \item \textbf{Preuve de $\Leftarrow$:} Supposons $Im(f)=Im(f^2)$. Montrons $E=Im(f)\oplus Ker(f)$.
+
+    Montrons que $Im(f) \cap Ker(f) = \{0_E\}$. Soit $y \in Im(f) \cap Ker(f)$. Alors il existe $x \in E$ tel que $y=f(x)$ et $f(y)=0_E$.
+
+    On a $f(f(x))=0_E$, soit $f^2(x)=0_E$.
+
+    Par le théorème du rang, $\dim(E)=\dim(Im(f))+\dim(Ker(f))$ et $\dim(E)=\dim(Im(f^2))+\dim(Ker(f^2))$.
+
+    Comme $\dim(Im(f))=\dim(Im(f^2))$, on a $\dim(Ker(f))=\dim(Ker(f^2))$.
+    On sait que $Ker(f) \subset Ker(f^2)$, et comme leurs dimensions sont égales, on a $Ker(f)=Ker(f^2)$.
+
+    Donc $f^2(x)=0_E$ implique $x \in Ker(f^2)=Ker(f)$, soit $f(x)=0_E$.
+
+    Puisque $y=f(x)$, on a $y=0_E$. Donc l'intersection est triviale.
+
+    De plus, par le théorème du rang, $\dim(E)=\dim(Im(f))+\dim(Ker(f))$.
+
+    Et on sait que $\dim(Im(f)+Ker(f)) = \dim(Im(f))+\dim(Ker(f))-\dim(Im(f)\cap Ker(f))$.
+
+    Puisque l'intersection est $\{0_E\}$, $\dim(Im(f)+Ker(f)) = \dim(Im(f))+\dim(Ker(f)) = \dim(E)$.
+
+    Comme $Im(f)+Ker(f)$ est un sous-espace de $E$ de même dimension, ils sont égaux.
+
+    La somme est donc directe.
+
+    \textbf{Cette équivalence reste-elle vraie en dimension infinie?}
+    Non. Considérons l'opérateur de dérivation $D:\mathbb{R}[X]\to\mathbb{R}[X]$.
+    $Im(D)=\mathbb{R}[X]$ et $Ker(D)=\mathbb{R}_0[X]$.
+    $Im(D^2)=Im(D)=\mathbb{R}[X]$. L'égalité $Im(D)=Im(D^2)$ est donc vérifiée.
+    Cependant, $Im(D)+Ker(D) = \mathbb{R}[X]+\mathbb{R}_0[X] = \mathbb{R}[X]$. Mais la somme n'est pas directe car $Im(D)\cap Ker(D)=\mathbb{R}_0[X] \neq \{0\}$.
+\end{itemize}
+
+\section*{Exercice 8}
+
+Soit $f:E_{1}\times E_{2}\rightarrow E$ par $f(u,v)=u+v$.
+
+\begin{enumerate}
+    \item Montrer que f est linéaire.
+    \begin{itemize}
+        \item \textbf{Additivité:} $f((u_1,v_1)+(u_2,v_2)) = f(u_1+u_2,v_1+v_2) = (u_1+u_2)+(v_1+v_2) = (u_1+v_1)+(u_2+v_2) = f(u_1,v_1)+f(u_2,v_2)$.
+        \item \textbf{Homogénéité:} $f(\lambda(u,v)) = f(\lambda u, \lambda v) = \lambda u + \lambda v = \lambda(u+v) = \lambda f(u,v)$.
+    \end{itemize}
+    L'application est linéaire.
+
+    \item Déterminer le noyau et l'image de f. Montrer que $Ker(f)$ est isomorphe à $E_{1}\cap E_{2}$.
+    \begin{itemize}
+        \item \textbf{Noyau:} $Ker(f)=\{(u,v)\in E_1\times E_2 \mid u+v=0\}$. Donc $v=-u$. Comme $v \in E_2$, on a $-u \in E_2$, et $u \in E_1$, donc $u \in E_1 \cap E_2$. Ainsi, $Ker(f)=\{(u,-u) \mid u\in E_1\cap E_2\}$.
+        \item \textbf{Image:} $Im(f)=\{f(u,v) \mid u\in E_1, v\in E_2\} = \{u+v \mid u\in E_1, v\in E_2\} = E_1+E_2$.
+        \item \textbf{Isomorphisme:} Considérons l'application $\varphi:Ker(f) \to E_1\cap E_2$ définie par $\varphi(u,-u)=u$. C'est une application linéaire bien définie. Elle est surjective par construction. Elle est injective car si $\varphi(u,-u)=0$, alors $u=0$, ce qui implique que l'élément du noyau est $(0,0)$. Donc $Ker(\varphi)=\{(0,0)\}$. $\varphi$ est un isomorphisme.
+    \end{itemize}
+
+    \item Que donne le théorème du rang?
+    $\dim(E_1 \times E_2) = \dim(Ker(f)) + \dim(Im(f))$. \\
+    Comme $\dim(E_1 \times E_2) = \dim(E_1) + \dim(E_2)$, $\dim(Ker(f)) = \dim(E_1 \cap E_2)$ et $\dim(Im(f)) = \dim(E_1+E_2)$, on retrouve la formule classique:
+    $\dim(E_1) + \dim(E_2) = \dim(E_1 \cap E_2) + \dim(E_1+E_2)$.
+\end{enumerate}
+
+\section*{Exercice 9}
+
+Soit $E$ un K-espace vectoriel de dimension finie n, et $f\in\mathcal{L}(E)$. Montrer que : $Ker(f)=Im(f)\iff(f^{2}=0 \text{ et } n=2 \text{ rg}(f))$.
+
+\begin{itemize}
+    \item \textbf{Preuve de $\Rightarrow$:} Supposons $Ker(f)=Im(f)$.
+    \begin{itemize}
+        \item Soit $y \in Im(f)$. Comme $Im(f)=Ker(f)$, on a $y \in Ker(f)$, donc $f(y)=0$. Puisque tout élément de l'image de $f$ est dans le noyau de $f$, alors $f \circ f = 0$, c'est-à-dire $f^2=0$.
+        \item D'après le théorème du rang, $\dim(E)=\dim(Ker(f))+\dim(Im(f))$. Comme $Ker(f)=Im(f)$, on a $\dim(Ker(f))=\dim(Im(f))$. Donc $n = \dim(Im(f))+\dim(Im(f)) = 2\dim(Im(f)) = 2\text{rg}(f)$.
+    \end{itemize}
+
+    \item \textbf{Preuve de $\Leftarrow$:} Supposons $f^2=0$ et $n=2\text{rg}(f)$.
+    \begin{itemize}
+        \item $f^2=0$ signifie que pour tout $x \in E$, $f(f(x))=0$. Par conséquent, $f(x) \in Ker(f)$ pour tout $x \in E$. Cela implique que $Im(f) \subset Ker(f)$.
+        \item D'après le théorème du rang, $n=\dim(Ker(f))+\dim(Im(f))$.
+        On nous donne $n=2\text{rg}(f)=2\dim(Im(f))$.
+        En substituant, $2\dim(Im(f)) = \dim(Ker(f))+\dim(Im(f))$, ce qui donne $\dim(Im(f))=\dim(Ker(f))$.
+    \end{itemize}
+    Puisque $Im(f)$ est un sous-espace vectoriel de $Ker(f)$ et qu'ils ont la même dimension, ils sont égaux.
+
+\end{itemize}
+
+\section*{Exercice 10}
+
+Soit $p\in\mathcal{L}(E)$.
+
+\begin{enumerate}
+    \item Montrer que p est un projecteur si et seulement si $Id-p$ l'est aussi.
+    Un projecteur est un endomorphisme $p$ tel que $p^2=p$.
+    \begin{itemize}
+        \item \textbf{Sens direct ($\Rightarrow$):} Supposons que $p^2=p$. Montrons que $(Id-p)^2=Id-p$.
+        $(Id-p)^2 = (Id-p)\circ(Id-p) = Id^2 - Id\circ p - p\circ Id + p^2 = Id-p-p+p^2$.
+        Comme $p^2=p$, l'expression devient $Id-2p+p = Id-p$. C'est bien un projecteur.
+        \item \textbf{Sens réciproque ($\Leftarrow$):} Supposons que $(Id-p)^2=Id-p$. Montrons que $p^2=p$.
+        $(Id-p)^2 = Id-2p+p^2$.
+        On a donc $Id-2p+p^2 = Id-p$. En simplifiant, on obtient $-2p+p^2=-p$, d'où $p^2=p$.
+    \end{itemize}
+
+    \item Exprimer alors $Im(Id-p)$ et $Ker(Id-p)$ en fonction de $Im(p)$ et $Ker(p)$.
+    On sait que si $p$ est un projecteur, $E=Im(p)\oplus Ker(p)$.
+    \begin{itemize}
+        \item \textbf{Noyau de $Id-p$:} $Ker(Id-p)=\{x \in E \mid (Id-p)(x)=0_E\} = \{x \in E \mid x-p(x)=0_E\} = \{x \in E \mid x=p(x)\}$. Les vecteurs qui satisfont cette condition sont exactement ceux de l'image de $p$. Donc, $Ker(Id-p)=Im(p)$.
+        \item \textbf{Image de $Id-p$:} $Im(Id-p)=\{(Id-p)(x) \mid x \in E\}=\{x-p(x) \mid x \in E\}$.
+        Puisque $x=p(x)+(x-p(x))$ et que $p(x) \in Im(p)$ et $x-p(x) \in Ker(p)$ (car $p(x-p(x))=p(x)-p^2(x)=p(x)-p(x)=0$), on peut écrire n'importe quel élément de $E$ comme la somme d'un élément de $Im(p)$ et d'un élément de $Ker(p)$. De plus, $x-p(x)$ est la projection de $x$ sur $Ker(p)$. Donc $Im(Id-p)=Ker(p)$.
+    \end{itemize}
+\end{enumerate}
+\section{Exercice 11}
+
+Soit $f \in \mathcal{L}(E)$ tel que $f^{2}-3f+2Id=0$.
+
+\begin{enumerate}
+    \item Montrer que f est inversible et exprimer son inverse en fonction de f\marginInfo{On se sert du fait que \(f\circ f^{-1}=Id\)}.
+    L'équation peut être réécrite comme $f(f-3Id)=-2Id$. En divisant par $-2$, on obtient:
+    $$f\left(-\frac{1}{2}(f-3Id)\right)=Id$$
+    L'application $g = -\frac{1}{2}(f-3Id)$ est bien l'inverse de $f$. Donc $f$ est inversible et son inverse est:
+    $$f^{-1} = \frac{3}{2}Id - \frac{1}{2}f$$
+
+    \item Établir que $Ker(f-Id)$ et $Ker(f-2Id)$ sont des s.e.v. supplémentaires de E.
+    \begin{itemize}
+        \item \textbf{Intersection:} Soit $x \in Ker(f-Id) \cap Ker(f-2Id)$.
+        Alors $f(x)=x$ et $f(x)=2x$, ce qui implique $x=2x$, donc $x=0$. L'intersection est donc triviale.
+        \item \textbf{Somme:} L'équation $f^{2}-3f+2Id=0$ peut se factoriser en $(f-Id)(f-2Id)=0$.
+
+        On peut aussi remarquer que $(f-2Id) - (f-Id) = -Id$.
+        Pour tout $x \in E$, on peut écrire $x = -(f-2Id)(x)+(f-Id)(x)$.
+
+        Posons $x_1 = -(f-2Id)(x)$ et $x_2 = (f-Id)(x)$.
+        Montrons que $x_1 \in Ker(f-Id)$ et $x_2 \in Ker(f-2Id)$.
+        $(f-Id)(x_1) = (f-Id)(-(f-2Id)(x)) = -(f-Id)(f-2Id)(x) = -(f^2-3f+2Id)(x) = -0 = 0$.
+
+        Donc $x_1 \in Ker(f-Id)$.
+        $(f-2Id)(x_2) = (f-2Id)(f-Id)(x) = (f^2-3f+2Id)(x) = 0$. Donc $x_2 \in Ker(f-2Id)$.
+
+        Donc tout vecteur $x \in E$ peut s'écrire comme une somme d'éléments de $Ker(f-Id)$ et $Ker(f-2Id)$.
+    \end{itemize}
+    Puisque la somme est directe et égale à E, les deux sous-espaces sont supplémentaires.
+\end{enumerate}
+
+\section{Exercice 12}
+
+Soient $f$ et $g$ deux endomorphismes de E tels que $f\circ g\circ f=f$ et $g\circ f\circ g=g$.
+
+\begin{enumerate}
+    \item Montrer que $Im(f) \oplus Ker(g) = E$.
+    \begin{itemize}
+        \item \textbf{Intersection:} Soit $x \in Im(f) \cap Ker(g)$. Il existe $y \in E$ tel que $x=f(y)$, et $g(x)=0$. En utilisant $f=f\circ g\circ f$, on a $f(y)=f(g(f(y)))$. Comme $g(x)=g(f(y))=0$, on a $f(y)=f(g(f(y)))=f(0)=0$. Donc $x=f(y)=0$. L'intersection est triviale.
+        \item \textbf{Somme:} Soit $x \in E$. On veut le décomposer. Posons $x_1=f(g(x)) \in Im(f)$. Soit $x_2=x-f(g(x))$. On vérifie que $x_2 \in Ker(g)$.
+        $g(x_2)=g(x-f(g(x)))=g(x)-g(f(g(x)))$. En utilisant $g=g\circ f\circ g$, on a $g(x_2)=g(x)-g(x)=0$.
+        Donc $x_2 \in Ker(g)$. On a bien $x = x_1+x_2$.
+    \end{itemize}
+
+    \item Montrer que $Im(g) \oplus Ker(f) = E$.
+    La preuve est symétrique à la précédente, en inversant les rôles de $f$ et $g$.
+    \begin{itemize}
+        \item \textbf{Intersection:} Soit $x \in Im(g) \cap Ker(f)$. Il existe $y \in E$ tel que $x=g(y)$, et $f(x)=0$. En utilisant $g=g\circ f\circ g$, on a $g(y)=g(f(g(y)))$. Comme $f(x)=f(g(y))=0$, on a $g(y)=g(f(g(y)))=g(0)=0$. Donc $x=g(y)=0$. L'intersection est triviale.
+        \item \textbf{Somme:} Soit $x \in E$. Posons $x_1=g(f(x)) \in Im(g)$. Soit $x_2=x-g(f(x))$. On vérifie que $x_2 \in Ker(f)$.
+        $f(x_2)=f(x-g(f(x)))=f(x)-f(g(f(x)))$. En utilisant $f=f\circ g\circ f$, on a $f(x_2)=f(x)-f(x)=0$.
+        Donc $x_2 \in Ker(f)$. On a bien $x = x_1+x_2$.
+    \end{itemize}
+\end{enumerate}
+
+\section{Exercice 13}
+
+Soient $p,q \in \mathcal{L}(E)$ deux projecteurs.
+
+\begin{enumerate}
+    \item Montrer que $p+q$ est un projecteur si et seulement si $p\circ q = q\circ p = 0$.
+    \begin{itemize}
+        \item \textbf{Sens direct ($\Rightarrow$):} Si $p+q$ est un projecteur, alors $(p+q)^2 = p+q$.
+        $(p+q)^2 = p^2+p\circ q+q\circ p+q^2 = p+p\circ q+q\circ p+q = p+q$.
+
+        Ce qui implique $p\circ q+q\circ p=0$.
+
+        En composant à gauche par $p$, on a $p^2\circ q+p\circ q\circ p = p\circ q+p\circ q\circ p = 0$.
+
+        En composant à droite par $p$, on a $p\circ q\circ p+q\circ p^2 = p\circ q\circ p+q\circ p = 0$.
+
+        En comparant les deux dernières expressions, on trouve $p\circ q = q\circ p$.
+
+        Puisque $p\circ q+q\circ p=0$, on a $2p\circ q=0$, donc $p\circ q=0$. Et donc $q\circ p=0$.
+        \item \textbf{Sens réciproque ($\Leftarrow$):} Si $p\circ q=q\circ p=0$, alors $(p+q)^2 = p^2+p\circ q+q\circ p+q^2=p+0+0+q=p+q$.
+    \end{itemize}
+
+    \item Montrer que $p\circ q=q\circ p=0 \iff Im(p+q)=Im(p)\oplus Im(q)$.
+    \begin{itemize}
+        \item \textbf{Sens direct ($\Rightarrow$):} Supposons $p\circ q=q\circ p=0$.
+        \begin{itemize}
+            \item \textbf{Somme directe:} Soit $x \in Im(p)\cap Im(q)$. Alors $x=p(x)=q(x)$. En appliquant $p$ à l'égalité $x=q(x)$, on a $p(x)=p(q(x))=p\circ q(x)=0$, car $p\circ q=0$. Donc $x=0$.
+            \item \textbf{Égalité des images:} On a toujours $Im(p)+Im(q) \subset Im(p+q)$ (faux en général).
+
+            Soit $y \in Im(p)+Im(q)$, donc $y=y_1+y_2$ avec $y_1 \in Im(p)$ et $y_2 \in Im(q)$. Alors $y_1=p(y_1)$ et $y_2=q(y_2)$.
+
+            Considérons $(p+q)(y)=(p+q)(y_1+y_2)=p(y_1)+p(y_2)+q(y_1)+q(y_2)$.
+
+            On sait que $p\circ q=q\circ p=0$. Or, $p(y_2)=p(q(y_2))=(p\circ q)(y_2)=0$ et $q(y_1)=q(p(y_1))=(q\circ p)(y_1)=0$.
+
+            Donc $(p+q)(y)=p(y_1)+0+0+q(y_2)=y_1+y_2=y$.
+
+            Donc $y \in Im(p+q)$, ce qui montre $Im(p)+Im(q) \subset Im(p+q)$. L'inclusion inverse est toujours vraie.
+        \end{itemize}
+        \item \textbf{Sens réciproque ($\Leftarrow$):} Supposons $Im(p+q)=Im(p)\oplus Im(q)$.
+        Soit $x \in E$.
+
+        Alors $(p+q)(x) \in Im(p)\oplus Im(q)$. Cela signifie qu'il existe un unique $y_1 \in Im(p)$ et un unique $y_2 \in Im(q)$ tels que $(p+q)(x)=y_1+y_2$.
+
+        On a aussi $(p+q)(x)=p(x)+q(x)$. Puisque $p(x) \in Im(p)$ et $q(x) \in Im(q)$, par unicité de la décomposition, $y_1=p(x)$ et $y_2=q(x)$.
+
+        Considérons $p\circ q(x)$. Comme $q(x) \in Im(q)$, et que l'intersection de $Im(p)$ et $Im(q)$ est triviale, on a $p(q(x))=0$. Ceci est vrai pour tout $x$, donc $p\circ q=0$.
+
+        De même, $q\circ p(x)=0$ pour tout $x$, donc $q\circ p=0$.
+    \end{itemize}
+\end{enumerate}
+\section{Exercice 14}
+
+Soit $f \in \mathcal{L}(E)$ et $F$ un s.e.v. de $E$ tel que $f(F) \subset F$.
+
+\begin{enumerate}
+    \item Montrer que $f$ induit une application linéaire $\tilde{f}: E/F \rightarrow E/F$ définie par $\tilde{f}(\bar{x}) = \overline{f(x)}$.
+    \begin{itemize}
+        \item \textbf{Définition:} Soient $\bar{x}=\bar{y}$ dans $E/F$. Alors $x-y \in F$. Comme $f(F)\subset F$, on a $f(x-y) \in F$. Par linéarité, $f(x)-f(y) \in F$, ce qui signifie que $\overline{f(x)}=\overline{f(y)}$. L'application est bien définie.
+        \item \textbf{Linéarité:} Soient $\bar{x}, \bar{y} \in E/F$ et $\lambda \in K$.
+        $\tilde{f}(\bar{x}+\bar{y}) = \tilde{f}(\overline{x+y}) = \overline{f(x+y)} = \overline{f(x)+f(y)} = \overline{f(x)}+\overline{f(y)} = \tilde{f}(\bar{x})+\tilde{f}(\bar{y})$.
+        $\tilde{f}(\lambda\bar{x}) = \tilde{f}(\overline{\lambda x}) = \overline{f(\lambda x)} = \overline{\lambda f(x)} = \lambda\overline{f(x)} = \lambda\tilde{f}(\bar{x})$.
+    \end{itemize}
+
+    \item Montrer que $\tilde{f} = 0 \iff Im(f) \subset F$.
+    \begin{itemize}
+        \item \textbf{Sens direct ($\Rightarrow$):} Supposons $\tilde{f}=0$. Alors pour tout $\bar{x}\in E/F$, $\tilde{f}(\bar{x})=\bar{0}$. Donc $\overline{f(x)}=\bar{0}$ ce qui signifie $f(x) \in F$. Ceci est vrai pour tout $x \in E$, donc $Im(f)\subset F$.
+        \item \textbf{Sens réciproque ($\Leftarrow$):} Supposons $Im(f)\subset F$. Alors pour tout $x \in E$, $f(x) \in F$. Ceci signifie que $\overline{f(x)}=\bar{0}$. Donc $\tilde{f}(\bar{x})=\bar{0}$ pour tout $\bar{x} \in E/F$.
+    \end{itemize}
+
+%     \item Montrer que $\tilde{f}$ est un isomorphisme de $E/F$ si et seulement si $E = F \oplus Ker(f)$.
+%     L'énoncé de cette question contient probablement une erreur. L'équivalence correcte est que $\tilde{f}$ est un isomorphisme si et seulement si $E = F \oplus \text{autre sous-espace}$.
+%     La condition d'injectivité de $\tilde{f}$ est que si $f(x)\in F$, alors $x \in F$.
+%     Si on avait $E=F\oplus Ker(f)$, alors $F\cap Ker(f)=\{0\}$, ce qui implique que $Ker(f)=\{0\}$ (ce qui est faux en général). Il y a donc une incohérence dans l'énoncé.
+\end{enumerate}
+\end{document}
+
+

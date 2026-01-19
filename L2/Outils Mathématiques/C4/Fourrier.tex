@@ -1,0 +1,143 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Outils Mathématiques 2}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\mpsi}{\(\psi\)}
+\begin{document}
+\setcounter{chapter}{3}
+\chapter{Séries de Fourrier }
+\section{Formules}
+\begin{theorem}[Décomposition en série de Fourrier]
+ \[f(t) = a_0+\sum_{n=1}^{\infty}\big[a_n \cos(\frac{2\pi nt}{T})+b_n \sin(\frac{2\pi nt}{T})\big]\]
+\end{theorem}
+\begin{theorem}[Coefficient \(a_0\)]
+ \[a_0 = \frac{1}{T} \int_0^{T}f(t)\dd t\]
+\end{theorem}
+\begin{theorem}[Coefficient \(a_n\)]
+ \[a_n = \frac{2}{T} \int_{0}^T \cos(\frac{2\pi nt}{T})f(t)\dd t\]
+\end{theorem}
+\begin{theorem}[Coefficient \(b_n\)]
+ \[b_n = \frac{2}{T} \int_{0}^T \sin(\frac{2\pi nt}{T})f(t)\dd t\]
+\end{theorem}
+\begin{theorem}[Formle de Parceval]
+ \[\frac{1}{T} \int_0^T f(t)^2\dd t = a_0^2 + \frac12 \sum_{n=1}^{\infty} (a_n^2+b_n^2)\]
+\end{theorem}
+\warningInfo{Parité des fonctions}{Si la fonction est paire (\(f(t) = f(-t)\)), alors \(b_n = 0\), si f est impaire, \(a_n = 0\)}
+\section{Exemple}
+Soit $f$ la fonction $2\pi$-périodique définie sur $[0, 2\pi]$ par :
+\[
+f(t) = \begin{cases}
+t & \text{si } 0 \le t < \pi \\
+2\pi - t & \text{si } \pi \le t < 2\pi
+\end{cases}
+\]
+
+\subsection{Calcul de la série de Fourier de $f$}
+
+\textbf{1. Calcul de $a_0$ (valeur moyenne) :}
+\[
+a_0 = \frac{1}{2\pi} \int_{0}^{2\pi} f(t) \, \dd t
+\]
+Par symétrie de la fonction par rapport à $\pi$, l'intégrale sur $[0, 2\pi]$ est le double de l'intégrale sur $[0, \pi]$ :
+\[
+a_0 = \frac{1}{2\pi} \times 2 \int_{0}^{\pi} t \, \dd t = \frac{1}{\pi} \left[ \frac{t^2}{2} \right]_0^\pi = \frac{1}{\pi} \cdot \frac{\pi^2}{2} = \frac{\pi}{2}
+\]
+
+\textbf{2. Calcul des coefficients $b_n$ :}
+La fonction $f$ est paire si on la centre sur l'intervalle $[-\pi, \pi]$ (elle correspond à $f(t) = |t|$). Par conséquent, les coefficients de sinus sont nuls :
+\[
+b_n = 0 \quad \forall n \ge 1
+\]
+
+\textbf{3. Calcul des coefficients $a_n$ :}
+\[
+a_n = \frac{1}{\pi} \int_{0}^{2\pi} f(t) \cos(nt) \, \dd t = \frac{2}{\pi} \int_{0}^{\pi} t \cos(nt) \, \dd t
+\]
+On effectue une intégration par parties en posant $u = t$ ($du = \dd t$) et $dv = \cos(nt)\dd t$ ($v = \frac{\sin(nt)}{n}$) :
+\[
+a_n = \frac{2}{\pi} \left( \left[ \frac{t \sin(nt)}{n} \right]_0^\pi - \int_{0}^{\pi} \frac{\sin(nt)}{n} \, \dd t \right)
+\]
+Le terme entre crochets est nul car $\sin(n\pi) = 0$. Il reste :
+\[
+a_n = \frac{2}{\pi} \left( - \left[ -\frac{\cos(nt)}{n^2} \right]_0^\pi \right) = \frac{2}{\pi n^2} (\cos(n\pi) - \cos(0)) = \frac{2}{\pi n^2} ((-1)^n - 1)
+\]
+\begin{itemize}
+    \item Si $n$ est pair ($n=2k$), $a_n = \frac{2}{\pi n^2}(1 - 1) = 0$.
+    \item Si $n$ est impair ($n=2m+1$), $a_{2m+1} = \frac{2}{\pi (2m+1)^2}(-1 - 1) = -\frac{4}{\pi (2m+1)^2}$.
+\end{itemize}
+
+\textbf{Série de Fourier finale :}
+\[
+S_f(t) = \frac{\pi}{2} - \frac{4}{\pi} \sum_{m=0}^{\infty} \frac{\cos((2m+1)t)}{(2m+1)^2}
+\]
+
+\subsection{Déduction de $S_2$ et $S_4$}
+
+\textbf{Calcul de $S_2 = \sum_{m=0}^{\infty} \frac{1}{(2m+1)^2}$ :} \\
+En $t=0$, $f(0)=0$. La série converge donc vers $f(0)$ :
+\[
+0 = \frac{\pi}{2} - \frac{4}{\pi} S_2 \implies \frac{4}{\pi} S_2 = \frac{\pi}{2} \implies S_2 = \frac{\pi^2}{8}
+\]
+
+\textbf{Calcul de $S_4 = \sum_{m=0}^{\infty} \frac{1}{(2m+1)^4}$ :} \\
+D'après l'égalité de Parseval : $\frac{1}{2\pi} \int_{0}^{2\pi} |f(t)|^2 \, \dd t = a_0^2 + \frac{1}{2} \sum_{n=1}^{\infty} a_n^2$.
+\begin{itemize}
+    \item Intégrale : $\frac{1}{2\pi} \int_{0}^{2\pi} f(t)^2 \, \dd t = \frac{1}{\pi} \int_{0}^{\pi} t^2 \, \dd t = \frac{\pi^2}{3}$.
+    \item Somme : $\left(\frac{\pi}{2}\right)^2 + \frac{1}{2} \sum_{m=0}^{\infty} \left( -\frac{4}{\pi(2m+1)^2} \right)^2 = \frac{\pi^2}{4} + \frac{8}{\pi^2} S_4$.
+\end{itemize}
+\[
+\frac{\pi^2}{3} = \frac{\pi^2}{4} + \frac{8}{\pi^2} S_4 \implies \frac{\pi^2}{12} = \frac{8}{\pi^2} S_4 \implies S_4 = \frac{\pi^4}{96}
+\]
+
+\subsection{Déduction de $T_2$ et $T_4$}
+
+On calcule $T_2$ et $T_4$ à partir des sommes impaires trouvées précédemment.
+
+\textbf{Pour $T_2$ :}
+On sait que $\sum_{n=1}^{\infty} \frac{1}{n^2} = \sum_{n \text{ pair}} \frac{1}{n^2} + \sum_{n \text{ impair}} \frac{1}{n^2}$.
+\[
+T_2 = \sum_{k=1}^{\infty} \frac{1}{(2k)^2} + S_2 = \frac{1}{4} T_2 + S_2 \implies \frac{3}{4} T_2 = \frac{\pi^2}{8}
+\]
+D'où : \textbf{$T_2 = \frac{\pi^2}{6}$}.
+
+\textbf{Pour $T_4$ :}
+De même, $\sum_{n=1}^{\infty} \frac{1}{n^4} = \sum_{n \text{ pair}} \frac{1}{n^4} + \sum_{n \text{ impair}} \frac{1}{n^4}$.
+\[
+T_4 = \frac{1}{16} T_4 + S_4 \implies \frac{15}{16} T_4 = \frac{\pi^4}{96}
+\]
+D'où : \textbf{$T_4 = \frac{\pi^4}{90}$}.
+\end{document}

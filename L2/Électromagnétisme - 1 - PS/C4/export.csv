@@ -1,0 +1,7 @@
+Title,Content
+Champ électrique total  (d. volumique),\[\E = \iiint_{P\in\mv} \frac{\rho_c(P)\dd \mv(P)\vec{PM}}{4\pi\epsilon_0 \norm{PM}^3}\]  
+Potentiel total  (d. volumique),\[V(M) = \iiint_{P\in \mv} \frac{\rho_c \dd \mv(P)}{4\pi\epsilon_0 \norm{PM}}\]  
+Champ électrique total (d. surfacique),\[\E = \iint_{P\in S} \frac{\sigma(P)\dd S(P)\vec{PM}}{4\pi\epsilon_0 \norm{PM}^3}\]  
+Potentiel total  (d. surfacique),\[V(M) = \iint_{P\in S} \frac{\sigma \dd S(P)}{4\pi\epsilon_0 \norm{PM}}\]  
+Champ électrique total (d. linéique),\[\E = \int_{P\in C} \frac{\lambda(P)\dd S(P)\vec{PM}}{4\pi\epsilon_0 \norm{PM}^3}\]  
+Potentiel total  (d. linéique),\[V(M) = \int_{P\in C} \frac{\lambda \dd S(P)}{4\pi\epsilon_0 \norm{PM}}\]  

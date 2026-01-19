@@ -1,0 +1,109 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Algèbre linéaire 2}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+\chapter{Déterminant}
+\section{Une forme multilinéaire}
+\begin{theorem}[Application linéaire du déterminant pour les colonnes]
+Le déterminant est une application linéaire pour chaque colonne d'un ematrice :
+\begin{itemize}
+ \item \(\det||c_1, \dots, \lambda c_k, \dots, c_n|| = \lambda \det||c_1, \dots, c_k, \dots, c_n||\)
+ \item \(\det||c_1, \dots, c_j + c_k, \dots, c_n|| =  \det||c_1, \dots, c_k, \dots, c_n|| + \det||c_1, \dots, c_j, \dots, c_n||\)
+\end{itemize}
+\end{theorem}
+\begin{proposition}[Échange de colonne]
+Si on échange de 2 colonnes, le déterminant change de signe
+\end{proposition}
+\begin{theorem}[Base et déterminant]
+ Soit \(A = ||c_1, \dots, c_n||\). Ces vecteurs forment un ebase de $K^n$ ssi \(\det(A)\neq 0\).
+\end{theorem}
+\section{Permutations, transposition}
+\begin{definition}[Transposiiton]
+C'est une permutation qui échange juste 2 éléments différentes. les autres valaurs restent inchangées.
+\end{definition}
+\begin{proposition}[Décomposition de permutation]
+Toute permutation peut se décomposer en un produit de transpositions.
+\end{proposition}
+\section{Déterminant de la transposée}
+\begin{theorem}[Déterminant de la transposée]
+ \(\det(^tA) = \det(A)\)
+\end{theorem}
+\section{Calcul de déterminants}
+\begin{definition}[Cofacteur]
+\(cof(a_{ij}) = (-1)^{i+j}\det(A_{ij})\)
+\end{definition}
+\begin{proposition}[Combinaison linéaire et déterminant]
+Le déterminant ne change pas si à une ligne (respect. à une
+colonne) on ajoute une combinaison linéaire des autres lignes (respect. des autres
+colonnes).
+\end{proposition}
+\section{Déterminant de matrice}
+\begin{theorem}[Produit de déterminant]
+ \(\det(AB) = \det(A)\det(B)\)
+\end{theorem}
+\begin{theorem}
+A est  est inversible si et seulement si \(\det A \neq 0\)
+Si A est inversible : \(\det(A^{-1}) = \frac{1}{\det(A)})\)
+\end{theorem}
+\section{Calcul de l'inverse d'une matrice}
+\begin{theorem}[Inverse d'une matrice 2]
+ \(A^{-1} = (ad-bc)^{-1}(d -b // -c a)\)
+\end{theorem}
+\section{Application aux familles}
+\begin{theorem}[Base et déterminant]
+ Les vecteur colonnes forment une base si et seulement si \(\det \neq 0\)
+\end{theorem}
+\begin{definition}[Mineur]
+On appelle mineur d’ordre r d’une matrice A le déterminant d’une matrice d’ordre
+r extraite de A obtenue en choisissant r lignes et r colonnes. Ces lignes et colonnes peuvent ne pas \^etre consécutives.
+\end{definition}
+\begin{theorem}[Famille libre et mineur]
+Soient r vecteurs d’un espace vectoriel E de dimension n (r \(\leq\) n) et
+A la matrice dont les colonnes sont les composantes des vecteurs dans une base quelconque de E.
+La famille est libre si et seulement si on peut extraire de A un mineur
+d’ordre r non nul.
+\end{theorem}
+\begin{theorem}[Rang et mineur]
+ Le rang d'une matrice A est l'ordre max des mineuys non nuls extraits de A, i.e. \(rg(A) = r \iff\) il existe un mineur d'ordre r non nul et tous les mineur d'ordre supéréiru sont nuls.
+\end{theorem}
+
+\end{document}
+
+

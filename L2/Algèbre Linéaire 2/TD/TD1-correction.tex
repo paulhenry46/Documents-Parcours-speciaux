@@ -1,0 +1,336 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Algèbre linéaire 2}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+\chapter{Espaces vectoriels}
+\section{Espaces vectoriels}
+
+\subsection{Exercice 1}
+Pour que cet ensemble soit un espace vectoriel, il doit satisfaire les 8 axiomes. L'un des axiomes de la multiplication par un scalaire est que $1 \cdot v = v$ pour tout vecteur $v$.
+Dans ce cas, pour un vecteur $v=(x_1, x_2) \in \mathbb{R}^2$, nous avons:
+$$1 \cdot (x_1, x_2) = (1 \cdot x_1, 0) = (x_1, 0)$$
+Pour que cet axiome soit satisfait, il faudrait que $(x_1, 0) = (x_1, x_2)$ pour tous les vecteurs $(x_1, x_2) \in \mathbb{R}^2$. C'est faux, par exemple pour le vecteur $(1,1)$, on a $1\cdot(1,1) = (1,0) \ne (1,1)$.
+Puisque cet axiome n'est pas satisfait, l'ensemble $\mathbb{R}^{2}$ avec ces opérations \textbf{n'est pas un espace vectoriel}.
+
+\subsection{Exercice 2}
+On vérifie les axiomes d'un espace vectoriel:
+\begin{enumerate}
+    \item \textbf{Commutativité de l'addition :} $x\oplus y = xy = yx = y\oplus x$. L'axiome est vérifié.
+    \item \textbf{Associativité de l'addition :} $(x\oplus y)\oplus z = (xy)z = x(yz) = x\oplus (y\oplus z)$. L'axiome est vérifié.
+    \item \textbf{Élément neutre de l'addition :} On cherche $e \in E$ tel que $x\oplus e = x$. Cela donne $xe=x$, donc $e=1$. L'élément neutre est $1 \in E$.
+    \item \textbf{Inverse de l'addition :} Pour tout $x \in E$, on cherche $y \in E$ tel que $x\oplus y = 1$. Cela donne $xy=1$, donc $y=\frac{1}{x} \in E$.
+    \item \textbf{Distributivité (scalaire sur addition vectorielle) :} $\lambda\otimes (x\oplus y) = \lambda\otimes (xy)=(xy)^\lambda=x^\lambda y^\lambda$. Et $(\lambda\otimes x)\oplus (\lambda\otimes y) = x^\lambda\oplus y^\lambda=x^\lambda y^\lambda$. Les deux côtés sont égaux.
+    \item \textbf{Distributivité (scalaire sur addition de scalaires) :} $(\lambda+\mu)\otimes x = x^{\lambda+\mu}=x^\lambda x^\mu$. Et $(\lambda\otimes x)\oplus (\mu\otimes x) = x^\lambda\oplus x^\mu = x^\lambda x^\mu$. Les deux côtés sont égaux.
+    \item \textbf{Associativité de la multiplication scalaire :} $\lambda\otimes (\mu\otimes x) = \lambda\otimes (x^\mu) = (x^\mu)^\lambda = x^{\mu\lambda}$. Et $(\lambda\mu)\otimes x = x^{\lambda\mu}$. Les deux côtés sont égaux.
+    \item \textbf{Élément neutre de la multiplication scalaire :} $1\otimes x=x^1=x$. L'axiome est vérifié.
+\end{enumerate}
+Tous les axiomes sont satisfaits, donc E est bien un espace vectoriel sur $\mathbb{R}$.
+
+\subsection{Exercice 3}
+\begin{enumerate}
+    \item $\lambda\cdot0_E = \lambda\cdot(0_E+0_E) = \lambda\cdot0_E + \lambda\cdot0_E$. En ajoutant l'opposé de $\lambda\cdot0_E$\marginTips{Pour ce genre de démonstration, quand on ne sait pas par quoi commencer, on écrit que \(0_E=0_E+0_E\). Cela permet de faire apparaitre un nouvel élément.}, on a $0_E = \lambda\cdot0_E$.
+    \item $0\cdot v = (0+0)\cdot v = 0\cdot v + 0\cdot v$. En ajoutant l'opposé de $0\cdot v$, on a $0_E = 0\cdot v$.
+    \item $\lambda v + \lambda(-v) = \lambda(v+(-v))=\lambda\cdot0_E=0_E$, donc $\lambda(-v)=-(\lambda v)$. De plus, $\lambda v+(-\lambda)v=(\lambda-\lambda)v=0\cdot v=0_E$, donc $(-\lambda)v=-(\lambda v)$. On a donc $\lambda(-v)=(-\lambda)v=-(\lambda v)$.
+\end{enumerate}
+
+\subsection{Exercice 4}
+La preuve découle directement de la vérification de chacun des 8 axiomes des espaces vectoriels, en s'appuyant sur le fait que $E_1$ et $E_2$ sont eux-mêmes des espaces vectoriels.
+\begin{enumerate}
+    \item \textbf{Commutativité :} $(u_1,u_2)+_{12}(v_1,v_2) = (u_1+_{1}v_1, u_2+_{2}v_2) = (v_1+_{1}u_1, v_2+_{2}u_2) = (v_1,v_2)+_{12}(u_1,u_2)$.
+    \item \textbf{Associativité :} L'associativité de l'addition dans $E_1\times E_2$ découle de celle de $E_1$ et $E_2$.
+    \item \textbf{Élément neutre :} Le vecteur nul est $(0_{E_1}, 0_{E_2})$.
+    \item \textbf{Inverse :} L'inverse de $(u_1, u_2)$ est $(-u_1, -u_2)$.
+    \item \textbf{Distributivité (scal-vec) :} $\lambda((u_1,u_2)+(v_1,v_2))=\lambda(u_1+v_1, u_2+v_2) = (\lambda(u_1+v_1), \lambda(u_2+v_2)) = (\lambda u_1+\lambda v_1, \lambda u_2+\lambda v_2) = (\lambda u_1, \lambda u_2)+(\lambda v_1, \lambda v_2)=\lambda(u_1,u_2)+\lambda(v_1,v_2)$.
+    \item \textbf{Distributivité (scal-scal) :} $(\lambda+\mu)(u_1,u_2)=((\lambda+\mu)u_1, (\lambda+\mu)u_2) = (\lambda u_1+\mu u_1, \lambda u_2+\mu u_2) = (\lambda u_1, \lambda u_2)+(\mu u_1, \mu u_2)=\lambda(u_1,u_2)+\mu(u_1,u_2)$.
+    \item \textbf{Associativité (mult. scal.) :} $\lambda(\mu(u_1,u_2))=\lambda(\mu u_1, \mu u_2)=(\lambda(\mu u_1), \lambda(\mu u_2))=((\lambda\mu)u_1, (\lambda\mu)u_2) = (\lambda\mu)(u_1,u_2)$.
+    \item \textbf{Élément neutre (mult. scal.) :} $1\cdot(u_1,u_2)=(1\cdot_1 u_1, 1\cdot_2 u_2)=(u_1,u_2)$.
+\end{enumerate}
+
+\section{Sous-espaces vectoriels}
+
+\subsection{Exercice 5}
+Un sous-ensemble est un sous-espace vectoriel s'il contient le vecteur nul, est fermé par addition et par multiplication scalaire.
+\begin{itemize}
+    \item $E_1$: La matrice nulle est dans $E_1$ (avec $a=b=c=0$). La somme de deux matrices dans $E_1$ est aussi dans $E_1$, et la multiplication par un scalaire préserve la forme. $E_1$ \textbf{est un sous-espace vectoriel}.
+    \item $E_2$: La matrice nulle donne $\begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}\cdot\begin{pmatrix} 0 \\ 0 \end{pmatrix}=\begin{pmatrix} 0 \\ 0 \end{pmatrix}\ne\begin{pmatrix} 1 \\ 1 \end{pmatrix}$. La matrice nulle n'est pas dans $E_2$. $E_2$ \textbf{n'est pas un sous-espace vectoriel}.
+    \item $E_3$: La matrice nulle n'est pas dans $E_3$ car toutes les matrices de $E_3$ ont 1 à la position (1,1). $E_3$ \textbf{n'est pas un sous-espace vectoriel}.
+    \item $E_4$: La matrice nulle est dans $E_4$.
+
+    Si $A,B\in E_4$, $(A+B)\begin{pmatrix}1\\1\end{pmatrix} = A\begin{pmatrix}1\\1\end{pmatrix}+B\begin{pmatrix}1\\1\end{pmatrix}=\begin{pmatrix}0\\0\end{pmatrix}+\begin{pmatrix}0\\0\end{pmatrix}=\begin{pmatrix}0\\0\end{pmatrix}$.
+
+    Si $A\in E_4$ et $\lambda\in\mathbb{R}$, $(\lambda A)\begin{pmatrix}1\\1\end{pmatrix}=\lambda(A\begin{pmatrix}1\\1\end{pmatrix})=\lambda\begin{pmatrix}0\\0\end{pmatrix}=\begin{pmatrix}0\\0\end{pmatrix}$.
+
+    $E_4$ \textbf{est un sous-espace vectoriel}.
+\end{itemize}
+
+\subsection{Exercice 6}
+\begin{itemize}
+    \item $E_1$: L'ensemble des fonctions continues est un sous-espace vectoriel.
+    \item $E_2$: L'ensemble des fonctions surjectives ne contient pas la fonction nulle. $E_2$ \textbf{n'est pas un sous-espace vectoriel}.
+    \item $E_3$: L'ensemble des fonctions $f$ telles que $2f(a)=f(b)$ est un sous-espace vectoriel.
+    \item $E_4$: L'ensemble des fonctions croissantes ne contient pas le multiple scalaire d'une fonction, car si $f$ est croissante, $-f$ est décroissante. $E_4$ \textbf{n'est pas un sous-espace vectoriel}.
+\end{itemize}
+
+\subsection{Exercice 7}
+\begin{enumerate}
+    \item Le vecteur nul est dans $F\cap G$. Si $x,y\in F\cap G$, alors $x+y\in F$ et $x+y\in G$, donc $x+y\in F\cap G$. Si $x\in F\cap G$ et $\lambda\in\mathbb{R}$, alors $\lambda x\in F$ et $\lambda x\in G$.
+
+    Donc $\lambda x\in F\cap G$. $F\cap G$ est un sous-espace vectoriel.
+
+    \item Le vecteur nul est dans $F+G$. Si $u,v\in F+G$, alors $u=x_1+y_1, v=x_2+y_2$ avec $x_i\in F, y_i\in G$. $u+v=(x_1+x_2)+(y_1+y_2)\in F+G$. Si $u\in F+G$ et $\lambda\in\mathbb{R}$, alors $u=x+y$, $\lambda u=\lambda x+\lambda y\in F+G$.
+
+    Donc $F+G$ est un sous-espace vectoriel.
+
+    \item $\Leftarrow$: Si $F\subset H$ et $G\subset H$, alors pour tout $z=x+y\in F+G$, $x\in H$ et $y\in H$, donc $z\in H$.
+
+    $\Rightarrow$: Supposons $F+G\subset H$. Pour tout $x\in F$, $x=x+0_E\in F+G$, donc $x\in H$. De même, pour tout $y\in G$, $y=0_E+y\in F+G$, donc $y\in H$ et on a bien \(x+y\in H\).
+
+
+    \item $\Leftarrow$: Si $F\subset G$, alors $F\cup G=G$ qui est un sous-espace. Si $G\subset F$, alors $F\cup G=F$ qui est un sous-espace.
+
+    $\Rightarrow$ \textbf{Par l'absurde :} Supposons $F\cup G$ est un sous-espace.
+
+    Si $F\not\subset G$ et $G\not\subset F$, il existe $u\in F\backslash G$ et $v\in G\backslash F$. Alors $u,v\in F\cup G$, donc $u+v\in F\cup G$.
+
+    Si $u+v\in F$, alors $v=(u+v)-u\in F$ (car $u, u+v\in F$), ce qui est une contradiction. Si $u+v\in G$, alors $u=(u+v)-v\in G$, contradiction.
+
+    L'hypothèse est fausse.
+\end{enumerate}
+
+\section{Familles libres, génératrices. Bases}
+
+\subsection{Exercice 8}
+\begin{enumerate}
+    \item
+    \begin{itemize}
+        \item $F_1$: C'est un sous-espace vectoriel de $\mathbb{R}[X]$ car il contient le polynôme nul et est stable ($\forall \lambda \in \mathbb{R}$, $P, Q \in F_{1}$, $(\lambda P+Q)(0) = \lambda P(0)+Q(0)=0$ et $(\lambda P^{\prime}+Q^{\prime})(0)=\lambda P^{\prime}(0)+Q^{\prime}(0)=0$).
+
+        \item $F_2$: C'est un sous-espace vectoriel de $\mathbb{R}[X]$ car il contient le polynôme nul et est stable ($\forall\lambda\in\mathbb{R}$, $P,Q\in F_{2}$, $(\lambda P+Q)(0)=\lambda P(0)+Q(0)=0$ et $(\lambda P+Q)(1)=\lambda P(1)+Q(1)=0$)
+
+        \item $F_3$: Le polynôme nul n'est pas dans $F_3$, et la somme de deux polynômes de degré $n$ n'est pas forcément de degré $n$. $F_3$ \textbf{n'est pas un sous-espace vectoriel}.
+    \end{itemize}
+    \item On a $3X^{3}-2X^{2}-4X = \lambda_1(1) + \lambda_2(X^2+2X+1) + \lambda_3(X^3)$. Par identification, on trouve $\lambda_3=3, \lambda_2=-2, 2\lambda_2=-4$ et $\lambda_1+\lambda_2=0$. Le système a une solution unique: $\lambda_1=2, \lambda_2=-2, \lambda_3=3$. On en déduit que bien $P(X)$ \textbf{est une combinaison linéaire}.
+
+%     $Vect(P_1,P_2,P_3) = Vect(1, X^2+2X+1, X^3) = Vect(1, X^2+2X, X^3) = Vect(1, X^2, X^3)$. C'est l'ensemble des polynômes de degré au plus 3.
+
+
+
+Un polynôme $Q(X)=a_{0}+a_{1}X+...+a_{n}X^{n}$ est dans $Vect(P_{1},P_{2},P_{3})$ si et seulement si il existe des scalaires $\alpha,\beta,\gamma\in\mathbb{R}$ tels que:
+    $$a_{0}+a_{1}X+...+a_{n}X^{n}=\alpha+\beta(X+1)^{2}+\gamma X^{3}$$
+    $$a_{0}+a_{1}X+...+a_{n}X^{n}=(\alpha+\beta)+2\beta X+\beta X^{2}+\gamma X^{3}$$
+
+    Par identification des coefficients, on obtient le système d'équations:
+%     \begin{align*}
+%         a_{0} &= \alpha+\beta \\
+%         a_{1} &= 2\beta \\
+%         a_{2} &= \beta \\
+%         a_{3} &= \gamma \\
+%         a_{k} &= 0 \text{ pour } k > 3
+%     \end{align*}
+    \[
+\left\{\begin{matrix}
+ a_{0} = \alpha+\beta \\
+        a_{1} = 2\beta \\
+        a_{2} = \beta \\
+        a_{3} = \gamma \\
+        a_{k} = 0 \text{ pour } k > 3
+\end{matrix}\right.\]
+
+    Plus généralement, $Vect(P_{1},P_{2},P_{3})$ est l'ensemble des polynômes de la forme, avec \(A,B,V\in \R^3\) : \(A +2BX+BX^2+CX^3\)\marginCritical{Ce n'est pas simplement l'ensemble des polynomes de degrés 3}.
+
+
+    \item
+    \begin{enumerate}
+        \item Les degrés sont différents\marginTips{On parle de famille étagée}, la famille est \textbf{libre}.
+        \item $\lambda_1(X+1)+\lambda_2(X-1)=0 \implies (\lambda_1+\lambda_2)X+(\lambda_1-\lambda_2)=0$. On a $\lambda_1+\lambda_2=0$ et $\lambda_1-\lambda_2=0$, donc $\lambda_1=\lambda_2=0$. La famille est \textbf{libre}.
+        \item $X^2-1=(X+1)(X-1)$. On a $(X+1)^2 = X^2+2X+1 = (X^2-1)+2X+2 = (X^2-1)+2(X+1)$. On obtient $(X^2-1) - (X+1)^2 + 2(X+1) = 0$, donc la famille n'est \textbf{pas libre}.
+    \end{enumerate}
+    \item La famille est \textbf{libre}. L'espace engendré est $\mathbb{R}_n[X]$, l'espace des polynômes de degré au plus $n$.
+\end{enumerate}
+
+\subsection{Exercice 9}
+La dimension de $\mathcal{M}_2(\mathbb{R})$ est 4.
+\begin{itemize}
+    \item $\mathcal{F}_{1}=(M_{1},M_{2},M_{3})$. 3 vecteurs. La famille est \textbf{libre} mais \textbf{non génératrice}\marginInfo{car elle comporte moins de vecteurs que la dimension de l'espace que'elle devrait générer.}. Ce n'est \textbf{pas une base}.
+    \item $\mathcal{F}_{2}=(M_{1},M_{2},M_{3},M_{4})$. 4 vecteurs. La famille est \textbf{libre}, donc elle est \textbf{génératrice}\marginWarning{On a cette équivalence uniquement parce que nous sommes dans un espace de dimension 4 avec 4 vecteurs dans la matrice.}. C'est une \textbf{base}.
+    \item $\mathcal{F}_{3}=(M_{1},M_{2},M_{4},M_{5})$. 4 vecteurs. $M_5 = 2M_1+2M_2+2M_4$. Il y a une relation de dépendance. La famille n'est \textbf{pas libre}, \textbf{non génératrice} et n'est \textbf{pas une base}.
+\end{itemize}
+
+\section{Bases et dimension}
+
+\subsection{Exercice 10}
+\begin{enumerate}
+    \item On peut écrire $F$ comme $F=Vect((1,-1,2), (3,1,3), (-3,-5,0))$, donc $F$ est un sous-espace.
+
+    $G$ est le noyau d'une application linéaire\marginWarning{Il faudrait encore montrer que les équations forment bien une fonction linéaire.}, donc c'est un sous-espace.
+
+    $H$ est le sous-espace engendré par un vecteur non nul (\(Vect((1,1,1))\)), c'est donc une droite vectorielle.
+    \item \textbf{F} : Les trois vecteurs sont liés par la relation $(-3,-5,0) = 2(1,-1,2)-(3,1,3)$. Une base de F est $((1,-1,2), (3,1,3))$. $dim(F)=2$.
+
+    \textbf{G} : Le système est $x-6y+z=0$ et $x-3y=0$. On peut déduire du système que $x=3y$ et $z=3y$. Un vecteur de G est de la forme $(3y,y,3y)=y(3,1,3)$. Une base est $\{(3,1,3)\}$. $dim(G)=1$.
+
+    \textbf{H} : Une base est $\{(1,1,1)\}$. $dim(H)=1$.
+    \item \textbf{F} :Avec un pivot de Gauss de la matrice augmentée, on parvient à trouver l'équation finale (On fait d'abord \(L_2 = L_2+_L1, L3=L_3-2L_1\), puis \(L_3=4L_3-3L_2\) L'équation est $-5x+3y+4z=0$\marginTips{On aurait pu utiliser le fait q'un vecteur $(x,y,z)$ est dans F (un plan) s'il est orthogonal au produit vectoriel de ses vecteurs de base. $(1,-1,2)\times(3,1,3)=(-5,3,4)$.}.
+
+    \textbf{G} : Les équations sont données: $x-6y+z=0$ et $x-3y=0$.
+
+    \textbf{H} : Un vecteur $(x,y,z)$ est dans H si $x=y$ et $y=z$. Équations: $x-y=0$ et $y-z=0$.
+    \item \textbf{$F\cap G$} : On substitue les équations de G ($x=3y, z=3y$) dans l'équation de F ($5x-3y-4z=0$): $5(3y)-3y-4(3y)=15y-3y-12y=0$. Cette équation est toujours vraie\marginInfo{Cela signifie que le vecteur directeur de la droite G est dans le plan F}. Donc $G\subset F$ et $F\cap G=G$.
+
+    \textbf{$F\cap H$} : On substitue les équations de H ($x=y=z$) dans l'équation de F: $5x-3x-4x=0 \implies -2x=0 \implies x=0$. Donc $x=y=z=0$. $F\cap H=\{(0,0,0)\}$.
+
+    \textbf{$G\cap H$} : On substitue les équations de H dans l'équation de G: $x-3x=0 \implies -2x=0 \implies x=0$. Donc $x=y=z=0$. $G\cap H=\{(0,0,0)\}$.
+\end{enumerate}
+
+\subsection{Exercice 11}
+Soit $\mathcal{B}_{F\cap G}=(u_1, \dots, u_p)$ une base de $F\cap G$.
+
+On la complète en une base de F, $\mathcal{B}_F=(u_1,\dots,u_p,v_1,\dots,v_r)$, et en une base de G, $\mathcal{B}_G=(u_1,\dots,u_p,w_1,\dots,w_s)$.
+
+On montre que $\mathcal{B}_{F+G}=(u_1,\dots,u_p,v_1,\dots,v_r,w_1,\dots,w_s)$ est une base de $F+G$ car
+$dim(F+G)=p+r+s$.
+
+D'autre part, $dim(F)=p+r$ et $dim(G)=p+s$.
+
+
+Donc $dim(F)+dim(G)=(p+r)+(p+s)=2p+r+s$.
+
+Donc
+$dim(F+G)+dim(F\cap G)=(p+r+s)+p=2p+r+s$. L'égalité est vérifiée.
+
+\section{Somme directe, espaces supplémentaires}
+
+\subsection{Exercice 12}
+\textbf{Intersection :} Si $A \in \mathcal{S}_3 \cap \mathcal{A}_3$, alors $A^T=A$ et $A^T=-A$. Donc $A=-A \implies 2A=0 \implies A=0$. Donc $\mathcal{S}_3 \cap \mathcal{A}_3 = \{0\}$.
+
+\textbf{Somme :} Toute matrice $B$ peut s'écrire, avec \(S\in \mathcal{S}_3, A\in \mathcal{A}_3 \) $A = \frac{1}{2}(S+S^T) + \frac{1}{2}(A-A^T)$\marginCritical{Voir cours d'algèbre 1 pour la démonstration de cette expression}, où la première partie est symétrique et la deuxième est antisymétrique.
+Puisque l'intersection est nulle et que la somme est l'espace entier, $\mathcal{S}_{3}$ et $\mathcal{A}_{3}$ sont \textbf{supplémentaires}.
+
+\textbf{Dimensions :} $dim(\mathcal{M}_3(\mathbb{R}))=9$. $dim(\mathcal{S}_3)=3+\frac{3\times2}{2}=6$. $dim(\mathcal{A}_3)=\frac{3\times2}{2}=3$\marginCritical{En effet, elle est de la forme \[\begin{pmatrix}
+0 & a_{12} & a_{13} \\
+-a_{12} & 0 & a_{23} \\
+-a_{13} & -a_{23} & 0
+\end{pmatrix}\] alors qu'une matrice symétrique est de la forme \[\begin{pmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{12} & a_{22} & a_{23} \\
+a_{13} & a_{23} & a_{33}
+\end{pmatrix}\]}. La somme est $6+3=9$.
+
+\textbf{Généralisation à $\mathcal{M}_n(\mathbb{R})$} : $dim(\mathcal{S}_n) = n+\frac{n(n-1)}{2}=\frac{n(n+1)}{2}$. $dim(\mathcal{A}_n) = \frac{n(n-1)}{2}$. La somme est $n^2$.
+
+\subsection{Exercice 13}
+\begin{enumerate}
+    \item \textbf{F} est un sous-espace, car la fonction nulle est paire, la somme de deux fonctions paires est paire et le produit par un scalaire d'une fonction paire est paire. Idem pour \textbf{G}.
+
+    \textbf{Intersection :} Si $f\in F\cap G$, alors $f(-x)=f(x)$ et $f(-x)=-f(x)$, donc $f(x)=-f(x)$, ce qui implique $f(x)=0$ pour tout $x$.
+    \item $f_{+}(-x)=\frac{f(-x)+f(x)}{2}=f_{+}(x)$.
+
+    $f_{-}(-x)=\frac{f(-x)-f(x)}{2}=-f_{-}(x)$.
+
+    $f_{+}(x)+f_{-}(x)=\frac{f(x)+f(-x)+f(x)-f(-x)}{2}=f(x)$.
+
+    \item D'après la question 2, $E=F+G$. D'après la question 1, $F\cap G=\{0_E\}$. Donc $E=F\oplus G$.
+\end{enumerate}
+
+\subsection{Exercice 14}
+\begin{enumerate}
+    \item $\Rightarrow$: Si $E=H\oplus Vect(v)$, alors l'intersection est $\{0_E\}$. Si $v\in H$, alors $v\in H\cap Vect(v)$, ce qui est une contradiction si $v\ne0_E$.
+
+    $\Leftarrow$: Si $v\notin H$, alors $H\cap Vect(v)=\{0_E\}$. De plus, $dim(H+Vect(v))=dim(H)+dim(Vect(v))-dim(H\cap Vect(v))=(n-1)+1-0=n$. Comme $H+Vect(v)$ est un sous-espace de E de même dimension, $H+Vect(v)=E$.
+    \item Soit $w\in H$. Pour montrer que $Vect(v+w)$ et H sont supplémentaires, il suffit de montrer que $v+w\notin H$. Supposons $v+w\in H$. Comme $w\in H$ et H est un sous-espace, $-w\in H$. Alors $v=(v+w)+(-w)$ est dans H, ce qui est une contradiction. Donc $v+w\notin H$.
+
+\end{enumerate}
+
+\subsection{Exercice 15}
+\begin{itemize}
+    \item $\Rightarrow$: Si $E_1, E_2, E_3$ sont en somme directe, la décomposition est unique. Si $v\in E_1\cap E_2$, alors $v=v+0_2+0_3=0_1+v+0_3$, donc $v=0$.
+
+    Si $v\in(E_1+E_2)\cap E_3$, alors $v=v_1+v_2$ et $v=v_3$. Donc $v_1+v_2-v_3=0$, ce qui implique $v_1=v_2=v_3=0$, donc $v=0$.
+    \item $\Leftarrow$: Supposons que $E_1\cap E_2=\{0_E\}$ et $(E_1+E_2)\cap E_3=\{0_E\}$. Soit $v=v_1+v_2+v_3 = v_1'+v_2'+v_3'$. Alors $(v_1-v_1')+(v_2-v_2')=v_3'-v_3$.
+
+    Le membre de gauche est dans $E_1+E_2$ et celui de droite dans $E_3$. Comme l'intersection est $\{0_E\}$, les deux membres sont nuls. On a $v_3=v_3'$. Le même argument s'applique à $v_1-v_1' = -(v_2-v_2')$, qui est dans $E_1\cap E_2$, ce qui implique $v_1=v_1'$ et $v_2=v_2'$. La décomposition est unique, donc la somme est directe.
+\end{itemize}
+
+\section{Exercices supplémentaires}
+
+\subsection{Exercice 16}
+\begin{enumerate}
+    \item Une base de $\mathbb{R}_4[X]$ est $(1, X, X^2, X^3, X^4)$. La dimension est \textbf{5}.
+    \item $F$ est un sous-espace. Le polyn\^ome nul est pair et F est stable : si \( \lambda \in \R, P, Q \in F, (\lambda P + Q)(−X) = \lambda P (−X) + Q(−X) = \lambda P (X) + Q(X) = (\lambda P + Q)(X)\)
+
+    Un polynôme $P(X)=\sum_{k=0}^4 a_k X^k$ est pair si $a_1=a_3=0$. Une base est $(1, X^2, X^4)$. La dimension est \textbf{3}.
+    \item $G$ est un sous-espace car non vide et stable : si \( si \lambda  \in \R, P, Q \in G,
+X(\lambda P + Q)' (X) = X (\lambda P' (X) + Q' (X)) = \lambda XP' (X) + XQ'(X) = \lambda P (X) + Q(X)\)
+
+    L'équation donne \(P \in G \iff a + bX + cX 2 + dX 3 + eX 4 = bX + 2cX^2 + 3dX^3 + 4eX^4\).
+
+    Donc $a_0=a_2=a_3=a_4=0$. Les polynômes de G sont de la forme $a_1X$. Une base est $(X)$. La dimension est \textbf{1}.
+    \item $F\cap G = \{0\}$, car un polynôme pair de la forme $a_1X$ doit avoir $a_1=0$.
+
+    $dim(F+G)=dim(F)+dim(G)-dim(F\cap G)=3+1-0=4$. Le sous-espace $F+G$ a une dimension de 4, qui est inférieure à la dimension de $\mathbb{R}_4[X]$ (5). Donc $F+G$ est un sous-espace.
+\end{enumerate}
+
+\subsection{Exercice 17}
+\begin{enumerate}
+    \item La trace\marginInfo{Pour rappel, la trace est la somme des éléments diagonaux direct de la matrice} est une application linéaire. $\mathcal{N}_3$ est le noyau de cette application. Par le théorème du rang, $dim(\mathcal{N}_3)=dim(\mathcal{M}_3(\mathbb{R}))-dim(Im(Tr))=9-1=8$.
+    \item L'espace engendré par la matrice identité, $Vect(I_3)$, est un sous-espace supplémentaire. Son intersection avec $\mathcal{N}_3$ est nulle.
+    \item Par le même argument, la dimension de $\mathcal{N}_n$ est $n^2-1$.
+\end{enumerate}
+
+\subsection{Exercice 18}
+\begin{enumerate}
+    \item
+    \begin{itemize}
+        \item $F_1$: La suite nulle est dans $F_1$. La somme et le produit par un scalaire d'éléments de $F_1$ restent dans $F_1$. $F_1$ \textbf{est un sous-espace vectoriel}.
+        \item $F_2$: La suite nulle n'est pas dans $F_2$. $F_2$ \textbf{n'est pas un sous-espace vectoriel}.
+        \item $F_3$: La suite nulle est bornée. La somme de deux suites bornées est bornée. Le produit d'une suite bornée par un scalaire est borné\marginTips{Voir cours Maths-calc-1 pour la démonstration sur les limites de suite.}. $F_3$ \textbf{est un sous-espace vectoriel}.
+    \end{itemize}
+    \item Non. On cherche $\lambda, \mu$ tels que $5^n=\lambda 2^n+\mu 3^n$ pour tout $n$.
+
+    Pour $n=0, 1=\lambda+\mu$.
+
+    Pour $n=1, 5=2\lambda+3\mu$. On trouve $\lambda=-2, \mu=3$.
+
+    Pour $n=2$, $25 = -2(4)+3(9) = -8+27=19 \ne 25$.
+%     \item La famille est \textbf{libre}. Une combinaison linéaire $\sum_{k=0}^d \lambda_k u_k=0$ signifie que $\sum_{k=0}^d \lambda_k n^k=0$ pour tout $n\ge1$. Le polynôme $P(X)=\sum_{k=0}^d \lambda_k X^k$ a une infinité de racines, donc c'est le polynôme nul, ce qui implique que tous les coefficients $\lambda_k$ sont nuls.
+\end{enumerate}
+\end{document}
+
+

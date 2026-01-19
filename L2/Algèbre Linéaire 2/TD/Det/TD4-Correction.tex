@@ -1,0 +1,175 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Algèbre linéaire 2}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+\chapter{Déterminant}
+
+\subsection{1.1 Calculs directs}
+
+\begin{enumerate}
+    \item Calcul de $D_{1}$:
+    $$D_{1}=\begin{vmatrix}1&2\\ 3&4\end{vmatrix} = (1 \times 4) - (2 \times 3) = 4 - 6 = -2$$
+
+    \item Calcul de $D_{2}$:
+    Développement par la première ligne :
+    $$D_{2}=\begin{vmatrix}1&0&6\\ 3&4&15\\ 5&6&21\end{vmatrix} = 1 \begin{vmatrix}4&15\\ 6&21\end{vmatrix} + 6 \begin{vmatrix}3&4\\ 5&6\end{vmatrix}$$
+    $$D_{2} = 1(84 - 90) + 6(18 - 20) = -6 + 6(-2) = -18$$
+
+    \item Calcul de $D_{3}$:
+    $$D_{3}=\begin{vmatrix}0&1&1&0\\ 1&0&0&1\\ 1&1&0&1\\ 1&1&1&0\end{vmatrix}$$
+    Opération $L_3 \leftarrow L_3 - L_2$ :
+    $$D_{3} = \begin{vmatrix}0&1&1&0\\ 1&0&0&1\\ 0&1&0&0\\ 1&1&1&0\end{vmatrix} = (-1)^{3+2} \times 1 \times \begin{vmatrix}0&1&0\\ 1&0&1\\ 1&1&0\end{vmatrix}$$
+    $$D_{3} = - \left( 0 - 1 \begin{vmatrix}1&1\\ 1&0\end{vmatrix} + 0 \right) = -(-(-1)) = -1$$
+
+    \item Calcul de $D_{4}$:
+    Opération $C_4 \leftarrow C_4 - 100 C_1 - 10 C_2 - C_3$. Tous les éléments de $C_4$ deviennent nuls.
+    $$D_{4}=\begin{vmatrix}1&3&7&137\\ 2&1&3&213\\ 5&2&2&522\\ 3&9&8&398\end{vmatrix} = 0$$
+
+    \item Calcul de $D_{5}$:
+    Déterminant d'une matrice bloc : $D_{5} = \det(A) \det(B)$.
+    $$A = \begin{pmatrix} 7 & 1 \\ 3 & -4 \end{pmatrix} \implies \det(A) = -28 - 3 = -31$$
+    $$B = \begin{pmatrix} -3 & -3 & -2 \\ 1 & 1 & 0 \\ 4 & 7 & 1 \end{pmatrix} \implies \det(B) = -3(1) + 3(1) - 2(7-4) = -6$$
+    $$D_{5} = (-31) \times (-6) = 186$$
+
+    \item Calcul de $D_{6}$:
+    Développement par $L_1$: $D_{6} = 1 \cdot \det(M_{11}) - 1 \cdot \det(M_{14})$.
+    $D_{6} = \det \begin{pmatrix}-4&3&0&0\\ 0&0&-3&-2\\ 1&7&0&0\\ 0&0&7&1\end{pmatrix} - \det \begin{pmatrix}0&-4&3&0\\ -3&0&0&-2\\ 0&1&7&0\\ 4&0&0&1\end{pmatrix}$
+    $D_{6} = (-31)(11) - (-279) = -341 + 279 = -62$
+\end{enumerate}
+
+\subsection{1.2 Déterminant et inversibilité}
+
+\begin{enumerate}
+    \item[(a)] Inversibilité de $M_{1}(a,b)$:
+    $$\det(M_{1}(a,b)) = b^4 - 6a^2b^2 = b^2(b^2 - 6a^2) = b^2(b - a\sqrt{6})(b + a\sqrt{6})$$
+    $M_{1}(a,b)$ est inversible si $\det(M_{1}(a,b)) \neq 0$, soit si $b \neq 0$ et $b \neq \pm a\sqrt{6}$.
+
+    Inversibilité de $M_{2}(c)$:
+    $$\det(M_{2}(c)) = c \begin{vmatrix}0&1&1&1\\ 1&0&1&1\\ 1&1&0&1\\ 1&1&1&0\end{vmatrix} = c(-3) = -3c$$
+    Puisque $c \in \mathbb{R}^{*}$, $\det(M_{2}(c)) \neq 0$. $M_{2}(c)$ est inversible pour $c \in \mathbb{R}^{*}$.
+
+    \item[(b)] Calcul de $\det(M_{3}(a,b))$:
+    $$\det(M_{3}(a,b)) = (na+b) b^{n-1}$$
+    $M_{3}(a,b)$ n'est pas inversible si $\det(M_{3}(a,b)) = 0$, soit si $b=0$ ou $b=-na$.
+\end{enumerate}
+
+\subsection{1.3 Déterminant et parité/imparité}
+
+\begin{enumerate}
+    \item[(a)] Construction de $M \in \mathcal{M}_{2}(\mathbb{R})$ telle que $M^{2}=-I_{2}$:
+    $$M = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$$
+    Vérification : $M^2 = -I_{2}$.
+
+    \item[(b)] Non-existence de $M$ pour $n$ impair:
+    Si $M^2 = -I_n$, alors $(\det(M))^2 = \det(-I_n) = (-1)^n$.
+    Si $n$ est impair, $(\det(M))^2 = -1$. Ceci est impossible dans $\mathbb{R}$.
+
+    \item[(c)] Matrice antisymétrique pour $n$ impair:
+    $M^T = -M \implies \det(M^T) = \det(-M)$.
+    $\det(M) = (-1)^n \det(M)$.
+    Puisque $n$ est impair, $\det(M) = - \det(M)$, d'où $2 \det(M) = 0$.
+    Donc, $\det(M) = 0$, et $M$ n'est pas inversible.
+
+    \item[(d)] Cas où $n$ est pair:
+    Si $n$ est pair, $(-1)^n = 1$. L'équation devient $\det(M) = \det(M)$. Le résultat n'est pas vrai si $n$ est pair.
+\end{enumerate}
+
+\subsection{1.4 Déterminant et calcul d'aire et volume}
+
+L'aire/volume est la valeur absolue du déterminant de la matrice formée par les vecteurs.
+
+\begin{enumerate}
+    \item[(a)] Aire du parallélogramme (2,3) et (1,4):
+    $$\text{Aire} = \left| \det\begin{pmatrix} 2 & 1 \\ 3 & 4 \end{pmatrix} \right| = |8 - 3| = 5$$
+
+    \item[(b)] Aire OABC et ABCD:
+    \begin{itemize}
+        \item $\vec{OA} = (3,1)$, $\vec{OC} = (1,2)$. $\text{Aire OABC} = 5$.
+        \item $\vec{AB} = (1,2)$, $\vec{AD} = (-4,-2)$. $\text{Aire ABCD} = 6$.
+    \end{itemize}
+
+    \item[(c)] Volume en $\mathbb{R}^3$:
+    Vecteurs : $x_1 = (1, 0, -1)$, $x_2 = (2, 0, -1)$, $x_3 = (1, 1, 1)$.
+    $$\det(x_1, x_2, x_3) = -1$$
+    $(x_1, x_2, x_3)$ est une base de $\mathbb{R}^3$. Volume = $|\det| = 1$.
+
+    \item[(d)] Volume (1,2,0), (0,1,3), (1,1,1):
+    $$\text{Volume} = \left| \begin{vmatrix}1&0&1\\ 2&1&1\\ 0&3&1\end{vmatrix} \right| = 4$$
+
+    \item[(e)] Volume des parallélépipèdes à coordonnées entières:
+    Le déterminant d'une matrice à coefficients entiers est un entier. Son module (le volume) est un nombre entier.
+\end{enumerate}
+
+\subsection{1.5 Déterminant et familles libres/génératrices}
+
+\begin{enumerate}
+    \item[(a)] Mineurs de taille 2 de $M_1$ et $M_2$:
+    $M_{1}=\begin{pmatrix}1&4&0\\ 2&-1&3\\ 1&1&9\end{pmatrix}$: $-9, 12, 3, 3, -12, 15, -3, 36, 9$.
+    $M_{2}=\begin{pmatrix}2&3&-2&4\\ 0&7&0&-1\end{pmatrix}$: $14, 0, -2, 14, -31, 2$.
+
+    \item[(b)] Nature des familles:
+    \begin{itemize}
+        \item $M_{3}$ (4 vecteurs dans $\mathbb{R}^2$): Liée. Non génératrice. Famille libre extraite : $\{(1,2)\}$.
+        \item $F = \{(1,2,3), (6,0,1), (3, 1, 1)\}$ dans $\mathbb{R}^{3}$: Libre et Génératrice (Base). Famille libre extraite : $F$.
+        \item $G=\{(1,0,4),(2,1,1),(0,1,-2)\}$ dans $\mathbb{R}^{3}$: Libre et Génératrice (Base). Famille libre extraite : $G$.
+        \item $F, G$ dans $\mathbb{R}^{4}$ (3 vecteurs): Libres mais non génératrices. Famille libre extraite : $F$ (ou $G$).
+    \end{itemize}
+
+    \item[(c)] Paramètre $a$:
+    \begin{itemize}
+        \item $F=\{(a-2,2,2a),(2,a,2a+2),(-1,2,a+1)\}$ dans $\mathbb{R}^{3}$:
+        $$\det(F) = a(a-1)(a-2)$$
+        Libre/Génératrice (Base) si $a \notin \{0, 1, 2\}$.
+        \item $F = \{(a, 3, 5), (2, 0, 4), (-1, 1, 1), (b, -4, 2)\}$ dans $\mathbb{R}^{3}$:
+        Toujours liée. Génératrice si $a \neq 7$. Famille libre extraite : $\{(a, 3, 5), (2, 0, 4), (-1, 1, 1)\}$.
+    \end{itemize}
+
+    \item[(d)] Appartenance à $\text{Vect}(F)$ pour $v=(a, 3, 5)$:
+    \begin{itemize}
+        \item $F=\{(1,2,3),(3,0,3)\}$: $a = 2$.
+        \item $F = \{(0,1,0), (0, 2, 1), (0, 0, 1)\}$: $a = 0$.
+        \item $F=\{(1,0,0),(1,1,0),(1,1,1)\}$: $a \in \mathbb{R}$.
+    \end{itemize}
+\end{enumerate}
+
+\end{document}
+\end{document}
+
+

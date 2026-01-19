@@ -1,0 +1,17 @@
+I=A*SINC^2((xm-x0)/(l*f1)*a)
+
+
+I=A*(SIN(pi*(xm-x0)/(l*f1)*a)/(pi*(xm-x0)/(l*f1)*a))^2
+
+I=A*(SIN(pi*(xm-x1)/B)/(pi*(xm-x1)/B))^2+C
+
+Ecart-type données-modèle
+I=23,19·10⁻³
+Incertitude-type
+A=(1,027 ±0,020)
+x1=(14,728 ±0,037)10⁻³
+B=(3,43 ±0,11)10⁻³
+C=(30,5 ±6,4)10⁻
+
+
+C onstante car valeur non nulle quand pas de limière

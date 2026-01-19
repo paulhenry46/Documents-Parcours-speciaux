@@ -1,0 +1,27 @@
+Title,Content
+Longueur d'onde De Broglie,\(\lambda = \frac{h}{mv}\) relie le caractère ondulatoire ou caractère corpusculaire. 
+Inégalité d'Henseinberg,\(\Delta q\Delta p \geq \frac{h_b}{2} = \frac{h}{4\pi}\) 
+Postulat 1,L'état d'un système à un instant t est complètement défini par la connaissance de sa fonction d'onde notée \(\fo\). 
+Opérateurs,À toute grandeur physique A mesurable on associe en mécanique quantique un opérateur linéaire et hermitique noté \^A. Ils prennent en entrée et sortie des fonctions d'onde. 
+Fonctions dégénérées,"Si 2 fonctions différentes donnent pour un m\^eme opérateur la m\^eme valeur propre, elles sont dites dégénérées. "
+Fonctions propres,Une fonction propre $\psi$ de \^A est une fonction non nulle telle que l'application de \^A sur $\psi$ donne \(k \psi\) 
+Opérateurs commutants,2 opérateurs commutant admettent les m\^emes vecteurs propres 
+Principe de correspondance,Tout opérateur peut \^etre construit à partir des opérateurs position et quantité de mouvement. 
+Opérateur à connaitre,"\(\hat{q_i} = q_i \times\) : multiplication par la coordonnée \(q_i\) , \(\hat{p_x} = -i\hbar \frac{\partial}{\partial x}\) : opérateur qt de mouv , \(\hat{p} = -i\hbar \nabla\) : opérateur norme de la qt de mouv"
+Opérateur Énergie cinétique,\[\hat{T} = - \frac{\hbar^2}{2m}\nabla^2 = - \frac{\hbar^2}{2m}\Delta\] 
+Opérateur hamiltonien,\[\hat{H} = \hat{T} + \hat{V}\] avec V l'énergie potentielle de la particule. 
+Valeurs expérimentales,Les valeurs de A mesurables en peuvent \^etre que les valeurs propres de l'opérateur associé \(\^A\) 
+Valeur moyenne,\label{prop1} \[\langle A\rangle  = \frac{\int\int\int \foe\hat{A}\fo \dd V}{\int\int\int\foe \fo \dd V}\] 
+Dispersion,\[\Delta A = \sqrt{\langle A^2\rangle -\langle A\rangle ^2}\] 
+Inégalité d'Heinsenberg,\(\Delta x\Delta p_x \geq \frac{\hb}{2}\)                      
+Séparation des variables,"Si on peut écrire un opérateur A comme la somme de 2 opérateurs s'appliquant à 2 variables, alors le produit des vecteurs propres des deux opérateurs et le vecteur propre de l'opérateur A. La somme des valeurs propres des 2 opérateurs vaut celle de A. "
+Fonctions propres de l'opérateur de Legendre,"\[\hat{\Lambda} Y_{lm}(\theta, \varphi) = -l(l+1)Y_{lm}(\theta, \varphi)\] "
+Opérateur du moment cinétique en coordonnées sphériques,\[\hat{L}^2 = -\hb^2\Lambda\] et projeté sur z : \[\hat{L_z} = -i\hb \frac{\partial}{\partial \varphi}\] 
+Approximation de Born-Oppenheimer,"Du fait de leur large différence de masse, les électrons s'adaptent de façon instantanée et adiabatique (sans transfert d'énergie) à tout mouvement des noyaux : le noyau est donc fixé. "
+Quantité d'énergie,\[E_n = \frac{E_1(H)Z^2}{n^2}\] 
+Formule de Rydberg,La longueur d'onde émise par un changement d'énergie d'un électron est reliée avec le niveau d'énergie \(n\) : \[\frac{1}{\lambda}= \mathcal{R_H}Z^2(\frac{1}{n_a^2}-\frac{1}{n^2_d})\] 
+Énergie d'un état excité pour un hydrogénoïde,\[E_n = -\frac{13.6 Z^2}{n^2} eV\] 
+Points nodaux,"Dans les fonctions radiales, il y a n-l-1 points nodaux. Les points nodaux en 0 ne sont pas comptés s'il y en a. "
+Densité de probabilité de présence radiale,\[\rho_{nl}(r) = R^2_{nl}(r)r^2\] 
+Valeur moyenne de la partie radiale,\[\int_0^\infty R^2_{nl}(r)r^3 \dd r\] 
+Spin,"Propriété intrinsèque des particules, c'est un moment cinétique intrinsèque, quantifié. On différencie le nombre quantique de spin \(s = 0.5\) et le nombre quantique magnétique de spin \(m_s = \pm 0.5\) "

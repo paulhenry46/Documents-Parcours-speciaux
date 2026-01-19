@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="126.76729mm"
+   height="85.000015mm"
+   viewBox="0 0 126.76729 85.000015"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1"
+     transform="translate(-141.59993,289.99999)">
+    <ellipse
+       style="fill:#d45500;stroke:none;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path23-4"
+       cx="205"
+       cy="-270"
+       rx="22.500002"
+       ry="19.999998" />
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+       x="240"
+       y="-215"
+       id="text13-4-9"><tspan
+         id="tspan13-9-6"
+         style="stroke-width:1.114"
+         x="240"
+         y="-215">d<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan24">x2-y2</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+       x="195.08058"
+       y="-215.12488"
+       id="text15-0-7-8"><tspan
+         id="tspan15-4-7-6"
+         style="stroke-width:1.114"
+         x="195.08058"
+         y="-215.12488">S<tspan
+   style="font-size:65%;baseline-shift:super"
+   id="tspan25">+</tspan><tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan17-7-1-4">22</tspan></tspan></text>
+    <g
+       id="g11-4-6"
+       transform="rotate(-89.901645,-0.16817404,-205.04794)"
+       style="fill:#0066ff;stroke:#0066ff">
+      <path
+         style="fill:#0066ff;stroke:#0066ff;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+         d="m 29.999999,-54.999996 c 8.329268,-10.411584 31.670732,-10.41158 39.999999,0 C 90.000002,-29.999999 50.000001,0 50.000001,0 50.000001,0 10,-29.999999 29.999999,-54.999996 Z"
+         id="path11-9-2" />
+      <path
+         style="fill:#0066ff;stroke:#0066ff;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+         d="m 29.999999,54.999996 c 9.428091,9.42809 33.140055,11.433235 39.999999,0 C 85.000002,29.999999 50.000001,0 50.000001,0 50.000001,0 10,34.999999 29.999999,54.999996 Z"
+         id="path11-5-2-17" />
+    </g>
+    <ellipse
+       style="fill:#ff9955;stroke:#ff9955;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path23"
+       cx="205"
+       cy="-249.99998"
+       rx="22.500002"
+       ry="19.999998" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1.114, 4.456;stroke-dashoffset:0"
+       d="m 200,-249.99999 h 50.58334"
+       id="path3-6-0-9" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1.114, 4.456;stroke-dashoffset:0"
+       d="m 200,-249.99999 -45,45"
+       id="path3-6-0-1-7" />
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+       x="230"
+       y="-239.99998"
+       id="text11-96-5"><tspan
+         id="tspan11-3-3"
+         style="fill:#000000;stroke:none;stroke-width:1.114"
+         x="230"
+         y="-239.99998">y</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1.114;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
+       x="159.90822"
+       y="-215.19405"
+       id="text11-9-8-8"><tspan
+         id="tspan11-2-4-8"
+         style="fill:#000000;stroke:none;stroke-width:1.114"
+         x="159.90822"
+         y="-215.19405">x</tspan></text>
+  </g>
+</svg>

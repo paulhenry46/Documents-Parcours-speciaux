@@ -1,0 +1,22 @@
+Bx1=AR^2(1/(R^2+(d+R/2)^2)^(3/2)+1/(R^2+(d-R/2)^2)^(3/2))
+
+Bx1=AR^2*(1/(R^2+(d+R/2)^2)^(3/2)+1/(R^2+(d-R/2)^2)^(3/2))
+Bx2=BR^2*(1/(R^2+(d+R/2)^2)^(3/2)+1/(R^2+(d-R/2)^2)^(3/2))
+
+Bx1=AR^2*(1/(R^2+(d)^2)^(3/2)+1/(R^2+(d)^2)^(3/2))
+Bx2=BR^2*(1/(R^2+(d)^2)^(3/2)+1/(R^2+(d)^2)^(3/2))
+
+
+bx_r1=AR^2(1/(R^2+(d+R/2)^2)^(3/2)+1/(R^2+(d-R/2)^2)^(3/2))
+bx_r2=BR^2(1/(R^2+(d+R/2)^2)^(3/2)+1/(R^2+(d-R/2)^2)^(3/2))
+
+bx_2r1=AR^2*(1/(R^2+(d+R)^2)^(3/2)+1/(R^2+(d-R)^2)^(3/2))
+Bx_2r2=BR^2*(1/(R^2+(d+R)^2)^(3/2)+1/(R^2+(d-R)^2)^(3/2))
+
+bx_0r1=AR^2*(1/(R^2+(d)^2)^(3/2)+1/(R^2+(d)^2)^(3/2))
+bx_0r2=BR^2*(1/(R^2+(d)^2)^(3/2)+1/(R^2+(d)^2)^(3/2))
+
+\frac{\bar{E_{GBF}}}{R+j(L\omega -\frac{1}{C \omega})}
+
+Mesure de la freq de résonnace : Le mode XY permet de trcer le signal de la voie CH2 en fonction de CH1 et permet de voir le dephasage. Pour un dephasage non nul, on observe une ellipse. Que devient cette ellipse lorsque le dephasage entre les 2 signaux est nul ?
+Mesurer l'amplitude de la tension d'entrée aux bornes du gbf et celle de sortie aux bornes de la résistance pour une douzaine de valeurs de fréquences proche de la fréquene de résonnane. Tracer la courbe vs/ve et ajuster la courbe pour déterminer la fréquence de résonnace et le facteur de qualité Q

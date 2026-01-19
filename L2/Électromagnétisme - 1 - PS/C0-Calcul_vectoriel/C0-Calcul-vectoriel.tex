@@ -1,0 +1,89 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 1 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\begin{document}
+\setcounter{chapter}{-1}
+\chapter{Calcul vectoriel}
+\section{Vecteurs élémentaires}
+\subsection{Coordonnées cartésiennnes}
+    \renewcommand{\arraystretch}{1.5} % Augmente l'espacement des lignes
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Longueur Élémentaire} ($\mathbf{dl}$) & \textbf{Surfaces Élémentaires} ($\mathbf{dS}$) & \textbf{Volume Élémentaire} ($dV$) \\
+        \hline
+         $dx\, \mathbf{u}_x + dy\, \mathbf{u}_y + dz\, \mathbf{u}_z$ & $\begin{array}{l} dS_{xy} = dx\, dy \\ dS_{yz} = dy\, dz \\ dS_{zx} = dz\, dx \end{array}$ & $dx\, dy\, dz$ \\
+        \hline
+    \end{tabular}
+\subsection{Coordonnées cylindriques}
+\begin{tabular}{|c|c|c|}
+        \hline
+         \textbf{Longueur Élémentaire} ($\mathbf{dl}$) & \textbf{Surfaces Élémentaires} ($\mathbf{dS}$) & \textbf{Volume Élémentaire} ($dV$) \\
+        \hline
+         $dr\, \mathbf{u}_r + r\, d\phi\, \mathbf{u}_{\phi} + dz\, \mathbf{u}_z$ & $\begin{array}{l} dS_{r\phi} = r\, dr\, d\phi \\ dS_{r z} = dr\, dz \\ dS_{\phi z} = r\, d\phi\, dz \end{array}$ & $r\, dr\, d\phi\, dz$ \\
+        \hline
+    \end{tabular}
+\subsection{Coordonnées sphériques}
+\begin{tabular}{|c|c|c|}
+        \hline
+         \textbf{Longueur Élémentaire} ($\mathbf{dl}$) & \textbf{Surfaces Élémentaires} ($\mathbf{dS}$) & \textbf{Volume Élémentaire} ($dV$) \\
+        \hline
+        $dr\, \mathbf{u}_r + r\, d\theta\, \mathbf{u}_{\theta} + r \sin\theta\, d\phi\, \mathbf{u}_{\phi}$ & $\begin{array}{l} dS_{r\theta} = r\, dr\, d\theta \\ dS_{r\phi} = r \sin\theta\, dr\, d\phi \\ dS_{\theta\phi} = r^2 \sin\theta\, d\theta\, d\phi \end{array}$ & $r^2 \sin\theta\, dr\, d\theta\, d\phi$ \\
+        \hline
+    \end{tabular}
+\section{Gradient}
+L'opérateur Gradient, noté $\nabla f$ (ou $\text{grad } f$), est un vecteur dont les composantes sont données par la formule générale utilisant les facteurs d'échelle ($h_i$) :
+$$
+\nabla f = \sum_{i} \frac{1}{h_i} \frac{\partial f}{\partial u_i} \mathbf{u}_i
+$$
+où $u_i$ sont les coordonnées et $\mathbf{u}_i$ les vecteurs unitaires correspondants.
+
+    \label{tab:gradient_expressions}
+    \renewcommand{\arraystretch}{2.5} % Augmente l'espacement des lignes
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textbf{Système} & \textbf{Coordonnées} & \textbf{Facteurs d'échelle ($h_i$)} & \textbf{Gradient ($\nabla f$)} \\
+        \hline
+        \textbf{Cartésiennes} & $(x, y, z)$ & $h_x=1, h_y=1, h_z=1$ & $\frac{\partial f}{\partial x} \mathbf{u}_x + \frac{\partial f}{\partial y} \mathbf{u}_y + \frac{\partial f}{\partial z} \mathbf{u}_z$ \\
+        \hline
+        \textbf{Cylindriques} & $(r, \phi, z)$ & $h_r=1, h_{\phi}=r, h_z=1$ & $\frac{\partial f}{\partial r} \mathbf{u}_r + \frac{1}{r} \frac{\partial f}{\partial \phi} \mathbf{u}_{\phi} + \frac{\partial f}{\partial z} \mathbf{u}_z$ \\
+        \hline
+        \textbf{Sphériques} & $(r, \theta, \phi)$ & $h_r=1, h_{\theta}=r, h_{\phi}=r \sin\theta$ & $\frac{\partial f}{\partial r} \mathbf{u}_r + \frac{1}{r} \frac{\partial f}{\partial \theta} \mathbf{u}_{\theta} + \frac{1}{r \sin\theta} \frac{\partial f}{\partial \phi} \mathbf{u}_{\phi}$ \\
+        \hline
+    \end{tabular}
+ \end{document}

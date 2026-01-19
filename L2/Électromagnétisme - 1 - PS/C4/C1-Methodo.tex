@@ -1,0 +1,108 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 1 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ez}{\vec{e_{z}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\begin{document}
+\setcounter{chapter}{3}
+\chapter{Distributions continues de charge}
+\section{Exercice 1}
+\subsection{Formalisme et Symétries}
+
+\subsubsection{Description du Système}
+Anneau (C) de rayon $R$, d'axe $(Oz)$, chargé uniformément avec une densité linéique $\lambda$.
+Point d'observation $M$ sur l'axe $(Oz)$, de coordonnée $z$.
+Nous utilisons la base cylindrique $\mathcal{B}_c = (\vec{e}_\rho, \vec{e}_\varphi, \vec{e}_z)$.
+
+\subsubsection{Direction et Dépendance du Champ (Question 2)}
+Par symétrie axiale, tout plan contenant $(Oz)$ est un plan de symétrie. Le champ $\vec{E}(M)$ doit être porté par l'axe $(Oz)$.
+$$\vec{E}(M) = E_z(z) \vec{e}_z$$
+Le champ ne dépend que de $z$.
+
+\subsection{Calcul du Champ Électrostatique $\vec{E}(M)$ (Question 3)}
+
+\subsubsection{Définition Intégrale}
+Le champ élémentaire $\dd \vec{E}(M)$ créé par un élément de charge $\dd q$ en $P$ est :
+$$\overrightarrow{\dd E}(M) = \frac{1}{4\pi\epsilon_0} \frac{\dd q}{PM^2} \vec{u}_{PM}$$
+Avec $\dd q = \lambda \dd l = \lambda R \dd \varphi$ et $PM^2 = R^2 + z^2$.
+
+\subsubsection{Vecteur $\overrightarrow{PM}$}
+En coordonnées cartésiennes :
+$$\overrightarrow{PM} = \vec{r}_M - \vec{r}_P = -R \cos\varphi \vec{e}_x - R \sin\varphi \vec{e}_y + z \vec{e}_z$$
+Le champ total est $\vec{E}(M) = \oint_C \overrightarrow{dE}(M)$. Seule la composante $E_z$ survit après intégration sur $\varphi \in [0, 2\pi]$ :
+$$E_z = \oint_C \dd E \cos\theta$$
+où $\cos\theta = \frac{z}{PM} = \frac{z}{\sqrt{R^2 + z^2}}$.
+$$dE_z = dE \cos\theta = \frac{\lambda R \dd \varphi}{4\pi\epsilon_0 (R^2 + z^2)} \cdot \frac{z}{\sqrt{R^2 + z^2}} = \frac{\lambda R z \dd \varphi}{4\pi\epsilon_0 (R^2 + z^2)^{3/2}}$$
+
+\subsubsection{Intégration}
+$$E_z(z) = \int_0^{2\pi} \frac{\lambda R z}{4\pi\epsilon_0 (R^2 + z^2)^{3/2}} \dd \varphi = \frac{\lambda R z}{4\pi\epsilon_0 (R^2 + z^2)^{3/2}} [ \varphi ]_0^{2\pi}$$
+$$E_z(z) = \frac{\lambda R z (2\pi)}{4\pi\epsilon_0 (R^2 + z^2)^{3/2}}$$
+
+$$\vec{E}(M) = \frac{\lambda R z}{2\epsilon_0 (R^2 + z^2)^{3/2}} \vec{e}_z$$
+
+\subsection{Cas Limites (Questions 4 et 5)}
+
+\subsubsection{Cas $z \ll R$ (Question 4)}
+$$(R^2 + z^2)^{3/2} \approx (R^2)^{3/2} = R^3$$
+$$\vec{E}(M) \approx \frac{\lambda R z}{2\epsilon_0 R^3} \vec{e}_z = \frac{\lambda z}{2\epsilon_0 R^2} \vec{e}_z$$
+
+\subsubsection{Cas $z \gg R$ (Question 5)}
+$$(R^2 + z^2)^{3/2} \approx (z^2)^{3/2} = |z|^3$$
+$$\vec{E}(M) \approx \frac{\lambda R z}{2\epsilon_0 |z|^3} \vec{e}_z$$
+En utilisant la charge totale $Q_{tot} = 2\pi R \lambda$:
+$$\vec{E}(M) \approx \frac{Q_{tot}}{4\pi\epsilon_0} \frac{z}{|z|^3} \vec{e}_z$$
+Pour $z > 0$, $\vec{E}(M) \approx \frac{1}{4\pi\epsilon_0} \frac{Q_{tot}}{z^2} \vec{e}_z$ (Champ d'une charge ponctuelle).
+
+\subsection{Calcul du Potentiel Électrique $V(M)$ (Questions 6 et 7)}
+
+\subsubsection{Calcul Direct (Question 6)}
+$$V(M) = \frac{1}{4\pi\epsilon_0} \oint_C \frac{\dd q}{PM} = \frac{1}{4\pi\epsilon_0} \int_0^{2\pi} \frac{\lambda R d\varphi}{\sqrt{R^2 + z^2}}$$
+$$V(M) = \frac{\lambda R}{4\pi\epsilon_0 \sqrt{R^2 + z^2}} [ \varphi ]_0^{2\pi} = \frac{\lambda R (2\pi)}{4\pi\epsilon_0 \sqrt{R^2 + z^2}}$$
+$$V(M) = \frac{\lambda R}{2\epsilon_0 \sqrt{R^2 + z^2}}$$
+
+\subsubsection{Cas Limite $z \gg R$ (Question 7)}
+$$\sqrt{R^2 + z^2} \approx |z|$$
+$$V(M) \approx \frac{\lambda R}{2\epsilon_0 |z|} = \frac{Q_{tot}}{4\pi\epsilon_0 |z|}$$
+Le potentiel prend la valeur du potentiel créé par une charge ponctuelle $Q_{tot}$.
+ \end{document}

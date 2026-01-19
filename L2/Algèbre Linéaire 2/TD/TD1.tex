@@ -1,0 +1,125 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Algèbre linéaire 2}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+\chapter{Espaces vectoriels}
+%télécherger Manuel pour C1,3,6
+\section{Introduction}
+\begin{theorem}[Coordonnées]
+ Soit E un espace vectoriel de dim finie et F une famille finie. F est une base de E \(\iff \forall u\in E, \exists! (\lambda_1,\dots,\lambda_d)\in \R^d tq u = \lambda_1e_1+\dots+\lambda_de_d)\). Les réels \(\lambda\) sont appelés coordonnées du vecteur u dans la base F.
+\end{theorem}
+\begin{definition}[Plan]
+Une surface de \(\R^3\) de la forme \(ax+by+cz = 0\) avec \(\vec{n}(a,b,c)\) vecteur normal au plan.
+\end{definition}
+\begin{proposition}
+L'intersection de 2 plans, i.e. \(E\cap F\) est une droite de vecteur \(\vec{u}\). Dans ce cas, \(\lambda \vec{u}\) est aussi une solution.
+\end{proposition}
+\warningInfo{Espaces vectoriels en physique}{Les EV décrivent également des solutions d'équations différentielles. Ainsi, la somme de 2 solutions d'une m\^eme EQS est aussi solution, tout comme sa multiplication par un scalaire.}
+\checkInfo{Promeneur ivre}{On considère l'intervalle \([0,3]\in \N\) dans lequel se trouve un promeneur ivre. Il peut choisir d'avancer ou de reculer de 1. On décrit ses mouvements par une matrice avec la position actuelle en ligne et le prochain pas en colonne.
+
+\(P = \begin{vmatrix}
+0&\frac12&0&0\\
+1&0&\frac12&0\\
+0&\frac12&\frac12&1\\
+0&0&\frac12&0
+\end{vmatrix}\). Pour trouver son pas après \(n\) pas, on effectue \(P^n\)
+}
+\begin{proposition}
+Si \(\exists QPQ^{-1}\) une matrice diagonale (avec des scalaires en diagonale), alors \(QP^nQ^{-1}\) est une matrice diagonale avec ses scalaires mis à la puissance n.
+\end{proposition}
+\section{Définitions}
+\begin{definition}[Espaces vectoriels]
+Soit \(E \neq \varnothing\). C'est un EV si il existe 2 lois de compositions
+\begin{itemize}
+ \item Une loi de composition interne, appelée addition, notée \(+\), \(E\times E \to E, (u,v) \to u+v\).
+ \item Une loi de composition externe, appelée multiplication par un réel, noté \(\cdot\), \(\R \times E \to E, (\lambda, u)\to \lambda \cdot u\)
+\end{itemize}
+E est un R ev si
+\begin{enumerate}
+ \item \(\forall (u,v)\in E\times E, u+v=v+u\) (commutativité)
+ \item \(\forall (u,v,w)\in E\times E\times E, (u+v)+w=u+(v+w)\) (Associativité)
+ \item Il existe un élément de E appelé élément neutre, noté \(0_E\) tel que \(\forall u\in E,u+0_E = u\).
+ \item \(u\in E\) admet un opposé (appelé parfois symétrique), \(u'\in E\) tel que \(u+u' = 0_E\)
+\item \(\forall u\in E, 1\cdot u = u\)
+\item \(\forall (\lambda,\gamma)\in \R\times\R,\forall u\in E, \lambda\cdot(\gamma\cdot u) = (\lambda\cdot \gamma)\cdot u\)
+\item \(\forall \lambda\in \R, \forall (u,v)\in E\times E,\lambda\cdot (u+v) = \lambda\cdot u+\lambda \cdot v\)
+\item \(\forall( \lambda, \gamma)\in \R\times \R, \forall u\in E, (\lambda+\gamma)\cdot u = \lambda \cdot u + \gamma \cdot u\)
+\end{enumerate}
+\end{definition}
+\checkInfo{Espace vectoriel}{\({0}\) est bien un EV mais pas \(\varnothing\)}
+\subsection{Sous EV}
+\begin{definition}
+\(F\subset E\) est un sous espace vectoriel de E si
+\begin{enumerate}
+ \item \(F\neq \varnothing\)
+ \item \(\forall (u,v) \in F\times F, \forall (\lambda,\mu)\in\R\times \R, \lambda \cdot u+ \mu \cdot v \in F\)
+\end{enumerate}
+
+\end{definition}
+\begin{proposition}
+F est un sev de E \(\iff\)
+\begin{enumerate}
+ \item \(0_E \in F\)
+ \item \(\forall (u,b) \in F\times F, u+v \in F\)
+ \item \(\forall u\in F, \forall \lambda \in\R, \lambda \cdot u \in F\)
+\end{enumerate}
+\end{proposition}
+Les suites et polynomes sont des EV. On remarque que les polynomes \(K[t]\) peuvent \^etre représentés par des suites \(K[[t]]\) avec \(a_i = 0 \forall i >n\).
+\subsection{Application linéaire}
+On prend $E,F$ 2 R-ev
+\begin{definition}
+\(f:E\to F\) est une application linéaire si
+\begin{itemize}
+ \item \(f(u+_Ev) = f(u)+_Ff(v)\)
+ \item \(f\lambda \cdot_E u = \lambda \cdot_F f(u)\)
+\end{itemize}
+\end{definition}
+Exemple : \(f:p\in R[X]\to (P(0),P(1),P(2))\in \R^3\) est une application linéaire. En effet, $f(p+q) = (p+q)(0)+(p+q)(1)+(p+q)(2)= (p(0)+p(1)+p(2))+(q(0)+q(1)+q(2)) = f(p)+f(q)$
+
+Soit $P \in \R[X]$ et $\lambda \in \R$ : $f(\lambda p) = (\lambda (P(0),P(1),P(2)))$
+
+Exemple : $g : p\in\R[X]\to (p(0),p(1),p(0)p(1))$
+
+Prenons $P(X)=1,\lambda=2 : \lambda g(P) = (2.2.2), g(\lambda P) = (2.2.4)$.
+\warningInfo{Remarque}{On peut aussi vérifier les 2 propriétés en m\^eme temps. On montre alors que $f(\lambda u + v)= \lambda f(u)+f(v)$}
+
+\end{document}
+
+

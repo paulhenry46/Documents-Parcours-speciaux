@@ -1,0 +1,126 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 1 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\begin{document}
+\setcounter{chapter}{-1}
+\chapter{Électromagnétisme : Formulaire}
+\section{Champ électrique}
+\subsection{Charge ponctuelle}
+\begin{definition}[Champ électrique]
+\[\vec{F_{q_p\to q}} = q \cdot \E\] avec \(\E\) qui ne dépend que de la charge \(q_p\) : \[\E = \frac{q_p}{4\pi\epsilon_0}\frac{\vec{e_{PM}}}{\norm{PM}^2}\] est le champ électrique crée par \(q_p\) au point M, en \(NC^{-1} / Vm^{-1}\)
+\end{definition}
+\begin{definition}[Potentiel électrique]
+\(V(M) = \frac{q}{4\pi\epsilon_0 r} + Cst\)
+\end{definition}
+\subsection{Équation entre E et V entre E et V}
+\begin{theorem}[Équation intégrale]
+\[V(B)-V(A) = -\int_A^B\E\cdot \dd \vec{l}(M)\]
+\end{theorem}
+\begin{theorem}[Équation locale entre E et V]
+\[\dd V = -\E\cdot \dd \vec{l}(M)\]
+\[\E = -grad(\V)\]
+\end{theorem}
+\subsection{Distribution volumique de charge}
+\begin{theorem}[Champ électrique total  (d. volumique)]
+\[\E = \iiint_{P\in\mv} \frac{\rho_c(P)\dd \mv(P)\vec{PM}}{4\pi\epsilon_0 \norm{PM}^3}\]
+ \end{theorem}
+ \begin{theorem}[Potentiel total  (d. volumique)]
+\[V(M) = \iiint_{P\in \mv} \frac{\rho_c \dd \mv(P)}{4\pi\epsilon_0 \norm{PM}}\]
+ \end{theorem}
+\subsection{Théorème de Gauss}
+\begin{theorem}[Théorème de Gauss]
+Le flux de E à travers une surface fermée orientée est égal à la somme des charges intérieures à cette surface fermée divisée par \(\epsilon_0\) :
+\[\iint \E\cdot \vec{n}\dd S = \frac{\sum q_{int}}{\epsilon_0}\]
+\end{theorem}
+\subsection{Symétrie}
+\begin{center}
+\begin{tabular}{ll}
+Situation & Direction\\
+M \(\in \pip\) & E est contenu au plan\\
+M \(\in \pim\) & B est \(\perp\) au plan\\
+\( (Oxy) \in  \pip\) & Selon z, \(E_z\) impaire, \(Bx,B_y\) paires\\
+\( (Oxy) \in  \pim\) & Selon z, \(E_z\) paire, \(Bx,B_y\) impaires
+\end{tabular}
+\end{center}
+\section{Champ magnétique}
+\subsection{Symétrie}
+\begin{center}
+\begin{tabular}{ll}
+Situation & Direction\\
+M \(\in \pip\) & B est \(\perp\) au plan\\
+M \(\in \pim\) & B est contenu dans le plan\\
+\( (Oxy) \in  \pip\) & Selon z, \(B_z\) paire, \(Bx,B_y\) impaires\\
+\( (Oxy) \in  \pim\) & Selon z, \(B_z\) impaire, \(Bx,B_y\) paires
+\end{tabular}
+\end{center}
+\subsection{Théorème d'Ampère}
+\begin{theorem}[Théorème d'Ampère]
+\[\int_C \vec{B}(M)\cdot \dd \vec{l} = \mu_0 \sum I_{\text{entrées par C}} \]
+Les courant sont comptés positivement s'ils sont dans le sens de \(\vec{n}\).
+\end{theorem}
+
+\begin{theorem}[Théorème d'Ampère pour une distribution volumique de courant]
+ \[\int_C\B\cdot \dd \vec{l} = \mu_0 \iint \vec{j}\cdot \vec{n}\dd S\]
+\end{theorem}
+
+\begin{theorem}[Forme locale du théorème d'Ampère]
+\[Rot(\vec{B})=\mu_0 \vec{j}\]
+\end{theorem}
+\subsection{Loi de Biot et Savat}
+\begin{definition}[Intensité du courant électrique]
+\[I = \iint_{S}\vec{j}\cdot \vec{n}\dd S\] avec S la section étudiée
+\end{definition}
+\begin{theorem}[Loi de Biot et Savart]
+ \[\B = \frac{\mu_0}{4\pi}  \int_{P\in F} \frac{I\vec{\dd l}(P)\wedge \vec{PM}}{\norm{PM}^3}\]
+\end{theorem}
+\subsection{Résultats à savoir}
+\begin{proposition}[Champ crée par un fil infiniment long]
+\[\vec{B}(M) = \frac{\mu_0 I}{2\pi \rho}\vec{e_{\varphi}}\]
+\end{proposition}
+\begin{proposition}[Champ crée par une spire]
+\[\B = \frac{\mu_0 I}{2R}\sin^3(\alpha)\vec{e_z}\] avec \(\alpha\) l'angle sous lequel on voit la spire depuis M.
+\end{proposition}
+ \end{document}

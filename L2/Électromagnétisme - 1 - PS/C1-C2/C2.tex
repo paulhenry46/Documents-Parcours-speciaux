@@ -1,0 +1,79 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 1 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\setcounter{chapter}{1}
+\begin{document}
+\chapter{Distribution de charges}
+\section{Répartition}
+\begin{itemize}
+ \item Atome : Noyau de diamètre \(10^{-15}\) + Électron \(10^{-10}\)
+ \item Molécules : On pourra aussi avoir affaire à des distributions de charge qui ne sont uniforme (et qui dépendent par exemple du rayon )es entre atomes  :  \(10^{-10}\)\marginInfo{La matière peut \^etre globalement neutre mais pas localement. Il y aura toujours des champs électriques}.
+\end{itemize}
+\section{Les différentes distributions de charge}
+\subsection{Densité de charge}
+Si une charge macroscopique Q est répartie uniformément\marginWarning{On pourra aussi avoir affaire à des distributions de charge qui ne sont uniforme (et qui dépendent par exemple du rayon )} dans un volume V, alors on parle de distribution volumique de charge uniforme et la densité volumique vaut \(\rho_c = \frac{Q}{V}\). De la m\^eme façon, on a \(\sigma_c = \frac{Q}{S}\) ou \(\lambda_c = \frac{Q}{L}\).
+\subsection{Symétrie d'une distribution de charge}
+\subsubsection{Plan de symétrie (\(\pi^+\))}
+\begin{itemize}
+ \item Si \(\rho_c(x,y,z) = \rho_c(x,y,-z)\) alors le plan \((Oxy)\) est \(\pi^+\).
+ \item le plan médiateur entre 2 particules de m\^eme charge.
+ \item Cylindre uniformément chargé en volume : Plan médiateur, tout plan contenant l'axe de rotation
+ \item Cylindre uniformément chargé en volume infiniment long : Plan médiateur, plans // au plan médiateur, tout plan contenant l'axe de rotation
+ \item Sphère uniformément chargé en volume : Plans passant par le centre.
+\end{itemize}
+\subsection{Plans d'anti-symétrie (\(\pi^-\))}
+\begin{itemize}
+ \item Distribution volumique de charge tel que \(\rho_c(x,y,z) = -\rho_c(x,y,-z)\) alors le plan \(Oxy\) en est un
+ \item le plan médiateur entre 2 particules de charge opposée.
+ \item Une sphère coupée en 2 demie-sphères de charge opposée : plan coupant les 2 demie-sphères.
+\end{itemize}
+\subsection{Plans quelconques}
+Ils présentent une symétrie géométrique mais pas de symétrie de charge
+\subsection{Invariance d'une distribution de charge}
+\subsubsection{Invariance par translation}
+\begin{itemize}
+ \item Si \(\rho_c(x,y,z) = \rho_c(x,y,z')\), la distribution est invariante par toute translation // à \((Oz)\).
+ \item Cylindre infini d'axe Oz : Axe Oz
+\end{itemize}
+\subsubsection{Invariance par rotation}
+\begin{itemize}
+ \item Distribution de charge telle que \(\rho_c(\rho, \varphi, z) = \rho_c(\rho, \varphi', z)\) est invariant par rotation autour  de (Oz)
+ \item Cylindre d'axe Oz : Invariance par rotation autour de \((Oz)\).
+\end{itemize}
+ \end{document}

@@ -1,0 +1,132 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Algèbre linéaire 2}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+\setcounter{chapter}{2}
+\chapter{Matrices et Applications linéaires}
+\section{Introduction}
+\begin{definition}[Mqtrice associées aux applications linéaires]
+Soit \(\{e_1,e_2,e_n\}\) une base de E et \(\{\epsilon_1,\dots,\epsilon_p\}\). On écrit \(f(e_1) = a_{11}\epsilon_1+\dots+a_{1p}\epsilon_p\) jusqu'à \(f(e_n) = a_{1n}\epsilon_1+\dots+a_{pn}\epsilon_p\). La mtrice de f dans les 2 bases, notée \(M(f)_{e_i,\epsilon_j}\), la matrice \[
+\begin{bmatrix}
+a_{11}&p_{12}&\dots& a_{1n}\\
+\vdots & &\vdots
+a_{p1}&p_{p2}&\dots& a_{pn}\\
+\end{bmatrix}\]
+\end{definition}
+\begin{proposition}[Espace vectoriel de matrice d'application]
+Les matrices d'applications sont des isomophismes d'espaces vectoriels et vérifient donc \(M(f+g) = M(f)+M(g), M(\lambda f) = \lambda M(f)\)
+\end{proposition}
+\begin{proposition}[Produit de 2 MAP]
+On a \(M(f\circ g) = M(f)\cdot M(g)\)
+\end{proposition}
+\begin{proposition}[Propriété de multiplication des matrices]
+\(A(BC) = (AB)C, A(B+C) = AB+AC, (A+D)B = AB+DB\) mais \(BA\neq AB\)
+\end{proposition}
+\section{Matrice d'un vecteur}
+\begin{definition}[Matrice d'un vecteur]
+Soit \(\{e_1,\dots, e_n\}\) une base de E. La matrice de \(x = x_1e_1+\dots +x_ne_n\) dans cette base est \(M(x)_{e_i}\begin{bmatrix}
+x_1\\
+\vdots\\
+x_n\\
+\end{bmatrix}\)
+\end{definition}
+\begin{definition}[Application de la composition de fonctions à un vecteur]
+\(M(f(x)) = M(f)\cdot M(x)\)
+\end{definition}
+
+\begin{proposition}[Application linéaire bijective et application réciproque]
+Une application linéaire est bijective si sa matrice est inversible. On a alors \(M(f^{-1}) = M(f)^{-1}\)
+\end{proposition}
+\section{Changement de base}
+\subsection{Matrice de passage}
+\begin{definition}[Matrice de passage]
+Soit 2 bases de E : \(\{e_1,\dots, e_n\}, \{r_1,\dots, r_n\}\). On écrit \(r_1 = p_{11}e_1+\dots p_{n1}e_n, r_n = p{n1}e_1+\dots+p_{nn}e_n\) donc la matrice de changement de base s'écrit :
+\[\begin{bmatrix}
+p_{11}&p_{12}&\dots& p_{1n}\\
+\vdots & &\vdots
+p_{p1}&p_{p2}&\dots& p_{pn}\\
+\end{bmatrix}\]
+\end{definition}
+\begin{proposition}[Propriétés des matrices de passage]
+Inversibilité : \(P_{e\to v} = P_{v\to e}^{-1}\)
+
+Transitivité : \(P_{e\to v}P_{v\to w} = P_{e\to w}\)
+\end{proposition}
+\begin{proposition}[Changement de base sur un vecteur]
+\[X_v = P_{e\to v}^{-1}X_e\]
+\end{proposition}
+\begin{proposition}[Changement de base sur une application linéaire]
+\[M(f)_{e_1, e_2} = Q_{e_3\to e_2}^{-1}M(f)_{e_3,e_4}P_{e_4, e_1}\]
+\end{proposition}
+\section{Rang d'une application linéaire}
+\begin{proposition}[Rang d'une application et rang de la matrice associée]
+Le rang d'une application linéaire est la dimension de son image. On a \(rg(f) = Rg(M(f))\).
+\end{proposition}
+\begin{proposition}[Rang de la transposée]
+\[rg(A) = rg(^tA)\]
+\end{proposition}
+\subsection{Matrice semblable}
+\begin{definition}[Matrice semblable]
+2 matrices A et A' sont semblable s'il existe une matrice inversible P telle que \(A' = P^{-1}AP\). On en déduit que deux matrices semblables représentent le même endomorphisme en des bases différentes.
+\end{definition}
+\warningInfo{Matrice semblable vérification}{Une condition nécessaire est que le déterminant doit \^etre le m\^eme.}
+
+%TODO Méthode pour montrer que 2 bases sont duales.
+\subsection{Espace dual}
+\begin{definition}[Espace dual]
+L'ensemble des formes linéaires \(L_k(E, K)\) est noté E* et est dit espace dual de E. Il a la m\^eme dimension que E.
+\end{definition}
+%TODO Exe paage 84 à faire. pour trouver base d'un espace dual. + Annulateur
+\subsubsection{Trouver une base duale}
+\begin{proposition}[Noyau d'une application linéaire dans un espace dual]
+\(dim(ker(\omega)) = n-1\) avec n la dimension de E et \(_omega \in E*\).
+\end{proposition}
+\section{En pratique}
+\begin{itemize}
+ \item \(Mat(f)_{e_1,e} = Mat(Id)_{e,e_1}Mat(f)_{e,e}Mat(Id)_{e_1,e}\)
+ \item \(M_{AB} = M_{\cdot B}\dots M_{A\cdot}\)
+ \item Matrice de passage : La matrice de passage de \(e\) à \(e_1\) est la matrice Identité de \(e_1\) à \(e\) : \(Mat(Id)_{e_1,e}\) : on écrit en colonne en fonction de e les vecteurs de \(e_1\)
+ \item Matrice de Passage de E à B : On écrit les vecteur colonnes de B en fonction de E : \(M(I_d)_{B,E} = M(I_d)_{E\to B}\)
+ \item Donc \(M(f)_{BB} = M(I_d)_{EB}M(f)_{EE}M(I_d)_{BE}\)
+\end{itemize}
+
+\end{document}
+
+

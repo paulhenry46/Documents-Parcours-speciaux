@@ -1,0 +1,339 @@
+% ---- Modele TP PC V2 -----------
+\documentclass[a4paper,9pt,french]{scrartcl}
+\usepackage[T1]{fontenc}%---pour l'encodage d'entr\'ee
+\usepackage{array}%---pour les tableaux
+\usepackage{titlesec}%---modification des titres
+\usepackage{ulem}%---pour le soulignage
+\usepackage[dvipsnames]{xcolor}%---pour avoir d'autres couleurs
+\usepackage{color}%---pour avoir les couleurs de base
+\usepackage{babel}%---pour les trucs de langue et la francisation
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour dessiner + d\'ependance de chemfig
+%\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+ \usepackage{float}% --- pour placer les figures et tableaux où l'on souhaite avec argument H
+ \usepackage{multicol}
+ \usepackage{amsmath}
+ \usepackage{geometry}
+ %\geometry{vmargin=2.5cm}
+
+\captionsetup{labelfont=sc}%---pour la francisation de la l\'egende table vers Tableau
+\def\frenchtablename{Tableau}%---pour la francisation de la l\'egende table vers Tableau
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{TP 2}
+\fancyhead[R]{Saux Paulhenry}
+\title{Compte rendu de TP 2}
+\date{}
+\author{}
+
+\geometry{a4paper}
+% ----------- Création des commandes de couleur ----------
+\makeatletter
+\newcommand{\coloruline}[2]{%
+        \UL@protected\def\temp@uline{\leavevmode \bgroup
+            \markoverwith{\textcolor{#1}{\rule[-0.5ex]{2pt}{0.4pt}}}%
+        \ULon}%
+        \temp@uline{#2}%
+    }
+
+    \newcommand{\coloruuline}[2]{%
+        \UL@protected\def\temp@uuline{\leavevmode \bgroup
+            \UL@setULdepth
+            \ifx\UL@on\UL@onin \advance\ULdepth2.8\p@\fi
+            \markoverwith{\textcolor{#1}{\lower\ULdepth\hbox
+                {\kern-.03em\vbox{\hrule width.2em\kern1\p@\hrule}\kern-.03em}}}%
+        \ULon}%
+        \temp@uuline{#2}%
+    }
+
+\makeatother
+
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+\begin{document}
+% ---------------- Modification des titres de niveau 1,2 et 3 --------------------
+\titleformat
+{\section} % command
+%[display] % shape
+{\Large} % format
+{\coloruuline{red}{\thesection. }} % label
+{0ex} % sep
+{\coloruuline{red}} % before-code
+[] % after-code
+
+\titleformat
+{\paragraph} % command
+%[display] % shape
+{\Large} % format
+{\coloruline{NavyBlue}{\theparagraph. }} % label
+{0ex} % sep
+{\coloruline{NavyBlue}} % before-code
+[] % after-code
+
+\titleformat
+{\subsection} % command
+%[display] % shape
+{\Large} % format
+{\coloruline{red}{\thesection.\thesubsection. }} % label
+{0ex} % sep
+{\coloruline{red}} % before-code
+[] % after-code
+
+\titleformat
+{\subsubsection} % command
+%[display] % shape
+{\large} % format
+{\coloruline{ForestGreen}{\thesection.\thesubsection.\thesubsubsection. }} % label
+{0ex} % sep
+{\coloruline{ForestGreen}} % before-code
+[] % after-code
+
+\titleformat
+{\chapter} % command
+%[display] % shape
+{\large} % format
+{\coloruline{NavyBlue}{\thechapter \:- }} % label
+{0ex} % sep
+{\coloruline{NavyBlue}} % before-code
+[] % after-code
+
+
+% ---------------- Début du corps du document ------------------------------------
+
+\section{Introduction}
+\subsection{Objectifs}
+Le but de ce TP est d'analyser qualitativement les phénomènes de diffraction et d'interférences, en particulier le lien entre les caractéristiques de l'objet diffractant et celles de la figure de diffraction.
+\subsection{Sommaire}
+Ce TP se décompose en quatre parties :
+\begin{enumerate}
+ \item Étude qualitative de la diffraction par une fente rectangulaire
+ \item Étude quantitative de la diffraction par une fente rectangulaire
+ \item Étude des interférences produites par des bi-fentes d'Young
+  \item Étude des interférences produites par des fentes multiples
+\end{enumerate}
+\section{Protocole}
+\subsection{Matériel commun aux 4 parties}
+\begin{itemize}
+\item Lample à mercure
+\item 2 fentes de largeur réglable
+\item Filtres rouge, bleu, vert
+\item 2 Lentilles de focale 0.5m
+\item Occulaire
+\item Plaques trouées
+\item Banc optiques
+\item Supports pour banc optique
+\end{itemize}
+\subsection{Montage expérimental commun aux 4 parties}
+La lampe à mecure (1) est déjà positionnée. Nous alignons d'abord le trou source (2) avec l'occulaire (6). Puis avec la méthode d'autocollimation, nous plaçons la première lentille (4) de façon à ce que le trou source se trouve au foyer objet de cette dernière. Nous n'oublions le filtre (3) (le cas échéant) Nous plaçons ensuite la deuxième lentielle (5) de façon à ce que son foyer image se trouve dans l'occulaire. Enfin, nous plaçons l'objet diffractant (7) entre les 2 lentilles, son emplacement exact étant sans importance. Ce montage servira de base pour les quatre parties du TP.
+\begin{center}
+\includegraphics[scale=0.7]{schema2}
+\end{center}
+\subsection{Étude qualitative de la diffraction par une fente rectangulaire}
+\subsubsection{Montage}
+L'élément diffractant est une fente réglable en largeur et en orientation dans son plan. Le trou source sera remplacé par un double trou source, puis par une fente source.
+\subsubsection{Observations à effectuer}
+\begin{itemize}
+ \item Avec un trou source simple, observer dans dans l'occulaire la figure obtenue.
+ \item Modifier la largeur de la fente diffractante et observer dans l'occulaire la figure obtenue.
+ \item Avec un 2 trous source, observer dans dans l'occulaire la figure obtenue.
+  \item Avec une fente source, observer dans dans l'occulaire la figure obtenue.
+  \item Faire tourner la fente source puis la fente diffractant dans leurs plans respectifs et observer dans dans l'occulaire l'évolution de la figure obtenue.
+\end{itemize}
+\subsection{Étude quantitative de la diffraction par une fente rectangulaire}
+\subsubsection{Montage}
+L'élément diffractant est une fente réglable en largeur et en orientation dans son plan. Le trou source est remplacé par une fente source. Le filtre vert sera remplacé par un filtre bleu, puis rouge.
+\subsubsection{Mesures à effectuer}
+\begin{itemize}
+ \item Régler la fente diffractante de façon à observer à l'occulaire environ une dizaine de pics d'interférences dans de bonnes conditions.
+ \item Relever la position du pic de diffraction observable la plus à gauche dans l'occulaire sur le vernier.
+ \item Relever de m\^eme la position de celui le plus à droite.
+ \item Compter le nombre de pics entre ces 2 pics.
+ \item Refaire les 3 étapes précécentes avec un filtre bleu, vert, puis sans filtre.
+\end{itemize}
+\subsection{Étude des interférences produites par des bi-fentes d'Young}
+\subsubsection{Montage}
+L'élément diffractant est la bifente B.
+\subsubsection{Mesures à effectuer}
+\begin{itemize}
+ \item Régler la fente diffractante de façon à observer à l'occulaire environ une dizaine de pics d'interférences dans de bonnes conditions.
+ \item Relever la position du pic de diffraction (l'enveloppe de luminosité globale) observable la plus à gauche dans l'occulaire sur le vernier.
+ \item Relever de m\^eme la position de celui le plus à droite.
+ \item Compter le nombre de pics entre ces 2 pics.
+ \item Faire de m\^eme avec les pics d'interférence
+ \item Refaire les 3 étapes précécentes avec les bifentes A et C.
+\end{itemize}
+\subsection{Étude des interférences produites par des fentes multiples}
+\subsubsection{Montage}
+L'élément diffractant est la diapositive à 3 fentes puis à 4 fentes.
+\subsubsection{Mesures à effectuer}
+\begin{itemize}
+ \item Régler la fente diffractante de façon à observer à l'occulaire environ une dizaine de pics d'interférences dans de bonnes conditions.
+ \item Relever la position du pic de diffraction (l'enveloppe de luminosité globale) observable la plus à gauche dans l'occulaire sur le vernier.
+ \item Relever de m\^eme la position de celui le plus à droite.
+ \item Compter le nombre de pics entre ces 2 pics.
+ \item Refaire les 3 étapes précécentes avec la diapositive à 4 fentes.
+\end{itemize}
+\section{Mesures}
+\subsection{Étude qualitative de la diffraction par une fente rectangulaire}
+\subsubsection{Trou source}
+On observe sur l'écran (ou dans l'oculaire) une figure de diffraction composée d'une tache centrale  entourée de taches secondaires plus faibles, séparées par des extinctions (franges sombres). La figure est étalée selon une direction perpendiculaire à l'axe de la fente.
+
+On observe que l'étalement de la figure est inversement proportionnel à la largeur  de la fente.
+
+Plus la fente est étroite, plus la tache centrale est large et la figure étendue (conformément à la relation ).
+
+Plus la fente est large, plus la figure se réduit, tendant vers l'image géométrique du trou source.
+
+Si la hauteur est réduite pour devenir comparable à la largeur, le phénomène de diffraction se manifeste selon les deux dimensions (horizontale et verticale). On observerait une figure en croix avec des taches secondaires sur les deux axes.
+
+Si l'on déplace le trou source dans le plan focal objet de la première lentille, le faisceau incident arrive sur la fente avec une inclinaison différente. La figure de diffraction reste identique en forme, mais elle subit une translation dans le plan d'observation, suivant le déplacement de l'image géométrique.
+
+\subsubsection{Fente source}
+En remplaçant le trou source par une fente source parallèle à la fente diffractante, on observe une figure de diffraction identique en structure (succession de franges), mais avec une **luminosité nettement plus importante.
+\subsubsection{Rotation des fentes}
+Lorsque l'on fait pivoter la fente source par rapport à la fente diffractante, les franges tournent de la m\^eme façon.
+
+Quand on fait tourner la fente diffractante,  on observe un brouillage de la figure. Les franges perdent leur contraste et s'élargissent.
+
+
+\subsection{Étude quantitative de la diffraction par une fente rectangulaire}
+Nous avons choisi de mesurer 3 fois l'interfrange, pour chaque filtre, en prenant des pics de depart et d'arrivé différents. La valeur de i trouvée sera alors la moyenne des 3 valeurs obtenues et l'incertitude sera celle de la valeur de i avec le N le plus faible.
+\subsubsection{Données}
+\begin{center}
+\begin{tabular}{llll}
+Mesure & Nombre d'intervalles (N) & Position du premier pic (mm) & Position du dernier pic (mm)\\
+Vert 1 & 3 & 13.5 & 9.9\\
+Vert 2 & 5 & 10.7 & 4.66\\
+Vert 3 & 5 & 10.3 & 4.6\\
+Bleu 1 & 5 & 10.5 & 5.0\\
+Bleu 2 & 6 & 4.3 & 10.0\\
+Bleu 3 & 2 & 8.14 & 6.16\\
+Rouge 1 & 6 & 11.0 & 3.15\\
+Rouge 2 & 5 & 2.8 & 9.85\\
+Rouge 3 & 2 & 8.35 & 5.5
+\end{tabular}
+\end{center}
+
+\subsubsection{Incertitudes}
+L'incertitude est liée à la précision du vernier mais aussi à la position du réticule sur le pic de diffraction. En effet, ce dernier doit \^etre centré sur le pic pour obtenir une valeur précise la position du pic. L'incertitude liée au vernier est négligeable devant celle liée au réticule, qui est estimée à 0.20 mm environ. Comme l'interfrange sera calculée en divisant par le nombre de pic mesurés, l'incertitude sur i sera alors \[u(i) = \frac{2\times 0.20}{N}mm\]
+\subsection{Étude des interférences produites par des bi-fentes d'Young}
+Nous mesurons pour les bifentes A, B et C les positions des pics de diffraction et d'interférence.
+\subsubsection{Données}
+\begin{center}
+\begin{tabular}{llll}
+Mesure & Nombre d'intervalles (N) & Position du premier pic (mm) & Position du dernier pic (mm)\\
+A Diffraction & 2 & 11.67 & 7.06\\
+A Interférences & 8 & 12.85 & 9.34\\
+B Diffraction & 4 & 7.7 & 4.0\\
+B Interférences & 5 & 4.85 & 8.9\\
+C Diffraction & 5 & 6.3 & 11.6\\
+C Interférences & 8 & 10.25 & 8.5\\
+\end{tabular}
+\end{center}
+\subsubsection{Incertitudes}
+Les incertitudes sont les m\^emes que pour la partie précédente.
+\subsection{Étude des interférences produites par des fentes multiples}
+
+\subsubsection{Données}
+Pour chaque ensemble de fentes, nous avons réaliser la mesure 2 fois.
+\begin{center}
+\begin{tabular}{llll}
+Mesure & Nombre d'intervalles (N) & Position du premier pic (mm) & Position du dernier pic (mm)\\
+3F 1 & 6 & 12.29 & 9.59\\
+3F 2 & 6 & 12.24 & 9.61\\
+5F 1 & 8 & 12.52 & 9.18\\
+5F 2 & 8 & 12.68 & 9.10
+\end{tabular}
+\end{center}
+
+\subsubsection{Incertitudes}
+Les incertitudes sont les m\^emes que pour la première partie.
+\section{Graphiques}
+Pour ce TP, il n'est pas nécessaire de tracer des graphiques.
+
+\section{Exploitation des résultats}
+\subsection{Étude qualitative de la diffraction par une fente rectangulaire}
+\subsubsection{Trou source}
+La relation \(L = \frac{2\lambda f}{a}\), avec a la largeur de la fente et L la largeur de la tache centrale, est cohérentes avec les observations.
+\subsubsection{Double trou source}
+Les 2 sources sont incohérentes, il n'y a donc pas de figure de diffraction.
+\subsubsection{Fente source}
+Une fente source peut être considérée comme une juxtaposition de trous source alignées verticalement. Si cette fente est parallèle à la fente diffractante, chaque point source produit une figure de diffraction identique et centrée sur le même axe horizontal.
+\subsubsection{Rotation des fentes}
+Chaque point de la fente source produit sa propre figure de diffraction. Ces figures subissent un décalage progressif les unes par rapport aux autres. La projection de la fente source sur la direction de diffraction augmente. L'interfrange apparent mesuré sur l'axe horizontal est modifié par un facteur lié à l'angle de rotation \(\alpha\) : \(i=\cos(\alpha)\times i_0\). Au-delà d'un faible angle, la superposition de ces figures décalées rend la figure de diffraction totalement floue (uniforme).
+\subsection{Étude quantitative de la diffraction par une fente rectangulaire}
+On obtient l'interfrange à partir des données avec la formule \begin{equation}
+                                                               i = \frac{|x_0-x_N|}{N}
+                                                              \end{equation}
+\subsubsection{Largeur de la fente diffractante}
+Avec le filtre vert, et avec les formules en données, on touve \(i = (1.20\pm0.17)mm\). Avec la formule \begin{equation}
+                                                                                                         i = \frac{\lambda f}{a}
+                                                                                                        \end{equation}
+                                                                                                        on déduit la valeur de a : \(a=(2,275\cdot 10^{-4}) m\)
+L'incertitude sur a ne dépend que de l'incertitude sur i. Avec la relation :
+
+\begin{equation}\frac{u(a)}{a} = \frac{u(i)}{i}\end{equation}
+on obtient finalement \(a=((2,28\pm0.3)\cdot 10^{-4} m\).
+\subsubsection{Influence de la longueur d'onde}
+Comme pour le filtre vert, on peut mesurer l'interfrange pour les filtres bleu et rouge. Pour le filtre bleu, on obtient \(i_b = (1.0\pm 0.1)mm\) et \(i_r = (1.38\pm 0.1)mm\). On a \(i_r>i_v>i_b\). Or d'après la formule, l'interfrange est proposrtionnelle à la longueur d'onde et on a bien \(\lambda_r>\lambda_v>\lambda_b\).
+
+On peut calculer la largeur de fente a pour ces 2 filtres. Cependant, ces résultats ne peuvent nous donner une valeur plus précise que celle obtenue avec le filtre vert, car nous ne connaissons pas la longueur d'onde exacte du filtre vert et bleu. Il est donc inutile de calculer l'incertitude sur ces 2 résulstats. Ils servent à confirmer la validité de nos raisonnements. On obtient \(a_r = 2.35\cdot 10^{-4}m, a_b = 2.23\cdot 10^{-4}m\), qui sont proches du résultat trouvé et en partie précédente. Les résultats sont donc cohérents avec la théorie.
+\subsubsection{Lumière polychromatique}
+La lumière polychromatique provoque des irisations car chaque longueur d'onde possède son propre interfrange \(i\propto \lambda\). La superposition décalée des figures de diffraction monochromatiques crée donc des franges irisées.
+\subsection{Étude des interférences produites par des bi-fentes d'Young}
+L'objectif est de déterminer les caractéristiques des bifentes, i.e. leur largeur a et la distance d qui les sépare. On se sert pour cela de l'interfrange liée à la diffrcation et de celle liée aux interférences. On sert de la méthode qu'en partie précédente pour déterminer l'interfrange.
+À partir de
+\begin{equation}
+ I = K(sinc(\frac{ax}{\lambda f})^2(1+\cos(2\pi\frac{dx}{\lambda f})))
+\end{equation}
+
+on déduit les formules \(a = \frac{\lambda f}{i_d}\) et \(d = \frac{\lambda f}{i_i}\).
+\begin{center}
+\begin{tabular}{llllll}
+Bifente & Type de mesure & N & \(\Delta x\) (mm) & i (mm) & Paramètre calculé (mm)\\
+A & Diffraction & 2 & 4,61 & 2,305 & \(a_A=0,118\)\\
+A & Interférences & 8 & 3,51 & 0,439 & \(d_A=0,622\)\\
+B & Interférences & 5 & 4,05 & 0,81 & \(d_B=0,337\)\\
+B & Diffraction & 4 & 3,7 & 0,925 & \(a_B=0,295\)\\
+C & Diffraction & 5 & 5,3 & 1,06 & \(a_C=0,258\)\\
+C & Interférences & 8 & 1,75 & 0,219 & \(d_C=1,247\)
+\end{tabular}
+\end{center}
+
+Nous calculons l'incertitude sur les mesures de la m\^eme façon que dans la partie précédente. Nous estimons ici que l'incertitude liée à la mesure de la distance est de \(0.10\)mm (car les franges sont plus fines, donc il est plus facile de trouver le centre) et comme l'incertitude des paramètres a et d dépend uniquement de celle de i, on utilise la relation 3.
+
+On a donc \begin{center}
+\begin{tabular}{lll}
+Bifente & Largeur de fente a (mm) & Distance entre fentes d (mm)\\
+Bifente A & \(0,118\pm0,005\) & \(0,62\pm0,04\)\\
+Bifente B & \(0,30\pm0,02\) & \(0,34\pm0,02\)\\
+Bifente C & \(0,26\pm0,01\) & \(1,2\pm0,1\)
+          \end{tabular}
+          \end{center}
+On remarque que la fente A est la plus étroite, ce qui explique que son enveloppe de diffraction soit la plus étalée sur l'écran. Les fentes B et C ont des largeurs comparables.
+
+La bifente C possède l'écartement le plus important (1,247 mm), ce qui produit les franges d'interférences les plus serrées (iint le plus faible).
+\subsection{Étude des interférences produites par des fentes multiples}
+En prenant les m\^emes formules que dans la partie précédente, et les m\^emes incertitudes sur i, on obtient
+\begin{center}
+\begin{tabular}{lll}
+Réseau & Interfrange moyen i (mm) & Distance entre fentes d (mm)\\
+3 Fentes & \(0,44\pm0,03\) & \(0,61\pm0,04\)\\
+5 Fentes & \(0,43\pm0,03\) & \(0,63\pm0,04\)
+\end{tabular}
+\end{center}
+L'interfrange mesuré est celui entre les maximas principaux. On en déduit que les la distance entre les fentes est la m\^eme pour les 2 diapositives. Quand on augmente le nombre de fentes, la largeur des pics principaux diminue. En lumière polychromatique, on commence à voir des prorpriétés du réseau apparaitre : les longueur d'onde sont séparées. Ainsi, l'augmentation du nombre de fente n'impacte pas la position des pics (l'interfrange), mais uniquement leur finesse et l'apparition de maxima secondaires.
+\section{Conclusion}
+Ce TP a permis de valider les modèles de l'optique ondulatoire par l'étude des figures de diffraction et d'interférences. Nous avons confirmé que l'étalement de la tache centrale est inversement proportionnel à la largeur de la fente a et que l'interfrange est proportionnel à la longueur d'onde \(\lambda\).
+
+L'analyse des bifentes a illustré la modulation des franges d'interférence par l'enveloppe de diffraction. Les mesures ont permis de caractériser les fentes A, B et C avec une précision cohérente , identifiant notamment la fente A comme la plus étroite et la C comme la plus espacée. Enfin, l'étude des fentes multiples a montré qu'un nombre élevé de fentes affine les maxima principaux, et crée de nouveaux maximas secondaires.
+\end{document}

@@ -1,0 +1,96 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Algèbre linéaire 2}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+\setcounter{chapter}{1}
+\chapter{Applications linéaires}
+\section{Application linéaire}
+\begin{definition}[Application linéaire]
+Soit f une application. Elle est linéaire si \(f(a+b) = f(a)+f(b)\) et \(f(\lambda a) = \lambda f (a)\), \(f(0) = 0\). Cet ensemble est noté \(\mathcal{L}\).
+\end{definition}
+\begin{definition}[Endomorphisme]
+Un endomorphisme est une application allant dans le m\^eme espace que celui de départ.
+\end{definition}
+\begin{definition}[Isomorphisme]
+Un endomorphisme est une application linéaire bijective de E dans E'
+\end{definition}
+\section{Images et noyaux}
+\begin{proposition}
+L'image d'un SEV par une AL est un SEV de l'espace d'arrivé
+\end{proposition}
+\begin{definition}[Noyau]
+Noté \(\ker(f)\), c'est l'ensemble des vecteurs qui donnent le vecteur nul par l'AL.
+\end{definition}
+\begin{definition}[Image]
+Noté \(\Im(f)\), c'est l'ensemble des vecteurs de l'espace d'arrivée que l'application peut produire.
+\end{definition}
+\begin{proposition}[Injectivité et noyau]
+f est injective \(\iff Ker(f) = \{0\}\)
+\end{proposition}
+\begin{proposition}[Famille et AL]
+Si f est injective et la famille E est libre, l'image de cette famille est aussi libre. Si f est surjective et la famille E est génératrice, l'image de cette famille est aussi génératrice.
+\end{proposition}
+\begin{definition}[Espaces isomoprphes]
+2 espaces sont isomorphes \(\iff\) leur dimension est égale.
+\end{definition}
+\begin{theorem}[Théorème du rang]
+Soit \(f:E\to E'\). ALors \[\dim(E) = rg(f)+\dim(\ker(f))\]
+\end{theorem}
+\begin{theorem}[Injectivité/Surjectivité en dimension finie]
+Si f navigue dans 2 espaces de m\^eme dimension, les propriétés suivantes sont équivalentes : injectivité ; surjectivité ; bijectivité
+\end{theorem}
+\section{Matrices et applications linéaires}
+\subsection{Définitions}
+\begin{definition}[Matrice de f]
+On appelle matrice de f dans les bases \(\{e_1,\dots,e_n\}, \{\epsilon_1,\dots, \epsilon_n\}\) \[M(f) = \begin{bmatrix}
+a_{11}&a_{12}&\dots& a_{1n}\\
+a_{21}&a_{22}&\dots& a_{2n}\\
+\end{bmatrix}\] avec \(f(e_1) = a_{11}\epsilon_{1}+a_{21}\epsilon_{2}+\dots+a_{p1}\epsilon_p\)
+\end{definition}
+\subsection{Changement de base}
+\begin{definition}[Matrice de passage]
+Soient 2 bases de E, on peut écriree \(e_1' = p_{11}e_1+p_{21}e_{2}+\dots+p_{n1}e_n\) et la matrice de passage est  \[ \begin{bmatrix}
+p_{11}&p_{12}&\dots& p_{1n}\\
+p_{21}&p_{22}&\dots& p_{2n}\\
+\end{bmatrix}\]
+\end{definition}
+\end{document}
+
+

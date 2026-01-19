@@ -1,0 +1,94 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 1 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\begin{document}
+\chapter{Champ électrique et potentiel par des charges ponctuelles}
+\section{Charges ponctuelles}
+\begin{definition}[Charge ponctuelle]
+Les charges ponctuelles sont des particules élémentaires, comme l'électron \(e^-\) avec \(q_e = 1.6\cdot 10^{-19}C, q_p = + 1.6\cdot 10^{-19}C\)
+\end{definition}
+\section{Lois de Coulombs}
+Elles décrivent les forces que les charges exercent les unes sur les autres. On note q la charge au point M et \(q_p\) la charge au point M.
+\begin{theorem}[Lois de Coulombs]
+La force que la charge \(q_p\) exerce sur q est \[\vec{F_{q_p\to q}} = \frac{qq_p}{4\pi \epsilon_0}\frac{\vec{e_{PM}}}{\norm{PM}^2}\] avec \(\epsilon_0\) la permittivité du vide \(\frac{1}{36\pi \cdot 10^{9}}\) et \(\frac{1}{4\pi \epsilon_0}\simeq 9\cdot 10^{9}\)
+\end{theorem}
+%TODO Schema 1
+
+Si 2 charges ponctuelles sont de m\^eme signe, elles se repoussent, dans le cas contraire, elles s'attirent. On a les m\^emes propriétés qu'en mécanique du point.
+\section{Champ électrique crée par une charge ponctuelle}
+\subsection{Définition}
+\begin{definition}[Champ électrique]
+\[\vec{F_{q_p\to q}} = q \cdot \E\] avec \(\E\) qui ne dépend que de la charge \(q_p\) : \[\E = \frac{q_p}{4\pi\epsilon_0}\frac{\vec{e_{PM}}}{\norm{PM}^2}\] est le champ électrique crée par \(q_p\) au point M
+\end{definition}
+\subsection{Remarques}
+\begin{itemize}
+ \item \([\E] = \frac{[charge]}{[\epsilon_0][L^2]}\)
+ \item \(\norm{E} \sim \frac{1}{\norm{PM}^2}\)
+ \item Le champ \(\E\) fuit les charges positives et est orientée vers les charges négatives. La direction des vecteurs du champ est radiale.
+ \item Unité du champ électrique : \(NC^{-1} / Vm^{-1}\)
+\end{itemize}
+\subsection{Théorème de superposition}
+\begin{theorem}[Théorème de superposition]
+Le champ électrique d'une distribution de charges ponctuelles \(q_i\)  vaut \(\sum_{i=1}^n \vec{E_i}(M)\) au point M.
+\end{theorem}
+\section{Potentiel électrique}
+\subsection{Circulation de \(\E\)}
+Soit q placée en O qui crée en M \(\E\) : \[\E = \frac{q}{4\pi \epsilon_0 r^2}\vec{e_r}\]
+
+Calculons la Circulation entre A et B (on reste en coordonnée sphérique pour des raisons de symétrie) :
+\begin{flalign*}
+\mathcal{C}_{A\to B}\E &= \int_A^B\E\cdot \dd \vec{l}(M)\\
+&= \int_A^B\E\cdot (\dd r \vec{e_r}+r\dd \theta \vec{e_{\theta}}+r\sin(\theta)\dd \varphi \vec{e_{\varphi}})\\
+&= \int_A^B\frac{q}{4\pi \epsilon_0 r^2}\dd r\\
+&= \frac{q}{4\pi \epsilon_0}\int_A^B\frac{\dd r}{r^2}\\
+&= \frac{q}{4\pi \epsilon_0}\int_{r_A}^{r_B}\frac{\dd r}{r^2}\\
+&= \frac{q}{4\pi \epsilon_0 r_a} - \frac{q}{4\pi \epsilon_0 r_b}
+\end{flalign*}
+Le résultat ne dépend que de la position des points et non du chemin suivi, le champ est donc conservatif
+\subsection{Potentiel électrique}
+On peut écrire \(\mathcal{C}_{A\to B}\E = V(A)-V(B)\) avec \(V(M) = \frac{q}{4\pi\epsilon_0 r} + Cst\). V(M) est le potentiel électrique crée au point M par la charge ponctuelle q placée au point O.
+\subsection{Remarques}
+\begin{itemize}
+ \item \(V(M) \sim \frac{1}{\norm{PM}}\)
+ \item \([V(M)] = \frac{[charge]}{[\epsilon_0]L}\)
+ \item \(V(M)\) est défini à une constante additive arbitraire\marginInfo{C'est pas grave car ce qui a un sens physique, c'est la différence de potentiel où la constante disparaît.}.
+\end{itemize}
+\subsection{Théorème de superposition}
+De la m\^eme façon que pour la force, le potentiel obéit aux m\^emes lois.
+ \end{document}

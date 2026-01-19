@@ -1,0 +1,141 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 1 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\begin{document}
+\setcounter{chapter}{4}
+\chapter{Calcul de champ avec Gauss}
+Cette méthode ne s'applique que dans le cas où le système présente beaucoup d'éléments de symétrie :
+\begin{itemize}
+ \item C\^able rectiligne infiniment long tel que \(\rho_c(M) = \rho_c(\rho)\)
+ \item Distributions de charge à symétrie sphérique
+ \item Plaques infinies planes \(\perp (Oz)\) telles que \(\rho_c(M) = \rho_c(z)\).
+\end{itemize}
+\section{Notion de surface fermée orienté}
+\begin{definition}[Surface fermée]
+C'est une surface qui délimite entièrement un volume \(\mv\) fini.
+\end{definition}
+C'est le cas des sphères, boite de conserve, boite cubique. Des surfaces ouvertes sont des carrés, paroi latérale d'un cylindre, disque.
+
+\begin{definition}[Surface fermée orientée]
+Une surface fermée orientée  est une surface fermée en tout de laquelle on associe un vecteur unitaire \(\vec{n}(M)\) perpendiculaire en ce point à la surface et orienté vers l'extérieur de la surface.
+\end{definition}
+\section{Flux de champ}
+En un point M, on définit la surface élémentaire autour de ce point et le vecteur normal à la surface. On définit également le champ électrique crée par la distribution de charge.
+
+\begin{definition}
+Le flux de E à travers S est le scalaire \[\phi = \iint \E \cdot \vec{n}\dd S\]
+\end{definition}
+\section{Calcul de flux}
+\subsection{Généralisation}
+Si E est le champ crée par une charge ponctuelle \(q\) alors \(iint \E \cdot \vec{n}\dd S = \frac{q}{\epsilon_0}\) ou 0 si elle ne la contient pas.
+\section{Théorème de Gauss}
+On considère une distribution de charges et une surface fermée S. Une partie est à l'intérieur de S et l'autre à l'extérieur.
+
+On note \(\E\) le champ électrique crée au point M par toutes les charges de la distribution, \(E_{int}, E_{ext}\) respectivement celui crée par les charges intérieures et extérieures.
+
+On sait que \[\iint \E\cdot \vec{n}\dd S = \iint E_{int}\cdot \vec{n}\dd S = \sum q_{int} \cdot \frac{1}{\epsilon_0}\]
+\begin{theorem}[Théorème de Gauss]
+Le flux de E à travers une surface fermée orientée est égal à la somme des charges intérieures à cette surface fermée divisée par \(\epsilon_0\) :
+\[\iint \E\cdot \vec{n}\dd S = \frac{\sum q_{int}}{\epsilon_0}\]
+\end{theorem}
+\section{Méthode de calcul}
+\begin{enumerate}
+ \item Faire un choix judicieux, d'axes, de système de coordonnées et de base.
+ \item Considérer les symétries et invariances pour savoir quelles sont les composantes non nulle et leur dépendance.
+ \item Faire un choix judicieux de surface fermée S (Surface de Gauss) servant à appliquer le théorème de Gauss
+ \begin{itemize}
+  \item Elle doit \^etre telle que \(\E\cdot \vec{n}\) est uniforme sur S
+ \end{itemize}
+\item Expliciter le calcul du Flux en fonction de la composante non nulle du champ électrique
+\item Calculer la somme des charges intérieures à S
+\item Appliquer le théorème de Gauss et en déduire la composante inconnue du champ
+\end{enumerate}
+\section{Exemple : charge ponctuelle}
+La distribution de charge est àn symétrie sphérique autour de la charge ponctuelle placée en O. On utilise les coordonnées sphériques locales et on utilise la base sphérique locale.
+
+On a \(\E = E_r(r0\er)\)
+
+On choisit maintenant S : une sphère de centre O pour obtenir que \[\E\cdot \vec{n} = E_r(r)\]
+
+On fait maintenant le calcul explicite: \[\iint \E\cdot \vec{n}\dd S = E_r\cdot r^2\int_{\theta=0}^{\pi}\sin(\theta)\dd \theta\int_{\varphi=0}^{2\pi} = 4\pi r^2E_r\]
+
+On sait que \(\sum q_{int} = q\)
+
+Donc par le théorème de Gauss :
+\[E_r  = \frac{q}{4\pi\epsilon_0r^2}\er\]
+\section{Exemple 2 : fil rectiligne infini}
+On confond l'axe Oz avec un fil chargé et on utilise la base cylindrique locale associée à M :
+
+Par les symétries et invariances, \(\E = E_{\rho}\vec{e_{\rho}}\).
+
+Choix de S : Cylindre fermé d'axe Oz de rayon \(\rho\).
+
+Si on prend un point quelconque sur \(S_1\) et \(S_2\), le produit scalaire est bien uniforme par morceaux sur les 3 faces. En plus, le flux sur les faces haut et bas s'annule.
+
+\begin{flalign*}
+\phi &= \iint \E\cdot\vec{n}\dd S\\
+&= \iint_{S1}\E\cdot \vec{n}\dd S + \iint_{S2}\E\cdot \vec{n}\dd S+ \iint_{Slat}\E\cdot \vec{n}\dd S\\
+&= 0 + 0 + \iint_{Slat} E_{\rho}(\rho)\rho\dd \varphi\dd z\\
+&= \int_{\varphi=0}^{2\pi}\int_{z=z_1}^{z_2}E_{\rho}(\rho)\rho\dd \varphi\dd z\\
+&=E_{\rho}(\rho)\rho \int_{\varphi=0}^{2\pi}\dd \varphi \int_{z=z_1}^{z_2}\dd z\\
+&= E_{\rho}(\rho)\rho\cdot2\pi (z_2-z_1)
+\end{flalign*}
+On calcule maintenant \(\sum Q_{int}\) : \(Q_{int} = (z_2-z_1)\lambda\)
+
+On écrit maintenant le théorème de Gauss :
+\begin{flalign*}
+2\pi\rho(z_2-z_1)E_{\rho} &= \frac{1}{\epsilon_0}(z_2-z_1)\lambda\\
+E_{\rho} &= \frac{\lambda}{2\pi\epsilon_0 \rho}
+\end{flalign*}
+\section{Forme locale du théorème de Gauss (*)}
+\begin{theorem}[Formule de Green-Ostro]
+\[\iint_{S_v}\E\cdot \vec{n}\dd S=\iiint_{V}div(\E)\dd V\]
+\end{theorem}
+nous permet de déduire que
+\begin{theorem}[Forme locale du théorème de Green]
+\(div(\vec{E}) = \frac{\rho_C}{\epsilon_0}\)
+\end{theorem}
+Le théorème de Gauss sous forme locale est une équation aux dérivées partielles portant sur les composantes du champ électrique.
+ \end{document}

@@ -1,0 +1,1402 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Outils Mathématiques 2}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\mpsi}{\(\psi\)}
+\begin{document}
+\setcounter{chapter}{2}
+\chapter{Calcul vectoriel}
+\section{Paramétrisation}
+\subsection{Segment du point $A=(1,0)$ au point $B=(0,1)$}
+La paramétrisation d'un segment de droite joignant $A$ à $B$ est donnée par la formule :
+$$\vec{r}(t) = \vec{OA} + t \cdot \vec{AB}, \quad t \in [0, 1]$$
+
+1.  Vecteur directeur $\vec{AB}$ :
+    $$\vec{AB} = \vec{OB} - \vec{OA} = \begin{pmatrix} 0 - 1 \\ 1 - 0 \end{pmatrix} = \begin{pmatrix} -1 \\ 1 \end{pmatrix}$$
+
+2.  Paramétrisation $\vec{r}(t)$ :
+    $$\vec{r}(t) = \begin{pmatrix} 1 \\ 0 \end{pmatrix} + t \begin{pmatrix} -1 \\ 1 \end{pmatrix} = \begin{pmatrix} 1 - t \\ t \end{pmatrix}$$
+    $$\vec{r}(t) = (1 - t) \vec{e}_x + t \vec{e}_y, \quad t \in [0, 1]$$
+
+3.  Dérivée du vecteur position $\frac{d\vec{r}}{dt}$ :
+    $$\frac{d\vec{r}}{dt} = \begin{pmatrix} \frac{d}{dt}(1 - t) \\ \frac{d}{dt}(t) \end{pmatrix}$$
+    $$\frac{d\vec{r}}{dt} = - \vec{e}_x + \vec{e}_y = \begin{pmatrix} -1 \\ 1 \end{pmatrix}$$
+
+\subsection{Segment du point $A=(0,3)$ au point $B=(4,1)$ }
+
+On utilise la même formule $\vec{r}(t) = \vec{A} + t \cdot \vec{AB}, \quad t \in [0, 1]$.
+
+1.  Vecteur directeur $\vec{AB}$ :
+    $$\vec{AB} = \vec{B} - \vec{A} = \begin{pmatrix} 4 - 0 \\ 1 - 3 \end{pmatrix} = \begin{pmatrix} 4 \\ -2 \end{pmatrix}$$
+
+2.  Paramétrisation $\vec{r}(t)$ :
+    $$\vec{r}(t) = \begin{pmatrix} 0 \\ 3 \end{pmatrix} + t \begin{pmatrix} 4 \\ -2 \end{pmatrix} = \begin{pmatrix} 4t \\ 3 - 2t \end{pmatrix}$$
+    $$\vec{r}(t) = 4t \vec{e}_x + (3 - 2t) \vec{e}_y, \quad t \in [0, 1]$$
+
+3.  Dérivée du vecteur position $\frac{d\vec{r}}{dt}$ :
+    $$\frac{d\vec{r}}{dt} = \begin{pmatrix} \frac{d}{dt}(4t) \\ \frac{d}{dt}(3 - 2t) \end{pmatrix}$$
+    $$\frac{d\vec{r}}{dt} = 4 \vec{e}_x - 2 \vec{e}_y = \begin{pmatrix} 4 \\ -2 \end{pmatrix}$$
+\subsection{Arc de cercle de centre $C=(-1,0)$, d'extrémités $A=(0,0)$ et $B=(-1,1)$ de A vers B.}
+
+1.  Détermination du Rayon ($R$) et du Centre ($C$) : Centre : $C(-1, 0)$ et le rayon $R = CA = \sqrt{(0 - (-1))^2 + (0 - 0)^2} = 1$.
+
+2.  Paramétrisation :
+    Pour un cercle de centre $(x_C, y_C)$ et rayon $R$, la paramétrisation est :
+    $$\begin{cases} x(t) = x_C + R \cos(t) \\ y(t) = y_C + R \sin(t) \end{cases} \implies \begin{cases} x(t) = -1 + \cos(t) \\ y(t) = \sin(t) \end{cases}$$
+
+3.  Détermination de l'intervalle $t$ :
+    Le paramètre $t$ représente l'angle $\theta$ en coordonnées polaires par le centre $C$.
+    Point A ($0, 0$) :
+        $$\begin{cases} 0 = -1 + \cos(t) \implies \cos(t) = 1 \\ 0 = \sin(t) \implies \sin(t) = 0 \end{cases} \implies t_{initial} = 0$$
+    Point B ($-1, 1$) :
+        $$\begin{cases} -1 = -1 + \cos(t) \implies \cos(t) = 0 \\ 1 = \sin(t) \implies \sin(t) = 1 \end{cases} \implies t_{final} = \frac{\pi}{2}$$
+
+Remarque : on pouvait évidement trouver t à l'oeil, mais la justification rigoureuse est celle ci-dessus.
+
+    L'arc de cercle dirigé de $A$ vers $B$ est donc :
+    $$\vec{r}(t) = (-1 + \cos(t)) \vec{e}_x + \sin(t) \vec{e}_y, \quad t \in [0, \frac{\pi}{2}]$$
+
+4.  Dérivée du vecteur position $\frac{\dd\vec{r}}{dt}$ :
+    $$\frac{\dd\vec{r}}{dt} = \begin{pmatrix} \frac{d}{dt}(-1 + \cos(t)) \\ \frac{d}{dt}(\sin(t)) \end{pmatrix}$$
+    $$\frac{\dd\vec{r}}{dt} = - \sin(t) \vec{e}_x + \cos(t) \vec{e}_y = \begin{pmatrix} -\sin(t) \\ \cos(t) \end{pmatrix}$$
+\section{Intégrales de champ vectoriel}
+\subsection{Valeur moyenne du champ de vitesse}
+Le champ de vitesse dans un tube de rayon $R$ est donné par $\vec{v}(\vec{r})=\vec{v}_{max}(1-\rho^{2}/R^{2})\vec{e}_z$ en coordonnées cylindriques.
+
+La valeur moyenne $\langle \vec{v} \rangle$ sur une section $\mathcal{S}$ (un disque de rayon $R$) est donnée par :
+$$\langle \vec{v} \rangle = \frac{1}{\text{Aire}(\mathcal{S})} \iint_{\mathcal{S}} \vec{v} \, dS$$
+
+1.  Aire de la section : $\text{Aire}(\mathcal{S}) = \pi R^2$.
+2.  Calcul de l'intégrale : On utilise les coordonnées polaires sur le disque ($dS = \rho \, d\rho \, d\varphi$) :
+\begin{flalign*}
+\iint_{\mathcal{S}} \vec{v} \, dS &= \int_{0}^{2\pi} d\varphi \cdot \int_{0}^{R} \vec{v}_{max} \left(1 - \frac{\rho^{2}}{R^{2}}\right) \rho \, d\rho \, \vec{e}_z\\
+    &= 2\pi \vec{v}_{max} \vec{e}_z \cdot \int_{0}^{R} \left(\rho - \frac{\rho^{3}}{R^{2}}\right) d\rho\\
+    &= 2\pi \vec{v}_{max} \vec{e}_z \cdot \left[ \frac{\rho^{2}}{2} - \frac{\rho^{4}}{4R^{2}} \right]_{0}^{R}\\
+    &= 2\pi \vec{v}_{max} \vec{e}_z \cdot \left( \frac{R^{2}}{2} - \frac{R^{2}}{4} \right) \\
+    &= \frac{\pi R^{2}}{2} \vec{v}_{max} \vec{e}_z
+\end{flalign*}
+
+
+
+3.  Valeur moyenne :
+    $$\langle \vec{v} \rangle = \frac{1}{\pi R^2} \cdot \left( \frac{\pi R^{2}}{2} \vec{v}_{max} \vec{e}_z \right) = \frac{1}{2} \vec{v}_{max} \vec{e}_z$$
+\subsection{Valeur moyenne du vecteur $\vec{OM}$ dans le demi-disque $\mathcal{D}$}
+
+Le domaine est $\mathcal{D}=\{(x,y),x^{2}+y^{2}<R^{2},y>0\}$. Le vecteur position est $\vec{OM} = x \vec{e}_x + y \vec{e}_y$.
+
+$$\langle \vec{OM} \rangle = \frac{1}{\text{Aire}(\mathcal{D})} \iint_{\mathcal{D}} \vec{OM} \, dS$$
+
+1.  Aire de $\mathcal{D}$ : $\text{Aire}(\mathcal{D}) = \frac{1}{2} \pi R^2$.
+2.  Calcul de l'intégrale : On utilise les coordonnées polaires ($\rho \in [0, R]$, $\varphi \in [0, \pi]$).
+    $$\iint_{\mathcal{D}} \vec{OM} \, dS = \int_{0}^{\pi} \int_{0}^{R} (\rho \cos\varphi \vec{e}_x + \rho \sin\varphi \vec{e}_y) \rho \, d\rho \, d\varphi$$
+    La composante en $\vec{e}_x$ est nulle car $\int_{0}^{\pi} \cos\varphi \, d\varphi = 0$.
+
+    La composante en $\vec{e}_y$ :
+    \begin{flalign*}
+    \int_{0}^{\pi} \sin\varphi \, d\varphi \cdot \int_{0}^{R} \rho^{2} \, d\rho &= [-\cos\varphi]_{0}^{\pi} \cdot \left[ \frac{\rho^{3}}{3} \right]_{0}^{R}\\
+    &= (1 - (-1)) \cdot \frac{R^{3}}{3}\\
+    &= 2 \cdot \frac{R^{3}}{3} \\
+    &= \frac{2R^{3}}{3}
+    \end{flalign*}
+    Donc, $\iint_{\mathcal{D}} \vec{OM} \, dS = \frac{2R^{3}}{3} \vec{e}_y$.
+3.  Valeur moyenne :
+    $$\langle \vec{OM} \rangle = \frac{1}{\frac{1}{2} \pi R^2} \cdot \frac{2R^{3}}{3} \vec{e}_y = \frac{4R^{3}}{3\pi R^2} \vec{e}_y = \langle \vec{OM} \rangle = \frac{4R}{3\pi} \vec{e}_y$$
+
+\subsection{Circulation du poids $\vec{P}=-mg\vec{e}_{z}$}
+
+Le poids $\vec{P}$ est un champ conservatif (dérivant du potentiel $V = -mg z$). La circulation le long d'un chemin $\mathcal{C}$ de $A$ à $B$ est égale à l'opposé de la variation d'énergie potentielle :
+$$W_{A \to B} = \int_{\mathcal{C}} \vec{P} \cdot d\vec{r}$$
+
+1.  Circulation sur le segment de $A$ à $B$ :
+    $$W_{A \to B} = \int_{\mathcal{C}} (-mg\vec{e}_{z}) \cdot d\vec{r}$$
+    Comme $\vec{e}_z \cdot d\vec{r} = dz$, on a :
+    $$W_{A \to B} = \int_{z_A}^{z_B} -mg \, dz = -mg [z]_{z_A}^{z_B}$$
+    $$\mathbf{W_{A \to B} = -mg(z_{B}-z_{A})}$$
+
+2.  Circulation sur le chemin $A \to C \to B$ :
+    Puisque le champ est conservatif, la circulation est indépendante du chemin et ne dépend que des extrémités.
+    $$W_{A \to C \to B} = W_{A \to C} + W_{C \to B} = -mg(z_C - z_A) + (-mg(z_B - z_C))$$
+    $$W_{A \to C \to B} = -mg(z_C - z_A + z_B - z_C) = \mathbf{-mg(z_{B}-z_{A})}$$
+
+\subsection{Circulation de la force $\vec{F}(x,y)=\frac{F_{0}}{R}(-y\vec{e}_{x}+x\vec{e}_{y})$ sur le cercle $\mathcal{C}$}
+
+Le cercle $\mathcal{C}$ a pour rayon $R$ et centre $O$, orienté positivement.
+
+    Paramétrisation : $\vec{r}(t) = R \cos t \vec{e}_x + R \sin t \vec{e}_y$, $t \in [0, 2\pi]$.
+
+    Déplacement : $d\vec{r} = (-R \sin t \vec{e}_x + R \cos t \vec{e}_y) dt$.
+
+    Force sur $\mathcal{C}$ : $\vec{F}(\vec{r}(t)) = \frac{F_{0}}{R} (-R \sin t \vec{e}_{x} + R \cos t \vec{e}_{y}) = F_{0} (-\sin t \vec{e}_{x} + \cos t \vec{e}_{y})$.
+
+    Produit scalaire :
+        $$\vec{F} \cdot d\vec{r} = F_{0} [ (-\sin t)(-R \sin t) + (\cos t)(R \cos t) ] dt = F_{0} R (\sin^{2} t + \cos^{2} t) dt = F_{0} R \, dt$$
+
+    Circulation :
+        $$\oint_{\mathcal{C}} \vec{F} \cdot d\vec{r} = \int_{0}^{2\pi} F_{0} R \, dt = 2\pi R F_{0}$$
+
+
+\subsection{Flux}
+On cherche à calculer le flux de $\vec{F}(x,y,z)=\frac{1}{1+(z/l)^{2}}(x\vec{e}_{x}+y\vec{e}_{y}+z\vec{e}_{z})$ à travers la surface latérale $\mathcal{S}$ du cylindre infini d'axe $(O, \vec{e}_z)$ et de rayon $R$.
+
+1.  Élément de surface orienté ($d\vec{S}$) : Sur le cylindre de rayon $R$, $d\vec{S} = \vec{e}_\rho \, dS = \vec{e}_\rho \, R \, d\varphi \, dz$.
+
+2.  Produit scalaire $\vec{F} \cdot d\vec{S}$ :
+    $$\vec{F} \cdot d\vec{S} = \frac{1}{1+(z/l)^{2}} (x\vec{e}_{x}+y\vec{e}_{y}+z\vec{e}_{z}) \cdot \vec{e}_\rho \, R \, d\varphi \, dz$$
+
+    En coordonnées cylindriques, $x\vec{e}_{x}+y\vec{e}_{y} = \rho \vec{e}_\rho$. Sur le cylindre, $\rho=R$.
+    $$(x\vec{e}_{x}+y\vec{e}_{y}+z\vec{e}_{z}) = R\vec{e}_{\rho} + z\vec{e}_{z}$$
+    $$(R\vec{e}_{\rho} + z\vec{e}_{z}) \cdot \vec{e}_\rho = R(\vec{e}_{\rho}\cdot\vec{e}_{\rho}) + z(\vec{e}_{z}\cdot\vec{e}_{\rho}) = R$$
+    $$\vec{F} \cdot d\vec{S} = \frac{R}{1+(z/l)^{2}} \, R \, d\varphi \, dz = \frac{R^2}{1+(z/l)^{2}} \, d\varphi \, dz$$
+3.  Calcul du Flux : L'intégration se fait sur $z \in ]-\infty, +\infty[$ et $\varphi \in [0, 2\pi]$.
+    $$\Phi = R^2 \int_{0}^{2\pi} d\varphi \cdot \int_{-\infty}^{+\infty} \frac{1}{1+(z/l)^{2}} \, dz$$
+    $$\Phi = 2\pi R^2 \cdot (l [\arctan(z/l)]_{-\infty}^{+\infty}) = 2\pi R^2 \cdot (l (\frac{\pi}{2} - (-\frac{\pi}{2}))) =  2\pi^2 l R^2$$
+\subsection{Flux de $\vec{F}$ champ de vecteur constant}
+
+Soit $\vec{F}$ un champ constant, $S$ l'aire de la surface plane, et $\vec{n}$ son vecteur normal unitaire constant.
+
+Le flux est donné par :
+$$\Phi = \iint_{\mathcal{S}} \vec{F} \cdot d\vec{S}$$
+Comme $\vec{F}$ est constant et $d\vec{S} = \vec{n} dS$ avec $\vec{n}$ constant :
+$$\Phi = (\vec{F} \cdot \vec{n}) \iint_{\mathcal{S}} dS$$
+$$\mathbf{\Phi = (\vec{F} \cdot \vec{n}) S}$$
+\section{Calcul de gradient}
+\subsection{1. Gradient du potentiel quadratique et force associée}
+
+L'énoncé donne le potentiel scalaire $V(x,y)=k(x^{2}+y^{2})/2$ avec $k>0$.
+
+Le gradient de $V$ en coordonnées cartésiennes $(x,y)$ est donné par:
+$$
+\vec{\nabla}V = \frac{\partial V}{\partial x}\vec{e}_{x} + \frac{\partial V}{\partial y}\vec{e}_{y}
+$$
+Calculons les dérivées partielles:
+$\frac{\partial V}{\partial x} = \frac{\partial}{\partial x} \left( \frac{k}{2}(x^{2}+y^{2}) \right) = \frac{k}{2}(2x) = kx$
+
+$\frac{\partial V}{\partial y} = \frac{\partial}{\partial y} \left( \frac{k}{2}(x^{2}+y^{2}) \right) = \frac{k}{2}(2y) = ky$
+
+Donc, le gradient de $V$ est:
+$$
+\vec{\nabla}V(x,y) = kx\vec{e}_{x} + ky\vec{e}_{y} = k(x\vec{e}_{x} + y\vec{e}_{y}) = k\vec{r}
+$$
+où $\vec{r} = x\vec{e}_{x} + y\vec{e}_{y}$ est le vecteur position.
+
+
+La force $\vec{F}$ ressentie dans un potentiel $V$ est donnée par $\vec{F} = -\vec{\nabla}V$.
+$$
+\vec{F}(x,y) = -k(x\vec{e}_{x} + y\vec{e}_{y}) = -k\vec{r}
+$$
+
+Les courbes de niveau de $V(x,y)$ sont les courbes d'équation $V(x,y) = C$ (avec $C \ge 0$ une constante).
+$$
+\frac{k}{2}(x^{2}+y^{2}) = C \quad \Rightarrow \quad x^{2}+y^{2} = \frac{2C}{k} = R^2
+$$
+Les courbes de niveau sont des cercles centrés à l'origine $O$.
+
+Le gradient $\vec{\nabla}V$ (et donc la force $\vec{F}$) est toujours orthogonal aux courbes de niveau et pointe vers les valeurs croissantes du potentiel (vers l'extérieur). La force $\vec{F}$ est dirigée vers le centre $O$.
+\subsection{Gradient du potentiel gravitationnel}
+
+On a la fonction scalaire $f(x,y,z)=1/\sqrt{x^{2}+y^{2}+z^{2}}$. En utilisant la notation $r = \sqrt{x^{2}+y^{2}+z^{2}}$, nous avons $f(\vec{r}) = 1/r$.
+
+
+Pour calculer le gradient $\vec{\nabla}f$, il est souvent plus simple d'utiliser la dérivée par rapport à $r$ et l'identité $\vec{\nabla}g(r) = g'(r)\vec{e}_{r}$, où $\vec{e}_{r} = \vec{r}/r$ est le vecteur unitaire radial.
+
+Ici, $f(r) = 1/r$.
+La dérivée de $f$ par rapport à $r$ est:
+$$
+f'(r) = \frac{d}{dr} \left(\frac{1}{r}\right) = -\frac{1}{r^{2}}
+$$
+Donc, le gradient est:
+$$
+\vec{\nabla}f = f'(r)\vec{e}_{r} = -\frac{1}{r^{2}}\vec{e}_{r}
+$$
+En coordonnées cartésiennes, rappelant que $\vec{e}_{r} = \frac{x\vec{e}_{x} + y\vec{e}_{y} + z\vec{e}_{z}}{r}$:
+$$
+\vec{\nabla}f(x,y,z) = -\frac{1}{r^{2}}\frac{x\vec{e}_{x} + y\vec{e}_{y} + z\vec{e}_{z}}{r} = -\frac{x\vec{e}_{x} + y\vec{e}_{y} + z\vec{e}_{z}}{(x^{2}+y^{2}+z^{2})^{3/2}}
+$$
+
+Le potentiel gravitationnel ressenti par une particule de masse $m$ au point $\vec{r}$ en présence d'une masse $M$ à l'origine est $V(\vec{r})=-\mathcal{G}mM/r$.
+La force gravitationnelle $\vec{F}_{G}$ est donnée par:
+$$
+\vec{F}_{G} = -\vec{\nabla}V
+$$
+Puisque $V(\vec{r}) = -\mathcal{G}mM \cdot \left(\frac{1}{r}\right) = -\mathcal{G}mM \cdot f(\vec{r})$, nous avons:
+$$
+\vec{F}_{G} = -\vec{\nabla}\left(-\frac{\mathcal{G}mM}{r}\right) = \mathcal{G}mM \cdot \vec{\nabla}\left(\frac{1}{r}\right)
+$$
+En utilisant le résultat du gradient de $1/r$:
+$$
+\vec{F}_{G} = \mathcal{G}mM \cdot \left(-\frac{1}{r^{2}}\vec{e}_{r}\right) = -\frac{\mathcal{G}mM}{r^{2}}\vec{e}_{r}
+$$
+C'est la loi de la gravitation universelle de Newton. La force est attractive (dirigée par $-\vec{e}_{r}$ vers la masse $M$ à l'origine) et sa magnitude est $\frac{\mathcal{G}mM}{r^{2}}$.
+\section{Changement de coordonnées}
+\subsection{Coordonnées Polaires}
+\subsubsection{Vérification}
+Nous voulons exprimer $\vec{\nabla}f = \frac{\partial f}{\partial x}\vec{e}_{x} + \frac{\partial f}{\partial y}\vec{e}_{y}$ dans la base polaire $(\vec{e}_{\rho}, \vec{e}_{\varphi})$.
+
+1. Relations
+
+On sait que :
+$$
+x = \rho \cos \varphi \quad \text{et} \quad y = \rho \sin \varphi
+$$
+
+De plus, les vecteurs unitaires polaires $\vec{e}_{\rho}$ et $\vec{e}_{\varphi}$ s'expriment dans la base cartésienne $(\vec{e}_{x}, \vec{e}_{y})$ :
+$$
+\vec{e}_{\rho} = \cos \varphi \vec{e}_{x} + \sin \varphi \vec{e}_{y}
+$$
+$$
+\vec{e}_{\varphi} = -\sin \varphi \vec{e}_{x} + \cos \varphi \vec{e}_{y}
+$$
+
+Pour trouver les composantes cartésiennes $\vec{e}_{x}$ et $\vec{e}_{y}$ en fonction des vecteurs polaires, nous inversons ces relations :
+$$
+\vec{e}_{x} = \cos \varphi \vec{e}_{\rho} - \sin \varphi \vec{e}_{\varphi}
+$$
+$$
+\vec{e}_{y} = \sin \varphi \vec{e}_{\rho} + \cos \varphi \vec{e}_{\varphi}
+$$
+
+2. Relations entre les Dérivées Partielles
+
+En utilisant la règle de la chaîne, nous exprimons les dérivées cartésiennes en fonction des dérivées polaires. Nous aurons besoin des dérivées suivantes (à partir des relations en A):
+
+ $\frac{\partial x}{\partial \rho} = \cos \varphi$
+
+ $\frac{\partial y}{\partial \rho} = \sin \varphi$
+
+ $\frac{\partial x}{\partial \varphi} = -\rho \sin \varphi$
+
+ $\frac{\partial y}{\partial \varphi} = \rho \cos \varphi$
+
+Les relations de la règle de la chaîne sont :
+$$
+\frac{\partial f}{\partial \rho} = \frac{\partial f}{\partial x}\frac{\partial x}{\partial \rho} + \frac{\partial f}{\partial y}\frac{\partial y}{\partial \rho} = \frac{\partial f}{\partial x}\cos \varphi + \frac{\partial f}{\partial y}\sin \varphi \quad \mathbf{(1)}
+$$
+$$
+\frac{\partial f}{\partial \varphi} = \frac{\partial f}{\partial x}\frac{\partial x}{\partial \varphi} + \frac{\partial f}{\partial y}\frac{\partial y}{\partial \varphi} = \frac{\partial f}{\partial x}(-\rho \sin \varphi) + \frac{\partial f}{\partial y}(\rho \cos \varphi) \quad \mathbf{(2)}
+$$
+
+Pour utiliser ces relations dans l'expression du gradient, nous divisons $\mathbf{(2)}$ par $\rho$ :
+$$
+\frac{1}{\rho}\frac{\partial f}{\partial \varphi} = -\frac{\partial f}{\partial x}\sin \varphi + \frac{\partial f}{\partial y}\cos \varphi \quad \mathbf{(3)}
+$$
+
+3. Dérivation du Gradient
+
+Le gradient en coordonnées cartésiennes est :
+$$
+\vec{\nabla}f = \frac{\partial f}{\partial x}\vec{e}_{x} + \frac{\partial f}{\partial y}\vec{e}_{y}
+$$
+
+Remplaçons $\vec{e}_{x}$ et $\vec{e}_{y}$ par leurs expressions en base polaire :
+$$
+\vec{\nabla}f = \frac{\partial f}{\partial x}(\cos \varphi \vec{e}_{\rho} - \sin \varphi \vec{e}_{\varphi}) + \frac{\partial f}{\partial y}(\sin \varphi \vec{e}_{\rho} + \cos \varphi \vec{e}_{\varphi})
+$$
+
+Regroupons les termes selon les vecteurs de base polaire $\vec{e}_{\rho}$ et $\vec{e}_{\varphi}$ :
+$$
+\vec{\nabla}f = \left(\frac{\partial f}{\partial x}\cos \varphi + \frac{\partial f}{\partial y}\sin \varphi\right)\vec{e}_{\rho} + \left(-\frac{\partial f}{\partial x}\sin \varphi + \frac{\partial f}{\partial y}\cos \varphi\right)\vec{e}_{\varphi}
+$$
+
+Maintenant, identifions les termes entre parenthèses avec les résultats des dérivées partielles en polaires (relations $\mathbf{(1)}$ et $\mathbf{(3)}$) :
+
+Le coefficient de $\vec{e}_{\rho}$ est $\frac{\partial f}{\partial x}\cos \varphi + \frac{\partial f}{\partial y}\sin \varphi$, qui est exactement $\mathbf{(1)}$ :
+    $$
+    \frac{\partial f}{\partial \rho}
+    $$
+Le coefficient de $\vec{e}_{\varphi}$ est $-\frac{\partial f}{\partial x}\sin \varphi + \frac{\partial f}{\partial y}\cos \varphi$, qui est exactement $\mathbf{(3)}$ :
+    $$
+    \frac{1}{\rho}\frac{\partial f}{\partial \varphi}
+    $$
+
+
+En substituant ces identités, nous obtenons l'expression du gradient en coordonnées polaires :
+
+$$
+\vec{\nabla}f = \frac{\partial f}{\partial\rho}\vec{e}_{\rho}+\frac{1}{\rho}\frac{\partial f}{\partial\varphi}\vec{e}_{\varphi}
+$$
+
+\subsubsection{Gradient de $f(\rho)=k\rho^{2}/2$}
+
+Le champ $f$ ne dépend que de $\rho$ (la distance à l'origine), donc $\frac{\partial f}{\partial \varphi} = 0$.
+$$
+f(\rho) = \frac{k}{2}\rho^{2}
+$$
+Calculons la dérivée par rapport à $\rho$:
+$$
+\frac{\partial f}{\partial \rho} = \frac{d}{d\rho}\left(\frac{k}{2}\rho^{2}\right) = k\rho
+$$
+En utilisant l'expression du gradient en coordonnées polaires:
+$$
+\vec{\nabla}f = \frac{\partial f}{\partial\rho}\vec{e}_{\rho}+\frac{1}{\rho}\frac{\partial f}{\partial\varphi}\vec{e}_{\varphi} = (k\rho)\vec{e}_{\rho} + 0\vec{e}_{\varphi} = k\rho\vec{e}_{\rho}
+$$
+\section{Plan Tangent}
+\subsection{Plan Tangent à $z=f(x,y) = x^2 + xy + y^2$ au point $(1, 2, 7)$}
+
+L'équation du plan tangent à la surface $z=f(x,y)$ au point $(x_0, y_0, z_0)$ est donnée par :
+$$
+z - z_0 = \frac{\partial f}{\partial x}(x_0, y_0)(x - x_0) + \frac{\partial f}{\partial y}(x_0, y_0)(y - y_0)
+$$
+
+A . Calcul des dérivées partielles
+$f(x,y) = x^{2}+x y+y^{2}$.
+1.  Dérivée par rapport à $x$ :
+    $$
+    \frac{\partial f}{\partial x} = 2x + y
+    $$
+2.  Dérivée par rapport à $y$ :
+    $$
+    \frac{\partial f}{\partial y} = x + 2y
+    $$
+
+ B. Évaluation au point $M_0 = (1, 2, 7)$
+
+Le point donné est $M_0=(x_0,y_0,z_0)=(1,2,7)$.
+
+1.  Pente dans la direction $x$ :
+    $$
+    \frac{\partial f}{\partial x}(1, 2) = 2(1) + 2 = 4
+    $$
+2.  Pente dans la direction $y$ :
+    $$
+    \frac{\partial f}{\partial y}(1, 2) = 1 + 2(2) = 5
+    $$
+
+3.  Vérification du point : $f(1, 2) = 1^2 + (1)(2) + 2^2 = 1 + 2 + 4 = 7 = z_0$. Le point est bien sur la surface.
+
+ C. Équation du plan tangent
+
+En substituant les valeurs dans l'équation du plan :
+$$
+z - 7 = 4(x - 1) + 5(y - 2)
+$$
+Développement et simplification :
+$$
+z - 7 = 4x - 4 + 5y - 10
+$$
+$$
+4x + 5y - z = 4 + 10 - 7
+$$
+L'équation du plan tangent est :
+$$
+\mathbf{4x + 5y - z = 7}
+$$
+
+\subsection{Plan Tangent à $z=f(x,y) = 8-x^2-y^2$ au point $(1, 2, 3)$}
+
+L'approche est la même que précédemment, avec $f(x,y)=8-x^{2}-y^{2}$.
+
+A. Calcul des dérivées partielles
+
+1.  Dérivée par rapport à $x$ :
+    $$
+    \frac{\partial f}{\partial x} = -2x
+    $$
+2.  Dérivée par rapport à $y$ :
+    $$
+    \frac{\partial f}{\partial y} = -2y
+    $$
+
+B. Évaluation au point $M_0 = (1, 2, 3)$
+
+Le point est $M_0=(x_0,y_0,z_0)=(1,2,3)$.
+1.  Pente dans la direction $x$ :
+    $$
+    \frac{\partial f}{\partial x}(1, 2) = -2(1) = -2
+    $$
+2.  Pente dans la direction $y$ :
+    $$
+    \frac{\partial f}{\partial y}(1, 2) = -2(2) = -4
+    $$
+
+C. Équation du plan tangent
+$$
+z - 3 = -2(x - 1) + (-4)(y - 2)
+$$
+Développement et simplification :
+$$
+z - 3 = -2x + 2 - 4y + 8
+$$
+$$
+2x + 4y + z = 2 + 8 + 3 = 13
+$$
+\subsection{Plan Tangent à la surface implicite $f(x,y,z)=0$ au point $M_0=(1, 1, 1)$}
+
+Pour une surface définie implicitement par $f(x,y,z)=C$ (ici $C=0$), le vecteur normal au plan tangent au point $M_0$ est donné par le gradient de $f$ évalué en ce point : $\vec{n} = \vec{\nabla}f(M_0)$.
+
+L'équation du plan tangent est donnée par :
+$$
+\vec{\nabla}f(M_0) \cdot (\vec{r} - \vec{r}_0) = 0
+$$
+$$
+\frac{\partial f}{\partial x}(M_0)(x - x_0) + \frac{\partial f}{\partial y}(M_0)(y - y_0) + \frac{\partial f}{\partial z}(M_0)(z - z_0) = 0
+$$
+
+La fonction est $f(x,y,z)=2x^{3}-3x^{2}+y^{2}z+yz^{2}+\frac{1}{3}z^{3}-\frac{4}{3}$.
+
+ A. Calcul des dérivées partielles
+
+1.  Dérivée par rapport à $x$ :
+    $$
+    \frac{\partial f}{\partial x} = 6x^2 - 6x
+    $$
+2.  Dérivée par rapport à $y$ :
+    $$
+    \frac{\partial f}{\partial y} = 2yz + z^2
+    $$
+3.  Dérivée par rapport à $z$ :
+    $$
+    \frac{\partial f}{\partial z} = y^2 + 2yz + z^2
+    $$
+
+ B. Évaluation au point $M_0 = (1, 1, 1)$
+
+1.  Composante $x$ du gradient :
+    $$
+    \frac{\partial f}{\partial x}(1, 1, 1) = 6(1)^2 - 6(1) = 0
+    $$
+2.  Composante $y$ du gradient :
+    $$
+    \frac{\partial f}{\partial y}(1, 1, 1) = 2(1)(1) + 1^2 = 3
+    $$
+3.  Composante $z$ du gradient :
+    $$
+    \frac{\partial f}{\partial z}(1, 1, 1) = 1^2 + 2(1)(1) + 1^2 = 4
+    $$
+Le vecteur normal est $\vec{\nabla}f(1, 1, 1) = (0, 3, 4)$.
+
+ C. Équation du plan tangent
+
+Avec $x_0=1, y_0=1, z_0=1$ :
+$$
+0(x - 1) + 3(y - 1) + 4(z - 1) = 0
+$$
+$$
+3y - 3 + 4z - 4 = 0
+$$
+L'équation du plan tangent est :
+$$
+\mathbf{3y + 4z = 7}
+$$
+
+\subsection{Plan Tangent à la surface implicite $f(x,y,z)=9$ au point $M_0=(1, -1, 2)$}
+
+La surface est définie par $f(x,y,z)=(x-2)^{2}+(y+3)^{2}+z^{2} = 9$.
+
+L'équation est de la forme $(x-a)^2 + (y-b)^2 + (z-c)^2 = R^2$. Cette équation représente une sphère  de Centre $C = (2, -3, 0)$ et de Rayon $R = \sqrt{9} = 3$
+
+
+Nous utilisons la méthode du gradient $\vec{\nabla}f$ pour trouver le vecteur normal.
+
+La fonction est $f(x,y,z)=(x-2)^{2}+(y+3)^{2}+z^{2}$.
+
+A. Calcul des dérivées partielles
+
+1.  Dérivée par rapport à $x$ :
+    $$
+    \frac{\partial f}{\partial x} = 2(x-2)
+    $$
+2.  Dérivée par rapport à $y$ :
+    $$
+    \frac{\partial f}{\partial y} = 2(y+3)
+    $$
+3.  Dérivée par rapport à $z$ :
+    $$
+    \frac{\partial f}{\partial z} = 2z
+    $$
+
+B.  Évaluation au point $M_0 = (1, -1, 2)$
+
+1.  Composante $x$ du gradient :
+    $$
+    \frac{\partial f}{\partial x}(1, -1, 2) = 2(1 - 2) = -2
+    $$
+2.  Composante $y$ du gradient :
+    $$
+    \frac{\partial f}{\partial y}(1, -1, 2) = 2(-1 + 3) = 4
+    $$
+3.  Composante $z$ du gradient :
+    $$
+    \frac{\partial f}{\partial z}(1, -1, 2) = 2(2) = 4
+    $$
+Le vecteur normal est $\vec{n} = (-2, 4, 4)$.
+
+C.  Équation du plan tangent
+
+Avec $x_0=1, y_0=-1, z_0=2$ :
+\begin{flalign*}
+-2(x - 1) + 4(y - (-1)) + 4(z - 2) &= 0\\
+-2x + 2 + 4y + 4 + 4z - 8 &= 0\\
+-2x + 4y + 4z &= 8 - 2 - 4\\
+-2x + 4y + 4z &= 2\\
+x - 2y - 2z &= -1
+\end{flalign*}
+\section{Champ de gradient}
+
+\subsection{Champ de Vecteurs $\vec{F}(x,y)=(y-3x^2)\vec{e}_{x}+(x+\sin(y))\vec{e}_{y}$}
+
+A. Vérification qu'il est Conservatif
+Un champ de vecteurs $\vec{F}(x,y) = P(x,y)\vec{e}_{x} + Q(x,y)\vec{e}_{y}$ défini sur le domaine simplement connexe $\mathbb{R}^2$ est conservatif (ou est un champ de gradient) si son rotationnel est nul, c'est-à-dire si la condition de Schwarz est vérifiée :
+$$
+\frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y}
+$$
+
+Ici, $P(x,y) = y-3x^2$ et $Q(x,y) = x+\sin(y)$.
+
+1.  Calcul de $\frac{\partial P}{\partial y}$ :
+    $$
+    \frac{\partial P}{\partial y} = \frac{\partial}{\partial y}(y-3x^2) = 1
+    $$
+2.  Calcul de $\frac{\partial Q}{\partial x}$ :
+    $$
+    \frac{\partial Q}{\partial x} = \frac{\partial}{\partial x}(x+\sin(y)) = 1
+    $$
+
+Puisque $\frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y} = 1$, le champ $\vec{F}$ est bien conservatif sur $\mathbb{R}^2$.
+
+B. Détermination du Potentiel $f$ tel que $\vec{F} = \vec{\nabla}f$
+
+Nous cherchons une fonction scalaire $f(x,y)$ telle que :
+$$
+\frac{\partial f}{\partial x} = P(x,y) = y-3x^2 \quad \mathbf{(1)}
+$$
+$$
+\frac{\partial f}{\partial y} = Q(x,y) = x+\sin(y) \quad \mathbf{(2)}
+$$
+
+1.  Intégration de (1) par rapport à $x$ :
+    $$
+    f(x,y) = \int (y-3x^2) dx = yx - x^3 + C_1(y)
+    $$
+    où $C_1(y)$ est une fonction arbitraire dépendant uniquement de $y$ (la "constante" d'intégration).
+
+2.  Dérivation par rapport à $y$ et identification avec (2) :
+    Nous dérivons le résultat obtenu par rapport à $y$ :
+    $$
+    \frac{\partial f}{\partial y} = \frac{\partial}{\partial y}(yx - x^3 + C_1(y)) = x + C_1'(y)
+    $$
+    En comparant avec l'équation $\mathbf{(2)}$ ($\frac{\partial f}{\partial y} = x+\sin(y)$) :
+    $$
+    x + C_1'(y) = x + \sin(y)
+    $$
+    $$
+    C_1'(y) = \sin(y)
+    $$
+
+3.  Intégration de $C_1'(y)$ pour trouver $C_1(y)$ :
+    $$
+    C_1(y) = \int \sin(y) dy = -\cos(y) + C
+    $$
+    où $C$ est une constante réelle.
+
+4.  Conclusion :
+    En substituant $C_1(y)$ dans l'expression de $f(x,y)$ :
+    $$
+    f(x,y) = yx - x^3 - \cos(y) + C
+    $$
+    Le potentiel scalaire est :
+    $$
+    \mathbf{f(x,y) = xy - x^3 - \cos(y) + C}
+    $$
+
+\subsection{2. Champ de Vecteurs $\vec{F}(x,y,z)=y^2\vec{e}_{x}+(2xy+z)\vec{e}_{y}+(y+3)\vec{e}_{z}$}
+
+A. Vérification qu'il est Conservatif
+
+Un champ de vecteurs $\vec{F}(x,y,z) = P\vec{e}_{x} + Q\vec{e}_{y} + R\vec{e}_{z}$ est conservatif sur $\mathbb{R}^3$ si son rotationnel est nul : $\vec{\nabla} \wedge \vec{F} = \vec{0}$.
+Les trois conditions à vérifier sont :
+$$
+\frac{\partial R}{\partial y} = \frac{\partial Q}{\partial z}, \quad \frac{\partial P}{\partial z} = \frac{\partial R}{\partial x}, \quad \frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y}
+$$
+Ici, $P = y^2$, $Q = 2xy+z$, $R = y+3$.
+
+1.  Vérification de $\frac{\partial R}{\partial y} = \frac{\partial Q}{\partial z}$ :
+     $\frac{\partial R}{\partial y} = \frac{\partial}{\partial y}(y+3) = 1$ et $\frac{\partial Q}{\partial z} = \frac{\partial}{\partial z}(2xy+z) = 1$
+
+2.  Vérification de $\frac{\partial P}{\partial z} = \frac{\partial R}{\partial x}$ :
+    $\frac{\partial P}{\partial z} = \frac{\partial}{\partial z}(y^2) = 0$ et $\frac{\partial R}{\partial x} = \frac{\partial}{\partial x}(y+3) = 0$
+
+3.  Vérification de $\frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y}$ :
+    $\frac{\partial Q}{\partial x} = \frac{\partial}{\partial x}(2xy+z) = 2y$ et $\frac{\partial P}{\partial y} = \frac{\partial}{\partial y}(y^2) = 2y$
+
+Le champ $\vec{F}$ est bien conservatif sur $\mathbb{R}^3$.
+
+B. Détermination du Potentiel $f$ tel que $\vec{F} = \vec{\nabla}f$
+
+Nous cherchons $f(x,y,z)$ telle que :
+$$
+\frac{\partial f}{\partial x} = y^2 \quad \mathbf{(1)}
+$$
+$$
+\frac{\partial f}{\partial y} = 2xy+z \quad \mathbf{(2)}
+$$
+$$
+\frac{\partial f}{\partial z} = y+3 \quad \mathbf{(3)}
+$$
+
+1.  Intégration de (1) par rapport à $x$ :
+    $$
+    f(x,y,z) = \int y^2 dx = y^2x + C_1(y,z)
+    $$
+
+2.  Dérivation par rapport à $y$ et identification avec (2) :
+    $$
+    \frac{\partial f}{\partial y} = \frac{\partial}{\partial y}(y^2x + C_1(y,z)) = 2yx + \frac{\partial C_1}{\partial y}
+    $$
+    En comparant avec $\mathbf{(2)}$ ($\frac{\partial f}{\partial y} = 2xy+z$) :
+    $$
+    2yx + \frac{\partial C_1}{\partial y} = 2xy+z \quad \Rightarrow \quad \frac{\partial C_1}{\partial y} = z
+    $$
+
+3.  Intégration de $\frac{\partial C_1}{\partial y}$ par rapport à $y$ :
+    $$
+    C_1(y,z) = \int z dy = zy + C_2(z)
+    $$
+    où $C_2(z)$ est une fonction arbitraire dépendant uniquement de $z$.
+    Donc, $f(x,y,z) = y^2x + zy + C_2(z)$.
+
+4.  Dérivation par rapport à $z$ et identification avec (3) :
+    $$
+    \frac{\partial f}{\partial z} = \frac{\partial}{\partial z}(y^2x + zy + C_2(z)) = y + C_2'(z)
+    $$
+    En comparant avec $\mathbf{(3)}$ ($\frac{\partial f}{\partial z} = y+3$) :
+    $$
+    y + C_2'(z) = y + 3 \quad \Rightarrow \quad C_2'(z) = 3
+    $$
+
+5.  Intégration de $C_2'(z)$ pour trouver $C_2(z)$ :
+    $$
+    C_2(z) = \int 3 dz = 3z + C
+    $$
+    où $C$ est une constante réelle.
+
+6.  Conclusion :
+    En substituant $C_2(z)$ dans l'expression de $f(x,y,z)$ :
+    $$
+    f(x,y,z) = xy^2 + yz + 3z + C
+    $$
+    Le potentiel scalaire est :
+    $$
+    \mathbf{f(x,y,z) = xy^2 + yz + 3z + C}
+    $$
+
+\subsection{Champ de Vecteurs $\vec{F}(x,y)=\cos x \cos y \vec{e}_{x}-\sin x \sin y \vec{e}_{y}$}
+
+Le domaine est $\mathcal{D}=\{(x,y)\in\mathbb{R}^{2}|-\pi<x<\pi, -\pi/2<y<\pi/2\}$.
+
+ A. Détermination de la Direction Générale de $\vec{F}$
+Nous étudions le signe des composantes $P = \cos x \cos y$ et $Q = -\sin x \sin y$ dans chaque case du quadrillage de $\mathcal{D}$ par multiples entiers de $\pi/2$.
+
+!TODO! : Faire le schéma + quadrillage
+
+Le champ est principalement dirigé vers l'Est ($\mathbf{P>0}$) dans la bande $-\pi/2 < x < \pi/2$, et principalement dirigé vers l'Ouest ($\mathbf{P<0}$) en dehors de cette bande.
+
+B. Vérification qu'il est Conservatif
+
+Nous vérifions la condition de Schwarz sur le domaine $\mathcal{D}$ (qui est simplement connexe).
+$P(x,y) = \cos x \cos y$ et $Q(x,y) = -\sin x \sin y$.
+
+1.  Calcul de $\frac{\partial P}{\partial y}$ :
+    $$
+    \frac{\partial P}{\partial y} = \frac{\partial}{\partial y}(\cos x \cos y) = \cos x (-\sin y) = -\cos x \sin y
+    $$
+2.  Calcul de $\frac{\partial Q}{\partial x}$ :
+    $$
+    \frac{\partial Q}{\partial x} = \frac{\partial}{\partial x}(-\sin x \sin y) = -(\cos x) \sin y = -\cos x \sin y
+    $$
+
+Puisque $\frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y}$, le champ $\vec{F}$ est bien conservatif sur $\mathcal{D}$.
+
+C. Détermination du Potentiel $f$ tel que $\vec{F} = \vec{\nabla}f$
+
+1.  Intégration de $\frac{\partial f}{\partial x} = P$ par rapport à $x$ :
+    $$
+    f(x,y) = \int \cos x \cos y dx = (\sin x \cos y) + C_1(y)
+    $$
+
+2.  Dérivation par rapport à $y$ et identification avec $\frac{\partial f}{\partial y} = Q$ :
+    $$
+    \frac{\partial f}{\partial y} = \frac{\partial}{\partial y}(\sin x \cos y + C_1(y)) = \sin x (-\sin y) + C_1'(y) = -\sin x \sin y + C_1'(y)
+    $$
+    En comparant avec $Q = -\sin x \sin y$ :
+    $$
+    -\sin x \sin y + C_1'(y) = -\sin x \sin y \quad \Rightarrow \quad C_1'(y) = 0
+    $$
+
+3.  Intégration de $C_1'(y)$ :
+    $$
+    C_1(y) = C
+    $$
+
+4.  Conclusion :
+    $$
+    \mathbf{f(x,y) = \sin x \cos y + C}
+    $$
+
+D. Détermination des Extrema de $f$ dans $\mathcal{D}$
+Les extrema locaux de $f$ sont trouvés lorsque $\vec{\nabla}f = \vec{F} = \vec{0}$.
+$$
+\begin{cases}
+P = \cos x \cos y = 0 \\
+Q = -\sin x \sin y = 0
+\end{cases}
+$$
+Dans le domaine $\mathcal{D}$: $-\pi < x < \pi$ et $-\pi/2 < y < \pi/2$.
+
+De $P=0$:
+$\cos x = 0 \quad \Rightarrow \quad x = \pm \pi/2$
+ou
+$\cos y = 0 \quad \Rightarrow \quad y = \pm \pi/2$ (Non inclus dans $\mathcal{D}$)
+
+De $Q=0$:
+$\sin x = 0 \quad \Rightarrow \quad x = 0$
+ou
+$\sin y = 0 \quad \Rightarrow \quad y = 0$
+
+Nous cherchons les points où les deux conditions sont satisfaites.
+Si $x = \pm \pi/2$, alors $\sin x = \pm 1$. Pour que $Q=0$, il faut $\sin y = 0$, donc $y=0$.
+    Les points critiques sont $\mathbf{( \pi/2, 0 )}$ et $\mathbf{( -\pi/2, 0 )}$.
+
+Évaluons $f(x,y) = \sin x \cos y$ à ces points :
+
+$f(\pi/2, 0) = \sin(\pi/2)\cos(0) = (1)(1) = 1$
+
+$f(-\pi/2, 0) = \sin(-\pi/2)\cos(0) = (-1)(1) = -1$
+
+Analyse des extrema :
+
+Le point $(\pi/2, 0)$ est un Maximum local ($f=1$).
+
+Le point $(-\pi/2, 0)$ est un Minimum local ($f=-1$).
+
+
+\subsection{Champ de Vecteurs $\vec{F}(x,y)=-y\vec{e}_{x}+x\vec{e}_{y}$}
+
+A. Direction de $\vec{F}$ et Dessin
+Le champ de vecteurs est $\vec{F}(x,y) = (-y, x)$.
+
+1.  Relation au vecteur position : Si $\vec{r} = (x, y)$, alors $\vec{F}$ est orthogonal à $\vec{r}$.
+    $$
+    \vec{F} \cdot \vec{r} = (-y)x + x(y) = -xy + xy = 0
+    $$
+2.  Direction : Le vecteur $\vec{F}$ est toujours tangent au cercle de rayon $r = \sqrt{x^2+y^2}$ passant par le point $(x,y)$. Le champ est dirigé dans le sens trigonométrique.
+
+
+
+B. $\vec{F}$ est-il Conservatif ?
+
+Nous vérifions la condition de Schwarz.
+$P(x,y) = -y$ et $Q(x,y) = x$.
+
+1.  Calcul de $\frac{\partial P}{\partial y}$ :
+    $$
+    \frac{\partial P}{\partial y} = \frac{\partial}{\partial y}(-y) = -1
+    $$
+2.  Calcul de $\frac{\partial Q}{\partial x}$ :
+    $$
+    \frac{\partial Q}{\partial x} = \frac{\partial}{\partial x}(x) = 1
+    $$
+
+Puisque $\frac{\partial Q}{\partial x} \ne \frac{\partial P}{\partial y}$ ($1 \ne -1$), le champ $\vec{F}$ n'est pas conservatif.
+
+Un champ conservatif n'a pas de circulation le long d'une courbe fermée. Or, ce champ $\vec{F}$ est un champ de rotation pure ; le travail effectué le long de tout cercle centré à l'origine est non nul. Cela confirme qu'il n'est pas conservatif.
+
+
+\subsection{Champ de Vecteurs $\vec{F}(x,y)=-\frac{y}{x^{2}+y^{2}}\vec{e}_{x}+\frac{x}{x^{2}+y^{2}}\vec{e}_{y}$}
+
+
+A. Est-il Conservatif sur $\mathcal{D}$ ?
+
+Nous vérifions la condition de Schwarz sur $\mathcal{D}$.
+$P(x,y) = -\frac{y}{x^{2}+y^{2}}$ et $Q(x,y) = \frac{x}{x^{2}+y^{2}}$.
+
+1.  Calcul de $\frac{\partial P}{\partial y}$ :
+    $$
+    \frac{\partial P}{\partial y} = -\left[\frac{(1)(x^2+y^2) - y(2y)}{(x^2+y^2)^2}\right] = -\frac{x^2+y^2-2y^2}{(x^2+y^2)^2} = -\frac{x^2-y^2}{(x^2+y^2)^2} = \frac{y^2-x^2}{(x^2+y^2)^2}
+    $$
+2.  Calcul de $\frac{\partial Q}{\partial x}$ :
+    $$
+    \frac{\partial Q}{\partial x} = \frac{(1)(x^2+y^2) - x(2x)}{(x^2+y^2)^2} = \frac{x^2+y^2-2x^2}{(x^2+y^2)^2} = \frac{y^2-x^2}{(x^2+y^2)^2}
+    $$
+
+Puisque $\frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y}$, le champ $\vec{F}$ satisfait la condition de rotationnel nul partout où il est défini (sur $\mathcal{D}$).
+
+Comme le domaine $\mathcal{D}$  n'est pas simplement connexe, le fait que le rotationnel soit nul ne garantit pas que le champ soit conservatif.
+
+B. Détermination de $f$ tel que $\vec{F} = \vec{\nabla}f$
+En coordonnées polaires, $\vec{F}$ s'exprime par :
+$$
+\vec{F} = \frac{1}{\rho}\vec{e}_{\varphi}
+$$
+(où $\frac{1}{\rho} \vec{e}_{\varphi}$ est la composante orthoradiale).
+
+Si $\vec{F}$ dérivait d'un potentiel $f(\rho, \varphi)$, nous aurions :
+$$
+\vec{F} = \frac{\partial f}{\partial\rho}\vec{e}_{\rho}+\frac{1}{\rho}\frac{\partial f}{\partial\varphi}\vec{e}_{\varphi}
+$$
+Par identification :
+$$
+\frac{\partial f}{\partial\rho} = 0 \quad \mathbf{(1')}
+$$
+$$
+\frac{1}{\rho}\frac{\partial f}{\partial\varphi} = \frac{1}{\rho} \quad \Rightarrow \quad \frac{\partial f}{\partial\varphi} = 1 \quad \mathbf{(2')}
+$$
+
+1.  Intégration de (1') : $f$ ne dépend pas de $\rho$ :
+    $$
+    f(x,y) = C_1(\varphi)
+    $$
+2.  Intégration de (2') :
+    $$
+    f(\varphi) = \int 1 d\varphi = \varphi + C
+    $$
+    où $\varphi = \arctan(y/x)$ est l'angle en coordonnées polaires.
+
+Le potentiel est :
+$$
+f(x,y) = \arctan(y/x) + C = \varphi + C
+$$
+Le potentiel est l'angle $\varphi$. Cependant, l'angle $\varphi$ n'est pas une fonction uniforme sur le domaine $\mathcal{D}$, car il change de $2\pi$ après un tour complet autour de l'origine. L'incompatibilité entre $\vec{\nabla}f$ (qui a un rotationnel nul) et l'intégrale de circulation non nulle est due à cette singularité de $\varphi$ à l'origine, ce qui explique pourquoi un potentiel $f$ n'existe pas sur l'ensemble du domaine $\mathcal{D}$.
+\section{Calculs de divergences et de rotationnels}
+\subsection{Champ de Vecteurs 1}
+
+Le champ $\vec{F}$ est défini par $\vec{F} = (x^2+y^2)^a \vec{r}_{\perp}$, où $\vec{r}_{\perp} = x\vec{e}_{x}+y\vec{e}_{y}$ est la composante radiale du vecteur position dans le plan $(O, \vec{e}_x, \vec{e}_y)$. En coordonnées polaires, $x^2+y^2 = \rho^2$, et $\vec{r}_{\perp} = \rho \vec{e}_{\rho}$.
+
+$$
+\vec{F} = (\rho^2)^a (\rho \vec{e}_{\rho}) = \rho^{2a+1} \vec{e}_{\rho}
+$$
+Ce champ est  radial.
+
+A. Description du Champ, Divergence et Rotationnel
+
+$\vec{F}$ est un champ radial centré sur l'axe $(O, \vec{e}_z)$. Sa direction est toujours le long du rayon $\vec{e}_{\rho}$ (s'éloignant de l'axe $z$). Sa magnitude, $\rho^{2a+1}$, ne dépend que de la distance $\rho$ à l'axe $z$.
+
+Calcul de la Divergence :
+
+    En coordonnées cartésiennes :
+    $$
+    \operatorname{div}\vec{F} = \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}
+    $$
+    $F_x = x(x^2+y^2)^a$, $F_y = y(x^2+y^2)^a$, $F_z = 0$.
+    $$
+    \frac{\partial F_x}{\partial x} = (x^2+y^2)^a + x \cdot a(x^2+y^2)^{a-1}(2x) = (x^2+y^2)^a + 2ax^2(x^2+y^2)^{a-1}
+    $$
+    $$
+    \frac{\partial F_y}{\partial y} = (x^2+y^2)^a + y \cdot a(x^2+y^2)^{a-1}(2y) = (x^2+y^2)^a + 2ay^2(x^2+y^2)^{a-1}
+    $$
+    $$
+    \operatorname{div}\vec{F} = 2(x^2+y^2)^a + 2a(x^2+y^2)^{a-1}(x^2+y^2) = = 2(1+a)(x^2+y^2)^a
+    $$
+
+Calcul du Rotationnel :
+
+    Comme $\vec{F}$ est purement radial ($\vec{F}$ est colinéaire à $\vec{r}_{\perp}$) et ne dépend que de $\rho$, son rotationnel est nul.
+    $$
+    \mathbf{\operatorname{rot}\vec{F} = \vec{0}}
+    $$
+
+    En effet, $\vec{F}$ est un champ de gradient : $\vec{F} = \vec{\nabla}f$ avec $f(\rho) = \frac{\rho^{2a+2}}{2a+2}$ (pour $a \ne -1$).
+
+
+\subsection{Champ de Vecteurs2}
+
+Le champ $\vec{F}$ est défini par $\vec{F} = (x^2+y^2)^a \vec{v}_{rot}$, où $\vec{v}_{rot} = -y\vec{e}_{x}+x\vec{e}_{y}$ est le champ de rotation. En coordonnées polaires, $\vec{v}_{rot} = \rho \vec{e}_{\varphi}$.
+
+$$
+\vec{F} = (\rho^2)^a (\rho \vec{e}_{\varphi}) = \rho^{2a+1} \vec{e}_{\varphi}
+$$
+Ce champ est purement orthoradial.
+
+A. Description du Champ, Divergence et Rotationnel
+
+$\vec{F}$ est un champ de rotation pure (circulaire) autour de l'axe $(O, \vec{e}_z)$. Sa direction est toujours tangentielle ($\vec{e}_{\varphi}$), dans le sens anti-horaire. Sa magnitude, $\rho^{2a+1}$, ne dépend que de la distance $\rho$ à l'axe $z$.
+
+Calcul de la Divergence :
+
+    En utilisant l'expression en coordonnées cylindriques (car $A=0$ et $C=0$) :
+    $A = 0$, $B = \rho^{2a+1}$, $C = 0$.
+    $$
+    \operatorname{div}\vec{F} = \frac{1}{\rho}\frac{\partial}{\partial\rho}(\rho A) + \frac{1}{\rho}\frac{\partial B}{\partial\varphi} + \frac{\partial C}{\partial z}
+    $$
+    Puisque $B$ ne dépend que de $\rho$ (et non de $\varphi$), $\frac{\partial B}{\partial\varphi} = 0$.
+    $$
+    \operatorname{div}\vec{F} = 0 + 0 + 0 = 0
+    $$
+    Interprétation : Le champ est incompressible (pas de sources ni de puits).
+    $$
+    \mathbf{\operatorname{div}\vec{F} = 0}
+    $$
+
+Calcul du Rotationnel :
+
+    En coordonnées cartésiennes, seule la composante $z$ est non nulle.
+    $$
+    (\operatorname{rot}\vec{F})_z = \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}
+    $$
+    $P = -y(x^2+y^2)^a$, $Q = x(x^2+y^2)^a$.
+
+    $$
+    \frac{\partial Q}{\partial x} = (x^2+y^2)^a + x \cdot a(x^2+y^2)^{a-1}(2x) = (x^2+y^2)^a + 2ax^2(x^2+y^2)^{a-1}
+    $$
+    $$
+    \frac{\partial P}{\partial y} = -(x^2+y^2)^a - y \cdot a(x^2+y^2)^{a-1}(2y) = -(x^2+y^2)^a - 2ay^2(x^2+y^2)^{a-1}
+    $$
+    $$
+    (\operatorname{rot}\vec{F})_z = \left( (x^2+y^2)^a + 2ax^2(x^2+y^2)^{a-1} \right) - \left( -(x^2+y^2)^a - 2ay^2(x^2+y^2)^{a-1} \right)
+    $$
+    $$
+    (\operatorname{rot}\vec{F})_z = 2(x^2+y^2)^a + 2a(x^2+y^2)^{a-1}(x^2+y^2)
+    $$
+    $$
+    (\operatorname{rot}\vec{F})_z = 2(x^2+y^2)^a + 2a(x^2+y^2)^a = 2(1+a)(x^2+y^2)^a
+    $$
+    $$
+    \mathbf{\operatorname{rot}\vec{F} = 2(1+a)(x^2+y^2)^a \vec{e}_z}
+    $$
+
+    Remarque : Le résultat de $\operatorname{rot}\vec{F}$ pour le champ de rotation (Q2) est égal au résultat de $\operatorname{div}\vec{F}$ pour le champ radial (Q1).
+
+\subsection{Champ de Vecteurs 3}
+
+Le champ est le produit vectoriel entre un vecteur fixé $\vec{u}$ et le vecteur position $\vec{r}=(x,y,z)$.
+
+A. Description du Champ
+
+Le champ $\vec{F}$ est orthogonal à la fois à $\vec{u}$ et à $\vec{r}$. $\vec{F}$ décrit un mouvement de rotation autour d'un axe passant par l'origine et parallèle à $\vec{u}$.
+
+La magnitude de $\vec{F}$ est $|\vec{F}| = |\vec{u}| |\vec{r}| \sin \alpha$, où $\alpha$ est l'angle entre $\vec{u}$ et $\vec{r}$. Si $\rho$ est la distance du point $\vec{r}$ à l'axe de rotation (l'axe $\vec{u}$), alors $\rho = |\vec{r}| \sin \alpha$.
+
+Donc $|\vec{F}| = |\vec{u}| \rho$. La vitesse de rotation est proportionnelle à la distance $\rho$ à l'axe, caractéristique d'un corps rigide en rotation avec une vitesse angulaire $\vec{\omega} = -\vec{u}$.
+
+B. Calcul de la Divergence
+
+En utilisant la formule $ \operatorname{div}(\vec{A} \wedge \vec{B}) = \vec{B} \cdot (\operatorname{rot}\vec{A}) - \vec{A} \cdot (\operatorname{rot}\vec{B})$:
+
+Ici, $\vec{A}=\vec{u}$ (constant) et $\vec{B}=\vec{r}$.
+
+$\operatorname{rot}\vec{u} = \vec{0}$ (rotationnel d'un vecteur constant est nul)
+
+$\operatorname{rot}\vec{r} = \vec{0}$ (rotationnel de $\vec{r}$ est nul)
+
+$$
+\operatorname{div}\vec{F} = \operatorname{div}(\vec{u} \wedge \vec{r}) = \vec{r} \cdot (\operatorname{rot}\vec{u}) - \vec{u} \cdot (\operatorname{rot}\vec{r}) = \vec{r} \cdot \vec{0} - \vec{u} \cdot \vec{0} = 0
+$$
+$$
+\mathbf{\operatorname{div}\vec{F} = 0}
+$$
+
+C. Calcul du Rotationnel
+
+En utilisant la formule $\operatorname{rot}(\vec{A} \wedge \vec{B}) = \vec{A} (\operatorname{div}\vec{B}) - \vec{B} (\operatorname{div}\vec{A}) + (\vec{B} \cdot \vec{\nabla})\vec{A} - (\vec{A} \cdot \vec{\nabla})\vec{B}$ :
+
+$\operatorname{div}\vec{r} = \frac{\partial x}{\partial x} + \frac{\partial y}{\partial y} + \frac{\partial z}{\partial z} = 1+1+1 = 3$
+
+$\operatorname{div}\vec{u} = 0$
+
+$(\vec{r} \cdot \vec{\nabla})\vec{u} = 0$ (car $\vec{u}$ est constant)
+
+$(\vec{u} \cdot \vec{\nabla})\vec{r} = \vec{u}$ (aussi car $\vec{u}$ est constant)
+
+$$
+\operatorname{rot}\vec{F} = \vec{u}(3) - \vec{r}(0) + \vec{0} - \vec{u} = 3\vec{u} - \vec{u} = 2\vec{u}
+$$
+$$
+\mathbf{\operatorname{rot}\vec{F} = 2\vec{u}}
+$$
+\section{Identités entre rotationnel et divergent}
+\subsection{Identité 1}
+Montrer par un calcul direct que $\operatorname{rot}(\vec{\nabla}f)=\vec{0}$
+
+Le gradient d'un champ scalaire $f(x,y,z)$ est $\vec{\nabla}f = \left(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}\right)$.
+
+Le rotationnel du gradient est donné par :
+$$
+\operatorname{rot}(\vec{\nabla}f) = \vec{\nabla} \wedge (\vec{\nabla}f) = \begin{vmatrix} \vec{e}_x & \vec{e}_y & \vec{e}_z \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\ \frac{\partial f}{\partial x} & \frac{\partial f}{\partial y} & \frac{\partial f}{\partial z} \end{vmatrix}
+$$
+
+Calculons la composante en $\vec{e}_x$ :
+$$
+(\operatorname{rot}(\vec{\nabla}f))_x = \frac{\partial}{\partial y}\left(\frac{\partial f}{\partial z}\right) - \frac{\partial}{\partial z}\left(\frac{\partial f}{\partial y}\right) = \frac{\partial^{2}f}{\partial y \partial z} - \frac{\partial^{2}f}{\partial z \partial y}
+$$
+En supposant que $f$ est suffisamment régulière (Théorème de Schwarz), les dérivées croisées sont égales : $\frac{\partial^{2}f}{\partial y \partial z} = \frac{\partial^{2}f}{\partial z \partial y}$.
+
+D'où :
+$$
+(\operatorname{rot}(\vec{\nabla}f))_x = 0
+$$
+Les composantes en $\vec{e}_y$ et $\vec{e}_z$ s'annulent de la même manière.
+$$
+\mathbf{\operatorname{rot}(\vec{\nabla}f) = \vec{0}}
+$$
+Interprétation : Un champ de vecteurs dérivant d'un potentiel scalaire (champ conservatif) n'a pas de rotation.
+
+\subsection{Identité 2}
+Montrer par un calcul direct que $\operatorname{div}(\operatorname{rot}\vec{F})=0$
+
+Nous calculons la divergence du rotationnel d'un champ vectoriel $\vec{F} = F_x \vec{e}_x + F_y \vec{e}_y + F_z \vec{e}_z$.
+$$
+\operatorname{div}(\operatorname{rot}\vec{F}) = \frac{\partial}{\partial x}(\operatorname{rot}\vec{F})_x + \frac{\partial}{\partial y}(\operatorname{rot}\vec{F})_y + \frac{\partial}{\partial z}(\operatorname{rot}\vec{F})_z
+$$
+$$
+\operatorname{div}(\operatorname{rot}\vec{F}) = \frac{\partial}{\partial x}\left(\frac{\partial F_z}{\partial y} - \frac{\partial F_y}{\partial z}\right) + \frac{\partial}{\partial y}\left(\frac{\partial F_x}{\partial z} - \frac{\partial F_z}{\partial x}\right) + \frac{\partial}{\partial z}\left(\frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y}\right)
+$$
+En développant et en réordonnant les termes :
+$$
+\operatorname{div}(\operatorname{rot}\vec{F}) = \left(\frac{\partial^{2}F_z}{\partial x \partial y} - \frac{\partial^{2}F_z}{\partial y \partial x}\right) + \left(\frac{\partial^{2}F_x}{\partial y \partial z} - \frac{\partial^{2}F_x}{\partial z \partial y}\right) + \left(\frac{\partial^{2}F_y}{\partial z \partial x} - \frac{\partial^{2}F_y}{\partial x \partial z}\right)
+$$
+Par le Théorème de Schwarz, toutes les dérivées croisées s'annulent :
+$$
+\operatorname{div}(\operatorname{rot}\vec{F}) = 0 + 0 + 0
+$$
+D'où :
+$$
+\mathbf{\operatorname{div}(\operatorname{rot}\vec{F}) = 0}
+$$
+\subsection{Identité 3}
+Vérifier par un calcul direct que $\operatorname{div}(\vec{\nabla}f)=\Delta f$
+
+Le Laplacien $\Delta$ est défini comme $\Delta=\vec{\nabla}\cdot\vec{\nabla}=\frac{\partial^{2}}{\partial x^{2}}+\frac{\partial^{2}}{\partial y^{2}}+\frac{\partial^{2}}{\partial z^{2}}$.
+
+Nous calculons la divergence du gradient:
+$$
+\operatorname{div}(\vec{\nabla}f) = \vec{\nabla} \cdot \left(\frac{\partial f}{\partial x}\vec{e}_{x} + \frac{\partial f}{\partial y}\vec{e}_{y} + \frac{\partial f}{\partial z}\vec{e}_{z}\right)
+$$
+$$
+\operatorname{div}(\vec{\nabla}f) = \frac{\partial}{\partial x}\left(\frac{\partial f}{\partial x}\right) + \frac{\partial}{\partial y}\left(\frac{\partial f}{\partial y}\right) + \frac{\partial}{\partial z}\left(\frac{\partial f}{\partial z}\right)
+$$
+$$
+\operatorname{div}(\vec{\nabla}f) = \frac{\partial^{2}f}{\partial x^{2}} + \frac{\partial^{2}f}{\partial y^{2}} + \frac{\partial^{2}f}{\partial z^{2}}
+$$
+Ceci est la définition du Laplacien $\Delta f$ :
+$$
+\mathbf{\operatorname{div}(\vec{\nabla}f) = \Delta f}
+$$
+
+\subsection{Identité 4}
+Vérifier par un calcul direct que $\operatorname{div}(f\vec{F})=f \operatorname{div}\vec{F}+(\vec{\nabla}f)\cdot\vec{F}$
+
+Nous calculons la divergence du produit du champ scalaire $f$ et du champ vectoriel $\vec{F} = F_x \vec{e}_x + F_y \vec{e}_y + F_z \vec{e}_z$.
+
+$$
+\operatorname{div}(f\vec{F}) = \frac{\partial}{\partial x}(fF_x) + \frac{\partial}{\partial y}(fF_y) + \frac{\partial}{\partial z}(fF_z)
+$$
+En appliquant la règle du produit $\frac{\partial}{\partial x}(uv) = \frac{\partial u}{\partial x}v + u\frac{\partial v}{\partial x}$ à chaque terme :
+$$
+\operatorname{div}(f\vec{F}) = \left(\frac{\partial f}{\partial x}F_x + f\frac{\partial F_x}{\partial x}\right) + \left(\frac{\partial f}{\partial y}F_y + f\frac{\partial F_y}{\partial y}\right) + \left(\frac{\partial f}{\partial z}F_z + f\frac{\partial F_z}{\partial z}\right)
+$$
+Regroupons les termes contenant $f$ et ceux contenant les composantes de $\vec{F}$ :
+$$
+\operatorname{div}(f\vec{F}) = f\left(\frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}\right) + \left(\frac{\partial f}{\partial x}F_x + \frac{\partial f}{\partial y}F_y + \frac{\partial f}{\partial z}F_z\right)
+$$
+Par définition :
+$$
+\left(\frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}\right) = \operatorname{div}\vec{F}
+$$
+$$
+\left(\frac{\partial f}{\partial x}F_x + \frac{\partial f}{\partial y}F_y + \frac{\partial f}{\partial z}F_z\right) = \vec{\nabla}f \cdot \vec{F}
+$$
+D'où l'identité :
+$$
+\mathbf{\operatorname{div}(f\vec{F}) = f \operatorname{div}\vec{F}+(\vec{\nabla}f)\cdot\vec{F}}
+$$
+
+\subsection{Identité 5}
+Vérifier par un calcul direct que $\operatorname{rot}(\operatorname{rot}\vec{F})=\vec{\nabla}\operatorname{div}\vec{F}-\Delta\vec{F}$
+
+C'est l'identité de Helmholtz. Nous vérifions la composante $x$ (les autres composantes sont vérifiées de manière similaire).
+
+$$
+(\operatorname{rot}(\operatorname{rot}\vec{F}))_x = \frac{\partial}{\partial y}(\operatorname{rot}\vec{F})_z - \frac{\partial}{\partial z}(\operatorname{rot}\vec{F})_y
+$$
+En substituant les composantes du rotationnel :
+$$
+(\operatorname{rot}(\operatorname{rot}\vec{F}))_x = \frac{\partial}{\partial y}\left(\frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y}\right) - \frac{\partial}{\partial z}\left(\frac{\partial F_x}{\partial z} - \frac{\partial F_z}{\partial x}\right)
+$$
+$$
+(\operatorname{rot}(\operatorname{rot}\vec{F}))_x = \frac{\partial^{2} F_y}{\partial y \partial x} - \frac{\partial^{2} F_x}{\partial y^{2}} - \frac{\partial^{2} F_x}{\partial z^{2}} + \frac{\partial^{2} F_z}{\partial z \partial x}
+$$
+Réarrangeons les termes et ajoutons/soustraions $\frac{\partial^{2} F_x}{\partial x^{2}}$ :
+$$
+(\operatorname{rot}(\operatorname{rot}\vec{F}))_x = \left(\frac{\partial^{2} F_x}{\partial x^{2}} + \frac{\partial^{2} F_y}{\partial y \partial x} + \frac{\partial^{2} F_z}{\partial z \partial x}\right) - \left(\frac{\partial^{2} F_x}{\partial x^{2}} + \frac{\partial^{2} F_x}{\partial y^{2}} + \frac{\partial^{2} F_x}{\partial z^{2}}\right)
+$$
+
+Le premier terme est la dérivée par rapport à $x$ de la divergence de $\vec{F}$ (par Schwarz, $\partial_{yx}^2 = \partial_{xy}^2$ et $\partial_{zx}^2 = \partial_{xz}^2$) :
+$$
+\frac{\partial}{\partial x}\left(\frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}\right) = \frac{\partial}{\partial x}(\operatorname{div}\vec{F}) = (\vec{\nabla}\operatorname{div}\vec{F})_x
+$$
+Le second terme est le Laplacien appliqué à la composante $x$ de $\vec{F}$ :
+$$
+\Delta F_x = (\Delta\vec{F})_x
+$$
+Donc :
+$$
+(\operatorname{rot}(\operatorname{rot}\vec{F}))_x = (\vec{\nabla}\operatorname{div}\vec{F})_x - (\Delta\vec{F})_x
+$$
+L'identité est ainsi vérifiée pour la composante $x$ (et par extension pour les autres) :
+$$
+\mathbf{\operatorname{rot}(\operatorname{rot}\vec{F}) = \vec{\nabla}\operatorname{div}\vec{F} - \Delta\vec{F}}
+$$
+
+\subsection{Expression non définie 1}
+
+Soit f un champ scalaire. Que peut-on dire de l'expression $\operatorname{rot}f-\operatorname{div}f$?
+
+L'expression $\operatorname{rot}f - \operatorname{div}f$ n'a pas de sens physique ou mathématique.
+
+1.  Rotationnel : L'opérateur $\operatorname{rot}$ (rotationnel) s'applique uniquement à un champ de vecteurs ($\operatorname{rot}\vec{F}$) et donne un vecteur.
+2.  Divergence : L'opérateur $\operatorname{div}$ (divergence) s'applique uniquement à un champ de vecteurs ($\operatorname{div}\vec{F}$) et donne un scalaire.
+
+On ne peut pas effectuer une soustraction entre ces deux termes car ils sont mal définis.
+\section{Formule de Green}
+\subsection{Champ 1}
+
+Le champ est $\vec{F}(x,y) = P\vec{e}_x + Q\vec{e}_y$ avec $P(x,y) = -y^3$ et $Q(x,y) = 2$.
+La courbe $C$ est le cercle $x^2 + y^2 = 4$ (rayon $R=2$)[cite: 78, 79]. $\mathcal{R}$ est le disque $x^2 + y^2 \le 4$.
+
+A. Calcul de la circulation $\int_{\mathcal{C}}\vec{F}\cdot d\vec{r}$
+
+Paramétrisation de $C$ :
+$$
+x = 2\cos t, \quad y = 2\sin t, \quad 0 \le t \le 2\pi
+$$
+$$
+dx = -2\sin t dt, \quad dy = 2\cos t dt
+$$
+Intégrale :
+$$
+\int_{\mathcal{C}}\vec{F}\cdot d\vec{r} = \int_{0}^{2\pi} [P dx + Q dy] = \int_{0}^{2\pi} [(-y^3)(-2\sin t) + (2)(2\cos t)] dt
+$$
+$$
+= \int_{0}^{2\pi} [-(2\sin t)^3 (-2\sin t) + 4\cos t] dt = \int_{0}^{2\pi} [16\sin^4 t + 4\cos t] dt
+$$
+L'intégrale de $4\cos t$ sur $[0, 2\pi]$ est nulle. Pour $\sin^4 t$, on utilise l'identité $\int_{0}^{2\pi} \sin^4 t dt = \frac{3\pi}{4}$.
+$$
+\int_{\mathcal{C}}\vec{F}\cdot d\vec{r} = 16 \cdot \frac{3\pi}{4} + 0 = \mathbf{12\pi}
+$$
+
+B. Calcul de l'intégrale double $\iint_{\mathcal{R}}(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y})dx dy$
+
+Rotationnel 2D :
+$$
+\frac{\partial Q}{\partial x} = \frac{\partial}{\partial x}(2) = 0
+$$
+$$
+\frac{\partial P}{\partial y} = \frac{\partial}{\partial y}(-y^3) = -3y^2
+$$
+$$
+\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y} = 0 - (-3y^2) = 3y^2
+$$
+Intégrale double (en coordonnées polaires) : $x=\rho \cos \varphi$, $y=\rho \sin \varphi$, $dA = \rho d\rho d\varphi$.
+$$
+\iint_{\mathcal{R}} 3y^2 dx dy = \int_{0}^{2\pi} \int_{0}^{2} 3(\rho \sin \varphi)^2 \rho d\rho d\varphi = 3 \left(\int_{0}^{2} \rho^3 d\rho\right) \left(\int_{0}^{2\pi} \sin^2 \varphi d\varphi\right)
+$$
+$$
+= 3 \cdot \left[\frac{\rho^4}{4}\right]_{0}^{2} \cdot \left[\pi\right]
+$$
+(où $\int_{0}^{2\pi} \sin^2 \varphi d\varphi = \pi$)
+$$
+= 3 \cdot \left(\frac{16}{4}\right) \cdot \pi = 3 \cdot 4 \cdot \pi = \mathbf{12\pi}
+$$
+Conclusion : Ok.
+
+\subsection{Champ 2}
+Le champ est $P(x,y) = y^2$ et $Q(x,y) = -3x$. $C$ est le cercle unité $x^2+y^2=1$. La paramétrisation $\vec{r}(t)=\sin(t)\vec{e}_{x}-\cos(t)\vec{e}_{y}$ pour $t \in [-\pi, \pi]$ correspond au parcours du cercle dans le sens trigo.
+
+A. Calcul par intégrale curviligne
+
+Paramétrisation : $x=\sin t$, $y=-\cos t$. $dx=\cos t dt$, $dy=\sin t dt$.
+$$
+\int_{\mathcal{C}}\vec{F}\cdot d\vec{r} = \int_{-\pi}^{\pi} [P dx + Q dy] = \int_{-\pi}^{\pi} [(-\cos t)^2 \cos t + (-3\sin t) \sin t] dt
+$$
+$$
+= \int_{-\pi}^{\pi} [\cos^3 t - 3\sin^2 t] dt
+$$
+
+$\int_{-\pi}^{\pi} \cos^3 t dt = 0$.
+
+$\int_{-\pi}^{\pi} -3\sin^2 t dt = -3 \int_{-\pi}^{\pi} \frac{1-\cos(2t)}{2} dt = -3 \left[\frac{t}{2} - \frac{\sin(2t)}{4}\right]_{-\pi}^{\pi} = -3(\pi) = -3\pi$
+$$
+\int_{\mathcal{C}}\vec{F}\cdot d\vec{r} = 0 - 3\pi = \mathbf{-3\pi}
+$$
+
+B. Vérification par la Formule de Green
+Rotationnel 2D :
+$$
+\frac{\partial Q}{\partial x} = -3, \quad \frac{\partial P}{\partial y} = 2y
+$$
+$$
+\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y} = -3 - 2y
+$$
+Intégrale double : L'aire de $\mathcal{R}$ est $\pi$.
+$$
+\iint_{\mathcal{R}} (-3 - 2y) dx dy = \iint_{\mathcal{R}} -3 dx dy - \iint_{\mathcal{R}} 2y dx dy
+$$
+$\iint_{\mathcal{R}} -3 dx dy = -3 \cdot \text{Aire}(\mathcal{R}) = -3\pi$
+
+$\iint_{\mathcal{R}} 2y dx dy = 0$ (par symétrie du disque $\mathcal{R}$ et $2y$
+est impaire en $y$)
+
+$$
+\iint_{\mathcal{R}}\left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right) dx dy = -3\pi + 0 = \mathbf{-3\pi}
+$$
+Conclusion : OK.
+\subsection{Champ 3}
+
+Le champ est $P(x,y) = y-x$ et $Q(x,y) = x-3y$. $C$ est l'ellipse $x=4\cos t, y=3\sin t$ dans le sens positif. $\mathcal{R}$ est la région elliptique.
+
+A. Calcul par intégrale curviligne
+
+Paramétrisation : $x=4\cos t$, $y=3\sin t$. $dx=-4\sin t dt$, $dy=3\cos t dt$.
+$$
+\int_{\mathcal{C}}\vec{F}\cdot d\vec{r} = \int_{0}^{2\pi} [(y-x) dx + (x-3y) dy]
+$$
+$$
+= \int_{0}^{2\pi} [(3\sin t - 4\cos t)(-4\sin t) + (4\cos t - 9\sin t)(3\cos t)] dt
+$$
+$$
+= \int_{0}^{2\pi} [-12\sin^2 t + 16\sin t \cos t + 12\cos^2 t - 27\sin t \cos t] dt
+$$
+$$
+= \int_{0}^{2\pi} [12(\cos^2 t - \sin^2 t) - 11\sin t \cos t] dt = \int_{0}^{2\pi} [12\cos(2t) - \frac{11}{2}\sin(2t)] dt
+$$
+L'intégrale des fonctions trigonométriques sur une période entière est nulle.
+$$
+\int_{\mathcal{C}}\vec{F}\cdot d\vec{r} = 0 - 0 = \mathbf{0}
+$$
+
+B. Vérification par la Formule de Green
+
+Rotationnel 2D :
+$$
+\frac{\partial Q}{\partial x} = \frac{\partial}{\partial x}(x-3y) = 1
+$$
+$$
+\frac{\partial P}{\partial y} = \frac{\partial}{\partial y}(y-x) = 1
+$$
+$$
+\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y} = 1 - 1 = \mathbf{0}
+$$
+Intégrale double :
+$$
+\iint_{\mathcal{R}}\left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right) dx dy = \iint_{\mathcal{R}} 0 dx dy = \mathbf{0}
+$$
+Conclusion : OK.
+
+
+\subsection{Champ 4}
+
+Le champ est $P(x,y)=\cos y$ et $Q(x,y)=\sin x$. $C$ est le bord du triangle $R$.
+Pour que la formule de Green fonctionne, $C$ doit être parcouru dans le sens positif (région $R$ à gauche). L'ordre positif est $\mathbf{C(0,0) \to A(\pi/4, 0) \to B(0, \pi/4) \to C(0,0)}$.
+
+A. Calcul par intégrale curviligne
+
+$C \to A$ (Segment $y=0$): $x: 0 \to \pi/4$. $dy=0$.
+    $$
+    \int_{C \to A} \vec{F}\cdot d\vec{r} = \int_{0}^{\pi/4} \cos(0) dx = \int_{0}^{\pi/4} 1 dx = \pi/4
+    $$
+$A \to B$ (Segment $x+y=\pi/4$): $x: \pi/4 \to 0$. $y=\pi/4-x$, $dy=-dx$.
+    $$
+    \int_{A \to B} \vec{F}\cdot d\vec{r} = \int_{\pi/4}^{0} [\cos(\pi/4-x) - \sin x] dx = -\left( \sqrt{2}-1 \right) = 1 - \sqrt{2}
+    $$
+$B \to C$ (Segment $x=0$): $y: \pi/4 \to 0$. $dx=0$.
+    $$
+    \int_{B \to C} \vec{F}\cdot d\vec{r} = \int_{\pi/4}^{0} \sin(0) dy = 0
+    $$
+$$
+\int_{\mathcal{C}}\vec{F}\cdot d\vec{r} = \pi/4 + (1 - \sqrt{2}) + 0 = \mathbf{1 + \pi/4 - \sqrt{2}}
+$$
+
+B.  Vérification par la Formule de Green
+
+Rotationnel 2D :
+$$
+\frac{\partial Q}{\partial x} = \cos x, \quad \frac{\partial P}{\partial y} = -\sin y
+$$
+$$
+\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y} = \cos x + \sin y
+$$
+Intégrale double : $\mathcal{R}: 0 \le x \le \pi/4$ et $0 \le y \le \pi/4 - x$.
+$$
+\iint_{\mathcal{R}} (\cos x + \sin y) dx dy = \int_{0}^{\pi/4} \left( \int_{0}^{\pi/4-x} (\cos x + \sin y) dy \right) dx
+$$
+Après intégration, on trouve :
+$$
+\iint_{\mathcal{R}} (\cos x + \sin y) dx dy = \mathbf{1 + \pi/4 - \sqrt{2}}
+$$
+Conclusion : OK.
+
+\subsection{Champ 5}
+
+Le champ est $P(x,y)=y$ et $Q(x,y)=-x/2$. $C$ est le contour de la région $\mathcal{R}$ définie par $0 \le y \le 1-x^2$, $-1 \le x \le 1$. Le sens positif est : Segment $y=0$ de $A(-1, 0)$ à $B(1, 0)$, puis Parabole $y=1-x^2$ de $B(1, 0)$ à $A(-1, 0)$.
+
+A. Calcul par intégrale curviligne
+$C_1$ (Segment $y=0$ de $-1$ à $1$): $y=0$, $dy=0$.
+    $$
+    \int_{C_1} \vec{F}\cdot d\vec{r} = \int_{-1}^{1} y dx + (-x/2) dy = \int_{-1}^{1} 0 dx = 0
+    $$
+$C_2$ (Parabole $y=1-x^2$ de $1$ à $-1$): $x: 1 \to -1$. $dy=-2x dx$.
+    $$
+    \int_{C_2} \vec{F}\cdot d\vec{r} = \int_{1}^{-1} [y dx + (-x/2) dy] = \int_{1}^{-1} [(1-x^2) dx + (-x/2) (-2x dx)]
+    $$
+    $$
+    = \int_{1}^{-1} [1-x^2 + x^2] dx = \int_{1}^{-1} 1 dx = [x]_{1}^{-1} = -1 - 1 = -2
+    $$
+$$
+\int_{\mathcal{C}}\vec{F}\cdot d\vec{r} = 0 + (-2) = \mathbf{-2}
+$$
+
+B. Vérification par la Formule de Green
+
+Rotationnel 2D :
+$$
+\frac{\partial Q}{\partial x} = -1/2, \quad \frac{\partial P}{\partial y} = 1
+$$
+$$
+\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y} = -1/2 - 1 = -3/2
+$$
+Intégrale double :
+$$
+\iint_{\mathcal{R}} -3/2 dx dy = -3/2 \cdot \text{Aire}(\mathcal{R})
+$$
+L'aire de $\mathcal{R}$ est $\text{Aire} = \int_{-1}^{1} (1-x^2) dx = \left[x - \frac{x^3}{3}\right]_{-1}^{1} = 4/3$.
+$$
+\iint_{\mathcal{R}} -3/2 dx dy = -3/2 \cdot (4/3) = \mathbf{-2}
+$$
+Conclusion : OK
+\section{Strokes}
+
+
+ \end{document}

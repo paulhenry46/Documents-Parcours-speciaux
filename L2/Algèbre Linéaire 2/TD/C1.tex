@@ -1,0 +1,112 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Algèbre linéaire 2}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+\chapter{Espaces vectoriels}
+\section{Sous-espace vectoriel}
+\begin{proposition}[Caractérisation d'un SEV]
+F est un sev s'il contient le vecteur nul et s'il est fermé par addition et multiplication par un scalaire.
+\end{proposition}
+\begin{proposition}[Ensembles particuliers]
+\(F\cap G\) est un sev de E.
+
+\(F\cup G\) n'est pas un sev de E
+
+Le complémentaire \(E\setminus F\) n'est pas un sev
+\end{proposition}
+
+\section{Bases}
+\begin{definition}[Famille génératrice]
+Une famille \((v_1,v_2,\dots,v_n)\) est génératrice \(\iff \forall x\in E, \exists \lambda_1,\dots,\lambda_n\), tels que \(x = \lambda_1 v_1*\lambda_2v_2+\dots+\lambda_p v_p\)
+\end{definition}
+\begin{definition}[Famille libre]
+Une famille \((v_1,v_2,\dots,v_n)\) est libre \(\iff \lambda_1 v_1+\dots+\lambda_n v_n = 0 \Rightarrow \lambda_1=\dots=\lambda_n =0\)
+\end{definition}
+\begin{proposition}[Caractérisation d'une famille libre]
+Une famille \((v_1,v_2,\dots,v_n)\) est libre \(\iff\) aucun des vecteurs n'appartient à l'espace engendré par les autres.
+\end{proposition}
+\begin{theorem}[Décomposition d'un vecteur sur une famille]
+ Soit \((v_1,v_2,\dots,v_n)\) une famille libre et x un vecteur quelconque
+de l’espace engendré par les vecteurs \(v_i\) (c’est-à-dire x est combinaison linéaire des
+\(v_i\). Alors la décomposition de x sur les \(v_i\) est unique.
+\end{theorem}
+\begin{theorem}[Existence d'une base en dimension finie]
+Soit G une famille génératrice. Considérons une famille libre \(L\subset G\). Il existe alors une base B telle que \(L\subset B\subset G\).
+
+De toute famille génératrice on peut extraire une base.
+\end{theorem}
+\section{Dimension}
+\begin{proposition}[Famille et dimension]
+Dans un espace vectoriel de dimension n, toute famille ayant plus de n éléments
+est liée.
+
+Dans un espace vectoriel de dimension n, les familles ayant moins de n éléments
+ne peuvent être génératrices.
+\end{proposition}
+\begin{proposition}[Base et dimension]
+Toute famille génératrice ayant n éléments est une base.
+
+Toute famille libre ayant n éléments est une base.
+\end{proposition}
+\begin{theorem}[Dimension d'un SEV]
+\(\dim F \leq \dim E, \dim F = \dim E \iff F=E\)
+\end{theorem}
+% \warningInfo{Mq 2 EV sont égaux}{pour montrer que E = F , il faudrait,
+% en principe, vérifier que \(F \subset E\) et \(E \subset F\) . D’après la proposition, il suffit de vérifier que \(F \subset E\) et que \(dim F = dim E\) ce qui, en général, est plus facile.}
+\section{Somme directes}
+\begin{definition}[Somme]
+On appelle somme de \(E_1,E_2\) le sous-espace de E défini par \[E_1+E_2 = \{x\in E |\exists x_1\in E_1, \exists x_2\in E_2 : x=x_1+x_2\}\]
+\end{definition}
+\begin{proposition}[Somme directe]
+\(E_1, E_2\) sont en somme directe si \(E = E_1+E_2\) et \(E_1\cap E_2 = \{0\}\). On le note alors \(E_1\oplus E_2\)
+\end{proposition}
+\begin{proposition}[Espaces supplémentaires]
+2 espaces sont supplémentaires si \(E = E_1 \oplus E_2\)
+\end{proposition}
+\begin{proposition}[Caractérisation d'un espace supplémentaire]
+\(E = E_1\oplus E_2\) \(\iff\) \(E_1\cap E_2  = \{0\}\) et \(\dim(E) = \dim E_1+\dim E_2\)
+\end{proposition}
+\begin{theorem}[Dimensions d'espaces complémentaires]
+ \(\dim(E_1+E_2) = \dim E_1+\dim E_2-\dim(E_1\cap E_2)\)
+\end{theorem}
+
+\end{document}
+
+

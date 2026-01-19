@@ -1,0 +1,364 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Algèbre linéaire 2}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+\setcounter{chapter}{3}
+\chapter{Diagonalisation - Application}
+\section{Applications aux systèmes}
+\subsection{Puissances d'une matrice}
+Soit $A=\begin{pmatrix}1&a&b\\ 0&1&c\\ 0&0&2\end{pmatrix}$, avec $a, b, c\in\mathbb{R}$.
+
+Le but est de déterminer facilement la puissance de la matrice.
+
+\begin{enumerate}
+    \item \textbf{Valeurs propres et multiplicités :}
+    $A$ étant triangulaire supérieure, ses valeurs propres sont les éléments diagonaux : $\lambda_1 = 1$ et $\lambda_2 = 2$.
+    \begin{itemize}
+        \item Multiplicité algébrique de $\lambda_1 = 1$: $m_a(1) = 2$.
+        \item Multiplicité algébrique de $\lambda_2 = 2$: $m_a(2) = 1$.
+    \end{itemize}
+
+    \item \textbf{Non diagonalisabilité si $a\ne0$ :}
+    Pour $\lambda_1 = 1$, la multiplicité géométrique est $m_g(1) = \dim(\text{Ker}(A - I))$.
+    $$A - I = \begin{pmatrix} 0&a&b\\ 0&0&c\\ 0&0&1 \end{pmatrix}$$
+    Si $a \ne 0$, le rang de cette matrice est $\text{rang}(A - I) = 2$ (les colonnes 2 et 3 sont indépendantes).
+    Ainsi, $m_g(1) = 3 - \text{rang}(A - I) = 3 - 2 = 1$.
+    Puisque $m_g(1)=1 < m_a(1)=2$, la matrice $A$ \textbf{n'est pas diagonalisable} si $a \ne 0$.
+
+    \item \textbf{Cas où $a=0$. On a $A=\begin{pmatrix}1&0&b\\ 0&1&c\\ 0&0&2\end{pmatrix}$.}
+    \begin{enumerate}
+        \item \textbf{Diagonalisation de $A$ :}
+        Pour $\lambda_1 = 1$, $A - I = \begin{pmatrix} 0&0&b\\ 0&0&c\\ 0&0&1 \end{pmatrix}$. Le système $(A-I)X=0$ donne $z=0$.
+
+        $E_1 = \text{Vect}\left(\begin{pmatrix}1\\ 0\\ 0\end{pmatrix}, \begin{pmatrix}0\\ 1\\ 0\end{pmatrix}\right)$. $m_g(1) = 2$.
+
+        Pour $\lambda_2 = 2$, $A - 2I = \begin{pmatrix} 1&0&b\\ 0&1&c\\ 0&0&0 \end{pmatrix}$. Le système $(A-2I)X=0$ donne $\begin{cases} x = -bz \\ y = -cz \end{cases}$.
+
+        $E_2 = \text{Vect}\left(\begin{pmatrix}-b\\ -c\\ 1\end{pmatrix}\right)$. $m_g(2) = 1$.
+
+        Puisque $m_g(1) + m_g(2) = 2+1 = 3 = n$, $A$ est diagonalisable.
+        $$\mathbf{D = \begin{pmatrix} 1&0&0\\ 0&1&0\\ 0&0&2 \end{pmatrix}, \quad P = \begin{pmatrix} 1&0&-b\\ 0&1&-c\\ 0&0&1 \end{pmatrix}}$$
+
+        \item \textbf{Calcul de $A^{n}$ :}
+        On a $A^n = P D^n P^{-1}$.
+        $$D^n = \begin{pmatrix} 1&0&0\\ 0&1&0\\ 0&0&2^n \end{pmatrix}, \quad P^{-1} = \begin{pmatrix} 1&0&b\\ 0&1&c\\ 0&0&1 \end{pmatrix}$$
+        \begin{align*}
+        A^n &= \begin{pmatrix} 1&0&-b\\ 0&1&-c\\ 0&0&1 \end{pmatrix} \begin{pmatrix} 1&0&0\\ 0&1&0\\ 0&0&2^n \end{pmatrix} \begin{pmatrix} 1&0&b\\ 0&1&c\\ 0&0&1 \end{pmatrix} \\
+        &= \begin{pmatrix} 1&0&-b \cdot 2^n\\ 0&1&-c \cdot 2^n\\ 0&0&2^n \end{pmatrix} \begin{pmatrix} 1&0&b\\ 0&1&c\\ 0&0&1 \end{pmatrix} \\
+        &= \begin{pmatrix} 1 & 0 & b - b 2^n \\ 0 & 1 & c - c 2^n \\ 0 & 0 & 2^n \end{pmatrix} = \mathbf{\begin{pmatrix} 1 & 0 & b(1 - 2^n) \\ 0 & 1 & c(1 - 2^n) \\ 0 & 0 & 2^n \end{pmatrix}}
+        \end{align*}
+    \end{enumerate}
+\end{enumerate}
+
+\subsection{Application aux suites définies par une relation de récurrence linéaire}
+
+\subsubsection{Relation de récurrence d'ordre 2}
+$u_{n}=3u_{n-1}-2u_{n-2}$ pour $n\ge2$.
+
+\begin{enumerate}
+    \item \textbf{Calcul des premiers termes :}
+    $u_{2} = 3u_{1} - 2u_{0}$
+
+    $u_{3} = 3u_{2} - 2u_{1} = 3(3u_{1} - 2u_{0}) - 2u_{1} = 7u_{1} - 6u_{0}$
+
+    $u_{4} = 3u_{3} - 2u_{2} = 3(7u_{1} - 6u_{0}) - 2(3u_{1} - 2u_{0}) = 15u_{1} - 14u_{0}$
+
+    \item \textbf{Forme matricielle $U_{n+1}=AU_{n}$ :}
+    Avec $U_{n}=\begin{pmatrix}u_{n}\\ u_{n+1}\end{pmatrix}$, on a :
+    $$U_{n+1} = \begin{pmatrix} u_{n+1}\\ u_{n+2} \end{pmatrix} = \begin{pmatrix} u_{n+1}\\ -2u_{n}+3u_{n+1} \end{pmatrix} = \mathbf{\begin{pmatrix} 0&1\\ -2&3 \end{pmatrix}} \begin{pmatrix} u_{n}\\ u_{n+1} \end{pmatrix}$$
+    La matrice est $\mathbf{A = \begin{pmatrix} 0&1\\ -2&3 \end{pmatrix}}$.
+
+    \item \textbf{Démonstration de $U_{n}=A^{n}U_{0}$ :}
+    \begin{itemize}
+        \item Initialisation ($n=1$): $U_1 = A U_0$. Vrai par construction.
+        \item Hérédité: Si $U_k = A^k U_0$, alors $U_{k+1} = A U_k = A (A^k U_0) = A^{k+1} U_0$.
+    \end{itemize}
+
+    \item \textbf{Diagonalisation de $A$ :}
+    Le polynôme caractéristique est $P_A(\lambda) = \det(A - \lambda I) = \lambda^2 - 3\lambda + 2 = (\lambda - 1)(\lambda - 2)$.
+    Les valeurs propres sont $\lambda_1 = 1$ et $\lambda_2 = 2$. $A$ est diagonalisable car elle a deux valeurs propres distinctes.
+    \begin{itemize}
+        \item $E_1 = \text{Ker}(A - I)$: $y=x$. $v_1 = (1, 1)^T$.
+        \item $E_2 = \text{Ker}(A - 2I)$: $y=2x$. $v_2 = (1, 2)^T$.
+    \end{itemize}
+    $$\mathbf{D = \begin{pmatrix} 1&0\\ 0&2 \end{pmatrix}, \quad P = \begin{pmatrix} 1&1\\ 1&2 \end{pmatrix}}$$
+
+    \item \textbf{Calcul de $A^{n}$ et de $u_{n}$ :}
+    On a $P^{-1} = \begin{pmatrix} 2&-1\\ -1&1 \end{pmatrix}$.
+    \begin{align*}
+    A^n &= P D^n P^{-1} = \begin{pmatrix} 1&1\\ 1&2 \end{pmatrix} \begin{pmatrix} 1&0\\ 0&2^n \end{pmatrix} \begin{pmatrix} 2&-1\\ -1&1 \end{pmatrix} \\
+    &= \begin{pmatrix} 1&2^n\\ 1&2^{n+1} \end{pmatrix} \begin{pmatrix} 2&-1\\ -1&1 \end{pmatrix} = \mathbf{\begin{pmatrix} 2-2^n & -1+2^n \\ 2-2^{n+1} & -1+2^{n+1} \end{pmatrix}}
+    \end{align*}
+    Alors $U_n = A^n U_0$ avec $U_0 = \begin{pmatrix} u_0 \\ u_1 \end{pmatrix}$:
+    $$\begin{pmatrix} u_n \\ u_{n+1} \end{pmatrix} = \begin{pmatrix} (2-2^n)u_0 + (-1+2^n)u_1 \\ \text{...} \end{pmatrix}$$
+    L'expression de $u_n$ est :
+    $$u_n = 2u_0 - u_1 + 2^n(u_1 - u_0) = \mathbf{(2u_0 - u_1) \cdot 1^n + (u_1 - u_0) \cdot 2^n}$$
+\end{enumerate}
+
+\subsubsection{Système défini par une relation de récurrence}
+$A=\begin{pmatrix}1&3\\ 3&1\end{pmatrix}$, $u_{0}=1$, $v_{0}=2$. $X_{n+1} = A X_n$.
+
+\begin{enumerate}
+    \item \textbf{Diagonalisabilité de $A$ :}
+    $P_A(\lambda) = (1-\lambda)^2 - 9 = \lambda^2 - 2\lambda - 8 = (\lambda+2)(\lambda-4)$.
+    Valeurs propres distinctes : $\lambda_1 = -2$ et $\lambda_2 = 4$. $A$ est diagonalisable.
+    $$E_{-2}: y=-x \implies v_1 = (1, -1)^T$$
+    $$E_{4}: y=x \implies v_2 = (1, 1)^T$$
+    $$D = \begin{pmatrix} -2&0\\ 0&4 \end{pmatrix}, \quad P = \begin{pmatrix} 1&1\\ -1&1 \end{pmatrix}, \quad P^{-1} = \frac{1}{2} \begin{pmatrix} 1&-1\\ 1&1 \end{pmatrix}$$
+
+    \item \textbf{Calcul de $A^{n}$ :}
+    \begin{align*}
+    A^n &= P D^n P^{-1} = \begin{pmatrix} 1&1\\ -1&1 \end{pmatrix} \begin{pmatrix} (-2)^n&0\\ 0&4^n \end{pmatrix} \frac{1}{2} \begin{pmatrix} 1&-1\\ 1&1 \end{pmatrix} \\
+    &= \frac{1}{2} \begin{pmatrix} (-2)^n+4^n & -(-2)^n+4^n \\ -(-2)^n+4^n & (-2)^n+4^n \end{pmatrix}
+    \end{align*}
+
+    \item \textbf{Explicitation de $(u_{n})$ et $(v_{n})$ :}
+    $X_n = A^n X_0$ avec $X_0 = \begin{pmatrix} 1 \\ 2 \end{pmatrix}$.
+    $$\begin{pmatrix} u_n \\ v_n \end{pmatrix} = \frac{1}{2} \begin{pmatrix} (-2)^n+4^n & 4^n-(-2)^n \\ 4^n-(-2)^n & (-2)^n+4^n \end{pmatrix} \begin{pmatrix} 1 \\ 2 \end{pmatrix}$$
+    \begin{align*}
+    2u_n &= ((-2)^n+4^n) \cdot 1 + (4^n-(-2)^n) \cdot 2 \\
+         &= (-2)^n + 4^n + 2 \cdot 4^n - 2 \cdot (-2)^n = 3 \cdot 4^n - (-2)^n
+    \end{align*}
+    \begin{align*}
+    2v_n &= (4^n-(-2)^n) \cdot 1 + ((-2)^n+4^n) \cdot 2 \\
+         &= 4^n - (-2)^n + 2 \cdot (-2)^n + 2 \cdot 4^n = 3 \cdot 4^n + (-2)^n
+    \end{align*}
+    $$\mathbf{u_n = \frac{3 \cdot 4^n - (-2)^n}{2}, \quad v_n = \frac{3 \cdot 4^n + (-2)^n}{2}}$$
+\end{enumerate}
+
+\subsection{Application à la résolution de systèmes différentiels}
+$mx^{\prime\prime}(t)=-kx(t)$, $x(0)=h$, $x^{\prime}(0)=0$.
+
+\begin{enumerate}
+    \item \textbf{Forme matricielle $X^{\prime}(t)=BX(t)$ :}
+    En posant $\omega^2 = k/m$ et $X(t) = \begin{pmatrix}x(t)\\ x^{\prime}(t)\end{pmatrix}$, on a $x^{\prime\prime}(t) = -\omega^2 x(t)$.
+    $$X^{\prime}(t) = \begin{pmatrix} x^{\prime}(t) \\ x^{\prime\prime}(t) \end{pmatrix} = \begin{pmatrix} 0 \cdot x(t) + 1 \cdot x^{\prime}(t) \\ -\omega^2 x(t) + 0 \cdot x^{\prime}(t) \end{pmatrix} = \mathbf{\begin{pmatrix} 0&1\\ -\omega^2&0 \end{pmatrix}} X(t)$$
+    La matrice est $\mathbf{B = \begin{pmatrix} 0&1\\ -k/m&0 \end{pmatrix}}$. Conditions initiales : $\mathbf{X(0) = \begin{pmatrix} h\\ 0 \end{pmatrix}}$.
+
+    \item \textbf{Diagonalisation complexe de $B$ :}
+    $P_B(\lambda) = \det(B - \lambda I) = \lambda^2 + \omega^2$. Valeurs propres $\lambda_{1,2} = \pm i\omega$.
+    $$E_{i\omega}: y = i\omega x \implies v_1 = \begin{pmatrix} 1 \\ i\omega \end{pmatrix}$$
+    $$E_{-i\omega}: y = -i\omega x \implies v_2 = \begin{pmatrix} 1 \\ -i\omega \end{pmatrix}$$
+    $$\mathbf{D = \begin{pmatrix} i\omega&0\\ 0&-i\omega \end{pmatrix}, \quad P = \begin{pmatrix} 1&1\\ i\omega&-i\omega \end{pmatrix}}$$
+
+    \item \textbf{Équation pour $Y(t)=P^{-1}X(t)$ :}
+    $Y^{\prime}(t) = \frac{d}{dt}(P^{-1}X(t)) = P^{-1} X^{\prime}(t) = P^{-1} B X(t)$.
+
+    Comme $B = P D P^{-1}$, alors $Y^{\prime}(t) = P^{-1} (P D P^{-1}) X(t) = D (P^{-1} X(t)) = \mathbf{D Y(t)}$.
+
+    $Y(0) = \mathbf{P^{-1}X(0)}$ par substitution.
+
+    \item \textbf{Déduction de $x(t)$ et description du mouvement :}
+    L'équation $Y^{\prime}(t) = D Y(t)$ est découplée, donnant :
+    $$Y(t) = \begin{pmatrix} C_1 e^{i\omega t} \\ C_2 e^{-i\omega t} \end{pmatrix}$$
+    On cherche maintenant les constantes :
+    $Y(0) = P^{-1}X(0) = \frac{1}{-2i\omega} \begin{pmatrix} -i\omega&-1\\ -i\omega&1 \end{pmatrix} \begin{pmatrix} h\\ 0 \end{pmatrix} = \begin{pmatrix} h/2 \\ h/2 \end{pmatrix}$.
+
+    D'où $C_1 = C_2 = h/2$.
+    $$X(t) = P Y(t) = \begin{pmatrix} 1&1\\ i\omega&-i\omega \end{pmatrix} \begin{pmatrix} \frac{h}{2} e^{i\omega t} \\ \frac{h}{2} e^{-i\omega t} \end{pmatrix} = \frac{h}{2} \begin{pmatrix} e^{i\omega t} + e^{-i\omega t} \\ i\omega (e^{i\omega t} - e^{-i\omega t}) \end{pmatrix}$$
+    La première composante donne $x(t)$:
+    $$x(t) = \frac{h}{2} (e^{i\omega t} + e^{-i\omega t}) = h \cdot \frac{e^{i\omega t} + e^{-i\omega t}}{2} = \mathbf{h \cos(\omega t)}$$
+    Le mouvement est une \textbf{oscillation harmonique simple} d'amplitude $h$ et de pulsation $\omega = \sqrt{k/m}$.
+\end{enumerate}
+\section{Sur la diagonalisation des endomorphismes}
+
+\subsection{Exemple 1 : Endomorphisme de permutation cyclique}
+Soit $f$ un endomorphisme de $\mathbb{C}^n$ de matrice :
+$$A = \begin{pmatrix} 0 & 0 & \cdots & 0 & 1 \\ 1 & 0 & \cdots & 0 & 0 \\ 0 & 1 & \ddots & 0 & 0 \\ \vdots & \ddots & \ddots & \vdots & \vdots \\ 0 & 0 & \cdots & 1 & 0 \end{pmatrix}$$
+
+\begin{enumerate}
+    \item \textbf{Polynôme caractéristique $P_A(\lambda)$ :}
+    $$P_A(\lambda) = \det(A - \lambda I_n) = \det \begin{pmatrix} -\lambda & 0 & \cdots & 0 & 1 \\ 1 & -\lambda & \cdots & 0 & 0 \\ 0 & 1 & \ddots & 0 & 0 \\ \vdots & \ddots & \ddots & -\lambda & 0 \\ 0 & 0 & \cdots & 1 & -\lambda \end{pmatrix}$$
+    Par développement par rapport à la première ligne :
+    $$P_A(\lambda) = (-\lambda) \det(M_{11}) + (-1)^{1+n} \cdot 1 \cdot \det(M_{1n})$$
+    où $M_{11}$ est triangulaire inférieure avec $(-\lambda)$ sur la diagonale, et $M_{1n}$ est triangulaire inférieure avec des $1$ sur l'antidiagonale (déterminant $(-1)^{n-1}$).
+    $$P_A(\lambda) = (-\lambda)(-\lambda)^{n-1} + (-1)^{n+1} (-1)^{n-1} = (-\lambda)^n + (-1)^{2n} = (-\lambda)^n + 1$$
+    Les valeurs propres sont les racines de $P_A(\lambda)=0$, soit $\lambda^n = (-1)^{n-1}$.
+    Si $n$ est pair, $\lambda^n = -1 \implies \lambda^n+1=0$. Si $n$ est impair, $\lambda^n = 1 \implies -\lambda^n+1=0$.
+    Dans les deux cas, les valeurs propres sont les solutions de $\lambda^n - 1 = 0$ (si $n$ impair, $P_A(\lambda) = 1-\lambda^n$ donne $\lambda^n=1$). Plus simplement : $\lambda^n=1$ ou $\lambda^n=-1$.
+    Les valeurs propres vérifient $\mathbf{\lambda^n = 1}$ (les $n$ racines $n$-ièmes de l'unité).
+
+    \item \textbf{Diagonalisabilité et valeurs propres :}
+    Les solutions de $\lambda^n = 1$ sont :
+    $$\lambda_k = e^{i \frac{2\pi k}{n}}, \quad k = 0, 1, \ldots, n-1$$
+    Il y a $\mathbf{n}$ \textbf{valeurs propres distinctes} dans $\mathbb{C}$.
+    Puisque $\dim(E)=n$ et que l'endomorphisme $f$ possède $n$ valeurs propres distinctes, $f$ est \textbf{diagonalisable sur $\mathbb{C}$}.
+\end{enumerate}
+
+
+\subsection{Exemple 2 : Matrice $A = J_n - I_n$}
+$$A = \begin{pmatrix} 0 & 1 & 1 & \cdots & 1 \\ 1 & 0 & 1 & \cdots & 1 \\ \vdots & \vdots & \vdots & \ddots & \vdots \\ 1 & 1 & 1 & \cdots & 0 \end{pmatrix}$$
+
+\begin{enumerate}
+    \item \textbf{Calculer $A+I_{n}$ :}
+    $$A+I_n = \begin{pmatrix} 1 & 1 & \cdots & 1 \\ 1 & 1 & \cdots & 1 \\ \vdots & \vdots & \ddots & \vdots \\ 1 & 1 & \cdots & 1 \end{pmatrix} = \mathbf{J_n}$$
+
+    \item \textbf{Image et Noyau de $f+id_{E}$ :}
+    $f+id_E$ est représenté par $J_n$. Toutes les colonnes de $J_n$ sont le vecteur $\mathbf{u} = (1, 1, \ldots, 1)^T$.
+    $$\mathbf{Im(f+id_{E}) = \text{Vect}(\mathbf{u})}$$
+    $$\dim(\text{Im}(f+id_{E})) = \text{rang}(J_n) = 1$$
+    Par le théorème du rang : $\dim(\text{Ker}(f+id_{E})) = \dim(E) - \dim(\text{Im}(f+id_{E})) = n - 1$.
+    $$\mathbf{\dim(\text{Ker}(f+id_{E})) = n-1}$$
+
+    \item \textbf{Calculer $f(\sum_{i=1}^{n}e_{i})$ :}
+    Soit $\mathbf{u} = \sum_{i=1}^{n}e_{i}$. $f(u) = A\mathbf{u}$.
+    Le produit matriciel $A\mathbf{u}$ donne un vecteur dont chaque composante est la somme des $n$ coefficients de la ligne correspondante de $A$. Chaque ligne contient $n-1$ fois le chiffre 1.
+    $$f(u) = A\mathbf{u} = \begin{pmatrix} n-1 \\ n-1 \\ \vdots \\ n-1 \end{pmatrix} = \mathbf{(n-1)\mathbf{u}}$$
+
+    \item \textbf{Diagonalisabilité de $A$ sur $\mathbb{R}$ :}
+    \begin{itemize}
+        \item D'après 3), $\mathbf{\lambda_1 = n-1}$ est une valeur propre, de vecteur propre $\mathbf{u}$. Donc $m_g(n-1) \ge 1$.
+        \item D'après 2), $\text{Ker}(f+id_E) = \text{Ker}(A - (-1)I)$ est l'espace propre associé à $\mathbf{\lambda_2 = -1}$.
+        $$\mathbf{m_g(-1) = n-1}$$
+    \end{itemize}
+    La somme des dimensions des sous-espaces propres est $m_g(n-1) + m_g(-1) \ge 1 + (n-1) = n$.
+    Puisque cette somme est égale à la dimension de l'espace ($n$), la matrice $A$ est \textbf{diagonalisable sur $\mathbb{R}$}.
+
+    \item \textbf{Déterminant $\det(A)$ :}
+    Le déterminant est le produit des valeurs propres, comptées avec leur multiplicité algébrique ($m_a = m_g$ puisque $A$ est diagonalisable).
+    $$\mathbf{\det(A) = (n-1)^1 \cdot (-1)^{n-1} = (n-1)(-1)^{n-1}}$$
+
+    \item \textbf{Trouver $M$ tel que $M^{2}=A$ pour $n=4$ :}
+    Pour $n=4$, les valeurs propres sont $\lambda_1 = 3$ (multiplicité 1) et $\lambda_2 = -1$ (multiplicité 3).
+    $A = P D P^{-1}$, avec $D = \text{diag}(3, -1, -1, -1)$.
+    Nous cherchons $D'$ tel que $(D')^2 = D$. Nous choisissons :
+    $$D' = \text{diag}(\sqrt{3}, \sqrt{-1}, \sqrt{-1}, \sqrt{-1}) = \begin{pmatrix} \sqrt{3} & 0 & 0 & 0 \\ 0 & i & 0 & 0 \\ 0 & 0 & i & 0 \\ 0 & 0 & 0 & i \end{pmatrix}$$
+    La matrice $M$ est $\mathbf{M = P D' P^{-1}}$. $M$ est bien dans $M_4(\mathbb{C})$.
+\end{enumerate}
+
+
+\subsection{Symétrie}
+$s\in L(E)$ tel que $s\circ s=id_{E}$.
+
+\begin{enumerate}
+    \item \textbf{Valeurs propres possibles :}
+    Soit $\lambda$ une valeur propre et $x \ne 0$ un vecteur propre : $s(x) = \lambda x$.
+    $$s(s(x)) = s(\lambda x) = \lambda s(x) = \lambda^2 x$$
+    Puisque $s\circ s = id_E$, $s(s(x)) = x$.
+    $$\lambda^2 x = x \implies (\lambda^2 - 1) x = 0$$
+    Puisque $x \ne 0$, $\lambda^2 - 1 = 0$, donc $\mathbf{\lambda = \pm 1}$.
+
+    \item \textbf{Décomposition $x=x^{+}+x^{-}$ :}
+    Pour tout $x \in E$, posons :
+    $$x^{+} = \frac{1}{2}(x + s(x)) \quad \text{et} \quad x^{-} = \frac{1}{2}(x - s(x))$$
+    La somme est : $x^{+} + x^{-} = \frac{1}{2}(x + s(x) + x - s(x)) = x$.
+    Vérification de l'action de $s$:
+    \begin{align*} s(x^{+}) &= s\left(\frac{1}{2}(x + s(x))\right) = \frac{1}{2}(s(x) + s(s(x))) = \frac{1}{2}(s(x) + x) = \mathbf{x^{+}} \\ s(x^{-}) &= s\left(\frac{1}{2}(x - s(x))\right) = \frac{1}{2}(s(x) - s(s(x))) = \frac{1}{2}(s(x) - x) = -\frac{1}{2}(x - s(x)) = \mathbf{-x^{-}}\end{align*}
+    Donc $x^{+} \in E_1$ et $x^{-} \in E_{-1}$.
+
+    \item \textbf{Diagonalisabilité :}
+    La question b) montre que tout vecteur $x \in E$ appartient à la somme des sous-espaces propres $E_1 \text{ et } E_{-1}$.
+    $$E = E_1 + E_{-1}$$
+    Les sous-espaces propres associés à des valeurs propres distinctes sont toujours en somme directe, donc $E = E_1 \oplus E_{-1}$.
+    Puisque $E$ est la somme directe de ses sous-espaces propres, $s$ est \textbf{diagonalisable}.
+
+    \item \textbf{Description de l'action de $s$ :}
+    $s$ est une \textbf{symétrie} par rapport à $E_1$ (l'espace des vecteurs invariants) parallèlement à $E_{-1}$ (l'espace où les vecteurs sont inversés).
+\end{enumerate}
+
+\hrule
+
+\subsection{Dans l'espace des polynômes}
+$f(P)=XP^{\prime}(X)$, sur $E=\mathbb{R}_{n}[X]$. $\dim(E) = n+1$.
+
+\begin{enumerate}
+    \item \textbf{Endomorphisme :}
+    \begin{itemize}
+        \item \textbf{Stabilité :} Si $\deg(P) \le n$, alors $\deg(P') \le n-1$. $\deg(f(P)) = \deg(X P'(X)) \le 1 + (n-1) = n$. $f(P) \in \mathbb{R}_{n}[X]$.
+        \item \textbf{Linéarité :} $f(\alpha P + Q) = X (\alpha P + Q)' = X (\alpha P' + Q') = \alpha (X P') + (X Q') = \alpha f(P) + f(Q)$.
+    \end{itemize}
+    $f$ est un \textbf{endomorphisme} de $\mathbb{R}_{n}[X]$.
+
+    \item \textbf{Diagonalisabilité :}
+    Considérons la base canonique $\mathcal{B} = (1, X, X^2, \ldots, X^n)$.
+    L'action de $f$ sur les vecteurs de base est :
+    $$f(X^k) = X (k X^{k-1}) = k X^k, \quad \text{pour } k=0, \ldots, n$$
+    Chaque monôme $X^k$ est un vecteur propre associé à la valeur propre $\lambda_k = k$.
+    Les valeurs propres sont $\mathbf{\{0, 1, 2, \ldots, n\}}$.
+    Il y a $\mathbf{n+1}$ \textbf{valeurs propres distinctes}.
+    Puisque $\dim(\mathbb{R}_n[X]) = n+1$ et que $f$ possède $n+1$ valeurs propres distinctes, $f$ est \textbf{diagonalisable}.
+\end{enumerate}
+
+\hrule
+
+\subsection{Dans l'espace des fonctions continues}
+$\phi(f)(x)=\int_{-\pi/2}^{\pi/2}\cos(x+t)f(t)dt$ sur $E=\mathcal{C}([-\frac{\pi}{2},\frac{\pi}{2}])$.
+
+\begin{enumerate}
+    \item \textbf{Endomorphisme :}
+    \begin{itemize}
+        \item \textbf{Linéarité :} $\phi(\alpha f + g)$ est l'intégrale d'une combinaison linéaire, qui est la combinaison linéaire des intégrales (par linéarité de l'intégrale). $\phi$ est linéaire.
+        \item \textbf{Stabilité :} L'intégrale d'une fonction continue est continue, donc $\phi(f)$ est continue sur $[-\pi/2, \pi/2]$.
+    \end{itemize}
+    $\phi$ est un \textbf{endomorphisme} de $E$.
+
+    \item \textbf{Valeurs propres et fonctions propres :}
+    On cherche $f \ne 0$ et $\lambda$ tels que $\phi(f) = \lambda f$.
+    $$\lambda f(x) = \int_{-\pi/2}^{\pi/2} (\cos(x)\cos(t) - \sin(x)\sin(t)) f(t) dt$$
+    $$\lambda f(x) = \cos(x) \underbrace{\int_{-\pi/2}^{\pi/2} \cos(t) f(t) dt}_{C_1} - \sin(x) \underbrace{\int_{-\pi/2}^{\pi/2} \sin(t) f(t) dt}_{C_2}$$
+    Si $\lambda \ne 0$, $f(x)$ doit être de la forme $\mathbf{f(x) = A \cos(x) + B \sin(x)}$.
+
+    Substituons cette forme dans $C_1$ et $C_2$ (en utilisant $\int_{-\pi/2}^{\pi/2} \cos^2(t) dt = \int_{-\pi/2}^{\pi/2} \sin^2(t) dt = \pi/2$ et l'orthogonalité des fonctions $\cos$ et $\sin$ sur cet intervalle) :
+    $$C_1 = A \frac{\pi}{2}, \quad C_2 = B \frac{\pi}{2}$$
+    L'équation $\lambda f(x) = C_1 \cos(x) - C_2 \sin(x)$ devient :
+    $$\lambda (A \cos(x) + B \sin(x)) = \left(A \frac{\pi}{2}\right) \cos(x) - \left(B \frac{\pi}{2}\right) \sin(x)$$
+
+    Par identification :
+    \begin{align*} \lambda A &= A \frac{\pi}{2} \\ \lambda B &= -B \frac{\pi}{2} \end{align*}
+
+    \begin{itemize}
+        \item \textbf{Cas 1 : $\lambda = \frac{\pi}{2}$}
+        La première équation est satisfaite. La seconde donne $\frac{\pi}{2} B = -\frac{\pi}{2} B \implies 2 B = 0 \implies B=0$.
+        \textbf{Valeur propre :} $\mathbf{\lambda_1 = \frac{\pi}{2}}$.
+        \textbf{Fonction propre :} $\mathbf{f_1(x) = \cos(x)}$ ($A \ne 0$).
+
+        \item \textbf{Cas 2 : $\lambda = -\frac{\pi}{2}$}
+        La première équation donne $-\frac{\pi}{2} A = \frac{\pi}{2} A \implies 2 A = 0 \implies A=0$. La seconde est satisfaite.
+        \textbf{Valeur propre :} $\mathbf{\lambda_2 = -\frac{\pi}{2}}$.
+        \textbf{Fonction propre :} $\mathbf{f_2(x) = \sin(x)}$ ($B \ne 0$).
+
+        \item \textbf{Cas 3 : $\lambda = 0$}
+        Implique $A=0$ et $B=0$, donc $f(x)=0$, ce qui est exclu pour un vecteur propre.
+    \end{itemize}
+    Les valeurs propres sont $\mathbf{\frac{\pi}{2}}$ (associée à $\text{Vect}(\cos(x))$) et $\mathbf{-\frac{\pi}{2}}$ (associée à $\text{Vect}(\sin(x))$).
+\end{enumerate}
+\end{document}
+
+

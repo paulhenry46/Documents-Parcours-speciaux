@@ -1,0 +1,1 @@
+la modélisation de la première partie s'est concentrée sur les valeurs de pic car les autres sont des valaurs trop imprecises. De plus, il a fallu mettre A en paramètre et non = à 1

@@ -1,0 +1,200 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 1 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\begin{document}
+%\setcounter{chapter}{-1}
+\chapter{Distributions de charge ponctuelles}
+Pour alléger les calculs, on notera parfois \(k = \frac{1}{4\pi \epsilon_0}\) et les vecteurs en gras.
+\section{Calculer la charge dans un volume}
+Prenons l'exemple d'une demi-sphère de centre 0 et de rayon R chargé avec une densité volumique \(\rho_c = \rho_0\frac{r}{R}\) avec r la distance entre le centre de la demie-sphère et chaque point de la sphère. On veut calculer la charge totale du système :
+
+\begin{flalign*}
+Q &= \iiint_V \rho_c\, dV & & \\
+Q &= \int_{\phi=0}^{2\pi} \int_{\theta=0}^{\pi/2} \int_{r=0}^{R} \left( \rho_0 \frac{r}{R} \right) \left( r^2 \sin\theta\, dr\, d\theta\, d\phi \right) & & \quad \text{(Substitution de } \rho_c \text{ et } dV \text{)} \\
+Q &= \frac{\rho_0}{R} \left( \int_{r=0}^{R} r^3\, dr \right) \left( \int_{\theta=0}^{\pi/2} \sin\theta\, d\theta \right) \left( \int_{\phi=0}^{2\pi} d\phi \right) & & \quad \text{(Séparation des intégrales)} \\
+Q &= \frac{\rho_0}{R} \cdot \left[ \frac{r^4}{4} \right]_0^{R} \cdot \left[ -\cos\theta \right]_0^{\pi/2} \cdot \left[ \phi \right]_0^{2\pi} & & \quad \text{(Calcul des primitives)} \\
+Q &= \frac{\rho_0}{R} \cdot \left( \frac{R^4}{4} - 0 \right) \cdot \left( -\cos\left(\frac{\pi}{2}\right) - (-\cos(0)) \right) \cdot (2\pi - 0) & & \quad \text{(Application des bornes)} \\
+Q &= \frac{\rho_0}{R} \cdot \left( \frac{R^4}{4} \right) \cdot (0 - (-1)) \cdot (2\pi) & & \quad \text{(Simplification)} \\
+Q &= \frac{\rho_0}{R} \cdot \frac{R^4}{4} \cdot 1 \cdot 2\pi & & \\
+Q &= \frac{2\pi \rho_0 R^4}{4 R} & & \\
+Q &= \frac{\pi \rho_0 R^3}{2} & & \quad \text{(Charge totale)}
+\end{flalign*}
+\section{Déterminer un champ électrique}
+On prend l'exemple de 2 charges ponctuelles \(q_1 = 2e>0\) et \(q_2=-e<0\) situées sur l'axe (Ox) et d'abscice \(x_1=-d/2, x_2=d/2\).
+
+On cherche le champ en un point M situé sur l'axe, entre les 2 particules, puis à droite des 2 charges, puis sur l'axe (Oy)
+\subsection{Particule entre les 2 charges}
+\begin{flalign*}
+\mathbf{E}(M) &= \mathbf{E}_1(M) + \mathbf{E}_2(M) &&  \quad \text{(Théorème de superposition)}  \\
+\mathbf{E}_1(M) &= k \frac{q_1}{r_1^2} \mathbf{e}_x = k \frac{2e}{\left(x - x_1\right)^2} \mathbf{e}_x = k \frac{2e}{\left(x + \frac{d}{2}\right)^2} \mathbf{e}_x & & \quad \text{($\mathbf{E}_1$ est dans le sens positif $u_x$)} \\
+\mathbf{E}_2(M) &= k \frac{q_2}{r_2^2} \mathbf{e}_{2M} = k \frac{-e}{\left(x - x_2\right)^2} \left(-\mathbf{e}_x\right) = k \frac{e}{\left(x - \frac{d}{2}\right)^2} \mathbf{e}_x & & \quad \text{($\mathbf{E}_2$ est aussi dans le sens positif $e_x$)} \\
+\mathbf{E}(M) &= \left( k \frac{2e}{\left(x + \frac{d}{2}\right)^2} + k \frac{e}{\left(\frac{d}{2} - x\right)^2} \right) \mathbf{e}_x & & \quad \text{(Somme des composantes)} \\
+\mathbf{E}(M) &= k e \left( \frac{2}{\left(x + \frac{d}{2}\right)^2} + \frac{1}{\left(\frac{d}{2} - x\right)^2} \right) \mathbf{e}_x & &
+\end{flalign*}
+\subsection{Particule à droite}
+On fait de la m\^eme façon que précédement. Une fois l'expression du champ trouvée, on pourra trouver la valeur d'abscice pour laquelle le champ s'annule.
+\begin{flalign*}
+\mathbf{E}(M) &= \mathbf{E}_1(M) + \mathbf{E}_2(M) & & \\
+\mathbf{E}_1(M) &= k \frac{q_1}{r_1^2} \mathbf{e}_x = k \frac{2e}{\left(x + \frac{d}{2}\right)^2} \mathbf{e}_x & & \quad \text{($\mathbf{E}_1$ dans la direction } +\mathbf{e}_x \text{)} \\
+\mathbf{E}_2(M) &= k \frac{q_2}{r_2^2} \mathbf{e}_x = k \frac{-e}{\left(x - \frac{d}{2}\right)^2} \mathbf{e}_x & & \quad \text{($\mathbf{E}_2$ dans la direction } -\mathbf{e}_x \text{ car } q_2 < 0 \text{)} \\
+\mathbf{E}(M) &= k e \left( \frac{2}{\left(x + \frac{d}{2}\right)^2} - \frac{1}{\left(x - \frac{d}{2}\right)^2} \right) \mathbf{e}_x & & \quad \text{(Somme des composantes)}
+\end{flalign*}
+\warningInfo{Effets à grande distance}{On remarque qu'à grande distance, comme \(x>>d\), on ne verrait pas les effets liés au détail de la distribution. Tout se passe alors comme si il n'y avait qu'une charge totale \(2e-e = e\) au barycentre des 2 charges des charges (ici O).}
+
+\newpage
+\explanation{eq1}{L'annulation du champ électrique $\mathbf{E}(M)$ implique l'égalité des magnitudes des champs créés par $q_1$ et $q_2$, puisque les deux champs sont de directions opposées ($\mathbf{E}_1$ vers $+x$ et $\mathbf{E}_2$ vers $-x$) dans la région $x > d/2$.}
+\explanation{eq2}{Développement des termes carrés selon la formule $(A \pm B)^2 = A^2 \pm 2AB + B^2$.}
+\explanation{eq3}{Distribution du facteur 2 sur les termes entre parenthèses et élimination des parenthèses à droite.}
+\explanation{eq5}{Calcul du discriminant $\Delta = B^2 - 4AC$ pour vérifier l'existence de solutions réelles.}
+\explanation{eq6}{Application de la formule générale pour les solutions d'une équation quadratique : $x = \frac{-B \pm \sqrt{\Delta}}{2A}$.}
+\explanation{eq7}{Simplification de la racine carrée : $\sqrt{8d^2} = \sqrt{4 \cdot 2 \cdot d^2} = 2\sqrt{2}d$.}
+\explanation{eq8}{Factorisation par $\frac{d}{2}$. La solution physique doit satisfaire l'hypothèse initiale : $x > d/2$.}
+Nous partons de l'équation issue de $\mathbf{E}(M) = \mathbf{0}$ : $\frac{2}{\left(x + \frac{d}{2}\right)^2} = \frac{1}{\left(x - \frac{d}{2}\right)^2}$.
+
+\begin{flalign*}
+2 \left(x - \frac{d}{2}\right)^2 &= \left(x + \frac{d}{2}\right)^2 \explain{eq1}{right}{0}{0.5}{} \\
+2 \left(x^2 - x d + \frac{d^2}{4}\right) &= x^2 + x d + \frac{d^2}{4} \explain{eq2}{right}{0}{0.5}{} \\
+2x^2 - 2x d + \frac{d^2}{2} &= x^2 + x d + \frac{d^2}{4} \explain{eq3}{right}{0}{0.5}{} \\
+x^2 - 3x d + \frac{d^2}{4} &= 0 \\
+\Delta &= (-3d)^2 - 4(1)\left(\frac{d^2}{4}\right) \explain{eq5}{right}{0}{0.5}{} \\
+\Delta &= 8d^2 & & \\
+x_{a} &= \frac{-(-3d) \pm \sqrt{8d^2}}{2(1)} \explain{eq6}{right}{0}{0.5}{} \\
+x_{a} &= \frac{3d \pm 2\sqrt{2} d}{2} \explain{eq7}{right}{0}{0.5}{} \\
+x_{a} &= \frac{d}{2} (3 \pm 2\sqrt{2}) \explain{eq8}{right}{0}{0.5}{}
+\end{flalign*}
+\subsection{Particule sur l'axe Oy}
+\newpage
+\explanation{v1}{Définition de la distance radiale $r$ entre les charges et le point $M(0, y)$ par le théorème de Pythagore.}
+\explanation{v2}{Expression du champ $\mathbf{E}_1(M)$ créé par $q_1 = 2e$ à $P_1(-d/2, 0)$. Le vecteur $\mathbf{P_1 M}$ est $\mathbf{r}_1 = M - P_1 = (d/2, y)$.}
+\explanation{v3}{Expression du champ $\mathbf{E}_2(M)$ créé par $q_2 = -e$ à $P_2(d/2, 0)$. Le vecteur $\mathbf{P_2 M}$ est $\mathbf{r}_2 = M - P_2 = (-d/2, y)$. Notez que $q_2$ est négative.}
+\explanation{v5}{Somme vectorielle des champs $\mathbf{E}(M) = \mathbf{E}_1(M) + \mathbf{E}_2(M)$, avec factorisation du terme commun $k e / r^3$.}
+\explanation{v7}{Calcul final des coefficients des composantes : $\frac{2d}{2} + \frac{d}{2} = \frac{3d}{2}$ et $2y - y = y$.}
+
+Nous faisons cela :
+
+\begin{flalign*}
+r &= \sqrt{\left(\frac{d}{2}\right)^2 + y^2}  \explain{v1}{right}{0}{0.5}{} \\
+\mathbf{E}_1(M) &= k \frac{q_1}{r^3} \mathbf{r}_1 = k \frac{2e}{r^3} \left( \frac{d}{2}\mathbf{e}_x + y\mathbf{e}_y \right)  \explain{v2}{right}{0}{0.5}{} \\
+\mathbf{E}_2(M) &= k \frac{q_2}{r^3} \mathbf{r}_2 = k \frac{-e}{r^3} \left( -\frac{d}{2}\mathbf{e}_x + y\mathbf{e}_y \right)  \explain{v3}{right}{0}{0.5}{} \\
+\mathbf{E}_2(M) &= k \frac{e}{r^3} \left( \frac{d}{2}\mathbf{e}_x - y\mathbf{e}_y \right) \\
+\mathbf{E}(M) &= \mathbf{E}_1(M) + \mathbf{E}_2(M)\\
+&= k \frac{e}{r^3} \left[ 2 \left( \frac{d}{2}\mathbf{e}_x + y\mathbf{e}_y \right) + 1 \left( \frac{d}{2}\mathbf{e}_x - y\mathbf{e}_y \right) \right] \explain{v5}{right}{0}{0.5}{} \\
+&= k \frac{e}{r^3} \left[ \left( d + \frac{d}{2} \right)\mathbf{e}_x + (2y - y)\mathbf{e}_y \right] \\
+&= k \frac{e}{r^3} \left[ \frac{3d}{2}\mathbf{e}_x + y\mathbf{e}_y \right] \explain{v7}{right}{0}{0.5}{}
+\end{flalign*}
+\section{Calcul de potentiel}
+On souhaite calculer le potentiel d'une distribution de charge : charge +2q à l'origine, -q et -q placées sur l'axe (Ox) d'abscice -d et +d.
+
+\subsection{Calcul du potentiel}
+On souhaite calculer le potentiel crée par cette distribution, pour une particule sur l'axe (Ox) avec x>d :
+\explanation{p1}{Le potentiel électrique $V(M)$ est la somme algébrique des potentiels créés par chaque charge $q_i$, soit $V(M) = \sum k \frac{q_i}{r_i}$.}
+\explanation{p2}{Expression des distances $r_1, r_2, r_3$ entre les charges situées respectivement à $0, -d, +d$ et le point $M(x)$ sur l'axe $(Ox)$. La valeur absolue est nécessaire car $V$ dépend de la distance non orientée $|x_{charge} - x_{point}|$.}
+\explanation{p3}{Substitution des charges $(+2q, -q, -q)$ et des distances $r_i$ dans l'expression du potentiel total.}
+\explanation{p4}{Factorisation de l'expression par la constante $k q$ pour obtenir la forme finale.}
+\explanation{p5}{On peut enlever la valeur aboslue car x>d>0.}
+\begin{flalign*}
+V(x) &= V_1(x) + V_2(x) + V_3(x) \explain{p1}{right}{0}{0.5}{} \\
+r_1 &= |x|, \quad r_2 = |x - (-d)| = |x + d|, \quad r_3 = |x - d| \explain{p2}{right}{0}{0.5}{} \\
+V(x) &= k \frac{+2q}{|x|} + k \frac{-q}{|x + d|} + k \frac{-q}{|x - d|} \explain{p3}{right}{0}{0.5}{} \\
+&= k q \left( \frac{2}{|x|} - \frac{1}{|x + d|} - \frac{1}{|x - d|} \right) \explain{p4}{right}{0}{0.5}{}\\
+&= k q \left( \frac{2}{x} - \frac{1}{x + d} - \frac{1}{x - d} \right) \explain{p5}{right}{0}{0.5}{}
+\end{flalign*}
+\subsection{Simplification}
+Nous pouvons réécrire le potentiel comme :
+\[V = \frac{kq}{x}[2-\frac{1}{1+d/x}-\frac{1}{1-d/x}]\]
+Nous allons utiliser un Développement limité à l'ordre 2 pour obtenir une expression simplifiée qui ne soit pas nulle.
+\explanation{a1}{Substitution des développements limités à l'ordre 3, $\frac{1}{1 \pm \epsilon} \approx 1 \mp \epsilon + \epsilon^2 \mp \epsilon^3$, avec $\epsilon = d/x$.}
+\explanation{a2}{Regroupement des termes de même ordre : constantes, ordre 1 ($\epsilon$), ordre 2 ($\epsilon^2$), et ordre 3 ($\epsilon^3$).}
+\explanation{a3}{Calcul des sommes partielles : Les termes constants s'annulent ($2-2=0$), et les termes d'ordre 1 et 3 s'annulent par symétrie.}
+\explanation{a5}{Substitution du résultat $S$ dans l'expression générale de $V(x) = \frac{k q}{x} S$.}
+\begin{flalign*}
+S &= 2 - \left(1 - \frac{d}{x} + \left(\frac{d}{x}\right)^2 - \left(\frac{d}{x}\right)^3 \right) - \left(1 + \frac{d}{x} + \left(\frac{d}{x}\right)^2 + \left(\frac{d}{x}\right)^3 \right) \explain{a1}{right}{0}{0.5}{} \\
+&= 2 - \left( 1 + 1 \right) + \left( \frac{d}{x} - \frac{d}{x} \right) - \left( \left(\frac{d}{x}\right)^2 + \left(\frac{d}{x}\right)^2 \right) + \left( \left(\frac{d}{x}\right)^3 - \explain{a2}{right}{0}{0.5}{} \left(\frac{d}{x}\right)^3 \right)  \\
+&= 2 - 2 + 0 - 2 \left(\frac{d}{x}\right)^2 + 0 \explain{a3}{right}{0}{0.5}{} \\
+&= -2 \left(\frac{d}{x}\right)^2
+\end{flalign*}
+Nous pouvons maintenant injecter S dans l'expression de V :
+\begin{flalign*}
+V(x) &= \frac{k q}{x} \cdot S \\
+&= \frac{k q}{x} \left[ -2 \left(\frac{d}{x}\right)^2 \right] \explain{a5}{right}{0}{0.5}{} \\
+&= - \frac{2 k q d^2}{x^3}
+\end{flalign*}
+La forme finale du potentiel montre que l'expression décroît comme $1/x^3$, ce qui est caractéristique d'un quadripôle.
+\subsection{Calcul du potentiel avec la relation locale}
+On peut en déduire l'expression du champ pour une particule sur l'axe, toujours éloignée du système. Comme on a une infinité de plan \(\pi^+\) passant par l'axe et que \(\E\) soit \^etre contenu dans chacun de ces plans, on en déduit qu'il est seulement \(\mathbf{e}_x\)
+\explanation{c1}{Relation générale entre le champ électrique $\mathbf{E}$ et le potentiel $V$ pour une distribution sur l'axe $(Ox)$.}
+\explanation{c2}{Substitution de l'expression simplifiée du potentiel pour $x \gg d$.}
+\explanation{c3}{Factorisation des constantes ($2 k q d^2$) et simplification des signes négatifs.}
+\explanation{c4}{Application de la règle de dérivation $\frac{d}{dx} (x^n) = n x^{n-1}$, ici avec $n = -3$.}
+\begin{flalign*}
+\mathbf{E}(x) &= - \frac{\partial V}{\partial x} \mathbf{e}_x \explain{c1}{right}{0}{0.5}{} \\
+&= - \frac{\partial}{\partial x} \left( - \frac{2 k q d^2}{x^3} \right) \mathbf{e}_x \explain{c2}{right}{0}{0.5}{} \\
+ &= - (-2 k q d^2) \frac{\partial}{\partial x} \left( x^{-3} \right) \mathbf{e}_x \explain{c3}{right}{0}{0.5}{} \\
+ &= 2 k q d^2 \left( -3 x^{-3 - 1} \right) \mathbf{e}_x \explain{c4}{right}{0}{0.5}{} \\
+ &= -6 k q d^2 x^{-4} \mathbf{e}_x \\
+ &= - \frac{6 k q d^2}{x^4} \mathbf{e}_x
+\end{flalign*}
+\section{Expression des lignes de champ}
+On un champ de la forme \(\frac{p}{4\pi \epsilon_0 r^3}(\sin(\theta)\vec{e_{\theta}}+2\cos(\theta)\vec{e_r})\). On souhaire déterminer l'expression des lignes de champ.
+\newpage
+\explanation{pv1}{Définition du produit vectoriel entre le champ électrique $\mathbf{E}$ et le déplacement élémentaire $\mathbf{dl}$.}
+\explanation{pv2}{Seuls les produits des vecteurs unitaires différents sont non nuls, $\mathbf{u}_r \times \mathbf{u}_{\theta} = \mathbf{u}_{\phi}$ et $\mathbf{u}_{\theta} \times \mathbf{u}_r = -\mathbf{u}_{\phi}$.}
+\explanation{pv4}{La condition pour une ligne de champ est $\mathbf{E} \times \mathbf{dl} = \mathbf{0}$, impliquant que la composante $\mathbf{u}_{\phi}$ du produit vectoriel doit être nulle.}
+\explanation{pv6}{Réarrangement de l'équation pour obtenir la forme des lignes de champ.}
+\explanation{sub2}{Substitution des composantes radiales $E_r$ et angulaires $E_{\theta}$ du champ.}
+\explanation{sub4}{Séparation des variables $r$ et $\theta$ et application de l'opérateur intégral.}
+\explanation{sub5}{Calcul de l'intégrale. La constante d'intégration est exprimée sous forme logarithmique ($\ln(C)$).}
+\begin{flalign*}
+\mathbf{E} \times \mathbf{dl} &= (E_r\, \mathbf{u}_r + E_{\theta}\, \mathbf{u}_{\theta}) \times (dr\, \mathbf{u}_r + r\, d\theta\, \mathbf{u}_{\theta})  \explain{pv1}{right}{0}{0.5}{} \\
+&= (E_r \cdot r\, d\theta) (\mathbf{u}_r \times \mathbf{u}_{\theta}) + (E_{\theta} \cdot dr) (\mathbf{u}_{\theta} \times \mathbf{u}_r)  \explain{pv2}{right}{0}{0.5}{} \\
+&= (E_r r\, d\theta - E_{\theta}\, dr) \mathbf{u}_{\phi} \\
+\mathbf{E} \times \mathbf{dl} &= \mathbf{0} \implies E_r r\, d\theta - E_{\theta}\, dr = 0  \explain{pv4}{right}{0}{0.5}{} \\
+\implies E_r r\, \dd\theta &= E_{\theta}\, \dd r \\
+\implies \frac{\dd r}{E_r} &= \frac{r\, \dd\theta}{E_{\theta}}  \explain{pv6}{right}{0}{0.5}{}
+\end{flalign*}
+Nous substituons $E_r$ et \(E_{\theta}\) :
+\begin{flalign*}
+\frac{\dd r}{r\, \dd\theta} &= \frac{E_r}{E_{\theta}}  \\
+\frac{\dd r}{r\, \dd\theta} &= \frac{\frac{2A}{r^3} \cos\theta}{\frac{A}{r^3} \sin\theta}  \explain{sub2}{right}{0}{0.5}{} \\
+\frac{dr}{r\, d\theta} &= 2 \frac{\cos\theta}{\sin\theta}  \\
+\int \frac{dr}{r} &= 2 \int \frac{\cos\theta}{\sin\theta}\, d\theta  \explain{sub4}{right}{0}{0.5}{} \\
+\ln(r) &= 2 \ln(\sin\theta) + \ln(C)  \explain{sub5}{right}{0}{0.5}{} \\
+r &= C \sin^2\theta
+\end{flalign*}
+ \end{document}

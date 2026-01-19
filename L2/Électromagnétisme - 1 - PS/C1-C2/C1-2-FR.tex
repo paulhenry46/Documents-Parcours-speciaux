@@ -1,0 +1,89 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 1 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\begin{document}
+\chapter{Champ électrique et distribution de charges}
+\section{Lois de Coulombs}
+\begin{definition}[Charge ponctuelle]
+Les charges ponctuelles sont des particules élémentaires, comme l'électron \(e^-\) avec \(q_e = 1.6\cdot 10^{-19}C, q_p = + 1.6\cdot 10^{-19}C\)
+\end{definition}
+\begin{theorem}[Lois de Coulombs]
+La force que la charge \(q_p\) exerce sur q est \[\vec{F_{q_p\to q}} = \frac{qq_p}{4\pi \epsilon_0}\frac{\vec{e_{PM}}}{\norm{PM}^2}\] avec \(\epsilon_0\) la permittivité du vide \(\frac{1}{36\pi \cdot 10^{9}}\) et \(\frac{1}{4\pi \epsilon_0}\simeq 9\cdot 10^{9}\)
+\end{theorem}
+
+Si 2 charges ponctuelles sont de m\^eme signe, elles se repoussent, dans le cas contraire, elles s'attirent.
+\section{Champ électrique crée par une charge ponctuelle}
+\begin{definition}[Champ électrique]
+\[\vec{F_{q_p\to q}} = q \cdot \E\] avec \(\E\) qui ne dépend que de la charge \(q_p\) : \[\E = \frac{q_p}{4\pi\epsilon_0}\frac{\vec{e_{PM}}}{\norm{PM}^2}\] est le champ électrique crée par \(q_p\) au point M, en \(NC^{-1} / Vm^{-1}\)
+\end{definition}
+\begin{theorem}[Théorème de superposition]
+Le champ électrique d'une distribution de charges ponctuelles \(q_i\)  vaut \(\sum_{i=1}^n \vec{E_i}(M)\) au point M. Fonctionne aussi pour le potentiel
+\end{theorem}
+\section{Potentiel électrique}
+\subsection{Potentiel électrique}
+\begin{definition}[Potentiel électrique]
+\(V(M) = \frac{q}{4\pi\epsilon_0 r} + Cst\)
+\end{definition}
+\section{Répartition de charge}
+\begin{itemize}
+ \item Atome : Noyau de diamètre \(10^{-15}\) + Électron \(10^{-10}\)
+ \item Molécules : On pourra aussi avoir affaire à des distributions de charge qui ne sont uniforme (et qui dépendent par exemple du rayon )es entre atomes  :  \(10^{-10}\)
+\end{itemize}
+\section{Les différentes distributions de charge}
+\subsection{Densité de charge}
+\begin{definition}[Distributuon volumique]
+Si une charge macroscopique Q est répartie uniformément dans un volume V, alors on parle de distribution volumique de charge uniforme et la densité volumique vaut \(\rho_c = \frac{Q}{V}\). De la m\^eme façon, on a \(\sigma_c = \frac{Q}{S}\) ou \(\lambda_c = \frac{Q}{L}\).
+\end{definition}
+\subsection{Symétrie d'une distribution de charge}
+\subsubsection{Plan de symétrie (\(\pi^+\))}
+\begin{itemize}
+ \item Si \(\rho_c(x,y,z) = \rho_c(x,y,-z)\) alors le plan \((Oxy)\) est \(\pi^+\).
+ \item le plan médiateur entre 2 particules de m\^eme charge.
+\end{itemize}
+\subsection{Plans d'anti-symétrie (\(\pi^-\))}
+\begin{itemize}
+ \item Distribution volumique de charge tel que \(\rho_c(x,y,z) = -\rho_c(x,y,-z)\) alors le plan \(Oxy\) en est un
+ \item le plan médiateur entre 2 particules de charge opposée.
+\end{itemize}
+\subsection{Invariance d'une distribution de charge}
+\subsubsection{Invariance par translation}
+Si \(\rho_c(x,y,z) = \rho_c(x,y,z')\), la distribution est invariante par toute translation // à \((Oz)\).
+\subsubsection{Invariance par rotation}
+Distribution de charge telle que \(\rho_c(\rho, \varphi, z) = \rho_c(\rho, \varphi', z)\) est invariant par rotation autour  de (Oz)
+ \end{document}

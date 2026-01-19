@@ -1,0 +1,142 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Atomistique 2 - PS}
+\subtitle{Chimie}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{J.Cunny}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\begin{document}
+\setcounter{chapter}{3}
+\chapter{Symétrie moléculaire - Méthode}
+\section{GPS à connaître}
+\begin{center}
+\begin{tabular}{ll}
+Molécule & GPS\\
+H2O & C2V\\
+NH3 & C3V\\
+BH3 & D3H\\
+Benzène & D6H\\
+Diborane (B2H6) & D2H\\
+CH4 & Td\\
+PH5 & D3H\\
+SH6 & Oh
+          \end{tabular}
+          \end{center}
+
+\section{Méthodologie}
+On commencer par identifier les OA qui sont mises en jeu dans les liaisons chimiques pour créer la molécule.
+
+Par exemple, pour \(H_2O\), ce sont les OA \(2s,2p_x,2p_y,2p_z, 1s_A,1s_B\)\marginCritical{On différencie les OA des 2 atomes d'hydrogène pour la molécule.}.
+
+On détermine ensuite le GPS de la molécule. Pour H2O c'est \(C_{2v}\).
+
+On prend les opérations de symétrie regroupées par classe de l'en-t\^ete de la table de caractère.
+
+Celle de l'eau est \begin{center}
+\begin{tabular}{llllll}
+C2v & ({\color{criticalColor}1}) E & ({\color{green}1})\(C_2\) & (1)\(\sigma_{v}(xz)\) & (1)\(\sigma_{v}(yz)\) \\
+A2 & 1 & 1 & -1 & -1 & Rz\\
+A1 & {\color{warningColor}1} & {\color{tipsColor}1} & 1 & 1 & z\\
+B1 & 1 & -1 & 1 & -1 & x, Ry\\
+B2 & 1 & -1 & -1 & 1 & y, Rx
+                   \end{tabular}
+                   \end{center}
+
+
+On applique ces Opérations aux OA trouvées précédemment :
+\begin{itemize}
+ \item Si on obtient l'opposée de l'OA : on écrit -1,
+ \item si il n'y a pas de changement, on écrit 1, \item dans les autres cas, on écrit 0
+\end{itemize}
+
+On somme ensuite les résultats pour obtenir le \(\Gamma\)
+Ainsi, pour \(H_2O\), on obtient :
+\begin{center}
+\begin{tabular}{lllll}
+ & (1) E & (1)\(C_2\) & (1)\(\sigma_{v}(xz)\) & (1)\(\sigma_{v}(yz)\)\\
+2s & 1 & 1 & 1 & 1\\
+2px & 1 & -1 & 1 & -1\\
+2py & 1 & -1 & -1 & 1\\
+2pz & 1 & 1 & 1 & 1\\
+1sA & 1 & 1 & 0 & 1\\
+1sB & 1 & 1 & 0 & 1\\
+\(\Gamma\) & {\color{checkColor}6} & {\color{pink}1} & 2 & 4
+\end{tabular}
+\end{center}
+
+L'ensemble des symétrie du système s'écrit comme une combinaison linéaire des RI. Le but est maintenant de trouver les coefficients de cette combinaison linéaire. Pour cela, on applique la formule. On trouve pour \(H_2O\) :
+
+\(n_{A1} = \frac{1}{1+1+1+1}({\color{criticalColor}1}\times {\color{warningColor}1}\times {\color{checkColor}6} + {\color{green}1}\times {\color{tipsColor}1} \times {\color{pink}0} + 1\times 1 \times 2 + 1\times 1 \times 4)=3\)
+
+On trouve de la m\^eme façon \(n_{A2} = 0,  n_{B1} = 1, n_{B2} = 2\)
+
+On en déduit que \(\Gamma_{RI} = 1B_1\oplus 2B_2\oplus 3A_1\)
+
+On peut maintenant faire correspondre les RI aux OA de la molécule. Pour ce faire, on commence par se servir de l'avant dernière colonne de la table de caractère. Elle donne le RI des OA 2p. Il suffit de chercher la ligne où se trouve x,y,z.
+
+De plus, l'OA 2s centrale ne change par aucune symétrie. Il faut donc lui associer le RI qui est invariant par toutes les opérations de la table.
+
+On a alors, pour H2O :
+
+\begin{center}
+\begin{tabular}{ll}
+2s &\(A_1\)\\
+2px &\(B_1\)\\
+2py & \(B_2\)\\
+2pz & \(A_1\)\\
+1sA & ?\\
+1sB & ?\\
+\end{tabular}
+\end{center}
+
+On trouve ici que \(\Gamma_{RI} = 1B_1\oplus 1B_2\oplus 2A_1\). Il manque donc 1\(A_1\) et 1 \(B_2\) pour que l'ensemble des opérations soit complet.
+
+Nous avons 2 OA, nous allons faire 2 combinaisons linéaires de 2 OA, pour que le \(\Gamma_{RI}\) soit complet. Il faut donc qu'une combinaison linéaire soit de groupe \(A_1\) et qu'une autre soit \(B_2\).
+
+Dans le cas de l'eau, des combinaisons linéaires qui respectent symétries sont \(1S_A+1s_B\) et \(1s_A-1s_B\).
+
+\begin{center}
+\begin{tabular}{ll}
+2s &\(A_1\)\\
+2px &\(B_1\)\\
+2py & \(B_2\)\\
+2pz & \(A_1\)\\
+1sA+1SB & \(A_1\)\\
+1sA-1sB & \(B_2\)\\
+\end{tabular}
+\end{center}
+
+
+De là, on peut réaliser le DOM, en ne faisant interagir que les OA qui ont le m\^eme RI.
+ \end{document}

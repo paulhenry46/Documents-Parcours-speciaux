@@ -1,0 +1,370 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Algèbre linéaire 2}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+\chapter{Applications linéaires et matrices}
+\section*{Exercice 1. Préliminaire à faire chez soi}
+
+\subsection*{1. $g(1,0)=(2,-1)$, $g(0,1)=(0,-1)$.}
+La famille $\mathcal{B} = \{(1,0), (0,1)\}$ est la base canonique de $\mathbb{R}^2$.
+D'après le théorème de l'application linéaire, une application linéaire $g: \mathbb{R}^2 \to \mathbb{R}^2$ est \textbf{uniquement} définie par les images des vecteurs d'une base de l'espace de départ.
+Donc $g$ existe et est unique.
+Pour $(x,y) \in \mathbb{R}^2$, on a $(x,y) = x(1,0) + y(0,1)$.
+Par linéarité :
+$$g(x,y) = x g(1,0) + y g(0,1) = x(2,-1) + y(0,-1) = (2x, -x-y).$$
+\begin{itemize}
+    \item (a) \emph{Commentaire :} L'argument ``libre'' est insuffisant. Il faut que la famille soit une base. L'expression de $g(x,y)$ est \textbf{fausse}. $(x,-x-y) \ne (2x, -x-y)$.
+    \item (b) \emph{Commentaire :} L'argument ``génératrice'' est insuffisant pour l'unicité. Il faut que ce soit une base. L'expression de $g(x,y)$ est \textbf{correcte}.
+    \item (c) \emph{Commentaire :} L'argument ``base'' est \textbf{correct}. L'expression de $g(x,y)$ est \textbf{fausse}. $(2x,-x+y) \ne (2x, -x-y)$.
+\end{itemize}
+\textbf{La solution (b) est la meilleure}, même si l'argument ``génératrice'' n'implique pas l'unicité à lui seul.
+
+\subsection*{2. $g(1,0)=(1,2)$, $g(1,1)=(2,1)$, $g(-1,1)=(0,1)$.}
+La famille $\mathcal{F} = \{(1,0), (1,1), (-1,1)\}$ est une famille de $\mathbb{R}^2$ qui est liée (car elle a trois vecteurs dans un espace de dimension 2). Pour que $g$ soit linéaire, il faut que la relation de dépendance linéaire entre les vecteurs de départ soit conservée par les images.
+On a la relation de dépendance linéaire :
+$$-2(1,0) + (1,1) = (-2+1, 0+1) = (-1,1).$$
+Pour que $g$ soit linéaire, il faut donc que :
+$$-2g(1,0) + g(1,1) = g(-1,1).$$
+Vérifions :
+$$ -2g(1,0) + g(1,1) = -2(1,2) + (2,1) = (-2, -4) + (2,1) = (0, -3).$$
+Or, $g(-1,1) = (0,1)$.
+Puisque $(0, -3) \ne (0,1)$, \textbf{une telle application linéaire $g$ n'existe pas}.
+
+\begin{itemize}
+    \item (a) \emph{Commentaire :} Faux. L'image de $(-1,1)$ n'est pas ``fixée arbitrairement'', elle est contrainte par la linéarité et les deux premières données. L'expression donnée est celle d'une application définie par $g(1,0)=(1,2)$ et $g(1,1)=(2,1)$, mais elle ne satisfait pas la troisième condition.
+    \item (b) \emph{Commentaire :} \textbf{Correct}. L'inconsistance est montrée.
+\end{itemize}
+
+\subsection*{3. $g(1,1)=(1,0,0)$, $g(1,-1)=(2,1,1)$.}
+La famille $\mathcal{B} = \{(1,1), (1,-1)\}$ est une base de $\mathbb{R}^2$. En effet, les deux vecteurs sont non colinéaires, donc libres, et $\dim(\mathbb{R}^2) = 2$.
+L'application $g: \mathbb{R}^2 \to \mathbb{R}^3$ existe et est unique.
+Pour trouver l'expression de $g(x,y)$, on écrit $(x,y)$ comme combinaison linéaire de $(1,1)$ et $(1,-1)$.
+$$(x,y) = \alpha(1,1) + \beta(1,-1) \implies \begin{cases} x = \alpha + \beta \\ y = \alpha - \beta \end{cases} \implies \begin{cases} \alpha = \frac{x+y}{2} \\ \beta = \frac{x-y}{2} \end{cases}$$
+Par linéarité :
+\begin{align*} g(x,y) &= \alpha g(1,1) + \beta g(1,-1) \\ &= \frac{x+y}{2}(1,0,0) + \frac{x-y}{2}(2,1,1) \\ &= \left(\frac{x+y}{2} + 2\frac{x-y}{2}, \frac{x-y}{2}, \frac{x-y}{2}\right) \\ &= \left(\frac{3x-y}{2}, \frac{x-y}{2}, \frac{x-y}{2}\right). \end{align*}
+\emph{Commentaire :} L'argument donné est \textbf{faux}. La famille des images $\{(1,0,0), (2,1,1)\}$ n'a pas besoin de former une base de l'espace d'arrivée $\mathbb{R}^3$. La seule condition est que la famille de départ $\mathcal{B}$ soit une base de $\mathbb{R}^2$, ce qui est le cas.
+
+\subsection*{4. $g(1,0,0)=(1,2)$, $g(0,1,0)=(-1,1)$.}
+L'application est $g: \mathbb{R}^3 \to \mathbb{R}^2$. La famille de départ $\mathcal{F} = \{(1,0,0), (0,1,0)\}$ est libre dans $\mathbb{R}^3$, mais \textbf{n'est pas une base} de $\mathbb{R}^3$.
+L'application $g$ n'est donc pas uniquement définie par ces deux conditions. Elle peut cependant être étendue de manière linéaire, par exemple en fixant $g(0,0,1)$ arbitrairement.
+L'énoncé demande de donner \emph{l'expression} de $g(x,y,z)$, ce qui suppose une définition unique.
+\begin{itemize}
+    \item Si on prend $g$ telle que $g(0,0,1)=(0,0)$, alors pour $(x,y,z) \in \mathbb{R}^3$:
+    \begin{align*} g(x,y,z) &= x g(1,0,0) + y g(0,1,0) + z g(0,0,1) \\ &= x(1,2) + y(-1,1) + z(0,0) \\ &= (x-y, 2x+y). \end{align*}
+    \item \emph{Commentaire :} L'argument donné est \textbf{imprécis}. La famille est libre, mais non génératrice de $\mathbb{R}^3$. Pour que l'application soit unique, il faudrait une base de $\mathbb{R}^3$. L'expression $g(x,y,z)=(x-y,2x+y)$ est correcte \textbf{uniquement} si l'on choisit $g(0,0,1)=(0,0)$, ce qui n'est pas précisé.
+\end{itemize}
+
+\section*{Exercice 2.}
+Soit $f:\mathbb{R}^3 \to \mathbb{R}^3$ définie par la matrice $A = \begin{pmatrix} 1 & 1 & -1 \\ 0 & 1 & 1 \\ 3 & 7 & 1 \end{pmatrix}$ dans la base canonique $\mathcal{E} = (e_1, e_2, e_3)$.
+
+\subsection*{1. Expression de $f(x,y,z)$.}
+Soit $u = (x,y,z) \in \mathbb{R}^3$. Le vecteur $f(u)$ est donné par le produit matriciel $A \begin{pmatrix} x \\ y \\ z \end{pmatrix}$.
+$$f(x,y,z) = \begin{pmatrix} 1 & 1 & -1 \\ 0 & 1 & 1 \\ 3 & 7 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} x+y-z \\ y+z \\ 3x+7y+z \end{pmatrix}$$
+Donc, $f(x,y,z) = \mathbf{(x+y-z, y+z, 3x+7y+z)}$.
+
+\subsection*{2. Base et équation de $\mathrm{Im}f$.}
+L'image $\mathrm{Im}f$ est engendrée par les colonnes de la matrice $A$.
+$$\mathrm{Im}f = \mathrm{Vect}(v_1, v_2, v_3) \quad \text{avec } v_1 = (1,0,3), v_2 = (1,1,7), v_3 = (-1,1,1).$$
+On cherche une base de cet espace en échelonnant la matrice des vecteurs colonnes.
+$$\begin{pmatrix} 1 & 1 & -1 \\ 0 & 1 & 1 \\ 3 & 7 & 1 \end{pmatrix} \xrightarrow{L_3 \leftarrow L_3 - 3L_1} \begin{pmatrix} 1 & 1 & -1 \\ 0 & 1 & 1 \\ 0 & 4 & 4 \end{pmatrix} \xrightarrow{L_3 \leftarrow L_3 - 4L_2} \begin{pmatrix} 1 & 1 & -1 \\ 0 & 1 & 1 \\ 0 & 0 & 0 \end{pmatrix}.$$
+La matrice échelonnée a 2 pivots, donc $\dim(\mathrm{Im}f) = 2$.
+Une base de $\mathrm{Im}f$ est donnée par les vecteurs colonnes correspondants aux pivots dans la matrice d'origine, soit $v_1$ et $v_2$.
+$$\mathbf{\text{Base de } \mathrm{Im}f : \mathcal{B}_{\mathrm{Im}f} = \{(1,0,3), (1,1,7)\}.}$$
+Puisque $\dim(\mathrm{Im}f)=2$ et $\mathrm{Im}f \subset \mathbb{R}^3$, $\mathrm{Im}f$ est un plan vectoriel dans $\mathbb{R}^3$. Son équation est donnée par la condition d'orthogonalité au vecteur normal $\vec{n}$.
+Soit $u = (x',y',z') \in \mathrm{Im}f$. Il doit satisfaire la relation de dépendance linéaire des colonnes, qui est $L_3 - 4L_2 - 0L_1 = 0$ dans la matrice échelonnée.
+Alternativement, on cherche un vecteur normal $(a,b,c)$ tel que $a v_1 + b v_2 + c v_3 = 0$.
+$u \in \mathrm{Im}f \iff \mathrm{rang}(v_1, v_2, u) = 2$.
+$$\begin{vmatrix} 1 & 1 & x' \\ 0 & 1 & y' \\ 3 & 7 & z' \end{vmatrix} = 1 \cdot (z' - 7y') - 1 \cdot (-3y') + x' \cdot (0-3) = z' - 7y' + 3y' - 3x' = 0.$$
+L'équation de $\mathrm{Im}f$ est $\mathbf{3x' + 4y' - z' = 0}$.
+
+\subsection*{3. Base de $\mathrm{Ker}f$.}
+D'après le théorème du rang : $\dim(\mathbb{R}^3) = \dim(\mathrm{Ker}f) + \dim(\mathrm{Im}f)$.
+$$3 = \dim(\mathrm{Ker}f) + 2 \implies \mathbf{\dim(\mathrm{Ker}f) = 1}.$$
+Le noyau $\mathrm{Ker}f$ est l'ensemble des vecteurs $(x,y,z)$ tels que $f(x,y,z) = (0,0,0)$, soit $A \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}$.
+Le système linéaire est équivalent au système réduit obtenu par l'échelonnement :
+$$\begin{pmatrix} 1 & 1 & -1 \\ 0 & 1 & 1 \\ 0 & 0 & 0 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \iff \begin{cases} x+y-z = 0 \\ y+z = 0 \end{cases}$$
+De la deuxième équation, $y = -z$. En substituant dans la première :
+$$x + (-z) - z = 0 \implies x = 2z.$$
+Le vecteur $(x,y,z)$ est donc de la forme $(2z, -z, z) = z(2, -1, 1)$.
+$$\mathbf{\text{Base de } \mathrm{Ker}f : \mathcal{B}_{\mathrm{Ker}f} = \{(2,-1,1)\}.}$$
+
+\subsection*{4. $\mathrm{Ker}f$ et $A=\mathrm{Vect}((1,1,0), (1,0,1))$ sont supplémentaires.}
+$\dim(\mathrm{Ker}f) = 1$. L'espace $A$ est engendré par $u_1 = (1,1,0)$ et $u_2 = (1,0,1)$. Ces deux vecteurs sont non colinéaires, donc libres.
+$$\dim(A) = 2.$$
+Pour que $\mathrm{Ker}f$ et $A$ soient supplémentaires dans $\mathbb{R}^3$, il faut deux conditions :
+\begin{enumerate}
+    \item $\dim(\mathrm{Ker}f) + \dim(A) = \dim(\mathbb{R}^3) \implies 1 + 2 = 3$. (Vérifiée)
+    \item $\mathrm{Ker}f \cap A = \{0\}$.
+\end{enumerate}
+Pour vérifier la deuxième condition, on montre que la famille $\mathcal{B} = \{(2,-1,1), (1,1,0), (1,0,1)\}$ est une base de $\mathbb{R}^3$, i.e. qu'elle est libre.
+On calcule le déterminant de la matrice formée par ces vecteurs :
+$$\det(\mathcal{B}) = \begin{vmatrix} 2 & 1 & 1 \\ -1 & 1 & 0 \\ 1 & 0 & 1 \end{vmatrix}.$$
+Par développement selon la deuxième ligne :
+$$\det(\mathcal{B}) = -(-1) \begin{vmatrix} 1 & 1 \\ 0 & 1 \end{vmatrix} + 1 \begin{vmatrix} 2 & 1 \\ 1 & 1 \end{vmatrix} - 0 = 1(1) + 1(2-1) = 1+1 = 2.$$
+Puisque $\det(\mathcal{B}) = 2 \ne 0$, la famille $\mathcal{B}$ est libre, donc $\mathrm{Ker}f \cap A = \{0\}$.
+Ainsi, $\mathbf{\mathrm{Ker}f}$ et $A$ sont \textbf{supplémentaires} dans $\mathbb{R}^3$, soit $\mathbf{\mathbb{R}^3 = \mathrm{Ker}f \oplus A}$.
+
+\subsection*{5. $g: A \to \mathrm{Im}f$ définie par $g(1,1,0)=(1,0,3)$ et $g(1,0,1)=(1,1,7)$ est une bijection.}
+L'espace $A$ a pour base $\mathcal{B}_A = \{(1,1,0), (1,0,1)\}$ et $\dim(A)=2$.
+L'espace $\mathrm{Im}f$ a pour base $\mathcal{B}_{\mathrm{Im}f} = \{(1,0,3), (1,1,7)\}$ et $\dim(\mathrm{Im}f)=2$.
+Puisque $g$ est définie sur une base de $A$ et que l'espace d'arrivée est $\mathrm{Im}f$, $\mathrm{Im}(g)$ est l'espace vectoriel engendré par les images des vecteurs de base de $A$.
+$$\mathrm{Im}(g) = \mathrm{Vect}(g(1,1,0), g(1,0,1)) = \mathrm{Vect}((1,0,3), (1,1,7)).$$
+Or, $\mathrm{Vect}((1,0,3), (1,1,7)) = \mathrm{Im}f$ (par définition de la base de $\mathrm{Im}f$ trouvée en 2).
+Donc $\mathrm{Im}(g) = \mathrm{Im}f$.
+Comme $\dim(\mathrm{Im}(g)) = \dim(\mathrm{Im}f) = 2$ et $\dim(A)=2$, on a $\dim(\mathrm{Im}(g)) = \dim(A)$.
+Une application linéaire entre espaces de même dimension est injective si et seulement si elle est surjective si et seulement si elle est bijective.
+Puisque $g$ est surjective de $A$ sur $\mathrm{Im}f$, $\mathbf{g \text{ est une bijection de } A \text{ sur } \mathrm{Im}f}$.
+
+\section*{Exercice 3.}
+Soit $\mathbb{R}_2[X]$ l'espace des polynômes de degré $\le 2$. $\dim(\mathbb{R}_2[X]) = 3$.
+L'application $\varphi:\mathbb{R}_2[X]\to\mathbb{R}_2[X]$ est définie par $\varphi(P)=P(2)+P(0)X$.
+
+\subsection*{1. Linéarité de $\varphi$.}
+Soient $P, Q \in \mathbb{R}_2[X]$ et $\lambda \in \mathbb{R}$.
+\begin{align*} \varphi(P + \lambda Q) &= (P+\lambda Q)(2) + (P+\lambda Q)(0)X \\ &= (P(2) + \lambda Q(2)) + (P(0) + \lambda Q(0))X \\ &= (P(2) + P(0)X) + \lambda (Q(2) + Q(0)X) \\ &= \varphi(P) + \lambda \varphi(Q). \end{align*}
+Puisque $\varphi(P+\lambda Q) = \varphi(P) + \lambda \varphi(Q)$, $\mathbf{\varphi \text{ est linéaire}}$.
+
+\subsection*{2. Calcul de $\varphi(1)$ et $\varphi(X)$.}
+\begin{itemize}
+    \item $P(X) = 1$: $P(2)=1$, $P(0)=1$.
+    $$\varphi(1) = 1 + 1\cdot X = \mathbf{1+X}.$$
+    \item $P(X) = X$: $P(2)=2$, $P(0)=0$.
+    $$\varphi(X) = 2 + 0\cdot X = \mathbf{2}.$$
+\end{itemize}
+
+\subsection*{3. Matrice de $\varphi$ dans la base $\mathcal{B} = (1, X, X(X-2))$.}
+La base $\mathcal{B}$ est une base de $\mathbb{R}_2[X]$ car elle a 3 vecteurs et le degré des polynômes est croissant (ou on peut vérifier le déterminant de leurs coordonnées dans la base canonique $(1, X, X^2)$).
+Pour la matrice $[\varphi]_{\mathcal{B}}^{\mathcal{B}}$, on calcule $\varphi(P)$ pour chaque polynôme de $\mathcal{B}$ et on exprime le résultat dans la base $\mathcal{B}$.
+\begin{enumerate}
+    \item $P_1(X) = 1$: $\varphi(P_1) = 1+X$.
+    $1+X = 1\cdot(1) + 1\cdot(X) + 0\cdot(X(X-2))$.
+    Le vecteur colonne est $\begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}$.
+    \item $P_2(X) = X$: $\varphi(P_2) = 2$.
+    $2 = 2\cdot(1) + 0\cdot(X) + 0\cdot(X(X-2))$.
+    Le vecteur colonne est $\begin{pmatrix} 2 \\ 0 \\ 0 \end{pmatrix}$.
+    \item $P_3(X) = X(X-2) = X^2-2X$: $P_3(2)=0$, $P_3(0)=0$.
+    $\varphi(P_3) = 0 + 0\cdot X = 0$.
+    $0 = 0\cdot(1) + 0\cdot(X) + 0\cdot(X(X-2))$.
+    Le vecteur colonne est $\begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}$.
+\end{enumerate}
+$$\mathbf{[\varphi]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 1 & 2 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}.}$$
+
+\subsection*{4. Déterminer $\mathrm{Im}\varphi$ et $\mathrm{Ker}\varphi$. Vérifier le théorème du rang.}
+\subsubsection*{Image $\mathrm{Im}\varphi$}
+L'image $\mathrm{Im}\varphi$ est engendrée par les colonnes de la matrice $[\varphi]_{\mathcal{B}}^{\mathcal{B}}$ exprimées dans la base $\mathcal{B}$.
+$$\mathrm{Im}\varphi = \mathrm{Vect}(\varphi(1), \varphi(X), \varphi(X(X-2))) = \mathrm{Vect}(1+X, 2, 0).$$
+Puisque $2$ et $1+X$ sont non nuls et non colinéaires, ils forment une base de $\mathrm{Im}\varphi$.
+$$\mathbf{\dim(\mathrm{Im}\varphi) = 2}.$$
+$$\mathbf{\mathrm{Im}\varphi = \mathrm{Vect}(1, X)} = \mathbb{R}_1[X] \quad \text{(les polynômes de degré} \le 1).$$
+
+\subsubsection*{Noyau $\mathrm{Ker}\varphi$}
+Le noyau $\mathrm{Ker}\varphi$ est l'espace des polynômes $P$ tels que $\varphi(P) = 0$.
+$$\varphi(P) = 0 \iff P(2) + P(0)X = 0 \iff \begin{cases} P(2) = 0 \\ P(0) = 0 \end{cases}$$
+Si $P(X) = a+bX+cX^2$, alors $P(0)=a$ et $P(2)=a+2b+4c$.
+$$\begin{cases} a = 0 \\ a+2b+4c = 0 \end{cases} \implies \begin{cases} a = 0 \\ 2b+4c = 0 \end{cases} \implies \begin{cases} a = 0 \\ b = -2c \end{cases}$$
+Donc $P(X) = -2cX + cX^2 = c(X^2-2X) = cX(X-2)$.
+$$\mathbf{\mathrm{Ker}\varphi = \mathrm{Vect}(X(X-2))}.$$
+$$\mathbf{\dim(\mathrm{Ker}\varphi) = 1}.$$
+
+\subsubsection*{Théorème du rang}
+Le théorème du rang stipule : $\dim(\mathbb{R}_2[X]) = \dim(\mathrm{Ker}\varphi) + \dim(\mathrm{Im}\varphi)$.
+$$3 = 1 + 2.$$
+$$\mathbf{\text{Le théorème du rang est vérifié.}}$$
+
+\section*{Exercice 4.}
+Soit $A = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}$. L'application $\varphi: \mathcal{M}_2(\mathbb{R}) \to \mathcal{M}_2(\mathbb{R})$ est définie par $\varphi(M) = AM - MA$.
+
+\subsection*{1. Linéarité de $\varphi$.}
+Soient $M, N \in \mathcal{M}_2(\mathbb{R})$ et $\lambda \in \mathbb{R}$.
+\begin{align*} \varphi(M + \lambda N) &= A(M + \lambda N) - (M + \lambda N)A \\ &= (AM + \lambda AN) - (MA + \lambda NA) \quad \text{(par distributivité du produit matriciel)} \\ &= (AM - MA) + \lambda (AN - NA) \\ &= \varphi(M) + \lambda \varphi(N). \end{align*}
+Puisque $\varphi(M+\lambda N) = \varphi(M) + \lambda \varphi(N)$, $\mathbf{\varphi \text{ est une application linéaire}}$.
+
+\subsection*{2. Matrice $[\varphi]_{\mathcal{B}}^{\mathcal{B}}$ dans la base canonique $\mathcal{B}$.}
+La base canonique de $\mathcal{M}_2(\mathbb{R})$ est $\mathcal{B} = (E_{11}, E_{12}, E_{21}, E_{22})$, où $E_{ij}$ est la matrice avec 1 à la position $(i,j)$ et 0 ailleurs.
+$$E_{11} = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}, E_{12} = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, E_{21} = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}, E_{22} = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}.$$
+On calcule $\varphi(E_{ij})$ :
+$$AE_{11} - E_{11}A = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} - \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} - \begin{pmatrix} 1 & 2 \\ 0 & 0 \end{pmatrix} = \begin{pmatrix} 0 & -2 \\ 0 & 0 \end{pmatrix} = -2E_{12}.$$
+$$AE_{12} - E_{12}A = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} - \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} - \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} = 0.$$
+$$AE_{21} - E_{21}A = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} - \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 2 & 0 \\ 1 & 0 \end{pmatrix} - \begin{pmatrix} 0 & 0 \\ 1 & 2 \end{pmatrix} = \begin{pmatrix} 2 & 0 \\ 0 & -2 \end{pmatrix} = 2E_{11} - 2E_{22}.$$
+$$AE_{22} - E_{22}A = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} - \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 0 & 2 \\ 0 & 1 \end{pmatrix} - \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 0 & 2 \\ 0 & 0 \end{pmatrix} = 2E_{12}.$$
+
+En exprimant ces images dans la base $(E_{11}, E_{12}, E_{21}, E_{22})$, on obtient la matrice $4 \times 4$:
+$$\mathbf{[\varphi]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 0 & 0 & 2 & 0 \\ -2 & 0 & 0 & 2 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & -2 & 0 \end{pmatrix}.}$$
+
+\subsection*{3. $\varphi$ est-elle injective ? surjective ?}
+La matrice $M_{\varphi}$ de $\varphi$ est la matrice trouvée ci-dessus.
+\subsubsection*{Injectivité : $\mathrm{Ker}\varphi = \{0\}$ ?}
+Le noyau $\mathrm{Ker}\varphi$ est l'ensemble des matrices $M$ telles que $\varphi(M) = 0$, soit $AM-MA=0$, ou $AM=MA$. $\mathrm{Ker}\varphi$ est l'ensemble des matrices qui commutent avec $A$.
+$A = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}$. $M = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$.
+$$AM = \begin{pmatrix} a+2c & b+2d \\ c & d \end{pmatrix}, \quad MA = \begin{pmatrix} a & 2a+b \\ c & 2c+d \end{pmatrix}.$$
+$AM = MA \iff \begin{cases} a+2c = a & \implies c=0 \\ b+2d = 2a+b & \implies 2d=2a \implies a=d \\ c = c \\ d = 2c+d & \implies 2c=0 \implies c=0 \end{cases}$
+Donc $M \in \mathrm{Ker}\varphi \iff c=0$ et $a=d$.
+$$M = \begin{pmatrix} a & b \\ 0 & a \end{pmatrix} = a \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} + b \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} = a I_2 + b E_{12}.$$
+$\mathrm{Ker}\varphi = \mathrm{Vect}(I_2, E_{12})$. $\mathbf{\dim(\mathrm{Ker}\varphi) = 2}$.
+Puisque $\dim(\mathrm{Ker}\varphi) = 2 \ne 0$, $\mathbf{\varphi \text{ n'est pas injective}}$.
+
+\subsubsection*{Surjectivité : $\mathrm{Im}\varphi = \mathcal{M}_2(\mathbb{R})$ ?}
+L'espace de départ et d'arrivée est $\mathcal{M}_2(\mathbb{R})$, de dimension $4$.
+D'après le théorème du rang : $\dim(\mathcal{M}_2(\mathbb{R})) = \dim(\mathrm{Ker}\varphi) + \dim(\mathrm{Im}\varphi)$.
+$$4 = 2 + \dim(\mathrm{Im}\varphi) \implies \mathbf{\dim(\mathrm{Im}\varphi) = 2}.$$
+Puisque $\dim(\mathrm{Im}\varphi) = 2 < \dim(\mathcal{M}_2(\mathbb{R})) = 4$, $\mathbf{\varphi \text{ n'est pas surjective}}$.
+
+\section*{Exercice 5.}
+Soit $\mathcal{E}=(e_{1},e_{2},e_{3})$ une base de $E$. $T$ est défini par : $T(e_{1})=e_{3}$, $T(e_{3})=e_{3}$, $T(e_{2})=-e_{1}+e_{2}+e_{3}$.
+
+\subsection*{1. Matrice de $T$ dans $E$.}
+La matrice $[T]_{\mathcal{E}}^{\mathcal{E}}$ a pour colonnes les coordonnées de $T(e_1), T(e_2), T(e_3)$ dans la base $\mathcal{E}$.
+$$[T]_{\mathcal{E}}^{\mathcal{E}} = \mathbf{M = \begin{pmatrix} 0 & -1 & 0 \\ 0 & 1 & 0 \\ 1 & 1 & 1 \end{pmatrix}.}$$
+
+\subsection*{2. Noyau de $T$ et sa dimension.}
+Soit $u = x e_1 + y e_2 + z e_3 \in E$. $u \in \mathrm{Ker}T \iff [T]_{\mathcal{E}}^{\mathcal{E}} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}$.
+$$\begin{pmatrix} 0 & -1 & 0 \\ 0 & 1 & 0 \\ 1 & 1 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} -y \\ y \\ x+y+z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \iff \begin{cases} -y = 0 \\ y = 0 \\ x+y+z = 0 \end{cases}$$
+Donc $y=0$ et $x+z=0$, soit $z=-x$.
+$$u = x e_1 + 0 e_2 - x e_3 = x(e_1 - e_3).$$
+$$\mathbf{\mathrm{Ker}T = \mathrm{Vect}(e_1 - e_3)}.$$
+$$\mathbf{\dim(\mathrm{Ker}T) = 1}.$$
+
+\subsection*{3. $\mathcal{F}=(f_{1},f_{2},f_{3})$ est une base de $E$.}
+$f_{1}=e_{1}-e_{3}$, $f_{2}=e_{1}-e_{2}$, $f_{3}=-e_{1}+e_{2}+e_{3}$.
+La famille $\mathcal{F}$ est une base si et seulement si sa matrice de passage de $\mathcal{F}$ à $\mathcal{E}$ est inversible (i.e. son déterminant est non nul).
+$$P_{\mathcal{E} \leftarrow \mathcal{F}} = \begin{pmatrix} 1 & 1 & -1 \\ 0 & -1 & 1 \\ -1 & 0 & 1 \end{pmatrix}.$$
+Calcul du déterminant par Sarrus ou cofacteurs :
+$$\det(P_{\mathcal{E} \leftarrow \mathcal{F}}) = 1(-1\cdot 1 - 1\cdot 0) - 1(0\cdot 1 - 1\cdot(-1)) + (-1)(0\cdot 0 - (-1)\cdot(-1))$$
+$$\det(P_{\mathcal{E} \leftarrow \mathcal{F}}) = -1 - 1(1) - 1(0-1) = -1 - 1 + 1 = -1.$$
+Puisque $\det(P_{\mathcal{E} \leftarrow \mathcal{F}}) = -1 \ne 0$, la famille $\mathbf{\mathcal{F} \text{ est une base de } E}$.
+
+\subsection*{4. Matrice de $T$ dans $F$.}
+On calcule les images des vecteurs de $\mathcal{F}$ par $T$ et on les exprime dans la base $\mathcal{F}$.
+\begin{enumerate}
+    \item $T(f_1) = T(e_1 - e_3) = T(e_1) - T(e_3) = e_3 - e_3 = 0$.
+    $$T(f_1) = 0 = 0 \cdot f_1 + 0 \cdot f_2 + 0 \cdot f_3.$$
+    \item $T(f_2) = T(e_1 - e_2) = T(e_1) - T(e_2) = e_3 - (-e_1+e_2+e_3) = e_1 - e_2$.
+    $$T(f_2) = e_1 - e_2 = f_2 = 0 \cdot f_1 + 1 \cdot f_2 + 0 \cdot f_3.$$
+    \item $T(f_3) = T(-e_1+e_2+e_3) = -T(e_1) + T(e_2) + T(e_3) = -e_3 + (-e_1+e_2+e_3) + e_3 = -e_1+e_2+e_3$.
+    $$T(f_3) = -e_1+e_2+e_3 = f_3 = 0 \cdot f_1 + 0 \cdot f_2 + 1 \cdot f_3.$$
+\end{enumerate}
+La matrice de $T$ dans la base $\mathcal{F}$ est :
+$$\mathbf{[T]_{\mathcal{F}}^{\mathcal{F}} = \mathbf{D} = \begin{pmatrix} 0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}.}$$
+
+\subsection*{5. Nature de $T$.}
+La matrice $[T]_{\mathcal{F}}^{\mathcal{F}}$ est une matrice diagonale de la forme $\begin{pmatrix} 0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}$.
+Ceci est la matrice d'une \textbf{projection} (ou projecteur).
+Puisque $T^2(f_i) = T(T(f_i))$, $T^2(f_1)=T(0)=0$, $T^2(f_2)=T(f_2)=f_2$, $T^2(f_3)=T(f_3)=f_3$.
+Donc $T^2(u) = T(u)$ pour tout $u \in \mathcal{F}$, et par linéarité pour tout $u \in E$. $T^2 = T$.
+$\mathbf{T \text{ est un projecteur (projection vectorielle).}}$
+L'espace d'arrivée $\mathrm{Im}T = \mathrm{Vect}(f_2, f_3)$ et l'espace projeté est $\mathrm{Ker}(T-Id) = \mathrm{Im}T$.
+L'espace de direction est $\mathrm{Ker}T = \mathrm{Vect}(f_1)$.
+$T$ est la projection sur $\mathrm{Vect}(f_2, f_3)$ parallèlement à $\mathrm{Vect}(f_1)$.
+
+\section*{Exercice 6.}
+$\mathcal{E}=(e_{1},e_{2},e_{3})$ la base canonique de $\mathbb{R}^3$. $u(x_{1},x_{2},x_{3})=(x_{2}+x_{3},x_{1}+x_{3},x_{1}+x_{2})$.
+
+\subsection*{1. $u$ est un endomorphisme de $\mathbb{R}^3$.}
+$u: \mathbb{R}^3 \to \mathbb{R}^3$ car il associe un triplet de réels à un triplet de réels.
+Pour montrer la linéarité, on vérifie la forme des composantes : elles sont des combinaisons linéaires des coordonnées $x_1, x_2, x_3$.
+$u_1(x_1,x_2,x_3) = 0x_1 + 1x_2 + 1x_3$.
+$u_2(x_1,x_2,x_3) = 1x_1 + 0x_2 + 1x_3$.
+$u_3(x_1,x_2,x_3) = 1x_1 + 1x_2 + 0x_3$.
+Puisque les composantes sont des formes linéaires, $\mathbf{u \text{ est linéaire}}$. C'est donc un endomorphisme.
+
+\subsection*{2. Matrice $A$ de $u$ dans la base $E$.}
+Les colonnes de $A$ sont les images des vecteurs de base $e_1=(1,0,0), e_2=(0,1,0), e_3=(0,0,1)$.
+\begin{align*} u(e_1) &= u(1,0,0) = (0+0, 1+0, 1+0) = (0,1,1) \\ u(e_2) &= u(0,1,0) = (1+0, 0+0, 0+1) = (1,0,1) \\ u(e_3) &= u(0,0,1) = (0+1, 0+1, 0+0) = (1,1,0) \end{align*}
+$$\mathbf{A = \begin{pmatrix} 0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0 \end{pmatrix}.}$$
+
+\subsection*{3. Calcul de $A^2$ en fonction de $A$ et $I_3$. Inversibilité de $A$ et $u^{-1}$.}
+$$A^2 = \begin{pmatrix} 0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0 \end{pmatrix} \begin{pmatrix} 0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0 \end{pmatrix} = \begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \end{pmatrix}.$$
+Cherchons une relation avec $A$ et $I_3 = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}$.
+$A^2 - A = \begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \end{pmatrix} - \begin{pmatrix} 0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0 \end{pmatrix} = \begin{pmatrix} 2 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 2 \end{pmatrix} = 2 I_3$.
+$$\mathbf{A^2 - A = 2 I_3}.$$
+On peut réécrire cette relation comme :
+$$A^2 - A - 2 I_3 = 0 \quad \text{ou} \quad A^2 - A = 2 I_3.$$
+De la deuxième forme : $A(A - I_3) = 2 I_3$. En divisant par 2 :
+$$A \left( \frac{1}{2} (A - I_3) \right) = I_3.$$
+Puisque $A$ admet une inverse à droite, $\mathbf{A \text{ est inversible}}$ et $\mathbf{A^{-1} = \frac{1}{2} (A - I_3)}$.
+$$\frac{1}{2} (A - I_3) = \frac{1}{2} \left( \begin{pmatrix} 0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0 \end{pmatrix} - \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} \right) = \frac{1}{2} \begin{pmatrix} -1 & 1 & 1 \\ 1 & -1 & 1 \\ 1 & 1 & -1 \end{pmatrix}.$$
+L'application $u^{-1}$ est l'application linéaire dont la matrice dans la base $\mathcal{E}$ est $A^{-1}$.
+$$u^{-1}(x_1,x_2,x_3) = A^{-1} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \frac{1}{2} \begin{pmatrix} -x_1+x_2+x_3 \\ x_1-x_2+x_3 \\ x_1+x_2-x_3 \end{pmatrix}.$$
+$$\mathbf{u^{-1}(x_{1},x_{2},x_{3}) = \frac{1}{2}(-x_{1}+x_{2}+x_{3}, x_{1}-x_{2}+x_{3}, x_{1}+x_{2}-x_{3}).}$$
+
+\section*{Exercice 7. (*)}
+Soit $f \in \mathcal{L}(\mathbb{R}^3)$ telle que $f^2 = 0$.
+
+\subsection*{1. $\mathrm{Im}f \subset \mathrm{Ker}f$. En déduire $\dim(\mathrm{Im}f) \le 1$.}
+Soit $y \in \mathrm{Im}f$. Par définition, il existe $u \in \mathbb{R}^3$ tel que $y = f(u)$.
+Puisque $f^2 = 0$, on a $f(f(u)) = 0(u) = 0$.
+Donc $f(y) = f(f(u)) = 0$.
+Par définition du noyau, $y \in \mathrm{Ker}f$.
+Ainsi, $\mathbf{\mathrm{Im}f \subset \mathrm{Ker}f}$.
+On prend les dimensions : $\dim(\mathrm{Im}f) \le \dim(\mathrm{Ker}f)$.
+Par le théorème du rang :
+$$\dim(\mathbb{R}^3) = \dim(\mathrm{Ker}f) + \dim(\mathrm{Im}f).$$
+$$3 = \dim(\mathrm{Ker}f) + \dim(\mathrm{Im}f).$$
+Puisque $\dim(\mathrm{Im}f) \le \dim(\mathrm{Ker}f)$, en substituant :
+$$3 \ge \dim(\mathrm{Im}f) + \dim(\mathrm{Im}f) = 2 \dim(\mathrm{Im}f).$$
+$$\dim(\mathrm{Im}f) \le \frac{3}{2}.$$
+Puisque la dimension est un entier, $\dim(\mathrm{Im}f)$ ne peut être que $0$ ou $1$.
+$$\mathbf{\dim(\mathrm{Im}f) \le 1}.$$
+
+\subsection*{2. Il existe $v \in \mathbb{R}^3$ et $g \in \mathcal{L}(\mathbb{R}^3, \mathbb{R})$ tels que $\forall u \in \mathbb{R}^3$, $f(u) = g(u) \cdot v$.}
+Deux cas sont possibles pour $\dim(\mathrm{Im}f)$:
+\begin{enumerate}
+    \item \textbf{Cas $\dim(\mathrm{Im}f) = 0$ : } $\mathrm{Im}f = \{0\}$, donc $f$ est l'application nulle.
+    On choisit $v$ arbitraire (par exemple $v=0$) et $g$ l'application nulle ($g(u)=0$).
+    Alors $f(u) = 0 = 0 \cdot v = g(u) \cdot v$. La proposition est vraie.
+
+    \item \textbf{Cas $\dim(\mathrm{Im}f) = 1$ : } $\mathrm{Im}f = \mathrm{Vect}(v)$, où $v \in \mathbb{R}^3$ est un vecteur non nul.
+    Pour tout $u \in \mathbb{R}^3$, $f(u) \in \mathrm{Im}f$, donc $f(u)$ est colinéaire à $v$.
+    Il existe un scalaire $\alpha_u \in \mathbb{R}$ tel que $f(u) = \alpha_u \cdot v$.
+    On doit montrer que l'application $g: u \mapsto \alpha_u$ est une forme linéaire, i.e., $g \in \mathcal{L}(\mathbb{R}^3, \mathbb{R})$.
+
+    Soient $u_1, u_2 \in \mathbb{R}^3$ et $\lambda \in \mathbb{R}$.
+    $f(u_1) = \alpha_1 v$ et $f(u_2) = \alpha_2 v$, où $\alpha_1=g(u_1)$ et $\alpha_2=g(u_2)$.
+    Par linéarité de $f$ :
+    $$f(u_1 + \lambda u_2) = f(u_1) + \lambda f(u_2) = \alpha_1 v + \lambda (\alpha_2 v) = (\alpha_1 + \lambda \alpha_2) v.$$
+    Par définition, $f(u_1 + \lambda u_2) = g(u_1 + \lambda u_2) v$.
+    Puisque $v \ne 0$, par unicité de la décomposition, on doit avoir :
+    $$g(u_1 + \lambda u_2) = \alpha_1 + \lambda \alpha_2 = g(u_1) + \lambda g(u_2).$$
+    Donc $\mathbf{g \text{ est linéaire}}$ (une forme linéaire).
+\end{enumerate}
+Dans les deux cas, la proposition est vraie.
+\end{document}
+
+

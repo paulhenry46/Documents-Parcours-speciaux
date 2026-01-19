@@ -1,0 +1,251 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Optique ondulatoire}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\mpsi}{\(\psi\)}
+\begin{document}
+\chapter{Fonctions de plusieurs variables}
+
+\section{Dérivées Partielles}
+
+\begin{definition}[Dérivée partielle]
+La dérivée partielle de $f(x_1, \dots, x_n)$ par rapport à $x_i$ est la dérivée de $f$ par rapport à $x_i$ en considérant toutes les autres variables $x_j$ ($j \neq i$) comme des constantes. On la note $\frac{\partial f}{\partial x_i}$.
+\end{definition}
+
+Pour lever l'ambiguïté lorsque les variables d'une fonction ne sont pas explicites, on note la variable maintenue constante en indice\marginCheck{Par exemple, $(\frac{\partial U}{\partial T})_V$ est la dérivée de l'énergie interne $U$ par rapport à la température $T$ à volume $V$ constant.}.
+
+\begin{theorem}[Schwarz]
+Si les dérivées partielles secondes croisées $\frac{\partial^2 f}{\partial x \partial y}$ et $\frac{\partial^2 f}{\partial y \partial x}$ existent et sont continues en un point $(x_0, y_0)$, alors elles sont égales en ce point :
+\[ \frac{\partial^2 f}{\partial x \partial y}(x_0, y_0) = \frac{\partial^2 f}{\partial y \partial x}(x_0, y_0) \]
+\end{theorem}
+
+\section{Différentiabilité}
+
+\subsection{Rappel : Fonctions d'une variable}
+Une fonction $f(x)$ est différentiable (équivalent à dérivable pour une variable) en $x_0$ si on peut l'approcher localement par une fonction linéaire (sa tangente). La variation $\Delta f = f(x+\dd x) - f(x)$ est approximée par la différentielle $\dd f = f'(x)\dd x$. On a donc \(\frac{\dd}{\dd x} = f'(x)\)
+
+\subsection{Différentielle d'une fonction de plusieurs variables}
+\begin{definition}
+Une fonction $f(x_1, \dots, x_n)$ est différentiable en un point $\vec{a}$ si sa variation peut être approchée par une application linéaire de l'accroissement $d\vec{x} = (\dd x_1, \dots, \dd x_n)$. La différentielle $\dd f$ est donnée par :
+\[ \dd f = \frac{\partial f}{\partial x_1}\dd x_1 + \frac{\partial f}{\partial x_2}\dd x_2 + \dots + \frac{\partial f}{\partial x_n}\dd x_n = \sum_{i=1}^{n} \frac{\partial f}{\partial x_i}\dd x_i \]
+\end{definition}
+
+
+% Si les dérivées partielles de $f$ existent et sont continues en un point $\vec{a}$, alors $f$ est différentiable en $\vec{a}$. Si $f$ est différentiable en $\vec{a}$, alors elle est continue en $\vec{a}$.
+
+
+\subsection{Différentielle Totale Exacte}
+Une forme différentielle $\omega = A(x,y)\dd x + B(x,y)\dd y$ est une \textbf{différentielle totale exacte} s'il existe une fonction $f(x,y)$ telle que $\omega = \dd f$\marginInfo{Physiquement, cela signifie qu'une force $\vec{F} = (A, B)$ est conservative et dérive d'une énergie potentielle $E_p = -f$.}. Cela est vrai si la relation suivante est vérifiée :
+\begin{theorem}[Relation de Cauchy]
+\[ \frac{\partial A}{\partial y} = \frac{\partial B}{\partial x} \]
+\end{theorem}
+
+\subsubsection{Vérifier si une forme différentielle est exacte et trouver la fonction $f$ dont elle dérive}
+
+\begin{enumerate}
+    \item \textbf{Vérification de la relation de Cauchy :}
+    Calculer les dérivées partielles $\frac{\partial A}{\partial y}$ et $\frac{\partial B}{\partial x}$.
+    Si $\frac{\partial A}{\partial y} = \frac{\partial B}{\partial x}$, la forme différentielle est une différentielle totale exacte. Sinon, elle ne l'est pas et il n'existe pas de fonction $f$.
+
+    \item \textbf{Reconstruction de la fonction $f$ :}
+    Si la relation de Cauchy est vérifiée, on sait que $\frac{\partial f}{\partial x} = A(x,y)$ et $\frac{\partial f}{\partial y} = B(x,y)$. On peut intégrer une de ces deux équations pour trouver $f$.
+
+    \item \textbf{Intégration par rapport à $x$ :}
+    On intègre $\frac{\partial f}{\partial x} = A(x,y)$ par rapport à $x$, en considérant $y$ comme une constante. La "constante d'intégration" est alors une fonction de $y$, notée $g(y)$ :
+    \[ f(x,y) = \int A(x,y)dx + g(y) \]
+
+    \item \textbf{Détermination de $g(y)$ :}
+    Pour trouver $g(y)$, on dérive l'expression obtenue pour $f(x,y)$ par rapport à $y$ :
+    \[ \frac{\partial f}{\partial y} = \frac{\partial}{\partial y} \left( \int A(x,y)dx \right) + g'(y) \]
+    On compare cette expression à l'équation initiale $\frac{\partial f}{\partial y} = B(x,y)$. On peut alors isoler $g'(y)$ et l'intégrer pour trouver $g(y)$.
+
+    \item \textbf{Vérification et solution :}
+    Une fois $g(y)$ trouvé, on le remplace dans l'expression de $f(x,y)$ de l'étape 3. On peut vérifier la solution en calculant les dérivées partielles de la fonction $f$ obtenue et en s'assurant qu'elles correspondent à $A$ et $B$.
+\end{enumerate}
+\checkInfo{Exemple}{On considère la forme différentielle :
+\[ \omega = (2x+2y)\dd x + (2x-2y+1)\dd y \]
+Ici, $A(x,y) = 2x+2y$ et $B(x,y) = 2x-2y+1$.
+
+\begin{enumerate}
+    \item \textbf{Vérification de la relation de Cauchy :}
+    Calculons les dérivées partielles croisées :
+    \[ \frac{\partial A}{\partial y} = \frac{\partial}{\partial y}(2x+2y) = 2 \]
+    \[ \frac{\partial B}{\partial x} = \frac{\partial}{\partial x}(2x-2y+1) = 2 \]
+    Comme $\frac{\partial A}{\partial y} = \frac{\partial B}{\partial x}$, la forme différentielle $\omega$ est bien une différentielle totale exacte.
+
+    \item \textbf{Recherche de la fonction $f$ :}
+    On cherche une fonction $f(x,y)$ telle que $\frac{\partial f}{\partial x} = 2x+2y$ et $\frac{\partial f}{\partial y} = 2x-2y+1$.
+
+    \item \textbf{Intégration par rapport à $x$ :}
+    Intégrons la première équation par rapport à $x$ :
+    \[ f(x,y) = \int (2x+2y)\dd x = x^2 + 2xy + g(y) \]
+    où $g(y)$ est la "constante d'intégration" qui ne dépend que de $y$.
+
+    \item \textbf{Détermination de $g(y)$ :}
+    Maintenant, dérivons cette expression de $f(x,y)$ par rapport à $y$ :
+    \[ \frac{\partial f}{\partial y} = \frac{\partial}{\partial y}(x^2+2xy+g(y)) = 2x + g'(y) \]
+    Comparons ce résultat avec l'expression de $B(x,y)$ :
+    \[ 2x + g'(y) = 2x-2y+1 \]
+    On en déduit que $g'(y) = -2y+1$. Il ne reste plus qu'à intégrer cette expression pour trouver $g(y)$ :
+    \[ g(y) = \int (-2y+1)dy = -y^2+y+C \]
+    où $C$ est une constante arbitraire.
+
+    \item \textbf{Solution et vérification :}
+    En remplaçant $g(y)$ dans l'expression de $f(x,y)$, on trouve la fonction recherchée :
+    \[ f(x,y) = x^2 + 2xy - y^2 + y + C \]
+    On peut vérifier ce résultat en recalculant les dérivées partielles :
+    \[ \frac{\partial f}{\partial x} = 2x+2y = A(x,y) \]
+    \[ \frac{\partial f}{\partial y} = 2x-2y+1 = B(x,y) \]
+    Les dérivées correspondent bien à la forme différentielle initiale, donc notre solution est correcte.
+\end{enumerate}}
+\section{Développements de Taylor}
+
+\subsection{Formule de Taylor à l'ordre 2}
+Pour une fonction $f(x,y)$ deux fois différentiable en $(x_0, y_0)$, on a avec $\dd x=x-x_0$ et $\dd y=y-y_0$\marginTips{Cette formule fonctionne bien si la fonction a une expression simple. Si ce n’est pas le cas, les dérivées partielles
+successives de f peuvent engendrer des expressions compliquées avant d’être évaluées. Il vaudra mieux utilisr les DL de fonctions usuelles.} :
+\begin{align*}
+f(x,y) &\approx f(x_0,y_0) + \frac{\partial f}{\partial x}(x_0,y_0)\dd x + \frac{\partial f}{\partial y}(x_0,y_0)\dd y \\
+&+ \frac{1}{2} \left( \frac{\partial^2 f}{\partial x^2}(x_0,y_0)\dd x^2 + 2\frac{\partial^2 f}{\partial x \partial y}(x_0,y_0)\dd x\dd y + \frac{\partial^2 f}{\partial y^2}(x_0,y_0)\dd y^2 \right)
+\end{align*}
+\subsection{En pratique}
+On utilise les DL des fonctions usuelles\marginInfo{On peut remplacer x par n'importe quelle autre variable. Ainsi, si les termes \(x^2, y^2\) sont d'ordre 2, ceux en \(xy\) le sont aussi.} :
+\[
+\begin{array}{|l|l|}
+\hline
+\text{Fonction} & \text{DL en 0 à l'ordre 2} \\
+\hline
+e^x & 1 + x + \frac{x^2}{2} + o(x^2) \\
+\hline
+\cos(x) & 1 - \frac{x^2}{2} + o(x^2) \\
+\hline
+\sin(x) & x + o(x^2) \\
+\hline
+\cosh(x) & 1 + \frac{x^2}{2} + o(x^2) \\
+\hline
+\sinh(x) & x + o(x^2) \\
+\hline
+(1+x)^{-1} & 1 - x + x^2 + o(x^2) \\
+\hline
+\sqrt{1+x} & 1 + \frac{x}{2} - \frac{x^2}{8} + o(x^2) \\
+\hline
+(1+x)^\alpha & 1 + \alpha x + \frac{\alpha(\alpha-1)}{2}x^2 + o(x^2) \\
+\hline
+\ln(1+x) & x - \frac{x^2}{2} + o(x^2) \\
+\hline
+\end{array}
+\]
+\section{Règle de la Chaîne}
+\begin{theorem}[RG pour une fonction d'une variable]
+\[\frac{\dd f}{\dd x} = \frac{\dd f}{\dd y}\frac{\dd y}{\dd x}\]
+\end{theorem}
+Si $z = f(x,y)$ et que $x$ et $y$ sont des fonctions de $t$, alors :
+\begin{theorem}[RG pour une fonction de 2 variables]
+\[ \frac{\dd z}{\dd t} = \frac{\partial z}{\partial x} \frac{\dd x}{\dd t} + \frac{\partial z}{\partial y} \frac{\dd y}{\dd t} \]
+\end{theorem}
+Si $x$ et $y$ dépendent de deux variables $s$ et $t$, on a :
+\begin{theorem}[RG pour une fonction de 2 variables généralisé]
+\[ \frac{\partial z}{\partial t} = \frac{\partial z}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial z}{\partial y} \frac{\partial y}{\partial t} \quad \text{et} \quad \frac{\partial z}{\partial s} = \frac{\partial z}{\partial x} \frac{\partial x}{\partial s} + \frac{\partial z}{\partial y} \frac{\partial y}{\partial s} \]
+\end{theorem}
+\section{Extrema de fonctions}
+On introduit $H_f$ la \textbf{matrice Hessienne} :
+\[ H_f(x_0,y_0) = \begin{pmatrix} \frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x \partial y} \\ \frac{\partial^2 f}{\partial y \partial x} & \frac{\partial^2 f}{\partial y^2} \end{pmatrix}_{(x_0,y_0)} \]
+\subsection{Extrema Libres}
+Soit $f$ une fonction de classe $\mathcal{C}^2$ sur un domaine $D \subset \mathbb{R}^2$.
+Un point $\vec{a} \in D$ est un \textbf{point critique} si son gradient y est nul : $\frac{\partial f}{\partial x}(\vec{a}) = 0$ et $\frac{\partial f}{\partial y}(\vec{a}) = 0$.
+Pour déterminer la nature d'un point critique $\vec{a}$, on calcule les éléments de la matrice Hessienne $H_f(\vec{a}) = \begin{pmatrix} r & s \\ s & t \end{pmatrix}$.
+\begin{theorem}[Matrice hessienne et extrema]
+\begin{enumerate}
+    \item Si $rt - s^2 > 0$ et $r > 0$, $f$ admet un \textbf{minimum local} strict en $\vec{a}$.
+    \item Si $rt - s^2 > 0$ et $r < 0$, $f$ admet un \textbf{maximum local} strict en $\vec{a}$.
+    \item Si $rt - s^2 < 0$, $f$ admet un \textbf{point selle} en $\vec{a}$.
+    \item Si $rt - s^2 = 0$, on ne peut pas conclure avec cette méthode.
+\end{enumerate}
+\end{theorem}
+
+\subsection{Extrema Liés (Multiplicateur de Lagrange)}
+\subsubsection{Méthode}
+Pour trouver les extrema d'une fonction $f(x,y)$ sous une contrainte $g(x,y) = 0$, on utilise la méthode du multiplicateur de Lagrange.
+\begin{enumerate}
+    \item On introduit une fonction auxiliaire $f_{\lambda}(x, y) = f(x, y) + \lambda g(x, y)$, où $\lambda$ est le multiplicateur de Lagrange.
+    \item On cherche les points critiques de $f_{\lambda}$ en résolvant le système :
+    \[ \begin{cases}
+    \frac{\partial f_{\lambda}}{\partial x} = \frac{\partial f}{\partial x} + \lambda \frac{\partial g}{\partial x} = 0 \\
+    \frac{\partial f_{\lambda}}{\partial y} = \frac{\partial f}{\partial y} + \lambda \frac{\partial g}{\partial y} = 0
+    \end{cases} \]
+    Cela donne les points critiques $(x^*(\lambda), y^*(\lambda))$ qui dépendent de $\lambda$.
+    \item On injecte ces points dans l'équation de contrainte $g(x^*(\lambda), y^*(\lambda)) = 0$ pour trouver la ou les valeurs de $\lambda = \lambda^*$.
+    \item Les points $(x^*(\lambda^*), y^*(\lambda^*))$ sont les extrema de $f$ sous la contrainte $g=0$.
+\end{enumerate}
+Cette méthode se généralise à plus de variables et plus de contraintes.
+\subsubsection{Exemple}
+\begin{enumerate}
+    \item \textbf{Introduction d'une fonction auxiliaire}
+    On définit la fonction auxiliaire $f_{\lambda}(x, y) = f(x, y) + \lambda g(x, y)$, avec $g(x, y) = x+y-1$.
+    $$ f_{\lambda}(x, y) = x \ln x + y \ln y + x - y + \lambda(x + y - 1) $$
+
+    \item \textbf{Recherche des points critiques}
+    On résout le système des dérivées partielles nulles :
+    \begin{align*}
+    \frac{\partial f_{\lambda}}{\partial x} &= (\ln x + 1) + 1 + \lambda = \ln x + 2 + \lambda = 0 \\
+    \frac{\partial f_{\lambda}}{\partial y} &= (\ln y + 1) - 1 + \lambda = \ln y + \lambda = 0
+    \end{align*}
+    On exprime $x$ et $y$ en fonction de $\lambda$ :
+    \begin{align*}
+    \ln x &= -2 - \lambda \implies x = e^{-2 - \lambda} \\
+    \ln y &= -\lambda \implies y = e^{-\lambda}
+    \end{align*}
+    Les points critiques sont donc de la forme $(x^*(\lambda), y^*(\lambda)) = (e^{-2-\lambda}, e^{-\lambda})$.
+
+    \item \textbf{Injection dans l'équation de contrainte}
+    On substitue les expressions de $x$ et $y$ dans la contrainte $x + y - 1 = 0$ pour trouver la valeur de $\lambda$.
+    $$ e^{-2 - \lambda} + e^{-\lambda} - 1 = 0 $$
+    $$ e^{-2}e^{-\lambda} + e^{-\lambda} = 1 $$
+    $$ e^{-\lambda}(e^{-2} + 1) = 1 $$
+    $$ e^{-\lambda} = \frac{1}{1 + e^{-2}} $$
+    En prenant le logarithme naturel :
+    $$ -\lambda = \ln\left(\frac{1}{1 + e^{-2}}\right) = -\ln(1 + e^{-2}) $$
+    D'où la valeur de $\lambda^* = \ln(1 + e^{-2})$.
+
+    \item \textbf{Détermination de l'extremum}
+    On remplace $\lambda^*$ dans les expressions de $x^*(\lambda)$ et $y^*(\lambda)$ pour obtenir les coordonnées de l'extremum.
+    \begin{align*}
+    x^* &= e^{-2 - \lambda^*} = e^{-2}e^{-\lambda^*} = e^{-2} \left(\frac{1}{1 + e^{-2}}\right) = \frac{e^{-2}}{1 + e^{-2}} \\
+    y^* &= e^{-\lambda^*} = \frac{1}{1 + e^{-2}}
+    \end{align*}
+    Le point de l'extremum est $\left( \frac{e^{-2}}{1 + e^{-2}}, \frac{1}{1 + e^{-2}} \right)$.
+\end{enumerate}
+ \end{document}

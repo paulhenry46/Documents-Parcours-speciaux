@@ -1,0 +1,8 @@
+Title,Content
+Principe de Curie,Les effets ont au moins les symétries de leur cause 
+Équation intégrale,\[V(B)-V(A) = -\int_A^B\E\cdot \dd \vec{l}(M)\] 
+Équation locale entre E et V,\[\dd V = -\E\cdot \dd \vec{l}(M)\] \[\E = -grad(\V)\] 
+Ligne de champ,Les lignes du champ électrique sont l'ensemble des courbes en tout point desquel le champ électrique à la ligne de champ. Elles sont orientées de la sens du champ électrique. 
+Surface équipotentielle,La surface équipotentielle de potentiel \(V_0\) est l'ensemble des points M tel que \(\V = V_0\) 
+Ligne de champ et Surface équipotentielle,Les lignes de champ sont perpendiculaires aux surfaces de champ qu'elles coupent. 
+Orientation des lignes de champ,Les lignes de champ sont orienté dans le sens des potentiels décroissants. 

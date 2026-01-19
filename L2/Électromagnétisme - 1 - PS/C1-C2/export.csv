@@ -1,0 +1,7 @@
+Title,Content
+Charge ponctuelle,"Les charges ponctuelles sont des particules élémentaires, comme l'électron \(e^-\) avec \(q_e = 1.6\cdot 10^{-19}C, q_p = + 1.6\cdot 10^{-19}C\) "
+Lois de Coulombs,La force que la charge \(q_p\) exerce sur q est \[\vec{F_{q_p\to q}} = \frac{qq_p}{4\pi \epsilon_0}\frac{\vec{e_{PM}}}{\norm{PM}^2}\] avec \(\epsilon_0\) la permittivité du vide \(\frac{1}{36\pi \cdot 10^{9}}\) et \(\frac{1}{4\pi \epsilon_0}\simeq 9\cdot 10^{9}\) 
+Champ électrique,"\[\vec{F_{q_p\to q}} = q \cdot \E\] avec \(\E\) qui ne dépend que de la charge \(q_p\) : \[\E = \frac{q_p}{4\pi\epsilon_0}\frac{\vec{e_{PM}}}{\norm{PM}^2}\] est le champ électrique crée par \(q_p\) au point M, en \(NC^{-1} / Vm^{-1}\) "
+Théorème de superposition,Le champ électrique d'une distribution de charges ponctuelles \(q_i\)  vaut \(\sum_{i=1}^n \vec{E_i}(M)\) au point M. Fonctionne aussi pour le potentiel 
+Potentiel électrique,\(V(M) = \frac{q}{4\pi\epsilon_0 r} + Cst\) 
+Distributuon volumique,"Si une charge macroscopique Q est répartie uniformément dans un volume V, alors on parle de distribution volumique de charge uniforme et la densité volumique vaut \(\rho_c = \frac{Q}{V}\). De la m\^eme façon, on a \(\sigma_c = \frac{Q}{S}\) ou \(\lambda_c = \frac{Q}{L}\). "

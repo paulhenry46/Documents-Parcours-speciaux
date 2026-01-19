@@ -1,0 +1,73 @@
+vss = 1/((1-f^2/f0^2)^2+(f/(f0*Q))^2)^(1/2)
+
+
+Bien sûr! Analysons maintenant le **déphasage** $\phi(f)$ de la fonction de transfert $H_c(f)$. 📐
+
+Le déphasage est l'argument (ou l'angle) du nombre complexe $H_c(f)$.
+
+## 1. Expression du Déphasage $\phi(f)$
+
+La fonction de transfert est :
+$$H_c(f) = \frac{1}{Z}$$
+où le dénominateur est $Z = \left(1 - \frac{f^2}{f_0^2}\right) + j \left(\frac{f}{f_0 Q}\right)$.
+
+L'angle d'un quotient de nombres complexes est la différence des angles :
+$$\phi(f) = \text{Arg}(H_c(f)) = \text{Arg}(1) - \text{Arg}(Z)$$
+
+Comme $\text{Arg}(1) = 0$, le déphasage est l'opposé de l'argument du dénominateur $Z$:
+$$\phi(f) = - \text{Arg}(Z)$$
+
+Pour un nombre complexe $Z = X + jY$, l'argument est $\text{Arg}(Z) = \arctan\left(\frac{Y}{X}\right)$.
+Ici, $X = 1 - \frac{f^2}{f_0^2}$ et $Y = \frac{f}{f_0 Q}$.
+
+Donc, le **déphasage** $\phi(f)$ (l'angle de $v_s$ par rapport à $v_e$) est :
+$$\phi(f) = - \arctan\left(\frac{\frac{f}{f_0 Q}}{1 - \frac{f^2}{f_0^2}}\right)$$
+
+$$\phi(f) = - \arctan\left(\frac{\frac{1}{Q} \frac{f}{f_0}}{1 - \left(\frac{f}{f_0}\right)^2}\right)$$
+
+
+
+---
+
+## 2. Comportement du Déphasage aux Fréquences Clés
+
+Nous allons analyser comment le déphasage $\phi(f)$ évolue en fonction de la fréquence :
+
+### a) **Basse Fréquence ($f \ll f_0$)**
+* Le terme $\left(\frac{f}{f_0}\right)^2$ est proche de **0**.
+* Le terme $\frac{1}{Q} \frac{f}{f_0}$ est proche de **0**.
+* L'argument de l'arctangente tend vers $\frac{0}{1 - 0} = 0$.
+* **Résultat :**
+    $$\phi(f) \approx - \arctan(0) = 0$$
+    * **Interprétation :** À basse fréquence, la tension de sortie $v_s$ est en **phase** avec la tension d'entrée $v_e$.
+
+### b) **Résonance ($f = f_0$)**
+* Le terme $1 - \left(\frac{f}{f_0}\right)^2$ est **nul** (le dénominateur de l'arctangente est 0).
+* Le numérateur est $\frac{f_0}{f_0 Q} = \frac{1}{Q}$ (positif, puisque $Q > 0$).
+* L'argument de l'arctangente tend vers $\frac{1/Q}{0^+}$, c'est-à-dire $+\infty$.
+* **Résultat :**
+    $$\phi(f_0) = - \arctan(\infty) = -\frac{\pi}{2} \text{ radians} \quad \text{ou} \quad -90^\circ$$
+    * **Interprétation :** À la résonance, la tension de sortie $v_s$ est en **quadrature arrière** (en retard de $90^\circ$) par rapport à la tension d'entrée $v_e$.
+
+### c) **Haute Fréquence ($f \gg f_0$)**
+* Le terme $1 - \left(\frac{f}{f_0}\right)^2$ est **négatif** et tend vers $-\infty$.
+* Le terme $\frac{1}{Q} \frac{f}{f_0}$ est positif et tend vers $+\infty$.
+* L'argument de l'arctangente tend vers $\frac{+\infty}{-\infty}$. Plus précisément, il tend vers $0^-$, ou on peut considérer que le rapport $\frac{Y}{X}$ tend vers $0 / -\infty$. Pour un grand $f$, $Y/X \approx \frac{f/(f_0 Q)}{-f^2/f_0^2} = - \frac{f_0}{f Q}$, qui est un nombre négatif très proche de 0.
+* L'argument de l'arctangente est négatif et très petit, mais comme $f/f_0 > 1$, la fonction est définie par $Y/(|X|)$ avec une correction de $\pi$ pour l'argument de $Z$. Or, $\text{Arg}(Z) = \arctan\left(\frac{Y}{X}\right)$ se trouve dans le quadrant II (Réel $X<0$, Imaginaire $Y>0$), donc $\text{Arg}(Z) \to \pi$.
+* **Résultat :**
+    $$\phi(f) \to - \pi \text{ radians} \quad \text{ou} \quad -180^\circ$$
+    * **Interprétation :** À haute fréquence, la tension de sortie $v_s$ est en **opposition de phase** (déphasage de $180^\circ$) avec la tension d'entrée $v_e$.
+
+---
+
+## Synthèse
+
+| Fréquence | Condition $\phi(f)$ | Déphasage | Interprétation |
+| :---: | :---: | :---: | :---: |
+| **Basse Fréquence** | $f \ll f_0$ | $0^\circ$ | $v_s$ en **phase** avec $v_e$ |
+| **Résonance** | $f = f_0$ | $-90^\circ$ | $v_s$ en **quadrature arrière** par rapport à $v_e$ |
+| **Haute Fréquence** | $f \gg f_0$ | $-180^\circ$ | $v_s$ en **opposition de phase** avec $v_e$ |
+
+Ce comportement est typique d'un **filtre passe-bande du second ordre** (comme un circuit RLC série où $v_s$ est la tension aux bornes de R).
+
+Voulez-vous que nous examinions comment ce filtre se comporte sur le plan physique (le type de circuit RLC associé) ?

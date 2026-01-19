@@ -1,0 +1,118 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 1 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\begin{document}
+\setcounter{chapter}{3}
+\chapter{Distributions continues de charge (méthode directe)}
+\section{Distribution volumique de charge}
+On note \(\mathcal{V}\) le volume dans lequel est répartie la charge électrique, P un point quelconque dans le volume. On note aussi \(\dd \mv (P)\) est le volume élémentaire situé au point P, \(\rho_C(P)\) la densité volumique de charge au point P et M le point pour lequel on souhaite calculer le champ et potentiel crée par la distribution de charge.
+
+ \(\dd \mv (P)\) contient la charge électrique élémentaire et \(\dd q(P) = \rho_c(P)\dd \mv(P)\). Cette charge quasi-ponctuelle car infiniment petite dans l'espace crée au point M le champ électrique élémentaire \(\dd \E \frac{\dd q(P) \vec{PM}}{4\pi \epsilon_0 \norm{PM}^3}\).
+
+ On en déduit que le champ au point M est donné par \[\E = \iiint_{P\in\mv} \frac{\rho_c(P)\dd \mv(P)\vec{PM}}{4\pi\epsilon_0 \norm{PM}^3}\]
+
+ Cette intégrale triple porte sur les 3 coordonnées permettant de repérer la position de P dans le volume \(\mv\)
+
+ On trouve de la m\^eme façon pour le potentiel :
+ \[\dd \V = \frac{\dd q(P)}{4\pi\epsilon_0 \norm{PM}}\] puis \[V(M) = \iiint_{P\in \mv} \frac{\rho_c \dd \mv(P)}{4\pi\epsilon_0 \norm{PM}}\]
+ \begin{theorem}[Champ électrique total  (d. volumique)]
+\[\E = \iiint_{P\in\mv} \frac{\rho_c(P)\dd \mv(P)\vec{PM}}{4\pi\epsilon_0 \norm{PM}^3}\]
+ \end{theorem}
+ \begin{theorem}[Potentiel total  (d. volumique)]
+\[V(M) = \iiint_{P\in \mv} \frac{\rho_c \dd \mv(P)}{4\pi\epsilon_0 \norm{PM}}\]
+ \end{theorem}
+ \section{Distribution surfacique de charge}
+On introduit les m\^emes grandeurs que pour la partie précédente, sauf  \(\rho_C(P)\) qui est remplacée par  \(\sigma(P)\) et \(\mv\) par S.
+
+ \begin{theorem}[Champ électrique total (d. surfacique)]
+\[\E = \iint_{P\in S} \frac{\sigma(P)\dd S(P)\vec{PM}}{4\pi\epsilon_0 \norm{PM}^3}\]
+ \end{theorem}
+ \begin{theorem}[Potentiel total  (d. surfacique)]
+\[V(M) = \iint_{P\in S} \frac{\sigma \dd S(P)}{4\pi\epsilon_0 \norm{PM}}\]
+ \end{theorem}
+  \section{Distribution linéique de charge}
+On introduit les m\^emes grandeurs que pour la partie précédente, sauf  \(\rho_C(P)\) qui est remplacée par  \(\lambda(P)\) et \(\mv\) par C.
+
+ \begin{theorem}[Champ électrique total (d. linéique)]
+\[\E = \int_{P\in C} \frac{\lambda(P)\dd S(P)\vec{PM}}{4\pi\epsilon_0 \norm{PM}^3}\]
+ \end{theorem}
+ \begin{theorem}[Potentiel total  (d. linéique)]
+\[V(M) = \int_{P\in C} \frac{\lambda \dd S(P)}{4\pi\epsilon_0 \norm{PM}}\]
+ \end{theorem}
+\section{Exemple : E crée en un point quelconque de son plan médiateur par un segment rectiligne}
+ \subsection{Analyse géométrique}
+La distribution de charge est à symétrie cylindrique autour de l'axe chargé. On repère donc le point par ses coordonnées cylindriques avec un axe Oz confindu avec le segment et O et au milieu du segment.
+
+Si M est dans le plan méditeur, \(z=0\)
+
+Les 2 plans \((m, \er, \vec{e_z}), (m, \er, \ep)\), et \(\E\) est vrai par rapport aux plan, donc il n'y a qu'une composante selon \(\er\).
+
+Il y a une invariance autour de l'axe, donc \(\vec{E} = E_{\rho}(\rho)\) par le principe de Curie.
+
+On introduit le point P appartenant au segment. Il n'est repéré que par \(z_p\).
+
+La longueur élémentaire du segment est \(\dd l\). Pour engendrer le segment chargé, on fait varier \(z_p\) dans es bornes \(z_p+\dd z_p\). \(\dd l(P)\) porte une charge élémentaire \(\dd q = \lambda \dd z_p\).
+
+On en déduit que \[\dd \E = \frac{\lambda}{4\pi\epsilon_0} \frac{\vec{PM}}{\norm{PM}^3}\] avec \(\vec{PM} = \vec{PO} + \vec{OM} = -z_p\vec{e_z}+\rho\er\)
+
+Donc \[\E = \frac{\lambda \dd z_p}{4\pi \epsilon_0}\frac{-z\vec{e_z}+\rho\er}{(\rho^2+z_p^2)^{3/2}}\]
+
+On intègre maintenant entre les bornes pour sommer :
+\[\E = \frac{\lambda}{4\pi\epsilon_0}(\int_{-l/2}^{l/2}\frac{-z_p\vec{e_z}}{(\rho^2+z_p^2)^{3/2}}\dd z_p + \int_{-l/2}^{l/2}\frac{\rho\er}{(\rho^2+z_p^2)^{3/2}})\dd z_p\]
+
+La première inétégrale est nulle car fonction impaire et on a montré qu'il n'y avait pas de composantes selon \(\vec{e_z}\).
+
+Donc \[\E = \frac{\lambda\rho}{4\pi\epsilon_0}\er\int\frac{\dd z_p}{(\rho^2+z_p^2)^{3/2}}\]
+
+On intègre pour trouver \[\E = \frac{\lambda\rho}{4\pi\epsilon_0}\er [\frac{z_p}{\rho^2\sqrt{z_p^2+\rho^2}}]^{l/2}_{-l/2} =  \frac{\lambda}{4\pi\epsilon_0} \frac{z_p}{\rho\sqrt{(l/4)^2+\rho^2}} \er \]
+
+À grande distance, on ne voit pas les effets liés au détail de la distribution de charge finie : on a l'impression de voir une charge ponctuelle \(Q = \lambda l\) au point O.
+
+On retrouve bien le résultat attendu pour une charge ponctuelle.
+
+On peut faire la m\^eme analyse et retrouver un champ électrique crée par un fil infini en faisant tendre \(l\to \infty\) : \[\E = \frac{\lambda}{2\pi \epsilon_0 \rho}\]
+%TODO Refactoriser
+
+ \end{document}

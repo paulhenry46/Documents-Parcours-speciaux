@@ -1,0 +1,285 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Outils Mathématiques 2}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\mpsi}{\(\psi\)}
+\begin{document}
+\setcounter{chapter}{1}
+\chapter{Calcul intégral}
+\section{Types de domaines}
+\begin{itemize}
+ \item Cercle de centre \(x_0, y_0\) : \(((x-x_0)^2+(y-y_0)^2) = R^2\)\marginCritical{Si à la place du =, on a un \(\leq\), il s'agit d'un disque avec les m\^emes paramètres. De plus, si on est dans l'espace et non plus dans le plan, la m\^eme équation décrit maintenant un cylindre.}
+  \item Coque de centre \(x_0, y_0, z_0\) : \(((x-x_0)^2+(y-y_0)^2+(z-z_0)^2) = R^2\)\marginCritical{Si à la place du =, on a un \(\leq\), il s'agit d'une boule avec les m\^emes paramètres}
+  \item Ensemble de cercles : \((((x-x_0)^2+(y-y_0)^2)-R_0^2)(((x-x_1)^2+(y-y_1)^2)-R_1^2) = 0\). Soit le point est sur le premier cercle, soit sur le second.
+  \item Ellipse : \((\frac{x}{a})^2+(\frac{y}{b})^2 \leq 1\) avec a et b les rayons des demi-axes.
+\end{itemize}
+\subsection{En pratique}
+Pour trouver le domaine représenté par une inégalité, on remplace par une égalité, puis on trouve de quel ``c\^oté'' on se trouve.
+\section{Aires et volumes}
+\subsection{Systèmes de coordonnées}
+\subsubsection{Coordonnées cartésiennes}
+\begin{itemize}
+ \item \(S = \iint \dd x\dd y\)
+  \item \(V = \iiint \dd x\dd y\dd z\)
+\end{itemize}
+\subsubsection{Coordonnées cylindriques}
+\begin{itemize}
+ \item \(S = \iint \rho \dd \rho\dd \varphi\)
+ \item \(V = \iint \rho \dd \rho\dd \varphi\dd z\)
+\end{itemize}
+\subsubsection{Coordonnées sphériques}
+\begin{itemize}
+ \item \(V = \iiint r^2 \sin(\theta)\dd r\dd \theta\dd \varphi\)
+\end{itemize}
+\subsection{En pratique}
+\begin{center}
+\begin{tabular}{lll}
+Bornes de x & Bornes de y & Surface\\
+a,b & f(x), f(y) & \(S = \int_b^ag(x)\dd x-\int_a^bf(x)\dd x\)\\
+f(x), g(x) & a,b & \(S = \int_b^ag(y)\dd y-\int_a^bf(y)\dd y\)
+\end{tabular}
+\end{center}
+\warningInfo{Symétrie sphérique}{On regarde toujours la symétrie du domaine que l'on cherche à calculer. La manière de faire le calcul dépend de la forme du domaine et moins de la fonction.}
+\section{Calcul intégral}
+\subsection{Exemple de modiffaction de l'ordre d'intégration}
+Il faut d'abord trouver le domaine sur lequel il faut intégrer. Selon la première variable utilisée, il faudra séparer le domaine en plusieurs parties. On utilise l'exemple de la fonction \(6x^2y\) avec \(0<y<x^2<1\)
+\subsubsection{Analyse mathématique}
+Intégrons d'abord sur x. On a donc \(x\in [\sqrt{y},1] \cup [-1, -\sqrt{y}], y\in[0,1]\).
+
+\begin{flalign*}
+I &= \int_0^1 \left( \int_{-1}^{-\sqrt{y}} 6x^2y\, \dd x + \int_{\sqrt{y}}^1 6x^2y\, \dd x \right) \dd y \\
+\intertext{Primitive par rapport à $x$: $\int 6x^2y\, \dd x = 2x^3y$}
+\int_{-1}^{-\sqrt{y}} 6x^2y\, \dd x &= [2x^3y]_{-1}^{-\sqrt{y}} = 2(-\sqrt{y})^3y - 2(-1)^3y \\
+&= -2y^{3/2}y + 2y = 2y - 2y^{5/2} \\
+\int_{\sqrt{y}}^1 6x^2y\, \dd x &= [2x^3y]_{\sqrt{y}}^1 = 2(1)^3y - 2(\sqrt{y})^3y \\
+&= 2y - 2y^{5/2} \\
+\intertext{Intégration par rapport à $y$ :}
+I &= \int_0^1 ( (2y - 2y^{5/2}) + (2y - 2y^{5/2}) ) \dd y \\
+&= \int_0^1 (4y - 4y^{5/2}) \dd y \\
+&= \left[ \frac{4y^2}{2} - \frac{4y^{7/2}}{7/2} \right]_0^1 \\
+&= \left[ 2y^2 - \frac{8}{7}y^{7/2} \right]_0^1 \\
+&= \left( 2(1)^2 - \frac{8}{7}(1) \right) - 0 \\
+&= 2 - \frac{8}{7} = \frac{14 - 8}{7} = \frac{6}{7}
+\end{flalign*}
+
+Intégrons maintenant en commençant par y.
+
+\begin{flalign*}
+I &= \int_{-1}^1 \left( \int_0^{x^2} 6x^2y\, \dd y \right) \dd x \\
+\intertext{Intégrale intérieure par rapport à $y$ :}
+\int_0^{x^2} 6x^2y\, \dd y &= 6x^2 \left[ \frac{y^2}{2} \right]_0^{x^2} \\
+&= 3x^2 ( (x^2)^2 - 0 ) \\
+&= 3x^6 \\
+\intertext{Intégrale extérieure par rapport à $x$ (on utilise la symétrie, $3x^6$ est paire) :}
+I &= \int_{-1}^1 3x^6\, \dd x \\
+&= 2 \int_0^1 3x^6\, \dd x \\
+&= 6 \int_0^1 x^6\, \dd x \\
+&= 6 \left[ \frac{x^7}{7} \right]_0^1 \\
+&= 6 \left( \frac{1}{7} - 0 \right) \\
+&= \frac{6}{7}
+\end{flalign*}
+\subsubsection{Analyse à partir du schéma}
+\includegraphics[scale=0.5]{fig1}
+\paragraph*{1. Ordre $\mathbf{\dd y \dd x}$ (Intégration sur $y$ en premier)}
+On projette le domaine sur l'axe $x$, qui devient l'axe d'intégration extérieure. $x$ varie de $-1$ à $1$.
+\begin{itemize}
+    \item \textbf{Pour un $x$ fixé} ($x \in [-1, 1]$), le domaine est balayé verticalement ($y$) : la borne inférieure est toujours $y=0$ et la borne supérieure est toujours $y=x^2$.
+    \item \textbf{Conclusion} : Le domaine est \textbf{simple en $x$}. L'intégrale s'écrit en une seule partie :
+    $$I = \int_{-1}^1 \left( \int_0^{x^2} f(x,y)\, \dd y \right) \dd x$$
+\end{itemize}
+
+\paragraph*{2. Ordre $\mathbf{\dd x \dd y}$ (Intégration sur $x$ en premier)}
+On projette le domaine sur l'axe $y$, qui devient l'axe d'intégration extérieure. $y$ varie de $0$ à $1$.
+\begin{itemize}
+    \item \textbf{Pour un $y$ fixé} ($y \in [0, 1]$), le domaine est balayé horizontalement ($x$). La droite horizontale $y=k$ coupe le domaine en deux points de la parabole, $x=\pm\sqrt{y}$.
+    \item L'intervalle des $x$ est séparé par un "trou" ou un point d'origine non inclus :
+    $$x \in [-1, -\sqrt{y}] \quad \text{ou} \quad x \in [\sqrt{y}, 1]$$
+    \item \textbf{Conclusion} : Le domaine est \textbf{non simple en $y$}. Il est \textbf{impératif} de séparer l'intégrale intérieure en deux parties :
+    $$I = \int_0^1 \left( \int_{-1}^{-\sqrt{y}} f(x,y)\, \dd x + \int_{\sqrt{y}}^1 f(x,y)\, \dd x \right) \dd y$$
+\end{itemize}
+\subsection{Intégration sur triangle}
+\subsubsection{Analyse des bornes}
+L'expression des droites y pour les cotés AB et BC change à partir du point B, i.e. pour x = 1. On va donc séparer le triangle en 2 triangles rectangles.
+
+Trouvons l'expression de la droite y pour le premier. C'est une droite, donc de la forme ax+b, avec a la pente et b l'ordonnée à l'origine. On sait que B=0 car A(0,0) et \(a = \frac{Y_B-Y_A}{X_B-X_A} = \frac{3}{1} =3\) Donc \(y=3x\). De la m\^eme façon, pour le coté BC, on trouve \(y = 4-x\).
+\subsubsection{Calcul}
+Pour le premier triangle :
+\begin{flalign*}
+I_1 &= \int_0^1 \int_0^{3x} (x+y)\, \dd y\, \dd x \\
+\intertext{Intégration par rapport à $y$ :}
+&= \int_0^1 \left[ xy + \frac{y^2}{2} \right]_0^{3x} \dd x \\
+&= \int_0^1 \left( x(3x) + \frac{(3x)^2}{2} \right) \dd x \\
+&= \int_0^1 \left( 3x^2 + \frac{9x^2}{2} \right) \dd x \\
+&= \int_0^1 \frac{15x^2}{2}\, \dd x \\
+\intertext{Intégration par rapport à $x$ :}
+&= \frac{15}{2} \left[ \frac{x^3}{3} \right]_0^1 \\
+&= \frac{15}{2} \left( \frac{1}{3} - 0 \right) = \frac{15}{6} = \frac{5}{2}
+\end{flalign*}
+Pour le deuxième :
+\begin{flalign*}
+I_2 &= \int_1^4 \int_0^{4-x} (x+y)\, \dd y\, \dd x \\
+\intertext{Intégration par rapport à $y$ :}
+&= \int_1^4 \left[ xy + \frac{y^2}{2} \right]_0^{4-x} \dd x \\
+&= \int_1^4 \left( x(4-x) + \frac{(4-x)^2}{2} \right) \dd x \\
+&= \int_1^4 \left( 4x - x^2 + \frac{16 - 8x + x^2}{2} \right) \dd x \\
+&= \int_1^4 \frac{2(4x - x^2) + 16 - 8x + x^2}{2} \dd x \\
+&= \int_1^4 \frac{8x - 2x^2 + 16 - 8x + x^2}{2} \dd x \\
+&= \int_1^4 \frac{16 - x^2}{2}\, \dd x \\
+\intertext{Intégration par rapport à $x$ :}
+&= \left[ 8x - \frac{x^3}{6} \right]_1^4 \\
+&= \left( 8(4) - \frac{4^3}{6} \right) - \left( 8(1) - \frac{1^3}{6} \right) \\
+&= \left( 32 - \frac{64}{6} \right) - \left( 8 - \frac{1}{6} \right) \\
+&= 24 - \frac{64}{6} + \frac{1}{6} = 24 - \frac{63}{6} \\
+&= 24 - \frac{21}{2} = \frac{48 - 21}{2} = \frac{27}{2}
+\end{flalign*}
+On trouve finalement que \(I = 16\).
+\subsection{Avec P(x)<y<Q(x)}
+Quand les bornes de y sont des polynomes dépendant de x, il faut encore trouver les bornes de x, celles sur y étant déjà données.
+
+Pour ce faire, on résout simplement \(P(x)-Q(x) = 0\), les solutions (2 normalement) sont les bornes de x. Il n'y a alors plus qu'à intégrer.
+
+Exemple avec le domaine \(x^2+x\leq y\leq 3x+8\). En appliquant la méthode, on tombe sur une équation du second degré à résoudre pour trouver les bornes de x, ici \(-2\) et \(4\).
+%TODO schema à faire
+\section{Jacobien et changement de variable}
+\subsection{Formules}
+Le Jacobien ($J$) est le facteur de correction pour l'élément de volume/surface.
+
+\subsubsection{Cas 2 Variables ($\mathbb{R}^2$) : Intégrale Double}
+
+Pour une transformation $(x, y) = \mathbf{T}(u, v)$ :
+$$
+J(u, v) = \det \begin{pmatrix}
+\frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\
+\frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}
+\end{pmatrix}
+$$
+On peut alors écrire :
+\begin{proposition}
+$$J(u, v) = \left(\frac{\partial x}{\partial u} \cdot \frac{\partial y}{\partial v}\right) - \left(\frac{\partial x}{\partial v} \cdot \frac{\partial y}{\partial u}\right)$$
+\end{proposition}
+\subsubsection{Cas 3 Variables ($\mathbb{R}^3$) : Intégrale Triple}
+
+Pour une transformation $(x, y, z) = \mathbf{T}(u, v, w)$ :
+$$
+J(u, v, w) = \det \begin{pmatrix}
+\frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} & \frac{\partial x}{\partial w} \\
+\frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} & \frac{\partial y}{\partial w} \\
+\frac{\partial z}{\partial u} & \frac{\partial z}{\partial v} & \frac{\partial z}{\partial w}
+\end{pmatrix}
+$$
+
+(Pour le calcul, utiliser la règle de Sarrus (voir fiche dédiée, dans la rubrique Outils Maths)
+
+\subsection{Application}
+
+Soit $D$ le domaine d'intégration dans $(x, y)$ et $D'$ le domaine dans $(u, v)$, et $f(x, y)$ la fonction à intégrer.
+
+$$\iint_D f(x,y) \,dx\,dy = \iint_{D'} f(x(u,v), y(u,v)) \cdot \mathbf{|J(u,v)|} \,du\,dv$$
+\subsection{Exemple}
+Un exercice classique qui montre la puissance du Jacobien pour transformer une région non triviale (ici, une ellipse) en quelque chose de simple.
+
+Allons-y pour cette double application du Jacobien sur l'intégrale :
+$$I = \iint_D (x^2+y^2) \,dx\,dy$$
+où le domaine $D$ est défini par l'ellipse : $\frac{x^2}{a^2} + \frac{y^2}{b^2} \leq 1$ ($a, b > 0$).
+\subsubsection{Simplification du Domaine (Transformation 1)}
+L'objectif est de transformer l'ellipse $D$ en un disque unité $D'$.
+
+Nous posons la transformation $\mathbf{T}_1$:
+$$\begin{cases} X = \frac{x}{a} \\ Y = \frac{y}{b} \end{cases} \quad \text{soit} \quad \begin{cases} x = aX \\ y = bY \end{cases}$$
+
+Le domaine $D$ devient $D'$ dans les coordonnées $(X, Y)$ :
+$$\frac{(aX)^2}{a^2} + \frac{(bY)^2}{b^2} \leq 1 \implies X^2 + Y^2 \leq 1$$
+$D'$ est maintenant un disque unité.
+
+On calcule ensuite le Jacobien de la transformation inverse $(x, y) \to (X, Y)$ :
+$$J_1(X, Y) = \det \begin{pmatrix}
+\frac{\partial x}{\partial X} & \frac{\partial x}{\partial Y} \\
+\frac{\partial y}{\partial X} & \frac{\partial y}{\partial Y}
+\end{pmatrix} = \det \begin{pmatrix}
+a & 0 \\
+0 & b
+\end{pmatrix} = a \cdot b - 0$$
+$$\mathbf{|J_1|} = ab \quad (\text{puisque } a, b > 0)$$
+
+L'élément différentiel devient : $dx\,dy = ab \,dX\,dY$.
+
+On remplace dans l'intégrale $I$ :
+$$I = \iint_{D'} ((aX)^2 + (bY)^2) \cdot ab \,dX\,dY$$
+$$I = ab \iint_{D'} (a^2X^2 + b^2Y^2) \,dX\,dY$$
+où $D'$ est le disque $X^2 + Y^2 \leq 1$.
+\subsubsection{Passage aux Coordonnées Polaires (Transformation 2)}
+
+L'intégrale est maintenant sur un disque, ce qui signifie que l'on peut utiliser les coordonnées Polaires.
+
+Nous posons la transformation $\mathbf{T}_2$ sur les variables $(X, Y)$ :
+$$\begin{cases} X = \rho \cos \phi \\ Y = \rho \sin \phi \end{cases}$$
+
+Le domaine $D'$ (le disque unité $X^2 + Y^2 \leq 1$) devient le domaine $D''$ dans $(\rho, \phi)$ :
+$$\begin{cases} \rho^2 \leq 1 \implies 0 \leq \rho \leq 1 \\ 0 \leq \phi \leq 2\pi \end{cases}$$
+
+Calculons maintenant le Jacobien. C'est le Jacobien standard des coordonnées polaires (appliqué à $X, Y \to \rho, \phi$):
+$$J_2(\rho, \phi) = \det \begin{pmatrix}
+\frac{\partial X}{\partial \rho} & \frac{\partial X}{\partial \phi} \\
+\frac{\partial Y}{\partial \rho} & \frac{\partial Y}{\partial \phi}
+\end{pmatrix} = \det \begin{pmatrix}
+\cos \phi & -\rho \sin \phi \\
+\sin \phi & \rho \cos \phi
+\end{pmatrix} = \rho \cos^2 \phi + \rho \sin^2 \phi = \rho$$
+$$\mathbf{|J_2|} = \rho \quad (\text{puisque } \rho \ge 0)$$
+
+L'élément différentiel devient : $dX\,dY = \rho \,d\rho\,d\phi$.
+
+On reprend l'intégrale après T1 et on substitue :
+$$I = ab \iint_{D'} (a^2X^2 + b^2Y^2) \,dX\,dY$$
+$$I = ab \int_0^{2\pi} \left[ \int_0^1 \left( a^2(\rho \cos\phi)^2 + b^2(\rho \sin\phi)^2 \right) \cdot \rho \,d\rho \right] \,d\phi$$
+
+Simplifions l'intégrande :
+$$I = ab \int_0^{2\pi} \left[ \int_0^1 \rho^2 (a^2 \cos^2\phi + b^2 \sin^2\phi) \cdot \rho \,d\rho \right] \,d\phi$$
+$$I = ab \int_0^{2\pi} (a^2 \cos^2\phi + b^2 \sin^2\phi) \left[ \int_0^1 \rho^3 \,d\rho \right] \,d\phi$$
+
+Trivialement, on a :
+$$\int_0^1 \rho^3 \,d\rho = \left[ \frac{\rho^4}{4} \right]_0^1 = \frac{1}{4}$$
+
+Pour $\phi$ :
+$$I = ab \cdot \frac{1}{4} \int_0^{2\pi} (a^2 \cos^2\phi + b^2 \sin^2\phi) \,d\phi$$
+On utilise l'identité $\int_0^{2\pi} \cos^2\phi \,d\phi = \int_0^{2\pi} \sin^2\phi \,d\phi = \pi$.
+$$I = \frac{ab}{4} \left( a^2 \int_0^{2\pi} \cos^2\phi \,d\phi + b^2 \int_0^{2\pi} \sin^2\phi \,d\phi \right)$$
+$$I = \frac{ab}{4} (a^2 \pi + b^2 \pi)$$
+
+Le résultat final est donc :
+$$I = \frac{\pi ab (a^2+b^2)}{4}$$
+ \end{document}

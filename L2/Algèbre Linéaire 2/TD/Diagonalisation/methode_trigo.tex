@@ -1,0 +1,314 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Algèbre linéaire 2}
+\subtitle{Langage mathématique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{C.Dartyge}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{chemfig}%---pour deiffner formules chimiques
+\usepackage{chemformula}%---pour les formules chimiques en \'equation : \ch{...}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\begin{document}
+\setcounter{chapter}{3}
+\chapter{Diagonalisation et trigonalisation}
+
+\section{Matrice d'Exemple $A$}
+
+Soit la matrice $A$ définie par :
+$$A = \begin{pmatrix} 2 & 1 & 1 \\ 0 & 3 & 1 \\ 0 & 0 & 2 \end{pmatrix}$$
+
+\section{Trigonalisation d'une Matrice}
+
+La matrice $A$ est trigonalisable sur $\mathbb{K}$ si et seulement si son polynôme caractéristique est scindé sur $\mathbb{K}$. L'objectif est de trouver $P$ inversible et $T$ triangulaire supérieure telles que $A = P T P^{-1}$.
+
+\subsection{Vérifier la Condition de Trigonalisation}
+\explanation{3}{Cela signiie que toutes les racines du polynome sont réelles.}
+\begin{itemize}
+    \item \textbf{Polynôme caractéristique :} $P_A(\lambda) = (2 - \lambda)^2 (3 - \lambda)$.
+    \item \textbf{Racines :} $\lambda = 2$ et $\lambda = 3$.
+\end{itemize}
+Le polynôme est scindé sur $\mathbb{R}$\explain{3}{right}{0}{0.5}{}.
+
+La matrice $A$ est \textbf{trigonalisable} sur $\mathbb{R}$.
+
+\subsection{Déterminer la Matrice Triangulaire $T$}
+
+\begin{itemize}
+    \item \textbf{Cas Matrice Diagonalisable :}
+    Puisque $A$ est diagonalisable (vérifié en Partie 1), la matrice triangulaire $T$ est simplement la matrice diagonale $D$.
+    $$T = D = \begin{pmatrix} 3 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 2 \end{pmatrix}$$
+    La matrice de passage $P$ est la même qu'en diagonalisation.
+
+    \item \textbf{Cas Matrice non Diagonalisable (Général) :}
+    Si $A$ n'était pas diagonalisable, la matrice $T$ serait une forme de Jordan (triangulaire supérieure) ayant les valeurs propres sur la diagonale et des "1" au-dessus de la diagonale pour les valeurs propres où $m_g(\lambda) < m_a(\lambda)$. Il faudrait alors compléter la base avec des vecteurs propres généralisés.
+\end{itemize}
+
+\textbf{Résultat :} Pour notre exemple, la trigonalisation coïncide avec la diagonalisation.
+\section{Trigonalisation d'une matrice non diagonalisable}
+
+Soit la matrice $C$ définie par :
+$$C = \begin{pmatrix} -4 & 0 & -2 \\ 0 & 1 & 0 \\ 5 & 1 & 3 \end{pmatrix}$$
+
+
+\subsection{Diagnostic de Non-Diagonalisation}
+
+\subsubsection{Calculer le Polynôme Caractéristique et les Valeurs Propres}
+
+1.  \textbf{Calcul du Déterminant $\det(C - \lambda I)$ (développement par $L_2$):}
+    $$P_C(\lambda) = (1 - \lambda) \cdot \det\begin{pmatrix} -4 - \lambda & -2 \\ 5 & 3 - \lambda \end{pmatrix}$$
+    $$P_C(\lambda) = (1 - \lambda) [(-4 - \lambda)(3 - \lambda) + 10]$$
+    $$P_C(\lambda) = (1 - \lambda) [\lambda^2 + \lambda - 2]$$
+    $$P_C(\lambda) = -(\lambda - 1)^2 (\lambda + 2)$$
+
+2.  \textbf{Valeurs Propres :}
+    \begin{itemize}
+        \item $\lambda_1 = 1$ (Multiplicité Algébrique $m_a(1) = 2$)
+        \item $\lambda_2 = -2$ (Multiplicité Algébrique $m_a(-2) = 1$)
+    \end{itemize}
+
+\subsubsection{Vérification du Critère de Diagonalisation}
+
+On vérifie si $m_g(1) = m_a(1)$.
+
+1.  \textbf{Calcul de $C - I$ :}
+    $$C - I = \begin{pmatrix} -5 & 0 & -2 \\ 0 & 0 & 0 \\ 5 & 1 & 2 \end{pmatrix}$$
+
+2.  \textbf{Calcul du Rang :}
+    La matrice $C - I$ a un rang de 2 (les lignes $L_1$ et $L_3$ sont non colinéaires).
+    $$\text{rang}(C - I) = 2$$
+
+3.  \textbf{Multiplicité Géométrique $m_g(1)$ :}
+    $$m_g(1) = 3 - \text{rang}(C - I) = 3 - 2 = 1$$
+
+\textbf{Conclusion :} Puisque $m_g(1) = 1 < m_a(1) = 2$, la matrice $C$ est \textbf{non diagonalisable} mais est trigonalisable sur $\mathbb{R}$.
+
+\subsection{Trigonalisation (Base de Jordan)}
+
+L'objectif est de trouver une base $\mathcal{B}' = (v_1, v_2, v_3)$ telle que la matrice de l'endomorphisme dans cette base soit $T$.
+
+\subsubsection{Vecteur Propre $v_1$ (pour $\lambda_2 = -2$)}
+
+Résolution de $(C + 2I)v_1 = 0$:
+$$\begin{pmatrix} -2 & 0 & -2 \\ 0 & 3 & 0 \\ 5 & 1 & 5 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \implies \begin{cases} -2x - 2z = 0 \\ 3y = 0 \end{cases} \implies x = -z, y = 0$$
+On choisit :
+$$v_1 = \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}$$
+
+\subsubsection{Vecteur Propre $v_2$ (pour $\lambda_1 = 1$)}
+
+Résolution de $(C - I)v_2 = 0$:
+$$\begin{pmatrix} -5 & 0 & -2 \\ 0 & 0 & 0 \\ 5 & 1 & 2 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \implies \begin{cases} -5x - 2z = 0 \\ 5x + y + 2z = 0 \end{cases}$$
+De $L_1$, $z = -5x/2$. En substituant dans $L_3$: $y = -5x - 2z = -5x - 2(-5x/2) = -5x + 5x = 0$.
+En choisissant $x=-2$, on a $z=5$.
+$$v_2 = \begin{pmatrix} -2 \\ 0 \\ 5 \end{pmatrix}$$
+
+\subsubsection{Vecteur Propre Généralisé $v_3$ (pour $\lambda_1 = 1$)}
+
+Résolution de l'équation de Jordan $(C - I)v_3 = v_2$:
+$$\begin{pmatrix} -5 & 0 & -2 \\ 0 & 0 & 0 \\ 5 & 1 & 2 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} -2 \\ 0 \\ 5 \end{pmatrix} \implies \begin{cases} -5x - 2z = -2 \quad (L_1) \\ 5x + y + 2z = 5 \quad (L_3) \end{cases}$$
+En utilisant $L_1 \implies -5x - 2z = -2 \implies 5x + 2z = 2$.
+En substituant dans $L_3$: $(5x + 2z) + y = 5 \implies 2 + y = 5 \implies y = 3$.
+En choisissant $x=0$, on obtient $2z=2 \implies z=1$.
+$$v_3 = \begin{pmatrix} 0 \\ 3 \\ 1 \end{pmatrix}$$
+\subsection{Former $P$ et $T$}
+
+\begin{itemize}
+    \item \textbf{Matrice de Passage $P$} (dans l'ordre $v_1, v_2, v_3$) :
+    $$P = \begin{pmatrix} -1 & -2 & 0 \\ 0 & 0 & 3 \\ 1 & 5 & 1 \end{pmatrix}$$
+
+    \item \textbf{Matrice Triangulaire $T$ (Forme de Jordan) :}
+    L'ordre des valeurs propres est $\lambda_2, \lambda_1, \lambda_1$. La relation $(C - I)v_3 = v_2$ introduit un 1 au-dessus du $\lambda_1$ de la colonne $v_3$.
+    $$T = \begin{pmatrix} -2 & 0 & 0 \\ 0 & 1 & 1 \\ 0 & 0 & 1 \end{pmatrix}$$
+\end{itemize}
+
+\textbf{Résultat :} La matrice $C$ est trigonalisée sous la forme $C = P T P^{-1}$.
+\section{Avec une chaine de Jordan de longueur 3}
+Nous allons utiliser un exemple classique de matrice $3 \times 3$ qui génère un seul bloc de Jordan $J_3(\lambda)$. Dans ce cas, nous commençons par chercher le denier vecteur de la chaine, puis nous remontons pour trouver les autres
+
+Soit la matrice $M$ :
+$$M = \begin{pmatrix} 2 & 1 & 0 \\ 0 & 2 & 1 \\ 0 & 0 & 2 \end{pmatrix}$$
+
+\subsection{Diagnostic de Non-Diagonalisation}
+
+\subsubsection{Valeurs Propres et Multiplicité Algébrique ($m_a$)}
+
+Calcul du Polynôme Caractéristique $P_M(\lambda)$ :
+    La matrice $M$ est triangulaire supérieure, donc $P_M(\lambda)$ est le produit des éléments diagonaux de $M - \lambda I$.
+    $$P_M(\lambda) = \det(M - \lambda I) = (2 - \lambda)^3$$
+
+Donc :
+\begin{itemize}
+ \item $\lambda = 2$ est la seule valeur propre.
+ \item Multiplicité Algébrique : $m_a(2) = 3$.
+\end{itemize}
+\subsubsection{Multiplicité Géométrique ($m_g$)}
+
+1.  Calcul de $M - 2I$ :
+    $$M - 2I = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{pmatrix}$$
+
+2.  Calcul du Rang et de $m_g(2)$ :
+    $\text{rang}(M - 2I) = 2$ (les deux premières lignes sont non nulles et non colinéaires).
+    $$m_g(2) = 3 - \text{rang}(M - 2I) = 3 - 2 = 1$$
+
+Conclusion : Puisque $m_g(2) = 1$ et $m_a(2) = 3$, la matrice $M$ est non diagonalisable. Elle est trigonalisable en une forme de Jordan composée d'un seul bloc $J_3(2)$ (puisque $m_g(2)=1$).
+\subsection{Trigonalisation (Chaîne de Jordan de Longueur 3)}
+
+Nous devons construire une base $\mathcal{B}' = (v_1, v_2, v_3)$ telle que :
+$$(M - 2I) v_1 = 0 \quad \text{(Vecteur Propre)}$$
+$$(M - 2I) v_2 = v_1 \quad \text{(Vecteur Généralisé 1)}$$
+$$(M - 2I) v_3 = v_2 \quad \text{(Vecteur Généralisé 2)}$$
+
+\subsubsection{Construction de la Chaîne $(v_3 \to v_2 \to v_1)$}
+
+La méthode la plus simple est de commencer par le vecteur le plus généralisé $v_3$.
+
+On cherche d'abord le Vecteur le plus Généralisé $v_3$
+
+$v_3$ doit être dans $\ker((M - 2I)^3)$ (toujours vrai, car $(M - 2I)^3 = 0$) mais pas dans $\ker((M - 2I)^2)$.
+\warningInfo{Pourquoi $(M - 2I)^3 = 0$}{Selon le Théorème de Cayley-Hamilton, toute matrice est racine de son propre polynôme caractéristique, c'est-à-dire $P_M(M) = 0$.
+
+$$P_M(M) = (2I - M)^3 = (-1)^3 (M - 2I)^3 = 0$$
+Puisque $(2I - M)^3 = 0$, alors $(M - 2I)^3 = 0$ est vrai.}
+
+On calcule $(M - 2I)^2$ :
+    $$(M - 2I)^2 = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{pmatrix} \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}$$
+On résout  $(M - 2I)^2 v_3 = 0$ :
+    $$\begin{pmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \implies z = 0$$
+    L'espace $\ker((M - 2I)^2)$ est donc défini par $z=0$, soit $v = \begin{pmatrix} x \\ y \\ 0 \end{pmatrix}$.
+
+3.  Choix de $v_3$ : Nous choisissons un vecteur $v_3$ tel que $(M - 2I)^2 v_3 \neq 0$, c'est-à-dire avec $z \neq 0$.
+    On choisit la solution la plus simple où $z=1$ :
+    $$v_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}$$
+
+On peut maintenant générer $v_2$ et $v_1$ (Par descente de la chaîne)
+
+1.  Générer $v_2$ (Vecteur Généralisé 1) : $v_2 = (M - 2I) v_3$.
+    $$v_2 = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{pmatrix} \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}$$
+
+2.  Générer $v_1$ (Vecteur Propre) : $v_1 = (M - 2I) v_2$.
+    $$v_1 = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}$$
+
+\subsection{Former $P$ et $T$}
+
+Matrice de Passage $P$ : La base de Jordan est $(v_1, v_2, v_3)$.
+    $$P = (v_1 \mid v_2 \mid v_3) = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} = I_3$$
+    (Dans cet exemple, la matrice $M$ est déjà sous forme de Jordan, donc $P$ est la matrice identité).
+
+Matrice Triangulaire $T$ (Forme de Jordan) :
+    Puisque nous avons une seule chaîne de longueur 3 associée à $\lambda=2$, la matrice $T$ est un seul bloc de Jordan $J_3(2)$.
+    $$T = \begin{pmatrix} 2 & 1 & 0 \\ 0 & 2 & 1 \\ 0 & 0 & 2 \end{pmatrix}$$
+
+
+Résultat : La matrice $M$ est trigonalisée sous la forme $M = P T P^{-1}$.
+\section{Trouver les chaines}
+pour distinguer les cas on calcule la dimension des sous-espaces de noyaux itérés (les sous-espaces caractéristiques) :
+
+On étudie la suite des dimensions des noyaux :
+\[d_k​=dim(Ker((A−\lambda I)^k))\]
+
+Si \(d_1​=1, d_2​=2, d_3​=3\) : Une seule chaîne de longueur 3.
+
+Si \(d_1​=2, d_2​=3\) : Une chaîne de longueur 2 et une chaîne de longueur 1.
+\section{Trigonalisation avec 2 chaines}
+Soit $A = \begin{pmatrix} 3 & 2 & -2 \\ -1 & 0 & 1 \\ 1 & 1 & 0 \end{pmatrix}$.
+
+Le polynôme caractéristique est :
+$$\chi_A(X) = -(X-1)^3$$
+La seule valeur propre est $\lambda = 1$, $m_a(1) = 3$.
+\subsection{Analyse des chaines}
+
+Nous travaillons sur $N = A - I_3 = \begin{pmatrix} 2 & 2 & -2 \\ -1 & -1 & 1 \\ 1 & 1 & -1 \end{pmatrix}$.
+
+On se rend compte que \(N^2 = 0\), donc $k=2$. La chaîne la plus longue est de longueur 2.
+
+\subsection{Détermination du nombre de chaînes ($c_i$)}
+
+Nous utilisons la relation $c_i = d_i - d_{i+1}$ en partant de $i=k=2$ ($d_3 = 0$):
+
+Chaînes de longueur $i=2$ ($c_2$) :
+    $$c_2 = d_2 - d_3 = 1 - 0 = 1$$
+    Il y a une chaîne de longueur 2.
+
+Chaînes de longueur $i=1$ ($c_1$) :
+    $$c_1 = d_1 - d_2 = 2 - 1 = 1$$
+    Il y a une chaîne de longueur 1.
+
+Nous avons besoin d'une chaîne de longueur 2 (qui génère un bloc $J_2(1)$) et d'une chaîne de longueur 1 (qui génère un bloc $J_1(1)$).
+\subsection{Construction de la Base de Jordan}
+
+Nous cherchons la base $\mathcal{B}' = (\vec{v}_3, \vec{v}_2, \vec{w}_1)$.
+\subsubsection{Construction de la Chaîne de Longueur 2 ($\vec{v}_3 \to \vec{v}_2$)}
+
+Nous devons choisir un vecteur $\vec{v}_3 \in \text{Ker}(N^2) \setminus \text{Ker}(N)$.
+
+1.  Choix de $\vec{v}_3$ :
+    Nous choisissons un vecteur qui ne satisfait pas $x+y-z=0$ (condition pour etre dans le noyau de N).
+    $$\vec{v}_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}$$
+
+2.  Calcul de $\vec{v}_2$ :
+    $\vec{v}_2 = N \vec{v}_3$ (ce vecteur est le vecteur propre associé à la chaîne).
+    $$\vec{v}_2 = \begin{pmatrix} 2 & 2 & -2 \\ -1 & -1 & 1 \\ 1 & 1 & -1 \end{pmatrix} \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} = \begin{pmatrix} -2 \\ 1 \\ -1 \end{pmatrix}$$
+
+\subsubsection{Construction de la Chaîne de Longueur 1 ($\vec{w}_1$)}
+
+Nous devons choisir un vecteur $\vec{w}_1 \in \text{Ker}(N)$ (vecteur propre), linéairement indépendant de tous les vecteurs propres déjà construits (ici, seulement $\vec{v}_2$).
+
+1.  Base du sous-espace propre $E_1$ :
+    $E_1 = \text{Vect} \left( \vec{u}_1 = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}, \quad \vec{u}_2 = \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix} \right)$.
+
+2.  Expression de $\vec{v}_2$ :
+    Nous avons montré que $\vec{v}_2 = -2\vec{u}_1 + 1\vec{u}_2$.
+
+3.  Choix de $\vec{w}_1$ :
+    Nous devons choisir un vecteur $\vec{w}_1 \in E_1$ qui ne soit pas colinéaire à $\vec{v}_2$. Le plus simple est de choisir $\vec{w}_1$ parmi les vecteurs de la base de $E_1$, par exemple $\vec{u}_1$.
+    $$\vec{w}_1 = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}$$
+
+4.  Vérification de l'Indépendance :
+    L'indépendance de $\vec{v}_2$ et $\vec{w}_1$ a été vérifiée précédemment : seuls $\alpha=\beta=0$ résolvent $\alpha \vec{v}_2 + \beta \vec{w}_1 = \vec{0}$. L'indépendance de la base entière $\mathcal{B}'$ est garantie par la méthode.
+\subsection{Assemblage}
+
+La base de Jordan est $\mathcal{B}' = (\vec{v}_3, \vec{v}_2, \vec{w}_1)$ :
+$$
+\mathcal{B}' = \left( \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}, \begin{pmatrix} -2 \\ 1 \\ -1 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} \right)
+$$
+La matrice de passage $P$ a ces vecteurs en colonne :
+$$
+P = \begin{pmatrix} 0 & -2 & 1 \\ 0 & 1 & 0 \\ 1 & -1 & 1 \end{pmatrix}
+$$
+La matrice $A$ est trigonalisée en la forme de Jordan $J = P^{-1} A P$ :
+$$
+J = \begin{pmatrix} 1 & 1 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+$$
+
+\end{document}
+
+

@@ -1,0 +1,20 @@
+Title,Content
+Séries numériques,\[S_n = \sum_{n=n_0}^N u_n\] 
+Série géométrique,"Soit \(S_N = \sum_{n=0}^N q^n\). Si \(q\neq 1\), on a \(S_N=\frac{1-q^{N+1}}{1-q}\). On en déduit que la série converge si \(|q|<1\) "
+Série de Riemann,Une série de la forme \(\frac{1}{n^{\alpha}}\) est une série de Riemann. Elle converge si \(\alpha>1\) 
+divergence grossière,"Si la série de terme général \(U_n\) converge, alors \(\lim u_n =0\) "
+Critère des séries alternées,"Pour une série alternée de terme \(u_n\), si la suite \(|u_n|\) est décroissante et tend vers 0, alors la série converge. "
+Convergen absolue,"Si une série convege absolument (la suite de terme \(|u_n|\) converge), elle converge. "
+Critère de d'Alembert,"Si \(\frac{|u_{n+1}|}{|u_n|}\to l\). Alors si \(l<1\) la série converge, si \(l>1\), elle diverge. "
+Série entière,C'est la suite de polynomes \(a_nx^n\) 
+Rayon de convergence,"Noté R c'est une valeur telle que \(\forall x_0, |x_0|<R\) la série entière converge aboslument. "
+Règle de D'Alembert,"On suppose \(a_n\neq 0\) pour n suffisament grand. Si \(\Lim{n\to\infty}\big|\frac{a_{n+1}}{a_n}\big|\to l\), alors \(R=\frac{1}{l}\) "
+DL de l'exponentielle,"\[e^x = \sum_{n=0}^{+\infty} \frac{x^n}{n!}, \quad R = +\infty\] "
+DL de cosinus,"\[\cos(x) = \sum_{n=0}^{+\infty} (-1)^n \frac{x^{2n}}{(2n)!}, \quad R = +\infty\] "
+DL de sinus,"\[\sin(x) = \sum_{n=0}^{+\infty} (-1)^n \frac{x^{2n+1}}{(2n+1)!}, \quad R = +\infty\] "
+DL de cosinus hyperbolique,"\[\cosh(x) = \sum_{n=0}^{+\infty} \frac{x^{2n}}{(2n)!}, \quad R = +\infty\] "
+DL de sinus hyperbolique,"\[\sinh(x) = \sum_{n=0}^{+\infty} \frac{x^{2n+1}}{(2n+1)!}, \quad R = +\infty\] "
+Série géométrique,"\[\frac{1}{1+x} = \sum_{n=0}^{+\infty} (-1)^n x^n, \quad R = 1\] "
+DL de ln,"\[\ln(1+x) = \sum_{n=1}^{+\infty} (-1)^{n-1} \frac{x^n}{n}, \quad R = 1\] "
+DL de la série géométrique au carré,"\[\frac{1}{(1-x)^2} = \sum_{n=0}^{+\infty} (n+1)x^n, \quad R = 1\] "
+DL de la série géométrique à la puissance quelconque,"\[\frac{1}{(1-x)^p} = \sum_{n=0}^{+\infty} \binom{n+p-1}{p-1} x^n, \quad R = 1\] "

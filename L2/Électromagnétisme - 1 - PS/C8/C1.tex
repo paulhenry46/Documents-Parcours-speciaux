@@ -1,0 +1,150 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 1 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{F.Pettinari}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\begin{document}
+\setcounter{chapter}{7}
+\chapter{Calcul de B avec Ampère}
+Cette méthode de calcul du champ magnétique ne peut \^etre exploitée que dans les rares cas où la distribution de courant est hautement symétrique.
+\section{Démonstration}
+On prend un fil rectiligne infiniment long parcourue par un courant d'intensité I.
+
+On a déjà montré que \[\B = \frac{\mu_0 I}{2\pi\rho}\ep\]
+
+\begin{enumerate}
+ \item On montre que la circulation  de \(\B\) sur 1 circuit fermé circulaire d'ace Oz vaut \(\mu_0I\) que que soit ce circuit, si on oriente dans le sens positif :
+
+ On choisit d'orienter \(\dd l\) dans le sens positif choisi.
+
+ On écrit \[\int \B \cdot  \vec{\dd l} = \int_{\varphi = 0}^{2\pi} \ep \cdot \rho \dd \varphi \ep = \frac{\mu_0I}{2\pi}\cdot 2\pi = \mu_0I \]
+
+ \item On montre que la circulation  de \(\B\) sur 1 circuit fermé circulaire d'ace Oz vaut \(-\mu_0I\) que que soit ce circuit, si on oriente dans le sens négatif :
+
+ On fait la m\^eme chose que précédemment, sauf qu'on tourne dans le sens anti-trigonométrique, donc on va vers -\(2\pi\) et on trouve le bon résultat.
+
+ \item On montre que la circulation de B sur un contour fermé n'enlançant pas le courant est nulle.
+
+ On choisit le contour d' un morceau de Donut comme chemin. Les résultats des chemins opposés se compensent ou sont nuls par les propriétés du produit scalaire
+\end{enumerate}
+\section{Énoncé du théorème d'Ampère}
+ Soit D une distribution de courant qui en tout point M de l'espace va créer le champ \(\B\). Soit C un contour fermé orienté arbitrairement. Soit \(S_c\) une surface ouverte délimitée par ce contour. On note \(\vec{n}\) le vecteur unitaire qui est normal à \(S_c\). Le sens positif choisi pour orienter C est le sens de \(\vec{n}\) sont reliés par l règle du tire-bouchon.
+\begin{theorem}[Théorème d'Ampère]
+\[\int_C \vec{B}(M)\cdot \dd \vec{l} = \mu_0 \sum I_{\text{entrées par C}} \]
+Les courant sont comptés positivement s'ils sont dans le sens de \(\vec{n}\).
+\end{theorem}
+% Exemple pour une distribution linéique de courant.
+\subsection{Exploitation}
+Il faut que la distribution de courant soit simple et présente beaucoup d'éléments de symétrie. On choisit judicieusement le repère cartésien puis on fait le choix d'utiliser le système de coordonnée et la base correspondants aux symétries du système.
+
+Si la distribution de courant est à symétrie cylindrique, on utilise la base locale cylindrique.
+
+On utilise ensuite les éléments de symétrie de la distribution pour déterminer les composantes non nulle de B.
+
+On utilise ensuite les invariances.
+
+En général, il n'y a qu'une composante non nulle ne dépendant que d'une coordonnée de M.
+
+On fait un choix judicieux de contour fermé pour appliquer le théorème. Il sera choisi de façon à ce que \(\B\cdot \dd \vec{l}\) est uniforme par morceaux sur C.
+
+On calcule l'intégrale en fonction de la composante non nulle et inconnue de B.
+
+On calcule la somme des courant algébrique en tenant compte de l'orientation positive choisie pour C.
+
+On applique le théorème pour en déduire la composante de B inconnue.
+
+\warningInfo{Remarque}{On a fait un choix arbitraire pour orienter C. Le fait de changer l'orientation ne change pas le calcul de la composante de B.}
+\section{Exemple d'application}
+On calcule B crée par un fil rectiligne infini parcourue par un courant d'intensité I.
+
+On conna\^it déjà le résultat, obtenu avec Biot et Savat : \[\B = \frac{\mu_0 I}{2\pi \rho}\ep\]
+\begin{itemize}
+ \item La distribution de courant est à symétrie cylindrique donc on confond Oz avec le fil et le point O est n'importe où.
+ \item On repère M par ses coordonnées cylindriques et on utilise la base cylindrique locale.
+ \item Plans de symétrie d'antisymétrie : \(\pip : (M, \er, \vec{e_z}), \pim : (M, \er, \ep)\)
+ \item Donc comme B est un pseudo-vecteur, \(\B = B_{\varphi}\ep\)
+ \item Invariance : Système invariant par rotation et translation selon/outour de Oz
+ \item La composante non nulle ne dépend que de \(\rho\)
+ \item Choix du contour d'Ampère : Cercle d'axe Oz situé à z et de rayon \(\rho\)
+ \item Calcul de l'intégrale : On obtient \(\int_{ \varphi = 0}^{2\pi} B_{\varphi}\rho \dd \varphi\) Les bornes correspondent au sens positif choisi. On obtient \(2\pi \rho B_{\varphi}\)
+ \item Compte tenu du sens positif choisi, on obtient I.
+ \item On écrit le théorème d'Ampère pour en déduire la composante inconnue de B : \[\B = \frac{\mu_0 I}{2\pi \rho}\ep\]
+\end{itemize}
+\section{Cas d'une distribution volumique du courant}
+La formulation du théorème est la m\^eme. Cependant, \[\sum I_{int} = \iint_{S_c}\vec{j}\cdot \vec{n}\dd S\] donc
+\begin{theorem}[]
+ \[\int_C\B\cdot \dd \vec{l} = \mu_0 \iint \vec{j}\cdot \vec{n}\dd S\]
+\end{theorem}
+Cette équation reste valable dans la cadre dans le cas d'une distribution surfacique de courant. Il faut juste remplacer \(\vec{j}\) par \(\vec{j_s}\), la densité surfacique de courant.
+\section{Exemple}
+Calcul pour un c\^able infiniment long rectiligne de rayon R parcourue par une densité volumique \(\vec{j}\) de courant uniforme et une densité du courant I.
+\warningInfo{Remarque : Lien entre I et j}{\[I = \iint \vec{j}\cdot \vec{n}\dd S = j \pi R^2\]}
+\begin{itemize}
+ \item La distribution de courant étant à symétrie cylindrique autour du cable, on utilise les coordonnées cylindriques.
+ \item Comme pour le III, on a \(\B = B_{\varphi}(\rho)\ep\)
+ \item Pour la surface d'Ampère, on utilise un cercle. Son rayon n'a rien à voir avec le diamètre du cable. On obtient \(2\pi\rho B_{\varphi}(\rho)\)
+ \item Somme des courants enlacés par C :
+ \begin{itemize}
+  \item Si \(\rho < R\) : Somme des I enlacés \(\iint_S \vec{j}\vec{n}\dd S = \frac{I}{\pi R^2}\frac{\rho^2}{2}2\pi = I\frac{\rho^2}{R^2}\)
+  \item De la m\^eme façon, on obtient I.
+ \end{itemize}
+Application du théorème d'Ampère :
+\begin{itemize}
+ \item Premier cas : On obtient \[\B = \frac{\mu_0 I\rho}{2\pi R^2}\ep\]
+ \item 2e cas, quand \(\rho>R\) : On obtient \[\B = \frac{\mu_0 I}{2\pi \rho}\ep\]
+\end{itemize}
+\end{itemize}
+\section{Forme locale du théorème d'Ampère}
+On l'appelle l'équation de Maxwell Ampère en régime statique. On vient de voir la forme intégrale du théorème d'Ampère. On utilise le théorème de Stokes :
+\begin{theorem}[Théorème de stokes]
+ \[\int_C \B \cdot \dd \vec{l} = \iint rot \vec{B}\cdot \vec{n}\dd S\]
+\end{theorem}
+On obtient l'équation locale :
+\[Rot(\vec{B})=\mu_0 \vec{j}\]
+
+\begin{definition}[Rotationnel]
+\[rot(\vec{F}) = (\frac{\partial R}{\partial y}-\frac{\partial Q}{\partial z}),  (\frac{\partial P}{\partial z}-\frac{\partial R}{\partial x}),  (\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y})\]
+\end{definition}
+chercher en cyindriqque et sphérique
+ \end{document}
