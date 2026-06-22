@@ -32,6 +32,6 @@ Les notes de cours concernent les UE suivantes :
 - Électromagntisme - PS - 2 (Du vide)
 - Électromagntisme 3 (Dans la métière)
 - Introduction à la thermodynamique
-- Mécanique analytique (Mécanique 6)
+- Mécanique analytique
 - TP 2
 - TP 3
