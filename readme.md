@@ -25,7 +25,13 @@ Les notes de cours concernent les UE suivantes :
 - Mécanique des solides (Mécanique 3)
 - Optique ondulatoire
 - Algèbre Linéaire 2
+- Algèbre Linéaire 3 avancé
 - Atomistique 2
 - Outils Mathématiques 2
 - Électromagntisme - PS - 1
+- Électromagntisme - PS - 2 (Du vide)
+- Électromagntisme 3 (Dans la métière)
+- Introduction à la thermodynamique
+- Mécanique analytique
 - TP 2
+- TP 3
