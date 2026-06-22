@@ -1,0 +1,133 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Introduction à la termodynamique}
+\subtitle{Thermodynamique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\begin{document}
+\setcounter{chapter}{2}
+\chapter{Principe de conservation de l'énergie}
+\section{Énoncé}
+\begin{theorem}[Principe de conservation de Lavoisier]
+    L'énergie est une grandeur conservative, elle ne peut \^etre ni crée, ni détruite.
+\end{theorem}
+\begin{theorem}[Deuxième définition]
+    L'énergie d'un système isolé est une constante. L'énergie de l'univers est constante.
+\end{theorem}
+\section{Premier principe de la thermodynamique}
+\subsection{Énoncé du premier principe}
+
+\begin{theorem}[Énoncé du premier principe]
+    $$\Delta_{if} (E_c+E_p+U) = W_{i \to f} + Q_{i\to f}$$
+\end{theorem}
+\criticalInfo{Utilité}{On ne s'en sert que pour calculer Q}
+\section{Capacités thermiques}
+\begin{definition}[Capacité thermique]
+    La petite quantité d'énergie, notée $c$ qu'il faut fournir sous forme de chaleur pour augmenter sa temérature de $\dd T$:
+    $$\delta Q = C\dd T$$ et $$\Delta Q = c\cdot m\cdot \Delta T $$
+\end{definition}
+\subsection{Capacité thermique à volume constant}
+
+\begin{theorem}[Expression de la capacité thermique volume constant]
+    $C_v = (\frac{\partial U}{\partial T})_V$.
+\end{theorem}
+\subsection{Capacité thermique à pression constante}
+\subsubsection{Introduction}
+Si la transormation est monobare, on a $$P_{ext} = Cst = p_i = p_f$$
+On a 
+\begin{flalign*}
+    Q &= \Delta U - W\\
+    &=\Delta U - \int - P_{ext}\dd V\\
+    &= \Delta U + P_{ext}\Delta v
+    &= U_f + P_{ext}V_f - (U_i+P_{ext}V_i)\\
+    &= \Delta (U+pV)
+\end{flalign*}
+On pose $H = U+Pv$ qui est une fonction d'état extensive, notée Enthalpie. Elle correspond à la quantité de chaleur échangée sur une transformation monobare.
+
+Si la transformation est monobare, on a $Q = \Delta H$
+\begin{theorem}[Enthalpie]
+    Notée $H = U+Pv$, elle permte d'écrire $Q = \Delta H$ pour une transformation monobare.
+\end{theorem}
+
+\begin{theorem}[Expression de la capacité thermique pression constante]
+    $C_p = (\frac{\partial H}{\partial T})_P$.
+\end{theorem}
+\section{Phénoménologie}
+\subsection{Incompressible}
+Le volume est constant, par exemple l'eau liquide et les solides. On a donc $V = Cst$
+
+De plus, $\dd U = C_v \dd T + \frac{\partial U}{\partial V}\dd V \Rightarrow U = C_v T+Cst$
+L'énergie interne est proportionelle à la température
+\subsection{Gaz parfaits}
+On a $pV = nRT$ ou $pV = mrT$ ou $ p = \rho rT$ avec $r=\frac{R}{M}$
+\begin{theorem}[Première loi de Joule]
+    $U = U(T)$
+\end{theorem}
+Donc $\dd U = C_v \dd T + \frac{\partial U}{\partial V}\dd V \Rightarrow U = C_v T + Cst$
+
+\section{Applications aux gaz parfaits}
+\subsection{Relation de Mayer}
+
+\begin{theorem}[Relation de Mayer]
+    $$C_p-C_v = nR$$
+\end{theorem}
+Posons maintenant $\gamma = \frac{C_p}{C_v}$. Il est connu la plupart du temps.
+\begin{theorem}[Expression de Gamma]
+    $$\gamma = \frac{C_P}{C_V}$$
+\end{theorem}
+\warningInfo{Résolution du système}{On en déduit $C_V = \frac{nR}{\gamma-1}$ et $C_p = \frac{nR\gamma}{\gamma-1}$}
+\subsection{Relation de Laplace}
+\criticalInfo{Hypothèses nécessaires}{
+    \begin{itemize}
+        \item Gaz parfait
+        \item Transformation adiabatique (sans échange de chaleur avec le milieu extérieur = parois imperméables )
+        \item Transformation quasi-statique
+    \end{itemize}
+}
+\begin{theorem}[Relation de Laplace]
+    $$TV^{\gamma-1} = K$$ ou $pV^\gamma = K'$ ou $p^{1-\gamma}T^\gamma=K''$.
+\end{theorem}
+
+\end{document}
+
+

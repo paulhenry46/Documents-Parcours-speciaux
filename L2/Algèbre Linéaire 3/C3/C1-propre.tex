@@ -1,0 +1,219 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Algèbre linéaire 3*}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lombardi@math.univ-toulouse.fr
+\professor{E.Lombardie}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\begin{document}
+\setcounter{chapter}{2}
+\chapter{Espaces Hermitiens}
+\section{Produit scalaire, norme}
+Dans ce chapitre, on travaille sur des espaces vectoriels sur $\mathbb{C}$.
+
+\begin{definition}
+    Soit $E$ un espace vectoriel sur $\mathbb{C}$ de dimension finie ou non. Une application $C: E \times E \to \mathbb{C}$ est un produit scalaire hermitien si et seulement si :
+    \begin{enumerate}
+        \item $C(x+x', y) = C(x, y) + C(x', y)$ (additivité à gauche)
+        \item $C(x, y+y') = C(x, y) + C(x, y')$ (additivité à droite)
+        \item $C(x, \lambda y) = \lambda C(x, y)$ (linéarité à droite pour les scalaires)
+        \item $C(\lambda x, y) = \bar{\lambda} C(x, y)$ (anti-linéarité à gauche pour les scalaires)
+        \item $C(y, x) = \overline{C(x, y)}$ (symétrie hermitienne)
+        \item $\forall x \in E, C(x, x) \ge 0$ (positivité) et $\left(C(x, x) = 0 \implies x = 0_E\right)$ (définie)
+    \end{enumerate}
+\end{definition}
+
+\warningInfo{Attention aux conventions}{La définition ci-dessus est la convention (linéaire à droite, anti-linéaire ou demi-linéaire à gauche).}
+
+On peut en déduire quelques conséquences directes 
+\begin{itemize}
+    \item L'application $y \mapsto C(x, y)$ est linéaire.
+\item  L'application $x \mapsto C(x, y)$ est semi-linéaire (ou anti-linéaire) : les scalaires sortent conjugués.
+\item  Pour tout $x \in E$, $C(x, x) \in \mathbb{R}$ en vertu de la symétrie hermitienne ($C(x,x) = \overline{C(x,x)}$). Cela donne tout son sens à la condition de positivité.
+\end{itemize}:
+\begin{definition}[Espace hermitien]
+    Si $\dim E < +\infty$ et que $E$ est muni d'un produit scalaire hermitien, alors $E$ est un \textbf{espace hermitien}. Dans le cas contraire (dimension infinie), il est qualifié de \textbf{préhilbertien complexe}.
+\end{definition}
+
+Dans l'espace hermitien type $\mathbb{C}^n$ muni du produit scalaire canonique, on a :
+$$(x|y) = \sum_{k=1}^n \bar{x}_k y_k \implies (x|x) = |x_1|^2 + |x_2|^2 + \dots + |x_n|^2$$
+
+\begin{definition}[Notation]
+    Désormais, on note $C(x, y) = (x|y) = \langle x|y \rangle$.
+\end{definition}
+
+\begin{definition}[Norme]
+    La norme hermitienne associée est $\|x\| = \sqrt{(x|x)}$.
+\end{definition}
+
+\begin{theorem}[Inégalité de Cauchy-Schwarz]
+    Pour tous $x, y \in E$ :
+    $$|(x|y)| \leq \|x\| \|y\|$$
+    Avec égalité si et seulement si la famille $(x, y)$ est liée.
+\end{theorem}
+\begin{theorem}[Propriétés de la norme]
+\begin{itemize}
+    \item $\|\lambda x\| = |\lambda| \|x\|$ (Homogénéité : attention au module !)
+    \item $\|x+y\| \leq \|x\| + \|y\|$ (Inégalité triangulaire)
+\end{itemize}
+\end{theorem}
+
+\begin{proposition}[Identité de polarisation]
+    L'identité de polarisation en complexe permet de reconstituer le produit scalaire à partir de la norme :
+    $$(x|y) = \frac{1}{4} \big(\|x+y\|^2 - \|x-y\|^2 - i\|x+iy\|^2 + i\|x-iy\|^2\big)$$
+\end{proposition}
+
+\subsection{Orthogonalité}
+
+\begin{definition}
+    Deux vecteurs $x$ et $y$ sont orthogonaux (noté $x \perp y$) si et seulement si $(x|y) = 0$.
+\end{definition}
+
+\warningInfo{Asymétrie visuelle}{Puisque $(x|y) = 0 \iff \overline{(y|x)} = 0 \iff (y|x) = 0$, la relation d'orthogonalité reste symétrique, même si le produit scalaire ne l'est pas.}
+
+\begin{theorem}[Théorème de Pythagore]
+    Si $x \perp y$, alors $\|x+y\|^2 = \|x\|^2 + \|y\|^2$.
+\end{theorem}
+
+\criticalInfo{Équivalence fausse en complexe}{En réel, Pythagore est une équivalence. En complexe, ce n'est qu'une implication. En effet, $\|x+y\|^2 = \|x\|^2 + \|y\|^2 + 2\text{Re}((x|y))$. Donc $\|x+y\|^2 = \|x\|^2 + \|y\|^2 \iff \text{Re}((x|y)) = 0$. On peut avoir une partie réelle nulle sans que le produit scalaire soit nul (ex: $(x|y) = i$).}
+
+\begin{proposition}
+    Soit $(e_1, \dots, e_n)$ une \textbf{base orthonormale} (BON) de $E$. Pour tout $x \in E$ :
+    $$x = (e_1|x)e_1 + \dots + (e_n|x)e_n$$
+    Les coordonnées de $x$ dans cette base sont $x_i = (e_i|x)$. 
+\end{proposition}
+
+\criticalInfo{Attention à l'ordre des facteurs}{Dans notre convention (linéaire à droite), le produit scalaire doit impérativement s'écrire $(e_i|x)$. Si on écrit $(x|e_i)$, on a $\bar{x}_i$ (le conjugué), ce qui fausse les calculs de coordonnées.}
+
+% \warningInfo{Gram-Schmidt}{L'algorithme de Gram-Schmidt s'applique à l'identique pour normaliser et orthogonaliser une base. Il faut cependant conjuguer le premier terme du produit scalaire lors des projections : $u_k = v_k - \sum_{j=1}^{k-1} \frac{(u_j|v_k)}{\|u_j\|^2}u_j$.}
+
+\begin{definition}[Orthogonal d'une partie]
+    L'orthogonal d'une partie $A \subset E$, noté $A^\perp$, est défini par :
+    $$A^\perp = \{x \in E \mid \forall a \in A, (x|a) = 0\}$$
+\end{definition}
+
+\begin{proposition}
+    Si $F$ est un sous-espace vectoriel de $E$ de dimension finie, alors :
+    $$E = F \oplus F^\perp, \quad \dim E = \dim F + \dim F^\perp \quad \text{et} \quad F^{\perp\perp} = F$$
+\end{proposition}
+
+\begin{proposition}
+    Soit $(e_1, \dots, e_m)$ une BON d'un sous-espace $F$. La projection orthogonale de $x$ sur $F$ est :
+    $$\pi_F(x) = \sum_{k=1}^m (e_k|x)e_k$$
+\end{proposition}
+
+\section{Endomorphisme adjoint}
+
+\begin{definition}
+    Soit $E$ un espace hermitien et $f \in \mathcal{L}(E)$. Il existe un unique endomorphisme de $E$, noté $f^*$, appelé \textbf{adjoint de $f$}, vérifiant :
+    $$\forall x, y \in E, \quad (f(x)|y) = (x|f^*(y))$$
+    Si $A = \text{Mat}_{\mathcal{B}}(f)$ dans une BON $\mathcal{B}$, alors la matrice de $f^*$ dans cette même base est la matrice adjointe :
+    $$A^* = \overline{{}^tA}$$
+\end{definition}
+
+\begin{proposition}
+    Propriétés de l'adjoint :
+    \begin{itemize}
+        \item $f^{**} = f$
+        \item $(f+g)^* = f^* + g^*$
+        \item $(\lambda f)^* = \bar{\lambda}f^*$ (L'application $f \mapsto f^*$ est \textbf{semi-linéaire})
+        \item $\text{rg}(f) = \text{rg}(f^*)$
+        \item $\det(f^*) = \overline{\det(f)}$
+        \item $(f \circ g)^* = g^* \circ f^*$ (Attention au retournement de l'ordre)
+    \end{itemize}
+\end{proposition}
+
+\section{Groupe unitaire}
+
+\begin{proposition}
+    Soit $E$ un espace hermitien et $f \in \mathcal{L}(E)$. Les assertions suivantes sont équivalentes :
+    \begin{itemize}
+        \item $\forall x \in E, \|f(x)\| = \|x\|$ (Isométrie vectorielle)
+        \item $\forall x, y \in E, (f(x)|f(y)) = (x|y)$ (Conservation du produit scalaire)
+        \item L'image de toute BON par $f$ est une BON.
+        \item $A^*A = I_n \iff \overline{{}^tA}A = I_n$ (où $A$ est la matrice de $f$ dans une BON)
+    \end{itemize}
+\end{proposition}
+
+\begin{definition}[Matrice unitaire]
+    Une matrice carrée $A \in \mathcal{M}_n(\mathbb{C})$ vérifiant $A^*A = I_n$ est dite \textbf{unitaire}. L'ensemble de ces matrices forme le groupe unitaire, noté $\mathcal{U}_n(\mathbb{C})$.
+\end{definition}
+
+\begin{proposition}
+    Si $A \in \mathcal{U}_n(\mathbb{C})$, alors :
+    * $|\det(A)| = 1$. Le déterminant est un nombre complexe de module 1 (de la forme $e^{i\theta}$).
+    * Si $\lambda \in \text{Sp}(A)$, alors $|\lambda| = 1$. Les valeurs propres sont toutes sur le cercle unité du plan complexe.
+\end{proposition}
+
+\begin{definition}
+    Le sous-groupe de $\mathcal{U}_n(\mathbb{C})$ constitué des matrices de déterminant égal à 1 est appelé \textbf{groupe spécial unitaire}, noté $\mathcal{SU}_n(\mathbb{C})$.
+\end{definition}
+
+\tipsInfo{Lien avec le cas réel}{Le groupe orthogonal spécial $\mathcal{SO}_n(\mathbb{R})$ s'obtient simplement par l'intersection : $\mathcal{SO}_n(\mathbb{R}) = \mathcal{SU}_n(\mathbb{C}) \cap \mathcal{M}_n(\mathbb{R})$.}
+
+% \subsubsection*{Structure des matrices de $\mathcal{SU}_2(\mathbb{C})$}
+% Une matrice $A \in \mathcal{M}_2(\mathbb{C})$ appartient à $\mathcal{SU}_2(\mathbb{C})$ si et seulement s'il existe $a, b \in \mathbb{C}$ tels que $|a|^2 + |b|^2 = 1$ sous la forme :
+% $$A = \begin{pmatrix} a & -\bar{b} \\ b & \bar{a} \end{pmatrix}$$
+% En paramétrage polaire, cela donne l'écriture trigonométrique suivante (avec $\alpha, \theta, \phi \in \mathbb{R}$) :
+% $$A = \begin{pmatrix} \cos(\alpha)e^{i\theta} & -\sin(\alpha)e^{-i\phi} \\ \sin(\alpha)e^{i\phi} & \cos(\alpha)e^{-i\theta} \end{pmatrix}$$
+
+\section{Diagonalisation des endomorphismes auto-adjoints}
+
+\begin{definition}
+    Un endomorphisme $f$ est dit \textbf{auto-adjoint} (ou \textbf{hermitien}) si $f^* = f$.
+    Cela se traduit par : $\forall x,y \in E, (f(x)|y) = (x|f(y))$.
+    Dans une BON, sa matrice vérifie $A^* = A$ (matrice hermitienne).
+\end{definition}
+
+\begin{theorem}[Théorème spectral]
+    Si $f$ est un endomorphisme auto-adjoint d'un espace hermitien $E$, alors :
+    \begin{enumerate}
+        \item Toutes les valeurs propres de $f$ sont \textbf{réelles} ($\text{Sp}(f) \subset \mathbb{R}$).
+        \item Les sous-espaces propres de $f$ sont orthogonaux deux à deux.
+        \item $f$ est diagonalisable dans une \textbf{base orthonormale} de vecteurs propres.
+    \end{enumerate}
+\end{theorem}
+\end{document}

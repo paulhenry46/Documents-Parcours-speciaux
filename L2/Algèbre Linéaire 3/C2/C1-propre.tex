@@ -1,0 +1,234 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Algèbre linéaire 3*}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lombardi@math.univ-toulouse.fr
+\professor{E.Lombardie}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\begin{document}
+\setcounter{chapter}{1}
+%C2 : Applications linéaires sur espaces euclidiens
+%C3 : Espaces hermitiens
+%C4 : Formes quadratiques
+%C5 : Introduction aux groupes
+
+%TD = U-111/U-112
+%CM : B-08/B-07/Grignard
+
+%CC2 : TD du 19 mars
+%CC1 : 1h30
+%CC2 : TD du 7 mai
+%CC3 : 2 juin
+%CC4 : 9 juin
+\chapter{Endomorphismes d'espaces euclidiens}
+
+\section{Rappels sur les projections et symétries}
+Soient $F$ et $G$ deux sous-espaces supplémentaires de $E$ ($E = F \oplus G$). Tout vecteur $x \in E$ se décompose de manière unique en $x = x_F + x_G$ avec $x_F \in F$ et $x_G \in G$.
+
+\begin{itemize}
+    \item Projection sur $F$ parallèlement à $G$ : $p_{F//G}(x) = x_F$.
+    \item Symétrie par rapport à $F$ parallèlement à $G$ : $s_{F//G}(x) = x_F - x_G$.
+\end{itemize}
+
+\checkInfo{Lien entre projecteur et symétrie}{On a la relation $s = 2p - Id$, soit $s(x) = 2x_F - (x_F + x_G) = x_F - x_G$.}
+
+\section{Isométries et matrices orthogonales}
+
+\subsection{Définitions et propriétés}
+
+\begin{definition}[Isométrie vectorielle]
+    Un endomorphisme $f \in \mathcal{L}(E)$ est une isométrie (ou un endomorphisme orthogonal) si :
+    $$\forall x \in E, \|f(x)\| = \|x\|$$
+\end{definition}
+
+\begin{proposition}[Caractérisations d'une isométrie]
+    Soit $f \in \mathcal{L}(E)$. Les assertions suivantes sont équivalentes :
+    \begin{enumerate}
+        \item $f$ est une isométrie.
+        \item $\forall (x,y) \in E^2, (f(x)|f(y)) = (x|y)$ (conservation du produit scalaire).
+        \item L'image de toute base orthonormée (BON) par $f$ est encore une BON.
+    \end{enumerate}
+\end{proposition}
+
+\begin{definition}[Matrice orthogonale]
+    Une matrice $Q \in \mathcal{M}_n(\mathbb{R})$ est dite orthogonale si elle est inversible et que :
+    $$Q^{-1} = {}^tQ \iff {}^tQQ = I_n$$
+\end{definition}
+
+\begin{proposition}[Matrice d'une isométrie en BON]
+    Soit $E$ un espace euclidien. $f$ est une isométrie si et seulement si sa matrice dans une BON est orthogonale.
+\end{proposition}
+
+\criticalInfo{Condition cruciale}{Cette équivalence est fausse si la base utilisée n'est pas orthonormée.}
+
+\begin{proposition}[Déterminant d'une matrice orthogonale]
+    Si $Q \in O(n)$, alors $\det(Q) = \pm 1$. 
+    De plus, pour toute matrice $A \in \mathcal{M}_n(\mathbb{R})$ et tout scalaire $\lambda$ :
+    $$\det(\lambda A) = \lambda^n \det(A)$$
+\end{proposition}
+
+\begin{proposition}[Valeurs propres réelles d'une isométrie]
+    Si $f$ est une isométrie, ses valeurs propres réelles éventuelles appartiennent à $\{-1, 1\}$.
+\end{proposition}
+
+\begin{definition}[Groupes orthogonaux]
+    On note $O(n)$ le groupe orthogonal (matrices orthogonales) et $SO(n)$ le groupe spécial orthogonal (matrices de rotation) défini par :
+    $$SO(n) = \{ Q \in O(n) \mid \det(Q) = 1 \}$$
+\end{definition}
+
+\subsection{Étude de O(2)}
+
+\begin{proposition}[Classification des éléments de $O(2)$]
+    Soit $A \in O(2)$.
+    \begin{itemize}
+        \item Si $A \in SO(2)$, $A$ est une rotation d'angle $\theta$ : 
+        $A = \begin{pmatrix} \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{pmatrix}$
+        \item Si $A \notin SO(2)$ (donc $\det A = -1$), $A$ est une réflexion (symétrie orthogonale par rapport à une droite) :
+        $A = \begin{pmatrix} \cos \theta & \sin \theta \\ \sin \theta & -\cos \theta \end{pmatrix}$
+    \end{itemize}
+\end{proposition}
+
+\subsection{Étude de O(3)}
+
+\begin{proposition}[Forme réduite des éléments de $O(3)$]
+    Pour tout $A \in O(3)$, il existe une BON dans laquelle la matrice de $A$ s'écrit :
+    $$A' = \begin{pmatrix} \cos \theta & -\sin \theta & 0 \\ \sin \theta & \cos \theta & 0 \\ 0 & 0 & \varepsilon \end{pmatrix}$$
+    avec $\varepsilon = \det(A) = \pm 1$.
+\end{proposition}
+
+\begin{proposition}[Classification des isométries de $O(3)$]
+    Soit $A \in O(3)$ différente de $I_d$.
+    \begin{itemize}
+        \item Si $\det A = 1$ : $A$ est une rotation d'axe $E_1(A) = \ker(A - I)$. L'angle $\theta$ vérifie $Tr(A) = 1 + 2\cos \theta$.
+        \item Si $\det A = -1$ : $A$ est une roto-réflexion. L'angle $\theta$ de la rotation associée vérifie $Tr(A) = -1 + 2\cos \theta$.
+    \end{itemize}
+\end{proposition}
+
+\section{Adjoint d'un endomorphisme}
+
+\begin{definition}[Adjoint]
+    Soit $E$ un espace euclidien et $f \in \mathcal{L}(E)$. Il existe un unique endomorphisme $f^*$, appelé adjoint de $f$, tel que :
+    $$\forall (x,y) \in E^2, (f(x)|y) = (x|f^*(y))$$
+    En base orthonormée, si $M = Mat(f)$, alors $Mat(f^*) = {}^tM$.
+\end{definition}
+
+\begin{proposition}[Propriétés de l'adjoint]
+    \begin{itemize}
+        \item $(f^*)^* = f$
+        \item $(f \circ g)^* = g^* \circ f^*$
+        \item Si $f$ est inversible, $(f^*)^{-1} = (f^{-1})^*$
+        \item $\ker f^* = (\text{Im } f)^\perp$ et $\text{Im } f^* = (\ker f)^\perp$
+    \end{itemize}
+\end{proposition}
+
+\section{Endomorphismes auto-adjoints (Symétriques)}
+
+\begin{definition}[Adjoint et matrice]
+    $f$ est auto-adjoint (ou symétrique) si $f = f^*$. En BON, cela revient à dire que sa matrice $A$ est symétrique ($A = {}^tA$).
+\end{definition}
+
+\begin{theorem}[Théorème Spectral]
+    Si $f$ est un endomorphisme auto-adjoint d'un espace euclidien $E$, alors :
+    \begin{enumerate}
+        \item Toutes les valeurs propres de $f$ sont réelles.
+        \item $f$ est diagonalisable dans une base orthonormée de vecteurs propres.
+        \item Les sous-espaces propres sont deux à deux orthogonaux.
+    \end{enumerate}
+\end{theorem}
+
+\checkInfo{Méthode de diagonalisation en BON}{
+    1. Vérifier que $A$ est symétrique.
+    2. Calculer le polynôme caractéristique et les valeurs propres.
+    3. Pour chaque sous-espace propre $E_\lambda$ :
+       \begin{itemize}
+           \item Déterminer une base.
+           \item Si $\dim E_\lambda > 1$, utiliser le procédé de Gram-Schmidt pour la rendre orthonormée.
+       \end{itemize}
+    4. Concaténer les bases pour obtenir la BON globale.
+}
+
+\section{Décomposition polaire et valeurs singulières}
+
+\subsection{Positivité}
+\begin{definition}[Positivité]
+    $f$ auto-adjoint est positif si $\forall x \in E, (x|f(x)) \ge 0$.
+    Il est défini positif si $\forall x \neq 0, (x|f(x)) > 0$.
+\end{definition}
+
+\begin{proposition}[Critère spectral de positivité]
+    $f$ est positif ssi ses valeurs propres sont dans $\mathbb{R}^+$.
+    $f$ est défini positif ssi ses valeurs propres sont dans $\mathbb{R}^{+*}$.
+\end{proposition}
+
+\subsection{Décomposition polaire}
+\begin{theorem}
+    Pour toute matrice $M \in GL_n(\mathbb{R})$, il existe un unique couple $(Q, S)$ avec $Q \in O(n)$ et $S$ symétrique définie positive tel que $M = QS$.
+\end{theorem}
+
+\subsection{Valeurs singulières (SVD)}
+\begin{lemma}
+    Soit $A \in \mathcal{M}_{n,m}(\mathbb{R})$. La matrice ${}^tAA$ est une matrice symétrique positive de taille $m \times m$.
+\end{lemma}
+
+\begin{theorem}[SVD]
+    Soit $A \in \mathcal{M}_{n,m}(\mathbb{R})$ de rang $r$. Il existe $Q \in O(n)$, $P \in O(m)$ et des réels $\sigma_1 \ge \sigma_2 \ge \dots \ge \sigma_r > 0$ (valeurs singulières) tels que :
+    $$A = Q \Sigma {}^tP$$
+    où $\Sigma$ est une matrice de même taille que $A$ contenant les $\sigma_i$ sur sa "diagonale".
+\end{theorem}
+
+\tipsInfo{Lien valeurs propres/singulières}{Les valeurs singulières $\sigma_i$ de $A$ sont les racines carrées des valeurs propres non nulles de ${}^tAA$.}
+
+\checkInfo{Méthode pour décomposer en valeurs singulières}{
+\begin{enumerate}
+    \item Calculer $^tAA$ : on s'assure que c'est symétrique
+    \item Diagonaliser $^tAA$ en bon en rangeant les valeurs propres de $^tAA$ par ordre décroissant.
+    \item On pose $\sigma_k = \sqrt{\lambda_k}, q_k = \frac{1}{\sigma_k}A_{pk}$
+    \item Le théorème assure que la famille orthonormale complète cette famille. On complète cette famille pour obtenir une bon de R en utiisant Gram Schmitch dans $Vect(q_1,\dots, q_r)^\perp$.
+\end{enumerate}
+
+}
+
+\end{document}

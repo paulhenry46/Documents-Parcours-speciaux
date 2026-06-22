@@ -1,0 +1,381 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Introduction à la termodynamique}
+\subtitle{Thermodynamique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\begin{document}
+\setcounter{chapter}{4}
+
+\chapter{Approche  Thermodynamique de la transition de phase}
+\section{Introduction}
+\subsection{Diversité des transitions de phase}
+\begin{definition}[Phase (général)]
+    Pas un synonyme d'état de la matière. Un ensemble d'états accessibles à un corps, obéissant au meme jeu de loi de comportement. Synonyme : Phénoménologie. Un corps homogène n'a qu'une phase.
+\end{definition}
+\begin{definition}[Transition de phase]
+    Changement de Phénoménologie au dela d'une valeu seuil d'un paramètre que l'on fixe.
+\end{definition}
+On considère qu'il n'existe qu'une sorte de  phase liquide et solide et gazeuse
+
+\criticalInfo{Nomenclature des transitions de phase (par coeur)}{Noms à noter}
+
+\begin{itemize}
+    \item Changement d'état Solide-Liquide-Gaz
+    \item Supraconductivité : On passe d'un matérieux avec une résistavité elctrique à un matérieux avec une résistivité nulle.
+    \item Morphogénèse : appartition de forme d'états non uniformes
+    \item Cristaux liquides : 
+    \item Superfluides : un fluide refroidi proche de 0K, coule sans effort.
+    \item Transition ferro-paramagnétiques : des solides chauffés perdent leur propriété d'aimantation
+\end{itemize}
+\subsection{2 expériences}
+\subsubsection{Expérience avec volume imposé}
+On réduit le volume avec pas constant (compression) au contat d'un thermostat à $T_0$. On attend l'équilibre pour chaque valeur de V. Variables fixées à l'équilibre : T et V. On mesure la pression p et on relève le volume.
+
+Variante : On augmente la pression et on relève le volume.
+
+Photo avec une image simplifiée de l'expérience : frontière V/VL/L et pression stable en VL
+
+Courbe à faire p en fonction de V 
+|
+|
+|_________ 
+            -
+L     L+V   V-
+              -
+              Il y a 3 Phénoménologie et 2 seuils en volume
+
+              V en fonction de p 
+-
+  -
+
+
+    ----------
+Indiquer le pas.
+Il existe ici qu'un seuil avec  2 Phénoménologies.
+
+
+\subsection{Problématiques}
+Pas de modèle adéquat pour traiter ces problèmes. Le modèle du GP ne convient pas : on ne préduti que la partie liquide qui ressemble à l'isotherme. Le liquide incompressible ne fonctionne pas non plus.
+
+On est bloqué.
+
+Et le modèle de vanderValls : (p + a/V^2 n^2)(V-nb) = nRT. Cela fait le lien entre les courbes mais on ne prédit pas les états diphasiques.
+
+Les états au milieu de la courbe ne sont pas des états d'équilibre.
+
+Comment introduire la tranisiton de phase dans le modèle ?
+
+\begin{proposition}
+    La tranisiton de phase sera possible des que l'état d'éq devendra moins stable qu'un autre état d'équilibre eccessible dans les mêmes conditions. Elle se fait assurément si l'état d'équilibre devient instable.
+\end{proposition}
+On utilisera les potentiels Thermodynamiques
+\section{Stabilité de l'état d'équilibre}
+\subsection{Définition qualitative}
+Qualifier la stabilité de l'état d'équilibre c'est énoncer le comportement du système suite à une perturbation.
+
+Il y a 2 cas : Soit l'état A est le seul accessible dans les conditions p,T (si on bouge, on revient vers A, au sens de LYAPUNOV) ou alors il y a  états A et B accessibles.
+
+2e possibilité : il y a une évolution sptannée où l'on s'éloigne de A. A est alors un état d'équilibre instable.
+
+3e possibilité : Si je perturbe avec une amplitude plus grande mais toujours finie. Si $\Delta V_p >\Delta V_{p,c},$ il y a évolution spontannée, dans le cas contraire, il y a retour. Cela dépend de la variation. A est alors un état meta-stable.
+
+\begin{definition}[Stabilité]
+    Retour vers A quelque soit l'amplitude de la perturbation. (quand il n'y a qu'un état accessible)
+\end{definition}
+En mécanique, l'état métastable sera une cuvette finie.
+
+Quand il y a évolution spontannée, en métastable, on parle de rupture de métastabilité.
+
+Une façon de quitter la stabilité est de faire tendre $\Delta V\to 0$.
+\begin{definition}[Stabilité]
+    A est stable si l'évolution spontannée depuis est A est impossible.
+\end{definition}
+En résumé : Instable si une pertutbation d'amplitude infinitésimale suffit à faire dégager
+Metastable : Spontanné vers un autre état ou équilibre dans les memes conditions
+\subsection{Approche formelle}
+\subsubsection{Fonction potentiel thermodynamique}
+\begin{definition}
+    Fonction d'état telle que pour un jeu de contrainte donné, ses variations permettent de disucuter des des possibilités d'évolution spontannée vers un état d'équilibre.
+    Elle prend une valeur minimale dans un état stable
+\end{definition}
+On va chercher ces fonctions pour des états d'équilibre à (T et p) et (T et V).
+Pour l'univers, $\Delta S_v = S^p_{I\to F}$. Dans un état non contraint, l'état d'équilibre est donné pour le max de S. L'état s'équilibre est stable.
+
+Le potentiel est alors $\Psi = -S$.
+
+On cherche pour l'autre  partie : On libère un piston avec un gaz compressé.
+
+On sait que $\Delta U = W+Q, W = -p\Delta V$
+
+On utilise le second principe : $S = \Delta S+ \Delta S^{ext}= \Delta S_{if} - \frac{Q}{T_0}$ car le thermostat est une source.
+
+On en déduit $S = \frac{\Delta U + p_0 \Delta V}{T_0}$
+
+Soit la fonction d'état $G^\star = U+p_0 V - T_0 S$ donc $\Delta G^\star = -T_0S_{I\to F}^P = \Delta G$. avec $G = U+pV-TS$
+
+L'évolution impossible serait que les états B aient un G plus grand que A. G_A est min pour l'état stable. G est l'éngier libre de Gipps.
+
+\warningInfo{Différence entre G et G*}{G* : on utilise les valeurs de l'atm et G à l'équilibre}
+
+On peut écrire $\Delta G = -T_0 S^p_{i\to f}$ sur les transformations spontannées
+
+La transformation 2.b est monobare au contact d'un thermostat.
+
+Au cours de l'évolution, G ne peut que décroitre, Si j'atteins un état d'équilibre tel que G est minimum, à partir de cet états, tous les $\Delta G$ seront positifs. Mais c'est interdit. Donc un état où $G$ est minium est un état où l'évolution spontanné est impossible. 
+
+Or, par définition, un état d'équilibre à partir duquel l'évolution spontannée est impossible est un état d'EQ Stable.
+
+Donc $G$ correspond à un potentiel des évolutions spontannées monobares au contact d'un thermostat.
+
+
+\subsubsection{Enthalpie libre ou énergie libre de Gibas}
+% Il existe une fonction potentiel associée à une évolution au contat d'une entmosphère dont la température et la pression snt fixées.
+% \paragraph{Contact avec une atmosphère} On a une déroissance de G*.
+% \paragraph{ENtre 2 EQ dans les memes containtes}
+
+\subsubsection{Énergie libre F}
+Si on regarde les évoutions spontannées isochores au contact d'un thermostat, on obtient que la production d'netropie vaut $F = U-TS$. Quand j'ai un état d'équilibre à 
+
+\subsubsection{Critère de Gibbs-Duhem}
+\begin{theorem}
+ Si   $\Delta U+p\Delta V-T\Delta S \geq 0$ , l'état d'équilibre est stable
+\end{theorem}
+On ne l'appliqyera que avec $\Delta G\geq 0, \Delta F\geq 0$.
+
+G est l'énergie libre de Gibs ou enthalpie libre et F est l'énergie libre ou énergie libre de Helmotz
+
+\criticalInfo{title}{Savoir refaire la démonstration avce monobare et icochore au contact d'un thermostat}
+
+\subsubsection{Conclusion}
+% Penser a uploader le code pour le projet
+\chapter{Transition de phase : Mise en oeuvre et application}
+\section{
+    Une première mise en oeuvre
+}
+\subsection{Expression de G en fonction des conditions de pression pour un T0 donné.}
+Au départ, 
+\begin{flalign}
+    G &= U+pV-TS\\
+    \dd G &= \dd U + p\dd V+V\dd p - T\dd S-S\dd T\\
+    &\dd U &= \dd U_{qs} = \delta W_{qs} + \delta Q_{qs} = -p\dd V+T \dd S\\
+    \dd G &= V\dd p - S\dd T 
+\end{flalign}
+avec V et S dépendant de p et T.
+
+On en déduit $$\dd G_{T_0} = V\dd p$$ donc $$G_{T_0} = \int V\dd p + cst$$
+
+Pour un GP, $$V = \frac{mrT_0}{p} \Rightarrow G_{T_0} = mrT_0 \ln(p)+cst$$
+
+
+Maintenant pour un liquide incompressible, V = CST, donc $G_{T_0} = V_Lp+cst$ 
+
+On peut tracer les courbes obtenues
+
+On définie une valeur de pression seuil à la croisée des courbes. À gauche, l'évolution vers Liquide est possible, à l'inverse à droite, l'évolution vers , donc à droite vapeur stable et à droite liquide stable.
+
+On peut tracer ka nouvelle courbe.
+
+
+
+\subsection{Application du critère de Gibbs Duhem}
+
+\subsection{Pression des saturation Etats saturants - Isothermes critiques}
+\begin{definition}[Pression de saturation]
+    Pour une isotherme, c'est la valeur seuil pour laquele on a le changement de stabilité est appelé. 
+\end{definition}
+\begin{definition}[Volume saturant]
+    2 états identiquement stables peuvent exister : l'un liquide est l'autre stable, avec des volumes de stautration différents.
+\end{definition}
+La pression de saturation et les volumes sturants sont des fonctions de la température : $p_s(T)$ et $V_{sat}(T)$
+
+À la température critique, est telle que $v_sat^G = v_sat^L$.
+
+On passe alors continumenent entre les 2 états.
+
+\section{Résutats supplémentaires avec une phase solide}
+Avec une phase solide, 
+on obtient de nouveaux graphes :
+
+Pour la première courbe, on rajoute juste le solide et pour la deuxième il n'y a pas de phase liquide.
+
+\section{Synthèse des résuktats de l'analyse de stabilité pour le corps homogène}
+Ces ésultats sont très imporants.
+\subsection{Diagramme P et T}
+On note la courbe de vaporisation, de sublimation et de fusion.
+
+La courbe de vaporisation est bornée. On parle alors de fluide supercritique.
+
+%Tracer courbe à partir de point triple et point critique
+Le résultat btenu avec les poten,tiels sont dans le diagramme  PT
+\subsection{Relation de Clapeyron}
+%------------ Cours du 08/04/2026----------------
+\subsubsection{Chaleurs Latentes - Relation de Clapeyron}
+Pour tout point d'une courbe se saturation, ici de vaporisation
+\begin{definition}[Chaleur latente]
+    $$l_v(T) = h_v(T)^{sat}-h_L^{sat}$$ aussi nommée enthalpie de vaporisation
+\end{definition}
+On peut la trouver sous forme massique ou molaire.
+\begin{theorem}[Relation de Clapeyron]
+    $$l_v(T) = T(v_V^{sat}-v_L^{sat})\frac{\dd p_{sat}}{\dd T}$$
+\end{theorem}
+La dérivée de la fonction $p_{sat}$, c'est la pente de la courbe de vaporisation. À partir du diagramme, j'obtiens une grandeur énergétique. Attention, ce sont des volumes massique ou molaires et non de simples volumes.
+
+On obtient le m\^eme type de relations avec les autres courbes de saturation.
+
+\subsubsection{Conséquence 1 }
+Le signe de la chaleur latente et variation avec la température
+\subsubsection{Conséquence 2}
+Entre 2 états naturels, on a $ H_v-H_L$ et donc si on connait $l_v(T)$ alors on connait $(k_H)_v-(k_H)_L$ alors on sait calculer $H_v-H_l$ entre 2 états d'équilibre quelconques alors on sait calculer 
+$u_v-u_l$ entre 2 états quelconques puisque $U=H-pV$
+
+La conaissance de la chaleur latente permet de faire le lien entre les phénomélogies pour l'énergie.
+
+Exemle.
+
+On se place sur une vaporisation monobare. : $Q = \Delta H = H_V-H_L$. Avec les  phénoménologies, $H_V = (c_p)_vT+K_v$, $H_L = c_LT+p_{atm}V_L+K_L$
+
+On trace $H=f(T)$ et on obtient $\Delta H = H_L(T_S)-H_i+ml_v(T_s)+H_F-H_v$.
+\chapter{Transition de phase - États non homogènes}
+\section{Description de l'état d'équilibre d'un corps où les états de matière coexistent}
+Modèle diphasique = 2 corps homogènes séparés par une interface sans epaisseur et $V=Vl+V_v, m=m_l+m_v$
+
+Par contre, $U \neq U_l+U_v$, il faut rajouter un terme : $U = U_L+U_v+U_i$ avec $U_i$ l'énergie de l'interface. Cependant, on fera l'apprxmation que $U_i$ est très petite, donc négligeable deavnt l'néergie mise en jue.
+
+Cela vaut pour toutes les grandeur  $Y = Y_L+Y_m$.
+\subsection{modèle d'un état d'équilibre diphasique}
+
+\subsection{Nouvelle variable : le titre massique}
+$m_v$ et $m_l$ ne sont pas 2 variables indépendantes, on a $m_L=m_m_v$.
+\begin{definition}[titre massique]
+    $$x = \frac{m_V}{m}$$
+\end{definition}
+\section{Étude de la stabiité de l'équilibre du corps diphasique}
+\subsection{États d"équilibres : pression et volumes accessibles sur l'isotherme}
+Quelles sont les conditions de pression pour lesquelles l'état diphasique peut-il exister ? pour une isotherme ?
+
+On calcule G : $G_{T_0} = (1-x)(G_{T_0})_L+x(G_{T_0})_V$. Seule valeur de p telle que $G_{LV}$ test min, c'est $p_s$.
+
+Donc $Y_{LV} = m(1-x)y_L^{sat}(T)+mxy_V^{sat} = (1-x)Y^{sat}_{tot,L} + x Y_{tot,v} = f(T,x)$
+
+\subsubsection{Quelles valeurs de volume sont accessible à l'état diphasique}
+Donc $V_l{sat}<V_{LV}<V_V^{sat}$
+
+On peut tracer les isothermes d'Andrew
+
+|
+|
+|_____________
+                *  
+                    *
+                        *   
+                            *
+L'état diphasique n'existe à l'équilibre stable que dans les conditions de saturation.
+Sur la courbe de droite, on est vapeur, sur celle de gauche, on est liquide.
+\subsection{Stabilité }
+
+\section{Synthèse des réuslyats de l'analyse}
+\subsection{Équilibre liquide-vapeur}
+\subsection{Diagramme avec phase solide}
+
+\subsection{Important - Expression des fonctions d'état entre 2 états d'équilibre diphasiques}
+\subsubsection{Rappels expressions des variables des fonctions d'état entre 2 états saturants homogènes}
+\begin{flalign*}
+    \Delta H_{12} &= ml_v(T_0)\\
+    \Delta U &= \Delta H - \Delta(pV)\\
+                ml_v(T_0)-p_{sat}(T_0)(V_v-V_L)\\
+    \Delta S_{12} => H_V-T_0S_V = H_L-T_0S_L => \Delta S = \frac{H_V-H_L}{T_0} = \frac{ml_v(T_0)}{T_0}\\           
+\end{flalign*}
+Au dessus = À savoir par coeur
+\subsubsection{Entre 2 états diphasiques sur le meme palier}
+On écrit :
+\begin{flalign*}
+    H_1 &= mx_1h_v(T_0)+m(1-x_1)h_L(T_0)\\
+    H_2 &= mx_2h_v(T_0)+m(1-x_2)h_L(T_0)\\
+    H_2-H_1 = m(x_2-x_1)l_v(T_0)
+    \Delta U &= \Delta x (U_V-U_L)\\
+    &= \Delta x(ml_v(t_0)-p_{sat}(V_v-V_L))\\
+    \Delta S &= \Delta x \frac{ml_v(T_0)}{T_0}
+\end{flalign*}
+\subsubsection{2 états quelconques}
+On prend le chemin que l'on souhaite. Le but est d'avoir un chemin par pallier. 
+1->1' : Liquéfaction sur isotherme T0 -> 3 : Transformation isotherme isochore d'un liquide ->2' : Isobare d'une liquide -> 2 : Vaporisation isotherme à T1
+\begin{flalign*}
+    \delta H_{11'}  &=-x_1ml_v\\
+    \Delta H_{1'3} &=v_l(p_{sat}(T_1)-p_{sat}(T_0))\\
+    \Delta H_{32'} &=  mc_l(T-1-T_0)\\
+    \Delta H_{2'2} = mx_2l_v(T_1)\\
+    \Delta H &= mx_2l_v(T_1)-mx_1l_v(T_0)+mc_l(T_1-T_0)+V_L(T_0)(p_{sat}(T_1)-p_{sat}(T_0))\\
+    \Delta H &= mx_2l_v(T_1)-mx_1l_v(T_0)+\Delta H_L
+\end{flalign*}
+
+\subsection{Détermination du titre massique vapeur}
+Rappel : $$Y_{LV} = m_Lxy_V^{sat}(T)+m(1-x)y_L^{sat} = f(T,x)$$
+Si T est connue et $Y_{LV}$ est connue dans 1 état d'équilibre, aors x est connu.
+
+Exemple avec $T_0, V_0$ connus.
+
+Passez du titre au volume et vice versa est à savoir faire
+\begin{theorem}[Théorème des moments]
+    $$x_0 = \frac{LM}{LV}$$
+\end{theorem}
+\section{Exemples}
+On prend $V_0 = 2ml (L+V)$ Trouver $x_0$
+On prend $T=18\circ$ avec les données de la colonne à mercure :
+On peut en déduire, une fois $x_0$ déterminé que $v_v = m_vv_v = xV_v^{sat}(T_0)$
+
+On obtient 0.2ml et 1.7ml (0.47*0.51, 0.53*3.3)
+
+Question : Quels sont les échanges d'énergie développés au cours de la transformation suivante. 
+I : Vapeur, p_i = 18 bar, T_i= 18°
+Transformation isotherme qs
+L+V, p_f = p_{sat}(18°0), V_F = V0, T_F = 18°
+
+Ce sont deux états quelconques.
+
+Sur le chemin, on est isotherme mais on a pas $\Delta U=0$ car pas GP.
+
+
+\end{document}
+
+

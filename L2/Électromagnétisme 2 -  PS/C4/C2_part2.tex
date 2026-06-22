@@ -1,0 +1,254 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 2 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\setcounter{chapter}{3}
+\begin{document}
+\chapter{Puissance et énergie du champ Em}
+\section{Puissance cédée par le champ  à la matière}
+Un champ électrostatique interagit avec des particules chargées et leur fournit de l'énergie.
+Une particule chargée est soumise à la force de Lorenz :
+$$\vec{F} = q(\vec{E}+\vec{v}\wedge \vec{B})$$ et la puissance de cette force :
+$$P = \vec{F}\cdot \vec{v} = q\vec{E}\cdot \vec{v}+q(\vec{v}\wedge \vec{B})\cdot \vec{v} = q\vec{E}\cdot \vec{v}$$
+On considère un volume élémentaire $\dd \tau$ qui contient une charge $\dd q$ égale à $ \rho(r,t) \dd \tau$
+La puissance cédée par le champ au volume $\dd \tau$ :
+$$\dd P = \dd q \vec{E}\cdot \vec{v} = \rho \dd \tau \vec{E}\cdot \vec{v} = \vec{j}\cdot \vec{E}\dd \tau$$
+On définit la puissance volumique $\frac{\dd P}{\dd \tau} = \vec{j}\cdot \vec{E}$
+En intégrant sur le volume, la puissance cédée à l'ensemble des charges vaut $$P = \iiint_{V} \vec{j}\cdot \vec{E}\dd \tau$$
+\begin{theorem}[Puissance cédée à l'ensemble des charges]
+    $$P = \iiint_{V} \vec{j}\cdot \vec{E}\dd \tau$$
+\end{theorem}
+\section{Bilan d'énergie électromagnétique}
+\subsection{Démonstration du théorème de Poynting}
+On développe le terme $\vec{j}\cdot \vec{E}$ en utilisant l'équation de Maxwell-Ampère.
+$$\vec{\nabla}\wedge \vec{B} = \mu_0(\vec{j}+\epsilon_0 \frac{\partial \vec{E}}{\partial t})$$
+donc 
+$$\vec{j} = \frac{1}{\mu_0}\vec{\nabla}\wedge \vec{B}-\epsilon_0 \frac{\partial \vec{E}}{\partial t}$$
+et 
+$$ \vec{j}\cdot \vec{E} = \frac{1}{\mu_0}(\vec{\nabla}\wedge \vec{B})\cdot \vec{E}-\epsilon_0 \frac{\partial \vec{E}}{\partial t}\cdot \vec{E}$$
+On étudie le premier terme :
+$$ \vec{\nabla}\cdot (\vec{A}\wedge \vec{C}) = (\vec{\nabla}\wedge \vec{A})\cdot \vec{C}-\vec{A}\cdot (\vec{\nabla}\wedge \vec{c})$$
+On se sert de cette formule pour obtenir :
+$$ \frac{1}{\mu_0}(\vec{\nabla}\wedge \vec{B}\cdot \vec{E}) = \vec{\nabla}\cdot (\frac{\vec{B}}{\vec{E}}) + \frac{\vec{B}}{\mu_0}\cdot (\vec{\nabla}\wedge \vec{E})$$
+On étudie ce deuxième terme :
+$$\frac{\vec{B}}{\mu_0}\cdot (\vec{\nabla}\wedge \vec{E}) = \frac{\vec{B}}{\mu_0}\cdot(-\frac{\partial \vec{B}}{\partial t}) = -\frac{1}{\mu_0}\frac{\partial \norm{B}^2}{\partial t}$$
+On obtient finalement pour le premier terme :
+$$\frac{1}{\mu_0}(\vec{\nabla}\wedge \vec{B})\cdot \vec{E} = -\vec{\nabla}\cdot \frac{\vec{E}\wedge \vec{B}}{\mu_0}-\frac{1}{2\mu_0}\frac{\partial \norm{B}^2}{\partial t}$$
+On étudie maintenant le deuxième terme :
+$$-\epsilon_0 \frac{\partial \vec{E}}{\partial t}\cdot \vec{E} = -\frac{\epsilon}{2}\frac{\partial \norm{E}^2}{\partial t}$$
+On obtient finalement le théorème de Poyting :
+\begin{theorem}[théorème de Poyting]
+    $$-\vec{j}\cdot \vec{E} = \vec{\nabla}\cdot (\frac{\vec{E}\wedge \vec{B}}{\mu_0})+\frac{\partial}{\partial t}(\frac{1}{2\mu_0}\norm{B}^2 + \frac{\epsilon_0}{2}\norm{E}^2)$$
+\end{theorem}
+\subsection{Analyse des termes}
+\begin{itemize}
+    \item Le premier terme est la puissance cédée par les charges au champ
+    \item $\frac{\vec{E}\wedge \vec{B}}{\mu_0} = \vec{\Pi}$ est le vecteur de Poyting (densité de courant d'énergie en $W/m^2$)
+    \item Le dernier terme est noté $\vec{u_{em}}$. C'est $\vec{u_e}+ \vec{u_m}$ qui est une densit volumique d'énergie électromagnétique.
+\end{itemize}
+On a donc une nouvelle écriture, la forme générale : 
+\begin{theorem}[Théorème de conservation de l'énergie en présence d'une source]
+    $$-\vec{j}\cdot \vec{E} = \Div\vec{\Pi}+\frac{\partial \vec{u_{em}}}{\partial t}$$
+\end{theorem}
+On a alors deux cas : 
+\begin{itemize}
+    \item Si $-\vec{j}\cdot \vec{E}>0$ : de l'énergie est crée, elle vient des charges.
+    \item Si $-\vec{j}\cdot \vec{E}\neq 0$, il n'y a pas conservation de l'énergie magnétique
+\end{itemize}
+\begin{theorem}[Forme intégrale]
+    $$\iint_V -\vec{j}\cdot \vec{E}\dd \tau = \iint \vec{\Pi}\cdot \vec{\dd S}+ \iint_\tau \frac{\partial \vec{u_{em}}}{\partial t}\dd \tau$$
+    Le trosième terme est la variation d'énergie EM dans le volume, le deuxième le flux d'énergie à travers S et le premier terme est la puissance totale gagnée sur le volume.
+\end{theorem}
+La variation de l'énergie EM $\vec{u_{em}}$ dans un volume est due 
+\begin{itemize}
+    \item au travail des forces EM dans ce volume $(-\vec{j}\cdot \vec{E})$
+    \item à un échange d'énergie avec l'extérieur $(\iint_S \vec{\Pi}\cdot \vec{\dd S})$
+\end{itemize}
+\section{Applications}
+\subsection{Cas du condensateur avec stokage de l'énergie électrique}
+On considère 2 armatures circulaires l'une au-dessus de l'autre de surface S séparées d'une distance e et de charge $\pm Q$.
+On a une tension U entre les 2 disques.
+
+On peut montrer que 
+$$ \vec{E} = -\frac{\sigma}{\epsilon_0}\vec{e_z}$$ avec $\sigma = \frac{Q}{S}$
+On a $\vec{E} = -\frac{Q}{\epsilon_0 S}\vec{e_z}$
+On obtient la relation entre U et Q : $\frac{U}{e} = \frac{Q}{\epsilon_0 S}$
+
+Donc $$Q = \frac{S\epsilon_0}{e} U = CU$$
+On calcule maitenant $u_e$ :
+$$u_e = \frac{\epsilon_0}{2}E^2 = \frac{Q^2}{2\epsilon_0 S^2}$$
+Donc $U_{em} = \iint_{\tau}\dd \tau = \frac{Q^2}{2\epsilon S}e = \frac12 CU^2$
+\subsection{Solénoide = Stokage de l'énergie magnétique}
+On étudie un solénoide de longueur a<<l, parcouru par un courant I.
+
+À l'intérieur du solénoide, on a un champ
+$$\vec{B} = \mu_0n I\vec{e_z}$$On a 
+$u_{em} = u_m = \frac{\mu_0 n^2I^2}{2} $. L'énergie totale vaut alors$U_{em} = \iint u_m \dd \tau = \frac{\mu_0 n^2I^2}{2}\Pi a^2 l$
+
+$$U_{em} = \frac12 L I^2 $$ avec $L = \mu_0 n^2 \Pi a^ 2l$
+
+\subsection{Résistance d'un cylindre conducteur}
+Il est parcouru par un courant I et de conductivité $\gamma$ et on se place en base polaire.
+
+On a $I =\iint \vec{j}\cdot \vec{\dd S}$ d'où $\vec{j} = \frac{I}{\pi a^2}\vec{e_z}$
+
+On en déduit que $\vec{E} = \frac{\vec{j}}{\gamma} = \frac{I}{\gamma \pi a^2}\vec{e_z}$.
+
+On cherche maintenant $\vec{B}$ : On suppose que l'on a un fil de longueur $l>>a$, donc $\B$ identique au cas du fil infini.
+
+Donc on utilise Ampère : Avec un cercle de rayon $\rho$ centré sur l'axe du cylindre et $\B = B_{\theta}\vec{e_{\theta}}$
+
+On a $\int B\cdot \vec{\dd l} = \mu_0 \iint \vec{j}\cdot \vec{\dd S} \Rightarrow B=2\pi\rho = \mu_0 j\pi \rho^2 \Rightarrow B(\rho) = \frac{\mu_0 j\rho}{2} = \frac{\my_0 I\rho }{2\pi a^2}$
+
+Donc $\B = \frac{\mu_0 I\rho}{2\pi a^2}\vec{e_\theta}$
+
+Exprimons le vecteur de Pointing :
+$$\vec{\Pi} = \frac{1}{\mu_0}\E\wedge \B = \frac{1}{\mu_0} \frac{I}{\gamma \pi a^2}\vec{e_z}\wedge \frac{\mu_0 I\rho}{2\pi a^2}\vec{e_{\theta}}$$
+
+Donc $\vec{\Pi} = - \frac{I^2 \rho}{2\pi a^4 \gamma}\vec{e_\rho}$
+
+On calcule la densité d'énergie : $u_{em} = \frac{\epsilon}{2} \norm{E}^2 + \frac{1}{2\mu_0}\norm{B}^2 = \frac{\epsilon}{2}\frac{I^2}{\gamma^2\pi^2 a^4}+\frac{1}{2\mu_0}\mu^2I^2\rho^2\frac{1}{4\pi^2 a^4}$
+
+Donc $\frac{\partial u_{em}}{\partial t}=0$ si I constant au cours du temps.
+
+On doit avoir $-\vec{j}\cdot \E = \Div \vec{\Pi}$
+
+Donc $-\gamma E^2 = -\frac{I^2}{\gamma (\pi a^2)^2} = \frac{1}{\rho} \frac{\partial}{\partial \rho}(\rho \pi_{\rho})$.
+
+$\iint \vec{\pi}\cdot \vec{\dd S} =  \vec{\pi} \cdot (\rho\dd \theta \dd z)\vec{e_\rho}$ Les extrémités ne contribuent pas car $\vec{\pi}\perp \vec{e_z}$
+
+On se place bien en $\rho=a$ et on obtient $-\frac{I^2}{2\pi^2 a^3 \gamma}2\pi al = -\frac{l}{\pi a^2 \gamma} = -R I^2$ : Pertes par effet Joules
+
+La puissance est négative donc les charges ne contribuent à renforcer le champ.
+\chapter{Ondes EM dans le vide}
+\section{Équation de propagation}
+\subsection{Équation de propagation des champs \E et \B}
+On se place dans le vide et loin des sources.
+
+$\Div \vec{E} = 0, \Div \vec{B} = 0, \rot \vec{E} = -\frac{\partial \vec{B}}{\partial t},\rot B = \mu_0 \epsilon_0 \frac{\partial \E}{\partial t}$
+
+La Démonstration à partir de ces équations est à savoir faire.
+
+\subsubsection{Champ électrique}
+$$\rot(\rot E) = \grad(\div E)-\lap \vec{E}$$
+
+$$\rot(-\frac{\partial \vec{B}}{\partial t}) = -\lap E, -\frac{\partial}{\partial t}(\rot B) = -\lap \vec{E}$$
+
+Donc $ \lap \vec{E} = -\frac{1}{c^2}\frac{\partial^2 \vec{E}}{\partial t^2} = \vec{0}$
+
+\subsubsection{Champ magnétique}
+$$rot rot(B) = grad (div B) -\lap \vec{B}$$
+$$\rot(\epsilon_0\mu_0 \frac{\partial E}{\partial t}) = -\lap \vec{B}$$
+$$\epsilon_0\mu_0 \frac{\partial}{\partial t}(-\frac{\partial \B}{\partial t}) = -\lap B$$
+donc $$\lap B - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} = \vec{0}$$
+
+Remarques :
+\begin{itemize}
+    \item On a un couplage des champs à l'orgine d'un phénomène de propagation d'une perturbation
+    \item Une onde EM est une onde vectorielle à  3 dimensions. En optique ondulatoire, on ne conserve que le caractère vibratiire (modèle scalaire)
+    \item Les équations de d'Alembert sont linéaires, donc les soltuions forment un sev. On peut regarder les phénomènes d'interférence : permet d'étudier des olutions monochormatique.
+    \item 
+\end{itemize}
+\subsection{Équations de propagation des potentiels}
+$$rot B = rot (rot A) = grad(div A)-lap A$$
+$$rot B =1/c^2 \frac{\partial E}{\partial t} = 1/c^2 \frac{c^2\partial}{\partial t}(-grad V-\frac{\partial vec A}{\partial t}) = -grad (1/c^2 \frac{\partil v}{\partial t})-1/c^2 \frac{\partial \vec{A}}{\partial t}$$
+
+d'où $grad (div A)-lap A  = -grad (1/c^2 \frac{\partial V}{\partial t})-1/c^2 \frac{\partial A^2}{\partial t^2}$
+
+donc $\lap \vec{A} -1/c^2 \frac{\partial^2 A}{\partial t^2} = 0$ par la jauge de Lorenz.
+
+On fait de meme pour V : div E=0, donc div(-gra dV-partial A/partial t) = 0, donc $\Delta V - 1/c^2 \frac{\partial^2 v}{\partial^2 t} = 0$
+
+Jauge de Lorenz : Cndition pour que A et V se propagent comme E et B.
+
+\section{Ondes planes progressives monochormatiques}
+L'onde plane est sune solution unidimensionelle de l'équation d'onde. La propagation du champ EM ne dépend que d'une direction de l'espace
+\subsection{Définitions}
+\begin{theorem}[Surface d'onde]
+    Surface sur laquelle la phase est uniforme à un temps donné, la surface sur laquelle le champ EM est uniforme
+\end{theorem}
+\begin{theorem}[Onde plane]
+    Les surfaces d'onde sont des plans // entre eux. On a u.r l'équation des plans d'onde avec u la direction de propagation et r
+\end{theorem}
+\begin{definition}[Onde progressve]
+    Plans d'onde avancent à une vitesse c. L'onde dépend de t-(u.r) /c
+\end{definition}
+\begin{definition}[Monochromatique]
+    dépendance temporelle sinosodidale de pulsation w constante, varie en $\cos(\omega(t-\frac{u.r}{c})+\phi_0)$.
+\end{definition}
+Avec $\vec{k} = k\vec{u}, k = \omega/c, 2\pi/\lambda$
+Donc $\cos(\omega t - k.r +\phi_0)$
+
+Double périodicité temporelle et spatiale : $T = 2\pi/\omega, \lambda = 2\pi/k$
+
+\subsection{Notation complexe}
+Pour une OPPM : $\vec{E} = E_{0x} (\cos(\omega t-\vec{k}\cdot \vec{r})+\phi_x)+\dots$
+
+En complexe : $\vec{E} = \vec{E_0}e^{-i\omega t - k.r}$ avec $\vec{E_0} = E_{0x}e^{-i\phi_x}+\dots$
+
+$\vec{E} = Re(E(r,t))$
+\subsection{Dérivation des OPPM}
+$$E = E_0 e^{-i(\omega t)-(k_x x +\dots)}$$
+
+Dérivée partielle par rapport au temps : 
+$$\frac{\partial E}{\partial t} = -i\omega E$$
+
+Nous allons monter que $\nabla = ik$
+
+$$div E = \frac{\partial E_X}{\partial x} + \dots = E_x e^{-i(\omega t-k.r)}e^{-i\phi_x}(ik_x)+\dots = ie^{-i(\omega t-k.r)}(E_{0x}e^{-\phi_x}k_x+\dots)$$
+
+Finalement, $div E = i\vec{k}\cdot \vec{E}$.
+
+$rot E = i\vec{k}\wedge \vec{E}$.
+
+On fait de meme avec B, ce qui nous permet de réécrire les éqauations de Maxwell : $i\vec{k}\cdot \vec{E} = 0, i\vec{k}\cdot \vec{B} = 0, i\vec{k}\wedge \vec{E}i\omeaga B, i\vec{k}\wedge \vec{B} = -i\omega 1/c^2 E
+
+
+\end{document}

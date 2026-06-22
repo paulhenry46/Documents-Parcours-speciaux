@@ -1,0 +1,399 @@
+% ---- Modele TP PC V2 -----------
+\documentclass[a4paper,10pt,french]{scrartcl}
+\usepackage[T1]{fontenc}%---pour l'encodage d'entr\'ee
+\usepackage{array}%---pour les tableaux
+\usepackage{titlesec}%---modification des titres
+\usepackage{ulem}%---pour le soulignage
+\usepackage[dvipsnames]{xcolor}%---pour avoir d'autres couleurs
+\usepackage{color}%---pour avoir les couleurs de base
+\usepackage{babel}%---pour les trucs de langue et la francisation
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour dessiner + d\'ependance de chemfig
+%\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+ \usepackage{float}% --- pour placer les figures et tableaux où l'on souhaite avec argument H
+ \usepackage{multicol}
+ \usepackage{amsmath}
+ \usepackage{geometry}
+ \geometry{vmargin=2.5cm}
+%Obj + conclsuion
+\captionsetup{labelfont=sc}%---pour la francisation de la l\'egende table vers Tableau
+\def\frenchtablename{Tableau}%---pour la francisation de la l\'egende table vers Tableau
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{TP 4}
+\fancyhead[R]{Saux Paulhenry}
+\title{Compte rendu de TP 4}
+\date{}
+\author{}
+
+\geometry{a4paper}
+% ----------- Création des commandes de couleur ----------
+\makeatletter
+\newcommand{\coloruline}[2]{%
+        \UL@protected\def\temp@uline{\leavevmode \bgroup
+            \markoverwith{\textcolor{#1}{\rule[-0.5ex]{2pt}{0.4pt}}}%
+        \ULon}%
+        \temp@uline{#2}%
+    }
+
+    \newcommand{\coloruuline}[2]{%
+        \UL@protected\def\temp@uuline{\leavevmode \bgroup
+            \UL@setULdepth
+            \ifx\UL@on\UL@onin \advance\ULdepth2.8\p@\fi
+            \markoverwith{\textcolor{#1}{\lower\ULdepth\hbox
+                {\kern-.03em\vbox{\hrule width.2em\kern1\p@\hrule}\kern-.03em}}}%
+        \ULon}%
+        \temp@uuline{#2}%
+    }
+
+\makeatother
+
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+\begin{document}
+% ---------------- Modification des titres de niveau 1,2 et 3 --------------------
+\titleformat
+{\section} % command
+%[display] % shape
+{\Large} % format
+{\coloruuline{red}{\thesection. }} % label
+{0ex} % sep
+{\coloruuline{red}} % before-code
+[] % after-code
+
+\titleformat
+{\paragraph} % command
+%[display] % shape
+{\Large} % format
+{\coloruline{NavyBlue}{\theparagraph. }} % label
+{0ex} % sep
+{\coloruline{NavyBlue}} % before-code
+[] % after-code
+
+\titleformat
+{\subsection} % command
+%[display] % shape
+{\Large} % format
+{\coloruline{red}{\thesection.\thesubsection. }} % label
+{0ex} % sep
+{\coloruline{red}} % before-code
+[] % after-code
+
+\titleformat
+{\subsubsection} % command
+%[display] % shape
+{\large} % format
+{\coloruline{ForestGreen}{\thesection.\thesubsection.\thesubsubsection. }} % label
+{0ex} % sep
+{\coloruline{ForestGreen}} % before-code
+[] % after-code
+
+\titleformat
+{\chapter} % command
+%[display] % shape
+{\large} % format
+{\coloruline{NavyBlue}{\thechapter \:- }} % label
+{0ex} % sep
+{\coloruline{NavyBlue}} % before-code
+[] % after-code
+
+
+% ---------------- Début du corps du document ------------------------------------
+
+\section{Introduction}
+\subsection{Objectifs}
+L'objectif de ce TP est l'étude thermodynamique d'une machine frigorifique fonctionnant avec un fluide frigorigène (R134a). Il s'agit de :
+\begin{itemize}
+    \item Comprendre le fonctionnement cyclique d'une machine ditherme (compression, condensation, détente, évaporation).
+    \item Identifier les échanges d'énergie (travail et transfert thermique) au sein de chaque organe du circuit.
+    \item Représenter le cycle de fonctionnement sur un diagramme de Mollier ($P, h$).
+    \item Calculer les performances réelles (coefficients de performance COP) de la machine en mode pompe à chaleur et en mode machine frigorifique.
+    \item Comparer ces résultats aux limites théoriques de Carnot et analyser les sources d'irréversibilités.
+\end{itemize}
+\subsection{Sommaire}
+Ce TP se décompose en 2 parties :
+\begin{enumerate}
+ \item Une partie qualitative où nous décrirons qualitativement les échanges thermiques, d'énergie réalisés par le système
+ \item Une partie ou nous quantifirons ces échanges pour déterminer l'efficacité de l'appareil.
+\end{enumerate}
+\section{Protocole}
+\subsection{Matériel}
+\begin{itemize}
+    \item Une machine frigorifique
+    \item Des capteurs de températures et de pressions
+\end{itemize}
+\subsection{Description du montage expérimental}
+La machine étudiée est composée du circuit suivant. Les points noirs représentes les endroits où une mesure de température est effectuée.
+\begin{center}
+\includegraphics[scale=0.5]{schema}
+\end{center}
+\subsection{Mesures à effectuer}
+Il s'agit de relever les valeurs de températures et de pressions à différents points du circuit du liquide frigorifique et de la source de chaleur
+\section{Mesures}
+\subsection{Données}
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|l|c|c|c|c|c|}
+\hline
+{État} & {Localisation} & {Phase} & {$P$ (bar)} & {$T$ (C)} & {$h$ (kJ/kg)} & {$\dot{m}$ (kg/h)} \\ \hline
+{A} & Entrée détendeur & Liquide & 11,0 & 35,1 & 250 & 12,0 \\ \hline
+{B} & Sortie détendeur & Mélange L + V & 4,5 & 12,0 & 250 & 12,0 \\ \hline
+{C} & Entrée compresseur & Vapeur surchauffée & 4,5 & 18,0 & 410 & 12,0 \\ \hline
+{D} & Sortie compresseur & Vapeur surchauffée & 11,0 & 58,1 & 440 & 12,0 \\ \hline
+\end{tabular}
+\caption{États thermodynamiques et débit massique du fluide R134a.}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+{Échangeur} & {$T_{entrée}$ (C)} & {$T_{sortie}$ (C)} & {Débit (L/min)} & {Débit SI ($m^3 \cdot s^{-1}$)} \\ \hline
+{Évaporateur} & 29,2 & 21,9 & 1,0 & $1,67 \times 10^{-5}$ \\ \hline
+{Condenseur} & 29,2 & 38,1 & 1,0 & $1,67 \times 10^{-5}$ \\ \hline
+\end{tabular}
+\caption{Données expérimentales des circuits secondaires (eau).}
+\end{table}
+
+\subsubsection{Conversion du débit volumique en unités SI}
+
+L'expression du débit SI est donc obtenue par la relation :
+$$d_{v, SI} = \frac{d_{v, L/min} \times 10^{-3}}{60}$$
+
+Pour une valeur expérimentale de $1,0 \text{ L/min}$, le calcul donne :
+$$d_{v, SI} = \frac{1,0 \times 10^{-3}}{60} \approx 1,67 \times 10^{-5} \text{ m}^3 \cdot s^{-1}$$
+
+
+
+% \subsection{Calcul du débit massique}
+
+% La puissance thermique échangée dépendant de la masse de fluide circulant par unité de temps, on définit le débit massique $\dot{m}$ par la relation :
+% $$\dot{m} = \rho_{eau} \cdot d_{v, SI}$$
+
+% En prenant pour la masse volumique de l'eau $\rho_{eau} = 1000 \text{ kg} \cdot m^{-3}$, nous obtenons pour les deux circuits :
+% $$\dot{m} = 1000 \times 1,67 \times 10^{-5} = 1,67 \times 10^{-2} \text{ kg} \cdot s^{-1}$$
+
+% Ce débit massique permettra, par la suite, de quantifier les puissances thermiques $\Phi = \dot{m} \cdot C_{eau} \cdot \Delta T$ échangées au niveau de chaque compartiment.
+
+\subsubsection{Détermination du point B}
+Le passage du fluide dans le détendeur est modélisé par une transformation isenthalpique ($h_B = h_A = 250$ kJ/kg). Le point B est situé à l'intersection de cette droite verticale et de l'isobare de basse pression $P = 4,5$ bar.
+Sous la cloche de saturation, la lecture du diagramme de Mollier pour une pression de 4,5 bar donne une température de saturation $T_{sat} = 12$ °C. 
+
+\subsubsection{Hypothèses de pression constante}
+Pour l'étude du cycle, nous avons considéré que les transformations dans les échangeurs sont isobares :
+\begin{itemize}
+\item $P_C = P_B = 4,5$ bar (Évaporateur)
+\item $P_D = P_A = 11,0$ bar (Condenseur)
+\end{itemize}
+
+D'un point de vue physique, cela revient à négliger les frottements fluides, coudes, etc. au sein des tuyeux. Bien qu'une évolution de la pression puisse exister entre l'entrée et la sortie des échangeurs, elle est considérée comme négligeable par rapport aux niveaux de pression imposés par le compresseur.
+
+\subsection{Incertitudes}
+% L'incertitude est liée à la précision des appareils de mesure. 
+% Pour la température : précision au dixième
+% Pour le débit, précision à 0.1 l
+% Pour la pression : précision au dixième
+L'incertitude sur les résultats expérimentaux provient de la précision des instruments de mesure et de la lecture graphique :
+\begin{itemize}
+    \item {Températures :} Les capteurs ont une précision de $\pm 0,1$ C. L'incertitude sur les écarts $\Delta T$ est donc d'environ $\pm 0,2$ C.
+    \item {Pressions :} Les manomètres présentent une précision de $\pm 0,1$ bar.
+    \item {Débits :} Le débitmètre à flotteur possède une précision de $\pm 0,1$ L/min.
+    \item {Enthalpies :} La principale source d'erreur provient de la lecture sur le diagramme de Mollier (pression/température), estimée à $\pm 5$ kJ/kg.
+\end{itemize}
+Ces incertitudes se propagent lors des calculs de puissances ($\mathcal{P} = \dot{m} \cdot \Delta h$) et expliquent l'écart observé entre la puissance cédée par le fluide et celle reçue par l'eau des circuits secondaires.
+%\section{Graphiques}
+%\subsection{Analyse de la tension aux bornes de la résistance \& Étude de la résonnance en intensité}
+% \begin{figure}[H]
+%  \begin{center}
+% \includegraphics[scale=0.4]{1}
+%  \end{center}
+% \caption{Diagramme de Bode en amplitude}
+% \end{figure}
+
+\section{Exploitation des résultats}
+\subsection{Analyse qualitative}
+Le système étudié est une machine thermique ditherme à compression de vapeur. Son fonctionnement repose sur la circulation d'un fluide frigorigène, le R134a, qui subit des changements d'état cycliques pour transférer de l'énergie thermique d'une source froide vers une source chaude. 
+Ce transfert est rendu possible par l'apport d'un travail mécanique au niveau du compresseur.
+\subsubsection{L'évaporateur}
+Le fluide pénètre dans l'évaporateur sous forme de mélange liquide-vapeur à basse pression $P_{BP}$ et à basse température. 
+
+Il réalise le contact thermique entre le ﬂuide et le premier circuit
+secondaire. On observe que ce dernier ressort à
+une température plus basse qu’à l’entrée. Le ﬂuide capte donc de la chaleur : ce milieu
+constitue la source froide.
+
+Par transfert thermique, le fluide absorbe une quantité de chaleur $q_f > 0$. 
+Cette énergie permet la vaporisation totale du fluide. 
+En sortie d'échangeur, le fluide est à l'état de vapeur.
+
+\subsubsection{Le compresseur}
+La vapeur est ensuite aspirée par le compresseur. 
+Ce dernier fournit au fluide un travail mécanique massique $w > 0$. 
+Le fluide subit une compression, augmentant sa pression de $P_{BP}$ à la haute pression $P_{HP}$. 
+Cette transformation s'accompagne d'une élévation de température (la tuyauterie de sortie est plus chaude que celle d'entrée). 
+En sortie, le fluide se trouve dans un état de vapeur à une température supérieure à celle de la source chaude.
+
+\subsubsection{Le condenseur}
+La température du fluide étant supérieure à celle de la source chaude (le fluide secondaire s'échauffe au contact des parois de l'échangeur), un transfert thermique s'opère vers le fluide secondaire. 
+Au cours de ce refroidissement à pression $P_{HP}$ constante, le fluide subit une transition de phase : 
+la liquéfaction. En sortie de condenseur, le fluide est redevenu entièrement liquide. 
+
+\subsubsection{Le détendeur}
+Pour fermer le cycle, le liquide haute pression traverse le détendeur. 
+Cette transformation est modélisée comme étant isenthalpique ($h_{sortie} = h_{entrée}$). 
+La chute de pression de $P_{HP}$ vers $P_{BP}$ provoque une vaporisation  qui consomme de l'énergie interne et fait chuter la température du fluide. 
+Le fluide retrouve ainsi son état de mélange froid nécessaire à une nouvelle phase d'évaporation.
+
+\subsubsection{Bilan}
+On peut résumer le cycle par les échanges suivants :
+\begin{enumerate}
+\item {Dans le compresseur :} Gain de travail mécanique (w>0).
+\item {Dans le condenseur :} Perte de chaleur vers la source chaude (qc<0).
+\item {Dans le détendeur :} Aucun échange avec l'extérieur.
+\item {Dans l'évaporateur :} Gain de chaleur depuis la source froide (qf>0).
+\end{enumerate}
+
+Le cycle peut être résumé par l'application du premier principe de la thermodynamique pour un système ouvert en régime stationnaire. 
+Sur un cycle complet, la variation d'enthalpie du fluide est nulle, ce qui conduit à la relation :
+
+
+$$\Delta U = w + q_f + q_c = 0$$
+
+L'enchaînement de ces processus permet de forcer un flux thermique de la source froide vers la source chaude. Le fluide capte d'abord des calories à basse température dans l'évaporateur. Le compresseur "élève" ensuite le potentiel thermique du fluide en augmentant sa pression, ce qui le rend plus chaud que la source chaude. Le fluide peut alors naturellement céder sa chaleur dans le condenseur. Enfin, la détente ramène le fluide à un état de basse pression et basse température pour recommencer le cycle.
+
+% Fait un tableau avec ces données pour l'état A = entrée du détendeur, B = sortie du détendeur, C=entrée du compresseur, D = sortie du compresseur.
+% Pour A : T=État liquide, T=35.1°C, p = 11 bar, enthalpie = 250,
+% Pour B = État Gazeux  + Liquide, T = 12°Cn p=4.5 bar, enthalpie = 250, 
+% Pour C = 2tat gazeux, T=18°C, P = meme que pour B par hypothèse, H = 410
+% Pour D : T = 58.1 °C, P = celle de A par hypothèse, H =440
+
+% On a trouvé 12 °C avec un digramme de Mollier en connaissant la pression et l'état gazeux et liquide. On a trouvé de la meme façon l'enthaplpie. Fait aussi un point sur l'hypthèse de pression contsnate C=B, D=A
+
+% Fait un deuxième tableau avec les données pour le fluide secondaire
+% Coté évaporateur : T_e = 29.2 T_s = 21.9, débit = 1.0l/min, débitSI = ?
+% coté condensateur, T_e = 29.2, T_s = 38.1, débit = 1.0l/min, débit SI = ?
+ 
+% et explique rapidmeent commment tu as trouvé le débit SI, i.e. m^3/s
+\subsection{Analyse quantitative}
+
+\subsubsection{Transferts thermiques et travail massique}
+
+Le passage du fluide dans les échangeurs thermiques (évaporateur et condenseur) est modélisé par des transformations {isobares}. En appliquant le premier principe de la thermodynamique pour un système ouvert en régime stationnaire, la chaleur échangée par unité de masse est égale à la variation d'enthalpie du fluide : $q = \Delta h$.
+
+\begin{itemize}
+    \item {Échange avec la source froide ($q_f$) :} À l'évaporateur (transformation $B \to C$) :
+    $$q_f = h_C - h_B = 410 - 250 = 160 \text{ kJ/kg}$$
+    Le signe positif confirme que le fluide reçoit de l'énergie de la source froide.
+
+    \item {Échange avec la source chaude ($q_c$) :} Au condenseur (transformation $D \to A$) :
+    $$q_c = h_A - h_D = 250 - 440 = -190 \text{ kJ/kg}$$
+    Le signe négatif confirme que le fluide cède de l'énergie à la source chaude.
+
+    \item {Travail massique du compresseur ($w$) :} À partir du bilan sur le cycle ($\Delta h_{cycle} = 0 \implies w + q_f + q_c = 0$), on en déduit :
+    $$w = -(q_f + q_c) = -(160 - 190) = 30 \text{ kJ/kg}$$
+    \end{itemize}
+
+\subsubsection{Calcul des efficacités réelles et de Carnot}
+
+L'efficacité énergétique $\eta$ est le rapport entre l'énergie utile récupérée et l'énergie coûteuse fournie (le travail).
+
+
+\begin{itemize}
+    \item {Mode Pompe à Chaleur (PAC) :} L'énergie utile est la chaleur cédée au condenseur.
+    $$\eta_{PAC} = \frac{|q_c|}{w} = \frac{190}{30} \approx 6,33$$
+    \item {Mode Machine Frigorifique (MF) :} L'énergie utile est la chaleur absorbée à l'évaporateur.
+    $$\eta_{MF} = \frac{q_f}{w} = \frac{160}{30} \approx 5,33$$
+\end{itemize}
+
+
+L'efficacité de Carnot représente la limite théorique maximale pour une machine ditherme fonctionnant entre deux sources aux températures $T_F$ et $T_C$. Les températures des sources sont définies comme les moyennes des fluides secondaires :
+\begin{itemize}
+    \item $T_F = \frac{T_{e,f} + T_{s,f}}{2} = \frac{29,2 + 21,9}{2} = 25,55 \text{ °C} = 298,7 \text{ K}$
+    \item $T_C = \frac{T_{e,c} + T_{s,c}}{2} = \frac{29,2 + 38,1}{2} = 33,65 \text{ °C} = 306,8 \text{ K}$
+\end{itemize}
+
+Les efficacités théoriques de Carnot sont :
+$$\eta_{PAC, Carnot} = \frac{T_C}{T_C - T_F} = \frac{306,8}{306,8 - 298,7} \approx 37,9$$
+$$\eta_{MF, Carnot} = \frac{T_F}{T_C - T_F} = \frac{298,7}{306,8 - 298,7} \approx 36,9$$
+
+\subsubsection{Commentaires}
+On observe que $\eta_{exp} < \eta_{Carnot}$. Cet écart important est attendu car le cycle de Carnot suppose des transformations réversibles. Dans notre machine, les irréversibilités (frottements, pertes de chaleur avec l'extérieur) dégradent les performances réelles.
+\subsection{Détermination des échanges d'énergie par unité de temps}
+
+
+\subsubsection{Relation entre énergie massique et puissance}
+
+La puissance $\mathcal{P}$ (en Watts) correspond au flux d'énergie échangé par unité de temps. Pour un système en régime stationnaire, elle est reliée à l'énergie massique $e$ (en J/kg) par le produit du débit massique $\dot{m}$ (en kg/s) :
+$$\mathcal{P} = \dot{m} \cdot e$$
+
+\subsubsection{Calcul des puissances associées au fluide frigorigène}
+
+Le débit massique du fréon a été relevé à $\dot{m}_{fréon} = 12,0$ kg/h. Converti en unités SI :
+$$\dot{m}_{fréon} = \frac{12,0}{3600} \approx 3,33 \times 10^{-3} \text{ kg/s}$$
+
+Les puissances thermiques au condenseur ($\mathcal{P}_c$), à l'évaporateur ($\mathcal{P}_f$) et la puissance mécanique reçue par le fluide ($\mathcal{P}_w$) sont :
+\begin{itemize}
+    \item $\mathcal{P}_c = \dot{m}_{fréon} \cdot q_c = 3,33 \times 10^{-3} \cdot (-190 \times 10^3) \approx -633,3 \text{ W}$
+    \item $\mathcal{P}_f = \dot{m}_{fréon} \cdot q_f = 3,33 \times 10^{-3} \cdot (160 \times 10^3) \approx 533,3 \text{ W}$
+    \item $\mathcal{P}_w = \dot{m}_{fréon} \cdot w = 3,33 \times 10^{-3} \cdot (30 \times 10^3) \approx 100,0 \text{ W}$
+\end{itemize}
+
+\subsubsection{Étude des circuits secondaires}
+
+Pour les fluides secondaires (eau), la transformation est considérée comme monobare. La chaleur massique échangée est $q_{2nd} = C_{eau} \cdot \Delta T$.
+Le débit massique de l'eau pour les deux circuits est $\dot{m}_{eau} = \rho_{eau} \cdot d_{v} = 1000 \cdot (1,67 \times 10^{-5}) \approx 1,67 \times 10^{-2} \text{ kg/s}$.
+
+\begin{itemize}
+    \item {Source chaude :}
+    $$\mathcal{P}_{C,2nd} = \dot{m}_{eau} \cdot C_{eau} \cdot (T_{s,c} - T_{e,c}) = 1,67 \times 10^{-2} \cdot 4180 \cdot (38,1 - 29,2) \approx 621,3 \text{ W}$$
+    
+    \item {Source froide :}
+    $$\mathcal{P}_{F,2nd} = \dot{m}_{eau} \cdot C_{eau} \cdot (T_{s,f} - T_{e,f}) = 1,67 \times 10^{-2} \cdot 4180 \cdot (21,9 - 29,2) \approx -509,6 \text{ W}$$
+\end{itemize}
+
+On observe que $|\mathcal{P}_{C,2nd}| \approx |\mathcal{P}_c|$  et $|\mathcal{P}_{F,2nd}| \approx |\mathcal{P}_f|$. Les légers écarts s'expliquent par les pertes thermiques entre les échangeurs et l'air ambiant ainsi que par l'incertitude sur les lectures du diagramme de Mollier. Le bilan est donc cohérent : la puissance cédée par le fréon est bien récupérée par l'eau.
+
+\subsubsection{Comparaison avec la puissance électrique (Question d)}
+
+La puissance électrique active consommée par le compresseur est donnée par :
+$$\mathcal{P}_{elec} = 0,8 \cdot U \cdot I = 223 W$$\footnote{Donnée directement par la machine frigorifique}
+
+On constate que $\mathcal{P}_{elec} > \mathcal{P}_w$ . La différence représente les pertes du compresseur. Toute l'énergie électrique consommée n'est pas transmise au fluide sous forme de pression ; une partie est dissipée par effet Joule dans le moteur électrique et par frottements mécaniques dans le piston. Ces pertes sont très importantes car on a une différence de presque 100\% !
+
+\subsubsection{Efficacités ramenées à la consommation électrique}
+
+On définit les efficacités réelles (globales) de la machine en rapportant la puissance thermique utile non plus au travail reçu par le fluide, mais à la puissance électrique réellement consommée par le compresseur ($\mathcal{P}_{elec} = 223$ W).
+
+\begin{itemize}
+    \item {Efficacité PAC électrique :} 
+    $$\eta_{PAC, elec} = \frac{|\mathcal{P}_c|}{\mathcal{P}_{elec}} = \frac{633,3}{223} \approx 2,84$$
+    
+    \item {Efficacité MF électrique :} 
+    $$\eta_{MF, elec} = \frac{\mathcal{P}_f}{\mathcal{P}_{elec}} = \frac{533,3}{223} \approx 2,39$$
+\end{itemize}
+
+Ces valeurs sont logiquement inférieures aux efficacités calculées précédemment sur le fluide seul ($\eta_{PAC} \approx 6,33$ et $\eta_{MF} \approx 5,33$). Cet écart s'explique par le rendement du compresseur électrique : une partie importante de l'énergie électrique consommée (environ 55\%) est dissipée par effet Joule ou frottements mécaniques avant d'être transmise au fluide sous forme de travail de compression ($\mathcal{P}_w \approx 100$ W contre $\mathcal{P}_{elec} = 223$ W).
+\section{Conclusion}
+Ce TP nous a permis d'analyser concrètement le cycle thermodynamique d'une machine frigorifique à compression. 
+Les résultats obtenus sont cohérents avec la théorie :
+L'efficacité du fluide seul ($\eta_{PAC} \approx 6,33$ et $\eta_{MF} \approx 5,33$) est, comme prévu, bien inférieure à l'efficacité théorique de Carnot ($\approx 37$) en raison des irréversibilités du cycle.
+
+L'analyse de la puissance électrique consommée ($223$ W) a révélé un rendement électromécanique de compression d'environ 45\%, soulignant l'importance des pertes par effet Joule et des frottements mécaniques dans un système réel.
+
+
+
+
+En conclusion, malgré ces pertes, la machine reste performante. En mode Pompe à Chaleur, elle présente une efficacité électrique réelle de 2,84 ce qui signifie qu'elle transfère presque trois fois plus d'énergie thermique vers la source chaude qu'elle n'en consomme sous forme électrique (en puisant le complément dans la source froide).
+\end{document}

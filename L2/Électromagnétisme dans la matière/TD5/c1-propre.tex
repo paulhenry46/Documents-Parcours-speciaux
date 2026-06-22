@@ -1,0 +1,227 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 3}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%jesse.groenen@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%-pour mettre des images
+\usepackage[utf8]{inputenc}%encodage
+\usepackage{geometry}%pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%pour les boites d'exercices, de pbq et de croquis d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%Pour les boites info, danger et autres
+\usepackage{menukeys}%Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%pour les liens
+\usepackage{hyperref}%pour les liens (\`a mettre en dernier)
+\usepackage{caption}%pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{esint}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ez}{\vec{e_{z}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\newcommand{\vds}{\vec{\dd S}}
+\newcommand{\Ea}{\vec{E_{aux}}}
+%\setcounter{chapter}{3}
+\begin{document}
+
+\chapter{Propagation d'onde dans la matière}
+
+\section{Notions de cours}
+
+\begin{definition}[Permittivité et fonction diélectrique]
+La fonction diélectrique relative correspond à la permittivité relative du milieu, notée $\underline{\epsilon_r}$. En l'absence d'absorption, cette grandeur est réelle : $\underline{\epsilon_r} = \epsilon_r$.
+\end{definition}
+
+\checkInfo{Régime statique}{Dans ce chapitre, la pulsation de l'onde vérifie $\omega \ll \omega_{\text{domaines d'absorption}}$. On se place donc dans l'approximation statique où la permittivité prend sa valeur statique, notée $\epsilon_s$, avec $\epsilon_s > 1$.}
+
+\subsection{Équations de Maxwell dans un milieu localement neutre}
+
+Les champs électrique $\vec{E}$ et magnétique $\vec{B}$ sont recherchés sous forme d'ondes monochromatiques de pulsation $\omega$. En notation complexe :
+$$\underline{\vec{E}} = \underline{\vec{E_m}} e^{-i\omega t}$$
+
+Dans un milieu localement neutre ($\rho_{\text{libre}} = 0$ et $\vec{j}_{\text{libre}} = \vec{0}$), les équations de Maxwell s'écrivent :
+\begin{itemize}
+    \item $\rot \underline{\vec{H}} = \frac{\partial \underline{\vec{D}}}{\partial t} = -i\omega \underline{\vec{D}}$
+    \item $\rot \underline{\vec{E}} = -\frac{\partial \underline{\vec{B}}}{\partial t} = i\omega \underline{\vec{B}}$
+    \item $\Div \underline{\vec{D}} = 0$
+    \item $\Div \underline{\vec{B}} = 0$
+\end{itemize}
+
+Ces équations sont complétées par les deux relations constitutives du milieu non magnétique :
+\begin{itemize}
+    \item $\underline{\vec{D}} = \epsilon_0 \epsilon_s \underline{\vec{E}}$
+    \item $\underline{\vec{H}} = \frac{\underline{\vec{B}}}{\mu_0}$
+\end{itemize}
+
+\subsection{Équation de propagation}
+
+Pour établir l'équation de propagation de $\underline{\vec{E}}$, on prend le rotationnel de l'équation de Maxwell-Faraday en utilisant l'identité vectorielle : 
+$$\rot(\rot \underline{\vec{E}}) = \grad(\Div \underline{\vec{E}}) - \lap \underline{\vec{E}}$$
+
+Comme $\Div \underline{\vec{D}} = 0$ et que le milieu est homogène ($\epsilon_s = \text{cte}$), on a $\Div \underline{\vec{E}} = 0$, d'où $\rot(\rot \underline{\vec{E}}) = - \lap \underline{\vec{E}}$.
+
+\begin{flalign*}
+   \rot(\rot \underline{\vec{E}}) &= i\omega \rot\underline{\vec{B}} &\\
+   &= i\omega \mu_0 \rot \underline{\vec{H}} &\\
+   &= i\omega \mu_0 (-i\omega \underline{\vec{D}}) = \omega^2 \mu_0 \underline{\vec{D}} &\\
+   &= \omega^2 \epsilon_0 \mu_0 \epsilon_s \underline{\vec{E}} &
+\end{flalign*}
+
+En utilisant la relation $c^2 = \frac{1}{\epsilon_0 \mu_0}$, on obtient l'équation de Helmholtz :
+\begin{proposition}[Équation de Helmholtz]
+$$\lap\underline{\vec{E}} + \frac{\omega^2}{c^2}\epsilon_s \underline{\vec{E}} = \vec{0}$$
+\end{proposition}
+
+\subsection{Solution et relation de dispersion}
+
+On cherche une solution sous la forme d'une onde plane progressive harmonique (OPPH) se propageant selon l'axe $(Oz)$ :
+$$\underline{\vec{E}} = \vec{E}_0 e^{i(\underline{k}z - \omega t)} \quad \text{avec} \quad \vec{E}_0 = E_0\vec{e_x}$$
+
+\tipsInfo{Choix de la structure de l'onde}{L'onde est choisie transversale ($\vec{E} \cdot \vec{k} = 0$). Si $\vec{k} = \underline{k}\vec{e_z}$, le champ électrique vibre dans le plan $(Oxy)$. On choisit ici arbitrairement une polarisation rectiligne selon $\vec{e_x}$.}
+
+En injectant cette forme dans l'équation de propagation, l'opérateur laplacien se réduit à $\lap \underline{\vec{E}} = -\underline{k}^2 \underline{\vec{E}}$. On obtient :
+$$-\underline{k}^2 \underline{\vec{E}} + \frac{\omega^2}{c^2}\epsilon_s \underline{\vec{E}} = \vec{0}$$
+
+\begin{theorem}[Relation de dispersion]
+La relation de dispersion dans le milieu s'écrit :
+$$\underline{k}^2 = \epsilon_s \frac{\omega^2}{c^2}$$
+\end{theorem}
+
+\subsubsection{Analyse de l'indice complexe}
+
+On définit l'indice de réfraction complexe $\underline{n} = n + i\kappa$ tel que $\underline{n}^2 = \underline{\epsilon_r} = \epsilon_s$. En développant :
+$$n^2 - \kappa^2 + 2in\kappa = \epsilon_s$$
+
+Par identification des parties réelles et imaginaires :
+$$n^2 - \kappa^2 = \epsilon_s \quad \text{et} \quad 2n\kappa = 0$$
+
+Comme $\epsilon_s > 1$, la grandeur est strictement positive. La seule solution physique pour un milieu transparent est :
+$$n = \sqrt{\epsilon_s} \quad \text{et} \quad \kappa = 0$$
+
+Le vecteur d'onde est donc réel : $k = \frac{n\omega}{c}$. L'expression finale du champ est :
+$$\underline{\vec{E}}(z,t) = E_0 e^{i\left(\frac{n\omega}{c}z - \omega t\right)}\vec{e_x}$$
+L'amplitude réelle $E_0$ est constante au cours de la propagation : **il n'y a pas d'atténuation**.
+
+\subsection{Propriétés de l'onde}
+
+\begin{itemize}
+    \item \textbf{Vitesse de phase :} La phase de l'onde est $\phi = kz - \omega t$. Par définition :
+    $$v_{\varphi} = \frac{\omega}{k} = \frac{c}{n} = \frac{c}{\sqrt{\epsilon_s}} < c$$
+    
+    \item \textbf{Période spatiale (Longueur d'onde) :} 
+    $$\lambda = \frac{2\pi}{k} = \frac{2\pi c}{n\omega} = \frac{\lambda_0}{n}$$
+    où $\lambda_0 = \frac{2\pi c}{\omega}$ est la longueur d'onde dans le vide.
+    
+    \item \textbf{Champ magnétique de l'onde : } En utilisant la relation de structure des OPPH $\underline{\vec{B}} = \frac{\vec{k} \wedge \underline{\vec{E}}}{\omega}$ :
+    $$\underline{\vec{B}} = \frac{k}{\omega}\vec{e_z} \wedge \left(\underline{E_x}\vec{e_x}\right) = \frac{n}{c}\underline{E_x}\vec{e_y}$$
+\end{itemize}
+
+\subsection{Vecteur de Poynting et Intensité}
+
+Le vecteur de Poynting s'exprime à partir des champs réels : $\vec{\Pi} = \vec{E} \wedge \frac{\vec{B}}{\mu_0} = \frac{1}{\mu_0}E_x B_y \vec{e_z}$.
+
+L'intensité $I$ correspond à la valeur moyenne temporelle du flux du vecteur de Poynting :
+$$I = \langle \norm{\vec{\Pi}} \rangle = \frac{1}{2\mu_0} \text{Re}\left(\underline{E_x}\cdot \underline{B_y}^*\right) = \frac{1}{2\mu_0} E_0 B_0 = \frac{1}{2\mu_0} E_0^2 \frac{n}{c}$$
+
+En utilisant $c^2 = \frac{1}{\epsilon_0 \mu_0} \implies \frac{1}{\mu_0 c} = \epsilon_0 c$, on obtient :
+$$I = \frac{1}{2} n c \epsilon_0 E_0^2$$
+
+ \textit{Application numérique à faire : Calculer $v_{\varphi}$, $\lambda$ et $I$ avec les données de l'énoncé.}
+
+\section{L'arséniure de gallium (GaAs) dopé}
+
+Dans un semi-conducteur dopé, on combine la polarisation du milieu pur (matrice cristalline) et celle apportée par les porteurs libres issus du dopage.
+
+\subsection{Modèle de Drude pour les porteurs libres}
+
+On applique la seconde loi de Newton à un électron de conduction de masse effective $m^*$ et de charge $-e$ :
+$$m^* \frac{\dd \vec{v}}{\dd t} = \vec{F}_{\text{Lorentz}} - \frac{m^*}{\tau}\vec{v}$$
+
+\checkInfo{Hypothèse du modèle}{On néglige ici les collisions, ce qui revient à poser un temps moyen entre deux chocs $\tau \to \infty$. Le terme de force de frottement fluide $\frac{m^*}{\tau}\vec{v}$ est donc négligé.}
+
+\warningInfo{Électrons libres vs liés}{S'il s'agissait d'électrons liés (modèle de l'électron élastique de Lorentz), il aurait fallu rajouter une force de rappel élastique $-m^*\omega_0^2\vec{r}$. Ce terme est absent pour les porteurs libres du dopage.}
+
+\subsection{Hiérarchie des forces}
+
+Le rapport de la force magnétique sur la force électrique est donné par :
+$$\frac{\norm{\vec{F}_m}}{\norm{\vec{F}_e}} = \frac{\norm{-e\vec{v}\wedge\vec{B}}}{\norm{-e\vec{E}}} \sim \frac{v B_0}{E_0} = \frac{v}{v_{\varphi}} = \frac{v}{c}n \ll 1$$
+La force magnétique est donc totalement négligeable devant la force électrique en régime non relativiste.
+
+\subsection{Équation du mouvement et conductivité}
+
+L'équation du mouvement linéarisée en régime harmonique s'écrit :
+$$-i\omega m^* \underline{\vec{v}} = -e \underline{\vec{E}} \implies \underline{\vec{v}} = \frac{-e}{i\omega m^*}\underline{\vec{E}}$$
+
+Le vecteur densité de courant volumique associé aux $N$ porteurs libres par unité de volume vaut :
+$$\underline{\vec{J}} = -e N \underline{\vec{v}} = -i \frac{N e^2}{m^* \omega}\underline{\vec{E}}$$
+
+Par identification avec la loi d'Ohm locale $\underline{\vec{J}} = \underline{\sigma}\underline{\vec{E}}$, on en déduit la conductivité complexe :
+$$\underline{\sigma}(\omega) = -i \frac{N e^2}{m^* \omega}$$
+
+\subsection{Courant de polarisation et pulsation plasma}
+
+Le déplacement des charges libres génère un moment dipolaire macroscopique, définissant une polarisation des charges libres $\underline{\vec{P}}_{\text{libre}}$ telle que $\underline{\vec{J}} = \frac{\partial \underline{\vec{P}}_{\text{libre}}}{\partial t} = -i\omega \underline{\vec{P}}_{\text{libre}}$. On a donc :
+$$\underline{\vec{P}}_{\text{libre}} = \frac{i}{\omega}\underline{\vec{J}} = -\frac{N e^2}{m^* \omega^2}\underline{\vec{E}}$$
+
+On introduit la pulsation plasma du milieu $\omega_p$, définie par : $\omega_p^2 = \frac{N e^2}{m^* \epsilon_0 \epsilon_s}$. On peut alors écrire :
+$$\underline{\vec{P}}_{\text{libre}} = -\epsilon_0 \epsilon_s \frac{\omega_p^2}{\omega^2}\underline{\vec{E}}$$
+
+\subsection{Polarisation totale et permittivité relative du milieu dopé}
+
+La polarisation totale du milieu est la somme de la polarisation du cristal pur (GaAs non dopé, de permittivité $\epsilon_s$) et de celle des charges libres :
+$$\underline{\vec{P}} = \underline{\vec{P}}_{\text{pur}} + \underline{\vec{P}}_{\text{libre}} = \epsilon_0(\epsilon_s - 1)\underline{\vec{E}} - \epsilon_0 \epsilon_s \frac{\omega_p^2}{\omega^2}\underline{\vec{E}}$$
+
+$$\underline{\vec{P}} = \epsilon_0 \left[ \epsilon_s \left(1 - \frac{\omega_p^2}{\omega^2}\right) - 1 \right] \underline{\vec{E}} = \epsilon_0 (\underline{\epsilon_r} - 1)\underline{\vec{E}}$$
+
+Par identification, la permittivité relative globale du milieu dopé vaut :
+$$\epsilon_r(\omega) = \epsilon_s \left(1 - \frac{\omega_p^2}{\omega^2}\right)$$
+Cette valeur est purement réelle : il n'y a pas de terme imaginaire, donc pas de dissipation d'énergie par effet Joule à cette approximation.
+
+\subsection{Régimes de propagation et caractère de l'onde}
+
+L'indice complexe vérifie $\underline{n}^2 = (n+i\kappa)^2 = \epsilon_r(\omega)$. Deux cas de figure se présentent selon le signe de $\epsilon_r$ (contrôlé par la pulsation $\omega$ vis-à-vis de la pulsation plasma $\omega_p$, et donc par le dopage $N$) :
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Condition} & $N < N_0 \iff \omega > \omega_p$ & $N > N_0 \iff \omega < \omega_p$ \\ \hline
+\textbf{Signe de $\epsilon_r$} & $\epsilon_r > 0$ & $\epsilon_r < 0$ \\ \hline
+\textbf{Composantes de $\underline{n}$} & $n = \sqrt{\epsilon_r}$ et $\kappa = 0$ & $n = 0$ et $\kappa = \sqrt{|\epsilon_r|}$ \\ \hline
+\textbf{Forme du champ $\underline{\vec{E}}$} & $E_0 e^{i(kz-\omega t)}\vec{e_x}$ & $E_0 e^{-\frac{\omega}{c}\kappa z} e^{-i\omega t}\vec{e_x}$ \\ \hline
+\textbf{Nature de l'onde} & \textbf{Onde propagative} (Milieu transparent) & \textbf{Onde évanescente} (Milieu réfléchissant) \\ \hline
+\end{tabular}
+\caption{Régimes de propagation dans le GaAs dopé.}
+\end{table}
+\end{document}

@@ -1,0 +1,171 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 3}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%jesse.groenen@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+%\setcounter{chapter}{3}
+\begin{document}
+%\chapter{Puissance et énergie du champ Em}
+\setcounter{chapter}{5}
+\chapter{Aspects microscopique}
+\section{Moment magnétiques atomiques}
+\subsection{Moment magnétique orbital}
+\begin{definition}[Moment magnétique d'un électron autour d'un noyau]
+    Moment d'un électron autour d'un noyau : $\vec{L} = \vec{r}\wedge (m_e \vec{v})$
+
+    Moment d'un courant circulaire : $\vec{\mu} = iS\vec{n} = i\pi r^2\vec{n}$
+
+    Le moment magnétique total : $\vec{\mu} = -\frac{e}{2m_e}\vec{L} = \gamma_e \vec{L}$
+\end{definition}
+\begin{definition}[Magnéton de Bohr]
+    $\mu_{l,z} =\gamma_e L_z =  -m_l \mu_B$ avec $\mu_B$ le magnéton de Bohr.
+\end{definition}
+\subsection{Moment magnétique de Spin}
+On ajoute le moment cinétique intrinsèque de l'électron : Spin S : $S_z = m_s \hbar$
+\subsection{Moment total}
+$\vec{j} = \vec{L} + \vec{S}$ et $\norm{J}^2 = (j(j+1))\hbar^2$
+\section{Diamagnétisme}
+On étudie le phénomène d'induction à l'échelle microscopique en présence d'un champ magnétique appliqué : $\vec{B_a} = B_a \vec{e_z}$
+\begin{theorem}{Orientation d'aimantation pour le diamagnétisme}
+    L'orientation de l'aimantation est opposée à celle de $\vec{B_a}$, conformément à la Loi de Lenz. Son effet est très faible
+\end{theorem}
+
+Le diamagnétisme est extrêmement faible : $\chi_m \simeq 10^{-6}$
+
+Dans ce cas, $\vec{B_{local}}\simeq \vec{B_a}$
+% \section{Paramagnétisme}
+% Ici, $\chi_m \simeq 10^{-3}$
+
+
+% Il faut un moment cinétique total $\vec{j}\neq \vec{0}$
+
+% Le Paramagnétisme dépend de la température
+% \subsection{Théorie de Brillouin}
+% \subsubsection{Théorie}
+% %TODO Explication très simple
+% \subsubsection{Cas simple : 1 é célibataire}
+% On a $\vec{M} = n_v \mu_b \th(X)\vec{e_z}$
+
+% Quand $X>> 1, \th(X)\to 1$ : Tous les moments sont alignés sur $\vec{B_a}$. C'est le cas pour un régime en basse température ou un champ très fort.
+
+% Quand X est faible, on a $\th(X) \simeq X$ : on a une expression linéaire.
+
+% Si $n_v$ est trop grand, l'approximation des moments indépendants cesse d'être valide
+
+
+
+\section{Paramagnétisme}
+
+Le paramagnétisme désigne le comportement d'un milieu matériel qui n'a pas d'aimantation spontanée, mais qui acquiert sous l'effet d'un champ magnétique extérieur $\vec{B_a}$ une aimantation alignée dans le même sens que ce champ.
+
+\checkInfo{Ordre de grandeur}{La susceptibilité magnétique est positive et faible : $\chi_m \simeq 10^{-3}$ à $10^{-5}$.}
+
+\criticalInfo{Condition atomique}{Pour observer du paramagnétisme, il faut que les atomes ou ions possèdent un moment cinétique total non nul ($\vec{J} \neq \vec{0}$), ce qui implique la présence d'électrons célibataires (couches électroniques incomplètes).}
+
+\subsection{Théorie de Brillouin}
+
+\subsubsection{Théorie}
+
+L'origine du paramagnétisme est quantique. Lorsqu'un atome possède un moment magnétique permanent $\vec{\mu}$, son interaction avec un champ magnétique extérieur $\vec{B_a}$ est décrite par l'énergie potentielle dipolaire :
+$$E_p = -\vec{\mu} \cdot \vec{B_a}$$
+\subsubsection{Cas simple : un électron célibataire}
+
+\begin{proposition}
+L'aimantation macroscopique $\vec{M}$ d'un système de $n_v$ moments indépendants par unité de volume s'exprime par :
+$$\vec{M} = n_v \mu_B \tanh(X)\vec{e_z}$$
+où $\mu_B$ est le magnéton de Bohr, $\vec{e_z}$ est la direction du champ appliqué $\vec{B_a}$, et $X$ est le paramètre sans dimension :
+$$X = \frac{\mu_B B_a}{k_B T}$$
+\end{proposition}
+
+
+\subsubsection{Gas général}
+\begin{definition}
+    Aimantation volumique : $\vec{M} = n_v g\mu_B B_j(X)\vec{e_z}$
+
+\end{definition}
+\section{Ferromagnétisme}
+\begin{definition}
+    Cela résulte de l'interaction entre atomes du fait des spins des électrons des couches périphériques incomplètes associées à des
+sites voisins.
+
+On peut avoir une aimantation même en l'absence de champ appliqué. On qualifiera cette aimantation de spontannée.
+\end{definition}
+
+% \subsection{Courbe de première aimantation et cycle Histérésis}
+% M ne prend pas les mêmes valeurs durant l'évolution de H. C'est un effet d'histérésis.
+
+% On écrit : $\mu_r = \frac{B}{\mu_0H}$
+% \subsection{Interpération microscopique}
+% \begin{definition}
+%     Modèle de Weiss : $\vec{B} = \vec{B_a}+\lambda \vec{M}$
+% \end{definition}
+
+\subsection{Courbe de première aimantation et cycle d'hystérésis}
+
+Pour les matériaux ferromagnétiques, la relation entre l'aimantation $\vec{M}$ (ou l'induction $\vec{B}$) et le champ excitateur $\vec{H}$ n'est plus linéaire et dépend de l'histoire magnétique du matériau.
+
+\begin{definition}[Courbe de première aimantation]
+    C'est la courbe obtenue en augmentant progressivement le champ $H$ à partir d'un état initial totalement désaimanté ($H=0, M=0$). Elle présente une zone de forte croissance avant de stagner à la saturation $M_{\text{sat}}$.
+\end{definition}
+
+Lorsqu'on fait osciller le champ $H$ entre deux valeurs extrêmes $-H_{\max}$ et $+H_{\max}$, $M$ ne suit pas le même chemin à l'aller et au retour : c'est le phénomène d'hystérésis.
+
+\warningInfo{Caractéristiques du cycle}{On définit deux grandeurs fondamentales sur un cycle d'hystérésis :
+\begin{itemize}
+    \item \textbf{L'aimantation rémanente $M_r$ (ou $B_r$) :} L'aimantation subsistant lorsque le champ appliqué est annulé ($H = 0$).
+    \item \textbf{Le champ coercitif $H_c$ :} Le champ inverse qu'il faut appliquer pour annuler l'aimantation ($M = 0$).
+\end{itemize}}
+
+\subsection{Interprétation microscopique}
+\begin{definition}
+    \textbf{Modèle du champ moléculaire de Weiss :} On modélise ces interactions quantiques complexes (interactions d'échange) en postulant que chaque moment magnétique subit, en plus du champ extérieur $\vec{B_a}$, un champ effectif proportionnel à l'aimantation du milieu, appelé champ moléculaire :
+    $$\vec{B}_{\text{eff}} = \vec{B_a} + \lambda \vec{M}$$
+    où $\lambda$ est la constante de Weiss ($\lambda > 0$).
+\end{definition}
+\end{document}

@@ -1,0 +1,128 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 2 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\setcounter{chapter}{1}
+\begin{document}
+\chapter{Induction}
+\section{Lois de l'induction}
+\subsection{Force électromotrice}
+\begin{definition}[Force électromotrice (fem)]
+    Toute variation de flux magnétique à travers un circuit provoque l'apparition d'une fem. Le circuit est alors équivalent à
+    une source de tension notée $e$. Si le circuit est ouvert, la tension vaut $e$, dans le cas contraire, elle induit l'apparition d'un courant induit noté $i$.
+
+    $$e(t) = \int \E_m\cdot \vec{\dd l}$$ où $\E_m$ est le champ électromoteur
+\end{definition}
+En utilisant la force de Lorentz et l'équation de Maxwell-Faraday, on décompose $\vec{E}_m$ selon l'origine physique du mouvement des charges :
+\begin{theorem}[Décomposition de la fem]
+    $$e(t) = \oint_C \left( \frac{\partial \vec{B}}{\partial t} + \vec{v} \wedge \vec{B} \right) \cdot \vec{dl}$$
+\end{theorem}
+\begin{itemize}
+    \item \textbf{Terme de Neumann :} Lié à la variation temporelle du champ magnétique ($\vec{\text{rot}} \vec{E}_{induit} = -\frac{\partial \vec{B}}{\partial t}$). C'est l'induction "statique".
+    \item \textbf{Terme de Lorentz :} Lié au mouvement du circuit à la vitesse $\vec{v}$. C'est l'induction "cinématique".
+\end{itemize}
+\subsection{Lois de Faraday}
+\begin{theorem}[Loi de Faraday]
+    $$e(t) = -\frac{\dd \phi}{\dd t}$$ avec $\phi = \iint_S \B\cdot \vec{\dd S}$.
+\end{theorem}
+\warningInfo{Validité de la loi de Faraday}{On peut croire qu'elle est valable uniquement quand le circuit est immobile. Cependant, si le circuit bouge, la surface S sur laquelle est calculé l'intégrale dépend du temps, ce qui est pris en compte lors de la dérivation.}
+\begin{theorem}[Loi de Lenz]
+    Les phénomènes d'induction s'opposent par leur effets aux causes qui leur ont donné naissance. On en déduit que le sens du
+    courant induit est tel que le flux de son propre champ magnétique s'oppose à la variation de flux inducteur.
+\end{theorem}
+\begin{theorem}[Équation de Maxwell Faraday]
+    $$\rot \E_{induit} = -\frac{\partial \B}{\partial t}$$
+\end{theorem}
+\criticalInfo{Différences de champ}{
+    \begin{itemize}
+    \item \textbf{Le champ induit $\vec{E}_i$ :} Champ électrique d'origine magnétique, lié à la variation temporelle de $\vec{B}$ (induction de Neumann). Il vérifie $\vec{\text{rot}} \vec{E}_i = -\frac{\partial \vec{B}}{\partial t}$.
+    \item \textbf{Le champ électromoteur de Lorentz $\vec{v} \wedge \vec{B}$ :} Contribution liée au mouvement du circuit dans un champ magnétique (induction de Lorentz).
+    \item \textbf{Le champ électromoteur total $\vec{E}_m$ :} Somme des deux contributions précédentes. Sa circulation le long du circuit donne la f.e.m. totale :
+    $$e(t) = \oint_C \vec{E}_m \cdot \vec{dl} = \oint_C (\vec{E}_i + \vec{v} \wedge \vec{B}) \cdot \vec{dl}$$
+\end{itemize}
+}
+\subsection{Distinction entre Dérivée Partielle et Dérivée Totale}
+\subsubsection{L'approche locale : On dérive $\vec{B}$ puis on intègre}
+C'est ce que l'on fait pour calculer la contribution de \textbf{Neumann} uniquement. On regarde comment le champ change en chaque point d'une surface que l'on considère comme "gelée" à l'instant $t$ :
+$$\text{f.e.m. de Neumann} = \iint_{S} \left( -\frac{\partial \vec{B}}{\partial t} \right) \cdot \vec{dS}$$
+\begin{itemize}
+    \item Ici, on utilise la \textbf{dérivée partielle} ($\partial$).
+    \item On ne s'occupe pas du mouvement du contour. 
+    \item Cette intégrale est égale à la circulation du champ induit : $\oint_C \vec{E}_i \cdot \vec{dl}$.
+\end{itemize}
+
+\subsubsection{L'approche globale (Faraday) : On intègre puis on dérive le tout}
+C'est la méthode la plus complète. On calcule d'abord le flux total $\phi(t)$ à travers la surface $S(t)$ telle qu'elle est à l'instant $t$ (en tenant compte de sa position et de sa forme), puis on dérive le résultat par rapport au temps :
+$$e(t) = -\frac{d}{dt} \left( \iint_{S(t)} \vec{B} \cdot \vec{dS} \right)$$
+\begin{itemize}
+    \item Ici, on utilise la \textbf{dérivée totale} ($d/dt$).
+    \item Cette opération mathématique "capture" automatiquement deux effets :
+    \begin{enumerate}
+        \item La variation de $\vec{B}$ (le terme en $\partial \vec{B} / \partial t$ ci-dessus).
+        \item Le mouvement de la surface (qui correspond physiquement au terme de Lorentz $\vec{v} \wedge \vec{B}$).
+    \end{enumerate}
+\end{itemize}
+\section{Auto-Induction et inductance d'une bobine}
+\subsection{Phénomène d'auto-Induction}
+On considère une spire avec une inensité variable. On observe le champ crée par l'inetsnité mais il y a aussi le 
+champ induit par la variation du courant. Cela crée un nouveau courant, qui va s'opposer au courant initial. C'est l'auto-induction.
+
+\begin{definition}[Auto-induction]
+    La spire parcourue par un courant crée un champ B qui crée un courant induit dans cette spire.
+    Par la loi de Lorenz, le courant induit s'oppose au courant initial.
+\end{definition}
+\subsection{Induction propre et inductance}
+\begin{definition}[Flux propre]
+    Flux crée par la spire à l'intérieur d'elle-m\^eme, dépend de B, qui dépend des caractéristiques
+    de la spire et de l'intensité du courant.
+\end{definition}
+On peut donc écrire $\phi = L i(t)$, avec L qui est une constante en henry. 
+
+On a donc $$e= -\frac{\dd \phi}{\dd t} = -L\frac{\dd i}{\dd t}$$
+
+\end{document}

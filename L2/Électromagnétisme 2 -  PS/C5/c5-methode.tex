@@ -1,0 +1,290 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 2 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\setcounter{chapter}{4}
+\begin{document}
+
+\chapter{Ondes EM dans le vide}
+\subsection{Notions de base}
+Une Onde Plane Progressive Sinusoïdale (OPPS) est caractérisée par un vecteur d'onde $\vec{k}$ tel que tous les points d'un plan perpendiculaire à $\vec{k}$ ont la même phase. Son expression complexe générale est\marginWarning{L'énoncé utilise $e^{i(\alpha x + \beta y - \omega t)}$. Attention, c'est la convention "physicien" ($i(\vec{k}\cdot\vec{r} - \omega t)$). Soyez cohérents dans vos dérivations spatiales ($\nabla \to i\vec{k}$) et temporelles ($\frac{\partial}{\partial t} \to -i\omega$).}
+ :
+$$\underline{\vec{E}} = \vec{E}_0 e^{i(\omega t - \vec{k}\cdot\vec{r} + \phi)}$$
+
+
+\tipsInfo{Vecteur d'onde et Direction}{Le vecteur d'onde $\vec{k}$ pointe toujours dans la direction de propagation. Ici, comme la propagation est dans le plan $xOy$ avec un angle $\theta$ par rapport à $Ox$, on a $\vec{k} = k \cos\theta \vec{e}_x + k \sin\theta \vec{e}_y$.}
+
+
+\subsection{Équation de propagation et structure de l'onde}
+\subsubsection{Équation de propagation}
+Dans le vide ($\rho = 0, \vec{j} = \vec{0}$), le champ électrique vérifie l'équation de d'Alembert :
+$$\Delta \vec{E} - \frac{1}{c^2} \frac{\partial^2 \vec{E}}{\partial t^2} = \vec{0}$$
+
+\subsubsection{Relation de dispersion}
+En injectant $\underline{\vec{E}} = E_0 e^{i(\alpha x + \beta y - \omega t)} \vec{e}_z$ :
+
+$\Delta \underline{\vec{E}} = \left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} \right) \underline{\vec{E}}$
+\marginWarning{Le Laplacien $\Delta$ est un opérateur scalaire : il ne change pas la nature de l'objet auquel il s'applique. S'il s'applique à une fonction scalaire $V$, le résultat $\Delta V$ est un scalaire. S'il s'applique à un champ vectoriel $\vec{E}$ (Laplacien vectoriel), le résultat $\Delta \vec{E}$ est un vecteur dont chaque composante est le Laplacien de la composante correspondante. Ici, il n'y a qu'une composante selon que $e_z$, qui ne dépend que x et y, donc la dérivée selon z est nulle.} $= (i\alpha)^2 \underline{\vec{E}} + (i\beta)^2 \underline{\vec{E}} = -(\alpha^2 + \beta^2) \underline{\vec{E}}$\marginTips{Analyse préliminaire : Tous les points telq que $\alpha x+\beta y$ = Cst sont dans le m\^eme état vibratoire. Ils appartiennent à un plan orthogonal à $\vec{k}$. D'où l'appellation onde plane.}
+
+$\frac{\partial^2 \underline{\vec{E}}}{\partial t^2} = (-i\omega)^2 \underline{\vec{E}} = -\omega^2 \underline{\vec{E}}$
+
+On obtient la relation : 
+$$\alpha^2 + \beta^2 = \frac{\omega^2}{c^2} (= k^2)$$
+
+\subsubsection{Interprétation}
+$\alpha$ et $\beta$ sont les composantes $k_x$ et $k_y$ du vecteur d'onde $\vec{k}$.
+
+Longueur d'onde : $\lambda = \frac{2\pi}{k} = \frac{2\pi}{\sqrt{\alpha^2 + \beta^2}}$.
+
+Direction $\theta$ : Comme $k_x = k \cos\theta$ et $k_y = k \sin\theta$, alors $\tan\theta = \frac{\beta}{\alpha}$.
+
+\subsection{Champs et Impédance}
+
+\subsubsection{Champ magnétique}
+D'après la relation de structure des OPPS dans le vide\marginCritical{Ne pas oublier que cela vient de l'équation de Faraday, appliqué au cas particulier d'une onde plane. Pour le calcul, on peut utiliser au choix la partie réelle de E ou sa version complexe.} : $\vec{B} = \frac{\vec{k} \wedge \vec{E}}{\omega}$.
+
+$\vec{k} = \alpha \vec{e}_x + \beta \vec{e}_y$ et $\vec{E} = E \vec{e}_z$.
+$$\vec{B} = \frac{1}{\omega} (\alpha \vec{e}_x + \beta \vec{e}_y) \wedge (E \vec{e}_z) = \frac{E}{\omega} (\beta \vec{e}_x - \alpha \vec{e}_y)$$
+$\vec{E}$ et $\vec{B}$ sont orthogonaux entre eux et orthogonaux à la direction de propagation $\vec{k}$.
+
+%\subsubsection{Impédance du vide}
+% $$H = \frac{B}{\mu_0} = \frac{k E}{\mu_0 \omega} = \frac{E}{\mu_0 c}$$
+% \warningInfo{Relation entre E et B}{On remarque bien que $E=Bc$}
+% $$Z_0 = \frac{E}{H} = \mu_0 c = \sqrt{\frac{\mu_0}{\epsilon_0}} \approx 377 \Omega$$
+
+% \subsection{Potentiels}
+
+% \subsubsection{Méthode des potentiels}
+% %À refaire avec plus de rigeur TODO
+% On utilise la jauge de Lorentz dans le vide : $\text{div} \vec{A} + \frac{1}{c^2} \frac{\partial V}{\partial t} = 0$.
+% Pour une onde transverse, on peut choisir $V=0$. Alors $\vec{E} = -\frac{\partial \vec{A}}{\partial t} = i\omega \vec{A}$\marginTips{En effet, A a la meme forme complexe, donc on peut utiliser les règles de dérivation complexe.}.
+% \begin{proposition}
+% Pour une OPPS avec $V=0$, le potentiel vecteur est colinéaire au champ électrique :
+% $$\vec{A} = \frac{\vec{E}}{i\omega}$$
+% \end{proposition}
+
+% \criticalInfo{Indépendance de $A_\parallel$}{Le champ magnétique $\vec{B} = \text{rot} \vec{A}$ et $\vec{E}$ dépendent des variations spatiales de $\vec{A}$. Une composante $A_\parallel$ (selon $\vec{k}$) dont la phase ne varie que selon $\vec{k}$ n'intervient pas dans le rotationnel de façon transverse. On peut donc la poser nulle sans modifier les champs physiques.}
+
+\subsection{Énergie et Vitesse}
+
+\subsubsection{Vecteur de Poynting}
+\begin{flalign*}
+    \vec{\Pi} &= \frac{\vec{E} \wedge \vec{B}}{\mu_0}\\
+    &=\frac{1}{\mu_0} \norm{E}\norm{B} \vec{u}\\
+    &= \frac{1}{\mu_0} E_0\cos(\alpha x+\beta y-\omega t)\frac{E_0}{\omega}\cos(\alpha x+\beta y-\omega t)(\sqrt{\alpha^2+\beta^2})\vec{u}\\
+    &= \frac{1}{\mu_0} E_0\cos(\alpha x+\beta y-\omega t)\frac{E_0}{\omega}\cos(\alpha x+\beta y-\omega t)k\vec{u}\\
+    &= \frac{E_0^2}{\omega \mu_0} \cos(\alpha x+\beta y-\omega t)^2\vec{k}\\
+\end{flalign*}
+% On écrit en prenant la partie réelle de $E$. Donc $$\vec{\Pi} = \frac{E_0^2}{\mu_0\omega}\cos^2(\alpha x+\beta y - \omega t)\vec{k}$$
+% $\vec{\Pi} = \frac{\vec{E} \wedge \vec{B}}{\mu_0}$. 
+La valeur moyenne pour une onde sinusoïdale est :
+$$\langle \Pi \rangle = \frac{E_0^2}{2 \mu_0 c} \frac{\vec{k}}{k}$$
+\criticalInfo{Notation complexe}{Pour calculer E et B, on peut toujours prendre la partie réelle pour avoir B. Cependant, avec le vecteur de Poyting, comme on multiplie 2 complexes, cela va donner un complexe et la puissance transportée ne peut être transportée (la partie réelle du produit n'est pas le produit des parties réelles)
+
+Cependant, on peut calculer directement la valeur moyenne du vecteur de Poyting avec $$\frac12 Re(\frac{\vec{\underline{E}}\wedge \vec{\underline{B}*}}{\mu_0})$$
+}
+\subsubsection{Densité d'énergie}
+
+$\langle u \rangle = \frac{1}{2} \epsilon_0 E_{eff}^2 + \frac{1}{2\mu_0} B_{eff}^2$. Dans le vide, il y a équipartition :
+\begin{flalign*}
+    u_{em} &=\frac{1}{2} \epsilon_0 E_{eff}^2 + \frac{1}{2\mu_0} B_{eff}^2\\
+     &=\frac{1}{2} \epsilon_0 E_{0}^2\cos(\dots)^2 + \frac{k^2}{2\omega^2 \mu_0} E_{0}^2\cos(\dots)^2\\
+     &= \frac{1}{2}  E_{0}^2\cos(\dots)^2(\epsilon_0 + \frac{k^2}{\omega^2 \mu_0})\\
+     &= \frac{1}{2}  E_{0}^2\cos(\dots)^2(2\epsilon_0)\\
+     &=  E_{0}^2\cos(\dots)^2\epsilon_0\\
+     \langle u_{em} \rangle &= \frac12 E_{0}^2\epsilon_0
+\end{flalign*}
+%$$\langle u \rangle = \epsilon_0 \frac{E_0^2}{2} = \frac{E_0^2}{2 \mu_0 c^2}$$
+
+On peut aussi utiliser : 
+\begin{flalign*}
+    u_{em} &= \frac{\epsilon_0}{2}E^2+\frac{1}{2\mu_0}B^2\\
+    \langle u_{em} \rangle  &= \frac12 Re(\frac{\underline{E}\underline{E}^*}{2} + \frac{1}{2\mu_0}\underline{B}\underline{B}^*)\\
+    &= \frac12 Re(\frac{|E|^2}{2} + \frac{1}{2\mu_0}|B|^2)\\
+    &= \frac{\epsilon_0}{4}E_0^2 + \frac{E_0^2}{4\mu_0 c^2}\\
+    &= \frac{\epsilon_0}{2}E_0^2
+\end{flalign*}
+Le développement ci-dessus marche aussi avec des grandeurs réelles\marginTips{On retombe alors sur les formules réelles du cours}.
+
+\subsubsection{Vitesse de l'énergie}
+\begin{theorem}
+La vitesse de propagation de l'énergie est définie par : $v_E = \frac{\langle \Pi \rangle}{\langle u \rangle}$.
+En remplaçant, on trouve $v_E = c$.
+\end{theorem}
+Le flux de puissance est transporté à la vitesse de la lumière. $v_e$ est la vitesse d'écoulement de l'énergie. \marginInfo{Il y a un écoulement à vitesse constante, le flux est emmaganiser au départ, donc une densité de courant est une densité volumique fois une vitesse.}
+\subsection{Application Numérique}
+
+% \checkInfo{Données}{
+% $P = 600$ W, $d = 2 \cdot 10^{-3}$ m (soit $S = \pi d^2 / 4$).
+% }
+
+% La puissance est le flux du vecteur de Poynting : $P = \langle \Pi \rangle \cdot S$.
+
+% 1.  $\langle \Pi \rangle = \frac{P}{S} = \frac{600}{\pi (10^{-3})^2} \approx 1,91 \cdot 10^8 \text{ W.m}^{-2}$.
+
+% 2.  $E_0 = \sqrt{2 \mu_0 c \langle \Pi \rangle} \approx \sqrt{2 \cdot 377 \cdot 1,91 \cdot 10^8} \approx 3,8 \cdot 10^5 \text{ V.m}^{-1}$.
+
+% 3.  $B_0 = \frac{E_0}{c} \approx 1,27 \cdot 10^{-3} \text{ T}$.
+
+\section{Superposition}
+
+\begin{definition}
+La superposition de deux OPPS de même fréquence mais de directions différentes crée une onde dont la structure n'est plus "plane" au sens strict, mais présente des zones d'extinction (nœuds) et de renforcement (ventres) fixes dans l'espace.
+\end{definition}
+
+\tipsInfo{Symétrie du vecteur d'onde}{Si deux ondes se propagent à $\theta$ et $-\theta$ par rapport à $Ox$ dans le plan $xOy$ :
+
+$\vec{k}_1 = k_0 (\cos\theta \vec{e}_x + \sin\theta \vec{e}_y)$
+
+$\vec{k}_2 = k_0 (\cos\theta \vec{e}_x - \sin\theta \vec{e}_y)$
+
+La composante sur $Ox$ est identique, seule la composante sur $Oy$ change de signe.}
+
+
+
+\subsection{Champ Électrique Résultant}
+Les ondes vibrent en phase à l'origine, donc $\phi = 0$.
+
+$\underline{\vec{E}}_1 = E_0 e^{i(k_0 \cos\theta x + k_0 \sin\theta y - \omega_0 t)} \vec{e}_z$
+
+$\underline{\vec{E}}_2 = E_0 e^{i(k_0 \cos\theta x - k_0 \sin\theta y - \omega_0 t)} \vec{e}_z$
+
+En factorisant par le terme commun $e^{i(k_0 \cos\theta x - \omega_0 t)}$ :
+
+$\underline{\vec{E}}_{res} = E_0 {\color{red}e^{i(k_0 \cos\theta x - \omega_0 t)}} \left( e^{ik_0 \sin\theta y} + e^{-ik_0 \sin\theta y} \right) \vec{e}_z$
+
+En utilisant la formule d'Euler ($e^{ia} + e^{-ia} = 2\cos a$) et en prenant la partie réelle :
+$$\vec{E}(M,t) = 2E_0 \cos(k_0 \sin\theta y)  {\color{red}\cos(k_0 \cos\theta x - \omega_0 t)} \vec{e}_z$$
+
+\subsection{Champ Magnétique Résultant}
+\subsubsection{Première méthode}
+\criticalInfo{Erreur courante}{Il ne faut utiliser la formule traditionelle et faire le raisonnement suivant sur directement $E_{total}$. }
+On utilise la relation $\vec{B} = \frac{\vec{k} \wedge \vec{E}}{\omega}$ pour chaque onde :
+
+$\vec{B}_1 = \frac{E_0}{\omega_0} e^{i \phi_1} (\vec{k}_1 \wedge \vec{e}_z) = \frac{E_0}{c} e^{i \phi_1} (\sin\theta \vec{e}_x - \cos\theta \vec{e}_y)$
+
+$\vec{B}_2 = \frac{E_0}{\omega_0} e^{i \phi_2} (\vec{k}_2 \wedge \vec{e}_z) = \frac{E_0}{c} e^{i \phi_2} (-\sin\theta \vec{e}_x - \cos\theta \vec{e}_y)$
+
+
+
+On pose les phases $\phi_1 = \omega_0 t - k_x x - k_y y$ et $\phi_2 = \omega_0 t - k_x x + k_y y$ (avec $k_x = k\cos\theta$ et $k_y = k\sin\theta$).
+Le champ total est $\vec{B} = \text{Re}(\vec{B}_1 + \vec{B}_2)$.
+
+Composante selon $\vec{e}_x$ :
+$$B_x = \frac{E_0}{c} \sin\theta \left[ \cos(\omega_0 t - k_x x - k_y y) - \cos(\omega_0 t - k_x x + k_y y) \right]$$
+
+On utilise  $\cos(p) - \cos(q) = -2\sin(\frac{p+q}{2})\sin(\frac{p-q}{2})$ avec
+\begin{itemize}
+    \item $p = \omega_0 t - k_x x - k_y y$
+    \item $q = \omega_0 t - k_x x + k_y y$
+\item $\frac{p+q}{2} = \omega_0 t - k_x x$
+\item $\frac{p-q}{2} = -k_y y$
+\end{itemize}
+
+D'où :
+\explanation{1}{En effet, $\sin(-k_y y) = -\sin(k_y y)$, et $\sin(\omega_0 t - k_x x) = -\sin(k_x x - \omega_0 t)$}
+\begin{flalign*}
+    B_x &= \frac{E_0}{c} \sin\theta \left[ -2 \sin(\omega_0 t - k_x x) \sin(-k_y y) \right]\\
+&= -\frac{2E_0}{c} \sin\theta \sin(k_y y) \sin(k_x x - \omega_0 t)\explain{1}{right}{0}{0.5}{}\\
+\end{flalign*}
+
+ Composante selon $\vec{e}_y$ :
+$$B_y = -\frac{E_0}{c} \cos\theta \left[ \cos(\omega_0 t - k_x x - k_y y) + \cos(\omega_0 t - k_x x + k_y y) \right]$$
+
+En utilisant $\cos(p) + \cos(q) = 2\cos(\frac{p+q}{2})\cos(\frac{p-q}{2})$ :
+$$B_y = -\frac{2E_0}{c} \cos\theta \cos(\omega_0 t - k_x x) \cos(-k_y y)$$
+Par parité du cosinus et en sachant que $\cos(\omega_0 t - k_x x) = \cos(k_x x - \omega_0 t)$ :
+$$B_y = -\frac{2E_0}{c} \cos\theta \cos(k_y y) \cos(k_x x - \omega_0 t)$$
+
+On obtient bien :
+$$\vec{B}(M,t) = \frac{2E_0}{c} \left[ {\color{red}-} \sin\theta \sin(k_y y) \sin(k_x x - \omega_0 t) \vec{e}_x - \cos\theta \cos(k_y y) \cos(k_x x - \omega_0 t) \vec{e}_y \right]$$
+
+(Avec $k_x = k_0 \cos\theta$ et $k_y = k_0 \sin\theta$)
+\subsubsection{Deuxième méthode}
+On utilise $$-\frac{\partial \vec{B}}{\partial t}=  \vec{\rot \vec{E}}$$ en notation réelle.
+
+On calcule le rotationnel e 
+\subsection{Nature de l'onde}
+\begin{proposition}
+L'onde résultante est polarisée rectilignement (le champ électrique reste selon $Oz$) mais elle n'est plus une onde plane. 
+\end{proposition}
+Justification : L'amplitude $2E_0 \cos(k_y y)$ dépend de la position $y$. Les plans d'onde (amplitude constante) ne sont pas des plans infinis perpendiculaires à la propagation. C'est une onde stationnaire selon $Oy$ et progressive selon $Ox$. Les points à x constant n'oscillent pas à la même amplitude.
+
+\subsection{Plans de Nœuds}
+Le champ $\vec{E}$ s'annule si $\cos(k_0 \sin\theta y) = 0$, soit $k_0 \sin\theta y = \frac{\pi}{2} + n\pi$.
+Les plans de nœuds sont définis par $y_n = \frac{\pi / 2 + n\pi}{k_0 \sin\theta}$.
+La distance minimale entre deux plans est :
+$$d = y_{n+1} - y_n = \frac{\pi}{k_0 \sin\theta} = \frac{\lambda_0}{2 \sin\theta}$$
+
+
+
+\subsection{Énergie et Puissance}
+Densité d'énergie moyenne : $\langle u \rangle = \epsilon_0 \langle E^2 \rangle$. Ici, le $\cos^2(k_y y)$ reste dans l'expression car on moyenne sur le temps, pas sur l'espace.
+$$\langle u \rangle = 2\epsilon_0 E_0^2 \cos^2(k_0 \sin\theta y)$$
+Puissance moyenne : Elle traverse $S$ (plan $yOz$, donc normale $\vec{e}_x$). On calcule $\langle \Pi \rangle \cdot \vec{e}_x$.
+
+Le calcul donne une propagation nette uniquement selon $Ox$. La puissance est surtout transportée entre les plans médians des plans nodaux
+
+% \subsection{Vitesse de Groupe vs Vitesse de Phase}
+% \begin{theorem}
+% 1. Vitesse de phase $v_\phi$ : C'est la vitesse de l'argument du cosinus progressif : $v_\phi = \frac{\omega_0}{k_0 \cos\theta} = \frac{c}{\cos\theta}$.
+% 2. Vitesse de groupe $v_g$ : C'est la vitesse de l'énergie. Ici, $v_g = c \cos\theta$.
+% \end{theorem}
+
+
+% On remarque que $v_\phi \cdot v_g = c^2$. 
+% \begin{itemize}
+%     \item $v_\phi > c$ : Cela ne viole pas la relativité car aucune information n'est transmise par la phase pure.
+% \item $v_g < c$ : L'énergie voyage plus lentement car elle effectue des "zig-zags" entre les plans de nœuds (principe du guide d'onde).
+
+% \end{itemize}
+
+
+\end{document}

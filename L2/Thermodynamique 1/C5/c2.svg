@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (1:1.4.3+202512261035+0d15f75042)"
+   sodipodi:docname="c2.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.71179153"
+     inkscape:cx="506.46852"
+     inkscape:cy="677.86702"
+     inkscape:window-width="1920"
+     inkscape:window-height="1008"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="ArrowWide"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc"
+         id="path1217" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="ArrowWide-5"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc"
+         id="path1217-0" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;fill-opacity:1;stroke:#d32f2f;stroke-width:0.507206;stroke-dasharray:3.04324, 0.507206;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 76.160407,76.765599 V 142.91143"
+       id="path1197"
+       inkscape:export-filename="c2.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#8bc34a;stroke-width:1.00991;stroke-dasharray:1.00991, 1.00991;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 54.045966,108.53052 75.686075,103.4531"
+       id="path1194"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#8bc34a;stroke-width:1.00991;stroke-dasharray:1.00991, 1.00991;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 75.737176,103.37916 33.548074,-7.871401 23.81168,-5.58694"
+       id="path1194-3"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#8bc34a;stroke-width:1.00991;stroke-dasharray:none;stroke-opacity:1"
+       d="M 76.584289,103.19088 110.13236,95.319479"
+       id="path1194-3-0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.00991;stroke-dasharray:1.00991, 1.00991;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 132.79919,92.209289 -23.56248,3.10285 -15.878391,2.09096"
+       id="path1195"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.00991;stroke-dasharray:none;stroke-opacity:1"
+       d="m 132.79581,92.183579 -23.56249,3.10285"
+       id="path1195-6"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#03a9f4;stroke-width:1.00991;stroke-dasharray:none;stroke-opacity:1"
+       d="M 75.188608,103.67095 C 63.330443,115.35674 56.017082,129.60816 51.972392,145.78692"
+       id="path1196"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#03a9f4;stroke-width:1.00991;stroke-dasharray:1.00991, 1.00991;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 104.04901,84.415089 C 92.338729,89.678939 82.856269,96.178699 75.259363,103.74318"
+       id="path1196-8"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#d32f2f;stroke-width:0.507206;stroke-dasharray:3.04324, 0.507206;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 109.23332,76.765599 V 142.91143"
+       id="path1197-3" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#d32f2f;stroke-width:0.507206;stroke-dasharray:3.04324, 0.507206;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 225.875,76.78697 V 142.9328"
+       id="path1197-3-3" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#d32f2f;stroke-width:0.507206;stroke-dasharray:3.04324, 0.507206;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 193.86042,76.78697 V 142.9328"
+       id="path1197-3-6" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#03a9f4;stroke-width:1.00991;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 172.95833,76.78697 c 4.8986,13.26502 11.95415,23.84835 21.16667,31.75"
+       id="path1198"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#8bc34a;stroke-width:1.00991;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 194.125,121.76614 31.75,5.29166"
+       id="path1199"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.00991;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 225.875,132.34947 26.45833,1.32292"
+       id="path1200"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#a527b0;stroke-width:0.507206;stroke-dasharray:3.04324, 0.507206;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 194.125,108.53697 -30.78735,-0.0669"
+       id="path1201" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#a527b0;stroke-width:0.507206;stroke-dasharray:3.04324, 0.507206;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 194.125,121.76614 H 163.69792"
+       id="path1202" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#a527b0;stroke-width:0.507206;stroke-dasharray:3.04324, 0.507206;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 225.875,127.0578 H 165.02083"
+       id="path1203" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#a527b0;stroke-width:0.507206;stroke-dasharray:3.04324, 0.507206;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 225.875,132.34947 H 165.02083"
+       id="path1204"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:5.99723px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:none;fill-opacity:1;stroke:#a527b0;stroke-width:0.507206;stroke-dasharray:3.04324, 0.507206;stroke-dashoffset:0;stroke-opacity:1"
+       x="185.39375"
+       y="89.222374"
+       id="text1204"><tspan
+         sodipodi:role="line"
+         id="tspan1204"
+         x="185.39375"
+         y="89.222374"
+         style="fill:#03a9f4;stroke:none;stroke-width:0.507206">V</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.99723px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8bc34a;fill-opacity:1;stroke:none;stroke-width:0.507206;stroke-dasharray:3.04324, 0.507206;stroke-dashoffset:0;stroke-opacity:1"
+       x="206.03123"
+       y="119.12029"
+       id="text1205"><tspan
+         sodipodi:role="line"
+         id="tspan1205"
+         x="206.03123"
+         y="119.12029"
+         style="stroke-width:0.507206">L</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.99723px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.507206;stroke-dasharray:3.04324, 0.507206;stroke-dashoffset:0;stroke-opacity:1"
+       x="243.07291"
+       y="127.05779"
+       id="text1206"><tspan
+         sodipodi:role="line"
+         id="tspan1206"
+         x="243.07291"
+         y="127.05779"
+         style="stroke-width:0.507206">S</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.00991;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#ArrowWide-5);marker-end:url(#ArrowWide-5)"
+       d="m 73.917411,193.51238 v 76.72916 h 95.249999"
+       id="path1193-6"
+       inkscape:export-filename="dpt.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#d32f2f;stroke-width:0.79375;stroke-dasharray:none"
+       d="m 73.981829,270.15691 c 12.579453,-5.60114 24.950888,-11.48152 32.424411,-23.93692 l 8.39667,-59.56431"
+       id="path740"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;stroke:#d32f2f;stroke-width:0.79375;stroke-dasharray:none"
+       d="m 106.20328,246.54433 c 22.41461,-7.94908 35.31647,-19.11805 46.11077,-30.79312"
+       id="path741"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:5.99723px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:none;fill-opacity:1;stroke:#a527b0;stroke-width:0.507206;stroke-dasharray:3.04324, 0.507206;stroke-dashoffset:0;stroke-opacity:1"
+       x="133.63301"
+       y="254.40926"
+       id="text1204-3"><tspan
+         sodipodi:role="line"
+         id="tspan1204-8"
+         x="133.63301"
+         y="254.40926"
+         style="fill:#03a9f4;stroke:none;stroke-width:0.507206">V</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.99723px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8bc34a;fill-opacity:1;stroke:none;stroke-width:0.507206;stroke-dasharray:3.04324, 0.507206;stroke-dashoffset:0;stroke-opacity:1"
+       x="125.1572"
+       y="226.50066"
+       id="text1205-5"><tspan
+         sodipodi:role="line"
+         id="tspan1205-6"
+         x="125.1572"
+         y="226.50066"
+         style="stroke-width:0.507206">L</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.99723px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.507206;stroke-dasharray:3.04324, 0.507206;stroke-dashoffset:0;stroke-opacity:1"
+       x="88.533913"
+       y="206.65691"
+       id="text1206-11"><tspan
+         sodipodi:role="line"
+         id="tspan1206-5"
+         x="88.533913"
+         y="206.65691"
+         style="stroke-width:0.507206">S</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.99723px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:none;stroke:#d32f2f;stroke-width:0.79375;stroke-dasharray:none"
+       x="109.66011"
+       y="252.72362"
+       id="text741"><tspan
+         sodipodi:role="line"
+         id="tspan741"
+         x="109.66011"
+         y="252.72362"
+         style="stroke-width:0.79375">I</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.99723px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:none;stroke:#d32f2f;stroke-width:0.79375;stroke-dasharray:none"
+       x="157.32558"
+       y="213.2715"
+       id="text742"><tspan
+         sodipodi:role="line"
+         id="tspan742"
+         x="157.32558"
+         y="213.2715"
+         style="stroke-width:0.79375">C</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.99723px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.79375;stroke-dasharray:none;stroke-opacity:1"
+       x="165.26308"
+       y="276.77148"
+       id="text743"><tspan
+         sodipodi:role="line"
+         id="tspan743"
+         x="165.26308"
+         y="276.77148"
+         style="stroke-width:0.79375">T</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.99723px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.79375;stroke-dasharray:none;stroke-opacity:1"
+       x="71.335999"
+       y="201.36525"
+       id="text744"><tspan
+         sodipodi:role="line"
+         id="tspan744"
+         x="71.335999"
+         y="201.36525"
+         style="stroke-width:0.79375">P</tspan></text>
+    <path
+       style="fill:none;stroke:#ffa500;stroke-width:0.79375;stroke-dasharray:none"
+       d="m 106.01074,246.93469 -6.893495,-44.24653 c -0.109315,-9.02523 1.903615,-17.30619 6.869865,-25.6762"
+       id="path740-1"
+       sodipodi:nodetypes="ccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.42053px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#d32f2f;fill-opacity:1;stroke:none;stroke-width:0.452715;stroke-dasharray:none;stroke-opacity:1"
+       x="-173.71286"
+       y="145.17868"
+       id="text745"
+       transform="rotate(-81.420122)"><tspan
+         sodipodi:role="line"
+         id="tspan745"
+         x="-173.71286"
+         y="145.17868"
+         style="stroke-width:0.452715">Cas général</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.42053px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#ffa500;fill-opacity:1;stroke:none;stroke-width:0.452715;stroke-dasharray:none;stroke-opacity:1"
+       x="-238.85501"
+       y="63.878391"
+       id="text745-9"
+       transform="rotate(-99.247564)"><tspan
+         sodipodi:role="line"
+         id="tspan745-0"
+         x="-238.85501"
+         y="63.878391"
+         style="fill:#ffa500;stroke-width:0.452715">Cas de l'eau</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.99723px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:none;fill-opacity:1;stroke:#a527b0;stroke-width:0.507206;stroke-dasharray:3.04324, 0.507206;stroke-dashoffset:0;stroke-opacity:1"
+       x="65.99231"
+       y="89.862823"
+       id="text1204-0"><tspan
+         sodipodi:role="line"
+         id="tspan1204-4"
+         x="65.99231"
+         y="89.862823"
+         style="fill:#03a9f4;stroke:none;stroke-width:0.507206">V</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.99723px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8bc34a;fill-opacity:1;stroke:none;stroke-width:0.507206;stroke-dasharray:3.04324, 0.507206;stroke-dashoffset:0;stroke-opacity:1"
+       x="93.616203"
+       y="115.25752"
+       id="text1205-8"><tspan
+         sodipodi:role="line"
+         id="tspan1205-7"
+         x="93.616203"
+         y="115.25752"
+         style="stroke-width:0.507206">L</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.99723px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.507206;stroke-dasharray:3.04324, 0.507206;stroke-dashoffset:0;stroke-opacity:1"
+       x="122.80434"
+       y="113.67532"
+       id="text1206-1"><tspan
+         sodipodi:role="line"
+         id="tspan1206-7"
+         x="122.80434"
+         y="113.67532"
+         style="stroke-width:0.507206">S</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.09514px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#a527b0;fill-opacity:1;stroke:none;stroke-width:0.34634;stroke-dasharray:2.07803, 0.34634;stroke-dashoffset:0;stroke-opacity:1"
+       x="165.07407"
+       y="106.19846"
+       id="text1207"><tspan
+         sodipodi:role="line"
+         id="tspan1207"
+         x="165.07407"
+         y="106.19846"
+         style="fill:#a527b0;stroke-width:0.34634">(V<tspan
+   style="font-size:2.66184px;baseline-shift:sub;fill:#a527b0;stroke-width:0.34634"
+   id="tspan1208">v</tspan><tspan
+   style="font-size:2.66184px;baseline-shift:super;fill:#a527b0;stroke-width:0.34634"
+   id="tspan1209">Sat</tspan>)<tspan
+   style="font-size:2.66184px;baseline-shift:sub;fill:#a527b0;stroke-width:0.34634"
+   id="tspan1210">LV</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.09514px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#d32f2f;fill-opacity:1;stroke:none;stroke-width:0.34634;stroke-dasharray:2.07803, 0.34634;stroke-dashoffset:0;stroke-opacity:1"
+       x="201.74814"
+       y="147.47908"
+       id="text1207-6"><tspan
+         sodipodi:role="line"
+         id="tspan1207-1"
+         x="201.74814"
+         y="147.47908"
+         style="fill:#d32f2f;stroke-width:0.34634">(P<tspan
+   style="font-size:2.66184px;baseline-shift:super;fill:#d32f2f;stroke-width:0.34634"
+   id="tspan1209-6">Sat</tspan>)<tspan
+   style="font-size:2.66184px;baseline-shift:sub;fill:#d32f2f;stroke-width:0.34634"
+   id="tspan1210-3">LV</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.09514px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#d32f2f;fill-opacity:1;stroke:none;stroke-width:0.34634;stroke-dasharray:2.07803, 0.34634;stroke-dashoffset:0;stroke-opacity:1"
+       x="234.758"
+       y="147.50578"
+       id="text1207-6-5"><tspan
+         sodipodi:role="line"
+         id="tspan1207-1-5"
+         x="234.758"
+         y="147.50578"
+         style="fill:#d32f2f;stroke-width:0.34634">(P<tspan
+   style="font-size:2.66184px;baseline-shift:super;fill:#d32f2f;stroke-width:0.34634"
+   id="tspan1209-6-4">Sat</tspan>)<tspan
+   style="font-size:2.66184px;baseline-shift:sub;fill:#d32f2f;stroke-width:0.34634"
+   id="tspan1210-3-7">LS</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.09514px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#d32f2f;fill-opacity:1;stroke:none;stroke-width:0.34634;stroke-dasharray:2.07803, 0.34634;stroke-dashoffset:0;stroke-opacity:1"
+       x="85.59967"
+       y="147.4577"
+       id="text1207-6-3"><tspan
+         sodipodi:role="line"
+         id="tspan1207-1-7"
+         x="85.59967"
+         y="147.4577"
+         style="fill:#d32f2f;stroke-width:0.34634">(P<tspan
+   style="font-size:2.66184px;baseline-shift:super;fill:#d32f2f;stroke-width:0.34634"
+   id="tspan1209-6-45">Sat</tspan>)<tspan
+   style="font-size:2.66184px;baseline-shift:sub;fill:#d32f2f;stroke-width:0.34634"
+   id="tspan1210-3-2">LV</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.09514px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#d32f2f;fill-opacity:1;stroke:none;stroke-width:0.34634;stroke-dasharray:2.07803, 0.34634;stroke-dashoffset:0;stroke-opacity:1"
+       x="117.55119"
+       y="147.48441"
+       id="text1207-6-5-5"><tspan
+         sodipodi:role="line"
+         id="tspan1207-1-5-4"
+         x="117.55119"
+         y="147.48441"
+         style="fill:#d32f2f;stroke-width:0.34634">(P<tspan
+   style="font-size:2.66184px;baseline-shift:super;fill:#d32f2f;stroke-width:0.34634"
+   id="tspan1209-6-4-7">Sat</tspan>)<tspan
+   style="font-size:2.66184px;baseline-shift:sub;fill:#d32f2f;stroke-width:0.34634"
+   id="tspan1210-3-7-4">LS</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.09514px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#a527b0;fill-opacity:1;stroke:none;stroke-width:0.34634;stroke-dasharray:2.07803, 0.34634;stroke-dashoffset:0;stroke-opacity:1"
+       x="165.07407"
+       y="118.66621"
+       id="text1207-2"><tspan
+         sodipodi:role="line"
+         id="tspan1207-0"
+         x="165.07407"
+         y="118.66621"
+         style="fill:#a527b0;stroke-width:0.34634">(V<tspan
+   style="font-size:2.66184px;baseline-shift:sub;fill:#a527b0;stroke-width:0.34634"
+   id="tspan1211">L</tspan><tspan
+   style="font-size:2.66184px;baseline-shift:super;fill:#a527b0;stroke-width:0.34634"
+   id="tspan1209-3">Sat</tspan>)<tspan
+   style="font-size:2.66184px;baseline-shift:sub;fill:#a527b0;stroke-width:0.34634"
+   id="tspan1210-7">LV</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.09514px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#a527b0;fill-opacity:1;stroke:none;stroke-width:0.34634;stroke-dasharray:2.07803, 0.34634;stroke-dashoffset:0;stroke-opacity:1"
+       x="165.02083"
+       y="125.73489"
+       id="text1207-2-8"><tspan
+         sodipodi:role="line"
+         id="tspan1207-0-9"
+         x="165.02083"
+         y="125.73489"
+         style="fill:#a527b0;stroke-width:0.34634">(V<tspan
+   style="font-size:2.66184px;baseline-shift:sub;fill:#a527b0;stroke-width:0.34634"
+   id="tspan1211-7">L</tspan><tspan
+   style="font-size:2.66184px;baseline-shift:super;fill:#a527b0;stroke-width:0.34634"
+   id="tspan1209-3-3">Sat</tspan>)<tspan
+   style="font-size:2.66184px;baseline-shift:sub;fill:#a527b0;stroke-width:0.34634"
+   id="tspan1210-7-6">LS</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.09514px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#a527b0;fill-opacity:1;stroke:none;stroke-width:0.34634;stroke-dasharray:2.07803, 0.34634;stroke-dashoffset:0;stroke-opacity:1"
+       x="165.02083"
+       y="134.99529"
+       id="text1207-2-8-1"><tspan
+         sodipodi:role="line"
+         id="tspan1207-0-9-9"
+         x="165.02083"
+         y="134.99529"
+         style="fill:#a527b0;stroke-width:0.34634">(V<tspan
+   style="font-size:2.66184px;baseline-shift:sub;fill:#a527b0;stroke-width:0.34634"
+   id="tspan1212">S</tspan><tspan
+   style="font-size:2.66184px;baseline-shift:super;fill:#a527b0;stroke-width:0.34634"
+   id="tspan1209-3-3-7">Sat</tspan>)<tspan
+   style="font-size:2.66184px;baseline-shift:sub;fill:#a527b0;stroke-width:0.34634"
+   id="tspan1210-7-6-8">LS</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.99723px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.507206;stroke-dasharray:1.00991, 1.00991;stroke-dashoffset:0;stroke-opacity:1"
+       x="166.67596"
+       y="72.447487"
+       id="text1213"><tspan
+         sodipodi:role="line"
+         id="tspan1213"
+         x="166.67596"
+         y="72.447487"
+         style="stroke-width:0.507206">V</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.99723px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.507206;stroke-dasharray:1.00991, 1.00991;stroke-dashoffset:0;stroke-opacity:1"
+       x="258.77036"
+       y="150.37221"
+       id="text1214"><tspan
+         sodipodi:role="line"
+         id="tspan1214"
+         x="258.77036"
+         y="150.37221"
+         style="stroke-width:0.507206">P</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.99723px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.507206;stroke-dasharray:1.00991, 1.00991;stroke-dashoffset:0;stroke-opacity:1"
+       x="142.2117"
+       y="149.65335"
+       id="text1215"><tspan
+         sodipodi:role="line"
+         id="tspan1215"
+         x="142.2117"
+         y="149.65335"
+         style="stroke-width:0.507206">P</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.99723px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.507206;stroke-dasharray:1.00991, 1.00991;stroke-dashoffset:0;stroke-opacity:1"
+       x="62.806408"
+       y="72.834557"
+       id="text1216"><tspan
+         sodipodi:role="line"
+         id="tspan1216"
+         x="62.806408"
+         y="72.834557"
+         style="stroke-width:0.507206">G<tspan
+   style="font-size:3.8982px;baseline-shift:sub;stroke-width:0.507206"
+   id="tspan1217">T0</tspan></tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.00991;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#ArrowWide);marker-end:url(#ArrowWide)"
+       d="m 51.02499,66.182259 v 76.729171 h 95.25"
+       id="path1193" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.00991;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#ArrowWide);marker-end:url(#ArrowWide)"
+       d="m 167.66667,66.20364 v 76.72916 h 95.25"
+       id="path1193-1" />
+    <path
+       style="fill:#ffa500;stroke:#ffa500;stroke-width:0.666001;stroke-dasharray:0.666001, 0.666001;stroke-dashoffset:0"
+       d="m 105.98711,177.01196 8.04893,-11.1218"
+       id="path1"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>

@@ -1,0 +1,154 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mecanique Analytique}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\newcommand{\qa}{q_{\alpha}}
+\newcommand{\qdb}{\dot{q_{\beta}}}
+\newcommand{\qb}{q_{\beta}}
+\setcounter{chapter}{3}
+\begin{document}
+\chapter{Équation de hamilton}
+\section{Notions de variable conjuguées}
+On dédouble les coordonnées. On pose $Y_i = \dot{X_i}$.
+
+On peut les lier aux transformations canoniques.
+
+Question : Comment savoir si on peut arriver à un système d'équations connue. C'est légendre qui se la pose.
+
+Il est utile de définir
+
+% page 9 10 et 11 à faire
+%--------------- APrès ces pages , séance d'aujourd'hui
+
+On définit la transformée de Legendre : $g = -f+ux \Rightarrow \dd g = -v\dd y+x\dd y$
+avec $-v = \frac{\partial g}{\partial y}, x = \frac{\partial g}{\partial u}$
+
+On peut le comparer au lagrangien :
+$$y = q_i, x = \dot{q_i}, u= p_i, f = L, g = H$$ avec $p_i = \frac{\partial L}{\partial \dot{q_i}}$
+
+On a donc $$H(q_i, p_i, t) = \sum^N_{i=1}p_i\dot{q_i} - L$$
+
+Puis $$\frac{\partial H}{\partial p_l}$$
+
+On peut maintenant écrire :
+$$H(q_i, p_l,t) = \sum_i \dot{q_i}p_i -L$$ et 2N équations 
+$$\dot{q_l} = \frac{\partial H}{\partial p_l}$$ et $$\dot{p_j} = -\frac{\partial H}{\partial q_j}$$
+
+On a des variables conjuguées.
+
+\subsection{Exemple}
+$$L = \frac12 m v^2 - V$$
+
+$\frac{\partial L}{\partial \dot{r_i}} = \dot{mr_i} = p_i $
+
+puis $H = \frac12 p_i \dot{r_i}+V = \sum_i \frac12 \frac{p_i^2}{m}+v$
+
+On peut étudier dans l'espace des phases, où chaque point correspond à une condition initiale et 2 trajectoies ne peuvent pas se croiser.
+
+% Truc sur l'extrmalisation de S : inutile
+
+\subsection{Crochet de poisson}
+Soient $q_\alpha$ et $p_{\beta}$ et 2 paires de fonctions $f$ et $g$
+\begin{definition}
+    $\{f,g\} = \sum_{\alpha} (\frac{\partial f}{\partial q_{\alpha}}\frac{\partial g}{\partial p_{\alpha}}-\frac{\partial f}{\partial p_{\alpha}}\frac{\partial g}{\partial q_{\alpha}})$
+\end{definition}
+Propriétés :
+\begin{itemize}
+    \item $\{f,g\} = - \{g,f\}$
+    \item $\{f,gh\} = h\{f,g\} + g\{f,h\}$
+    \item Identité de Jacobi : $\{f, \{g,h\}\}+ \{h, \{f,g\}\} + \{g, \{h,f\}\} = 0$
+    \item lors de la trajectoire donnée par $H$ : $\frac{\dd }{\dd t}f(q_{\alpha}, p_{\alpha},t) = \{f, H\}+\frac{\partial f}{\partial t}$
+\end{itemize}
+$exercie avec L = n\times p$ 
+\subsection{Théorèmes}
+Soit un système dynamique à 2N variables $q_i, p_j$. la dynamique est donnée par $\dot{q_i} = F_i$ et $\dot{p_i} = G_i$
+
+Existe-il un hamiltonien tq $F_i = \frac{\partial H}{\partial p_i}$ et $G_i =- \frac{\partial H}{\partial q_i}$
+
+Si, $\forall f,g$, on a $\frac{\dd }{\dd t}\{f,g\} = \{\dot{f}, g\}+\{f,\dot{g}\}$
+
+page 12
+
+Théorème de Poisson :
+Si fet g ne dépendent pas de t, sont des constantes du mouvement, alors $\{f,g\}$ esr aussi une constante du mouvement.
+
+Corollaire : Si 2 composantes de L sont conservées, la troisème l'est aussi.
+
+\subsection{Transformations canoniques}
+Une transformation canonique préserve les crochets de poisson.
+
+Notation symplectique
+
+TODO 
+Montrer que $\dot{\xi_i} = \sum_j  J_{ij}\frac{\partial H}{\partial \xi_j}$ et $\{f,g\} = \sum_{ij} \frac{\partial f}{\partial \xi_i}\frac{\partial g}{\partial \x_ih}J_{ij}$
+
+page 13,14
+
+Exercice du on pose : $Q_1 = q_1 \cos \alpha - \frac{\sin \alpha}{\beta}p_2$
+$Q_2 = q_2 \cos \alpha - \frac{\sin \alpha}{\beta}p_1$
+$P_1 = \beta q_2\sin \alpha +p_1\cos \alpha $, $P_2 = \beta q_1\sin \alpha +p_2\cos \alpha$
+%TODO vérifeir que c'est une transformation canonique
+
+Comme t trouver des transformations canoniques 
+
+Remarque : si la transfo est indépendante du temps, \partial F/\partial t = 0 et H_2 = H()
+
+\section{Théorèmes de Liouville}
+
+\chapter{Méthodes de résolutions}
+pq S = pas important
+
+
+--- Partie Actions-angle pas aux programme
+
+
+
+\end{document}
+%CC = ex 10

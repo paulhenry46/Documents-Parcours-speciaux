@@ -1,0 +1,218 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 2 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\setcounter{chapter}{2}
+\begin{document}
+\chapter{Équations de Maxwell en régime variable}
+\section{Conservation de la charge}
+On considère un volume V contenant une charge q(t), caractérisé par sa densité volumique de charge $\rho$ qui dépend du temps et $\vec{j}$.
+
+% On a $$q(t) = \iiint_V \rho(t)\dd \tau$$ et le courant sortant $i_s = \iint_S \vec{j}\cdot\dd \vec{S}$
+
+% On a $\iint_S \vec{j}\cdot \vec{\dd S} = -\frac{\dd}{\dd t}\iiint_V\rho(t)\dd \tau = - \iiint_V \frac{\dd \rho}{\dd t}\dd \tau$
+
+% De plus, $\iint_V \Div\vec{j}\dd \tau = -\iint \frac{\dd \rho}{\dd t}\dd tau$.
+
+% Donc $\Div\vec{j}+\frac{\dd \rho}{\dd t}= 0$.
+\begin{theorem}[Conservation de la charge]
+    $\Div\vec{j}+\frac{\dd \rho}{\dd t}= 0$.
+\end{theorem}
+Cette équation exprime que la charge électrique se conserve localement. Si la densité de charge $\rho$ diminue en un point, c'est uniquement parce qu'un courant $\vec{j}$ emporte la charge hors de ce point. Inversement, si la densité de charge augmente, c'est qu'un courant amène de la charge. Toute variation de charge dans un volume provient donc d'un flux de courant à travers la frontière de ce volume.
+
+\section{Eq de maxwell en régime variable}
+\subsection{Équations restant inchangées}
+\begin{itemize}
+    \item Maxwell-gauss : $\Div \vec{E} = \frac{\rho}{\epsilon_0}$
+    \item Maxwell-Thomson : $\Div\vec{B} = 0$
+    \item Maxwell-faraday : $\rot\vec{E} = -\frac{\partial \vec{B}}{\partial t}$
+\end{itemize}
+\subsection{Maxwell-Ampère}
+On ne peut plus écrire $ \rot\vec{B} = \mu_0\vec{j}$.
+
+Maxwell a proposé d'introdcuire un courant supplémentaire appelé le courant de déplacement $\vec{j_D}$.
+
+Ainsi, $\rot\vec{B} = \mu_0(\vec{j}+\vec{j_D})$
+
+On utilise Maxwell-Gauss, on obtient
+\begin{theorem}[Équation de Maxwell-Ampère]
+    $$\rot\vec{B} = \mu_0\left(\vec{j}+\epsilon_0\frac{\partial \vec{E}}{\partial t}\right)$$
+\end{theorem}
+%TODO Auto propagation
+
+En l'absence de sources, les champs E et B existent et s'auto-entrtiennet.
+\begin{theorem}[Forme locale de l'équation de maxwell]
+   $$\int\vec{B}\cdot \vec{\dd l} = \mu_0 \iint_S \vec{j}\cdot \dd \vec{S}+\mu_0\epsilon_0 \iint_S \frac{\partial \vec{E}}{\partial t}\vec{\dd S}$$ 
+\end{theorem}
+\section{Relations de passage}
+\begin{itemize}
+    \item $\vec{n_{ext}}\cdot (\vec{E_{ext}}-\vec{E_{int}}) = \frac{\sigma}{\epsilon_0}$
+    \item $\vec{n_{ext}}\wedge (\vec{E_{ext}}-\vec{E_{int}}) = 0$
+    \item $\vec{n_{ext}}\cdot (\vec{B_{ext}}-\vec{B_{int}}) = 0$
+    \item $\vec{n_{ext}}\wedge (\vec{B_{ext}}-\vec{B_{int}}) = \mu_0\vec{j}$
+\end{itemize}
+\section{Potentiel Électromagnétique}
+On associe toujours le potentiel vecteur $\vec{A}$ à $\vec{B}$ par $\vec{B} = \rot\vec{A}$ On 
+l'injecte dans l'équation de Maxwell-Faraday.
+
+On obtient 
+\begin{theorem}[Potentiel Électromagnétique]
+    $$\vec{E} = -\grad(V)-\frac{\partial A}{\partial t}$$
+\end{theorem}
+(V,A) est le potentiel Électromagnétique, il permet de connaitre E et B.
+\subsection{Jauge de Lorenz}
+
+% \begin{flalign*}
+%     \Div(\vec{E}) &= \Div(-\grad(V)-\frac{\partial A}{\partial t}) = \frac{\rho}{\epsilon_0}\\
+%     \rot(\vec{B}) &= \mu_0(\vec{j} + \epsilon_0 \frac{\dd }{\dd t}(-\grad(V)-\frac{\partial A}{\partial t}))\\
+%     \lap \vec{A} - \epsilon_0 \mu_0 \frac{\partial^2\vec{A}}{\partial t^2} = -\mu_0\vec{j}+\grad(\Div\vec{A}+\mu_0 \epsilon_0 \frac{\partial V}{\partial t})\\
+% \end{flalign*}
+% On choisit $\Div\vec{A}+\mu_0 \epsilon_0 \frac{\partial V}{\partial t} = 0$ qui est la jauge de Lorenz :
+\begin{theorem}[Jauge de Lorenz]
+    $$\Div(\vec{A}) - \frac{1}{c^2}\frac{\partial V}{\partial t}=0$$ avec $c^2 = \frac{1}{\mu_0\epsilon_0}$
+\end{theorem}
+Sous cette condition, on peut écrire :
+\begin{theorem}[Laplacien de A sous condition de Jauge]
+   $$\lap \vec{A} - \frac{1}{c^2} \frac{\partial^2\vec{A}}{\partial t^2}=-\mu_0 \vec{j}$$ 
+\end{theorem}
+\begin{theorem}[Laplacien de V sous condition de Jauge]
+   $$\lap V - \frac{1}{c^2} \frac{\partial^2\vec{V}}{\partial t^2}=-\frac{\rho}{\epsilon_0}$$ 
+\end{theorem}
+\subsection{Aparté -  Changement de Jauge} 
+Si on associe au champ B le champ A (potentiel vecteur), on sait que
+$$\vec{B} = \rot(\vec{A})$$
+Si on considère 2 couples de potentiels EM (V,A) décrivant le meme champ.
+
+Donc $$\rot{A-A'} = \vec{0}$$
+Donc il existe un champ scalaire f tel que $A-A'=-\grad(F)$
+
+On peut écrire que $\vec{A}=\vec{A'}-\grad{f}$
+
+Par ailleur, $\vec{E} = -\grad{V}-\frac{\partial \vec{A}}{\partial t} =  -\grad{V'}-\frac{\partial \vec{A'}}{\partial t}$
+
+On en déduit que $V = V'+\frac{\partial f}{\partial t}$.
+
+Il existe une infinité de couple de potentiel  décrivant un meme champ EM. On dit qu'il y a invariance de jauge.
+\section{Approximation des régimes quasi-stationnaires (ARQS)}
+\subsection{Approximation ARQS}
+\subsubsection{Domaine de validité} 
+On appelle $\tau$ le temps qu'il faut pour parcourir la distance PM à une vitesse $c$. L'Approximation consiste à négliger la durée de propagation par rapport au temps caractéristique d'évolution du système (T). On a $\tau << T$.
+
+On écrit $L<<\lambda$ où L est la dimension caractéristique du système.
+
+On va considérer que les sources varient lentement, les dimensions du système sont petites, le champ s'ajuste quasi-instatanément, les effets de propagation sont négligeables.
+\paragraph{Exemple 1}
+Circuit de dimension 10cm fonctionnant à $\nu = 1GHz$. On a $\lambda = \frac{3\cdot 10^8}{10^9} = 30cm$ On est du m\^eme odg, donc l'ARQS n'est pas valide.
+
+Il faut 2 ou 3 odg en minimum.
+\subsection{ARQS magnétique}
+On néglige la courant de déplacement $\vec{j_d}$ par rapport au courant de conduction $\vec{j}$. On a donc $\vec{j_d} = \epsilon_0 \frac{\partial \E}{\partial t} = \vec{0}$.
+
+Les courant dominent les charges donc $j>>c\rho$.
+\subsubsection{ODG}
+Vérifions en raisonnant par odg sur les dimensions caractéristiques du système : 
+\begin{flalign*}
+    \frac{|\frac{\partial \rho}{\partial t}|}{|\Div\vec{j}|} \simeq \frac{\frac{\rho}{T}}{\frac{j}{L}}\\
+    \simeq \frac{\rho_c}{j} \frac{L}{cT} << 1
+\end{flalign*}
+En négligeant $\frac{\partial \rho}{\partial t}$, on a $\Div \vec{j} = \vec{j}$
+Formule avec variables, stationnaire, ARQS
+
+Conséquence : $\vec{j}$ est à flux conservatif  : on obtient les lois des noueds et la meme intensité dans un circuit série.
+
+De m\^eme, on peut montrer que le champ est dominant. On peut alors simplifier l'équation de Maxwell-Ampère : 
+$$\rot{\vec{B}} = \mu_0\vec{j}$$ comme en statique.
+
+Que deviennent les autres équations : 
+\begin{itemize}
+    \item champ magnétique : $\rot{\B} = \mu_0 \vec{j}, \Div(\B) = \vec{0}$
+    \item champ électrique : $\Div\E = \frac{\rho}{\epsilon_0}$. On utilise Maxwell-faraday en régime variable : $\rot{\E} = -\frac{\partial \vec{B}}{\partial t}$
+    \item Vecteur courant : $\Div(\vec{j}) = 0$
+    \item Induction  : Toujours étduéie avec la loi de Faraday
+\end{itemize}
+\subsection{Calcul de $\E$ et de $\B$ dans l'ARQS}
+On part des potentiels.
+
+On a $\vec{A}(M,t) = \frac{\mu_0}{4\pi}\iiint_V \frac{\vec{j(P,t)}}{PM}\dd \tau$
+
+De m\^eme pour $V (M,t) = \frac{1}{4\pi\epsilon_0}\iiint_V \rho(P,t)\frac{1}{PM}\dd \tau$
+
+On dérive par rapport aux coordonnées de M mais on intègre par rapport à celles de P.
+
+On déduit\footnote{À savoir faire} $\vec{B}(M,t) = \rot_M\vec{A}$. On obtient $$\vec{B}(M,t) = \frac{\mu_0}{4\pi}\iint \frac{\vec{j}(P,t)\wedge \vec{PM}}{PM^3}\dd \tau$$
+
+On utilise $\rot \frac{\vec{j}(P,M)}{PM}$ à calculer avec $\rot(f\vec{A}) = f\rot\vec{A}+\grad f \wedge \vec{A}$
+
+$\vec{E}$ ne se calcule plus comme en statique à cause du terme $\frac{\partial \vec{A}}{\partial t}$.
+
+\subsection{Milieux conducteurs}
+Un conducteur plongé dans un champ E suit la loi d'Ohm, il y a apparition d'un courant caractérisé par $\vec{j} = \gamma \vec{E}$
+
+Les électrons subissent une agitation thermique : $\frac{-mv}{\tau}$ avec $\tau$ est le temps de relaxation.
+
+On a aussi l'action des forces de Lorenz : $-e(\vec{E}+\vec{v}\wedge \vec{B})$ avec la partie avec B négligeable.
+
+En régime permanant (pas d'accélération) : $-mv/\tau - e\vec{E} = \vec{0}$, doù l'on déduit
+$\vec{v} = \frac{\tau e\vec{E}}{m}$.
+
+Or, $\vec{j} = -en_e \vec{v} = \frac{e^2 \tau n_e}{m}\vec{E} = \gamma \vec{E}$
+
+\subsection{Neutralité du Milieux}
+On repart de l'eq de conservation. 
+On a $\Div \vec{j}+\frac{\partial \rho}{\partial t} = 0$, donc $\Div (\gamma \vec{E}) + \frac{\partial \rho}{\partial t}$
+
+Avec Maxwell-Gauss : $\frac{\gamma}{\epsilon_0}\rho + \frac{\partial \rho}{\partial t} = 0$
+
+Tout excès ou défaut unitial de charge $\rho_c$ va relaxer : $\rho = \rho_0 e^{-t/\tau}$ avec $\tau = \frac{\epsilon_0}{\gamma}<< T$
+
+Très rapidement, $\rho\to 0$ et on obtient une neutralité du volume  avec une densité surfacique de charge $\sigma$
+
+On retrouve $\Div \vec{j} = 0$
+
+
+\end{document}

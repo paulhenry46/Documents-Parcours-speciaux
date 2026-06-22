@@ -1,0 +1,208 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 2 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{esint}% Pour les oint
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\setcounter{chapter}{3}
+\begin{document}
+\chapter{Puissance et énergie du champ Électro-magnétique}
+\section{Puissance cédée par le champ à la matière}
+
+\begin{definition}[Puissance volumique de Lorentz]
+La puissance fournie par un champ électromagnétique $(\vec{E}, \vec{B})$ à une distribution de charges caractérisée par une densité de courant $\vec{j}$ est donnée par la puissance volumique :
+$$P_{vol} = \vec{j} \cdot \vec{E}$$
+\end{definition}
+
+\tipsInfo{Interprétation physique}{Seul le champ électrique travaille. La force de Laplace magnétique ($\vec{F}_m = q\vec{v} \wedge \vec{B}$) est toujours orthogonale au déplacement, son travail est donc nul. Le terme $\vec{j} \cdot \vec{E}$ représente le transfert d'énergie du champ vers les porteurs de charge (énergie cinétique, effet Joule).}
+
+\begin{theorem}[Puissance cédée à un volume $V$]
+La puissance totale cédée par le champ à la matière contenue dans un volume $V$ est :
+$$P_{meca} = \iiint_{V} \vec{j} \cdot \vec{E} \, \mathrm{d}\tau$$
+\end{theorem}
+
+\section{Le théorème de Poynting}
+
+\subsection{Démonstration locale}
+
+Partons de l'équation de Maxwell-Ampère : $\vec{j} = \frac{1}{\mu_0} \vec{\nabla} \wedge \vec{B} - \epsilon_0 \frac{\partial \vec{E}}{\partial t}$.
+En multipliant par $\vec{E}$ :
+$$\vec{j} \cdot \vec{E} = \frac{1}{\mu_0} \vec{E} \cdot (\vec{\nabla} \wedge \vec{B}) - \epsilon_0 \vec{E} \cdot \frac{\partial \vec{E}}{\partial t}$$
+
+Utilisons l'identité vectorielle : $\vec{\nabla} \cdot (\vec{E} \wedge \vec{B}) = \vec{B} \cdot (\vec{\nabla} \wedge \vec{E}) - \vec{E} \cdot (\vec{\nabla} \wedge \vec{B})$.
+On en déduit : $\vec{E} \cdot (\vec{\nabla} \wedge \vec{B}) = \vec{B} \cdot (\vec{\nabla} \wedge \vec{E}) - \vec{\nabla} \cdot (\vec{E} \wedge \vec{B})$.
+
+D'après Maxwell-Faraday, $\vec{\nabla} \wedge \vec{E} = -\frac{\partial \vec{B}}{\partial t}$, donc :
+$$\vec{j} \cdot \vec{E} = -\frac{1}{\mu_0} \vec{B} \cdot \frac{\partial \vec{B}}{\partial t} - \epsilon_0 \vec{E} \cdot \frac{\partial \vec{E}}{\partial t} - \vec{\nabla} \cdot \left( \frac{\vec{E} \wedge \vec{B}}{\mu_0} \right)$$
+
+En remarquant que $\vec{X} \cdot \frac{\partial \vec{X}}{\partial t} = \frac{1}{2} \frac{\partial \|\vec{X}\|^2}{\partial t}$, on obtient la forme locale.
+
+\begin{theorem}[Théorème de Poynting]
+$$-\vec{j} \cdot \vec{E} = \frac{\partial u_{em}}{\partial t} + \vec{\nabla} \cdot \vec{\Pi}$$
+Où :
+\begin{itemize}
+    \item $u_{em} = \frac{\epsilon_0 E^2}{2} + \frac{B^2}{2\mu_0}$ est la \textbf{densité volumique d'énergie EM}.
+    \item $\vec{\Pi} = \frac{\vec{E} \wedge \vec{B}}{\mu_0}$ est le \textbf{vecteur de Poynting}.
+\end{itemize}
+\end{theorem}
+
+\subsection{Signification physique des termes}
+
+Le terme $-\vec{j} \cdot \vec{E}$ est la puissance cédée par la matière au champ.\marginTips{Si elle est positive, la matière agit comme une source (ex: générateur). Si elle est négative, le champ cède de l'énergie à la matière (ex: récepteur, effet Joule).}
+
+\warningInfo{Le vecteur de Poynting}{Il représente la densité de courant d'énergie. Son flux à travers une surface fermée orientée vers l'extérieur représente la puissance sortante du volume par rayonnement ou conduction EM.}
+
+\section{Forme intégrale et conservation}
+
+\begin{proposition}[Bilan intégral]
+Pour un volume $V$ fixe délimité par une surface $S$ :
+$$\frac{\mathrm{d}U_{em}}{\mathrm{d}t} = - \iint_S \vec{\Pi} \cdot \mathrm{d}\vec{S} - \iiint_V \vec{j} \cdot \vec{E} \, \mathrm{d}\tau$$
+\end{proposition}
+
+La variation de l'énergie stockée dans le volume dépend de deux processus :
+\begin{enumerate}
+    \item Le flux du vecteur de Poynting (échange avec l'extérieur).
+    \item Le travail des forces de Lorentz (échange avec la matière).
+\end{enumerate}
+
+% \section{Applications aux composants}
+
+% \subsection{Le Condensateur (Stockage Électrique)}
+% Pour un condensateur plan de capacité $C = \frac{\epsilon_0 S}{e}$ :
+% \begin{itemize}
+%     \item Champ électrique : $E = \frac{U}{e}$.
+%     \item Énergie stockée : $U_e = \iiint \frac{\epsilon_0 E^2}{2} \mathrm{d}\tau = \frac{\epsilon_0}{2} \left(\frac{U}{e}\right)^2 (S \cdot e) = \frac{1}{2} C U^2$.
+% \end{itemize}
+
+% \subsection{Le Solénoïde (Stockage Magnétique)}
+% Pour un solénoïde de longueur $l$, de $n$ spires par mètre, d'inductance $L = \mu_0 n^2 S l$ :
+% \begin{itemize}
+%     \item Champ magnétique : $B = \mu_0 n I$.
+%     \item Énergie stockée : $U_m = \iiint \frac{B^2}{2\mu_0} \mathrm{d}\tau = \frac{(\mu_0 n I)^2}{2\mu_0} (S \cdot l) = \frac{1}{2} L I^2$.
+% \end{itemize}
+
+% \subsection{La Résistance (Effet Joule)}
+% Considérons un conducteur cylindrique de rayon $a$, de longueur $l$ et de conductivité $\gamma$.
+
+
+
+% \criticalInfo{Origine de l'énergie Joule}{Dans une résistance, le vecteur de Poynting est dirigé \textbf{vers l'intérieur} du fil : $\vec{\Pi} = -\frac{I^2 \rho}{2\pi^2 a^4 \gamma} \vec{e}_\rho$. Cela signifie que l'énergie thermique dissipée par effet Joule ne vient pas "de l'intérieur" du courant mais est apportée latéralement par le champ électromagnétique environnant.}
+
+% \begin{itemize}
+%     \item Puissance entrant par la surface latérale ($\rho = a$) :
+%     $$P_{entrante} = \iint \vec{\Pi}_{entrant} \cdot \mathrm{d}\vec{S} = \Pi(a) \cdot (2\pi a l) = \frac{I^2 a}{2\pi^2 a^4 \gamma} \cdot 2\pi a l = \frac{l}{\gamma \pi a^2} I^2 = R I^2$$
+% \end{itemize}
+% On retrouve exactement la puissance dissipée par effet Joule.
+
+% \tipsInfo{Vérification rapide}{Pour savoir si un système stocke ou dissipe, regardez le signe de $\vec{\nabla} \cdot \vec{\Pi}$. Si le flux est entrant (convergent), le système reçoit de l'énergie du champ.}
+
+\section{Applications aux composants : Approche énergétique}
+\subsection{Le Condensateur (Stockage Électrique)}
+
+On considère un condensateur plan (surface $S$, écartement $e$). En négligeant les effets de bord, le champ est uniforme entre les armatures.
+
+\begin{flalign*}
+    &\text{Établissement du champ :} && \vec{E} = \frac{\sigma}{\epsilon_0}\vec{e}_z = \frac{Q}{\epsilon_0 S}\vec{e}_z &\\
+    &\text{Lien avec la tension :} && U = V(0) - V(e) = \int_{0}^{e} \vec{E} \cdot \mathrm{d}\vec{l} = E \cdot e \implies E = \frac{U}{e} &\\
+    &\text{Capacité :} && Q = \frac{\epsilon_0 S}{e} U = CU \quad \text{avec} \quad C = \frac{\epsilon_0 S}{e} &
+\end{flalign*}
+
+\begin{proposition}[Énergie du condensateur]
+L'énergie est localisée dans le champ électrique entre les plaques.
+\begin{flalign*}
+    & u_e = \frac{1}{2}\epsilon_0 E^2 = \frac{1}{2}\epsilon_0 \left(\frac{U}{e}\right)^2 &\\
+    & U_{em} = \iiint_{V} u_e \mathrm{d}\tau = u_e \cdot (S \cdot e) = \frac{1}{2}\epsilon_0 \frac{U^2}{e^2} S e = \frac{1}{2} \left(\frac{\epsilon_0 S}{e}\right) U^2 = \frac{1}{2}CU^2 &
+\end{flalign*}
+\end{proposition}
+
+\tipsInfo{Interprétation de Poynting}{Lors de la charge, un champ magnétique induit $\vec{B}_{ind}$ apparaît (courant de déplacement). Le vecteur $\vec{\Pi}$ est alors dirigé de l'extérieur vers l'intérieur de l'espace entre les plaques : le condensateur "engloutit" l'énergie du champ pour la stocker.}
+
+\subsection{Le Solénoïde (Stockage Magnétique)}
+
+Pour un solénoïde infini (ou $l \gg a$), le champ est nul à l'extérieur et uniforme à l'intérieur.
+
+\begin{flalign*}
+    &\text{Théorème d'Ampère :} && \oint \vec{B} \cdot \mathrm{d}\vec{l} = \mu_0 I_{enl} \implies B \cdot L = \mu_0 (n \cdot L) I \implies \vec{B} = \mu_0 n I \vec{e}_z &\\
+    &\text{Inductance :} && \Phi = N \iint \vec{B} \cdot \mathrm{d}\vec{S} = (nl) \cdot (\mu_0 n I S) = (\mu_0 n^2 S l) I = LI &
+\end{flalign*}
+
+\begin{proposition}[Énergie du solénoïde]
+L'énergie est stockée sous forme magnétique dans le volume intérieur.
+\begin{flalign*}
+    & u_m = \frac{B^2}{2\mu_0} = \frac{(\mu_0 n I)^2}{2\mu_0} = \frac{1}{2} \mu_0 n^2 I^2 &\\
+    & U_{em} = \iiint_{V} u_m \mathrm{d}\tau = u_m \cdot (S \cdot l) = \frac{1}{2} (\mu_0 n^2 S l) I^2 = \frac{1}{2}LI^2 &
+\end{flalign*}
+\end{proposition}
+
+\subsection{La Résistance (Effet Joule)}
+
+Considérons un fil cylindrique de rayon $a$, longueur $l$, conductivité $\gamma$, parcouru par un courant $I$.
+
+\begin{flalign*}
+    &\text{Champ électrique (Ohm) :} && \vec{j} = \gamma \vec{E} \implies \vec{E} = \frac{I}{\gamma \pi a^2} \vec{e}_z = \frac{V}{l}\vec{e}_z &\\
+    &\text{Champ magnétique (Ampère) :} && \text{À la surface } (\rho=a) : \vec{B} = \frac{\mu_0 I}{2\pi a} \vec{e}_\theta &\\
+    &\text{Vecteur de Poynting :} && \vec{\Pi} = \frac{\vec{E} \wedge \vec{B}}{\mu_0} = \frac{1}{\mu_0} \left( E \vec{e}_z \wedge B \vec{e}_\theta \right) = - \frac{E B}{\mu_0} \vec{e}_\rho &
+\end{flalign*}
+
+En remplaçant les expressions de $E$ et $B$ à la surface ($\rho=a$) :
+\begin{flalign*}
+    & \vec{\Pi}(a) = - \frac{1}{\mu_0} \left( \frac{V}{l} \right) \left( \frac{\mu_0 I}{2\pi a} \right) \vec{e}_\rho = - \frac{V I}{2\pi a l} \vec{e}_\rho &
+\end{flalign*}
+
+
+
+\criticalInfo{Origine de l'énergie Joule}{Le calcul du flux sortant à travers la surface latérale $S_L$ donne :
+$$\oiint \vec{\Pi} \cdot \mathrm{d}\vec{S} = \vec{\Pi}(a) \cdot (2\pi a l \vec{e}_\rho) = - \frac{V I}{2\pi a l} \cdot 2\pi a l = -VI$$
+Le flux est \textbf{négatif}, donc de la puissance \textbf{entre} dans la résistance. L'énergie thermique dissipée par effet Joule ($RI^2$) ne provient pas d'un flux d'énergie circulant \textit{dans} le fil avec les électrons, mais d'une "aspiration" de l'énergie électromagnétique du milieu environnant vers l'intérieur du conducteur.}
+
+\checkInfo{Bilan local}{Dans le cas stationnaire ($\frac{\partial u_{em}}{\partial t} = 0$), le théorème de Poynting devient :
+$$\vec{\nabla} \cdot \vec{\Pi} = -\vec{j} \cdot \vec{E}$$
+Ici, $\vec{j} \cdot \vec{E} = \gamma E^2 > 0$ (puissance cédée à la matière), donc $\vec{\nabla} \cdot \vec{\Pi} < 0$ : le champ diverge négativement, ce qui confirme que la résistance est un puits d'énergie pour le champ EM.}
+
+\end{document}

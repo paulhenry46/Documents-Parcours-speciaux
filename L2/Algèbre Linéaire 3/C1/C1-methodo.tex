@@ -1,0 +1,213 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Algèbre linéaire 3*}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lombardi@math.univ-toulouse.fr
+\professor{E.Lombardie}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\begin{document}
+\chapter{Espace euclidien}
+%C2 : Applications linéaires sur espaces euclidiens
+%C3 : Espaces hermitiens
+%C4 : Formes quadratiques
+%C5 : Introduction aux groupes
+
+%TD = U-111/U-112
+%CM : B-08/B-07/Grignard
+\section{Montrer qu'une application est un produit scalaire}
+\subsection{Cas général}
+Pour qu'une application $\langle \cdot, \cdot \rangle$ (ou $\varphi$) soit un produit scalaire sur un espace vectoriel réel $E$, il faut vérifier quatre points :
+\begin{enumerate}
+    \item \textbf{Bilinéarité} : Linéaire par rapport à chaque argument.
+    \item \textbf{Symétrie} : $\forall x, y \in E, \langle x, y \rangle = \langle y, x \rangle$.
+    \item \textbf{Positivité} : $\forall x \in E, \langle x, x \rangle \geq 0$.
+    \item \textbf{Caractère défini} : $\langle x, x \rangle = 0 \implies x = 0_E$.
+\end{enumerate}
+
+\subsection{Exemples d'espaces}
+
+\begin{itemize}
+    \item \textbf{Sur les espaces de fonctions :} Pour montrer le caractère \textit{défini} de $\langle f, f \rangle = \int_0^1 \frac{f(t)^2}{1+t^2} dt$ :
+    \begin{enumerate}
+        \item On part de $\langle f, f \rangle = 0$.
+        \item Or, l'application $t \mapsto \frac{f(t)^2}{1+t^2}$ est continue et positive sur $[0,1]$.
+        \item D'après le théorème de l'intégrale nulle, une fonction continue positive d'intégrale nulle est identiquement nulle.
+        \item Donc $\forall t \in [0,1], \frac{f(t)^2}{1+t^2} = 0$, ce qui implique $f^2(t)=0$ puis $f=0$.
+    \end{enumerate}
+
+    \item \textbf{Sur les polynômes :} Pour $\langle P, Q \rangle = P(0)Q(0) + \int_0^1 P'(t)Q'(t) dt$ sur $\mathbb{R}[X]$ :
+    \begin{enumerate}
+        \item Si $\langle P, P \rangle = 0$, alors $P(0)^2 + \int_0^1 (P'(t))^2 dt = 0$.
+        \item Par somme de termes positifs, on a $P(0) = 0$ et $\int_0^1 (P'(t))^2 dt = 0$.
+        \item Le raisonnement de l'intégrale (ci-dessus) donne $P'(t) = 0$.
+        \item Un polynôme dont la dérivée est nulle est constant ($P = \lambda$).
+        \item Comme $P(0) = 0$, la constante est nulle : $P = 0$.
+    \end{enumerate}
+
+    \item \textbf{Paramètre $\lambda$ sur $\mathbb{R}^2$ :} Pour $\varphi(x,y) = x_1y_1 - x_2y_1 - x_1y_2 + \lambda x_2y_2$ :
+    \begin{enumerate}
+        \item On écrit la forme quadratique associée : $q(x) = x_1^2 - 2x_1x_2 + \lambda x_2^2$.
+        \item \textbf{Méthode de Gauss :} On réduit en carrés : $q(x) = (x_1 - x_2)^2 + (\lambda - 1)x_2^2$.
+        \item \textbf{Condition :} Pour que $q$ soit définie positive, il faut que les coefficients devant les carrés soient strictement positifs. 
+        \item Conclusion : $\lambda - 1 > 0 \implies \lambda > 1$.
+    \end{enumerate}
+\checkInfo{Forme quadratique}{
+
+\begin{itemize}
+    \item \textbf{Substitution :} On remplace tous les $y_i$ par des $x_i$ dans l'expression de $\varphi$.
+    \item \textbf{Réduction :} On regroupe les termes pour obtenir une somme de carrés (Méthode de Gauss).
+    \item \textbf{Exemple (Ex 1.c) :} 
+    $\varphi(x, y) = x_1y_1 - x_2y_1 - x_1y_2 + \lambda x_2y_2$ \\
+    $\implies q(x) = x_1^2 - 2x_1x_2 + \lambda x_2^2 = (x_1 - x_2)^2 + (\lambda - 1)x_2^2$.
+\end{itemize}
+
+}
+    \item \textbf{Espace de matrices :} Pour $\langle A, B \rangle = \text{tr}(A^T B)$ :
+    \begin{enumerate}
+        \item \textbf{Symétrie :} Utiliser $\text{tr}(M) = \text{tr}(M^T)$. Ici $\text{tr}(A^T B) = \text{tr}((A^T B)^T) = \text{tr}(B^T A)$.
+        \item \textbf{Positivité :} $\langle A, A \rangle = \text{tr}(A^T A) = \sum_{i=1}^n \sum_{j=1}^n a_{ij}^2$.
+        \item Cette somme de carrés est clairement positive, et nulle si et seulement si tous les coefficients $a_{ij}$ sont nuls ($A=0$).
+    \end{enumerate}
+\end{itemize}
+\section{Utiliser l'inégalité de Cauchy-Schwarz}
+L'inégalité s'énonce : $|\langle x, y \rangle| \leq \|x\| \cdot \|y\|$, avec égalité si et seulement si $(x, y)$ est liée.
+
+
+\begin{itemize}
+    \item \textbf{Choisir les bons vecteurs :} 
+    Pour démontrer $\left(\sum_{k=1}^n x_k\right)^2 \leq n \sum_{k=1}^n x_k^2$ :
+    \begin{enumerate}
+        \item On pose $u = (x_1, \dots, x_n)$ et $v = (1, \dots, 1)$.
+        \item Le produit scalaire canonique donne $\langle u, v \rangle = \sum_{k=1}^n (x_k \times 1) = \sum x_k$.
+        \item Les normes au carré sont $\|u\|^2 = \sum x_k^2$ et $\|v\|^2 = \sum_{k=1}^n 1^2 = n$.
+        \item L'application directe de CS donne $(\sum x_k)^2 \leq (\sum x_k^2) \times n$.
+    \end{enumerate}
+
+    \item \textbf{L'astuce de l'inverse :} 
+    Pour démontrer $\sum \frac{1}{x_k} \geq n^2$ sachant $\sum x_k = 1$ :
+    \begin{enumerate}
+        \item On cherche à faire apparaître $1$ par produit scalaire. On pose $u = (\sqrt{x_1}, \dots, \sqrt{x_n})$ et $v = (\frac{1}{\sqrt{x_1}}, \dots, \frac{1}{\sqrt{x_n}})$.
+        \item Alors $\langle u, v \rangle = \sum_{k=1}^n (\sqrt{x_k} \times \frac{1}{\sqrt{x_k}}) = \sum_{k=1}^n 1 = n$.
+        \item $\|u\|^2 = \sum (\sqrt{x_k})^2 = \sum x_k = 1$ (d'après l'énoncé).
+        \item $\|v\|^2 = \sum (\frac{1}{\sqrt{x_k}})^2 = \sum \frac{1}{x_k}$.
+        \item CS $(\langle u, v \rangle^2 \leq \|u\|^2 \|v\|^2)$ devient : $n^2 \leq 1 \times \sum \frac{1}{x_k}$.
+    \end{enumerate}
+
+    % \item \textbf{Étude des cas d'égalité :}
+    % L'égalité a lieu si et seulement si les vecteurs $u$ et $v$ sont colinéaires ($u = \alpha v$).
+    % \begin{itemize}
+    %     \item \textbf{Pour 2.a :} $(x_k)$ colinéaire à $(1, \dots, 1) \iff x_1 = x_2 = \dots = x_n$.
+    %     \item \textbf{Pour 2.b :} $(\sqrt{x_k})$ colinéaire à $(\frac{1}{\sqrt{x_k}}) \iff \sqrt{x_k} = \alpha \frac{1}{\sqrt{x_k}} \iff x_k = \alpha$. Comme $\sum x_k = 1$, cela impose $x_k = \frac{1}{n}$ pour tout $k$.
+    % \end{itemize}
+\end{itemize}
+\tipsInfo{Astuce}{Si vous voyez une somme de fractions ou de racines dans une inégalité, pensez immédiatement à poser $u_k$ ou $v_k$ comme étant la racine carrée du terme pour "annuler" les puissances lors du passage au carré de la norme.
+}
+
+\section{Manipuler l'orthogonalité et le complément orthogonal}
+\subsection{Propriétés théoriques}
+Il est crucial de connaître les relations de passage au complément orthogonal (noté $F^\perp$).
+\begin{itemize}
+    \item \textbf{Inclusion :} $F \subset G \implies G^\perp \subset F^\perp$ (l'orthogonalité renverse les inclusions).
+    \item \textbf{Somme et intersection :} $(F+G)^\perp = F^\perp \cap G^\perp$ et $(F \cap G)^\perp = F^\perp + G^\perp$.
+\end{itemize}
+
+\subsection{Déterminer $F^\perp$ en pratique}
+\begin{itemize}
+    \item Si $F = \text{vect}(v_1, \dots, v_k)$, alors $x \in F^\perp \iff \langle x, v_i \rangle = 0$ pour tout $i \in \{1, \dots, k\}$. Cela mène à un système d'équations linéaires.
+    \item Si $F$ est défini par une équation cartésienne $ax+by+cz=0$ dans $\mathbb{R}^3$, alors $F^\perp = \text{vect}((a, b, c))$.
+\end{itemize}
+
+\section{Orthonormalisation (Procédé de Gram-Schmidt)}
+Pour transformer une base $\mathcal{B} = (u_1, \dots, u_n)$ en une base orthonormée $\mathcal{C} = (e_1, \dots, e_n)$ :
+\begin{enumerate}
+    \item $v_1 = u_1$, puis $e_1 = \frac{v_1}{\|v_1\|}$.
+    \item $v_2 = u_2 - \langle u_2, e_1 \rangle e_1$, puis $e_2 = \frac{v_2}{\|v_2\|}$.
+    \item $v_3 = u_3 - \langle u_3, e_1 \rangle e_1 - \langle u_3, e_2 \rangle e_2$, puis $e_3 = \frac{v_3}{\|v_3\|}$.
+    \item $v_k = u_k - \sum_{i=1}^{k-1} \langle u_k, e_i \rangle e_i$, puis $e_k = \frac{v_k}{\|v_k\|}$.
+\end{enumerate}
+\tipsInfo{Variante}{On peut aussi choisir de normaliser les vecteurs obtenus une fois qu'on a obtenu des vecteurs orthogonaux pour simplifier les calculs.}
+\section{Calculer une projection orthogonale}
+Soit $F$ un sous-espace de $E$ et $(e_1, \dots, e_k)$ une base \textbf{orthonormée} de $F$. La projection orthogonale de $x$ sur $F$ est :
+\[ p_F(x) = \sum_{i=1}^k \langle x, e_i \rangle e_i \]
+\begin{itemize}
+    \item \textbf{Étape 1 :} Trouver une base de $F$.
+    \item \textbf{Étape 2 :} Orthonormer cette base (Gram-Schmidt).
+    \item \textbf{Étape 3 :} Appliquer la formule ci-dessus.
+    \item \textbf{Matrice de projection :} Pour trouver la matrice dans la base canonique, on calcule les images $p_F(i), p_F(j), \dots$ des vecteurs de la base canonique.
+\end{itemize}
+\section{Projection orthogonale}
+
+On veut démontrer que la matrice $M$ représente une projection orthogonale. Nous devons vérifier deux propriétés fondamentales : que la matrice est celle d'un projecteur ($M^2 = M$) et qu'elle est symétrique ($M^T = M$).
+
+On observe la matrice $M$ :
+$$M = \frac{1}{11} \begin{pmatrix} 2 & -3 & 3 \\ -3 & 10 & 1 \\ 3 & 1 & 10 \end{pmatrix}$$
+
+Dans une base orthonormée, la symétrie de la matrice d'un projecteur caractérise le caractère **orthogonal** de la projection.
+
+Calculons $M^2$. Posons $A = 11M$ :
+$$A^2 = \begin{pmatrix} 2 & -3 & 3 \\ -3 & 10 & 1 \\ 3 & 1 & 10 \end{pmatrix} \begin{pmatrix} 2 & -3 & 3 \\ -3 & 10 & 1 \\ 3 & 1 & 10 \end{pmatrix} = \begin{pmatrix} 22 & -33 & 33 \\ -33 & 110 & 11 \\ 33 & 11 & 110 \end{pmatrix} = 11 A$$
+
+Puisque $A^2 = 11A$, en divisant par $11^2$, on obtient :
+$$\frac{1}{11^2} A^2 = \frac{11}{11^2} A \implies M^2 = M$$
+
+\checkInfo{Conclusion}{La matrice $M$ est symétrique et vérifie $M^2 = M$. C'est donc la matrice d'une projection orthogonale.}
+
+
+L'image d'un projecteur est l'ensemble des vecteurs $X$ tels que $MX = X$ (l'espace propre associé à la valeur propre 1).
+Cela revient à résoudre $(M - I)X = 0$, ou encore $(A - 11I)X = 0$.
+
+$$A - 11I = \begin{pmatrix} 2-11 & -3 & 3 \\ -3 & 10-11 & 1 \\ 3 & 1 & 10-11 \end{pmatrix} = \begin{pmatrix} -9 & -3 & 3 \\ -3 & -1 & 1 \\ 3 & 1 & -1 \end{pmatrix}$$
+
+On remarque que les lignes sont proportionnelles à la deuxième ligne ($L_1 = 3L_2$ et $L_3 = -L_2$). L'équation du plan est donc :
+$$-3x - y + z = 0 \iff 3x + y - z = 0$$
+
+
+$Im(p)$ est le plan vectoriel d'équation cartésienne $3x + y - z = 0$. 
+Une base de ce plan peut être donnée par les vecteurs $u_1 = (1, 0, 3)$ et $u_2 = (0, 1, 1)$.
+
+
+\tipsInfo{Vérification rapide}{Le rang de la matrice est 2 (car il n'y a qu'une seule équation indépendante), ce qui confirme que l'image est un plan. La direction de la projection (le noyau $Ker(p)$) est alors portée par le vecteur normal au plan : $n = (3, 1, -1)$.}
+\end{document}

@@ -1,0 +1,150 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 3}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%jesse.groenen@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+%\setcounter{chapter}{3}
+\begin{document}
+%\chapter{Puissance et énergie du champ Em}
+\setcounter{chapter}{1}
+
+\chapter{Milieux diélectriques}
+\section{Introduction}\subsection{Notion de conducteur parfait}
+\begin{proposition}[Propriétés d'un conducteur parfait]
+    \begin{itemize}
+        \item $E_{int} = 0$
+        \item Quand on applique un champ $\vec{E_a}$, des chargent induites apparaissent à la surface du conducteur.
+        \item Il y a un champ induit dans le conducteur opposé au champ appliqué.
+        \item Comme le conducteur est parfait, le champ induit vient annuler le champ.
+        \item $\rho = 0$ en volume car les charges sont uniquement en surface.
+        \item Le conducteur est alors une équipotentielle
+    \end{itemize}
+\end{proposition}
+\section{Milieu diélectrique}
+\begin{definition}[Milieu diélectrique]
+    Il n'y a pas de charges libres de se mouvoir à l'échelle macroscopique du milieu. Toutes les charges sont liées à des atomes ou des molécules spécifiques
+\end{definition}
+\subsection{Moments dipolaires induits et permanents}
+\subsubsection{Atomes neutres}
+On suppose que le barycentre des charges + et - sont confondus. En appliquant un champ électrique, on observe un moment dipolaire induit : On sépare les barycentres. Il y a un barycentre $d\ll a_0$ et on obtient un dipôle physique quasi-ponctuel.
+ 
+\includegraphics[scale=0.5]{s3}
+\subsubsection{Moléculaire polaire}
+Il existe un moment dipolaire permanent si les barycentres $\ominus$ et $\oplus$ ne coincident pas.
+ 
+\includegraphics[scale=0.5]{s4}
+
+Les barycentres ne sont pas confondus, il y a donc un moment permanent\marginCritical{Il faut considérer l'électronégativité des atomes mais aussi la géométrie.}.
+
+\section{Polarisation}
+\subsection{Vecteur polarisation volumique}
+\begin{definition}[Vecteur polarisation volumique]
+    $\delta \vec{p} = \vec{P}\delta v$
+\end{definition}
+On associe à chaque éléments de volume $\delta v$ un moment dipolaire électrique. $\vec{P}$ est alors le vecteur polarisation volumique\marginInfo{c'est une densité volumique de moment dipolaire électrique.}.
+\subsection{Charges de polarisations : interprétation}
+\warningInfo{À retenir}{Dans un milieu diélectrique la répartiton macroscopique des charges de polarisation se décompose en une densité volumique et une densité surfacique :
+$$\rho_p(M) = -\Div \vec{P}(M)$$ et $$\sigma_P(N)= \vec{P}(N)\cdot \vec{n_{ext}}$$
+
+Dans un milieu diélectrique : polarisation $\iff$ accumulation de charges.
+}
+\subsubsection{variation dans le temps}
+On a $$\vec{j_P} = \frac{\partial \vec{P}}{\partial t}$$
+
+\begin{theorem}[Équation locale de conservation des charges de polarisation]
+    $\Div \vec{j_P}+\frac{\partial \rho_P}{\partial t} = 0$
+\end{theorem}
+\criticalInfo{Dimension de $j$}{C'est des $A\cdot m^{-2}$ bien que cela soit une densité volumique. En effet, $I\dd l = j_s\dd S = j\dd v$}
+\section{Déplacement électrique}
+\subsection{Eq de Maxwell dans un milieu diélectrique}
+On a toujours $\Div \vec{E} = \frac{\rho_{tot}}{\epsilon_0}$ mais avec $\vec{E} = \vec{E_{milieu}}+\vec{E_{appliqué}}$
+et $\rho_{tot}$ la densité volumique de chrages totales dans le milieu diélectrique : $\rho = \rho_P+\rho_{libres}+\rho_{autres}$ Les autres charges sont des ions insérés dans le milieu par exemple.\marginInfo{En général, on contrôle les charges libres qui génèrent un champ appliqué générant une polarisation permettant de déterminer $\vec{D}$.}
+
+\begin{definition}[Déplacement électrique]
+    $\vec{D} = \epsilon_0 \vec{E}+\vec{P}$
+\end{definition}
+\begin{theorem}[Équation de Maxwell en milieu diélectrique]
+    $\Div\vec{D} = \rho_{libres} + \rho_{autres}$
+\end{theorem}
+\begin{theorem}[Théorème de Gauss pour $\vec{D}$]
+    $$\iint_S \vec{D}\cdot \vec{\dd S} = Q_{libres} + Q_{autres}$$
+\end{theorem}
+
+\subsection{Relation de passage}
+On étudie l'interface entre le milieu 1 et le milieu 2 avec le vecteur $\vec{n_{1\to2}}$ orienté.
+\begin{theorem}
+    \begin{itemize}
+        \item $\vec{n_{1\to 2}}\wedge (\vec{E_2}-\vec{E_1}) = \vec{0}$
+        \item $\vec{n_{1\to 2}}\cdot (\vec{D_2}-\vec{D_1}) = \sigma_{libre}$
+    \end{itemize}
+\end{theorem}
+\section{Milieux diélectriques linéaire, homogènes et isotropes}
+\subsection{Susceptibilité électrique}
+\begin{definition}[Milieu linéaire]
+    $$\vec{P}(M) = \epsilon_0 [\chi_e(M)]\vec{E}(M)$$
+\end{definition}
+\begin{definition}[Isotrope]
+    Les propriétés ne dépendent pas de la direction considérée. 
+\end{definition}
+\begin{definition}[Milieu homogène]
+    Milieu dont les prorpiétés macroscopiques de dépendent pas de la position M
+\end{definition}
+\begin{theorem}[Relation locale entre Polarisation et chamo électrique total au point M]
+    $\vec{P}(M) = \epsilon_0 \chi_e\vec{E}$
+\end{theorem}
+\begin{itemize}
+    \item $\chi_e$ est sans dimension
+    \item $\chi_e>0$ dans l'ARQS 
+    \item Dans le vide, $\vec{P} = 0, \vec{D} = \epsilon_0\vec{E}$
+\end{itemize}
+\subsection{Permitivité diélectrique}
+\begin{theorem}
+    $$\vec{D} = \epsilon_0 \vec{E} + \vec{P} = \epsilon_0 (1+\chi_e)\vec{E} = \epsilon_0\epsilon_r \vec{E} = \epsilon \vec{E}$$
+\end{theorem}
+\end{document}

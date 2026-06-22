@@ -1,0 +1,185 @@
+\documentclass[french]{yLectureNote}
+
+\title{Fiche de révision}
+\subtitle{Synthèse des notions essentielles}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{}
+
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{tkz-tab}
+\usepackage{tabularx}
+\usepackage{awesomebox}
+\usepackage{menukeys}
+\usepackage{fancyhdr}
+\usepackage{blindtext}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{pifont}
+\usepackage{array}
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+
+\begin{document}
+%Foche méthode : résoudre un probleme de thermo simple + pièges à éviter
+\section{Système thermodynamique}
+
+\begin{definition}
+[Système thermodynamique]
+    Ensemble matériel impliqué dans une processus de conversion d'énergie. 
+    Il peut \^etre délimité par des frontière fixes ou mobiles réelles ou imaginaires
+
+\end{definition}
+
+\begin{definition}
+[Système isolé]
+    N'échange ni matière ni énergie avec l'extérieur du système. Contraire : système ouvert
+\end{definition}
+
+\begin{definition}
+[Système fermé]
+    Il n'y a pas de transfert de matière mais échange d'énergie. La masse est constante
+
+\end{definition}
+
+% \begin{definition}
+% [Système ouvert]
+%     Échange matière et énergie avec le reste de l'univers
+
+% \end{definition}
+
+\section{Variables}
+
+\begin{definition}
+[Variable thermodynamique]
+    Toute grandeur variant, mesurable, directement ou non, appartenant au système
+
+\end{definition}
+
+\begin{definition}
+[Densité massique d'une grandeur extensive]
+    Soit Y une grandeur extensive. On définit $$y = \Lim{m\to 0}\frac{Y}{m}$$ qui est une grandeur intensive.
+
+\end{definition}
+
+\begin{theorem}
+Pour un système fermé contenant un corps pur, l'état est connu si 2 variables thermodynamiques, souvent (P,T), (P,V), (T,V).
+
+\end{theorem}
+
+\section{Notion de température}
+
+\begin{definition}
+[Température]
+    La grandeur que partagent 2 systèmes en équilibre thermique
+
+\end{definition}
+
+\begin{theorem}
+[Passage d'une unité à l'autre]
+    \begin{itemize}
+        \item $T[F] = \frac95 T[C]+32$
+        \item $T[K] = T[C]+273.15$
+    \end{itemize}
+
+\end{theorem}
+\section{Pression}
+
+\begin{definition}
+[Pression]
+    Notée $p$, elle s'exprime en Pascal et correspond à la densité de force qu'exerce le gaz/liquide sur son contenant :$$\dd \vec{F} = p\vec{\dd S}$$
+
+\end{definition}
+
+\begin{theorem}
+[Loi de l'hydrostatique]
+    $$\vec{\text{grad}}(P) = \rho \vec{g}$$
+
+\end{theorem}
+
+% \begin{theorem}
+% [Loi du nivellement barométrique]
+%     $$\ln\left(\frac{P(z_B)}{P(z_A)}\right) = -\frac{Mg}{RT}(z_B - z_A)$$
+
+% \end{theorem}
+
+\section{Équilibre Thermodynamique}
+
+\begin{definition}
+[Système à l'équilibre]
+    Un système est à l'équilibre s'il n'y a pas de flux de masse, pas de flux d'énergie et que l'état est stationnaire.
+
+\end{definition}
+
+\section{Équation d'état}
+
+\begin{definition}
+[Gaz parfait]
+    Un gaz est dit parfait s'il respecte $PV = nRT$.
+
+\end{definition}
+
+\begin{definition}
+[Modèle de Van der Waals]
+    Pour prendre en compte le volume propre des molécules ($b$) et leurs interactions ($a$), on utilise :
+    $$\left( P + \frac{n^2 a}{V^2} \right) (V - nb) = nRT$$
+
+\end{definition}
+
+\section{Réservoir}
+
+\begin{definition}
+[Thermostat/Réservoir/Source]
+    C'est un lieu à qui on peut prendre ou donner de l'énergie autant que l'on veut sans que sa température ne change.
+
+\end{definition}
+
+\section{Transformations}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+\hline
+\textbf{Type de transformation} & \textbf{Définition / Condition} \\
+\hline
+Transformation & Passage d'un système d'un état initial (d'équilibre) à un autre d'équilibre aussi. \\
+\hline
+Transformation quasi-statique & Succession continue d'états d'équilibre, quelle que soit l'amplitude des variations. \\
+\hline
+Transformation non quasi-statique & Au moins un état n'est pas un état d'équilibre. \\
+\hline
+Transformation réversible & Peut être effectuée dans le sens inverse, retrouvant l'état initial. \\
+\hline
+Transformation monotherme & $T_{ext} = T_i = T_f$  \\
+\hline
+Transformation isobare & $P = \text{cte}$ (pression constante) \\
+\hline
+Transformation isochore & $V = \text{cte}$ (volume constant) \\
+\hline
+\end{tabularx}
+\end{center}
+
+\end{document}

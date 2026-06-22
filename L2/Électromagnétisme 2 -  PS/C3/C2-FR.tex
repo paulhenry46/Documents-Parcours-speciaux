@@ -1,0 +1,124 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 2 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\setcounter{chapter}{2}
+\begin{document}
+\chapter{Équations de Maxwell en régime variable}
+\section{Conservation de la charge}
+On considère un volume V contenant une charge q(t), caractérisé par sa densité volumique de charge $\rho$ qui dépend du temps et $\vec{j}$.
+
+On a $$q(t) = \iiint_V \rho(t)\dd \tau$$ et le courant sortant $i_s = \iint_S \vec{j}\cdot\dd \vec{S}$
+
+On a $\iint_S \vec{j}\cdot \vec{\dd S} = -\frac{\dd}{\dd t}\iiint_V\rho(t)\dd \tau = - \iiint_V \frac{\dd \rho}{\dd t}\dd \tau$
+
+De plus, $\iint_V \div\vec{j}\dd \tau = -\iint \frac{\dd \rho}{\dd t}\dd tau$.
+
+Donc $\div\vec{j}+\frac{\dd \rho}{\dd t}= 0$.
+\begin{theorem}[Consrvation de la charge]
+    $\div\vec{j}+\frac{\dd \rho}{\dd t}= 0$.
+\end{theorem}
+\section{Eq de maxwell en régime variable}
+\subsection{Équations restant inchangées}
+\begin{itemize}
+    \item Maxwell-gauss : $\div \vec{E} = \frac{\rho}{\epsilon_0}$
+    \item Maxwell-Thomson : $\div\vec{B} = 0$
+    \item Maxwell-faraday : $\rot\vec{E} = -\frac{\partial \vec{B}}{\partial t}$
+\end{itemize}
+\subsection{Maxwell-Ampère}
+On ne peut plus écrire $ \rot\vec{B} = \mu_0\vec{j}$.
+
+Maxwell a proposé d'introdcuire un courant supplémentaire appelé le courant de déplacement $\vec{j_D}$.
+
+Ainsi, $\rot\vec{B} = \mu_0(\vec{j}+\vec{j_D})$
+
+On utilise Maxwell-Gauss, on obtient
+\begin{theorem}
+    $$\rot\vec{B} = \mu_0(\vec{j0+\epsilon_0\frac{\partial \vec{E}}{\dd t}})$$
+\end{theorem}
+%TODO Auto propagation
+
+En l'absence de sources, les champs E et B existent et s'auto-entrtiennet.
+\begin{theorem}[Forme locale de l'équation de maxwell]
+   $$\int\vec{B}\cdot \vec{\dd l} = \mu_0 \iint_S \vec{j}\cdot \dd \vec{S}+\mu_0\epsilon_0 \iint_ \frac{\partial \vec{E}}{\partial t}\vec{\dd S}$$ 
+\end{theorem}
+\section{Relations de passage}
+\begin{itemize}
+    \item $\vec{n_{ext}}\cdot (\vec{E_{ext}}-\vec{E_{int}}) = \frac{\sigma}{\epsilon_0}$
+    \item $\vec{n_{ext}}\wedge (\vec{E_{ext}}-\vec{E_{int}}) = 0$
+    \item $\vec{n_{ext}}\cdot (\vec{B_{ext}}-\vec{B_{int}}) = 0$
+    \item \item $\vec{n_{ext}}\wedge (\vec{B_{ext}}-\vec{B_{int}}) = \mu_0\vec{j}$
+\end{itemize}
+\section{Potentiel Électromagnétique}
+On associe toujours le potentiel vecteur $\vec{A}$ à $\vec{B}$ par $\vec{B} = \rot\vec{A}$ On 
+l'injecte dans l'équation de Maxwell-Faraday.
+
+On obtient 
+\begin{theorem}[Potentiel Électromagnétique]
+    $$\vec{E} = -\grad(V)-\frac{\partial A}{\partial t}$$
+\end{theorem}
+(V,A) est le potentiel Électromagnétique, il permet de connaitre E et B.
+\subsection{Jauge de Lorenz}
+\begin{flalign*}
+    \div(\vec{E}) &= \div(-\grad(V)-\frac{\partial A}{\partial t}) = \frac{\rho}{\epsilon_0}\\
+    \rot(\vec{B}) &= \mu_0(\vec{j} + \epsilon_0 \frac{\dd }{\dd t}(-\grad(V)-\frac{\partial A}{\partial t}))\\
+    \lap \vec{A} - \epsilon_0 \mu_0 \frac{\partial^2\vec{A}}{\partial t^2} = -\mu_0\vec{j}+\grad(\div\vec{A}+\mu_0 \epsilon_0 \frac{\partial V}{\partial t})\\
+\end{flalign*}
+On choisit $\div\vec{A}+\mu_0 \epsilon_0 \frac{\partial V}{\partial t} = 0$ qui est la jauge de Lorenz :
+\begin{theorem}[Jauge de Lorenz]
+    $$\div(\vec{A}) - \frac{1}{c^2}\frac{\partial V}{\partial t}=0$$ avec $c^2 = \frac{1}{\mu_0\epsilon_0}$
+\end{theorem}
+Sous cette condition, on peut écrire :
+\begin{theorem}[Laplacien de A sous condition de Jauge]
+   $$\lap \vec{A} - \frac{1}{c^2} \frac{\partial^2\vec{A}}{\partial t^2}=-\mu_0 \vec{j}$$ 
+\end{theorem}
+\begin{theorem}[Laplacien de V sous condition de Jauge]
+   $$\lap V - \frac{1}{c^2} \frac{\partial^2\vec{V}}{\partial t^2}=-\frac{\rho}{\epsilon_0}$$ 
+\end{theorem}
+
+\end{document}

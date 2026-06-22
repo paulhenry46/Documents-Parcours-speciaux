@@ -1,0 +1,173 @@
+% !TeX spellcheck = fr_FR
+\documentclass[french]{yLectureNote}
+
+\title{Mécanique Analytique}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+\professor{M.Brut}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{awesomebox}
+\usepackage{menukeys}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{pifont}
+\usepackage{array}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% --- Commandes personnalisées ---
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\qa}{q_{\alpha}}
+\newcommand{\qdb}{\dot{q_{\beta}}}
+\newcommand{\qb}{q_{\beta}}
+
+\begin{document}
+\chapter{Mécanique Hamiltonienne - Méthode}
+
+\section{Calcul Variationnel}
+Consiste à chercher une fonction $y(x)$ rendant stationnaire une fonctionnelle $T[y] = \int_{x_A}^{x_B} F(y', y, x) \, dx$.
+
+%\checkInfo{Modélisation d'une fonctionnelle}{Pour exprimer une grandeur (ex: temps de parcours), on exprime l'élément de longueur infinitésimal $ds = \sqrt{1 + y'^2}\,dx$ et on injecte les lois de conservation (ex: $E_m$) pour l'exprimer en fonction des variables d'espace.}
+
+\checkInfo{Méthode : Modélisation d'une fonctionnelle}{
+Pour exprimer une grandeur physique (ex: temps de parcours) sous forme d'intégrale :
+\begin{enumerate}
+    \item Exprimer l'élément de longueur infinitésimal : $\dd s = \sqrt{1 + y'^2}\,\dd x$.
+    \item Utiliser les lois de conservation (ex: $E_m = T + V = \text{cste}$) pour exprimer la vitesse $v = \frac{ds}{dt}$ en fonction des variables d'espace.
+    \item En déduire l'élément de temps $\dd t = \frac{\dd s}{v}$ à intégrer.
+\end{enumerate}
+}
+
+\begin{definition}
+L'équation d'Euler-Lagrange associée à la fonctionnelle $F(y', y, x)$ est :
+$$ \frac{\partial F}{\partial y} - \frac{d}{dx}\left(\frac{\partial F}{\partial y'}\right) = 0 $$
+\end{definition}
+
+\tipsInfo{Identité de Beltrami (Cas où $\frac{\partial F}{\partial x} = 0$)}{
+Si $F$ ne dépend pas explicitement de $x$, l'équation admet une intégrale première immédiate qui réduit l'ordre de l'équation différentielle :
+$$ F - y'\frac{\partial F}{\partial y'} = \text{cste} $$
+}
+
+% =========================================================================
+% SYMÉTRIES ET NOETHER
+% =========================================================================
+\section{Symétries et Théorème de Noether}
+
+Pour prouver qu'une transformation dépendante d'un paramètre $s$ est une symétrie, il faut démontrer l'invariance de la forme du Lagrangien : $L(q(s), \dot{q}(s)) = L(q, \dot{q})$.
+\checkInfo{Méthode : Démontrer une symétrie}{
+\begin{enumerate}
+    \item Écrire les expressions des nouvelles coordonnées $q_i(s)$ données par la transformation.
+    \item Calculer leurs dérivées temporelles $\dot{q}_i(s)$ par rapport à $t$.
+    \item Injecter $q_i(s)$ et $\dot{q}_i(s)$ dans l'expression du Lagrangien.
+    \item Simplifier pour vérifier que le paramètre $s$ disparaît et que $L' = L$.
+\end{enumerate}
+}
+\subsection{Exemple de l'invariance hyperbolique}
+Soit le Lagrangien $L = \frac{1}{2}m(\dot{x}^2 - \dot{y}^2) - \frac{1}{2}k(x^2 - y^2)$ soumis à la transformation matricielle :
+$$ \begin{cases} 
+x(s) = x \cosh(s) + y \sinh(s) \\ 
+y(s) = x \sinh(s) + y \cosh(s) 
+\end{cases} \implies
+\begin{cases} 
+\dot{x}(s) = \dot{x} \cosh(s) + \dot{y} \sinh(s) \\ 
+\dot{y}(s) = \dot{x} \sinh(s) + \dot{y} \cosh(s) 
+\end{cases} $$
+
+En substituant dans le nouveau Lagrangien $L'$, les doubles produits s'annulent :
+$$ \dot{x}(s)^2 - \dot{y}(s)^2 = (\dot{x}^2 - \dot{y}^2)\underbrace{(\cosh^2(s) - \sinh^2(s))}_{= 1} = \dot{x}^2 - \dot{y}^2 $$
+De même pour les positions, on obtient $L' = L$ : la transformation est une symétrie continue.
+
+\subsection{Détermination de la quantité conservée}
+\checkInfo{Méthode : Application du Théorème de Noether}{
+Pour extraire l'intégrale première d'une symétrie continue :
+\begin{enumerate}
+    \item \textbf{Calculer les générateurs infinitésimaux} $h_i$ en dérivant la transformation par rapport à $s$ au point initial : $h_i = \left. \frac{\partial q_i(s)}{\partial s} \right|_{s=0}$.
+    \item \textbf{Déterminer les impulsions conjuguées} classiques du système : $p_i = \frac{\partial L}{\partial \dot{q}_i}$.
+    \item \textbf{Calculer la constante du mouvement} $I$ en effectuant la somme : $I = \sum_i p_i h_i$.
+\end{enumerate}
+}
+
+
+On dérive les coordonnées transformées par rapport au paramètre $s$ en $s=0$ :
+$$ h_i = \left. \frac{\partial q_i(s)}{\partial s} \right|_{s=0} \implies 
+\begin{cases} 
+h_x = \left. (x\sinh s + y\cosh s) \right|_{s=0} = y \\ 
+h_y = \left. (x\cosh s + y\sinh s) \right|_{s=0} = x 
+\end{cases} $$
+
+Les impulsions généralisées (moments conjugués) sont données par $p_i = \frac{\partial L}{\partial \dot{q}_i}$ :
+$$ p_x = \frac{\partial L}{\partial \dot{x}} = m\dot{x} \qquad \text{et} \qquad p_y = \frac{\partial L}{\partial \dot{y}} = -m\dot{y} $$
+
+\begin{theorem}[Constante du mouvement de Noether]
+L'intégrale première $I$ induite par la symétrie s'écrit :
+$$ I = \sum_i p_i \, h_i = p_x h_x + p_y h_y = m(y\dot{x} - x\dot{y}) $$
+\end{theorem}
+
+\subsection{Autre exemple : Transformation hélicoïdale}
+Pour une transformation de la forme $\phi \to \phi + \epsilon$ et $z \to z + \frac{\epsilon}{\lambda}$ :
+\begin{itemize}
+    \item \textbf{Générateurs :} Par identification avec $q_i + \epsilon h_i$, on a $h_\phi = 1$ et $h_z = \frac{1}{\lambda}$.
+    \item \textbf{Quantité conservée :} $I = p_\phi \cdot (1) + p_z \cdot \left(\frac{1}{\lambda}\right) = p_\phi + \frac{p_z}{\lambda}$.
+\end{itemize}
+
+% =========================================================================
+% MÉCANIQUE HAMILTONIENNE
+% =========================================================================
+\section{Mécanique Hamiltonienne}
+
+Soit une particule de masse $m$ en coordonnées sphériques $(r, \theta, \phi)$ dans un potentiel central $V(r)$ :
+$$ L = \frac{1}{2}m\left(\dot{r}^{2}+r^{2}\dot{\theta}^{2}+r^{2}\sin^{2}\theta\dot{\phi}^{2}\right)-V(r) $$
+\checkInfo{Méthode : Construction du Hamiltonien $H$}{
+Le passage de l'espace des configurations $(q, \dot{q})$ à l'espace des phases $(q, p)$ suit une méthode stricte :
+\begin{enumerate}
+    \item Calculer tous les moments conjugués $p_i = \frac{\partial L}{\partial \dot{q}_i}$.
+    \item \textbf{Inverser le système} pour isoler chaque vitesse généralisée : $\dot{q}_i = f(q, p)$.
+    \item Écrire la transformation de Legendre : $H = \sum_i p_i\dot{q}_i - L$.
+    \item \textbf{Substituer impérativement} toutes les expressions de $\dot{q}_i$. Le Hamiltonien final ne doit dépendre \textbf{que} de $q_i$ et $p_i$.
+\end{enumerate}
+}
+\subsection{Calcul des moments conjugués}
+En appliquant la définition $p_i = \frac{\partial L}{\partial \dot{q}_i}$ :
+$$ p_r = m\dot{r} \qquad ; \qquad p_\theta = mr^2\dot{\theta} \qquad ; \qquad p_\phi = mr^2\sin^2\theta\dot{\phi} $$
+
+\subsection{Écriture du Hamiltonien (Transformation de Legendre)}
+On suit la méthodologie :
+\begin{enumerate}
+    \item Inverser les relations pour isoler les vitesses : $\dot{r} = \frac{p_r}{m}$, $\dot{\theta} = \frac{p_\theta}{mr^2}$, $\dot{\phi} = \frac{p_\phi}{mr^2\sin^2\theta}$.\\
+\item Injecter dans $H = \sum_i p_i\dot{q}_i - L$ pour éliminer totalement les vitesses.
+\end{enumerate}
+
+$$ H = \frac{p_r^2}{m} + \frac{p_\theta^2}{mr^2} + \frac{p_\phi^2}{mr^2\sin^2\theta} - \left[ \frac{p_r^2}{2m} + \frac{p_\theta^2}{2mr^2} + \frac{p_\phi^2}{2mr^2\sin^2\theta} - V(r) \right] $$
+$$ H(r, \theta, p_r, p_\theta, p_\phi) = \frac{p_r^2}{2m} + \frac{p_\theta^2}{2mr^2} + \frac{p_\phi^2}{2mr^2\sin^2\theta} + V(r) $$
+
+\subsection{Équations de Hamilton}
+Le système évolue selon les équations canoniques : $\dot{q}_i = \frac{\partial H}{\partial p_i}$ et $\dot{p}_i = -\frac{\partial H}{\partial q_i}$.
+
+\begin{tabular}{lll}
+\toprule
+\textbf{Coordonnée ($q_i$)} & \textbf{Équation cinématique ($\dot{q}_i$)} & \textbf{Équation dynamique ($\dot{p}_i$)} \\
+\midrule
+\textbf{Rayon $r$} & $\displaystyle \dot{r} = \frac{p_r}{m}$ & $\displaystyle \dot{p}_r = \frac{p_\theta^2}{mr^3} + \frac{p_\phi^2}{mr^3\sin^2\theta} - \frac{dV(r)}{dr}$ \\[10pt]
+\textbf{Angle $\theta$} & $\displaystyle \dot{\theta} = \frac{p_\theta}{mr^2}$ & $\displaystyle \dot{p}_\theta = \frac{p_\phi^2\cos\theta}{mr^2\sin^3\theta}$ \\[10pt]
+\textbf{Angle $\phi$} & $\displaystyle \dot{\phi} = \frac{p_\phi}{mr^2\sin^2\theta}$ & $\displaystyle \dot{p}_\phi = 0$ \\
+\bottomrule
+\end{tabular}
+
+\tipsInfo{Variable cyclique}{
+Puisque $\phi$ n'apparaît pas explicitement dans $H$, $\dot{p}_\phi = 0$. L'impulsion $p_\phi$ (projection du moment cinétique sur l'axe $z$) est donc une \textbf{constante du mouvement}.
+}
+
+\end{document}

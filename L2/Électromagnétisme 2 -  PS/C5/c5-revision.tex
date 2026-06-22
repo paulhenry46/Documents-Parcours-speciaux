@@ -1,0 +1,178 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 2 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\setcounter{chapter}{4}
+\begin{document}
+
+\chapter{Ondes EM dans le vide}
+
+\criticalInfo{Rappels : Équations de Maxwell dans le vide}{
+En l'absence de sources ($\rho = 0, \vec{j} = \vec{0}$), les équations locales sont :
+\begin{itemize}
+    \item \textbf{M-G :} $\text{div } \vec{E} = 0$
+    \item \textbf{M-T :} $\text{div } \vec{B} = 0$
+    \item \textbf{M-F :} $\rot \vec{E} = -\frac{\partial \vec{B}}{\partial t}$
+    \item \textbf{M-A :} $\rot \vec{B} = \frac{1}{c^2} \frac{\partial \vec{E}}{\partial t}$ (avec $c = 1/\sqrt{\epsilon_0 \mu_0}$)
+\end{itemize}
+}
+
+\section{Propagation et Potentiels}
+
+\warningInfo{Équation de d'Alembert}{
+Chaque composante des champs $\vec{E}$ et $\vec{B}$ ainsi que des potentiels $\vec{A}$ et $V$ satisfait l'équation d'onde :
+$$\lap \vec{A} - \frac{1}{c^2} \frac{\partial^2 \vec{A}}{\partial t^2} = \vec{0}$$
+}
+
+\checkInfo{Jauge de Lorenz}{
+Pour assurer la propagation des potentiels à la célérité $c$, on impose la condition :
+$$\text{div } \vec{A} + \frac{1}{c^2} \frac{\partial V}{\partial t} = 0$$
+}
+
+\section{Cinématique des Ondes}
+
+% \begin{definition}[Grandeurs fondamentales]
+% On distingue deux périodicités pour une onde progressive monochromatique :
+% \begin{itemize}
+%     \item \textbf{Période temporelle $T$ (s) :} durée minimale au bout de laquelle le signal se reproduit identiquement en un point donné de l'espace.
+%     \item \textbf{Période spatiale $\lambda$ (m) :} distance minimale séparant deux points de l'espace vibrant en phase à un instant donné. On l'appelle \textbf{longueur d'onde}.
+% \end{itemize}
+% \end{definition}
+
+\checkInfo{Pulsation et Vecteur d'onde}{
+\begin{itemize}
+    \item \textbf{Pulsation $\omega$ (rad.s$^{-1}$) :} $\omega = \frac{2\pi}{T} = 2\pi f$ (où $f = 1/T$ est la fréquence en Hz).
+    \item \textbf{Nombre d'onde $k$ (rad.m$^{-1}$) :} $k = \frac{2\pi}{\lambda}$ (norme du vecteur d'onde $\vec{k}$).
+\end{itemize}
+}
+
+\criticalInfo{Relations de passage}{
+La célérité $c$ fait le lien entre l'espace et le temps :
+\begin{equation}
+    c = \frac{\lambda}{T} = \lambda f = \frac{\omega}{k}
+\end{equation}
+Dans le vide, pour une onde électromagnétique, $c = \frac{1}{\sqrt{\epsilon_0 \mu_0}} \approx 3 \cdot 10^8 \text{ m.s}^{-1}$.
+}
+
+% \begin{proposition}
+% \textbf{Vitesse de phase :} $v_{\phi} = \frac{\omega}{k}$ représente la vitesse de déplacement des surfaces d'onde (phase constante). Dans le vide, elle est égale à $c$ et indépendante de la fréquence (milieu non dispersif).
+% \end{proposition}
+
+\tipsInfo{Astuces de calcul}{
+En notation complexe $\underline{s} = S_0 e^{i(\omega t - \vec{k} \cdot \vec{r})}$, les opérateurs différentiels se simplifient grandement pour une OPPM :
+\begin{itemize}
+    \item $\frac{\partial}{\partial t} \longrightarrow i\omega$
+    \item $\vec{\nabla} \longrightarrow -i\vec{k}$ (donc $\text{div} \longrightarrow -i\vec{k} \cdot$ et $\vec{\mathrm{rot}} \longrightarrow -i\vec{k} \wedge$)
+    \item $\lap \longrightarrow -k^2$
+\end{itemize}
+}
+
+\section{Ondes Planes Progressives Monochromatiques (OPPM)}
+
+\begin{definition}{OPPM}
+Onde dont les surfaces d'onde sont des plans et dont la dépendance temporelle est sinusoïdale de pulsation $\omega$. En notation complexe :
+$$\vec{\underline{E}}(\vec{r}, t) = \vec{\underline{E}_0} e^{i(\omega t - \vec{k} \cdot \vec{r})}$$
+\end{definition}
+
+\criticalInfo{L'essentiel sur la structure}{
+Pour une OPPM se propageant selon $\vec{u}$ ($\vec{k} = k\vec{u}$) :
+\begin{itemize}
+    \item \textbf{Transversalité :} $\vec{E}$ et $\vec{B}$ sont orthogonaux à $\vec{k}$.
+    \item \textbf{Trièdre direct :} $(\vec{u}, \vec{E}, \vec{B})$ forment un trièdre direct.
+    \item \textbf{Relation d'amplitude :} $E = cB$ ou $\vec{\underline{B}} = \frac{\vec{u}}{c} \wedge \vec{\underline{E}}$.
+    \item \textbf{Phase :} Les deux champs sont en phase.
+\end{itemize}
+}
+
+\section{Polarisation}
+
+La polarisation est l'étude de la trajectoire du vecteur $\vec{E}$ dans un plan orthogonal à la propagation. Soit $\Delta\phi = \phi_y - \phi_x$ le déphasage.
+
+\begin{table}[h]
+\centering
+\begin{tabularx}{\textwidth}{@{}l X X@{}}
+\toprule
+\textbf{Type} & \textbf{Condition sur déphasage $\Delta\phi$} & \textbf{Condition sur amplitudes} \\
+\midrule
+\textbf{Rectiligne} & $0$ ou $\pi \pmod{2\pi}$ & Quelconques \\
+\textbf{Circulaire} & $\pm \pi/2 \pmod{2\pi}$ & $E_{0x} = E_{0y}$ \\
+\textbf{Elliptique} & Cas général & Quelconques \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+
+\section{Énergie du champ EM}
+
+\begin{proposition}
+\textbf{Densité volumique d'énergie :}
+$$u_{em} = \epsilon_0 E^2 \quad \text{(équirépartition entre } u_e \text{ et } u_m \text{ pour une OPPM)}$$
+\textbf{Vecteur de Poynting :}
+$$\vec{\Pi} = \frac{\vec{E} \wedge \vec{B}}{\mu_0} = u_{em} c \vec{u}$$
+\end{proposition}
+
+\checkInfo{Moyennes temporelles}{
+Pour une OPPM d'amplitude $E_0$ :
+$$\langle u_{em} \rangle = \frac{1}{2} \epsilon_0 E_0^2 \quad \text{et} \quad \langle \vec{\Pi} \rangle = \frac{1}{2} \epsilon_0 c E_0^2 \vec{u}$$
+}
+
+\section{Ondes stationnaires}
+
+\tipsInfo{Superposition}{
+Résulte de la somme de deux ondes identiques se propageant en sens inverse.
+\begin{itemize}
+    \item \textbf{Découplage :} $\vec{E}(z,t) = 2 E_0 \cos(kz) \cos(\omega t) \vec{e_x}$.
+    \item \textbf{N{\oe}uds de E :} $\cos(kz) = 0$.
+    \item \textbf{Flux d'énergie :} $\langle \vec{\Pi} \rangle = \vec{0}$ (pas de transport d'énergie).
+\end{itemize}
+}
+
+\end{document}

@@ -1,0 +1,228 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 2 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\setcounter{chapter}{2}
+\begin{document}
+\chapter{ARQS}
+\section{Décharge d'une boule dans l'air}
+
+\subsection{Validité du théorème de Gauss et calcul de $\vec{E}$}
+Le théorème de Gauss est toujours valable (c'est une loi fondamentale de Maxwell). Cependant, il n'est utile pour calculer le champ que si la symétrie est suffisante. Ici, la distribution de charge reste sphérique à tout instant $t$ (la boule est conductrice, les charges se répartissent uniformément en surface, et l'air est isotrope).
+ Calcul :
+    Appliquons le théorème de Gauss sur une sphère fictive de rayon $r > R$ :
+    $$\iint \vec{E} \cdot d\vec{S} = \frac{Q_{int}}{\epsilon_0}$$
+    Par symétrie, $\vec{E} = E(r, t) \vec{e}_r$. Le flux est donc $E(r, t) \times 4\pi r^2$.
+    D'où : $\vec{E}(M, t) = \frac{Q(t)}{4\pi\epsilon_0 r^2} \vec{e}_r$
+
+\tipsInfo{ARQS}{Même si $Q$ varie au cours du temps, on utilise la formule de l'électrostatique. C'est ce qu'on appelle l'Approximation des Régimes Quasi-Stationnaires (ARQS). On considère que le champ "s'adapte" instantanément à la nouvelle valeur de la charge.
+}
+\subsection{Courant et équation différentielle}
+
+On calcule la Densité de courant $\vec{j}$ :
+On utilise la loi d'Ohm locale dans l'air de conductivité $\gamma$ :
+$$\vec{j} = \gamma \vec{E} = \frac{\gamma Q(t)}{4\pi\epsilon_0 r^2} \vec{e}_r$$
+
+On calcule ensuite Intensité $I$ à travers une sphère $r > R$ :
+$$I = \iint \vec{j} \cdot d\vec{S} = \int_{0}^{\pi} \int_{0}^{2\pi} \frac{\gamma Q(t)}{4\pi\epsilon_0 r^2} (r^2 \sin\theta d\theta d\phi) = \frac{\gamma Q(t)}{\epsilon_0}$$
+ Pourquoi $I$ est indépendant de $r$ ? C'est une conséquence de la conservation de la charge. Tout le courant qui "quitte" la boule doit traverser chaque couche d'air successive de rayon r. Il n'y a pas d'accumulation de charge dans l'air.
+
+On peut maintenant obtenir l'équation différentielle :
+Le courant $I$ sortant de la boule est égal à la perte de charge par unité de temps : $I = -\frac{dQ}{dt}$.
+\warningInfo{Signe}{Toujours réfléchir au sens : si le courant $I$ est sortant (positif), la charge $Q$ de la boule diminue, donc $dQ/dt$ est négatif. D'où $I = -\dd Q/\dd t$.}
+On a donc : $-\frac{dQ}{dt} = \frac{\gamma Q(t)}{\epsilon_0} \implies \frac{dQ}{dt} + \frac{\gamma}{\epsilon_0} Q = 0$.
+ Solution : $Q(t) = Q_0 e^{-t/\tau}$ avec $\tau = \frac{\epsilon_0}{\gamma}$ (temps de relaxation).
+
+
+\subsection{Pourquoi le champ magnétique $\vec{B}$ est-il nul ?}
+Analyse des symétries :
+\begin{itemize}
+    \item Le système possède une symétrie sphérique.
+    \item Tout plan contenant l'axe $(OM)$ est un plan de symétrie ($\Pi^+$) de la distribution de courant (car $\vec{j}$ est radial).
+    \item Le vecteur $\vec{B}$ doit être perpendiculaire à tout plan de symétrie passant par $M$.
+    \item Or, il existe une infinité de tels plans qui se coupent tous sur la droite $(OM)$. Le seul vecteur perpendiculaire à une infinité de directions à la fois est le vecteur nul.
+Conclusion : $\vec{B}(M, t) = \vec{0}$.
+\end{itemize}
+
+
+\subsection{Le courant de déplacement}
+Pourquoi faut-il $\vec{j}_D = \epsilon_0 \frac{\partial \vec{E}}{\partial t}$ ?
+
+Si on utilise la forme "statique" de Maxwell-Ampère ($\vec{rot} \vec{B} = \mu_0 \vec{j}$), on aboutit à une contradiction car $\vec{B} = 0$ impliquerait $\vec{j} = 0$, ce qui est faux (on observe un courant de décharge).
+Il faut la forme complète : $\vec{rot} \vec{B} = \mu_0 (\vec{j} + \vec{j}_D)$.
+Comme $\vec{B} = 0$, on doit avoir $\vec{j} + \vec{j}_D = 0$.
+
+ Vérifions :
+    $\vec{j}_D = \epsilon_0 \frac{\partial \vec{E}}{\partial t} = \epsilon_0 \frac{1}{4\pi\epsilon_0 r^2} \frac{dQ}{dt} \vec{e}_r = \frac{1}{4\pi r^2} (-\frac{\gamma Q}{\epsilon_0}) \vec{e}_r = -\frac{\gamma Q}{4\pi \epsilon_0 r^2} \vec{e}_r$
+    On remarque que $\vec{j}_D = -\vec{j}$.
+    La somme $\vec{j} + \vec{j}_D$ est bien nulle. Le courant de déplacement compense exactement le courant de conduction !
+
+\warningInfo{Ne pas confondre $\epsilon_0$ et $\gamma$.}{$\epsilon_0$ caractérise la capacité du milieu à être polarisé (vide/air), $\gamma$ sa capacité à laisser passer les charges.}
+
+\checkInfo{Phénomène étudié}{Ce phénomène s'appelle la relaxation des charges. Dans un conducteur parfait ($\gamma \to \infty$), le temps de relaxation $\tau$ est nul : les charges s'équilibrent instantanément. Dans l'air, c'est très lent. $\vec{B}$ est nul parce que les variations du champ électrique (courant de déplacement) "effacent" l'effet magnétique du mouvement des charges (courant de conduction).
+}
+
+\section{Condensateur plan en régime lentement variable}
+
+\subsection{Analyse des symétries et invariances}
+
+\textbf{Invariances :} 
+\begin{itemize}
+    \item La géométrie est invariante par rotation autour de l'axe $Oz$ ($\theta$). Le champ ne dépend donc pas de $\theta$.
+    \item On néglige les effets de bord ($R \gg e$), on considère donc une symétrie de translation selon $z$ entre les armatures.
+    \end{itemize}
+
+\textbf{Symétries :} 
+\begin{itemize}
+    \item Le plan contenant l'axe $Oz$ et le point $M$ est un plan de symétrie de la distribution de charge et de courant (axial). $\vec{E}$ doit appartenir à ce plan.
+    \item E est un vecteur vrai à ce plan, donc $\vec{E}(r,t) = E_z(r,t) \vec{e}_z + E_r(r,t) \vec{e}_r$.
+    \item B est un pseudo-vecteur à ce plan, donc il est $\perp$ : $\vec{B}(r,t) = B_\theta(r,t) \vec{e}_\theta$.
+\end{itemize}
+
+\subsection{Ordre de grandeur et effets de bord}
+
+Si l'on suppose $\vec{rot} \vec{E} \approx \vec{0}$ (approximation électrostatique), alors $\frac{\partial E_z}{\partial r} - \frac{\partial E_r}{\partial z} = 0$. 
+
+On en déduit que $\frac{\partial E_z}{\partial r} = \frac{\partial E_r}{\partial z}$ On peut le réécrire comme $$\frac{\Delta E_z}{\Delta r} = \frac{\Delta E_r}{\Delta z}$$ ou encore
+$$\frac{ E_z}{R} = \frac{ E_r}{e}$$
+On en déduit que $$E_z = \frac{R}{e} E_r$$
+Dans un condensateur idéal, $E_z$ est dominant. L'ordre de grandeur du rapport $|E_r/E_z|$ est lié à la géométrie $e/R$. En négligeant les effets de bord ($e \ll R$), le champ reste confiné et uniforme selon $z$, rendant $E_r$ négligeable.
+
+\subsection{Calcul itératif du champ électromagnétique}
+
+\subsubsection{Champ magnétique ($B_1$)}
+On part de $\vec{E}_0 = E_0 e^{i\omega t} \vec{e}_z$. On utilise l'équation de Maxwell-Ampère dans le vide :
+\[ \vec{rot} \vec{B} = \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t} = \frac{1}{c^2} \frac{\partial \vec{E}}{\partial t} \]
+En coordonnées cylindriques, avec $\vec{B} = B_\theta \vec{e}_\theta$\marginInfo{En effet, il ne dépend que de r et n'a une composante que selon $\vec{e_{\theta}}$.} :
+\[ \frac{1}{r} \frac{\partial (r B_\theta)}{\partial r} = \frac{1}{c^2} (i\omega E_0 e^{i\omega t}) \]
+En intégrant par rapport à $r$ :
+\[ r B_\theta = \frac{i\omega}{c^2} E_0 e^{i\omega t} \frac{r^2}{2} + \text{Cte} \]
+La constante est nulle car le champ doit être fini en $r=0$. On obtient :
+\[ B_1(r,t) = \frac{i\omega r}{2c^2} E_0 e^{i\omega t} \]
+
+\subsubsection{Correction du champ électrique ($E_2$)}
+Le champ magnétique variable induit un champ électrique (loi de Faraday) :
+\[ \vec{rot} \vec{E}_2 = -\frac{\partial \vec{B}_1}{\partial t} \]
+\[ -\frac{\partial E_z}{\partial r} = -i\omega B_1 = -i\omega \left( \frac{i\omega r}{2c^2} E_0 e^{i\omega t} \right) = \frac{\omega^2 r}{2c^2} E_0 e^{i\omega t} \]
+En intégrant\marginInfo{On calcule ici une correction, qui doit donc s'ajouter au E d'ordre 1. Il faut donc que la correction soit nulle. En effet, sur l'axe B, qui doit etre orthoradial est null puisque le rayon est nul ! On choisit la solution nulle en $r=0$ pour que $E_0$ reste l'amplitude de référence sur l'axe.} :
+\[ E_2(r,t) = -\frac{\omega^2 r^2}{4c^2} E_0 e^{i\omega t} = -\frac{1}{4} \left( \frac{\omega r}{c} \right)^2 E_0 e^{i\omega t} \]
+\criticalInfo{ARQS}{L’approximation quasi-stationnaire consiste à s’arrêter à
+l’ordre 0 ou 1. Si $\omega R/c << 1$, le terme en ($r^2$) est négligeable et le
+champ est considéré comme uniforme. Ici, on a choisit de ne pas la faire, donc on continue.}
+
+\subsection{Généralisation (Ordre 4)}
+En itérant le processus ($E_2 \to B_3 \to E_4$), on voit apparaître les termes d'un développement en série :
+\[ E(r,t) = E_0 \left[ 1 - \frac{1}{4} \left( \frac{\omega r}{c} \right)^2 + \frac{1}{64} \left( \frac{\omega r}{c} \right)^4 + \dots \right] e^{i\omega t} \]
+Ce développement correspond à la fonction de Bessel de première espèce $J_0(\frac{\omega r}{c})$.
+
+\subsection{Amplitudes $E_0$ et $B_0$}
+À $\omega = 0$ (régime statique), le champ électrique est celui d'un condensateur plan :
+\[ E_0 = \frac{\sigma}{\epsilon_0} = \frac{Q_0}{\pi R^2 \epsilon_0} \]
+Pour le champ magnétique, on identifie $B_0$ par $B(r,t) \approx \frac{i \omega r}{2c^2} E_0$. En posant $B_0 = \frac{E_0}{c}$, on retrouve la structure d'une onde plane locale.
+\checkInfo{Phénomène étudié}{\textbf{Phénomène de propagation :} Ce calcul itératif montre comment un champ électrique variable génère un champ magnétique, qui à son tour modifie le champ électrique. C'est la naissance d'une \textbf{onde stationnaire} à l'intérieur du condensateur.}
+
+\section{Solénoïde cylindrique en régime variable}
+
+\subsection{Justification de la forme des champs}
+
+\textbf{Champ Magnétique $\vec{B}$ :} 
+\begin{itemize}
+    \item Pour un solénoïde "infini" ($L \gg R$), le champ est contenu à l'intérieur et est rigoureusement axial par raison de symétrie (tout plan contenant l'axe $Oz$ est un plan d'antisymétrie de la distribution de courant). 
+    \item On cherche donc $\vec{B}(r,t) = B(r,t) \vec{e}_z$.
+\end{itemize}
+
+\textbf{Champ Électrique $\vec{E}$ :} 
+\begin{itemize}
+    \item La variation temporelle de $\vec{B}$ induit un champ électrique via la loi de Faraday. 
+    \item Par symétrie cylindrique et invariance par rotation/translation, $\vec{E}$ ne dépend que de $r$. Les lignes de champ électrique "s'enroulent" autour des lignes de champ magnétique.
+    \item $\vec{E}$ est donc orthoradial : $\vec{E}(r,t) = E(r,t) \vec{e}_\theta$.
+\end{itemize}
+
+\subsection{Couplage et Analogie avec le condensateur}
+
+Écrivons les équations de Maxwell à l'intérieur du solénoïde (vide) :
+\begin{enumerate}
+    \item \textbf{Maxwell-Faraday :} $\vec{rot} \vec{E} = -\frac{\partial \vec{B}}{\partial t} \implies \frac{1}{r} \frac{\partial (r E_\theta)}{\partial r} = -\frac{\partial B_z}{\partial t}$
+    \item \textbf{Maxwell-Ampère :} $\vec{rot} \vec{B} = \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t} \implies -\frac{\partial B_z}{\partial r} = \frac{1}{c^2} \frac{\partial E_\theta}{\partial t}$
+\end{enumerate}
+\criticalInfo{Erreur fréquente}{Confondre le champ électrique \textit{dans le fil} (qui pousse les électrons) et le champ électrique \textit{induit dans l'espace} intérieur. Ici, on calcule le champ induit dans le vide à l'intérieur.}
+
+
+\textbf{Analyse de l'analogie :}
+On remarque que ces équations sont structurellement identiques à celles du condensateur (Ex 2), en permutant :
+\[ E_{condo} \longleftrightarrow B_{solenoide} \quad \text{et} \quad B_{condo} \longleftrightarrow -E_{solenoide}/c^2 \]
+C'est la \textbf{dualité Électromagnétique}. Dans le condensateur, la source est un champ électrique axial. Dans le solénoïde, la source est un champ magnétique axial.
+
+\subsection{Expressions approchées (Ordre 0 et 1)}
+
+\begin{itemize}
+    \item \textbf{Ordre 0 (Magnétostatique) :} On considère le champ magnétique comme celui produit par un courant continu $i(t)$.
+    \[ \vec{B}_0(r,t) = \mu_0 n I_0 e^{i\omega t} \vec{e}_z \]
+    \item \textbf{Ordre 1 (Induction) :} On utilise Maxwell-Faraday avec $\vec{B}_0$.
+    \[ \frac{1}{r} \frac{\partial (r E_\theta)}{\partial r} = -i\omega \mu_0 n I_0 e^{i\omega t} \]
+    En intégrant (avec $E_\theta$ fini en $r=0$) :
+    \[ E_\theta(r,t) = -\frac{i\omega r}{2} \mu_0 n I_0 e^{i\omega t} \]
+\end{itemize}
+
+\subsection{Amplitudes}
+
+On identifie les amplitudes :
+\begin{itemize}
+    \item $B_0 = \mu_0 n I_0$
+    \item $E(r) = - \frac{i\omega r}{2} B_0$. À la périphérie ($r=R$), l'amplitude du champ électrique induit est $E_{max} = \frac{\omega R}{2} B_0$.
+\end{itemize}
+
+\subsection{Domaine de validité (Uniformité)}
+
+Le champ magnétique est considéré comme uniforme si le terme correctif d'ordre 2 (issu de la variation de $E_\theta$) est négligeable. La condition est la même que pour le condensateur : 
+\[ \frac{\omega R}{c} \ll 1 \]
+\textbf{Calcul numérique :} 
+\[ f \ll \frac{c}{2\pi R} = \frac{3 \cdot 10^8}{2\pi \cdot 0,02} \approx 2,39 \cdot 10^9 \text{ Hz} \]
+Soit $f \ll 2,4$ GHz. Pour des fréquences usuelles (50 Hz ou même quelques MHz), le champ dans le solénoïde est parfaitement uniforme spatialement.
+
+\end{document}

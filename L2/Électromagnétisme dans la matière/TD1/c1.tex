@@ -1,0 +1,315 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 3}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%jesse.groenen@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%-pour mettre des images
+\usepackage[utf8]{inputenc}%encodage
+\usepackage{geometry}%pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%pour les boites d'exercices, de pbq et de croquis d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%Pour les boites info, danger et autres
+\usepackage{menukeys}%Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%pour les liens
+\usepackage{hyperref}%pour les liens (\`a mettre en dernier)
+\usepackage{caption}%pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{esint}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ez}{\vec{e_{z}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\newcommand{\vds}{\vec{\dd S}}
+\newcommand{\Ea}{\vec{E_{aux}}}
+%\setcounter{chapter}{3}
+\begin{document}
+\chapter{Polarisation}
+\section{Résumé}
+
+    \begin{itemize}
+        \item Vecteur Polarisation ($\vec{P}$) : Densité volumique de moments dipolaires induits. \marginCheck{Physiquement, il représente la manière dont les charges liées (électrons/noyaux) se déplacent légèrement sous l'effet d'un champ}. Unité : $C \cdot m^{-2}$.
+\item Susceptibilité électrique ($\chi_e$) : Grandeur sans dimension qui mesure la facilité d'un matériau à se polariser. Dans un milieu LHI, on a la relation linéaire $\vec{P} = \epsilon_0 \chi_e \vec{E}_{int}$.
+\item Permittivité relative ($\epsilon_r$) : Liée à la susceptibilité par $\epsilon_r = 1 + \chi_e$. Elle indique combien le milieu "réduit" le champ électrique par rapport au vide.
+\item Champ appliqué ($\vec{E}_a$) : Le champ extérieur imposé (par exemple par des plaques de condensateur) en l'absence du barreau.
+\item Champ de dépolarisation ($\vec{E}_{m}$ ou $\vec{E}_{depol}$) : Le champ créé par les charges de polarisation elles-mêmes. Il s'oppose généralement au champ appliqué à l'intérieur du matériau (d'où son nom).
+\item Champ intérieur ($\vec{E}_{int}$) : Le champ total réellement présent dans la matière. C'est la somme vectorielle $\vec{E}_{int} = \vec{E}_a + \vec{E}_{m}$.
+\item Vecteur Déplacement Électrique ($\vec{D}$) : Une grandeur "hybride" définie par $\vec{D} = \epsilon_0 \vec{E} + \vec{P}$. \marginTips{Son utilité principale est qu'il ne dépend que des charges libres (celles qu'on peut manipuler), ignorant les charges de polarisation.} En LHI, on a $\vec{D} = \epsilon_0\
+\epsilon_r \vec{E_{int}}$.
+    \end{itemize}
+
+
+\section{Étude d'un barreau cylindrique sous polarisation uniforme.
+}
+\subsection{Modélisation du problème et Symétries}
+
+L'objectif est d'étudier un barreau cylindrique de longueur $l>>R$\marginInfo{On peut donc faire l'approximation que le cylindre est infini, à condition de rester près de l'axe. Cela revient à négliger
+les effets de bords.}. On considère une polarisation uniforme à l'intérieur du volume $V$  définie par :
+$$\vec{P} = P \hat{e}_x$$
+
+Pour résoudre ce problème, on utilise les coordonnées cylindriques $(\rho, \phi, z)$.
+\subsubsection{Étude des symétries pour un champ fictif}
+On introduit un champ fictif $\vec{E}_{aux}$ créé par un volume $V$ chargé uniformément avec une densité volumique $\rho_{aux}$.
+\begin{itemize}
+    \item 2 plans de symétrie $\pip : (M, \er, \ep), (M, \er, \ez) $. Le vecteur $E_{aux}$ appartient à leur intersection, donc $\vec{E_{aux}} = E_{aux}\er$
+    \item Il y une invariance par rotation $\Delta \varphi$ autour de l'axe z et une invariance par translation $\Delta z$ le long de ce m\^eme axe. Donc $\vec{E_{aux}}(\vec{r}) = \vec{E_{aux}}(\rho)$
+\end{itemize}
+ Par conséquent : $\vec{E_{aux}} = E_{aux}(\rho) \er$.
+
+\subsection{Application du Théorème de Gauss}
+
+On applique le théorème de Gauss sur une surface cylindrique de rayon $r$ et de hauteur $h$:
+\explanation{1}{Meme si cela semble évident que le flux est nul sur les sections 1 et 2, il faut quand m\^eme les écrire au risque de perdre des points en CC.}
+\begin{flalign*}
+    \oiint_S \Ea\cdot \vds &= \iint_{B1} \Ea\cdot \vds + \iint_{B2} \Ea\cdot \vds + \iint_{lat} \Ea\cdot \vds\explain{1}{right}{0}{0.5}{}\\
+    &= \iint_{lat} \Ea\cdot \vds\\
+    &= \iint_{lat} E_{aux}(\rho)\er\cdot \er \dd S\\
+    &= E_{aux}(\rho) \iint_{lat} \dd S\\
+    &= E_{aux}(\rho) 2\pi \rho h\\
+\end{flalign*}
+On peut maintenant calculer la charge intérieure et appliquer le théorème de Gauss :
+
+ Si $\rho < R$ : $Q_{int} = \rho_{aux} \pi \rho^2 h$.
+
+ On en déduit que 
+ $$E_{aux, \rho<R}(\rho) = \frac{\rho_{aux}}{2\epsilon_0}\rho \er$$
+
+ Si $\rho \geq R$ : $Q_{int} = \rho_{aux} \pi R^2 h$
+
+ On en déduit que 
+ $$E_{aux, \rho\geq R}(\rho) = \frac{\rho_{aux}R^2}{2\epsilon_0\rho}\rho \er$$
+
+Le champ est continu en $r=R$ car il n'y a pas de charges surfaciques pour ce champ fictif.
+\subsection{Potentiel et E}
+On souhaite maintenant calculer $E_m$, que l'on peut obtenir à partir de $V_m$ que dont on a une relation\marginTips{C'est est une astuce mathématique puissante. Elle permet de transformer un problème de dipôles (difficile à sommer directement) en un problème de charges uniformes (que l'on sait résoudre facilement avec le théorème de Gauss). On calcule le champ d'un cylindre plein, puis on en déduit le potentiel de polarisation par simple produit scalaire.} :
+$$\vec{V_m}(\vec{r}) = \frac{\vec{P}\cdot \vec{E_{aux}}}{\rho_{aux}}$$
+
+Si $\rho < R$, on a 
+$$V_{m, \rho<R} = \frac{P}{2\epsilon_0}\rho \vec{e_x}\cdot \er = \frac{P}{2\epsilon_0}\rho\cos(\varphi) = \frac{P}{2\epsilon_0}x$$
+Si $\rho \geq R$, on a\marginCritical{Le potentiel n'est pas nul à l'extérieur m\^eme si il n'y a pas de polarisation à l'extérieur. Il faut bien faire le calcul !} 
+$$ V_{m, \rho\geq R} = \frac{PR^2}{2\epsilon_0}\frac{\vec{e_x}\cdot\er}{\rho} = \frac{PR^2}{2\epsilon_0} \frac{\cos(\varphi)}{\rho}$$
+
+On peut maintenant en déduire $E_m$ avec le gradient : $E_m - \grad V_m$.
+
+Si $\rho < R$\marginTips{Noter le signe négatif. Ce champ s'oppose à la polarisation P. À l'intérieur du barreau, les charges de polarisation créent un champ qui "lutte" contre la cause qui l'a fait naître. C'est l'effet de "dépolarisation" qui dépend exclusivement de la géométrie de l'objet via le facteur N.}, $$E_{m,int} = -\frac{\dd V_{m,int}}{\dd x} \vec{e_x} = -\frac{P}{2\epsilon_0}\vec{e_x}$$
+
+Dans l'autre cas, on utilise la formule (toujours donnée) du gradient en cylindrique.
+
+On obtient 
+\begin{flalign*}
+    E_m &= -(\frac{\partial V_m}{\partial \rho}\er+\frac{1}{\rho}\frac{\partial V_m}{\partial \varphi}\ep)\\
+    &= -\frac{PR^2}{\rho^22\epsilon_0}(-\cos(\varphi)\er - \sin(\varphi)\ep)
+\end{flalign*}
+On remarque que ce n'est pas continu en $\rho = R$, c'est normal car on verra qu'il y a des charges en surface.
+\subsection{Potentiel et Champ de Dépolarisation}
+
+Le potentiel scalaire $V_m$ créé par la polarisation $\vec{P}$ est lié au champ fictif. À l'intérieur, le champ de dépolarisation $\vec{E}_{m,int}$ est relié à la polarisation par le tenseur de dépolarisation $N$:
+$$\vec{E}_{m,int} = -N \frac{\vec{P}}{\epsilon_0} \text{ }$$
+
+ Valeurs du tenseur $N$
+ Pour un cylindre : $N = \begin{pmatrix} 1/2 & 0 & 0 \\ 0 & 1/2 & 0 \\ 0 & 0 & 0 \end{pmatrix}$.
+ Pour une sphère : $N = \frac{1}{3}$.
+
+
+\subsection{Cylindre diélectrique LHI dans un champ uniforme}
+
+On place un cylindre diélectrique (Linéaire, Homogène, Isotrope) dans un champ extérieur appliqué  uniforme $\vec{E}_a = E_a \hat{e}_x$. On a donc une polarisation volumique uniforme $\vec{P} = P\vec{e_x}$.
+
+
+Le champ total à l'intérieur est la somme du champ appliqué et du champ de dépolarisation\marginWarning{Le champ total à l'intérieur est plus faible que le champ appliqué à l'extérieur. C'est ce qu'on appelle l'écrantage diélectrique. Le matériau "réagit" pour tenter d'annuler le champ extérieur, sans jamais y parvenir totalement (contrairement à un conducteur parfait).}:
+$$\vec{E}_{int} = \vec{E}_a - \frac{\vec{P}}{2\epsilon_0} \text{ }$$
+
+ On obtient la polarisation induite en utilisant la relation $\vec{P} = \epsilon_0 \chi_e \vec{E}_{int}$:
+$$P = \frac{\epsilon_0 \chi_e E_a}{1 + \frac{\chi_e}{2}}$$
+
+ Vecteur Déplacement $\vec{D}$
+$$\vec{D}_{int} =\epsilon_0 \vec{E_{int}}+\vec{P} =  \frac{1 + \chi_e}{1 + \frac{\chi_e}{2}} \epsilon_0 \vec{E}_a \text{ }$$
+La polarisation écrante le champ appliqué à l'intérieur du matériau.
+
+
+
+\subsection{Densités de charges de polarisation}
+
+ Densité volumique : Comme la polarisation est uniforme ($\vec{P} = \text{cste}$), la densité de charge de polarisation volumique est nulle:
+    $$\rho_p = -\text{div}(\vec{P}) = 0$$
+On a alors une disctribution surfacique de charges de polarisation $\sigma_P$ équivalente à $\vec{P}$ uniforme.
+
+Elle est répartie sur la surface du cylindre:
+    $$\sigma_p = \vec{P} \cdot \vec{n} = P \cos(\phi) \text{ }$$
+
+Cela correspond à une distribution dipolaire\marginCheck{Mathématiquement, le cosϕ indique que les charges sont maximales à  $\varphi=0$ (positives) et $\varphi=\pi$ (négatives), et nulles à $\varphi = \pi/2$. Physiquement, cela signifie que toutes les charges liées du cylindre ont glissé vers un bord, transformant le cylindre entier en un immense dipôle électrostatique.}.
+\section{Étude d'un condensateur sphérique avec Gauss Directement}
+
+
+Le système possède une symétrie sphérique. Les sources (charges libres) et la géométrie du milieu diélectrique dépendent uniquement de la coordonnée radiale $r$.
+Le champ de déplacement électrique $\vec{D}$, le champ électrique $\vec{E}$ et le vecteur polarisation $\vec{P}$ sont donc portés par $\vec{e}_r$ et leurs normes ne dépendent que de $r$.
+\subsection{Détermination des champs $\vec{D}$, $\vec{E}$ et $\vec{P}$}
+\subsubsection{Champ de déplacement électrique $\vec{D}$} :
+On utilise le théorème de Gauss pour le vecteur $\vec{D}$ sur une sphère de rayon $r$ centrée en $O$ :
+$$\oint \vec{D} \cdot d\vec{S} = Q_{int,libre}$$
+\begin{itemize}
+    \item Si $r < R_1$ : Aucune charge libre n'est enserrée ($Q_{int} = 0$). Donc $\vec{D} = \vec{0}$.
+\item Si $R_1 < r < R_2$ : La charge libre enserrée est celle de l'armature interne, soit $+Q$.
+    $$D(r) \cdot 4\pi r^2 = Q \implies \vec{D} = \frac{Q}{4\pi r^2} \vec{e}_r$$
+\item Si $r > R_2$ : La charge totale enserrée est $Q + (-Q) = 0$. Donc $\vec{D} = \vec{0}$.
+\end{itemize}
+\subsubsection{Champ électrique $\vec{E}$}
+On utilise la relation de constitution $\vec{D} = \epsilon_0 \epsilon_r \vec{E}$.
+Dans le diélectrique ($R_1 < r < R_2$) :
+    $$\vec{E} = \frac{\vec{D}}{\epsilon_0 \epsilon_r} = \frac{Q}{4\pi \epsilon_0 \epsilon_r r^2} \vec{e}_r$$
+
+    À l'extérieur : Puisque $\vec{D} = \vec{0}$, alors $\vec{E} = \vec{0}$.
+
+\subsubsection{Vecteur polarisation $\vec{P}$}
+On utilise la relation $\vec{P} = \vec{D} - \epsilon_0 \vec{E} = \epsilon_0(\epsilon_r - 1)\vec{E}$.
+Dans le diélectrique :
+    $$\vec{P} = \frac{(\epsilon_r - 1)Q}{4\pi \epsilon_r r^2} \vec{e}_r$$
+
+    À l'extérieur : Le milieu est le vide ($\epsilon_r = 1$) ou le champ est nul, donc $\vec{P} = \vec{0}$.
+
+\tipsInfo{Tracé des courbes}{Les trois vecteurs décroissent en $1/r^2$ entre $R_1$ et $R_2$ et subissent des discontinuités aux interfaces. Notez que $D$ est continu en $R_1$ et $R_2$ (car ce sont des surfaces chargées, mais $D$ ne dépend que des charges libres), alors que $E$ est atténué par le facteur $\epsilon_r$.}
+
+\subsection{Capacité du condensateur}
+
+La capacité est définie par $C = \frac{Q}{V_1 - V_2}$. Calculons la différence de potentiel $U = V_1 - V_2$ :
+$$V_1 - V_2 = \int_{R_1}^{R_2} \vec{E} \cdot d\vec{r} = \int_{R_1}^{R_2} \frac{Q}{4\pi \epsilon_0 \epsilon_r r^2} dr$$
+$$U = \frac{Q}{4\pi \epsilon_0 \epsilon_r} \left[ -\frac{1}{r} \right]_{R_1}^{R_2} = \frac{Q}{4\pi \epsilon_0 \epsilon_r} \left( \frac{1}{R_1} - \frac{1}{R_2} \right) = \frac{Q(R_2 - R_1)}{4\pi \epsilon_0 \epsilon_r R_1 R_2}$$
+
+On en déduit :
+$$\text{definition}{Capacité} : C = \frac{4\pi \epsilon_0 \epsilon_r R_1 R_2}{R_2 - R_1}$$
+
+\checkInfo{Commentaire}{On remarque que $C = \epsilon_r C_0$, où $C_0$ est la capacité du condensateur sous vide. La présence du diélectrique multiplie la capacité par $\epsilon_r$, ce qui permet de stocker plus de charges pour une même tension.}
+
+\subsection{Relations de passage en $r = R_2$}
+
+En $r = R_2$, nous avons une armature portant une densité de charge libre $\sigma_{libre} = \frac{-Q}{4\pi R_2^2}$.
+
+Pour $\vec{D}$ : $D_{ext} - D_{int} = \sigma_{libre}$.
+    $$0 - \frac{Q}{4\pi R_2^2} = -\frac{Q}{4\pi R_2^2}$$
+    La relation $D_{2n} - D_{1n} = \sigma_L$ est bien vérifiée.
+
+Pour $\vec{E}$ : $E_{ext} - E_{int} = \frac{\sigma_{tot}}{\epsilon_0}$.
+    Ici, le champ extérieur est nul. À l'intérieur, $E(R_2^-) = \frac{Q}{4\pi \epsilon_0 \epsilon_r R_2^2}$.
+    La discontinuité de $E$ est due à la présence des charges libres ET des charges de polarisation sur l'armature.
+
+\subsection{Charges de polarisation}
+
+\subsubsection{Densité volumique $\rho_p$}
+$$\rho_p = -\text{div} \vec{P} = -\frac{1}{r^2} \frac{\partial}{\partial r}(r^2 P_r)$$
+Comme $P_r \propto 1/r^2$, le produit $r^2 P_r$ est une constante. Sa dérivée est nulle.
+
+\subsubsection{Densités surfaciques $\sigma_p$}
+En $r = R_1$ : La normale sortante du diélectrique est $-\vec{e}_r$.
+    $$\sigma_{p1} = \vec{P}(R_1) \cdot (-\vec{e}_r) = - \frac{(\epsilon_r - 1)Q}{4\pi \epsilon_r R_1^2}$$
+
+    En $r = R_2$ : La normale sortante est $+\vec{e}_r$.
+    $$\sigma_{p2} = \vec{P}(R_2) \cdot \vec{e}_r = \frac{(\epsilon_r - 1)Q}{4\pi \epsilon_r R_2^2}$$
+
+Bilan de charge :
+Calculons la charge totale de polarisation $Q_p$ :
+$$Q_p = \iint \sigma_{p1} dS_1 + \iint \sigma_{p2} dS_2 + \iiint \rho_p d\tau$$
+$$Q_p = \left( - \frac{(\epsilon_r - 1)Q}{4\pi \epsilon_r R_1^2} \cdot 4\pi R_1^2 \right) + \left( \frac{(\epsilon_r - 1)Q}{4\pi \epsilon_r R_2^2} \cdot 4\pi R_2^2 \right) + 0$$
+$$Q_p = - \frac{(\epsilon_r - 1)Q}{\epsilon_r} + \frac{(\epsilon_r - 1)Q}{\epsilon_r} = 0$$
+
+\criticalInfo{Conclusion}{Le milieu diélectrique reste globalement neutre. La polarisation n'a fait que déplacer les charges vers les surfaces (influence par contact), créant des charges de signes opposés qui s'annulent à l'échelle du matériau complet.}
+\section{Un pavé par analogie et superposition}
+\subsection{Lame diélectrique sous champ appliqué $\vec{E}_a$}
+
+On considère que le champ appliqué $\vec{E}_a$ est créé par une distribution de charges libres (non précisée ici, mais on la note $\sigma_a = \epsilon_0 E_a$ par analogie au condensateur à vide).
+
+\subsubsection{Distribution de charges équivalente}
+Sous l'action de $\vec{E}_a$, le diélectrique se polarise. Comme il est LHI et que le champ est uniforme, la polarisation $\vec{P}$ est uniforme.
+\begin{itemize}
+    \item Le calcul de la divergence ($\rho_p = -\text{div}\vec{P}$) donne $\rho_p = 0$.
+    \item Le calcul du flux à travers les faces ($\sigma_p = \vec{P} \cdot \vec{n}$) donne deux plans de charges liées $\pm \sigma_p$ aux surfaces de la lame.
+\end{itemize}
+
+\subsubsection{Calcul des champs par superposition}
+Le système est désormais équivalent à deux condensateurs imbriqués :
+1.  Le condensateur "source" créant $\vec{E}_a$.
+2.  Le condensateur "de polarisation" créant un champ de réaction $\vec{E}_p$.
+
+Calcul du champ électrique total $\vec{E}$ :
+D'après la question préliminaire, le champ créé par les charges de polarisation $\pm \sigma_p$ est $\vec{E}_p = -\frac{\sigma_p}{\epsilon_0} \vec{e}_z$.
+$$\vec{E} = \vec{E}_a + \vec{E}_p = \vec{E}_a - \frac{\vec{P}}{\epsilon_0}$$
+
+Détermination de $\vec{D}$ :
+Par définition, $\vec{D} = \epsilon_0 \vec{E} + \vec{P}$. En remplaçant $\vec{E}$ par son expression en fonction de $\vec{E}_a$ :
+$$\vec{D} = \epsilon_0 \vec{E}_a$$
+
+
+
+Détermination de $\vec{P}$ et $\vec{E}$ :
+Par définition, $\vec{D} = \epsilon_0 \vec{E} + \vec{P}$, donc\marginCritical{On a $\vec{E_{int} = \frac{\vec{E_a}}{\epsilon_r}}$ car nous sommes dans un condensateur. En effet, en LHI, on a $\vec{D} = \epsilon_0\
+\epsilon_r \vec{E_{int}}$} 
+$$\vec{P} = \vec{D} - \epsilon_0 \vec{E} = \epsilon_0 \vec{E}_a - \epsilon_0 \vec{E}  = \epsilon_0 \vec{E}_a - \frac{\epsilon_0}{\epsilon_r} \vec{E}$$
+% Comme le milieu est LHI, on a la relation de comportement : $\vec{P} = (\epsilon - \epsilon_0)\vec{E}$.
+% On injecte cette relation dans l'équation de superposition :
+% $$\vec{E} = \vec{E}_a - \frac{(\epsilon - \epsilon_0)\vec{E}}{\epsilon_0} \implies \vec{E} \left( 1 + \frac{\epsilon - \epsilon_0}{\epsilon_0} \right) = \vec{E}_a$$
+% $$\vec{E} \left( \frac{\epsilon}{\epsilon_0} \right) = \vec{E}_a \implies \vec{E} = \frac{\epsilon_0}{\epsilon} \vec{E}_a$$
+
+\checkInfo{Résultat}{Le vecteur $\vec{D}$ est identique au champ électrique (à $\epsilon_0$ près) qui existerait si le diélectrique n'était pas là. Il ne dépend que des charges libres "extérieures".}
+
+\subsection{Capacité du condensateur avec diélectrique}
+
+On applique maintenant ce raisonnement au condensateur complet (charges libres $\pm Q$ sur les armatures).
+
+1.  Champ des charges libres : Les armatures créent un champ $\vec{E}_L = \frac{\sigma_L}{\epsilon_0} \vec{e}_z = \frac{Q}{\epsilon_0 S} \vec{e}_z$.
+2.  Champ total : D'après le raisonnement précédent (en remplaçant $\vec{E}_a$ par $\vec{E}_L$), le champ total dans le diélectrique est :
+    $$\vec{E} = \frac{\epsilon_0}{\epsilon} \vec{E}_L = \frac{\epsilon_0}{\epsilon} \cdot \frac{Q}{\epsilon_0 S} \vec{e}_z = \frac{Q}{\epsilon S} \vec{e}_z$$
+3.  Potentiel et Capacité :
+    * La tension est $U = V(0) - V(d) = E \cdot d = \frac{Q d}{\epsilon S}$.
+    * La capacité est $C = \frac{Q}{U} = \frac{\epsilon S}{d}$.
+
+\warningInfo{Lien avec le vide}{On voit que $C = \frac{\epsilon}{\epsilon_0} \cdot \frac{\epsilon_0 S}{d} = \epsilon_r C_0$. Le raisonnement par superposition de plans montre directement comment les charges de polarisation "poussent" contre le champ des armatures, réduisant la tension pour une charge donnée.}
+
+% ```latex
+% \section*{Exercice : Condensateur plan et milieu diélectrique}
+
+% \subsection*{1. État de polarisation et distributions de charges}
+% \paragraph{a)} Pour une lame LHI sous champ perpendiculaire $\vec{E}_a$, la polarisation $\vec{P}$ est uniforme. 
+% \begin{itemize}
+%     \item $\rho_p = -\text{div}\vec{P} = 0$.
+%     \item $\sigma_p = \pm P$ sur les faces.
+% \end{itemize}
+% \proposition{Analogie}{Le diélectrique est équivalent à un condensateur portant les densités $\pm \sigma_p$ créant un champ opposé $\vec{E}_p = -\frac{\sigma_p}{\epsilon_0}\vec{e}_z$.}
+
+% \paragraph{b)} Par superposition : $\vec{E} = \vec{E}_a + \vec{E}_p = \vec{E}_a - \frac{\vec{P}}{\epsilon_0}$.
+% \checkInfo{Calcul final}{En utilisant $\vec{P} = (\epsilon - \epsilon_0)\vec{E}$, on obtient $\vec{E} = \frac{\epsilon_0}{\epsilon}\vec{E}_a$ et $\vec{D} = \epsilon_0\vec{E}_a$.}
+
+% \subsection*{2. Capacité du système}
+% \definition{Capacité}{La tension $U = Ed = \frac{Qd}{\epsilon S}$ conduit à $C = \frac{\epsilon S}{d}$.}
+% \tipsInfo{Augmentation de capacité}{L'introduction du diélectrique réduit le champ interne à charge constante, ce qui diminue la tension et augmente donc la capacité d'un facteur $\epsilon_r$.}
+% ```
+
+\end{document}

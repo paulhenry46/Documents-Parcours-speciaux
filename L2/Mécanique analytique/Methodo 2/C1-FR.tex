@@ -1,0 +1,333 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mecanique Analytique}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\newcommand{\qa}{q_{\alpha}}
+\newcommand{\qdb}{\dot{q_{\beta}}}
+\newcommand{\qb}{q_{\beta}}
+%\setcounter{chapter}{3}
+\begin{document}
+\chapter{Mécanique Hamiltionienne - Méthode}
+\section{Calcul Variationnel}
+
+Le calcul variationnel consiste à chercher une fonction $y(x)$ qui rend stationnaire (minimise ou maximise) une fonctionnelle (généralement une intégrale).
+
+\checkInfo{Modélisation d'une fonctionnelle}{Pour exprimer une grandeur physique (comme un temps de parcours $T[y]$) sous forme d'intégrale $T[y] = \int_{x_A}^{x_B} F(y', y, x) \, dx$, il faut exprimer l'élément de longueur infinitésimal $ds = \sqrt{dx^2 + dy^2} = \sqrt{1 + y'^2}\,dx$ et utiliser les lois de conservation (ex: conservation de l'énergie mécanique $E_m$) pour l'injecter en fonction des variables d'espace.}
+
+\begin{definition}
+L'équation d'Euler-Lagrange associée à la fonctionnelle $F(y', y, x)$ est donnée par :
+$$ \frac{\partial F}{\partial y} - \frac{d}{dx}\left(\frac{\partial F}{\partial y'}\right) = 0 $$
+\end{definition}
+
+\tipsInfo{Cas où $F$ ne dépend pas explicitement de $x$ (Formule de Beltrami)}{
+Si $\frac{\partial F}{\partial x} = 0$, l'équation d'Euler-Lagrange admet une intégrale première immédiate appelée identité de Beltrami :
+$$ F - y'\frac{\partial F}{\partial y'} = \text{cste} $$
+Cette formule permet de réduire immédiatement l'équation différentielle du second ordre en une équation du premier ordre.
+}
+
+% \section{Multiplicateurs de Lagrange}
+
+% Lorsque l'on doit chercher l'extrémum d'une fonction à plusieurs variables $F(x,y)$ tout en restant sur une trajectoire imposée par une contrainte de type $C(x,y) = 0$:
+
+% \begin{proposition}
+% Pour extrémaliser $F(x,y)$ sous la contrainte $C(x,y) = 0$, on introduit une fonction augmentée appelée le lagrangien d'optimisation :
+% $$ \tilde{F}(x,y,\lambda) = F(x,y) + \lambda \, C(x,y) $$
+% où $\lambda$ est le multiplicateur de Lagrange.
+% \end{proposition}
+
+% \warningInfo{Méthode de résolution}{
+% Pour trouver les points stationnaires, il faut annuler simultanément toutes les dérivées partielles de $\tilde{F}$ par rapport à ses variables naturelles $(x, y, \lambda)$ :
+% $$ \frac{\partial \tilde{F}}{\partial x} = 0 \quad \Longrightarrow \quad \frac{\partial F}{\partial x} + \lambda \frac{\partial C}{\partial x} = 0 $$
+% $$ \frac{\partial \tilde{F}}{\partial y} = 0 \quad \Longrightarrow \quad \frac{\partial F}{\partial y} + \lambda \frac{\partial C}{\partial y} = 0 $$
+% $$ \frac{\partial \tilde{F}}{\partial \lambda} = 0 \quad \Longrightarrow \quad C(x,y) = 0 $$
+% Ce système d'équations permet d'éliminer $\lambda$ pour extraire les coordonnées $(x_0, y_0)$ recherchées.
+% }
+
+% \section{Petites Oscillations}
+
+% Face à un système lagrangien à plusieurs degrés de liberté dont certaines variables sont cycliques[cite: 302, 303]:
+
+% \checkInfo{Variable cyclique et quantité conservée}{Une coordonnée généralisée $q_i$ est dite cyclique si elle n'apparaît pas explicitement dans le Lagrangien ($\frac{\partial L}{\partial q_i} = 0$). Par suite, le moment conjugué associé $p_i = \frac{\partial L}{\partial \dot{q}_i}$ est une constante du mouvement.}
+
+% \criticalInfo{Méthodologie d'étude des petites oscillations}{
+% Pour analyser la stabilité autour d'un point d'équilibre statique ou stationnaire :
+% \begin{enumerate}
+%     \item \textbf{Équilibre :} Trouver la configuration d'équilibre $q_0$ en annulant les forces généralisées (ou en posant $\dot{q} = 0, \ddot{q} = 0$ dans les équations réduites)[cite: 304, 305].
+%     \item \textbf{Changement de variable :} Poser la coordonnée de fluctuation $\eta(t) = q(t) - q_0$.
+%     \item \textbf{Développement limité :} Effectuer un développement limité au second ordre du Lagrangien (ou linéariser l'équation du mouvement au premier ordre en $\eta$ et $\dot{\eta}$) autour de l'équilibre.
+%     \item \textbf{Fréquence propre :} Identifier l'équation de l'oscillateur harmonique $\ddot{\eta} + \omega_0^2 \eta = 0$ pour en déduire la pulsation des petites oscillations $\omega_0$[cite: 306].
+% \end{enumerate}
+% }
+
+%\subsection{Application du Théorème de Noether pour les Symétries Continues (Exercice 14)}
+
+% Le théorème de Noether établit qu'à toute symétrie continue du Lagrangien correspond une intégrale première (quantité conservée)[cite: 306].
+
+% \begin{theorem}[Théorème de Noether]
+% Si un Lagrangien $L(q_i, \dot{q}_i, t)$ est invariant sous une transformation continue infinitésimale paramétrée par $\epsilon$ tel que :
+% $$ q_i \to q_i + \epsilon \, h_i(q, \dot{q}) $$
+% Alors la quantité suivante est conservée au cours du temps ($\frac{dI}{dt} = 0$) :
+% $$ I = \sum_i \frac{\partial L}{\partial \dot{q}_i} h_i(q, \dot{q}) $$
+% \end{theorem}
+
+% \warningInfo{Procédure pour une transformation finie de matrices (ex: Symétrie hyperbolique)}{
+% Si la transformation est donnée sous forme finie dépendant d'un paramètre $s$ (ex: $x(s) = x\cosh s + y\sinh s$)[cite: 306]:
+% \begin{enumerate}
+%     \item \textbf{Générateur infinitésimal :} Déterminer l'effet d'une transformation infinitésimale en dérivant par rapport au paramètre de groupe $s$ et en évaluant en $s=0$ :
+%     $$ h_x = \left. \frac{\partial x(s)}{\partial s} \right|_{s=0} \quad \text{et} \quad h_y = \left. \frac{\partial y(s)}{\partial s} \right|_{s=0} $$
+%     \item \textbf{Calcul de la quantité :} Injecter ces fonctions génératrices dans la formule de Noether :
+%     $$ I = \frac{\partial L}{\partial \dot{x}} h_x + \frac{\partial L}{\partial \dot{y}} h_y $$
+% \end{enumerate}
+% }
+
+
+\section{ Symétries et Théorème de Noether}
+Pour prouver qu'une transformation dépendant d'un paramètre $s$ est une symétrie, il faut démontrer l'invariance de la forme du Lagrangien, c'est-à-dire que :
+$$ L(x(s), y(s), \dot{x}(s), \dot{y}(s)) = L(x, y, \dot{x}, \dot{y}) $$
+
+\subsection*{Montrer qu'une transformation est une symétrie}
+La première étape consiste à écrire explicitement les expressions des nouvelles coordonnées $x(s)$ et $y(s)$ à partir de la relation matricielle fournie.
+
+
+Le produit matriciel donne le système d'équations suivant :
+$$ \begin{cases} 
+x(s) = x \cosh(s) + y \sinh(s) \\ 
+y(s) = x \sinh(s) + y \cosh(s) 
+\end{cases} $$
+
+
+En dérivant par rapport à $t$ :
+$$ \begin{cases} 
+\dot{x}(s) = \dot{x} \cosh(s) + \dot{y} \sinh(s) \\ 
+\dot{y}(s) = \dot{x} \sinh(s) + \dot{y} \cosh(s) 
+\end{cases} $$
+
+
+On prend l'expression de base du Lagrangien du système et on y substitue $x$, $y$, $\dot{x}$ et $\dot{y}$ par leurs expressions transformées $x(s)$, $y(s)$, $\dot{x}(s)$ et $\dot{y}(s)$.
+
+
+Le Lagrangien d'origine est $L = \frac{1}{2}m(\dot{x}^2 - \dot{y}^2) - \frac{1}{2}k(x^2 - y^2)$. En substituant, on obtient le nouveau Lagrangien $L'$ :
+$$ L' = \frac{1}{2}m \left[ \dot{x}(s)^2 - \dot{y}(s)^2 \right] - \frac{1}{2}k \left[ x(s)^2 - y(s)^2 \right] $$
+
+\tipsInfo{Identité hyperbolique fondamentale}{
+Pour simplifier les calculs de type hyperbolique, on utilise toujours la relation :
+$$ \cosh^2(s) - \sinh^2(s) = 1 $$
+}
+
+
+Développons séparément la partie "vitesse" (le raisonnement est strictement identique pour la partie "position") :
+$$ \dot{x}(s)^2 = \dot{x}^2\cosh^2(s) + \dot{y}^2\sinh^2(s) + 2\dot{x}\dot{y}\cosh(s)\sinh(s) $$
+$$ \dot{y}(s)^2 = \dot{x}^2\sinh^2(s) + \dot{y}^2\cosh^2(s) + 2\dot{x}\dot{y}\cosh(s)\sinh(s) $$
+
+En faisant la soustraction $\dot{x}(s)^2 - \dot{y}(s)^2$, les doubles produits s'annulent :
+$$ \dot{x}(s)^2 - \dot{y}(s)^2 = \dot{x}^2 \left[\cosh^2(s) - \sinh^2(s)\right] - \dot{y}^2 \left[\cosh^2(s) - \sinh^2(s)\right] $$
+Cela se réduit simplement à\marginInfo{Car $\cosh^2(s) - \sinh^2(s) = 1$} :
+$$ \dot{x}(s)^2 - \dot{y}(s)^2 = \dot{x}^2 - \dot{y}^2 $$
+
+
+Si après simplification, tous les termes contenant le paramètre $s$ ont disparu et que l'expression finale est strictement identique au Lagrangien de départ, alors le système possède cette symétrie.
+
+
+Puisque $L' = L$, la transformation est explicitement une symétrie continue du système.
+
+
+
+
+\subsection{Déterminer la quantité conservée via le Théorème de Noether}
+
+\subsubsection{Étape 1 : Déterminer l'effet d'une transformation infinitésimale}
+Le théorème de Noether s'applique sur les générateurs de la transformation infinitésimale, notés $h_i$, définis par la variation au premier ordre des coordonnées : $q_i \to q_i + \epsilon \, h_i$.
+
+\tipsInfo{Méthode systématique par dérivation}{
+Pour obtenir directement et rigoureusement les fonctions génératrices $h_i$ sans risquer d'erreur de développement limité, on dérive les expressions des coordonnées transformées $q_i(s)$ par rapport au paramètre $s$, puis on évalue le résultat en $s=0$ :
+$$ h_i = \left. \frac{\partial q_i(s)}{\partial s} \right|_{s=0} $$
+}
+
+
+Reprenons la transformation finie de l'exercice :
+$$ \begin{cases} x(s) = x \cosh(s) + y \sinh(s) \\ y(s) = x \sinh(s) + y \cosh(s) \end{cases} $$
+Appliquons la dérivation par rapport à $s$ :
+$$ \frac{\partial x(s)}{\partial s} = x \sinh(s) + y \cosh(s) \quad \Longrightarrow \quad h_x = \left. \frac{\partial x(s)}{\partial s} \right|_{s=0} = x \cdot 0 + y \cdot 1 = y $$
+$$ \frac{\partial y(s)}{\partial s} = x \cosh(s) + y \sinh(s) \quad \Longrightarrow \quad h_y = \left. \frac{\partial y(s)}{\partial s} \right|_{s=0} = x \cdot 1 + y \cdot 0 = x $$
+Les fonctions génératrices recherchées sont donc : $h_x = y$ et $h_y = x$.
+
+
+\subsubsection*{Étape 2 : Calculer les impulsions généralisées (Moments conjugués)}
+Il faut ensuite déterminer l'impulsion généralisée $p_i$ associée à chaque coordonnée généralisée $q_i$ qui varie lors de la transformation. On utilise la définition lagrangienne :
+$$ p_i = \frac{\partial L}{\partial \dot{q}_i} $$
+
+
+Le Lagrangien du système est $L = \frac{1}{2}m(\dot{x}^2 - \dot{y}^2) - \frac{1}{2}k(x^2 - y^2)$. Calculons les dérivées partielles par rapport aux vitesses :
+$$ p_x = \frac{\partial L}{\partial \dot{x}} = m\dot{x} $$
+$$ p_y = \frac{\partial L}{\partial \dot{y}} = -m\dot{y} $$
+
+
+\subsubsection*{Étape 3 : Appliquer la formule de Noether}
+\begin{theorem}[Constante du mouvement de Noether]
+La quantité conservée $I$ (intégrale première) induite par la symétrie est la somme des produits des impulsions généralisées par leurs fonctions génératrices respectives :
+$$ I = \sum_i p_i \, h_i $$
+\end{theorem}
+
+
+En combinant les expressions trouvées aux étapes 1 et 2 pour nos deux variables $x$ et $y$, on obtient :
+$$ I = p_x \, h_x + p_y \, h_y $$
+$$ I = (m\dot{x}) \cdot (y) + (-m\dot{y}) \cdot (x) $$
+$$ I = m(y\dot{x} - x\dot{y}) $$
+
+
+% =========================================================================
+% EXERCICE 15
+% =========================================================================
+\subsection{Exemple avec une autre transformation}
+
+
+\begin{enumerate}
+    \item \textbf{Identifier les générateurs $h_i$ :} 
+    La transformation hélicoïdale est donnée par $\phi \to \phi + \epsilon$ et $z \to z + \frac{\epsilon}{\lambda}$. Par identification avec la forme infinitésimale $q_i + \epsilon \, h_i$, on extrait directement :
+    $$ h_\phi = 1 \quad \text{et} \quad h_z = \frac{1}{\lambda} $$
+
+    \item \textbf{Exprimer les impulsions généralisées $p_i$ :}
+    On calcule les moments conjugués à partir du Lagrangien du système :
+    $$ p_\phi = \frac{\partial L}{\partial \dot{\phi}} \quad \text{et} \quad p_z = \frac{\partial L}{\partial \dot{z}} $$
+
+    \item \textbf{Assembler la constante du mouvement :}
+    En combinant les résultats, on obtient l'intégrale première combinée :
+    $$ I = p_\phi \cdot (1) + p_z \cdot \left(\frac{1}{\lambda}\right) = p_\phi + \frac{p_z}{\lambda} $$
+\end{enumerate}
+
+
+
+\section{Mécanique hamiltonienne}
+
+L'énoncé fournit le Lagrangien d'une particule de masse $m$ en coordonnées sphériques $(r, \theta, \phi)$ soumise à un potentiel central $V(r)$ :
+$$ L(r, \theta, \phi, \dot{r}, \dot{\theta}, \dot{\phi}) = \frac{1}{2}m\left(\dot{r}^{2}+r^{2}\dot{\theta}^{2}+r^{2}\sin^{2}\theta\dot{\phi}^{2}\right)-V(r) $$
+
+% =========================================================================
+% QUESTION 1
+% =========================================================================
+\subsection{Calcul des moments conjugués}
+
+\criticalInfo{Méthode : Définition des impulsions généralisées}{
+Pour calculer le moment conjugué $p_i$ associé à une coordonnée généralisée $q_i$, on dérive de manière \textbf{partielle} le Lagrangien uniquement par rapport à sa vitesse généralisée associée $\dot{q}_i$, en considérant toutes les autres variables comme des constantes :
+$$ p_i = \frac{\partial L}{\partial \dot{q}_i} $$
+}
+
+Appliquons cette méthode pour nos trois variables $(r, \theta, \phi)$  :
+\begin{itemize}
+    \item \textbf{Pour $r$ :} $\displaystyle p_r = \frac{\partial L}{\partial \dot{r}} = \frac{1}{2}m \cdot (2\dot{r}) = m\dot{r}$ 
+    \item \textbf{Pour $\theta$ :} $\displaystyle p_\theta = \frac{\partial L}{\partial \dot{\theta}} = \frac{1}{2}m \left(r^2 \cdot 2\dot{\theta}\right) = mr^2\dot{\theta}$ 
+    \item \textbf{Pour $\phi$ :} $\displaystyle p_\phi = \frac{\partial L}{\partial \dot{\phi}} = \frac{1}{2}m \left(r^2\sin^2\theta \cdot 2\dot{\phi}\right) = mr^2\sin^2\theta\dot{\phi}$ 
+\end{itemize}
+
+% =========================================================================
+% QUESTION 2
+% =========================================================================
+\subsection{Écriture du Hamiltonien}
+
+\criticalInfo{Méthode : Inversion des vitesses et Transformation de Legendre}{
+La fonction de Hamilton $H(q, p, t)$ s'obtient par la transformation de Legendre .
+\begin{enumerate}
+    \item \textbf{Inverser les relations} de la question précédente pour isoler les vitesses $(\dot{q}_i)$ en fonction des moments $(p_i)$.
+    \item \textbf{Substituer} ces expressions dans la définition du Hamiltonien : $H = \sum_i p_i\dot{q}_i - L$ . \textbf{Le résultat final ne doit plus contenir aucune vitesse}.
+\end{enumerate}
+}
+
+On inverse les vitesses :
+$$ \dot{r} = \frac{p_r}{m} \qquad ; \qquad \dot{\theta} = \frac{p_\theta}{mr^2} \qquad ; \qquad \dot{\phi} = \frac{p_\phi}{mr^2\sin^2\theta} $$
+
+
+On utilise ensuite $\displaystyle H = p_r\dot{r} + p_\theta\dot{\theta} + p_\phi\dot{\phi} - L$ :
+$$ H = p_r\left(\frac{p_r}{m}\right) + p_\theta\left(\frac{p_\theta}{mr^2}\right) + p_\phi\left(\frac{p_\phi}{mr^2\sin^2\theta}\right) - \left[ \frac{1}{2}m\left(\dot{r}^{2}+r^{2}\dot{\theta}^{2}+r^{2}\sin^{2}\theta\dot{\phi}^{2}\right)-V(r) \right] $$
+
+Remplaçons également les vitesses situées à l'intérieur du crochet du Lagrangien :
+\begin{flalign*}
+L &= \frac{1}{2}m \left[ \left(\frac{p_r}{m}\right)^2 + r^2\left(\frac{p_\theta}{mr^2}\right)^2 + r^2\sin^2\theta\left(\frac{p_\phi}{mr^2\sin^2\theta}\right)^2 \right] - V(r)\\
+&= \frac{p_r^2}{2m} + \frac{p_\theta^2}{2mr^2} + \frac{p_\phi^2}{2mr^2\sin^2\theta} - V(r) 
+\end{flalign*}
+
+En effectuant la soustraction $H = \sum p_i\dot{q}_i - L$, on s'aperçoit que les termes cinétiques se simplifient :
+$$ H(r, \theta, \phi, p_r, p_\theta, p_\phi) = \frac{p_r^2}{2m} + \frac{p_\theta^2}{2mr^2} + \frac{p_\phi^2}{2mr^2\sin^2\theta} + V(r) $$
+
+% =========================================================================
+% QUESTION 3
+% =========================================================================
+\subsection{Équations de Hamilton}
+
+
+Pour chaque DDL, l'évolution temporelle est dictée par un couple d'équations différentielles du 1er ordre  :
+$$ \dot{q}_i = \frac{\partial H}{\partial p_i} \qquad \text{et} \qquad \dot{p}_i = -\frac{\partial H}{\partial q_i} $$
+
+\subsubsection{Pour  $r$ :}
+\begin{itemize}
+    \item $\displaystyle \dot{r} = \frac{\partial H}{\partial p_r} = \frac{2p_r}{2m} = \frac{p_r}{m}$ \textit{(On retrouve la définition de la vitesse)}
+    \item $\displaystyle \dot{p}_r = -\frac{\partial H}{\partial r} = -\left[ -\frac{2p_\theta^2}{2mr^3} - \frac{2p_\phi^2}{2mr^3\sin^2\theta} + \frac{\partial V(r)}{\partial r} \right] = \frac{p_\theta^2}{mr^3} + \frac{p_\phi^2}{mr^3\sin^2\theta} - \frac{dV(r)}{dr}$
+\end{itemize}
+
+\subsubsection{Pour  $\theta$ :}
+\begin{itemize}
+    \item $\displaystyle \dot{v} \to \dot{\theta} = \frac{\partial H}{\partial p_\theta} = \frac{p_\theta}{mr^2}$
+    \item $\displaystyle \dot{p}_{th} = -\frac{\partial H}{\partial \theta} = -\left[ \frac{p_\phi^2}{2mr^2} \cdot \left(-\frac{2\cos\theta}{\sin^3\theta}\right) \right] = \frac{p_\phi^2\cos\theta}{mr^2\sin^3\theta}$
+\end{itemize}
+
+\subsubsection{Pour $\phi$ :}
+\begin{itemize}
+    \item $\displaystyle \dot{\phi} = \frac{\partial H}{\partial p_\phi} = \frac{p_\phi}{mr^2\sin^2\theta}$
+    \item $\displaystyle \dot{p}_p = -\frac{\partial H}{\partial \phi} = 0 \quad$ (car $\phi$ n'apparaît pas explicitement dans $H$)
+\end{itemize}
+
+\tipsInfo{Identification immédiate d'une constante du mouvement}{
+Puisque $\displaystyle \dot{p}_\phi = -\frac{\partial H}{\partial \phi} = 0$, la variable $\phi$ est dite \textbf{cyclique} (ou ignorale). On en conclut immédiatement que son impulsion conjuguée est une constante du mouvement :
+$$ p_p = \text{constante} $$
+Physiquement, $p_\phi$ correspond à la projection du moment cinétique de la particule sur l'axe polaire $z$.
+}
+
+
+\end{document}
+

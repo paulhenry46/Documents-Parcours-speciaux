@@ -1,0 +1,270 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 2 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\setcounter{chapter}{3}
+\begin{document}
+\chapter{TP de Thermodynamique : À retenir}
+\section{Analyse d'un gaz}
+
+\subsection{Modélisation du Premier Principe}
+
+\begin{definition}[Énergie interne et Gaz Parfait]
+Pour un gaz parfait (loi de Joule), la variation d'énergie interne ne dépend que de $T$. En utilisant $PV=nRT$, on lie $\Delta U$ à la variation du produit $PV$ :
+$$\Delta U = n C_v \Delta T = \frac{C_v}{R} \Delta(PV)$$
+De même pour l'enthalpie : $\Delta H = n C_p \Delta T = \frac{C_p}{R} \Delta(PV)$.
+\end{definition}
+
+\checkInfo{Bilan énergétique}{Le premier principe s'écrit $\Delta U = Q_i + W$.
+\begin{itemize}
+    \item \textbf{Chaleur ($Q_i$)} : Énergie injectée par effet Joule ($U \cdot I \cdot \tau$).
+    \item \textbf{Travail ($W$)} : Travail des forces de pression extérieures ($W = -P_0 \Delta V$).
+\end{itemize}
+}
+
+\subsection{Exploitation des Pentes (Regressi)}
+
+\begin{proposition}[Identification des coefficients]
+En traçant les grandeurs énergétiques en fonction de la variation de $PV$, on identifie les capacités thermiques molaires par les pentes :
+\begin{itemize}
+    \item \textbf{Pente $a_1$} de la droite $(Q_i + W) = f(\Delta PV) \implies a_1 = \frac{C_v}{R}$
+    \item \textbf{Pente $a_2$} de la droite $(Q_i + W + \Delta PV) = f(\Delta PV) \implies a_2 = \frac{C_p}{R}$
+\end{itemize}
+\end{proposition}
+
+
+\criticalInfo{Relations fondamentales}{
+\begin{itemize}
+    \item \textbf{Relation de Mayer :} On doit vérifier $a_2 - a_1 = 1$ (soit $C_p - C_v = R$).
+    \item \textbf{Coefficient adiabatique :} $\gamma = \frac{C_p}{C_v} = \frac{a_2}{a_1}$.
+\end{itemize}
+}
+
+\subsection{Analyse des Écarts et Interprétation}
+
+\tipsInfo{Sources d'erreurs classiques}{
+\begin{itemize}
+    \item \textbf{Pertes thermiques :} Le vase n'est pas parfaitement adiabatique. Une partie de $Q_i$ s'échappe vers les parois, ce qui surestime $C_v$ et $C_p$ et conduit à un $\gamma$ expérimental plus faible ($\approx 1,3$ au lieu de $1,4$).
+    \item \textbf{Manomètre :} L'inertie du liquide ou une erreur sur le diamètre $D$ du tube impacte le calcul de $\Delta V$ et donc de $W$.
+\end{itemize}
+}
+\section{Moteur à air chaud}
+
+\subsection{Compréhension du Cycle Stirling}
+
+\checkInfo{Rôle du Régénérateur}{
+Il agit comme un stockage thermique interne (éponge à chaleur) :
+\begin{itemize}
+    \item \textbf{Chaud $\to$ Froid :} L'air cède sa chaleur au cuivre du régénérateur (stockage).
+    \item \textbf{Froid $\to$ Chaud :} L'air récupère cette énergie (préchauffage).
+    \item \textbf{Bilan :} Sur un cycle, son échange net d'énergie avec le gaz est nul, mais il augmente l'efficacité en "recyclant" l'énergie interne.
+\end{itemize}
+}
+
+\subsection{Analyse Qualitative des Phases}
+
+
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|c|l|}
+\hline
+\textbf{Phase} & \textbf{Position Régénérateur} & \textbf{Action sur le gaz} \\ \hline
+1. Compression & Haut (Zone froide) & Compression à basse température ($T_f$). \\ \hline
+2. Transfert & Descente & Préchauffage à travers le régénérateur. \\ \hline
+3. Détente & Bas (Zone chaude) & Expansion à haute température ($T_c$). \\ \hline
+4. Transfert & Montée & Refroidissement à travers le régénérateur. \\ \hline
+\end{tabular}
+\end{table}
+
+\warningInfo{Inversion de sens}{Si on tourne le volant en sens inverse, le déphasage s'inverse : la machine consomme du travail pour transférer de la chaleur du froid vers le chaud (mode \textbf{machine frigorifique}).}
+
+\subsection{Modélisation et Exploitation (P, V)}
+
+\begin{proposition}[Diagramme (P, 1/V)]
+En supposant l'air comme un gaz parfait ($P = nRT \cdot \frac{1}{V}$), les isothermes sont des \textbf{droites passant par l'origine}.
+\begin{itemize}
+    \item La pente $k = nRT$ permet d'identifier les températures extrêmes.
+    \item Le rapport des pentes donne le rapport des températures absolues : $\lambda = \frac{T_f}{T_c}$.
+\end{itemize}
+\end{proposition}
+
+\criticalInfo{Bilan Énergétique}{
+\begin{itemize}
+    \item \textbf{Travail ($W$)} : Aire du cycle dans le plan $(P,V)$. Sens horaire $\implies W < 0$ (moteur).
+    \item \textbf{Source froide ($Q_f$)} : Calculée via le réchauffement de l'eau : $Q_f = D_m c_{eau} \Delta T_{eau} \tau$.
+    \item \textbf{Source chaude ($Q_c$)} : Déduite du 1er principe : $Q_c = -(W + Q_f)$.
+\end{itemize}
+}
+
+\subsection{Efficacité et Pertes}
+
+\begin{theorem}[Efficacité de Carnot]
+L'efficacité maximale théorique entre les deux sources du gaz est :
+$$\eta_C = 1 - \frac{T_f}{T_c} = 1 - \lambda$$
+\end{theorem}
+
+\tipsInfo{Analyse des écarts}{
+\begin{itemize}
+    \item \textbf{$\eta_{réel} \ll \eta_C$} : Dû aux frottements mécaniques et au fait que les transformations ne sont pas de parfaits isothermes (forme en "banane" du cycle).
+    \item \textbf{$Q_{Joule} > Q_c$} : Une grande partie de la chaleur produite par le filament est perdue vers l'extérieur (fuites thermiques) avant même d'entrer dans le gaz.
+\end{itemize}
+}
+
+\subsection{Outils de calcul et Traitement de données}
+
+\subsubsection{Calcul du Travail par Intégration}
+
+\begin{definition}[Travail Mécanique ($W$)]
+Le travail reçu par le gaz est l'intégrale de la puissance mécanique sur un cycle :
+$$W_{cycle} = \int_{0}^{\tau} -P(t) \frac{\dd V(t)}{\dd t} \dd t = - \oint P \dd V$$
+Sur CASSY, cela correspond à l'aire du cycle $(P, V)$.
+\end{definition}
+
+\warningInfo{Conversion d'unités CASSY}{Les logiciels de TP utilisent souvent des unités non-SI. Pour obtenir des Joules (J) :
+\begin{itemize}
+    \item $P$ en hPa ($10^2$ Pa) et $V$ en cm$^3$ ($10^{-6}$ m$^3$).
+    \item \textbf{Facteur correctif :} $W_{SI} = W_{CASSY} \times 10^{-4}$.
+\end{itemize}
+}
+
+\subsubsection{Mesure de la Puissance Thermique (Source Froide)}
+
+Pour quantifier $Q_f$, on mesure l'énergie emportée par l'eau de refroidissement.
+
+\checkInfo{Méthode du débit au bécher}{
+\begin{enumerate}
+    \item \textbf{Débit massique ($D_m$)} : On mesure le temps $t$ pour remplir un volume $V$ (ex: 500 mL) dans un bécher/éprouvette.
+    $$D_m = \rho_{eau} \cdot \frac{V_{becher}}{t} \quad \text{avec } \rho_{eau} = 1000 \text{ kg.m}^{-3}$$
+    \item \textbf{Puissance extraite ($P_f$)} : On mesure l'écart de température $\Delta T = T_{sortie} - T_{entrée}$ de l'eau.
+    $$P_f = D_m \cdot c_{eau} \cdot (T_s - T_e) \quad \text{avec } c_{eau} = 4180 \text{ J.kg}^{-1}\text{.K}^{-1}$$
+    \item \textbf{Transfert par cycle ($Q_f$)} : Multiplier par la période $\tau$ du moteur.
+    $$Q_f = P_f \cdot \tau$$
+\end{enumerate}
+}
+
+% \subsection{Récapitulatif des Formules d'Efficacité}
+
+% \criticalInfo{Bilan au niveau du Gaz}{
+% \begin{itemize}
+%     \item \textbf{Conservation de l'énergie (1er Principe) :} $Q_c = - (W + Q_f)$.
+%     \item \textbf{Efficacité réelle :} $\eta_M = \frac{|W|}{Q_c}$ (ce que le gaz produit / ce qu'il absorbe réellement).
+%     \item \textbf{Efficacité globale (système) :} $\eta_{glob} = \frac{|W|}{Q_{Joule}}$ (ce que le gaz produit / ce qu'on paie en électricité).
+% \end{itemize}
+% }
+
+\section{Machine frigorifique}
+\subsection{Modélisation du Cycle Frigorifique}
+
+\begin{definition}[Machine Ditherme à Compression]
+Dispositif utilisant un travail mécanique $w$ pour transférer de la chaleur d'une source froide ($q_f > 0$) vers une source chaude ($q_c < 0$).
+\end{definition}
+
+\checkInfo{Le cycle sur le diagramme de Mollier ($P, h$)}{
+Le cycle est composé de quatre organes principaux :
+\begin{itemize}
+    \item \textbf{A $\to$ B (Détendeur) :} Détente \textbf{isenthalpique} ($h_A = h_B$). Chute brutale de $P$ et $T$.
+    \item \textbf{B $\to$ C (Évaporateur) :} Vaporisation \textbf{isobare}. Le fluide capte $q_f$ à la source froide.
+    \item \textbf{C $\to$ D (Compresseur) :} Compression (idéalement isentropique). Reçoit le travail $w$.
+    \item \textbf{D $\to$ A (Condenseur) :} Liquéfaction \textbf{isobare}. Le fluide cède $q_c$ à la source chaude.
+\end{itemize}
+}
+
+
+
+\subsection{Calculs Énergétiques (Système Ouvert)}
+
+\begin{proposition}[Premier Principe en Régime Stationnaire]
+Pour chaque organe, on utilise la variation d'enthalpie massique $h$ (en kJ/kg) :
+\begin{itemize}
+    \item \textbf{Chaleur source froide :} $q_f = h_C - h_B$
+    \item \textbf{Chaleur source chaude :} $q_c = h_A - h_D$
+    \item \textbf{Travail du compresseur :} $w = h_D - h_C$ (ou $w = -(q_f + q_c)$)
+\end{itemize}
+\end{proposition}
+
+\criticalInfo{Puissances et Débits}{
+Pour passer des grandeurs massiques aux puissances $\mathcal{P}$ (en Watts) :
+$$\mathcal{P} = \dot{m}_{fluide} \cdot \Delta h$$
+\textbf{Attention aux unités :} Convertir le débit $\dot{m}$ en kg/s et $\Delta h$ en J/kg ($1 \text{ kJ/kg} = 10^3 \text{ J/kg}$).
+}
+
+\subsection{Coefficients de Performance (COP)}
+
+\begin{theorem}[Efficacités Réelles]
+Le COP est le rapport $\frac{\text{Utile}}{\text{Payant}}$ :
+\begin{itemize}
+    \item \textbf{Mode Machine Frigorifique :} $COP_{MF} = \frac{q_f}{w}$
+    \item \textbf{Mode Pompe à Chaleur :} $COP_{PAC} = \frac{|q_c|}{w}$
+\end{itemize}
+\end{theorem}
+
+\warningInfo{Limites de Carnot}{Les efficacités maximales théoriques dépendent des températures des sources $T_F$ et $T_C$ (en Kelvin) :
+$$COP_{MF, Carnot} = \frac{T_F}{T_C - T_F} \quad ; \quad COP_{PAC, Carnot} = \frac{T_C}{T_C - T_F}$$
+}
+
+\subsection{Analyses des Pertes et Rendements}
+
+\tipsInfo{Étude des circuits secondaires (Eau)}{
+On vérifie le bilan par l'eau : $\mathcal{P}_{eau} = \dot{m}_{eau} \cdot C_{eau} \cdot \Delta T_{eau}$.
+\begin{itemize}
+    \item Si $|\mathcal{P}_{eau}| < |\mathcal{P}_{fluide}|$, il y a des pertes thermiques vers l'air ambiant.
+    \item \textbf{Rendement du compresseur :} $\mathcal{P}_{elec} > \mathcal{P}_w$ car une partie de l'électricité est dissipée par effet Joule et frottements (souvent $\approx 50\%$ de pertes).
+\end{itemize}
+}
+
+\checkInfo{Conversion de débit (Rappel)}{
+Pour l'eau (mesure au débitmètre en L/min) :
+$$d_{v, SI} (m^3/s) = \frac{d_{v, L/min} \cdot 10^{-3}}{60}$$
+Puis $\dot{m} (kg/s) = \rho_{eau} \cdot d_{v, SI}$ (avec $\rho_{eau} = 1000$ kg/m$^3$).
+}
+
+
+\end{document}

@@ -1,0 +1,212 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mecanique Analytique}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\newcommand{\qa}{q_{\alpha}}
+\newcommand{\qdb}{\dot{q_{\beta}}}
+\newcommand{\qb}{q_{\beta}}
+%\setcounter{chapter}{3}
+\begin{document}
+\chapter{Mécanique Lagrangienne - Méthode}
+\section{Méthode générale}
+\subsection{Coordonnées généralisées}
+\begin{definition}[Coordonnées généralisées]
+Pour un système à $N$ corps possédant $k$ liaisons indépendantes, le nombre de degrés de liberté (ddl) est $n = 3N - k$. On choisit alors un ensemble de $n$ variables indépendantes $q = (q_1, q_2, \dots, q_n)$ appelées \textbf{coordonnées généralisées} permettant de décrire de manière unique la position de tout point du système.
+\end{definition}
+
+
+\checkInfo{Méthode de paramétrage}{
+Une fois les $q_i$ choisis, exprimer systématiquement les coordonnées cartésiennes $(x_j, y_j, z_j)$ de chaque masse $m_j$ en fonction des $q_i$. 
+Puis, dériver-les par rapport au temps pour obtenir les vitesses $(\dot{x}_j, \dot{y}_j, \dot{z}_j)$.
+}
+\subsection{Construction du Lagrangien}
+\begin{proposition}[Énergie cinétique $T$]
+L'énergie cinétique globale est la somme des énergies cinétiques de chaque masse. 
+\begin{itemize}
+    \item En cartésiennes : $T = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2 + \dot{z}^2)$
+    \item En polaires : $T = \frac{1}{2}m(\dot{r}^2 + r^2\dot{\theta}^2)$
+    \item En sphériques : $T = \frac{1}{2}m\big(\dot{r}^2 + r^2\dot{\theta}^2 + r^2\sin^2\theta\,\dot{\phi}^2\big)$
+\end{itemize}
+\end{proposition}
+
+\begin{proposition}[Énergie potentielle $V$]
+Exprimer les forces conservatives qui s'appliquent. Les deux plus fréquentes sont :
+\begin{itemize}
+    \item La pesanteur : $V_{pes} = \pm mgz$ (le signe dépend de l'orientation de l'axe vertical).
+    \item Un ressort de raideur $k$ et de longueur à vide $l_0$ : $V_{el} = \frac{1}{2}k(l - l_0)^2$.
+\end{itemize}
+\end{proposition}
+
+\begin{definition}[Lagrangien]
+Le Lagrangien du système est défini par :
+$$L(q_i, \dot{q}_i, t) = T - V$$
+\end{definition}
+\subsection{Équations du mouvement}
+\begin{theorem}[Équations d'Euler-Lagrange]
+Pour chaque coordonnée généralisée $q_i$ (avec $i = 1, \dots, n$), l'équation du mouvement s'obtient par :
+$$\frac{d}{dt}\left( \frac{\partial L}{\partial \dot{q}_i} \right) - \frac{\partial L}{\partial q_i} = 0$$
+\end{theorem}
+
+\checkInfo{Déroulé du calcul}{
+Pour chaque variable $q_i$ :
+\begin{enumerate}
+    \item Calculer la quantité conjuguée (moment généralisé) $p_i = \frac{\partial L}{\partial \dot{q}_i}$.
+    \item Dériver cette quantité par rapport au temps $\frac{d}{dt}(p_i)$ (attention aux dérivées composées !).
+    \item Calculer la force généralisée $\frac{\partial L}{\partial q_i}$.
+    \item Assembler le tout pour obtenir une équation différentielle du second degré.
+\end{enumerate}
+}
+\subsection{Constantes du mouvement}
+\subsubsection{Variables cycliques (Théorème de Noether)}
+
+\begin{definition}[Variable cyclique]
+Une coordonnée généralisée $q_i$ est dite \textbf{cyclique} si elle n'apparaît pas explicitement dans le Lagrangien, c'est-à-dire si :
+$$\frac{\partial L}{\partial q_i} = 0$$
+\end{definition}
+
+\begin{proposition}[Conservation de l'impulsion]
+Si $q_i$ est une variable cyclique, alors le moment généralisé conjugué $p_i$ est une \textbf{constante du mouvement} :
+$$p_i = \frac{\partial L}{\partial \dot{q}_i} = \text{Constante}$$
+\end{proposition}
+
+\subsubsection{Conservation de l'énergie et Formule de Beltrami}
+
+\begin{definition}[Intégrale de Jacobi / Énergie constante]
+Si le Lagrangien ne dépend pas explicitement du temps ($\frac{\partial L}{\partial t} = 0$), alors la fonction énergie $h$ (ou intégrale de Jacobi) est conservée. Elle se calcule par :
+$$h = \sum_{i=1}^n \dot{q}_i \frac{\partial L}{\partial \dot{q}_i} - L = \text{Constante}$$
+Si les liaisons sont indépendantes du temps et que $V$ ne dépend pas des vitesses, alors $h = T + V = E_m$ (Énergie mécanique).
+\end{definition}
+
+\begin{theorem}[Formule de Beltrami]
+Pour un système à \textbf{un seul degré de liberté} $q$ où $\frac{\partial L}{\partial t} = 0$, l'équation d'Euler-Lagrange s'intègre directement sous la forme :
+$$L - \dot{q}\frac{\partial L}{\partial \dot{q}} = \text{Constante}$$
+Cette formule est un cas particulier de la conservation de l'intégrale de Jacobi.
+\end{theorem}
+\section{Exemple - Machine d'Artwood}
+La corde est inextensible et de longueur totale $L + \pi R$. La portion de corde enroulée sur la poulie est une demi-circonférence, soit $\pi R$. Les portions verticales mesurent $z_1$ et $z_2$. On en déduit la relation de contrainte holonome :
+$$z_1 + z_2 + \pi R = L + \pi R \implies z_1 + z_2 = L$$
+Il y a 2 coordonnées et 1 équation de contrainte, le système possède donc :
+$$n = 2 - 1 = 1 \text{ degré de liberté}$$
+On choisit $z_1$ comme coordonnée généralisée unique. On a alors $z_2 = L - z_1$, ce qui implique par dérivation temporelle : $\dot{z}_2 = -\dot{z}_1$.
+
+\subsection{Construction du Lagrangien}
+\textbf{Énergie cinétique ($T$) :} 
+Les masses ont des mouvements purement verticaux:
+$$T = \frac{1}{2}m_1\dot{z}_1^2 + \frac{1}{2}m_2\dot{z}_2^2 = \frac{1}{2}(m_1 + m_2)\dot{z}_1^2$$
+
+\textbf{Énergie potentielle ($V$) :}
+L'axe $(Oz)$ est vertical descendant, dans le sens de la gravité $\vec{g}$. L'énergie potentielle de pesanteur s'écrit donc avec un signe moins :
+$$V = -m_1gz_1 - m_2gz_2 = -m_1gz_1 - m_2g(L - z_1) = -(m_1 - m_2)gz_1 - m_2gL$$
+
+\textbf{Lagrangien ($L$) :}
+$$L(z_1, \dot{z}_1) = T - V = \frac{1}{2}(m_1 + m_2)\dot{z}_1^2 + (m_1 - m_2)gz_1 + m_2gL$$
+\subsection{Équation du mouvement}
+
+On applique l'équation pour la variable $z_1$ :
+$$\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{z}_1}\right) - \frac{\partial L}{\partial z_1} = 0$$
+\begin{itemize}
+    \item $\frac{\partial L}{\partial \dot{z}_1} = (m_1 + m_2)\dot{z}_1 \implies \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{z}_1}\right) = (m_1 + m_2)\ddot{z}_1$
+    \item $\frac{\partial L}{\partial z_1} = (m_1 - m_2)g$
+\end{itemize}
+On obtient l'équation différentielle du mouvement :
+$$(m_1 + m_2)\ddot{z}_1 - (m_1 - m_2)g = 0 \implies \ddot{z}_1 = \frac{m_1 - m_2}{m_1 + m_2}g$$
+\section{Double tige}
+Deux masselottes considérées comme ponctuelles se déplacent sans frottements sur une table que l’on identifie au plan (O, x, y). La première masselotte,
+de masse $m_1$, est reliée à l’origine par un première tige rigide de masse négligeable
+et de longueur $l_1$. La deuxième masselotte, de masse $m_2$, est attachée à la première par une deuxième tige rigide elle aussi de masse négligeable et de longueur
+$l_2$.
+
+On appelle $\theta$ l’angle que fait la première tige fait avec l’axe $O_x$ et $\alpha$ l’angle
+que fait la deuxième tige avec la première.
+
+Les longueurs des tiges $l_1$ et $l_2$ sont rigides et constantes. Les seules variables indépendantes sont les angles $\theta$ et $\alpha$. Le système possède donc :
+$$n = 2 \text{ degrés de liberté}$$
+Les coordonnées généralisées choisies sont $q = (\theta, \alpha)$.
+
+
+L'angle absolu de la deuxième tige par rapport à l'axe $(Ox)$ est $(\theta + \alpha)$. Par projection trigonométrique :
+\begin{itemize}
+    \item \textbf{Pour $m_1$ :}
+    $$x_1 = l_1\cos\theta, \quad y_1 = l_1\sin\theta$$
+    \item \textbf{Pour $m_2$ :}
+    $$x_2 = l_1\cos\theta + l_2\cos(\theta+\alpha), \quad y_2 = l_1\sin\theta + l_2\sin(\theta+\alpha)$$
+\end{itemize}
+\subsection{Construction du Lagrangien}
+\subsubsection{Calcul de T}
+Pour calculer $T$, on dérive d'abord les positions par rapport au temps :
+\begin{itemize}
+    \item $\dot{x}_1 = -l_1\dot{\theta}\sin\theta \quad \text{et} \quad \dot{y}_1 = l_1\dot{\theta}\cos\theta \implies \dot{x}_1^2 + \dot{y}_1^2 = l_1^2\dot{\theta}^2$
+    \item $\dot{x}_2 = -l_1\dot{\theta}\sin\theta - l_2(\dot{\theta}+\dot{\alpha})\sin(\theta+\alpha)$
+    \item $\dot{y}_2 = l_1\dot{\theta}\cos\theta + l_2(\dot{\theta}+\dot{\alpha})\cos(\theta+\alpha)$
+\end{itemize}
+En développant $\dot{x}_2^2 + \dot{y}_2^2$ et en utilisant l'identité $\cos a\cos b + \sin a\sin b = \cos(a-b)$, on obtient :
+$$\dot{x}_2^2 + \dot{y}_2^2 = l_1^2\dot{\theta}^2 + l_2^2(\dot{\theta}+\dot{\alpha})^2 + 2l_1l_2\dot{\theta}(\dot{\theta}+\dot{\alpha})\cos\alpha$$
+
+
+L'énergie cinétique totale $T = T_1 + T_2$ s'écrit :
+$$T = \frac{1}{2}(m_1+m_2)l_1^2\dot{\theta}^2 + \frac{1}{2}m_2l_2^2(\dot{\theta}+\dot{\alpha})^2 + m_2l_1l_2\dot{\theta}(\dot{\theta}+\dot{\alpha})\cos\alpha$$
+\subsubsection{Lagrangien}
+
+Le mouvement a lieu sur une table horizontale plane $(O,x,y)$. En l'absence de forces verticales ou de gravité mentionnée dans ce plan, l'énergie potentielle est constante : $V = 0$. On a donc :
+$$L(\theta, \alpha, \dot{\theta}, \dot{\alpha}) = T$$
+\subsection{Variable cyclique et quantités conservées}
+
+En observant l'expression de $L$, on constate que l'angle $\theta$ n'apparaît nulle part explicitement (seule sa dérivée $\dot{\theta}$ est présente).
+$$\frac{\partial L}{\partial \theta} = 0 \implies \theta \text{ est une variable cyclique.}$$
+
+
+Puisque $\theta$ est cyclique, le moment généralisé conjugué $p_\theta$ associé à cette coordonnée est une constante du mouvement :
+$$p_\theta = \frac{\partial L}{\partial \dot{\theta}} = \text{Constante}$$
+Calculons explicitement cette quantité :
+$$p_\theta = (m_1+m_2)l_1^2\dot{\theta} + m_2l_2^2(\dot{\theta}+\dot{\alpha}) + m_2l_1l_2(2\dot{\theta}+\dot{\alpha})\cos\alpha = \text{Constante}$$
+Cette constante représente le moment cinétique total du système par rapport à l'axe vertical passant par l'origine $O$.\marginInfo{On pouvait s'en douter car le système est invariant par rotation globale d'un angle $\theta$.} 
+
+\end{document}
+

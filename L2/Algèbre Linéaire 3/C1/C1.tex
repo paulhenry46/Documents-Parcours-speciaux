@@ -1,0 +1,332 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Algèbre linéaire 3*}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lombardi@math.univ-toulouse.fr
+\professor{E.Lombardie}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\begin{document}
+\chapter{Espace euclidien}
+%C2 : Applications linéaires sur espaces euclidiens
+%C3 : Espaces hermitiens
+%C4 : Formes quadratiques
+%C5 : Introduction aux groupes
+
+%TD = U-111/U-112
+%CM : B-08/B-07/Grignard
+
+%CC2 : TD du 19 mars
+%CC1 : 1h30
+%CC2 : TD du 7 mai
+%CC3 : 2 juin
+%CC4 : 9 juin
+\section{Produit scalaire et norme}
+\begin{definition}[Produit scalaire]
+    Soit $E$ un ev sur $\R$ de dimebsion finie ou non.
+    $$\varphi : E\times E \to \R, (x,y)\to \varphi(x,y)$$
+    \begin{itemize}
+        \item $\varphi$ est une forme (l'espace d'arrivée est $\R$) bilinéaire si $x\to \varphi(x,y)$ est linéaire, de m\^eme pour y
+        \item $\varphi$ est symétriuque $\iff \varphi(x,y) = \varphi(y,x)$
+        \item $\forall x, \varphi(x,x) \geq0$
+        \item $\varphi$ est définie positive $\iff \forall x, \varphi(x,x)\geq 0 \wedge \varphi(x,x) = 0 \Rightarrow x=0$
+    \end{itemize}
+    On dit que $\varphi$ est un produit scalaire $\iff \varphi$ est une forme bilinéaire symétrique définie positive.
+\end{definition}
+\warningInfo{Règles de clalcul}{On a 
+\begin{itemize}
+    \item $\varphi(\lambda x+x',y) = \lambda \varphi(x,y)+\varphi(x',y)$
+    \item $\varphi(x,\lambda y+y') = \lambda \varphi(x,y)+\varphi((x,y'))$
+\end{itemize}
+}
+\begin{definition}[Espace Euclidien]
+    SI la dimension de $E$ est finie et $\varphi$ produit scalaire, alors la paire $(E,\varphi)$ est un espace euclidien.
+
+\end{definition}
+\begin{definition}[espace Préhilbertien]
+        Si la dimension de $E$ est infinie, et $\varphi$ produit scalaire, alors la paire $(E,\varphi)$ est un espace préhilbertien.
+\end{definition}
+\checkInfo{Exemples}{
+\begin{itemize}
+    \item $E=\R^n : (x|y) = \sum_i^n x_iy_i$
+    \item $E=\R^n : (x|y) = \sum_\lambda i^n x_iy_i, \lambda > 0$
+    \item $E=\R_n[X] : (x|y) = \sum_{i=0}^{n} a_ib_i$
+    \item $E = M_n[\R]$, avec $A = [A_{ij}], B=[B_{ij}] : \sum_{ij} a_{ij} b_{ij}, tr(^tAB)$
+    \item $ E = C^0([0,1]; \R) : (x|y) = \int_0^1 fg\dd t$
+\end{itemize}
+}
+\criticalInfo{Notation}{On note le produit scalaire $<x|y>$ ou $(x|y)$}
+\begin{definition}[Norme]
+    On note la norme associée au produit scalaire $\sqrt{(x|x)}$.
+\end{definition}
+\begin{proposition}[Inégalité de Cauchy Swartz]
+    On munit E d'un produit scalaire, alors $\forall(x,y), (x|y) \leq ||x||||y||$
+\end{proposition}
+\begin{myproof}
+    $\forall(x,y),\forall t\in \R$, calculons $(x+ty | x+ty)$.
+
+    \begin{flalign*}
+        (x+ty | x+ty) &\geq 0 \forall t\in \R\\
+        &= (x|x) + (x|ty)+(ty|x)+(ty|ty)\\
+        &= ||x||^2 + 2 t(x|y)+t^2||y||^2\\
+        &= f(t)
+    \end{flalign*}
+    L'application f(t) est un polyn\^ome du second degré. On a donc $f(t) \geq 0$.
+
+    Donc $\Delta \leq 0 \iff 4(x|y)^2- \leq 0 \iff 4(x|y)^2 \leq 4||x||^2$
+
+    On a bien $$(x|y)^2 \leq ||x||^2$$
+\end{myproof}
+\begin{proposition}[Propriétés de la norme]
+    \begin{itemize}
+        \item $\forall x\in E, ||x||\geq 0$
+        \item $||x|| = 0 \Rightarrow x=0$
+        \item $||\lambda x|| = |\lambda|||x||$
+        \item $||x+y|| \leq ||x||+||y||$
+    \end{itemize}
+\end{proposition}
+\begin{myproof}[De $||x+y|| \leq ||x||+||y||$]
+    \begin{flalign*}
+        ||x+y||^2 &= (x+y|x+y)\\
+        &= ||x||^2+2(x|y)+||y||^2\\
+        &\leq ||x||^2+2||x||||y||+||y||^2\\
+        &\leq (||x||+||y||)^2
+    \end{flalign*}
+\end{myproof}
+\begin{proposition}[Calcul du produit scalaire]
+    \begin{itemize}
+        \item $(x|y) = \frac12 (||x+y||^2-||x||^2-||y||^2)$
+        \item $(x|y) = \frac12(-||x-y||^2+||x||^2+||y||^2)$
+        \item $(x|y) = \frac14(||x+y||^2-||x-y||^2)$
+        \item $||x+y||^2+||x-y||^2 = 2(||x||^2+||y||^2)$
+    \end{itemize}
+\end{proposition}
+\begin{myproof}[Formules 2, 3 et 4]
+    \textbf{2.} En remplaçant $y$ par $-y$ dans la formule 1 :
+    \begin{flalign*}
+        (x|-y) &= \frac12(||x-y||^2-||x||^2-||-y||^2)\\
+        -(x|y) &= \frac12(||x-y||^2-||x||^2-||y||^2)\\
+        (x|y) &= \frac12(-||x-y||^2+||x||^2+||y||^2)
+    \end{flalign*}
+    
+    \textbf{3.} En additionnant les formules 1 et 2 :
+    \begin{flalign*}
+        2(x|y) &= \frac12(||x+y||^2-||x||^2-||y||^2) + \frac12(-||x-y||^2+||x||^2+||y||^2)\\
+        2(x|y) &= \frac12(||x+y||^2-||x-y||^2)\\
+        (x|y) &= \frac14(||x+y||^2-||x-y||^2)
+    \end{flalign*}
+    
+    \textbf{4.} En additionnant les formules 1 et 2 sans la division par 2 :
+    \begin{flalign*}
+        ||x+y||^2 &= ||x||^2+2(x|y)+||y||^2\\
+        ||x-y||^2 &= ||x||^2-2(x|y)+||y||^2\\
+        ||x+y||^2+||x-y||^2 &= 2||x||^2+2||y||^2 = 2(||x||^2+||y||^2)
+    \end{flalign*}
+\end{myproof}
+\section{Orthogonalité}
+\subsection{Introduction}
+\begin{definition}[Vecteurs orthogonaux]
+    Deux vecteurs y et x sont orthogonaux quand leur produit scalaire est nul. On note $x\perp y$
+\end{definition}
+\begin{theorem}[Pythagore]
+    En réels, $x\perp y\iff ||x+y||^2 = ||x||^2+||y||^2$
+\end{theorem}
+\begin{myproof}
+    On calcule la différence :
+    \begin{flalign*}
+        ||x+y||^2-||x||^2-||y||^2 &= ||x||^2+||y||^2+2(x|y)-||x||^2-||y||^2\\
+        &= 2(x|y)\\
+        &=0
+    \end{flalign*}
+\end{myproof}
+\begin{definition}
+    Une base $e_1,\dots,e_n$ est orthogonale quand $\forall i,j, i\neq j, e_i\perp e_j$ 
+
+    Une base est orthonormée quand $\forall i\neq j, e_i\perp e_j, \forall i, ||e_i||=1$
+\end{definition}
+On peut utiliser le symbole de $\delta_{ij}$
+\begin{proposition}
+    Si $e_1\dots e_n$ est un BON, alors $\forall x\in E, x= (e_1|x)e_1+\dots + (e_n|x)e_n$
+    Les coordonnées de x dans la base $e_1,\dots, e_n$, notées $(x_1,\dots, x_n)$ sont données par $x_i = (e_i|x)$
+\end{proposition}
+\begin{corollary}
+    $||x||^2 = x_1^2+\dots+x_n^2 = (e_1|x)^2+\dots+(e_n|x)^2$
+\end{corollary}
+\begin{myproof}
+    \begin{flalign*}
+        ||x||^2 &= (x|x)\\
+        &= (x_1e_1+\dots|x_1e_1+\dots)\\
+        &= \sum_{i,j}(x_i e_i|x_je_j)\\
+        &= \sum_{i,j}x_ix_j(e_i|e_j)\\
+        &= \sum_{i,j} x_ix_j\delta_{ij}\\
+        &= \sum_{i} x_i^2\times 1\\
+        &= \sum x_i^2
+    \end{flalign*}
+\end{myproof}
+\subsection{Procédés d'orthonormalité de Gram-Schimdt}
+\begin{proposition}
+    Soit $(u_1, _dots, u_n)$ une base quelconque de $E$. Il existe une base orthonormée $e_1,\dots, e_n$
+    telle que $\forall p, Vect(e_1,\dots, e_p) = Vect(u_1,\dots, u_p)$
+\end{proposition}
+\begin{myproof}[Par recurrence]
+    Initialisation : $p=1$, on a $e_1 = \frac{u_1}{||u_1||}$
+
+    Hérédité : Supposons que l'on ait construit $(e_1, \dots,e_p)$ orthornomée telle que 
+    $Vect(e_1,\dots,e_p) = Vect(u_1,\dots, u_p)$.
+
+    Construisons $e_{p+1}$. On veut $e_1,\dots,e_p$ BON et $Vect(e_1,\dots,e_{p+1}) = Vect(u_1,\dots, u_{p+1})$.
+
+    On prend : 
+    \begin{enumerate}
+        \item $e'_{p+1} = u_{p+1}+\sum_{i=1}^p \alpha_i e_i$
+
+    \item On veut que $e'_{p+1}\perp e_j \forall 1\leq j\leq p$
+
+    \item On a $e_{p+1} = \frac{e'_{p+1}}{||e'_{p+1}||}$.
+    \end{enumerate}
+    On a 
+    \begin{flalign*}
+        0 &= (e'_{p+1}|e_j)\\
+        \iff 0 &= (u_{p+1}+\sum_{i=1}^n \alpha_i e_i|e_j)\\
+        \iff 0 &= (u_{p+1}|e_j) +(\sum_{i=1}^p \alpha_i e_i|e_j)\\
+        \iff 0 &= (u_{p+1}|e_j) +\alpha_j\\
+        \alpha_j = -(u_{p+1}|e_j)
+    \end{flalign*}
+\end{myproof}
+\warningInfo{Méthode de Gram}{
+    \begin{enumerate}
+        \item $e_1 = \frac{u_1}{||u_1||}$
+        \item $1\leq p\leq n-1, e'_{p+1} = u_{p+1} - \sum_{j=1}^p(e_j|u_{p+1})e_j$
+        \item $e_{p+1} = \frac{e'_{p+1}}{||e'_{p+1}||}$
+    \end{enumerate}
+}
+\section{Sous espace orthogonal et projection}
+\begin{definition}
+    Soit E un espace euclidien. A est une partie de E. L'orthogonal de A, noté 
+    $A^{\perp}$ est donné par $A^{\perp} = \{y\in E/ \forall a \in A (y|a)=0\}$
+\end{definition}
+\begin{proposition}
+    $A^{\perp}$ est toujours un sev de E m\^eme si A n'est qu'une partie quelconque de E.
+\end{proposition}
+\begin{myproof}
+    $0\in A^{\perp}$  donc non vide.
+
+    Soit $y_1, y_2\in A^{\perp}, \lambda\in \R$. On veut montrer que $\lambda y_1+y_2\in A^{\perp}$ 
+
+    $y_1\in A^{\perp}\iff \forall a \in A, (y_1|a) = 0$
+
+    $y_2\in A^{\perp}\iff \forall a \in A, (y_2|a) = 0$
+
+    Donc $\forall a \in A, \lambda (\lambda y_1+y_2 | a) = 0$ par combinaison linéaire.
+\end{myproof}
+\begin{proposition}
+    $F$ sev de E euclicien, F et $F^{\perp}$ sont supplémentaires $\iff E = F\oplus F^{\perp}$
+\end{proposition}
+\checkInfo{Somme directe}{
+F et G sont en somme directe $\iff F\cap G = \{0\} \iff \forall z\in F+G, \exists! f\in F, g\in G, z=f+g$
+
+F et G supplémentaires $\iff$ F et G en somme directe et $E = F+G$
+}
+\begin{myproof}
+    \begin{enumerate}
+        \item Montrons F et $F^{\perp}$ en somme directe.
+        
+        Soit $x\in F\cap F^{\perp}$. $||x||^2 = (x|x) = 0$ donc $x=0$
+
+        Donc $F\cap F^{\perp}$ est en somme directe
+        \item Montrons que $E=F+F^{\perp}$. Il faut montrer que $\forall x\in E, x_F\in F, x_{F^{\perp}} \in F^{\perp}, x= x_F  + x_{F^{\perp}}$
+        
+        On note p la dimension de F. Avec Gram-Schmit, on peut construire une base orthonormée $e_1,\dots, e_p$
+        de F et comme c'est une bon, $x_F = \alpha_1e_1+\dots+\alpha_pe_p$. 
+
+        Donc $1\leq j\leq p$, $(x|e_j) = (x_F+x_{\perp}|e_j) = \alpha_j$
+
+        Donc nécessairement, $x_F = (e_1|x)e_1+\dots+(e_p|x)e_p$.
+
+        Reste à vérifier que $x_F = (e_1|x)e_1+\dots+(e_p|x)e_p$ et $x_{\perp} = x-x_F$.
+        \item Il ne reste plus qu'à démontrer que $x_{\perp} = x-x_F \in F^{\perp}$
+        C'est équivalent à $\forall y\in F, (x_{\perp}|y)=0$
+
+        On peut juster vérifier que c'est orthogonal à une base de F, i.e. $\forall j, (x_{\perp}|e_j)$.
+
+        $(x_{\perp} |e_j) = (x-x_F|e_j) = (x|e_j)-(\sum (e_i|x)e_i|e_j) = 0$
+
+        Donc $\forall j\in x_{\perp}\perp e_j$
+
+        Donc OK
+    \end{enumerate}
+\end{myproof}
+\begin{corollary}
+    La projection orthogonale sur F est donnée par $p_F(x) = (e_1|x)e_1+\dots+(e_p|x)e_p$
+    or $(e_1,\dots e_p)$ BON
+\end{corollary}
+\begin{corollary}
+    $\dim(F) + \dim(F^{\perp})=\dim(E)$
+\end{corollary}
+\begin{corollary}
+    $F^{\perp\perp} = F$
+\end{corollary}
+\begin{myproof}
+    $F\subset F^{\perp \perp}$
+
+    $\dim(F) + \dim(F^{\perp}) = \dim(E)$ et $\dim(F^{\perp}+\dim(F^{\perp\perp}))$. on soustrait, cela fait 0.
+
+    Les dimensions sont finies, donc l'égalité est vérifie.
+\end{myproof}
+\begin{proposition}
+    F un SEV de E, $x\in E$. Alors $\forall y \in F, ||x-p_f(x)||\leq||x-y|| \iff ||x-p_f(x)|| = \min(||x-y||)$
+    C'est la distance de x à F et $p_f(x)$ est la projection orthogonale de x sur F.
+\end{proposition}
+\begin{myproof}
+    $\forall x\in E, x = x_F+x_\perp = p_f(x)+h$
+
+    De plus, $\forall y\in F, ||x-y||^2 = ||p_f(x)-y+h||^2 = ||y-p_f(x)||^2 + ||h||^2 = ||p_f(x)-y||^2+||x-p_f(x)||^2$
+    Donc $\forall y, ||x-y||^2 = ||p_f(x)-y||+||x-p_f(x)||^2$
+
+    Donc $||x-y||^2\geq ||x-p_f(x)||^2$. En prenant $y = p_f(x)\in F$, le minimum est atteint et la
+    distance de x à F = $\min(||x-y||) = ||x-p_f(x)||$.
+\end{myproof}
+
+\end{document}

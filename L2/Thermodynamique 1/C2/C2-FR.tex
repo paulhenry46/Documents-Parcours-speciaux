@@ -1,0 +1,133 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Introduction à la termodynamique}
+\subtitle{Thermodynamique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\begin{document}
+\setcounter{chapter}{1}
+\chapter{Travail des forces de pression}
+
+% \section{Énergie reçue par un système fermé}
+
+% \explanation{1}{Le travail est une grandeur de transfert : c'est l'intégrale du flux de puissance à travers la frontière du système.}
+
+% \begin{flalign*}
+%     W_{i\to f} &= \int_{t_i}^{t_f} \phi(t)\dd t\explain{1}{right}{0}{0.5}{}
+% \end{flalign*}
+
+% \explanation{2}{La puissance $\phi$ est l'intégrale de la densité de flux $\varphi$ (en $W.m^{-2}$) sur toute la surface limite $\partial \Omega$.}
+
+% \begin{flalign*}
+%     \phi(t) &=  \int_{\partial \Omega} \varphi(M, t)\dd S \explain{2}{right}{0}{0.5}{}
+% \end{flalign*}
+
+% \subsection{Point de difficulté : Passage du local au global}
+% Le travail élémentaire sur une facette $dS$ pendant $dt$ est :
+% \begin{flalign*}
+%     \delta^2 W &= \dd\vec{F}(M,t)\cdot \dd \vec{l}(M,t)\\
+%     \varphi(M,t) &= \vec{\tau}(M,t)\cdot \vec{v_m}(M,t) \quad \text{(Densité de puissance)}
+% \end{flalign*}
+
+
+
+\section{Cas du cylindre indéformable avec piston mobile}
+
+\warningInfo{Convention de signe}{L'énergie reçue par le système (le fluide) est comptée positivement ($W > 0$). Si le système fournit du travail, $W < 0$.}
+
+\explanation{a1}{Seule la surface du piston $S_p$ se déplace ($\vec{v_m} \neq \vec{0}$). Sur les parois fixes, le produit scalaire est nul.}
+
+\begin{flalign*}
+    W &= \int_{t_i}^{t_f}\int_{S_p} \vec{\tau(t)}\cdot \vec{v_p}(t)\dd S\dd t \explain{a1}{right}{0}{0.5}{}\\
+    &= \int_{t_i}^{t_f}\vec{F_{P/\Omega}}\cdot \vec{v_p}(t)\dd t
+\end{flalign*}
+
+\subsection{Expression de la force $F_{P/\Omega}$ (via le PFD)}
+On étudie le piston (masse $m_p$) pour trouver la force qu'il exerce sur le fluide :
+\begin{flalign*}
+    \vec{F_{P/\Omega}} = \vec{F_{vol}}  + \vec{F_{atm}} + \vec{F_{op}} - m_p \frac{\dd \vec{v_p}}{\dd t}
+\end{flalign*}
+
+\explanation{a2}{L'énergie cinétique du piston est négligée entre l'état initial et final (vitesses nulles), ou la masse du piston est considérée comme constante sans apport d'énergie cinétique externe.}
+
+\explanation{a3}{$P_{ext}$ est une pression fictive "extérieure" qui modélise toutes les forces s'opposant à l'expansion du gaz (poids, atmosphère, opérateur).}
+
+\begin{flalign*}
+    W &= \int_i^f -(P_{atm} + \frac{m_p g}{S_p} + \frac{F_{op}}{S_p}) \dd V \explain{a2}{right}{0}{0.5}{}\\
+    W &= \int_i^f -P_{ext} \dd V \explain{a3}{left}{0}{0.5}{}
+\end{flalign*}
+\begin{theorem}[Travail pour un piston]
+    $$W =\int_{V_i}^{V_f} -P_{ext} \dd V$$
+\end{theorem}
+\criticalInfo{Remarque}{
+Même si $V_i = V_f$, le travail n'est pas forcément nul si le chemin parcouru implique des variations de volume intermédiaires (le travail dépend du chemin suivi).
+}
+
+\section{Applications classiques}
+
+\subsection{Compression monotherme brusque (Irréversible)}
+On impose brutalement une pression finale $P_f$. La pression extérieure $P_{ext}$ est constante et égale à $P_f$ pendant toute la transformation.
+\begin{flalign*}
+    W_{brutal} &= -P_f \int_{V_i}^{V_f} \dd V = -P_f(V_f - V_i)
+\end{flalign*}
+
+
+
+\subsection{Transformation Quasi-statique (Réversible)}
+Le système est à l'équilibre à chaque instant.
+
+\explanation{a5}{À chaque étape infinitésimale, la pression du gaz $P$ est égale à la pression extérieure $P_{ext}$.}
+\begin{flalign*}
+    W_{qs} &= \int_i^f -P \dd V \explain{a5}{right}{0}{0.5}{}\\
+    \text{Pour un GP isotherme : } W_{qs} &= -\int_i^f \frac{nRT}{V}\dd V = nRT \ln\left(\frac{V_i}{V_f}\right)
+\end{flalign*}
+
+\subsection{Difficultés}
+\begin{itemize}
+    \item \textbf{P vs $P_{ext}$ :} On utilise toujours $P_{ext}$ pour le travail. On ne remplace par $P$ (pression du gaz) que si la transformation est quasi-statique.
+    \item \textbf{Signe :} Si $V$ diminue ($dV < 0$), alors $-P_{ext}dV > 0$, le travail est bien reçu.
+    \item \textbf{Calcul numérique :} Toujours convertir les cm en m et les $P$ en Pascal ($Pa$) avant de calculer $W$ en Joules ($J$).
+\end{itemize}
+\end{document}
+
+

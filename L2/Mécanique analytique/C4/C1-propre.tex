@@ -1,0 +1,249 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mecanique Analytique}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\newcommand{\qa}{q_{\alpha}}
+\newcommand{\qdb}{\dot{q_{\beta}}}
+\newcommand{\qb}{q_{\beta}}
+\setcounter{chapter}{3}
+\begin{document}
+\chapter{Équation de Hamilton}
+
+\section{Notions de variables conjuguées et transformation de Legendre}
+
+L'accès au formalisme hamiltonien repose sur un changement de variables des vitesses généralisées $\dot{q}_i$ vers les moments conjugués $p_i$. Historiquement, cette transition répond à la recherche d'une symétrie accrue dans les équations du mouvement, une problématique initialement abordée par Legendre.
+
+Pour lier le formalisme lagrangien au formalisme hamiltonien, on utilise la transformation de Legendre.
+
+\begin{definition}[Transformation de Legendre]
+Soit une fonction $f(x)$ dont la dérivée est $u = \frac{\partial f}{\partial x}$. On définit sa transformée de Legendre $g(u)$ par :
+\begin{equation}
+    g = -f + ux
+\end{equation}
+Sa différentielle vérifie alors $\dd g = -v\dd x + x\dd u$ (où $v = \frac{\partial f}{\partial x}$ dans un cadre multidimensionnel), ce qui donne les relations réciproques :
+\begin{equation}
+    x = \frac{\partial g}{\partial u} \quad \text{et} \quad v = -\frac{\partial g}{\partial x}
+\end{equation}
+\end{definition}
+
+En appliquant cette transformation mathématique au Lagrangien $L(q_i, \dot{q}_i, t)$, on effectue les identifications suivantes :
+\begin{itemize}
+    \item Variables de départ : $x \equiv \dot{q}_i$ et $y \equiv q_i$
+    \item Nouvelle variable (moment conjugué) : $u \equiv p_i = \frac{\partial L}{\partial \dot{q}_i}$
+    \item Fonctions : $f \equiv L$ et $g \equiv H$
+\end{itemize}
+
+On définit ainsi la fonction de Hamilton, ou Hamiltonien\marginWarning{Le Hamiltonien $H(q_i, p_i, t)$ doit impérativement être exprimé en fonction des positions $q_i$ et des moments $p_i$. Il est indispensable d'inverser la relation $p_i = \frac{\partial L}{\partial \dot{q}_i}$ pour éliminer complètement les vitesses $\dot{q}_i$ de l'expression finale.} :
+\begin{definition}[Hamiltonien]
+\begin{equation}
+    H(q_i, p_i, t) = \sum_{i=1}^N p_i \dot{q}_i - L(q_i, \dot{q}_i, t)
+\end{equation}
+\end{definition}
+
+
+En différentiant $H$ et en utilisant les équations de Lagrange $\frac{\dd}{\dd t}\left(\frac{\partial L}{\partial \dot{q}_i}\right) = \frac{\partial L}{\partial q_i}$, on obtient le système d'équations différentielles du premier ordre du mouvement.
+
+\begin{theorem}[Équations de Hamilton]
+L'évolution temporelle du système dans l'espace des phases est régie par les $2N$ équations du premier ordre :
+\begin{equation}
+    \dot{q}_i = \frac{\partial H}{\partial p_i} \quad \text{et} \quad \dot{p}_i = -\frac{\partial H}{\partial q_i}
+\end{equation}
+\end{theorem}
+
+%\checkInfo{Espace des phases}{Le système est désormais décrit dans l'espace des phases à $2N$ dimensions (de coordonnées $(q_i, p_i)$). Chaque point de cet espace représente une condition initiale unique. Par unicité des solutions (théorème de Cauchy-Lipschitz), deux trajectoires de phase ne peuvent jamais se croiser.}
+
+\subsection{Exemple : Particule dans un potentiel}
+Soit le lagrangien classique d'une particule : $L = \frac{1}{2}m\dot{r}_i^2 - V(r_i)$.
+\begin{enumerate}
+    \item \textbf{Calcul des moments conjugués :} $p_i = \frac{\partial L}{\partial \dot{r}_i} = m\dot{r}_i \implies \dot{r}_i = \frac{p_i}{m}$
+    \item \textbf{Construction du Hamiltonien :} 
+    \begin{equation}
+        H = \sum_i p_i \dot{r}_i - L = \sum_i p_i \left(\frac{p_i}{m}\right) - \left[\frac{1}{2}m\left(\frac{p_i}{m}\right)^2 - V(r_i)\right] = \sum_i \frac{p_i^2}{2m} + V(r_i)
+    \end{equation}
+\end{enumerate}
+On retrouve ici $H = T + V$, l'énergie totale du système.
+
+\section{Crochets de Poisson}
+
+Soient $f(q_\alpha, p_\alpha, t)$ et $g(q_\alpha, p_\alpha, t)$ deux fonctions définies sur l'espace des phases.
+
+\begin{definition}[Crochet de Poisson]
+\begin{equation}
+    \{f,g\} = \sum_{\alpha=1}^N \left( \frac{\partial f}{\partial q_{\alpha}}\frac{\partial g}{\partial p_{\alpha}} - \frac{\partial f}{\partial p_{\alpha}}\frac{\partial g}{\partial q_{\alpha}} \right)
+\end{equation}
+\end{definition}
+
+\begin{proposition}[Propriétés algébriques]
+Le crochet de Poisson possède les propriétés remarquables suivantes :
+\begin{itemize}
+    \item \textbf{Antisymétrie :} $\{f,g\} = -\{g,f\}$
+    \item \textbf{Dérivation (Règle de Leibniz) :} $\{f,gh\} = h\{f,g\} + g\{f,h\}$
+    \item \textbf{Identité de Jacobi :} $\{f, \{g,h\}\} + \{h, \{f,g\}\} + \{g, \{h,f\}\} = 0$
+\end{itemize}
+\end{proposition}
+
+\begin{theorem}[Évolution temporelle]
+L'évolution d'une observable physique $f$ le long d'une trajectoire hamiltonienne est donnée par :
+\begin{equation}
+    \frac{\dd f}{\dd t} = \{f, H\} + \frac{\partial f}{\partial t}
+\end{equation}
+\end{theorem}
+
+\tipsInfo{Constantes du mouvement}{Une grandeur $f$ est une constante du mouvement si et seulement si $\{f, H\} + \frac{\partial f}{\partial t} = 0$. Si $f$ ne dépend pas explicitement du temps, cette condition devient simplement $\{f, H\} = 0$.}
+
+\begin{theorem}[Théorème de Poisson]
+Si deux fonctions $f$ et $g$ ne dépendent pas explicitement du temps et sont des constantes du mouvement, alors leur crochet de Poisson $\{f,g\}$ est également une constante du mouvement.
+\end{theorem}
+
+\checkInfo{Corollaire pour le moment cinétique}{Si deux composantes du moment cinétique $\vec{L}$ sont conservées (ex: $\{L_x, H\} = 0$ et $\{L_y, H\} = 0$), alors la troisième composante l'est aussi, car $\{L_x, L_y\} = L_z$.}
+
+
+\section{Transformations canoniques}
+
+Une transformation des variables de l'espace des phases $(q_i, p_i) \to (Q_i, P_i)$ est dite canonique si elle préserve la forme des équations de Hamilton.
+
+\begin{theorem}[Critère des crochets de Poisson]
+Une transformation est canonique si et seulement si elle préserve les crochets de Poisson fondamentaux :
+\begin{equation}
+    \{Q_i, Q_j\}_{q,p} = 0, \quad \{P_i, P_j\}_{q,p} = 0, \quad \{Q_i, P_j\}_{q,p} = \delta_{ij}
+\end{equation}
+\end{theorem}
+
+\criticalInfo{Application temporelle}{Si la transformation canonique est indépendante du temps ($\frac{\partial F}{\partial t} = 0$), alors le nouveau Hamiltonien $K(Q,P)$ a exactement la même forme fonctionnelle que l'ancien : $K = H$.}
+
+\subsection{Formalisme et notation symplectique}
+Pour condenser les notations, on regroupe les $2N$ coordonnées dans un seul vecteur colonne $\xi = (q_1, \dots, q_N, p_1, \dots, p_N)^T$. 
+On définit la matrice symplectique standard $J$ de taille $2N \times 2N$ par :
+\begin{equation}
+    J = \begin{pmatrix} 0 & I_N \\ -I_N & 0 \end{pmatrix}
+\end{equation}
+
+Les équations de Hamilton et le crochet de Poisson se condensent alors sous la forme :
+\begin{equation}
+    \dot{\xi}_i = \sum_j J_{ij} \frac{\partial H}{\partial \xi_j} \quad \text{et} \quad \{f,g\} = \sum_{i,j} \frac{\partial f}{\partial \xi_i} J_{ij} \frac{\partial g}{\partial \xi_j}
+\end{equation}
+
+\subsection{Exemple d'application}
+Soit la transformation définie par :
+\begin{align*}
+    Q_1 &= q_1 \cos \alpha - \frac{\sin \alpha}{\beta}p_2 & Q_2 &= q_2 \cos \alpha - \frac{\sin \alpha}{\beta}p_1 \\
+    P_1 &= \beta q_2 \sin \alpha + p_1 \cos \alpha & P_2 &= \beta q_1 \sin \alpha + p_2 \cos \alpha
+\end{align*}
+
+\tipsInfo{Méthode de vérification}{Pour prouver que cette transformation est canonique, il suffit de calculer les crochets de Poisson de base et de vérifier s'ils respectent les relations $\{Q_1, P_1\} = 1$, $\{Q_2, P_2\} = 1$, $\{Q_1, P_2\} = 0$, etc.}
+
+
+
+Pour prouver que cette transformation est canonique, nous devons vérifier qu'elle préserve les crochets de Poisson fondamentaux, à savoir :
+\begin{equation}
+    \{Q_1, P_1\} = 1, \quad \{Q_2, P_2\} = 1, \quad \{Q_1, P_2\} = 0, \quad \{Q_2, P_1\} = 0
+\end{equation}
+Pour 2 DDL :
+\begin{equation}
+    \{f,g\} = \sum_{i=1}^2 \left( \frac{\partial f}{\partial q_i}\frac{\partial g}{\partial p_i} - \frac{\partial f}{\partial p_i}\frac{\partial g}{\partial q_i} \right)
+\end{equation}
+
+
+Déterminons les dérivées partielles nécessaires :
+\begin{align*}
+    \frac{\partial Q_1}{\partial q_1} &= \cos \alpha & \frac{\partial P_1}{\partial p_1} &= \cos \alpha \\
+    \frac{\partial Q_1}{\partial p_1} &= 0 & \frac{\partial P_1}{\partial q_1} &= 0 \\
+    \frac{\partial Q_1}{\partial q_2} &= 0 & \frac{\partial P_1}{\partial p_2} &= 0 \\
+    \frac{\partial Q_1}{\partial p_2} &= -\frac{\sin \alpha}{\beta} & \frac{\partial P_1}{\partial q_2} &= \beta \sin \alpha
+\end{align*}
+
+En injectant ces expressions dans le crochet de Poisson, on obtient :
+\begin{align*}
+    \{Q_1, P_1\} &= \left(\frac{\partial Q_1}{\partial q_1}\frac{\partial P_1}{\partial p_1} - \frac{\partial Q_1}{\partial p_1}\frac{\partial P_1}{\partial q_1}\right) + \left(\frac{\partial Q_1}{\partial q_2}\frac{\partial P_1}{\partial p_2} - \frac{\partial Q_1}{\partial p_2}\frac{\partial P_1}{\partial q_2}\right) \\
+    &= (\cos \alpha \cdot \cos \alpha - 0) + \left(0 - \left(-\frac{\sin \alpha}{\beta}\right) \cdot \beta \sin \alpha\right) \\
+    &= \cos^2 \alpha + \sin^2 \alpha = 1
+\end{align*}
+
+
+De la même manière, calculons les dérivées pour la seconde paire de variables :
+\begin{align*}
+    \frac{\partial Q_2}{\partial q_2} &= \cos \alpha & \frac{\partial P_2}{\partial p_2} &= \cos \alpha \\
+    \frac{\partial Q_2}{\partial p_2} &= 0 & \frac{\partial P_2}{\partial q_2} &= 0 \\
+    \frac{\partial Q_2}{\partial q_1} &= 0 & \frac{\partial P_2}{\partial p_1} &= 0 \\
+    \frac{\partial Q_2}{\partial p_1} &= -\frac{\sin \alpha}{\beta} & \frac{\partial P_2}{\partial q_1} &= \beta \sin \alpha
+\end{align*}
+
+On évalue le crochet de Poisson associé :
+\begin{align*}
+    \{Q_2, P_2\} &= \left(\frac{\partial Q_2}{\partial q_1}\frac{\partial P_2}{\partial p_1} - \frac{\partial Q_2}{\partial p_1}\frac{\partial P_2}{\partial q_1}\right) + \left(\frac{\partial Q_2}{\partial q_2}\frac{\partial P_2}{\partial p_2} - \frac{\partial Q_2}{\partial p_2}\frac{\partial P_2}{\partial q_2}\right) \\
+    &= \left(0 - \left(-\frac{\sin \alpha}{\beta}\right) \cdot \beta \sin \alpha\right) + (\cos \alpha \cdot \cos \alpha - 0) \\
+    &= \sin^2 \alpha + \cos^2 \alpha = 1
+\end{align*}
+
+
+Calculons maintenant le crochet $\{Q_1, P_2\}$ pour s'assurer de l'indépendance des variables :
+\begin{align*}
+    \{Q_1, P_2\} &= \left(\frac{\partial Q_1}{\partial q_1}\frac{\partial P_2}{\partial p_1} - \frac{\partial Q_1}{\partial p_1}\frac{\partial P_2}{\partial q_1}\right) + \left(\frac{\partial Q_1}{\partial q_2}\frac{\partial P_2}{\partial p_2} - \frac{\partial Q_1}{\partial p_2}\frac{\partial P_2}{\partial q_2}\right) \\
+    &= (\cos \alpha \cdot 0 - 0 \cdot \beta \sin \alpha) + \left(0 \cdot \cos \alpha - \left(-\frac{\sin \alpha}{\beta}\right) \cdot 0\right) = 0
+\end{align*}
+Par symétrie des équations, on vérifie aisément que $\{Q_2, P_1\} = 0$, de même que $\{Q_1, Q_2\} = 0$ et $\{P_1, P_2\} = 0$.
+
+Les relations canoniques fondamentales étant toutes satisfaites, la transformation couplée $(q_i, p_i) \to (Q_i, P_i)$ est rigoureusement \textbf{canonique}.
+
+
+\section{Théorèmes de Liouville}
+
+Le théorème de Liouville décrit le comportement d'un "fluide" de points représentatifs dans l'espace des phases au cours du temps.
+
+\begin{theorem}[Théorème de Liouville]
+Le volume d'un domaine de l'espace des phases occupé par un ensemble de systèmes en évolution est invariant au cours du temps. 
+\end{theorem}
+
+En termes de densité de probabilité $\rho(q_i, p_i, t)$ de trouver un système dans un état donné, le théorème se traduit par une équation de continuité semblable à celle d'un fluide incompressible :
+\begin{equation}
+    \frac{\dd \rho}{\dd t} = \{\rho, H\} + \frac{\partial \rho}{\partial t} = 0
+\end{equation}
+\end{document}
+%CC = ex 10

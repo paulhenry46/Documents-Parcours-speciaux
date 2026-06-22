@@ -1,0 +1,90 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 3}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%jesse.groenen@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+%\setcounter{chapter}{3}
+\begin{document}
+%\chapter{Puissance et énergie du champ Em}
+\setcounter{chapter}{0}
+
+\chapter{Introduction}
+\section{Définitions}
+\begin{definition}[Polarisation]
+    Le système est soumis à une excitation électrique
+\end{definition}
+\begin{definition}[Aimentation]
+    Le système est soumis à une excitation magnétique
+\end{definition}
+\section{Moments dipolaires}
+On défini le moment dipolaire total :
+\begin{definition}[Moment dipolaire total]
+    Le moment dipolaire est une grandeur physique (vectorielle) qui permet de mesurer la séparation des charges positives et négatives au sein d'un système
+    $$\vec{p} = \sum_i q_i\vec{ri}$$
+\end{definition}
+\includegraphics[scale=0.5]{s1}
+\begin{definition}[Moment dipolaire magnétique]
+    Le moment dipolaire magnétique est une grandeur vectorielle mesurant la force d'une source magnétique (boucle de courant ou spin), définie par le produit de l'intensité du courant par la surface qu'il parcourt
+    $$\vec{\mu} = \frac12\sum_i q_i (\vec{r_i}\wedge \vec{v_i}) = I\vec{S}$$ pour un courant circulaire de surface S
+\end{definition}
+\includegraphics[scale=0.3]{s2}
+\section{Passage du microscopique au macroscopique}
+On n'a pas besoin de décrire les éléments à l'échelle microscopique, ce qui est très complexe. Cependant, les instruments de mesure ne permettent d'accéder qu'à une valeur moyenne locale, relative à un élément de volume $\delta v$ petit devant le volume $V$ du système mais grande devant $L_a^3$.
+
+On va donc niveler les variations à l'échelle $\delta v$.
+
+Le champ sera donc une valeur moyenne sur un volume petit\marginInfo{Comme les éuations de maxwell sont linéaires, elles s'appliquent très bien à ces valeur moyennées.}.
+
+Le champ macroscopique est défini comme le champ moyennée sur une région suffisamment grande pour contenir assez de constituants élémentaites pur lisser les fluctutations microscipiques sans interets car non mesurables et suffisamment réduire pour assurer de ne pas perdre les variations mesurables à l'échelle de l'objet de volume V.
+
+On a donc :
+$$L_a^3\lll \delta v\lll  V$$ Il faut garder en tete que les valeurs de $\rho$ sont de valeurs moyennes.
+
+On utilise donc 2 valeurs macroscopiques : $\vec{P}$ pour les milieux polarisés et $\vec{M}$ pour les milieux aimantés.
+\end{document}

@@ -1,0 +1,151 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 3}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%jesse.groenen@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%-pour mettre des images
+\usepackage[utf8]{inputenc}%encodage
+\usepackage{geometry}%pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%pour les boites d'exercices, de pbq et de croquis d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%Pour les boites info, danger et autres
+\usepackage{menukeys}%Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%pour les liens
+\usepackage{hyperref}%pour les liens (\`a mettre en dernier)
+\usepackage{caption}%pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{esint}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ez}{\vec{e_{z}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\newcommand{\vds}{\vec{\dd S}}
+\newcommand{\Ea}{\vec{E_{aux}}}
+%\setcounter{chapter}{3}
+\begin{document}
+
+\chapter{Propriétés électriques d'une vapeur d'hydrogène monoatomique}
+\section{Polarisabiité électronique de l'atome en champ statique}
+$\vec{E_e}(0)$ crée par la pshère électronique en O' au niveau du proton situé en O. On prend un système de coordonnées sphériques centrée en O' : $\vec{O'O}=\vec{r}$
+
+On applique le théorème de Gauss sur une sphère S de rayon $r'<a$, avec $\vec{\dd S} = \dd S \vec{e_r}$ :
+
+Par invariances et rotation, on a $\vec{E_e}(r)=E_{r}(r)\vec{e_r}$. En intégrant le flux sur S on obtient
+\begin{flalign*}
+    \iint_S \vec{E_e}\cdot\vec{\dd S} &= \frac{Q_{int}(r')}{\epsilon_0}\\
+    E_r(r')\;4\pi r'^2 &= \frac{Q_{int}(r')}{\epsilon_0}
+\end{flalign*}
+avec $Q_{int}(r')=\displaystyle\int_0^{r'} \rho(r)\,4\pi r^2\,\dd r$ la charge électronique enfermée.
+
+Ainsi
+$$E_r(r')=\frac{Q_{int}(r')}{4\pi\epsilon_0 r'^2}$$
+et
+$$\vec{E_e}(r')=\frac{Q_{int}(r')}{4\pi\epsilon_0 r'^2}\,\vec{e_r}\,, $$
+
+On suppose la sphère électronique de rayon a de densité volumique uniforme
+$$\rho(r)=\rho_0= -\dfrac{e}{\tfrac{4}{3}\pi a^3}\quad (r< a).$$
+Alors
+$$Q_{int}(r')=\int_0^{r'} \rho_0\,4\pi r^2\,\dd r=\rho_0\frac{4}{3}\pi r'^3=-e\frac{r'^3}{a^3}.$$ 
+Ainsi
+$$E_r(r')=\frac{Q_{int}(r')}{4\pi\epsilon_0 r'^2}=-\frac{e}{4\pi\epsilon_0}\frac{r'}{a^3}$$
+et
+$$\vec{E_e}(r')=-\frac{e}{4\pi\epsilon_0}\frac{r'}{a^3}\,\vec{e_r}\,, $$
+le signe négatif indiquant que le champ est dirigé vers l'intérieur.
+
+Dans le repère du proton, on détermine la force $\vec{F_{e\to p}}$
+ Dans ce repère, $\vec{r} = -\vec{r'}$ Donc 
+
+ $$\vec{E_e}(r)=\frac{e}{4\pi\epsilon_0}\frac{1}{a^3}\,\vec{r}\,, $$
+et la force vaut 
+$$\vec{F_{e\to p}}=\frac{e^2}{4\pi\epsilon_0}\frac{1}{a^3}\,\vec{r} $$
+ 
+La force est bien attractive vers O'.
+
+\subsection{Force exercée par le proton}
+On a
+$$\vec{F}_{p\to e}=-\vec{F}_{e\to p}=-\frac{e^2}{4\pi\epsilon_0 a^3}\,\vec{r}.$$
+
+Cela peut s'écrire comme une force de rappel $-k\vec{r}$ avec
+$$k=\frac{e^2}{4\pi\epsilon_0 a^3}.$$ 
+
+\subsection{Condition d'équilibre de l'éclectron}
+On a $\sum F = \vec{0} = \vec{F_{p\to e}} + \vec{F_{lorenz}} = -k\vec{r}-e\vec{E_{loc}}$
+
+On peut en déduire la position d'équilibre
+$$\vec{r}_{\mathrm{eq}}=-\frac{e}{k}\,\vec{E}_{\mathrm{loc}}=-\frac{4\pi\epsilon_0 a^3}{e}\,\vec{E}_{\mathrm{loc}}.$$
+
+Quand on supprime $\vec{E_{loc}}$ seul subsite la force de rappel.
+
+On a donc l'équation d'un oscillateur harmonique
+$$m_e \ddot{r}+kr = 0$$ qui est bien l'équation d'un oscillateur harmonique, avec $\omega_0^2 = \frac{k}{m_e}$
+
+On a donc $r(t) = r_{eq} \cos(\omega t)$. Un mouvement harmonique est effectué.
+\subsection{Moment dipolaire }
+Le système est neutre, donc $\vec{p}$ est indépendant du choix de l'origine\marginInfo{Si on change d'origine de $\vec{a}$, alors $\vec{p}\,'=\sum_i q_i(\vec{r_i}-\vec{a})=\sum_i q_i\vec{r_i}-\vec{a}\sum_i q_i=\vec{p}$ car $\sum_i q_i=0$.}.
+
+On a donc $\vec{p} = q_e \vec{r_e}= -e\vec{r}$
+
+On le représente de la charge négative vers la charge positive.
+
+On calcule maintenant le moment dipolaire en fonction de la polarisabilité $\alpha_e$
+
+$$\vec{p} = \alpha_{el}\epsilon_0\vec{E_{loc}} = -e\vec{r_{eq}} = 4\pi \epsilon_0 a^3\vec{E_{loc}}$$
+
+On en déduit que $\alpha_{el} = 4\pi a^3$.\marginTips{Plus le nuage électronique est grand, plus il est facile de polariser l'atome.}
+
+\section{Permitivité statique d'une vapeur diluée}
+\subsection{Vecteur polarisation $\vec{P}$}
+$\vec{P} = n_v\times \vec{p} = \frac{N}{V}\vec{p}$. De plus, $\vec{P} = n_v \alpha_{el}\epsilon_0 \vec{E_{loc}}$
+
+On est placé dans un champ appliqué $\vec{E_a}$. Il y a un champ macroscopique dans le gaz, noté $\vec{E}$
+
+Le milieu est isotrope, donc on applique le modèle de Lorenz : $\vec{E_{loc}} = \vec{E} + \frac{\vec{P}}{3\epsilon_0}$
+
+On en déduit que $$\vec{E_{loc}} = \frac{1}{1 - \frac{n_v \alpha_{el}}{3}} \vec{E}$$
+\subsection{Approximation}
+Si on approxme $\frac{n_v \alpha_{el}}{3}<<1\Rightarrow n_v << \frac{1}{\alpha_{el}}$, il n'y a pas de correction à apporter.
+
+La correction prend en compte la contributuin de l'environnement, des autres moments dipolaires. C'est le cas ici puisque le gaz est dilué, donc il n'y a pas d'intéractione ntre moment dipolaire.
+\subsection{Relation entre permitivité diélectrique relative }
+
+On sait que $$\vec{D} = \epsilon_0\epsilon_r \vec{E} = \epsilon_0 \vec{E}+\vec{P} = \epsilon_0(1+\chi_e)\vec{E}$$
+
+De plus, $\vec{P} = \epsilon_0 (\epsilon_r-1)\vec{E}$ et 
+$\vec{P} = n_v \alpha_{el} \epsilon_0 \vec{E_{loc}} = n_v \alpha_{el} \epsilon_0 \frac{1}{1-\frac{n_v \alpha_{el}}{3}}\vec{E}$
+
+On en déduit que $\epsilon_r = 1 + \frac{n_v \alpha_{el}}{1-\frac{n_v \alpha_{el}}{3}}$
+
+On peut faire un DL et obtenir $\epsilon_r = 1+ n_v \alpha_{el}$
+
+\end{document}

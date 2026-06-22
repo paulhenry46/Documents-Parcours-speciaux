@@ -1,0 +1,235 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 2 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\setcounter{chapter}{1}
+\begin{document}
+\chapter{Induction}
+\section{Approche expérimentale}
+En rentrant un aimant dans une bobine\marginCritical{Ce n'est pas que la présence de l'aimant, il faut qu'il y ait un déplacement de ce dernier !}, on observe l'apparition d'un courant. C'est un courant induit.
+
+Le signe du courant s'inverse si je bouge l'aimant dans l'autre sens. Son intensité dépend de 
+\begin{itemize}
+    \item la vitesse de l'aimant
+    \item l'amplitude du déplacement
+    \item l'intensité de B
+    \item la géométrie de la bobine
+    \item etc
+\end{itemize}
+Ce n'est pas B qui crée le courant, mais sa variation.
+
+Si j'utilise un voltmètre aux bornes de la bobine, je mesure une tension. C'est la tension générateur appelée force électromotrice (fem).
+
+\subsection{Faire varier B}
+\begin{itemize}
+    \item En déplaçant l'aimant ou la bobine
+    \item En modifiant l'intensité de B
+    \item En modifiant la surface de la spire ou sont orientation
+\end{itemize}
+\subsection{Force électromotrice}
+\begin{definition}[Force électromotrice (fem)]
+    Toute variation de flux magnétique à travers un circuit provoque l'apparition d'une fem. Le circuit est alors équivalent à
+    une source de tension notée $e$. Si le circuit est ouvert, la tension vaut $e$, dans le cas contraire, elle induit l'apparition d'un courant induit noté $i$.
+\end{definition}
+\begin{itemize}
+    \item Elle est homogène à une tension et s'exprime en V 
+    \item $e(t) = \int \E_m\cdot \vec{\dd l}$ où $\E_m$ est le champ électromoteur
+\end{itemize}
+\section{Lois de l'induction}
+\begin{theorem}[Loi de Faraday]
+    $$e(t) = -\frac{\dd \phi}{\dd t}$$ avec $\phi = \iint_S \B\cdot \vec{\dd S}$.
+\end{theorem}
+\begin{theorem}[Loi de Lenz]
+    Les phénomènes d'induction s'opposent par leur effets aux causes qui leur ont donné naissance. On en déduit que le sens du
+    courant induit est tel que le flux de son propre champ magnétique s'oppose à la variation de flux inducteur.
+\end{theorem}
+\begin{theorem}[Équation de Maxwell Faraday]
+    $$\rot \E = -\frac{\partial \B}{\partial t}$$
+\end{theorem}
+\begin{myproof}
+    Que devient $\rot \E$ en régime variable ?
+    \begin{flalign*}
+        e(t) &= \int \E\cdot \vec{\dd l}\\
+        &= -\frac{\dd \phi}{\dd t}\\
+        &= -\frac{\dd }{\dd t}\iint_S \B\cdot \vec{\dd S}\\
+        &= -\iint_S \frac{\partial \B}{\partial t}\cdot \vec{\dd S}
+    \end{flalign*}
+    Avec Stokes, on a $$\int \E\cdot \vec{\dd l} = \iint_S \rot(\E)\cdot \vec{\dd S}$$
+Par identification, on obtient $\rot \E = -\frac{\partial \B}{\partial t}$
+\end{myproof}
+\subsection{Circuit fixe dans un champ variable}
+On considère une spire de rayon r, de résistance R dans le plan (Oxy).
+
+On a $\B(t) = B_m \cos(\omega t)\vec{e_z}$. On oriente $\vec{\dd S}$ selon $\vec{e_z}$.
+
+Calculons le flux : 
+\begin{flalign*}
+    \phi &= \iint_S \B\cdot \vec{\dd S}\\
+    &= B(t)\pi r^2\\
+    &= B_m \cdot(\omega t) \pi r^2\\
+\end{flalign*}
+
+On en déduit $e$ :
+\begin{flalign*}
+    e&= -\frac{\dd \phi}{\dd t}\\
+    &= B_m \omega \pi r^2 \sin(\omega t)
+\end{flalign*}
+On en déduit $i(t)$ : $$i(t) = \frac{e(t)}{R} = \frac{B_m \omega \pi r^2}{R} \sin(\omega t)$$
+
+\includegraphics[scale=0.5]{Figure_1}
+
+On voit que $i(t)$ est toujours opposé aux taux de variation $\frac{\dd \phi}{\dd t}$, ce qui est 
+conforme à la loi de Lenz. %De plus, pour 
+
+S'entrainer avec bobine tourant, en rotation, etc
+\subsection{Fem dans un circuit mobile}
+On considère un cuircuit C mobile dans un référenriel R où le champ $\E,\B$ est statique.
+On considère une charge au repos dans C, elle se déplace à la m\^eme  vitesse ue C ($\vec{v}$).
+
+Elle peut \^etre mise en mouvement par la force de Lorenz, donc 
+
+\explanation{b1}{$\vec{F}$ est la force de Lorenz, en circuit fixe, donc il a quand meme un champ électrique $\vec{F} = q\vec{E}$ qui est le champ électromoteur. 
+Dans le cas de l'induction de Lorenz, on aurait $\vec{F} = q(\vec{v}\wedge \vec{B})$. Ici, on a les deux pour la démonstration.}
+
+\begin{flalign*}
+    \vec{F} &= q(\E+\vec{v}\wedge \B)\\
+    e(t) &= \int \frac{\vec{F}}{q}\vec{\dd l}\explain{b1}{right}{0}{0.5}{}\\
+    &= \int_C (\E+\vec{v}\wedge \B)\cdot \vec{\dd l}\\
+    &= \int_C \E\cdot \vec{\dd l} + \int_C (\vec{v}\wedge \B)\cdot \vec{\dd l}\\
+    &= -\iint_S \frac{\partial \B}{\partial t} \cdot \vec{\dd S}+ \int_C (\vec{v}\wedge \B)\cdot \vec{\dd l}
+\end{flalign*}
+\begin{theorem}[Fem dans circuit mobile]
+    $$-\iint_S \frac{\partial \B}{\partial t} \cdot \vec{\dd S}+ \int_C (\vec{v}\wedge \B)\cdot \vec{\dd l}$$
+\end{theorem}
+\warningInfo{Types d'induction}{
+\begin{itemize}
+    \item induction statique (Neumann, $\vec{v}=0$) : on a $e(t) = -\iint \frac{\partial \B}{\partial t}\cdot \vec{\dd S}$
+    \item Induction de Lorenz : On a $\frac{\partial \B}{\partial t} = 0$, donc 
+     $$e(t) = \int_C (\vec{v}\wedge \B)\cdot \vec{\dd l}$$
+\end{itemize}
+}
+\section{Auto-Induction et inductance d'une bobine}
+\subsection{Phénomène d'auto-Induction}
+On considère une spire avec une inensité variable. On observe le champ crée par l'inetsnité mais il y a aussi le 
+champ induit par la variation du courant. Cela crée un nouveau courant, qui va s'opposer au courant initial. C'est l'auto-induction.
+
+\begin{definition}[Auto-induction]
+    La spire parcourue par un courant crée un champ B qui crée un courant induit dans cette spire.
+    Par la loi de Lorenz, le courant induit s'oppose au courant initial.
+\end{definition}
+\subsection{Induction propre et inductance}
+\begin{definition}[Flux propre]
+    Flux crée par la spire à l'intérieur d'elle-m\^eme, dépend de B, qui dépend des caractéristiques
+    de la spire et de l'intensité du courant.
+\end{definition}
+On peut donc écrire $\phi = L i(t)$, avec L qui est une constante en henry. 
+
+On a donc $$e= -\frac{\dd \phi}{\dd t} = -L\frac{\dd i}{\dd t}$$
+\subsection{Inductance mutuelle entre deux circuits}
+On prend 2 circuits quelconques appelés $C_1$ et $C_2$ parcourus par des intensités $i_1$ et $i_2$. Le point O est à une certaine distance des 2 circuits, $\vec{r_1}, \vec{r_2}$.
+
+On note $\phi_{21}$ le flux duc champ $\vec{B_1}$ crée à travers $C_2$
+
+Comme 
+$$\phi_{21}  = \iint_{S_2} \vec{B_1}\cdot \dd\vec{S_2}$$
+on a
+$B_1 \propto i_1 \Rightarrow \phi_{21}\propto i_1$. On définit l'inductance $L_{21} = \frac{\phi_{21}}{i_{1}}$ l'inductance mutuelle. Par symétrie, on a 
+$$M = L_{21} = L_{12}$$
+
+En effet, 
+\begin{flalign*}
+    \phi_{21} &= \iint_{S2}\vec{B_1}\cdot\vec{\dd S_2}\\
+    &= \int_{C_2}\vec{A_1}\cdot \vec{\dd l_2}\\
+    &= \int_{C_2}(\frac{\mu_0i_1}{4\pi}\int_{C_1}\frac{\vec{\dd l_1}}{||\vec{r_2}-\vec{r_1}||})\cdot \vec{\dd l_2}\\
+    &= \frac{\mu_0}{4\pi} \int_{C_2}\int_{C1}\frac{\vec{\dd l_1}\cdot \vec{\dd l_2}}{||\vec{r_2}-\vec{r_1}||}i_1
+\end{flalign*}
+Donc $L_{21}$  ne dépend que de la géométrie des cirucits et de leur orientation relative.
+\subsection{Matrices d'inductance}
+On se place dans les m\^emes conditions que dans la partie précédente.
+
+On considère toujours deux circuits $C_1$ et $C_2$, on note le flux total à travers $C_1$ : 
+
+\explanation{b2}{Flux dans le cirucit 1 crée par le circuit 2}
+
+$$\phi_1 = \phi_{12}\explain{b2}{right}{0}{0.5}{}+\phi_{11}$$
+
+On obtient pour le circuit 2 : $\phi_{2} = \phi_{21}+\phi_{22}$
+
+Or, $\phi{11} = L_1i_1, \phi_{12} = Mi_2, \phi_{22}=L_2i_2, \phi_{21}M i_1$
+
+On écrit la matrice d'inductance : %TODO Matrice à générer phi = phi1 phi2 en connelone, pareil pour i, et on écrit phi = L i avec L = L1 M//M L2
+
+\checkInfo{Application au cas de 2 bobines en série}{
+\begin{flalign*}
+    \phi &= \phi_1+\phi_2\\
+    &= (L_1+L_2+2M)i
+\end{flalign*}
+Les inductances ne sont donc pas additives, sauf si $M=0$.
+}
+\section{Transformateurs}
+Principe : 2 bobines sont placées face à face dans 2 circuits différents. l'objectif est de montrer que la différence de tension ne dépend que du nombre de spire.
+
+On a $U_1 = R_1i_1 + \frac{\dd \phi_1}{\dd t}\simeq \frac{\dd \phi_1}{\dd t}$ et $U_2 = R_2i_2 + \frac{\dd \phi_2}{\dd t}\simeq \frac{\dd \phi_2}{\dd t}$ en négligeant la résistance.
+
+On obtient $u_1 = L_1\frac{\dd i_1}{\dd t} + M\frac{\dd i_2}{\dd t}$ et
+$u_2 = L_2\frac{\dd i_2}{\dd t} + M\frac{\dd i_1}{\dd t}$
+
+On isole $\frac{\dd i_1}{\dd t} = \frac{1}{L_1}(u_1-M\frac{\dd i_2}{\dd t}) = \frac{1}{M}(u_2-L_2\frac{\dd i_2}{\dd t})$
+
+On réécrit $u_2 = \frac{M}{L_2}u_1 + \frac{L_1L_2-M^2}{L_1}\frac{\dd i_2}{\dd t}$
+
+On note $k$ le coefficient de couplage : $k = \frac{M}{\sqrt{L_1L_2}}$. Dans le cas idéal, k=1 pour avoir tout le flux d'une bobine qui
+passe dans l'autre. Dans ce cas 
+$$u_2 = \frac{M}{L_1}u_1$$ et un flux total $\phi$ qui est le m\^eme.
+
+On a donc $L_1 = \frac{N_1\phi}{i_1}$ et $M=\frac{N_2\phi}{i_1}$
+
+On en déduit que $\frac{M}{L_1}=\frac{N_2}{N_1}$ et finalement $\frac{u_2}{u_1} = \frac{N_2}{N_1}$
+
+
+\end{document}

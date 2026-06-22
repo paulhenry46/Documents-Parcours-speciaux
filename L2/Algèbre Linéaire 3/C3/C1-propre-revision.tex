@@ -1,0 +1,95 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Algèbre linéaire 3*}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lombardi@math.univ-toulouse.fr
+\professor{E.Lombardie}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\begin{document}
+\setcounter{chapter}{2}
+\chapter{Espaces Hermitiens}
+\section{Euclidien vs Hermitien}
+
+Le tableau suivant résume comment les notions réelles se transposent dans le monde complexe :
+
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Propriété / Notion} & \textbf{Espace Euclidien ($\mathbb{R}$)} & \textbf{Espace Hermitien ($\mathbb{C}$)} \\ \hline
+\textbf{Symétrie} & Symétrique : $(x|y) = (y|x)$ & Hermitienne : $(y|x) = \overline{(x|y)}$ \\ \hline
+\textbf{Linéarité à droite} & Linéaire : $(x|\lambda y) = \lambda(x|y)$ & Linéaire : $(x|\lambda y) = \lambda(x|y)$ \\ \hline
+\textbf{Linéarité à gauche} & Linéaire : $(\lambda x|y) = \lambda(x|y)$ & \textbf{Semi-linéaire} : $(\lambda x|y) = \bar{\lambda}(x|y)$ \\ \hline
+\textbf{Sortie des scalaires} & $\|\lambda x\| = |\lambda| \|x\|$ & $\|\lambda x\| = |\lambda| \|x\|$ (Idem via le module) \\ \hline
+\textbf{Matrice transposée/adjointe} & $A^T$ (Transposée) & $A^* = \overline{A^T}$ (Transposée conjuguée) \\ \hline
+\textbf{Isométries (Matrices)} & Orthogonales : $A^T A = I_n$ & Unitaires : $A^* A = I_n$ \\ \hline
+\textbf{Stabilité du Déterminant} & $\det(A) = \pm 1$ & $|\det(A)| = 1$ (Cercle unité) \\ \hline
+\textbf{Endomorphismes clés} & Symétriques : $f^* = f$ & Auto-adjoints (Hermitiens) : $f^* = f$ \\ \hline
+\textbf{Valeurs propres (Spectre)} & Toujours réelles & \textbf{Toujours réelles} (Même sur $\mathbb{C}$ !) \\ \hline
+\end{tabular}
+\end{center}
+
+\section{Les 4 pièges conceptuels}
+
+\begin{enumerate}
+    \item \textbf{Le faux réflexe de linéarité :}
+    En réel, $(\lambda x | \mu y) = \lambda \mu (x|y)$. 
+    En complexe (avec notre convention), $(\lambda x | \mu y) = \bar{\lambda} \mu (x|y)$. {\color{criticalColor} \textit{Ne jamais sortir un scalaire de la variable de gauche sans le conjuguer.}}
+    
+    \item \textbf{La réciproque de Pythagore est FAUSSE :}
+    \begin{itemize}
+        \item En réel : $\|x+y\|^2 = \|x\|^2 + \|y\|^2 \iff x \perp y$.
+        \item En complexe : $\|x+y\|^2 = \|x\|^2 + \|y\|^2 \iff \text{Re}\big((x|y)\big) = 0$. Le produit scalaire peut être un imaginaire pur non nul (ex: $(x|y) = 2i$), les vecteurs ne sont alors \textbf{pas} orthogonaux.
+    \end{itemize}
+
+    \item \textbf{Le calcul des coordonnées dans une BON :}
+    Puisque le produit scalaire n'est pas symétrique, l'ordre des facteurs est important.
+    $$x = \sum_{i=1}^n (e_i|x)e_i \implies x_i = (e_i|x)$$
+    Si on écrit machinalement $x_i = (x|e_i)$, on obtient $\bar{x}_i$, ce qui est faux.
+
+    \item \textbf{La diagonalisation des matrices symétriques complexes :}
+    \criticalInfo{Attention au vocabulaire}{Une matrice symétrique \textbf{réelle} est toujours diagonalisable (Théoreme spectral). En revanche, une matrice symétrique \textbf{complexe} ($A^T = A$) n'est généralement pas diagonalisable, et ses valeurs propres ne sont pas forcément réelles ! Pour retrouver le théorème spectral en complexe, il faut absolument que la matrice soit \textbf{hermitienne} ($A^* = A$).}
+\end{enumerate}
+\end{document}

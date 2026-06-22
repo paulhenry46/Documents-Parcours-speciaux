@@ -1,0 +1,170 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Introduction à la termodynamique}
+\subtitle{Thermodynamique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\begin{document}
+\setcounter{chapter}{3}
+\chapter{Second principe de thermodynamique}
+\section{Nécessité d'un second principe}
+Expérience : On prend 2 compartiments rigides indéformables séparées par une paroi perméable à la chaleur.
+
+On étudie la température. Le principe donne 
+$$\Delta U^A = W^A+Q^A = Q^A$$ car parois fixes. De même pour le compartiment B:
+$$\Delta U^B = Q^B$$
+On a aussi $\Delta U^{A+B}=0 \Delta U^A+\Delta U^B \Rightarrow Q^A = -Q^B$
+\begin{theorem}[Énoncé de Closus]
+    La chaleur ne peut pas passer spontanement d'un corps froid à un corps chaud
+\end{theorem}
+\section{Cycle de Carnot(ditherme)}
+2 adiabatiques Quasi-statique + 2 isothermes QS
+$$\epsilon_{mot} \geq \epsilon_{mot, QS}$$L'efficacité est maximale si le cycle est entièrement quasi-statique.
+\begin{definition}[Efficacité]
+    $\epsilon = |\frac{Énergie utile}{Énergie couteuse}|$
+\end{definition}
+Donc $\epsilon_{mot} = \Big|\frac{W_{cycle}}{Q_chaud}\Big|$
+
+On a $W_{cycle} + Q_{cycle} = Delta U_{cycle} = 0$
+
+$W_{cycle} = - Q_{cycle} = -(Q_{ch} + Q_{fr})$ Ce sont les quantité de chaleur reçues.
+
+$\epsilon = 1+ \frac{Q_{fr}}{Q_{chaud}}$ pour un moteur réel
+
+Pour un moteur réel : $\epsilon_{max} = 1+\frac{Q_{fr,C}}{Q_{ch, C}}$
+
+On cherche le travail sur un cycle.
+$Q_{AB} = 0, Q_{BC} = -W_{BC} = + nRT_{chaud}\ln(\frac{V_C}{V_B}), Q_{CD} = 0, Q_{DA} = + nRT_{chaud}\ln(\frac{V_A}{V_D})$
+
+
+On a donc $\epsilon_{max} = 1+ \frac{nR T_{fr}\ln(V_a/V_D)}{nRT_{ch}\ln(V_c/V_B)}$
+
+En utilisant les relations de Laplace, on obtient : $\frac{V_c}{V_B} = \frac{V_d}{V_a}$.
+
+On a donc $\epsilon_{max} = 1-\frac{T_F}{T_c}$
+
+On obtient $\frac{Q_C}{T_c}+\frac{Q_F}{T_F}\leq 0$. C'est l'inégalité de Clausius.
+\section{Cycle quelconque (toujours QS)}
+$$\int \frac{\delta Q}{T}\leq 0$$ qui est l'intégrale de Clausius.
+\subsection{Exemple}
+On va de A vers B par 2 chemins différents Quasi-statique
+Donc $\int_A^B \frac{\delta Q^{(1)}}{T}+\int_B^A\frac{\delta Q^{(2)}}{T} = 0$
+On en déduit
+\begin{theorem}
+    $$\int_A^B \frac{\delta Q^{(1)}}{T} = \frac{\delta Q^{(2)}}{T}$$
+\end{theorem}
+Cela correspond donc à la variation d'une fonction d'état. L'intégrale est indépendant de la valeur du chemin.
+
+On intriduit donc une fonction d'état , notée S appellée entropie.
+
+On a donc $\Delta S_{AB} = \int_A^B \frac{\delta Q_{QS}}{T}$.
+
+Cas avec un chemin non quasi-statique.
+$$\int_A^B \frac{\delta Q}{T} < \int_A^B \frac{\delta Q_{qs}}{T} = \Delta S_{AB}$$
+Le premier terme est appellé terme d'échange d'entropie. L'échange est plus petit que la variation.
+
+\section{Énoncé du second principe sous sa forme entropique}
+\begin{theorem}
+    L'entropie de l'univers ne peut que croitre ou rester constante. : $$\Delta S_{univers}\geq 0$$
+\end{theorem}
+\begin{theorem}[Énoncé détaillé]
+    $\Delta_{i\to f} = S_f-S_i = \int_i^f \frac{\delta Q_{QS}}{T} = -\Delta S_{ext, if}+S^p_{i\to f}$
+    avec $-\Delta S_{ext,if} = 0$ si la transformation est adiabatique ou $-\Delta S_{ext,if} = \frac{Q_{i\to f}}{T_{source}}$ si la transfo s'effectue au contact d'une source.
+    C'est aussi noté entropie échangée (mais implicitement la source est parfaite si on écrit de cette façon)
+    et avec $S^p_{if}=0$ si c'est réversible et $>0$ si c'est irréversible
+\end{theorem}
+\section{Énoncé de Thomson / de Kelvin}
+\criticalInfo{Rappel : moteur}{Un cycle moteur a un signe de travail < 0 }
+\begin{theorem}
+    On ne peut pas réaliser un cycle de transformation moteur avec une seule source de chaleur.
+\end{theorem}
+\begin{myproof}[Démonstration de l'énoncé de Thomson]
+    On utilise ce principe et le premier principe 
+\end{myproof}
+\begin{theorem}[Conséquence de l'énoncé de thomson]
+    Je ne peux pas transformer intégralement de la chaleur en travail. Le sens inverse est possible.
+\end{theorem}
+\section{Exemples}
+\subsection{Expérience 1 : Compression monotherme brusque}
+On étudie un thermostat dans lequel se trouve un cylindre contenant un GP non calorifugé. On pose une masse brusquement sur le piston.
+
+Compression = Diminution du volume, pas de lien nécessaire avec la pression.
+
+On appelle $\alpha = \frac{P_f}{P_i}$
+
+Déterminer $S^p$ en fonction de $\alpha$
+
+Faire une transformation reversible /= pouvoir revenir à l'état initial.
+
+On peut calculer $S^e_{i\to f} = \frac{Q_{i\to f}}{T_s}$ avec $Q_{i\to f} = \Delta U -W_{i\to f} = -W_{i\to f}$
+
+On écrit $W_{i\to f} = -\int P_{ext} \dd V = -p_f(V_f-V_i) = -nRT_{ext}(1-\alpha)$.
+
+Donc $S^e_{i\to f} = -nR(\alpha-1)$
+
+On a $S^p = \Delta S - S^e$
+
+On calcule $\Delta S_{if} = \int^f_i \frac{\delta Q_{qs}}{T} = \int_i^f -\frac{\delta W_{QS}}{T}$ car on a choisi un QS isotherme
+
+$= \int_i^f \frac{P_{ext\dd V}}{T} = nR\ln(V_f/V_i) = nR\ln(-
+1/\alpha)$
+
+Donc $S^p = nR(\ln(1/\alpha)+\alpha-1)$
+% Tableau de variation et tracé qualitatif
+
+Reafire la meme chose pour une monobare abec $\beta = T_f/T_i$ : on trouve la meme courbe
+
+SP = mesure de l'éloignement à l'équilibre
+
+\subsection{Calcul de $\Delta S$ entre 2 états quelconques}
+On prend 2 états quelconques. On cherche $\Delta S_{0\to1}$. Pour cela, o, commence par
+
+On choisit un chemin quasi-statique : On prend un chemin vertical puis horzontal (ischore QS puis isobare QS)
+
+$\Delta S = \Delta S_{0A} + \Delta S_{A1} = \int_0^A \frac{\dd U}{T} + \int_A^1 \frac{\dd H}{T} = \int C_v \frac{\dd T}{T} + \int C_p \frac{\dd T}{T} = C_v \ln(T_A/T0)+C_p \ln(T_1/T_A)$
+avec $T_A = \frac{p_1V_0}{nR}$
+
+Autre chemin : $\Delta S = \int_0^1 \frac{\dd U-\delya W}{T} = \int_0^1 \frac{\dd U}{T} + \int \frac{p\dd V}{T} = C_v\ln(T1/T0)+nr\ln(V1/V0)$
+\end{document}
+
+

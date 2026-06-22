@@ -1,0 +1,150 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 3}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%jesse.groenen@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+%\setcounter{chapter}{3}
+\begin{document}
+%\chapter{Puissance et énergie du champ Em}
+\setcounter{chapter}{2}
+\chapter{Milieux magnétiques}
+\criticalInfo{Rappel}{Le moment magnétique est défini par la règle du tire-bouchon, il vaut $\vec{\mu}=I\vec{S}$}
+\section{Introduction}
+
+Le moment magnétique des édifices est la somme des moments magnétiques orbitaux et de spin de leur constituants\marginTips{Il est essentiellement du aux électrons célibataires.}. 
+
+\begin{definition}[Milieu diamagnétique]
+    Il n'y a pas de moment magnétique permanent. Avec un champ magnétique appliqué, il y a un moment induit.
+\end{definition}
+\begin{definition}[Milieu paramagnétique]
+    Il n'y a pas d'aimantation tant qu'on applique pas de champ magnétique. Dans ce cas, les moments sont selon le champ appliqué.
+\end{definition}
+\begin{definition}[Milieu ferro-magnétique]
+    Il y a une aimantation m\^eme en l'absence de champ appliqué
+\end{definition}
+\section{Aimantation}
+\subsection{Vecteur aimantation volumique}
+\begin{definition}[Vecteur aimantation volumique]
+    $$\delta \vec{\mu}=\vec{M}\delta v \iff \dd \vec{\mu}=\vec{M}\dd v$$ avec $\vec{M}$ le vecteur d'aimantation volumique, densité volumique de moment dipolaire magnétique. C'est une grandeur macroscopique.
+\end{definition}
+\subsection{Potentiel vecteur et champ magnétique crées par un milieu aimanté}
+\begin{definition}[Potentiel vecteur $\vec{A_m}$]
+    $$\vec{A_m}(\vec{r}) = \frac{\mu_0}{4\pi}\iiint_V\frac{\vec{M}(\vec{r'})\wedge (\vec{r}-\vec{r'})}{||\vec{r'}-\vec{r}||}\dd v'$$
+\end{definition}
+\begin{definition}[Densité volumique de courant]
+    $$\vec{j_M} = \rot(\vec{M})$$ en volume
+    $$\vec{j_{S,M}} = \vec{M}\wedge \vec{n_{ext}}$$ à la surface
+\end{definition}
+\begin{theorem}[Relation locale $\vec{A_m}$ et champ magnétique]
+    $$\vec{B_m} = \rot{\vec{A_m}}$$
+\end{theorem}
+\subsection{Interprétation}
+\begin{definition}[Densité surfacique de courant]
+    $$j_{S,M}(P) = M(P)$$ et $$\vec{j_{s,M}}(N) = \vec{M}(N)\wedge \vec{n_{ext}}(N)$$
+\end{definition}
+\section{Excitation magnétique}
+\subsection{Équation de maxwell dans un milieu magnétique (statique)}
+On a 
+\begin{itemize}
+    \item $\Div \vec{B} = 0$
+    \item $\rot{\vec{B}} = \mu_0 \vec{j_{total}}$
+\end{itemize}
+Il y a 2 termes : $\vec{j_{total}} = \vec{j_{libre}}+\vec{j_{M}}$
+
+\begin{definition}[Excitation magnétique H]
+    $$\vec{H} = \frac{\vec{B}}{\mu_0}-\vec{M}$$ et  $$\rot{\vec{H}} = \vec{j_{libre}}$$
+\end{definition}
+
+\subsection{Théorème d'Ampère}
+\begin{theorem}[Théorème d'Ampère]
+   $$ \oint_C \vec{H}\cdot \vec{\dd l} = I_{libre, enlacé}$$
+   I est algébrique
+\end{theorem}
+\begin{theorem}[Relation de passage]
+    $$\vec{n_{12}}\cdot(\vec{B_2}-\vec{B_1}) = 0$$
+    $$\vec{n_{12}}\wedge(\vec{H_2}-\vec{H_1}) = \vec{j_{s,libre}}$$
+\end{theorem}
+\section{Milieux magnétiques, LHI}
+\subsection{Susceptibilité $\chi_M$}
+2 définitions co-existent :
+\begin{itemize}
+    \item $\vec{M} = \chi_M \vec{H}$ : Intéret : H est controlé expérimental
+    \item $\vec{M} = \chi_m^*\frac{\vec{B}}{\mu_0}$
+\end{itemize}
+\subsection{Perméabilité}
+\begin{definition}[Perméabilité]
+    $$\vec{B} = \mu_0\mu_r \vec{H} = \mu\vec{H}$$ avec la Perméabilité, relative et absolue
+\end{definition}
+Comme il y a 2 définitions, il y a 2 liens :
+\begin{definition}[Expression de $\mu_r$]
+    $$\mu_r = 1+\chi_m = \frac{1}{-X_m^*}$$, donc $$\chi_m = \frac{\chi_m^*}{1-\chi_m^*}$$
+\end{definition}
+% \chapter{Polarisation milieux diélectriques : aspects microscopiques}
+
+% Un conducteur parfait est équivalent à un milieu infiniment polarisable : $\chi_e \to \infty$. L'écrantage est total : $\vec{E_{int}} = \vec{0}$.
+%  C'est équivalent en polarisation alors qu'il n'y a pas de dipôle élémentaire. C'est un réservoir illimité d'électrons libres.
+% \section{Polarisabilité}
+% \subsection{Définition}
+% On se place en échelle microscopique
+% \begin{definition}
+%     $$\vec{p_j} = \epsilon_0 \alpha_j \vec{e_{loc}(M_j)}$$ avec $\vec{p_j}$ le moment dipolaire électrique induit sur l'élément j , $\vec{e_{loc}}$ le champ électrique micorcopique perçu au site $j$ par le constituant élémentaire
+%     et $\alpha_j$ la Polarisabilité de l'élément j.
+% \end{definition}
+% \warningInfo{Champ local}{
+%     $\vec{e_{loc}}$ correspond au champ appliqué $\vec{E_a}$ + champ microscopique crée par les constituants du milieu entourant $M_j$.
+
+%     $\alpha_j$ est une constante positive.
+% }
+% \subsection{Bilan}
+% \begin{itemize}
+%     \item Polarisation électronique : Modification de la répartiiton des charges internes à haque atome ou ion, toujours présente
+%     \item Polarisation atomique : Déplacement des atomes/ions par rapport à leur posiuton d'équilibre
+%     \item Polarisation d'orienrttaion : Orientation du moment dipolaire permananr d'une molcéule polaire. Nécessite une liberté de mouvement. Cela concerne donc les fluides.
+% \end{itemize}
+\end{document}

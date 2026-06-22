@@ -1,0 +1,139 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Introduction à la thermodynamique}
+\subtitle{Thermodynamique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{}
+
+\usepackage{graphicx}%-pour mettre des images
+\usepackage[utf8]{inputenc}%encodage
+\usepackage{geometry}%pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%pour les boites d'exercices, de pbq et de croquis d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{tabularx}%pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%Pour les boites info, danger et autres
+\usepackage{menukeys}%Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%pour les liens
+\usepackage{hyperref}%pour les liens (\`a mettre en dernier)
+\usepackage{caption}%pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\begin{document}
+\setcounter{chapter}{6}
+
+\chapter{Transition de phase : Corps non homogène}
+\section{Modèle diphasique}
+\begin{theorem}[Modèle diphasique]
+    Soit Y une grandeur. On peut écrire : $$Y = Y_L+Y_V$$ avec $Y_L$ Y contenu dans la phase liquide.
+\end{theorem}
+\begin{definition}[Titre massique]
+    C'est la fraction massique de vapeur dans le système : $m_v = xm_{tot}$
+\end{definition}
+\section{Étude de la stabilité dans un état diphasique}
+\begin{theorem}[Pression dans un système diphasique]
+    On a $p=p_{sat}$
+\end{theorem}
+\begin{proposition}[Conséquence pour une grandeur dans un état diphasique]
+    $$Y_{LV} = xY_V^{Sat}+(1-x)Y_{L}^{Sat}$$
+\end{proposition}
+\section{Résultats}
+\subsection{Équilibre liquide-vapeur}
+\includegraphics[scale=0.5]{c3-1.pdf}
+\subsection{Expression des fonctions d'état entre 2 états diphasiques}
+% \subsubsection{Entre 2 états appartenants  à la m\^eme isotherme}
+% \begin{theorem}
+%     \begin{itemize}
+%         \item $\Delta H_{12} = \Delta x_{12}(H_{v,0}^{Sat}-H_{L,0}^{Sat})$
+%         \item $\Delta U_{12} = (x_2-x_1)(ml_v(T_0)-p_{sat}(T_0)(V_{V,0}^{Sat}-V_{L,0}^{Sat}))$
+%         \item $\Delta S_{12} = (x_2-x_1)\frac{ml_v(T_0)}{T_0}$
+%     \end{itemize}
+% \end{theorem}
+% \subsubsection{Entre 2 états sur des isothermes différentes}
+% On choisit un chemin QS intégrant uniquement des paliers isothermes (a,b,d) ou isobares (c).
+
+% \includegraphics[scale=0.5]{c4.pdf}
+
+% On peut alors écrire :
+% \begin{itemize}
+%     \item $\Delta H_{12} = x_2ml_v(T_2)-x_1ml_v(T_1)+H_{L,2}-H_{L,1}$
+%     \item $\Delta U_{12} = x_{2}(ml_v(T_2)-p_{sat}(T_2)(V_{V,2}-V_{L,2}))-x_1(ml_v(T_1)-p_{sat}(T_1)(V_{V,1}-V_{L,1}))+ U_{L,2}-U_{L,1}$
+%     \item $\Delta S_{12}= x_2\frac{ml_v(T_2)}{T_2}-x_1\frac{ml_v(T_1)}{T_1}+S_{L,2}^{Sat}-S_{L,1}^{Sat}$
+% \end{itemize}
+% \subsection{Déterminer le titre}
+% Il faut conna\^itre au moins une des $Y_{i,LV}$.
+\subsubsection{Entre 2 états appartenant à la même isotherme}
+
+\tipsInfo{Définition du titre}{Le titre en vapeur $x$ représente la fraction massique de vapeur dans le mélange diphasique : $x = \frac{m_v}{m_{tot}}$. On a donc par définition $H = H_L + x(H_v - H_L)$.}
+
+\begin{theorem}
+    Pour une transformation isotherme (et donc isobare sous la cloche de changement d'état) à la température $T_0$ :
+    \begin{itemize}
+        \item $\Delta H_{12} = (x_2 - x_1)(H_{v,0}^{Sat}-H_{L,0}^{Sat}) = \Delta x_{12} \cdot m l_v(T_0)$
+        \item $\Delta U_{12} = (x_2-x_1)\left[ml_v(T_0)-p_{sat}(T_0)(V_{V,0}^{Sat}-V_{L,0}^{Sat})\right]$
+        \item $\Delta S_{12} = (x_2-x_1)\frac{ml_v(T_0)}{T_0}$
+    \end{itemize}
+\end{theorem}
+
+\begin{myproof}[Démonstration de $\Delta U_{12}$]
+    Par définition de l'enthalpie $H = U + pV$. À température et pression constantes ($T_0, p_{sat}$), la variation d'enthalpie s'écrit :
+    \[ \Delta H_{12} = \Delta U_{12} + p_{sat}(T_0) \Delta V_{12} \]
+    En exprimant le volume total avec les volumes massiques de saturation $V = m_{tot} \left[ V_{L,0}^{Sat} + x(V_{V,0}^{Sat} - V_{L,0}^{Sat}) \right]$, on obtient :
+    \[ \Delta V_{12} = (x_2 - x_1)(V_{V,0}^{Sat}-V_{L,0}^{Sat}) \]
+    L'isolement de $\Delta U_{12}$ donne directement la formule du théorème.
+\end{myproof}
+
+\subsubsection{Entre 2 états sur des isothermes différentes}
+On choisit un chemin quasi-statique (QS) fictif profitant de la fonction d'état (indépendance du chemin suivi). Le chemin classique décompose la transformation en :
+\begin{enumerate}
+    \item Étape A : Condensation totale ou ajustement du titre à $T_1$ jusqu'à l'état de liquide saturé ($x=0$).
+    \item Étape B : Chauffage/Refroidissement du liquide seul de $T_1$ à $T_2$ le long de la courbe d'ébullition.
+    \item Étape C : Vaporisation partielle à $T_2$ jusqu'au titre final $x_2$.
+\end{enumerate}
+
+\includegraphics[scale=0.5]{c4.pdf}
+
+\warningInfo{Hypothèse Liquide Incompressible}{Pour les variations des phases liquides seules ($H_{L,2} - H_{L,1}$), on utilise souvent l'approximation du liquide indilatable et incompressible ($c_p \approx c_v \approx c$) : $\Delta H_L \approx m c \Delta T$ et $\Delta S_L \approx m c \ln(T_2/T_1)$.}
+
+On peut alors écrire les bilans globaux :
+\begin{itemize}
+    \item $\Delta H_{12} = x_2ml_v(T_2)-x_1ml_v(T_1)+H_{L,2}^{Sat}-H_{L,1}^{Sat}$
+    \item $\Delta U_{12} = x_{2}\left[ml_v(T_2)-p_{sat}(T_2)(V_{V,2}^{Sat}-V_{L,2}^{Sat})\right]-x_1\left[ml_v(T_1)-p_{sat}(T_1)(V_{V,1}^{Sat}-V_{L,1}^{Sat})\right]+ U_{L,2}^{Sat}-U_{L,1}^{Sat}$
+    \item $\Delta S_{12}= x_2\frac{ml_v(T_2)}{T_2}-x_1\frac{ml_v(T_1)}{T_1}+S_{L,2}^{Sat}-S_{L,1}^{Sat}$
+\end{itemize}
+
+\subsection{Déterminer le titre}
+\begin{definition}[Règle des moments / Théorème des segments inverses]
+    Si l'on connaît une grandeur massique globale du mélange $Y_{i,LV}$ (comme le volume massique $v$, l'enthalpie massique $h$, ou l'entropie massique $s$), le titre $x$ se détermine par intersection géométrique sous la cloche :
+    \[ Y_{i,LV} = (1-x)Y_{L}^{Sat} + x Y_{V}^{Sat} \implies x = \frac{Y_{i,LV} - Y_{L}^{Sat}}{Y_{V}^{Sat} - Y_{L}^{Sat}} \]
+\end{definition}
+
+\criticalInfo{Validation des bornes}{Un titre $x$ physique doit impérativement être compris entre $0$ et $1$. Dans le cas contraire,  l'état du système n'est pas diphasique (hors de la cloche, le fluide est soit liquide sous-refroidi, soit vapeur surchauffée).}
+\end{document}
+
+

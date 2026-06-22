@@ -1,0 +1,176 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 2 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\setcounter{chapter}{2}
+\begin{document}
+\chapter{Équations de Maxwell en régime variable}
+\criticalInfo{Grandeur $\rho$}{On rappelle que $\rho$ est la densité volumique de charge électrique}
+\section{L'Approximation des Régimes Quasi-Stationnaires (ARQS)}
+
+L'ARQS est le pont entre l'électrostatique/magnétostatique et l'électromagnétisme complet. On considère que les phénomènes varient assez lentement pour négliger les temps de propagation.
+
+\subsection{Condition de validité}
+
+\begin{definition}[Critère de l'ARQS]
+    Soit $L$ la taille caractéristique du système et $T$ le temps caractéristique d'évolution des sources. L'ARQS est valide si le temps de propagation $\tau = L/c$ est négligeable devant $T$ :
+    \begin{equation}
+        \tau \ll T \quad \Longleftrightarrow \quad L \ll \lambda
+    \end{equation}
+    où $\lambda = cT$ est la longueur d'onde associée.
+\end{definition}
+
+\checkInfo{Point clef}{ Sous cette approximation, on considère que le champ s'ajuste \textbf{instantanément} dans tout l'espace. Les effets de retard et la propagation d'ondes sont ignorés.}
+
+\subsection{L'ARQS "Magnétique"}
+
+Dans les conducteurs et les circuits, on travaille souvent en ARQS magnétique. On y néglige les effets des charges devant ceux des courants ($j \gg c\rho$).
+
+\begin{proposition}[Conséquences sur Maxwell]
+    \begin{itemize}
+        \item \textbf{Conservation de la charge :} $\Div \vec{j} + \frac{\partial \rho}{\partial t} = 0 \implies \Div \vec{j} \approx 0$.
+        \item \textbf{Maxwell-Ampère :} On néglige le courant de déplacement : $\rot \vec{B} = \mu_0 \vec{j}$.
+    \end{itemize}
+\end{proposition}
+
+\tipsInfo{En pratique}{ La conservation du flux de $\vec{j}$ ($\Div \vec{j} = 0$) justifie l'utilisation de la \textbf{loi des nœuds} et implique que l'intensité $I$ est identique en tout point d'une branche de circuit.}
+
+\section{Calcul des champs dans l'ARQS}
+
+
+
+Sous l'ARQS, les expressions des potentiels sont dites "instantanées" (on utilise le temps $t$ partout, sans retard $t - PM/c$).
+
+\begin{theorem}[Potentiels et Champs]
+    Les potentiels s'expriment comme en statique :
+    \begin{equation*}
+        V(M,t) = \frac{1}{4\pi\epsilon_0} \iiint \frac{\rho(P,t)}{PM} \dd \tau \quad 
+    \end{equation*}
+    \begin{equation*}
+        \quad \vec{A}(M,t) = \frac{\mu_0}{4\pi} \iiint \frac{\vec{j}(P,t)}{PM} \dd \tau
+    \end{equation*}
+    Le champ magnétique suit alors la loi de \textbf{Biot et Savart} instantanée :
+    \begin{equation}
+        \vec{B}(M,t) = \frac{\mu_0}{4\pi} \iiint \frac{\vec{j}(P,t) \wedge \vec{PM}}{PM^3} \dd \tau
+    \end{equation}
+\end{theorem}
+
+\warningInfo{Remarque}{\textbf{Attention :} Pour le champ électrique $\vec{E}$, on ne peut pas utiliser la formule de Coulomb seule ! Il faut ajouter le terme d'induction : $\vec{E} = -\grad V - \frac{\partial \vec{A}}{\partial t}$.}
+
+\section{Physique des milieux conducteurs}
+
+\subsection{Loi d'Ohm locale et modèle de Drude}
+
+Le mouvement des électrons est modélisé par une force de Lorentz et une force de frottement fluide (collisions). En régime quasi-permanent :
+\begin{equation}
+    \underbrace{-e\vec{E}}_{\text{Force électrique}} \underbrace{- \frac{m\vec{v}}{\tau}}_{\text{Frottement}} = \vec{0} \implies \vec{v} = -\frac{e\tau}{m}\vec{E}
+\end{equation}
+
+\begin{definition}[Loi d'Ohm locale]
+    La densité de courant est proportionnelle au champ électrique :
+    \begin{equation}
+        \vec{j} = \gamma \vec{E} \quad \text{avec} \quad \gamma = \frac{n_e e^2 \tau}{m} \text{ (conductivité)}
+    \end{equation}
+\end{definition}
+
+\subsection{Neutralité et relaxation des charges}
+
+Un conducteur ohmique ne peut pas maintenir de charges en volume.
+
+\begin{theorem}[Temps de relaxation]
+    En combinant $\Div \vec{j} + \frac{\partial \rho}{\partial t} = 0$, la loi d'Ohm et Maxwell-Gauss, on obtient :
+    \begin{equation}
+        \frac{\partial \rho}{\partial t} + \frac{\gamma}{\epsilon_0}\rho = 0 \implies \rho(t) = \rho_0 e^{-t/\tau_{relax}}
+    \end{equation}
+    Le temps de relaxation $\tau_{relax} = \epsilon_0/\gamma$ est extrêmement court (env. $10^{-19}$ s pour le cuivre).
+\end{theorem}
+
+\warningInfo{Conclusion}{Dans un conducteur, la charge volumique $\rho$ est nulle. Tout excès de charge migre quasi-instantanément vers la \textbf{surface} du conducteur ($\sigma$).}
+\section{Tableau récapitulatif des équations de Maxwell}
+
+\begin{table}[h!]
+    \centering
+     \small
+    \renewcommand{\arraystretch}{2} % Augmente l'espacement pour les fractions
+    \begin{tabular}{|l|c|c|c|}
+        \hline
+        \textbf{Nom} & \textbf{Statique} (Permanent) & \textbf{Variable} (Complet) & \textbf{ARQS} (Magnétique) \\ \hline
+        Maxwell-Gauss & $\Div \vec{E} = \frac{\rho}{\epsilon_0}$ & $\Div \vec{E} = \frac{\rho}{\epsilon_0}$ & $\Div \vec{E} = \frac{\rho}{\epsilon_0}$ \\ \hline
+        Maxwell-Thomson & $\Div \vec{B} = 0$ & $\Div \vec{B} = 0$ & $\Div \vec{B} = 0$ \\ \hline
+        Maxwell-Faraday & $\rot \vec{E} = \vec{0}$ & $\rot \vec{E} = -\frac{\partial \vec{B}}{\partial t}$ & $\rot \vec{E} = -\frac{\partial \vec{B}}{\partial t}$ \\ \hline
+        Maxwell-Ampère & $\rot \vec{B} = \mu_0 \vec{j}$ & $\rot \vec{B} = \mu_0 \vec{j} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t}$ & $\rot \vec{B} \approx \mu_0 \vec{j}$ \\ \hline
+        \textbf{Conservation} & $\Div \vec{j} = 0$ & $\Div \vec{j} + \frac{\partial \rho}{\partial t} = 0$ & $\Div \vec{j} \approx 0$ \\ \hline
+    \end{tabular}
+    \caption{Comparaison des équations de Maxwell selon le régime d'étude}
+   
+\end{table}
+
+\section{Formes intégrales (Régime Variable)}
+
+\begin{table}[h!]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{2.2}
+    \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{Loi} & \textbf{Forme Intégrale} & \textbf{Signification} \\ \hline
+        Gauss & $\oint_S \vec{E} \cdot \dd \vec{S} = \frac{Q_{int}}{\epsilon_0}$ & Flux du champ électrique à travers une surface fermée. \\ \hline
+        Flux $\vec{B}$ & $\oint_S \vec{B} \cdot \dd \vec{S} = 0$ & Inexistence de monopôles magnétiques. \\ \hline
+        Faraday & $\oint_C \vec{E} \cdot \dd \vec{l} = -\frac{\dd \Phi(B)}{\dd t}$ & Apparition d'une force électromotrice par induction. \\ \hline
+        Ampère & $\oint_C \vec{B} \cdot \dd \vec{l} = \mu_0 (I_{enl} + \epsilon_0 \frac{\dd \Phi(E)}{\dd t})$ & Circulation liée aux courants réels et de déplacement. \\ \hline
+    \end{tabular}
+\end{table}
+Pour l'ARQS, il suffit de retirer le flux de E dans le théorème d'Ampère.
+
+
+%Sujet 2 : Induction /  ARQS
+
+
+\end{document}

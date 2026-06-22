@@ -1,0 +1,228 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Introduction à la termodynamique}
+\subtitle{Thermodynamique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\begin{document}
+\setcounter{chapter}{2}
+\chapter{Principe de conservation de l'énergie}
+On étudie un système fermé.
+\section{Énoncé}
+\begin{theorem}[Principe de conservation de Lavoisier]
+    L'énergie est une grandeur conservative, elle ne peut \^etre ni crée, ni détruite.
+\end{theorem}
+\begin{theorem}[Deuxième définition]
+    L'énergie d'un système isolé est une constante. L'énergie de l'univers est constante.
+\end{theorem}
+L'énergie de l'univers est notée $E_0$. C'est une grandeur extensive, donc $E_{\Omega}+E_{\bar{\Omega} = E_0}$.
+
+On dérive par rapport au temps :
+$$\frac{\dd E_{\Omega}}{\dd t}= -\frac{\dd E_{\bar{\Omega}}}{\dd t}$$
+
+Pour que ce transfert soit instantanné, il faut que cela se passe à la frontière\marginTips{On appelle cela le principe de localité}.
+
+$\frac{\dd E_{\Omega}}{\dd t}$ ne dépend que de $t$, qui est un flux, $\varphi_{\partial \Omega}$.
+
+Donc 
+\begin{theorem}[Principe de conservation de l'énergie]
+    $\frac{\dd E_{\Omega}}{\dd t} = \varphi_{\partial \Omega}$
+\end{theorem}
+\section{Premier principe de la thermodynamique}
+\subsection{Nature de l'énergie et des échanges d'énergie}
+$$E_{\Omega} = E_{C} + E_p + U$$ avec $E_c$ l'énergie cinétique macroscopique en étudiant le centre de masse.
+$\varphi_{\partial \Omega}$ est un flux d'énergie en Whatt, Joules/s.
+
+$$\phi_{\partial \Omega} = \phi_{\partial \Omega, W} + \phi_{\partial \Omega, Q}$$
+\begin{definition}[Flux d'énergie]
+    On appelle flux d'énergie sous forme de chaleur tous les flux d'énergie qui ne
+    sont pas mécaniques, i.e. liés au mouvement de la frontière.
+\end{definition}
+\subsection{Énoncé du premier principe}
+On a $$\dd (E_c+E_p+U) = \phi_Q\dd t+\phi_W \dd t$$
+En posant l'intégrale :
+$$\int_i^f \dd (E_c+E_p+U) = \int_i^f \phi_Q\dd t+ \int_i^f\phi_W \dd t$$
+
+En réérivant :
+$$\Delta_{if} (E_c+E_p+U) = W_{i \to f} + Q_{i\to f}$$
+
+\begin{theorem}[Énoncé du premier principe]
+    $$\Delta_{if} (E_c+E_p+U) = W_{i \to f} + Q_{i\to f}$$
+\end{theorem}
+\criticalInfo{Utilité}{On ne s'en sert que pour calculer Q}
+\section{Capacités thermiques}
+\begin{definition}[Capacité thermique]
+    La petite quantité d'énergie, notée $c$ qu'il faut fournir sous forme de chaleur pour augmenter sa temérature de $\dd T$:
+    $$\delta Q = C\dd T$$
+\end{definition}
+\subsection{Capacité thermique à volume constant}
+Elle est notée $c_v$.
+
+On peut exprimer l'énergie interne du système : $U(T, V)$. On a alors :
+$$\dd U = \frac{\partial U}{\partial T}\dd T + \frac{\partial U}{\partial V}\dd V$$ Comme
+le volume est constant, on a $$\dd U = \frac{\partial U}{\partial T}$$
+
+De plus, $$\dd U = \delta w + \delta Q = \delta Q = C_v \dd T$$.
+
+On en déduit que
+\begin{theorem}[Expression de la capacité thermique volume constant]
+    $C_v = (\frac{\partial U}{\partial T})_V$.
+\end{theorem}
+\subsection{Capacité thermique à pression constante}
+\subsubsection{Introduction}
+Si la transormation est monobare, on a $$P_{ext} = Cst = p_i = p_f$$
+On a 
+\begin{flalign*}
+    Q &= \Delta U - W\\
+    &=\Delta U - \int - P_{ext}\dd V\\
+    &= \Delta U + P_{ext}\Delta v
+    &= U_f + P_{ext}V_f - (U_i+P_{ext}V_i)\\
+    &= \Delta (U+pV)
+\end{flalign*}
+On pose $H = U+Pv$ qui est une fonction d'état extensive, notée Enthalpie. Elle correspond à la quantité de chaleur échangée sur une transformation monobare.
+
+Si la transformation est monobare, on a $Q = \Delta H$
+\begin{theorem}[Enthalpie]
+    Notée $H = U+Pv$, elle permte d'écrire $Q = \Delta H$ pour une transformation monobare.
+\end{theorem}
+\subsubsection{Capacité}
+On écrit :
+\begin{flalign*}
+    \dd H &= \frac{\partial H}{\partial T} \dd T + \frac{\partial H}{\partial P}\dd P\\
+    &=\delta Q = C_p \dd T
+\end{flalign*}
+\begin{theorem}[Expression de la capacité thermique pression constante]
+    $C_p = (\frac{\partial H}{\partial T})_P$.
+\end{theorem}
+\section{Phénoménologie}
+\subsection{Incompressible}
+Le volume est constant, par exemple l'eau liquide et les solides. On a donc $V = Cst$
+
+De plus, $\dd U = C_v \dd T + \frac{\partial U}{\partial V}\dd V \Rightarrow U = C_v T+Cst$
+L'énergie interne est proportionelle à la température
+\subsection{Gaz parfaits}
+On a $pV = nRT$ ou $pV = mrT$ ou $ p = \rho rT$ avec $r=\frac{R}{M}$
+\begin{theorem}[Première loi de Joule]
+    $U = U(T)$
+\end{theorem}
+Donc $\dd U = C_v \dd T + \frac{\partial U}{\partial V}\dd V \Rightarrow U = C_v T + Cst$
+\subsection{Gaz réel}
+On a $$p+\frac{n^2a}{V^2}(V-nb) = nRT$$
+
+On a alors $U(T) = C_VT - \frac{n^2a}{V}+Cst$.
+\section{Applications aux gaz parfaits}
+\subsection{Relation de Mayer}
+On a : 
+\begin{flalign*}
+    \dd U &= C_V \dd T\\
+    \dd H &= \dd(U+pV)\\
+    &= \dd U+\dd(pV)\\
+    &= C_p \dd T + \frac{\partial H}{\partial P}= C_p \dd T
+\end{flalign*}
+\begin{theorem}[Relation de Mayer]
+    $$C_p-C_v = nR$$
+\end{theorem}
+Posons maintenant $\gamma = \frac{C_p}{C_v}$. Il est connu la plupart du temps.
+\begin{theorem}[Expression de Gamma]
+    $$\gamma = \frac{C_P}{C_V}$$
+\end{theorem}
+\warningInfo{Résolution du système}{On en déduit $C_V = \frac{nR}{\gamma-1}$ et $C_p = \frac{nR\gamma}{\gamma-1}$}
+\subsection{Relation de Laplace}
+\criticalInfo{Hypothèses nécessaires}{
+    \begin{itemize}
+        \item Gaz parfait
+        \item Transformation adiabatique (sans échange de chaleur avec le milieu extérieur = parois imperméables )
+        \item Transformation quasi-statique
+    \end{itemize}
+}
+\begin{theorem}[Relation de Laplace]
+    $$TV^{\gamma-1} = K$$ ou $pV^\gamma = K'$ ou $p^{1-\gamma}T^\gamma=K''$.
+\end{theorem}
+\subsubsection{Exemple}
+\begin{itemize}
+    \item $P_i = 10^5 Pa$
+    \item $T_i = 300K$
+\end{itemize}
+
+\begin{itemize}
+    \item $P_f = 10P_i$
+    \item $T_f = ?$
+\end{itemize}
+La température augmente ou reste constante ? Oui elle augmente meme si on ne chauffe pas.
+
+On cherche a calculer $T_f$. On prend $\gamma = \frac{7}{5}$. On est dans le cas d'une compression quasi-statique de l'air.
+
+On utilise les expressions 579K. On utilise la relation de contrainte, d'invariance $p^{1-\gamma}T^\gamma=K''$.
+
+On veut maintenant le travail :
+\begin{flalign*}
+    W_{i\to f} &= \int -P_{ext}\dd V  = \int-p\dd V\\
+    &= \int -\frac{nRT}{V}\dd V\\
+    &= \int -\frac{Cst}{V^\gamma} = -Cst \frac{1}{\gamma+1}[V^{-\gamma+1}]^f_i\\
+    &= \frac{\Delta(pV)}{\gamma-1}
+\end{flalign*}
+On peut aussi écrire $\Delta U = C_v(T_f-T_i) = W_{i\to f} = \frac{NR}{\gamma-1}(T_f-T_i)$
+\subsection{Comparaison entre isotherme et adiabatique QS}
+Isotherme : Pour maintenir lz gaz à la m\^eme chaleur, il faut enlever de la chaleur, donc les parois ne sont pas isolées.
+
+Pour une compression adiabatique QS, $Q=0, W>0, \Delta U = C_v \Delta T >0$.
+
+On calcule 
+\begin{itemize}
+    \item $\frac{\partial p}{\partial V}_T = -\frac{p}{V}$
+    \item $\frac{\partial p}{\partial V}_{adia-QS} = - \gamma \frac{P}{V}$
+\end{itemize}
+On remarque que la pente de l'hyperbole de la transformation adiabatiqe vaut celle de l'isotherme multipliée par $\gamma$.
+\section{Deux expériences}
+\subsection{Détente de Joules et Gay Lussac}
+On a 2 contenants isolés thermiquement. Ils sont séparés par un robinet. L'un est vide.
+On ouvre le robinet.
+La détente est adiabatique. En effet, $\Delta U = W + Q = C_v(T_1-T_0) = 0$
+Cela vaut 0 car on est dans le vide.
+\subsection{Détente de Joules-Thomson}
+On appelle 1 les propriétés en amont du corps poreux et 2 celles en aval.
+
+La détente est isenthalpique.
+\end{document}
+
+

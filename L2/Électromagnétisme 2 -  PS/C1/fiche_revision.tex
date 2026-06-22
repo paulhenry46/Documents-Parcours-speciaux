@@ -1,0 +1,243 @@
+\documentclass[french]{yLectureNote}
+
+\title{Fiche de révision}
+\subtitle{Synthèse des notions essentielles}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{}
+
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{tkz-tab}
+\usepackage{tabularx}
+\usepackage{awesomebox}
+\usepackage{menukeys}
+\usepackage{fancyhdr}
+\usepackage{blindtext}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{pifont}
+\usepackage{array}
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\newcommand{\lap}{\nabla^2}
+
+\begin{document}
+\chapter{Rappels}
+
+\section{Électrostatique}
+
+\subsection{Champ et force électrostatique}
+
+\begin{theorem}
+[Champ électrostatique au point M]
+    \[\E = \frac{1}{4\pi\epsilon_0}\frac{q_1}{PM^2}\vec{u}\] avec \(\vec{u}\) le vecteur unitaire dans la direction de PM.
+
+\end{theorem}
+
+
+\begin{theorem}
+[Force électrostatique]
+    \[\vec{F} = \frac{1}{4\pi\epsilon_0}\frac{q_1q_2}{PM^2}\vec{u}\] avec \(\vec{u}\) le vecteur unitaire dans la direction de PM.
+
+\end{theorem}
+
+
+\begin{theorem}
+[Distrbution volumique]
+    $$\E = \iiint \frac{\rho \dd \tau}{4\pi \epsilon_0 PM^2}\vec{u}$$ avec $\dd \tau$ un élément de volume.
+
+\end{theorem}
+
+
+\begin{definition}
+[Caractéristique d'une ligne de champ]
+    $$\vec{\dd l}\wedge \E = \vec{0}$$
+
+\end{definition}
+
+\subsection{Théorèmes de Gauss et Maxwell}
+
+\begin{theorem}
+[Théorème de Gauss]
+    $$\phi = \iint_{S} \E\cdot \vec{\dd S} = \frac{Q_{int}}{\epsilon_0}$$ avec $\vec{\dd S}$ orienté vers l'extérieur
+
+\end{theorem}
+
+\begin{theorem}
+[Forme locale du Théorème de Gauss / Maxwell - Gauss]
+    $$\Div\E = \frac{\rho}{\epsilon_0}$$ avec $\rho$ La densité volumique de charge électrique
+
+\end{theorem}
+
+\begin{theorem}
+[Maxwell-Faraday]
+    $$\rot\vec{E} = \vec{0}$$ quand il n'y a pas de variation du champ magnétique.
+
+\end{theorem}
+
+\subsection{Relations de passage et potentiel}
+
+\begin{theorem}
+[Relation de passage]
+La composante normale à l'interface de $\E$ est discontinue à la traversée d'une interface chargée. On a en effet $$\vec{n_{ext}}\cdot (\E_{ext}-\E_{int}) = \frac{\sigma}{\epsilon_0}$$
+
+La composante tangentielle est continue :$$\vec{n_{ext}}\wedge (\E_{ext}-\E_{int}) = \vec{0}$$ 
+
+\end{theorem}
+
+\begin{theorem}
+[Relation du potentiel]
+    $$\int_A^B \E \cdot \vec{\dd l} = V(A)-V(B)$$
+    $$ \E = -\grad(V)$$
+
+\end{theorem}
+
+\begin{theorem}
+[Équation de Poisson]
+   $$-\lap V = \frac{\rho}{\epsilon_0}$$
+
+\end{theorem}
+
+\subsection{Courant et densité de courant}
+
+\begin{definition}
+[Densité de courant]
+    $$\vec{j} = \rho\vec{v}$$ avec $\vec{v}$ avec $\vec{v}$ la vitesse des charges.
+    $$\vec{j} = \gamma \E$$ où $\gamma$ est la conductivité.
+
+\end{definition}
+
+\begin{theorem}
+[Intensité du courant]
+    $$I = \iint_S \vec{j}\cdot \vec{\dd S}$$
+
+\end{theorem}
+
+\begin{theorem}
+[Théorème de Coulomb]
+    $$\E_{ext} = \frac{\sigma}{\epsilon_0}\vec{n_{ext}}$$
+
+\end{theorem}
+
+\section{Magnétostatique}
+
+\subsection{Champ magnétique et sources}
+
+\begin{theorem}
+$$\B = \frac{\mu_0}{4\pi}\frac{q\vec{v}\wedge \vec{PM}}{\vec{PM^3}}$$
+
+\end{theorem}
+
+\begin{theorem}
+[Champ magnétique d'un volume]
+    $$\B = \frac{\mu_0}{4\pi}\iint_V \frac{\vec{j}\wedge \vec{PM}}{PM^3}\dd \tau$$
+
+\end{theorem}
+
+\begin{theorem}
+[Loi de Biot et Savat]
+            $$\B = \frac{\mu_0}{4\pi}\int_C \frac{I\vec{\dd l}\wedge \vec{PM}}{PM^3}$$
+
+\end{theorem}
+
+\subsection{Théorèmes d'Ampère et conservation du flux}
+
+\begin{theorem}
+[Théorème d'Ampère]
+\[\int_C \vec{B}(M)\cdot \dd \vec{l} = \mu_0 \sum I_{\text{entrées par C}} \]
+Les courant sont comptés positivement s'ils sont dans le sens de \(\vec{n}\).
+
+\end{theorem}
+
+\begin{theorem}
+[Théorème d'Ampère pour une distribution volumique de courant]
+ \[\int_C\B\cdot \dd \vec{l} = \mu_0 \iint \vec{j}\cdot \vec{n}\dd S\]
+
+\end{theorem}
+
+\begin{theorem}
+[Forme locale du théorème d'Ampère / Maxwell - Ampère]
+\[\rot(\vec{B})=\mu_0 \vec{j}\]
+
+\end{theorem}
+
+\begin{theorem}
+[Loi de conservation du flux magnétique]
+
+    $$\phi = \iint_S \B\cdot \vec{\dd S} = \vec{0}$$
+
+\end{theorem}
+
+\begin{theorem}
+[Forme locale de la conservation]
+    $\Div \B = 0$
+
+\end{theorem}
+
+\subsection{Relations de passage, potentiel vecteur et équations de Poisson}
+
+\begin{theorem}
+[Relation de passage pour le champ magnétique]
+    \begin{itemize}
+    \item La composante normalew de $\B$ est continue lors de la traversée d'une nappe : $$ \vec{n_{ext}}\cdot (\B_{ext}-\B_{int})=0$$
+    \item La composante tangentielle est discontinue : $$\vec{n_{ext}}\wedge (\B_{ext}-B_{int}) = \mu_0 \vec{j}$$
+\end{itemize}
+
+\end{theorem}
+
+\begin{definition}
+[Potentiel vecteur]
+    On appelle $\vec{A}$ le potentiel vecteur de $\B$ : $$\B = \rot\vec{A}$$
+
+\end{definition}
+\begin{theorem}[Expression du potentiel vecteur pour un fil]
+    $$\vec{A}(M) = \frac{\mu_0}{4\pi} I\int \frac{\dd \vec{l}}{PM}$$
+\end{theorem}
+\begin{theorem}
+[Équation de Poisson]
+    $$\lap \vec{A} = -\mu_0 \vec{j}$$
+
+\end{theorem}
+
+\subsection{Forces}
+
+\begin{definition}
+[Force de Lorenz]
+    $$\vec{f} = q(\E+\vec{v}\wedge \B)$$ avec v la vitesse de la particule
+
+\end{definition}
+
+\begin{definition}
+[Force de Laplace]
+    $$\vec{F} = \int \dd \vec{F} = \int I\vec{\dd l} \wedge \B$$
+
+\end{definition}
+
+\end{document}

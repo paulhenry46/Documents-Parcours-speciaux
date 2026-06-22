@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="179.26619mm"
+   height="123.45914mm"
+   viewBox="0 0 179.26619 123.45914"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (1:1.4.3+202512261035+0d15f75042)"
+   sodipodi:docname="clapeyron.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="0.50331262"
+     inkscape:cx="377.49898"
+     inkscape:cy="281.1374"
+     inkscape:window-width="1920"
+     inkscape:window-height="1008"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid1"
+       units="mm"
+       originx="-5.2916665"
+       originy="-74.083328"
+       spacingx="0.26458333"
+       spacingy="0.26458334"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#Strips1_1"
+       preserveAspectRatio="xMidYMid"
+       id="pattern9"
+       patternTransform="matrix(1.7320508,1,-1,1.7320508,0,0)"
+       x="0"
+       y="0" />
+    <pattern
+       inkscape:collect="always"
+       patternUnits="userSpaceOnUse"
+       width="2"
+       height="10"
+       patternTransform="translate(0,0) scale(2,2)"
+       preserveAspectRatio="xMidYMid"
+       id="Strips1_1"
+       style="fill:#49ff3f"
+       inkscape:stockid="Stripes 01 (1:1)"
+       inkscape:isstock="true"
+       inkscape:label="Stripes 01 (1:1)">
+      <rect
+   style="stroke:none"
+   x="0"
+   y="-0.5"
+   width="1"
+   height="11"
+   id="rect134" />
+
+    </pattern>
+    <marker
+       style="overflow:visible"
+       id="ArrowWide"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc"
+         id="path2" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-5.2916665,-74.083327)">
+    <rect
+       style="fill:url(#pattern9);stroke:none;stroke-width:2.1;stroke-linejoin:round"
+       id="rect8"
+       width="63.5"
+       height="89.958336"
+       x="58.208332"
+       y="100.54166"
+       ry="0.79375464"
+       inkscape:export-filename="clapeyron.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#ffa500;stroke-width:2.1;stroke-linejoin:round"
+       d="M 47.624997,84.666668 C 60.569405,135.00016 105.83333,158.75001 158.74999,164.04167"
+       id="path7"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#d32f2f;stroke-width:2.1;stroke-linejoin:round;marker-start:url(#ArrowWide);marker-end:url(#ArrowWide)"
+       d="M 26.458332,95.250001 V 190.5 l 132.291668,1e-5"
+       id="path1" />
+    <text
+       xml:space="preserve"
+       style="font-size:16.2041px;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:none;stroke:#d32f2f;stroke-width:4.82295;stroke-linejoin:round"
+       x="31.307058"
+       y="84.648376"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="fill:#d32f2f;stroke:none;stroke-width:4.82295"
+         x="31.307058"
+         y="84.648376">P</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2344px;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#d32f2f;stroke:none;stroke-width:4.53432;stroke-linejoin:round"
+       x="184.57309"
+       y="195.06499"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="stroke-width:4.53432"
+         x="184.57309"
+         y="195.06499">V</tspan></text>
+    <circle
+       style="fill:#d32f2f;stroke:none;stroke-width:2.1;stroke-linejoin:round"
+       id="path3"
+       cx="60.854164"
+       cy="113.77083"
+       r="2.6458333" />
+    <circle
+       style="fill:#d32f2f;stroke:none;stroke-width:2.1;stroke-linejoin:round"
+       id="path4"
+       cx="119.0625"
+       cy="156.10417"
+       r="2.6458333" />
+    <text
+       xml:space="preserve"
+       style="font-size:11.5926px;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#d32f2f;stroke:none;stroke-width:3.45037;stroke-linejoin:round"
+       x="15.234505"
+       y="118.68336"
+       id="text4"><tspan
+         sodipodi:role="line"
+         id="tspan4"
+         style="stroke-width:3.45037"
+         x="15.234505"
+         y="118.68336">P<tspan
+   style="font-size:7.53515px;baseline-shift:sub;stroke-width:3.45037"
+   id="tspan5">f</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.1716px;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#d32f2f;stroke:none;stroke-width:4.51565;stroke-linejoin:round"
+       x="16.00511"
+       y="168.64186"
+       id="text6"><tspan
+         sodipodi:role="line"
+         id="tspan6"
+         style="stroke-width:4.51565"
+         x="16.00511"
+         y="168.64186">P<tspan
+   style="font-size:9.86157px;baseline-shift:sub;stroke-width:4.51565"
+   id="tspan7">i</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:11.7929px;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:none;stroke:#ffa500;stroke-width:3.51002;stroke-linejoin:round"
+       x="79.375"
+       y="84.666672"
+       id="text8"><tspan
+         sodipodi:role="line"
+         id="tspan8"
+         style="fill:#ffa500;stroke:none;stroke-width:3.51002"
+         x="79.375"
+         y="84.666672">300 K</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16.0597px;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8bc34a;stroke:none;stroke-width:4.77999;stroke-linejoin:round"
+       x="141.67097"
+       y="105.64063"
+       id="text9"><tspan
+         sodipodi:role="line"
+         id="tspan9"
+         style="stroke-width:4.77999"
+         x="141.67097"
+         y="105.64063">W</tspan></text>
+  </g>
+</svg>

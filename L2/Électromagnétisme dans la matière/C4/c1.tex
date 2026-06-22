@@ -1,0 +1,292 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 3}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%jesse.groenen@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+%\setcounter{chapter}{3}
+\begin{document}
+%\chapter{Puissance et énergie du champ Em}
+\setcounter{chapter}{3}
+\chapter{Polarisation milieux diélectriques : aspects microscopiques}
+
+Un conducteur parfait est équivalent à un milieu infiniment polarisable : $\chi_e \to \infty$. L'écrantage est total : $\vec{E_{int}} = \vec{0}$.
+ C'est équivalent en polarisation alors qu'il n'y a pas de dipôle élémentaire. C'est un réservoir illimité d'électrons libres.
+\section{Polarisabilité}
+\subsection{Définition}
+On se place en échelle microscopique
+\begin{definition}
+    $$\vec{p_j} = \epsilon_0 \alpha_j \vec{e_{loc}(M_j)}$$ avec $\vec{p_j}$ le moment dipolaire électrique induit sur l'élément j , $\vec{e_{loc}}$ le champ électrique micorcopique perçu au site $j$ par le constituant élémentaire
+    et $\alpha_j$ la Polarisabilité de l'élément j.
+\end{definition}
+\warningInfo{Champ local}{
+    $\vec{e_{loc}}$ correspond au champ appliqué $\vec{E_a}$ + champ microscopique crée par les constituants du milieu entourant $M_j$.
+
+    $\alpha_j$ est une constante positive.
+}
+\subsection{Bilan}
+\begin{itemize}
+    \item Polarisation électronique : Modification de la répartiiton des charges internes à haque atome ou ion, toujours présente
+    \item Polarisation atomique : Déplacement des atomes/ions par rapport à leur posiuton d'équilibre
+    \item Polarisation d'orienrttaion : Orientation du moment dipolaire permananr d'une molcéule polaire. Nécessite une liberté de mouvement. Cela concerne donc les fluides.
+\end{itemize}
+\subsection{Modélisation}
+\subsubsection{Polarisabilité électronique}
+On utilise le modèle de Mossoti.
+\begin{theorem}[Polarisabilité $\alpha_e$ selon Mossoti]
+    $\alpha_e = 4\pi a^3 = \frac{Z^2z^2}{\epsilon_0m_e\omega_0^2}$ avec $\omega_0^2 = \frac{K}{m_e}$
+\end{theorem}
+$\alpha_e$ augmente en descendant et vers la gauche.
+\subsubsection{Polarisabilié atomaiqye et ionique}
+\begin{theorem}
+    $$\alpha_a = \alpha_i = \frac{q^2}{\epsilon_0\mu \omega_0^2}$$
+\end{theorem}
+\subsubsection{Polarisabilité d'orientation $\alpha_{or}$}
+Cela ne s'applique qu'aux fluides.
+\begin{theorem}[$\alpha_{or}$][PASSER]
+    $\alpha_{or} = \frac{p_0^2}{3\epsilon_0k_BT}$ avec $p_0$ le moment dipolaire permanent du fluide.
+\end{theorem}
+\section{Champ local - champ macroscopique}
+On rappelle que généralement, $\vec{e_{loc}}\neq \vec{E}$
+\subsection{Gaz et milieux dilués}
+Dans le cas d'un gaz sous faible pression, on néglige l'intéraction entre dipole sous l'échelle microscopique, on a donc 
+$\vec{e_{loc}}\simeq \vec{E}$ pour les milieux dilués.
+\subsection{Champ local de Lorenz}
+\begin{theorem}[PASSER]
+    $\vec{e_{loc}}=\vec{E_{lorenz}}+\vec{e_{<}}$ avec $\vec{E_{lorenz}} = \vec{E}+\frac{\vec{P}}{3\epsilon_0}$
+
+    Dans le modèle, $\vec{e_{<}}$ devient macroscopique.
+\end{theorem}
+\section{Lien entre polarisabilité et permitivité diélectrique}
+\subsection{Gaz dilués}
+\begin{theorem}[Relation de Langevin Debye]
+    $$(\epsilon_r-1)\frac{M}{\rho^*}=N_A\alpha$$ avec $\rho^*$ la masse volumique et $\alpha = \alpha_e+\alpha_a+\alpha_{or}$
+\end{theorem}
+\subsection{Gaz denses et liquides}
+\begin{theorem}[Relation de Clausius-Mossoti PASSER]
+    $$\frac{\epsilon_r-1}{\epsilon_r+2}\frac{M}{\rho^*}= \frac{N_A \alpha}{3}$$ avec $\alpha = \alpha_e+\alpha_a$
+\end{theorem}
+\subsection{Milieux solides}
+On retrouve la relation de clausisu-Mosotti.
+
+Les formules ci-dessus ne sont pas à savoir.
+\section{Aspects dynamiques}
+On considère un milieu soumis à un champ électrique sinusoidal de pulsation $\omega$.
+\subsection{Modèle de Drude-Lorenz}
+\begin{theorem}[Modèle de Drude]
+    $$m_e\frac{\dd^2 \vec{r}}{\dd t^2}=-K\vec{r}-\frac{m_e}{\tau}\frac{\dd \vec{r}}{\dd t}-e(\vec{E}+\frac{\dd \vec{r}}{\dd t}\wedge \vec{B})$$
+\end{theorem}
+\subsection{Susceptibilité et permittivité complexe}
+On repasse en macro.
+\begin{itemize}
+    \item $\omega_0$ est la pulsation propre
+    \item $\omega_p^2 = \frac{n_ve^2}{m_e\epsilon_0}$ la force d'oscillateur
+    \item $\tau$ caractérise l'amortissement. Si $\tau >> 1$, pas d'amortissement
+    \item La partie imaginaire est toujours positive
+\end{itemize}
+\subsection{Lien entre absorption des ondes et Partie imaginaire de er}
+On se place à $\omega = \omega_0$
+
+on utilise les valeurs réelles et non les valeurs complexes\marginInfo{En effet, on effectu un produit et le produit des parties réelles n'est pas la partie réelle du produit}
+\begin{theorem}
+    $$<P_m>_T = \frac{V}{2}\omega_0 \epsilon_0 (Im(e_r))E_0^2$$
+\end{theorem}
+On remarque que s'il il n'y a pas de frottement, il n'y a pas d'absorption.
+\section{Bilan}
+les différents mécanismes s'ajoutent mais ont des pulsation différentes.
+\begin{itemize}
+    \item Polarisabilité : toujours présente
+    \item Polarisabilité ionique et atomique  : dépend de la polarité de la liaison ($\varnothing$ si liaison covalente)
+    \item Polarisabiluté d'orientation : mécanisme différente, pas de résonance les collisions dominent.
+\end{itemize}
+\chapter{Ondes électromahnétiques dans un milieu matériel}
+\section{Équations de Maxwell}
+\subsection{Équations de Maxwell dans un milieu matériel}
+On retrouve les équations de Maxwell. On explicite simplement $\rho = \rho_{libre}+\rho_P+\rho_{autres}$ et $\vec{j} = \vec{j_{libre}}+\vec{j_P}+\vec{j_M}$
+
+avec 
+\begin{itemize}
+    \item $\rho_P = -\Div \vec{P}$
+    \item $\vec{j_P} = \frac{\partial \vec{P}}{\partial t}$
+    \item $\vec{j_M} = \rot \vec{M}$
+\end{itemize}
+En introduisant $\vec{D}$ et $\vec{H}$, on a dans un milieu matériel
+\begin{itemize}
+    \item $\rot \vec{H} - \frac{\partial \vec{D}}{\partial t}=\vec{j_{libre}}$
+    \item $\rot \vec{E}+\frac{\partial \vec{B}}{\partial t} = \vec{0}$
+    \item $\Div \vec{D} = \rho_{libre}+\rho_{autres}$
+    \item $\Div \vec{B} = 0$
+\end{itemize}
+\subsection{Relations de passage}
+On utilise un cylindre au travers de la surface et on fait tendre le flux vers 0. 
+Le flux de D au travers de la surface latérale vaut donc 0.
+On transforme enfin les intégrales en $\Delta S$
+
+%TODO vérfier sur les diapositives que les relations de passage sont bien les bonnes
+
+%Attention, on n'a pas besoin de refaire les démos, pour le cours jusqu'ici diapostive 5.6 pour le programme de révision du CC2
+\section{Grandeurs énergétiques}
+Dans le vide :
+\begin{itemize}
+    \item Densité volumique dénergie em : $w = \frac{\epsilon_0 E^2}{2}+ \frac{B^2}{2\mu_0}$
+    \item Vecteur de Poyting : $\Pi = \vec{E}\wedge \frac{\vec{B}}{\mu_0}$ défini à partir du champ des réels 
+    \item Pour une onde progressive dans la direction u : $\vec{Pi} = wc\vec{u}$ : Pi est un courant volumique d'énergie em.
+\end{itemize}
+
+Dans le milieu matériel linéaire :
+\begin{itemize}
+    \item Densité volumique dénergie em : $w = \frac{\vec{D}\cdot \vec{E}}{2}+\frac{\vec{H}\cdot \vec{B}}{2}$
+    \item Vecteur de Poyting : $\Pi = \vec{E}\wedge \vec{H}$ défini à partir du champ des réels 
+\end{itemize}
+On introduit la puissance moyenne rayonnée à travers une surface S :
+$$P = \iint_S <\vec{\Pi}>_{temps}\cdot \vec{\dd S}$$
+L'intensité vaut alors $ I = \frac{P}{S}$
+\section{Ondes électromagnétiqus dans un milieu Diélectrique}
+\subsection{Ondes monochormatiques dans un milieu diélectrique LHI}
+On consdidère des milueux localment neutres, isolants et non magnétique :
+\begin{itemize}
+    \item $\rho_{libre} =0$
+    \item $\vec{j_{libre}} = 0$
+    \item $\vec{M} = \vec{0}$
+    \item $\vec{B} = \mu_0\vec{H}$
+\end{itemize}
+On introduit la relation constitutive du milieu : $\vec{\underline{D}} = \epsilon_0\underline{\epsilon_r}(\omega)\vec{\underline{E}}$ er $\epsilon_r = 1+ \chi_e(\omega)$
+\subsubsection{$\epsilon_r$ réel et positif}
+Les équations de Maxwell sont identiques à l'exception que $\epsilon_0\to \epsilon_0\epsilon_r$ :Les ondes em qui peuvent se propager dans le milieu sont semblables à celles de propageant dans le vide.
+
+$$\lap \vec{\underline{E}}+\frac{\omega^2}{c^2}\epsilon_r(\omega)\vec{\underline{E}}=\vec{0}$$
+avec la vitesse de propagation : $\frac{c}{\sqrt{\epsilon_r}}$
+\subsection{Ondes planes progressives monochromatiques}
+On est dans le même type de milieu que dans la section précédente et les ondes ont la même aplitude en tout point d'un même plan, i.e. des ondes planes.
+
+Les équations de maxwell sont de la forme :
+\begin{itemize}
+    \item $\vec{k}\cdot \vec{E} = \vec{k}\cdot \vec{B} = 0$
+    \item $\vec{k}\wedge \vec{E} = \omega \vec{B}$
+    \item $\vec{k}\wedge \vec{B} = -\omega \mu_0\epsilon_0\epsilon_r(\omega)\vec{E}$
+\end{itemize}
+ On peut réécrire l'eq de rpopagtuon pour une onde plane :
+ $$k^2 \vec{\underline{E}} = \frac{\omega^2}{c^2}\epsilon_r(\omega)\vec{\underline{E}}$$
+ 
+ Donc si 
+ \begin{itemize}
+    \item $\epsilon_r$ réel et strictement positif : milieu trabsparent, l'onde se propage sans atténuation de l'amplitude : $k$ réel
+    \item $\epsilon_r$ dépend de $\omega$ : milieu dispersif
+    \item $\epsilon_r =cst$ : milieu non dispersif, c'est le cas du vide.
+ \end{itemize}
+On introduit la vitesse de phase de l'onde :
+$v_{\varphi}(\omega) = \frac{\omega}{k} = \frac{c}{\sqrt{\epsilon_r(\omega)}}$ : La vitesse de phase est plus petite que $c$.
+
+On peut écrire $n(\omega) = \sqrt{\epsilon_r}$.
+
+Dans un milieu matériel, $\lambda = \frac{2\pi}{k} = \frac{\lambda_0}{n(\omega)}$
+
+Le nombre d'onde vaut alors $ k = \frac{\omega}{c}\sqrt{\epsilon_r(\omega)}$
+\subsection{Aspects énergétiques}
+$$\vec{\Pi} = n(\omega)c\epsilon_0E^2\vec{u}$$
+\subsection{Milieu diélectrique LHI non magnétique, non chargé, isolant, transparent et non dispersif}
+\begin{itemize}
+    \item $\omega = \frac{ED}{2}+\frac{B^2}{2\mu_0} = \frac{\epsilon E^2}{2}+\frac{B^2}{2\mu_0} = \epsilon_0n^2E^2$
+    \item $\vec{\pi} = \frac{c}{n}w\vec{u}$
+    \item %TODO finir de noter
+\end{itemize}
+\subsection{Milieux absorpbants}
+On a $\epsilon_r$ complexe donc $\vec{k}$ complexe.
+
+Eq de maxwell, de propagation et de dispersion dans ce cas.
+
+On note $\vec{k} = (k'+ik'')\vec{u}$
+
+On a $\vec{E} = \vec{E_0}e^{-k''z}e^{i(k'z-\omega t)}$
+
+
+L'indice optique est aussi complexe : $\underline{n} = n'+in''$
+
+On a $\epsilon_r' = n'^2-n''^2, \epsilon_r''=2n'\cdot n''$
+
+On a $\underline{n} = \frac{c}{\omega}\underline{k}$
+
+On a $$<\vec{\Pi}> = \frac12 n' c\epsilon_0E_0^2e^{-2k''z}\vec{e_z}$$
+
+Si $\epsilon_r'>0$, il y a propagation sans atténuation, milieu transparent, dans le cas contraire, il n'y a plus de propagation, que de l'atténuation.
+
+Si $\epsilon_r = 0$
+
+Dans ce cas, il n'y a pas de composante B, donc l'ondes est purement électrique.
+
+Comme $\vec{k}\wedge \vec{E} = \vec{B} = 0$, l'onde n'est plus transverse mais longitudinale.
+
+\subsection{Réflexion et transmission d'une onde à l'interface netre 2 diélectriques}
+\subsection{Position du problème}
+On choisit 2 milieux diélectriques LHI non dispersifs, non absorbants, non magnétiques, non chargés et très bon isolants.7
+\subsection{Relations de passage}
+On utilise les relations de passagepour relier les 2  champs du milieu 1 et 2.
+\begin{itemize}
+    \item $\vec{n_{12}}\cdot (\vec{D_2}-\vec{D_1})=0$
+    \item $\vec{n_{12}}\cdot (\vec{B_2}-\vec{B_1})=0$
+     \item $\vec{n_{12}}\wedge (\vec{E_2}-\vec{E_1})=0$
+    \item $\vec{n_{12}}\wedge (\vec{H_2}-\vec{H_1})=0$
+\end{itemize}
+Il y a continuité à l'interface des composantes normales de $\vec{D},\vec{B}$ et des composantes tangentielles de $\vec{D}, \vec{E}$
+\subsection{Relation de Snell-Descartes}
+Les vecteurs do'nde $\vec{k_r}, \vec{k_t}$ sont contenus dans le plan d'incidence déifni par le vecteur d'onde $\vec{k_i}$ et la normale à la surface.
+\subsection{Formules de Fresnel}
+La polarisation est la dirrection du champ électrique
+
+Il faut envisager 2  cas :
+\begin{itemize}
+    \item Polarisation contenue dans le plan d'incidence
+    \item Polarisation perpendiculaire au plan d'incidence
+\end{itemize}
+\subsubsection{Dans le plan de l'onde}
+\subsubsection{Perpendiculaire au plan d'incidence}
+\subsubsection{Angle de Brewster}
+\subsubsection{Coefficients de rélfexion et transmissions en intensité en polarisation}Zzz
+Astuce : R+T = 1
+
+\end{document}

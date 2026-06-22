@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="277.8125mm"
+   height="158.02795mm"
+   viewBox="0 0 277.8125 158.02795"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.4 (1:1.4.4+202605061436+dcaf3e7d9e)"
+   sodipodi:docname="schema_bilan.svg"
+   inkscape:export-filename="schema_bilan.pdf"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="0.71179153"
+     inkscape:cx="546.50833"
+     inkscape:cy="195.98435"
+     inkscape:window-width="1920"
+     inkscape:window-height="1008"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid1"
+       units="mm"
+       originx="18.520833"
+       originy="-114.16451"
+       spacingx="0.26458333"
+       spacingy="0.26458334"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="ArrowWide"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc"
+         id="path30" />
+    </marker>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath8">
+      <path
+         d="M 47.61708,100.4992 H 642.93933 V 463.956 H 47.61708 Z"
+         id="path8" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath7">
+      <path
+         d="M -4.3183333e-4,1.0002678 H 1.0004378 V -0.00166696 H -4.3183333e-4 Z"
+         id="path7" />
+    </clipPath>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(18.520833,-114.16451)">
+    <path
+       style="fill:none;stroke:#03a9f4;stroke-width:1.076;stroke-dasharray:1.076, 1.076;stroke-dashoffset:0"
+       d="M 21.166666,201.08334 H 222.24999"
+       id="path4" />
+    <path
+       style="fill:none;stroke:#8e44ad;stroke-width:1.076;stroke-dasharray:1.076, 1.076;stroke-dashoffset:0"
+       d="M 21.166666,183.88542 H 222.24999"
+       id="path5" />
+    <path
+       style="fill:none;stroke:#ffa500;stroke-width:1.076;stroke-dasharray:1.076, 1.076;stroke-dashoffset:0"
+       d="M 60.854163,227.54167 V 166.6875"
+       id="path6" />
+    <path
+       style="fill:#8e44ad;stroke:#8e44ad;stroke-width:1.076;stroke-dasharray:1.076, 1.076;stroke-dashoffset:0"
+       d="M 119.0625,227.54167 V 182.5625"
+       id="path9" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.2306px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:none;stroke-width:1.076"
+       x="260.32495"
+       y="195.50665"
+       id="text16-2"><tspan
+         sodipodi:role="line"
+         id="tspan16-9"
+         style="font-size:10.2306px;fill:#8e44ad;stroke-width:1.076"
+         x="260.32495"
+         y="195.50665">χ'<tspan
+   style="font-size:10.2306px;baseline-shift:sub;fill:#8e44ad"
+   id="tspan26">i</tspan>(0)</tspan></text>
+    <path
+       style="fill:#ffffff;stroke:#787878;stroke-width:1.076;stroke-opacity:1"
+       d="M 21.166666,227.54167 V 127"
+       id="path1" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#787878;stroke-width:1.076;stroke-opacity:1"
+       d="M 243.41666,227.54167 H 21.166666"
+       id="path2" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.076;stroke-opacity:1"
+       d="m 21.166666,153.45834 h 21.166667 c 12.35336,2.63126 25.135415,22.48958 39.687497,29.10416 0,0 12.930074,2.61857 18.52083,0 6.23789,-2.92167 10.05417,-14.55208 15.34584,-15.875 5.29167,-1.32292 0.52916,47.62501 4.23333,50.27084 4.43853,3.17038 13.49375,-15.875 20.10833,-15.875 h 23.8125 c 17.19792,-5.8629 15.34583,-35.45417 18.52083,-34.39584 1.32292,1e-5 3.87282,54.6825 5.29167,82.02084 0.95851,2.78786 2.7224,2.78786 5.29167,0 3.00492,-10.13324 9.19524,-19.2171 37.04166,-21.16667 h 10.58333"
+       id="path3"
+       sodipodi:nodetypes="cccszsccccccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.2306px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#000000;fill-opacity:1;stroke:#8bc34a;stroke-width:1.076"
+       x="90.306152"
+       y="251.24164"
+       id="text9"><tspan
+         sodipodi:role="line"
+         id="tspan9"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.2306px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.076"
+         x="90.306152"
+         y="251.24164">Micro-ondes</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.2306px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.076"
+       x="116.41666"
+       y="259.29169"
+       id="text10"><tspan
+         sodipodi:role="line"
+         id="tspan10"
+         style="font-size:10.2306px;fill:#000000;fill-opacity:1;stroke-width:1.076"
+         x="116.41666"
+         y="259.29169">IR</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:10.2306px;fill:#000000;fill-opacity:1;stroke-width:1.076"
+         x="116.41666"
+         y="272.07993"
+         id="tspan11">Lointain</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.2306px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.076"
+       x="172.27585"
+       y="240.54578"
+       id="text12"><tspan
+         sodipodi:role="line"
+         id="tspan12"
+         style="font-size:10.2306px;fill:#000000;fill-opacity:1;stroke-width:1.076"
+         x="172.27585"
+         y="240.54578">Visible</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.2306px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.076"
+       x="198.4375"
+       y="261.9375"
+       id="text13"><tspan
+         sodipodi:role="line"
+         id="tspan13"
+         style="font-size:10.2306px;fill:#000000;fill-opacity:1;stroke-width:1.076"
+         x="198.4375"
+         y="261.9375">UV</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.2306px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#ffa500;stroke:none;stroke-width:1.076"
+       x="13.071274"
+       y="169.44199"
+       id="text14"><tspan
+         sodipodi:role="line"
+         id="tspan14"
+         style="font-size:10.2306px;fill:#ffa500;stroke-width:1.076"
+         x="13.071275"
+         y="169.44199">χ'<tspan
+   style="font-size:10.2306px;baseline-shift:sub;fill:#ffa500"
+   id="tspan15">or</tspan>(0)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.2306px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#03a9f4;stroke:none;stroke-width:1.076"
+       x="15.874999"
+       y="204.25836"
+       id="text16"><tspan
+         sodipodi:role="line"
+         id="tspan16"
+         style="font-size:10.2306px;fill:#03a9f4;stroke-width:1.076"
+         x="15.875"
+         y="204.25836">χ'<tspan
+   style="font-size:10.2306px;baseline-shift:sub;fill:#03a9f4"
+   id="tspan17">e</tspan>(0)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.2306px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.076"
+       x="55.677406"
+       y="121.81699"
+       id="text18"><tspan
+         sodipodi:role="line"
+         id="tspan18"
+         style="font-size:10.2306px;fill:#000000;fill-opacity:1;stroke-width:1.076"
+         x="55.677406"
+         y="121.81699">Re(χ) = χ'</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.2306px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8bc34a;stroke:none;stroke-width:1.076"
+       x="15.875"
+       y="230.1875"
+       id="text19"><tspan
+         sodipodi:role="line"
+         id="tspan19"
+         style="font-size:10.2306px;stroke-width:1.076"
+         x="15.875"
+         y="230.1875">0</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.2306px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:none;stroke-width:1.076"
+       x="121.70833"
+       y="238.125"
+       id="text20"><tspan
+         sodipodi:role="line"
+         id="tspan20"
+         style="font-size:10.2306px;fill:#8e44ad;stroke-width:1.076"
+         x="121.70833"
+         y="238.125">ω<tspan
+   style="font-size:65%;baseline-shift:sub;fill:#8e44ad"
+   id="tspan27">0,i</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.2306px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.076"
+       x="254.45015"
+       y="230.07497"
+       id="text20-3"><tspan
+         sodipodi:role="line"
+         id="tspan20-6"
+         style="font-size:10.2306px;fill:#000000;fill-opacity:1;stroke-width:1.076"
+         x="254.45015"
+         y="230.07497">ω<tspan
+   style="font-size:10.2306px;baseline-shift:sub;fill:#000000;fill-opacity:1"
+   id="tspan24-0" /></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.2306px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#03a9f4;stroke:none;stroke-width:1.076"
+       x="203.16682"
+       y="224.21213"
+       id="text21"><tspan
+         sodipodi:role="line"
+         id="tspan21"
+         style="font-size:10.2306px;fill:#03a9f4;stroke-width:1.076"
+         x="203.16682"
+         y="224.21213">ω<tspan
+   style="font-size:65%;baseline-shift:sub;fill:#03a9f4"
+   id="tspan28">0,e</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.2306px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#ffa500;stroke:none;stroke-width:1.076"
+       x="74.083328"
+       y="238.125"
+       id="text22"><tspan
+         sodipodi:role="line"
+         id="tspan22"
+         style="font-size:10.2306px;fill:#ffa500;stroke-width:1.076"
+         x="74.083328"
+         y="238.125">1/τ<tspan
+   style="font-size:10.2306px;baseline-shift:sub;fill:#ffa500"
+   id="tspan23">or</tspan></tspan></text>
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.076;stroke-dasharray:1.076, 1.076;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#ArrowWide);marker-end:url(#ArrowWide)"
+       d="M 227.54166,201.08334 V 182.5625"
+       id="path28" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#ffa500;stroke-width:1.076;stroke-dasharray:1.076, 1.076;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#ArrowWide);marker-end:url(#ArrowWide)"
+       d="M 15.874999,182.5625 V 153.45834"
+       id="path29" />
+  </g>
+</svg>

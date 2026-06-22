@@ -1,0 +1,441 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mecanique Analytique}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\newcommand{\qa}{q_{\alpha}}
+\newcommand{\qdb}{\dot{q_{\beta}}}
+\newcommand{\qb}{q_{\beta}}
+\setcounter{chapter}{2}
+\begin{document}
+\chapter{Variable cycliques, formule de Beltrami et théorème de Noether}
+\section{Variables cycliques}
+\subsection{Définition}
+Soit un système avec $N$ coordonnées généralisées $q_1,\dots,q_N$, et supposons que le lagrangien
+$L(\dot{q}_\alpha,q_\alpha,t)$ ne dépend pas de $q_c$.
+
+L'équation d'Euler-Lagrange pour $q_c$ s'écrit alors :
+\[
+\frac{\dd}{\dd t}\left(\frac{\partial L}{\partial \dot{q}_c}\right)
+-
+\frac{\partial L}{\partial q_c}
+= 0.
+\]
+
+Comme $L$ ne dépend pas de $q_c$, on a :
+\[
+\frac{\partial L}{\partial q_c}=0.
+\]
+
+Donc :
+\[
+\frac{\dd}{\dd t}\left(\frac{\partial L}{\partial \dot{q}_c}\right)=0,
+\]
+et par conséquent :
+\[
+\frac{\partial L}{\partial \dot{q}_c}=\text{cste}.
+\]
+\subsection{Exemples}
+\subsubsection{Exemple 1}
+Exemple : $x_1, x_2, x_3$ sont les coordonnées cartésiennes et $V(\vec{r})$ est indépendant de $x_1$.
+
+On a alors :
+\[
+L=\frac{1}{2}m\left(\dot{x}_1^{\,2}+\dot{x}_2^{\,2}+\dot{x}_3^{\,2}\right)-V(\vec{r}).
+\]
+Comme $L$ ne dépend pas de $x_1$, la coordonnée $x_1$ est cyclique. Donc :
+\[
+\frac{\partial L}{\partial x_1}=0
+\qquad \Rightarrow \qquad
+\frac{\dd}{\dd t}\left(\frac{\partial L}{\partial \dot{x}_1}\right)=0.
+\]
+
+Ainsi :
+\[
+\frac{\partial L}{\partial \dot{x}_1}=m\dot{x}_1= p_1\text{cste},
+\]
+\warningInfo{Potentiel}{Quand un potentiel ne dépend d'une coordonnée, la composante de l'impulsion dans cette m\^eme direction est conservée.}
+\subsubsection{Exemple 2}
+\begin{theorem}[Énergie cinétique en sphérique]
+    $$\frac{1}{2}m\left(\dot{r}^{\,2}+r^{2}\dot{\theta}^{\,2}+r^{2}\sin^{2}\theta\,\dot{\varphi}^{\,2}\right)$$
+\end{theorem}
+En coordonnées sphériques $(r,\theta,\varphi)$, si le potentiel $V(\vec{r})$ est indépendant de $\varphi$, alors
+\[
+L=\frac{1}{2}m\left(\dot{r}^{\,2}+r^{2}\dot{\theta}^{\,2}+r^{2}\sin^{2}\theta\,\dot{\varphi}^{\,2}\right)-V(\vec{r}).
+\]
+Comme $L$ ne dépend pas de $\varphi$, cette coordonnée est cyclique. On a donc
+\[
+\frac{\partial L}{\partial \dot{\varphi}}=\text{cste}
+\qquad \Rightarrow \qquad
+mr^{2}\sin^{2}\theta\,\dot{\varphi}=\text{cste}.
+\]
+\warningInfo{Potentiel invariant autour d'un axe}{Quand un potentiel est invariant autour d'un axe, la composante du moment cinétique selon cet axe est conservée}
+\subsection{Formule de Beltrami}
+Si L est indépendant de t\marginCheck{Si il est indépendant explicitement du temps, bien sur les variables d'une trajectoire dépendent toujours du temps.}
+\[
+\text{Si } \frac{\partial L}{\partial t}=0,\ \text{alors}\ 
+\frac{\dd}{\dd t}\!\left(\sum_{\alpha=1}^{N}\dot q_\alpha
+\frac{\partial L}{\partial \dot q_\alpha}-L\right)=0.
+\]
+
+En effet,
+\begin{align*}
+\frac{\dd}{\dd t}\!\left(\sum_{\alpha}\dot q_\alpha\frac{\partial L}{\partial \dot q_\alpha}-L\right)
+&=
+\sum_{\alpha}\ddot q_\alpha\frac{\partial L}{\partial \dot q_\alpha}
++\sum_{\alpha}\dot q_\alpha\frac{\dd}{\dd t}\!\left(\frac{\partial L}{\partial \dot q_\alpha}\right)
+-\frac{\dd L}{\dd t} \\
+&=
+\sum_{\alpha}\dot q_\alpha\left[\frac{\dd}{\dd t}\!\left(\frac{\partial L}{\partial \dot q_\alpha}\right)-\frac{\partial L}{\partial q_\alpha}\right]
+-\frac{\partial L}{\partial t}.
+\end{align*}
+
+Avec les équations d'Euler--Lagrange,
+\[
+\frac{\dd}{\dd t}\!\left(\frac{\partial L}{\partial \dot q_\alpha}\right)-\frac{\partial L}{\partial q_\alpha}=0,
+\]
+on obtient donc
+\[
+\frac{\dd}{\dd t}\!\left(\sum_{\alpha=1}^{N}\dot q_\alpha\frac{\partial L}{\partial \dot q_\alpha}-L\right)=0
+\]
+\begin{theorem}[Formule de Beltrami]
+    Si L ne dépend pas du temps, 
+    $$\sum_{\alpha=1}^{N}\dot q_\alpha\frac{\partial L}{\partial \dot q_\alpha}-L=\text{cste}$$
+\end{theorem}
+Cette constante vaut l'énergie mécanique. En effet, 
+Pour une particule de masse $m$ soumise à un potentiel $V(\vec r)$,
+\[
+L=\frac12 m\dot{\vec r}^{\,2}-V(\vec r).
+\]
+Alors, d'après la formule de Beltrami,
+\[
+\sum_i \dot r_i\,\frac{\partial L}{\partial \dot r_i}-L
+=\frac12 m\dot{\vec r}^{\,2}+V(\vec r)
+=\text{cste}=E_{\mathrm m}.
+\]
+
+\subsection{Retour sur la corde}
+Si une corde de masse linéique $\mu$ est décrite par $y=f(x)$, alors
+\[
+\dd l=\sqrt{\dd x^2+\dd y^2}
+=\sqrt{1+\left(\frac{\dd y}{\dd x}\right)^2}\,\dd x.
+\]
+Comme $h=y(x)$ et $\dd m=\mu\,\dd l$, l'énergie potentielle vaut
+\[
+V=\int g\,h\,\dd m
+=\mu g\int_{x_i}^{x_f} y(x)\sqrt{1+\left(y'(x)\right)^2}\,\dd x.
+\]
+
+On doit minimiser la fonction, en prenant en compte la contrainte :
+\[
+S = \int_{0}^{D} \mu g y \sqrt{1 + y'^2} + \lambda \left(\sqrt{1 + y'^2} - \frac{l}{D}\right) \dd x
+\]
+où $L$ est le Lagrangien.
+
+Avec $\delta S = 0$, on a :
+\[
+\frac{\partial L}{\partial x} = 0 \quad \Rightarrow \quad y' - \frac{\partial L}{\partial y'} = \text{Cste}
+\]
+
+Ainsi :
+\[
+(\mu g y + \lambda) y'^2 - (\mu g y + \lambda) \sqrt{1 + y'^2} = \text{Cste}
+\]
+
+Soit :
+\[
+\frac{1}{\sqrt{1 + y'^2}} (\mu g y + \lambda) = \text{Cste}
+\]
+
+En posant $\lambda = \mu g (y_0 + S)$, on obtient :
+\[
+f = \frac{y_0 + S}{c} \quad \Rightarrow \quad \frac{\partial}{\partial y'}\sqrt{1 + y'^2} = 0
+\]
+
+Puis :
+\[
+z = \frac{y + S}{c}
+\]
+% TODO mieux expliquer cet exemple
+$z^2 = 1+c^2z'^2$ dont la solution est $z=ch(x/c + c')$
+
+La solution générale est $y(x) = c(ch((x-d/2)/c)-ch(D/2c))+H$
+
+\section{Théorème de Noether}
+\subsection{Énoncé}
+On fait une transformation de coordonnées généralisées :
+$q_{\alpha}\to f_{\alpha}(q_{\alpha})$ peut être rendues infiniment petits
+
+On peut écrire $q_{\alpha} \to q_{\alpha}+\epsilon_{\alpha}$ qui est très petit.
+
+Soient $L$ qui transforme $L\to L + \frac{\dd \delta F-q_{\alpha,t}}{\dd t}$
+
+On peut supposer que 
+$$\delta L\to \frac{\dd}{\dd}\delta F$$
+
+\begin{theorem}
+    $\sum_{\alpha}\frac{\partial L}{\partial \dot{q_{\alpha}}}\epsilon_{\alpha}-\delta F=Cst$
+\end{theorem}
+
+% Soit une transformation de coordonnées infinitésimale :
+% \[
+% q_\alpha \to q_\alpha + \epsilon_\alpha
+% \]
+% où $\epsilon_\alpha$ sont infinitésimaux.
+
+% Le lagrangien transforme comme :
+% \[
+% L \to L + \frac{\dd}{\dd t}\delta F
+% \]
+
+% La variation du lagrangien s'écrit :
+% \[
+% \delta L = \sum_\alpha \frac{\partial L}{\partial \dot{q}_\alpha}\dot{\epsilon}_\alpha + \sum_\alpha \frac{\partial L}{\partial q_\alpha}\epsilon_\alpha
+% \]
+
+% En réarrangeant :
+% \[
+% \delta L = \sum_\alpha \frac{\dd}{\dd t}\left(\frac{\partial L}{\partial \dot{q}_\alpha}\epsilon_\alpha\right) - \sum_\alpha \frac{\dd}{\dd t}\left(\frac{\partial L}{\partial \dot{q}_\alpha}\right)\epsilon_\alpha + \sum_\alpha \frac{\partial L}{\partial q_\alpha}\epsilon_\alpha
+% \]
+
+% Par les équations d'Euler-Lagrange, le second et troisième termes s'annulent :
+% \[
+% \delta L = \frac{\dd}{\dd t}\left(\sum_\alpha \frac{\partial L}{\partial \dot{q}_\alpha}\epsilon_\alpha\right)
+% \]
+
+% Puisque $\delta L = \frac{\dd}{\dd t}\delta F$, on obtient :
+% \[
+% \frac{\dd}{\dd t}\left(\sum_\alpha \frac{\partial L}{\partial \dot{q}_\alpha}\epsilon_\alpha - \delta F\right) = 0
+% \]
+
+% Par conséquent :
+% \[
+% \boxed{\sum_\alpha \frac{\partial L}{\partial \dot{q}_\alpha}\epsilon_\alpha - \delta F = \text{Cste}}
+% \]
+\subsubsection{Le Concept de Symétrie Continue}
+On considère une transformation infinitésimale des coordonnées généralisées $q_\alpha$ :
+$$q_\alpha \to q_\alpha' = q_\alpha + \epsilon_\alpha$$
+Ici, $\epsilon_\alpha$ représente une très petite variation.\marginInfo{qui peut dépendre du temps, des positions ou des vitesses.} 
+
+
+Une transformation est une symétrie si elle laisse les équations du mouvement invariantes.\marginTips{Cela signifie que le Lagrangien ne change pas, ou change seulement par l'ajout d'une **dérivée totale par rapport au temps** d'une fonction $\delta F$ :}
+$$L(q', \dot{q}', t) = L(q, \dot{q}, t) + \frac{d}{dt}\delta F$$
+Cette forme garantit que l'action $S = \int L dt$ ne change qu'aux bornes, ce qui ne modifie pas le chemin extrémal (les équations d'Euler-Lagrange restent les mêmes).
+
+
+\subsubsection{Développement de la Variation $\delta L$}
+On calcule la variation du Lagrangien induite par le changement $q_\alpha \to q_\alpha + \epsilon_\alpha$. Par un développement de Taylor au premier ordre :
+$$\delta L = \sum_\alpha \left( \frac{\partial L}{\partial q_\alpha}\delta q_\alpha + \frac{\partial L}{\partial \dot{q}_\alpha}\delta \dot{q}_\alpha \right)$$
+Puisque $\delta q_\alpha = \epsilon_\alpha$ et $\delta \dot{q}_\alpha = \dot{\epsilon}_\alpha$, on a :
+$$\delta L = \sum_\alpha \frac{\partial L}{\partial q_\alpha}\epsilon_\alpha + \sum_\alpha \frac{\partial L}{\partial \dot{q}_\alpha}\dot{\epsilon}_\alpha$$
+
+\subsubsection{Manipulation par Intégration par Parties}
+L'objectif est de faire apparaître les équations du mouvement. On utilise la règle de dérivation d'un produit :
+$$\frac{d}{dt} \left( \frac{\partial L}{\partial \dot{q}_\alpha} \epsilon_\alpha \right) = \frac{d}{dt} \left( \frac{\partial L}{\partial \dot{q}_\alpha} \right) \epsilon_\alpha + \frac{\partial L}{\partial \dot{q}_\alpha} \dot{\epsilon}_\alpha$$
+En isolant le terme en $\dot{\epsilon}_\alpha$ et en réinjectant dans l'expression de $\delta L$, on obtient :
+$$\delta L = \sum_\alpha \left[ \frac{\partial L}{\partial q_\alpha} - \frac{d}{dt} \left( \frac{\partial L}{\partial \dot{q}_\alpha} \right) \right] \epsilon_\alpha + \sum_\alpha \frac{d}{dt} \left( \frac{\partial L}{\partial \dot{q}_\alpha} \epsilon_\alpha \right)$$
+
+\subsubsection{Application des Équations d'Euler-Lagrange}
+
+Pour un système physique réel, les coordonnées suivent les équations d'Euler-Lagrange :
+$$\frac{d}{dt} \left( \frac{\partial L}{\partial \dot{q}_\alpha} \right) - \frac{\partial L}{\partial q_\alpha} = 0$$
+
+
+En appliquant ce théorème, le premier terme entre crochets dans l'expression de $\delta L$ s'annule identiquement. Il ne reste que la dérivée totale :
+$$\delta L = \frac{d}{dt} \left( \sum_\alpha \frac{\partial L}{\partial \dot{q}_\alpha} \epsilon_\alpha \right)$$
+
+\subsubsection{Identification de la Constante de Mouvement}
+Nous avons deux expressions pour $\delta L$ :
+\begin{enumerate}
+    \item Par l'hypothèse de symétrie : $\delta L = \frac{d}{dt} \delta F$
+    \item Par le calcul cinématique : $\delta L = \frac{d}{dt} \left( \sum_\alpha p_\alpha \epsilon_\alpha \right)$ (où $p_\alpha = \frac{\partial L}{\partial \dot{q}_\alpha}$ est le moment conjugué).
+\end{enumerate}
+
+En égalant les deux :
+$$\frac{d}{dt} \left( \sum_\alpha \frac{\partial L}{\partial \dot{q}_\alpha} \epsilon_\alpha \right) = \frac{d}{dt} \delta F \implies \frac{d}{dt} \left( \sum_\alpha \frac{\partial L}{\partial \dot{q}_\alpha} \epsilon_\alpha - \delta F \right) = 0$$
+
+\criticalInfo{Grandeur Conservée}{
+La quantité entre parenthèses est donc une constante du mouvement (intégrale première) :
+$$\mathcal{J} = \sum_\alpha \frac{\partial L}{\partial \dot{q}_\alpha}\epsilon_\alpha - \delta F = \text{Cste}$$
+}
+
+
+
+\subsection{Exemple 1}
+% On étudie une particule en chute libre sans fronttement, avec l'énergie potentielle nulle à l'origine.
+
+% On écrit : $L = \frac12 m \dot{\vec{r}}-mgz$
+
+% Si on écrit $ x\to x+\epsilon$, on a $\dot{x}\to \dot{x}$
+
+% On a alors $\epsilon_x = \epsilon, \epsilon_y=\epsilon_z=0$
+
+% Donc ici $ \frac{\partial L}{\partial \dot{x}}\epsilon = cst$
+
+% donc $m\dot{x}\epsilon=cst\rightarrow P_x = cst$
+
+% Mais aussi : $z\to z+\epsilon$ donc $L-mg\epsilon = L-\frac{\dd }{\dd t}(mg\epsilon t)$
+
+% Donc $\dot{z}=-gt+C$
+
+On considère une particule de masse $m$ en chute libre dans un champ de pesanteur uniforme $g$ dirigé selon $-\vec{z}$. Le Lagrangien s'écrit :
+$$L = T - V = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2 + \dot{z}^2) - mgz$$
+
+
+\subsubsection{Symétrie par translation spatiale ($x$)}
+
+On applique une translation infinitésimale selon l'axe $x$ : $x \to x + \epsilon$.
+On observe les variations suivantes :
+\begin{itemize}
+    \item Variation des coordonnées : $\epsilon_x = \epsilon$, $\epsilon_y = 0$, $\epsilon_z = 0$.
+    \item Variation des vitesses : $\dot{x} \to \frac{d}{dt}(x+\epsilon) = \dot{x}$, donc $\delta \dot{x} = 0$.
+    \item Variation du Lagrangien : Comme $L$ ne dépend pas de $x$, $\delta L = 0$.
+\end{itemize}
+
+
+Ici, $\delta F = 0$ car le Lagrangien est strictement invariant. La constante de mouvement issue du théorème de Noether est :
+$$\mathcal{J}_x = \frac{\partial L}{\partial \dot{x}}\epsilon_x - \delta F = (m\dot{x})\epsilon - 0 = \text{Cste}$$
+Puisque $\epsilon$ est un paramètre arbitraire, on en déduit que la composante du moment linéaire est conservée :
+$$\boxed{p_x = m\dot{x} = \text{Cste}}$$
+
+
+\subsubsection{Symétrie par translation spatiale ($z$)}
+
+On applique maintenant $z \to z + \epsilon$. 
+Ici, le Lagrangien n'est pas invariant car le potentiel dépend de $z$ :
+$$L \to \frac{1}{2}m\dot{\vec{r}}^2 - mg(z+\epsilon) = L - mg\epsilon$$
+
+\warningInfo{Transformation de la fonction $F$}{
+Pour que le théorème de Noether s'applique, il faut exprimer la variation $\delta L = -mg\epsilon$ comme une dérivée totale par rapport au temps. On pose :
+$$-mg\epsilon = \frac{d}{dt}(-mg\epsilon t) \implies \delta F = -mg\epsilon t$$
+}
+
+
+La grandeur conservée associée à la translation selon $z$ est :
+$$\mathcal{J}_z = \frac{\partial L}{\partial \dot{z}}\epsilon_z - \delta F = (m\dot{z})\epsilon - (-mg\epsilon t) = \text{Cste}$$
+En factorisant par $\epsilon$ :
+$$m\dot{z} + mgt = C \implies m(\dot{z} + gt) = C$$
+
+
+\checkInfo{Résultat Physique}{
+En divisant par $m$, on retrouve bien la loi de la chute libre :
+$$\dot{z} = -gt + \frac{C}{m}$$
+Cela montre que même si le Lagrangien n'est pas invariant ($\delta L \neq 0$), la structure de "dérivée totale" permet de trouver l'intégrale première du mouvement.
+}
+
+\tipsInfo{Interprétation}{
+La conservation de $p_x$ découle du fait que l'espace est homogène selon $x$ (pas de force). La "conservation" de $m\dot{z} + mgt$ est simplement une réécriture de la deuxième loi de Newton appliquée à un système soumis à une force constante.
+}
+
+% \subsection{Exemple : système invariant par rotation autour d'un axe}
+
+% Matrice de rotation autour d'un $\vec{n}$ générique :
+% $$P = (0 -n_3 n_2//n_3 0 -n_1 // -n_2 n_1  0)$$
+
+% Donc $\vec{r}\to \vec{r}' = \vec{r}+\epsilon \vec{n}\wedge \vec{r}$
+
+% Imaginons une situation
+% %TODO faire la rotation
+% Système invariant autour d'un axe : $\vec{n}\cdot \vec{L} = Cst$
+
+
+\subsection{Exemple : Système invariant par rotation autour d'un axe}
+
+On considère une rotation infinitésimale d'un angle $\epsilon$ autour d'un axe de direction $\vec{n}$ (où $\|\vec{n}\|=1$). La variation de la position d'une particule s'écrit :
+$$\vec{r} \to \vec{r} + \delta \vec{r} \quad \text{avec} \quad \delta \vec{r} = \epsilon (\vec{n} \wedge \vec{r})$$
+En composantes, cela peut s'écrire via le produit matriciel avec la matrice antisymétrique $P$ que vous avez définie : $\delta \vec{r} = \epsilon P \vec{r}$.
+
+
+\subsubsection{Invariance du Lagrangien}
+Pour un système invariant par rotation (par exemple, une particule dans un potentiel central $V(r)$), le Lagrangien ne change pas lors de cette transformation.
+Puisque $\delta L = 0$, nous sommes dans le cas où :
+$$\delta F = 0$$
+
+\subsubsection{Calcul de la grandeur conservée}
+D'après le théorème de Noether, la constante du mouvement $\mathcal{J}$ est donnée par le produit scalaire des moments conjugués et de la variation des coordonnées :
+$$\mathcal{J} = \sum_\alpha \frac{\partial L}{\partial \dot{q}_\alpha} \delta q_\alpha - \delta F$$
+En notation vectorielle, avec $\vec{p} = \frac{\partial L}{\partial \dot{\vec{r}}} = m\dot{\vec{r}}$, on a :
+$$\mathcal{J} = \vec{p} \cdot (\epsilon \vec{n} \wedge \vec{r})$$
+
+\warningInfo{Manipulation des produits mixtes}{
+On utilise la propriété d'invariance circulaire du produit mixte : $\vec{A} \cdot (\vec{B} \wedge \vec{C}) = \vec{B} \cdot (\vec{C} \wedge \vec{A})$.
+$$\mathcal{J} = \epsilon \vec{n} \cdot (\vec{r} \wedge \vec{p})$$
+}
+
+\subsubsection{Identification du moment cinétique}
+On reconnaît dans l'expression précédente le vecteur moment cinétique $\vec{L} = \vec{r} \wedge \vec{p}$.
+$$\mathcal{J} = \epsilon (\vec{n} \cdot \vec{L}) = \text{Cste}$$
+
+
+Puisque le paramètre de rotation $\epsilon$ est arbitraire, c'est la projection du moment cinétique sur l'axe de symétrie qui est conservée :
+$$\boxed{\vec{n} \cdot \vec{L} = \text{Cst}}$$
+
+
+\criticalInfo{Symétrie Isotrope}{
+Si le système est invariant par rotation autour de \textbf{n'importe quel axe} (potentiel central), alors chaque composante de $\vec{L}$ est conservée séparément. Le vecteur moment cinétique $\vec{L}$ est donc un vecteur constant dans le temps.
+}
+
+\tipsInfo{Lien avec la matrice $P$}{
+La matrice $P$ est le générateur de la rotation. Le fait que $\vec{L}$ apparaisse ici montre que le moment cinétique est, mathématiquement, le générateur infinitésimal des rotations dans l'espace des phases.
+}
+
+
+\chapter{Équation de hamilton}
+\section{Notions de variable conjuguées}
+On dédouble les coordonnées. On pose $Y_i = \dot{X_i}$.
+
+On peut les lier aux transformations canoniques.
+
+Question : Comment savoir si on peut arriver à un système d'équations connue. C'est légendre qui se la pose.
+
+Il est utile de définir
+
+% page 9 10 et 11 à faire
+\end{document}
+

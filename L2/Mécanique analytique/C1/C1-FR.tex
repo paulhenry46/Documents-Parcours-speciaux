@@ -1,0 +1,86 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mecanique Analytique}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\newcommand{\qa}{q_{\alpha}}
+\newcommand{\qdb}{\dot{q_{\beta}}}
+\newcommand{\qb}{q_{\beta}}
+%\setcounter{chapter}{3}
+\begin{document}
+\chapter{Mécanique lagrangienne}
+\section{Introduction}
+On se place dans un système dans un espace en D dimensions de coordonéees $x_1,\dots, x_n$\marginCritical{Cela ne correspond pas nécéssairement aux coordonnées de l'espace. Si on étudie 2 particules, cela correspond à la somme des degrés de libertés des 2 particules.}
+\begin{definition}[Contrainte holonome]
+     On étudie une contrainte qui s'écrit de la forme $$f(x_1,\dots,x_n,t) = 0$$
+    \begin{itemize}
+        \item Si $f$ ne dépend pas du temps, c'est une contrainte holon\^ome scléron\^ome
+        \item Si il y a une dépendance selon $t$, elle est dite rhéon\^ome
+    \end{itemize}
+\end{definition}
+\begin{proposition}[Degrés de libertés]
+    Un système déterminé par $D$ coordonnées indépendantes mais soumis à $k$ contraintes holonômes indépendantes
+a $N = D - k$ degrés de liberté.
+\end{proposition}
+Il faut donc N coordonnées généralisées indépendante
+pour décrire entièrement le système. 
+\section{Lois de Newton et d'Euler-Lagrange}
+Soit un système de D dimensions et soumis à k contraintes indépendantes. Le système est soumis aux forces conservatrices $\vec{F_1},\dots, \vec{F_n}$, dont la somme vaut $\vec{F_{ext}}$. On suppose que le mouvement se fait sans frottements
+\begin{theorem}[Principe d'Almebert]
+    Il y a k forces $\vec{F_{C_i}}$ pour satisfaire les contraintes $f_i(\vec{x})=0$ pour un mouvement sans frottement. Alors 
+    $$\vec{F_{C_i}}\propto \vec{\nabla}f_i$$
+\end{theorem}
+\begin{definition}[Lagrangien]
+    $$L(q_{\alpha}, \dot{q_{\alpha}}, t) = U-V = \frac12 m\ddot{x}^2-V$$
+\end{definition}
+\begin{theorem}[Équation d'Euler-Lagrange]
+    $$\frac{\dd }{\dd t}(\frac{\partial L}{\partial \dot{q_{\alpha}}})-\frac{\partial L}{\partial q_{\alpha}} = 0$$
+\end{theorem}
+\end{document}
+

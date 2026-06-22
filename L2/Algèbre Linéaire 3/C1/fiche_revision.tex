@@ -1,0 +1,175 @@
+\documentclass[french]{yLectureNote}
+
+\title{Fiche de révision}
+\subtitle{Synthèse des notions essentielles}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{}
+
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{tkz-tab}
+\usepackage{tabularx}
+\usepackage{awesomebox}
+\usepackage{menukeys}
+\usepackage{fancyhdr}
+\usepackage{blindtext}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{pifont}
+\usepackage{array}
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+
+\begin{document}
+\chapter{Produit scalaire}
+\section{Produit scalaire et norme}
+
+\begin{definition}
+[Produit scalaire]
+    Soit $E$ un ev sur $\R$ de dimebsion finie ou non.
+    $$\varphi : E\times E \to \R, (x,y)\to \varphi(x,y)$$
+    \begin{itemize}
+        \item $\varphi$ est une forme (l'espace d'arrivée est $\R$) bilinéaire si $x\to \varphi(x,y)$ est linéaire, de m\^eme pour y
+        \item $\varphi$ est symétriuque $\iff \varphi(x,y) = \varphi(y,x)$
+        \item $\forall x, \varphi(x,x) \geq0$
+        \item $\varphi$ est définie positive $\iff \forall x, \varphi(x,x)\geq 0 \wedge \varphi(x,x) = 0 \Rightarrow x=0$
+    \end{itemize}
+    On dit que $\varphi$ est un produit scalaire $\iff \varphi$ est une forme bilinéaire symétrique définie positive.
+\end{definition}
+\begin{definition}
+[Espace Euclidien]
+    SI la dimension de $E$ est finie et $\varphi$ produit scalaire, alors la paire $(E,\varphi)$ est un espace euclidien.
+
+
+\end{definition}
+
+\begin{definition}
+[espace Préhilbertien]
+        Si la dimension de $E$ est infinie, et $\varphi$ produit scalaire, alors la paire $(E,\varphi)$ est un espace préhilbertien.
+
+\end{definition}
+\begin{definition}
+[Norme]
+    On note la norme associée au produit scalaire $\sqrt{(x|x)}$.
+
+\end{definition}
+
+\begin{proposition}
+[Inégalité de Cauchy Swartz]
+    On munit E d'un produit scalaire, alors $\forall(x,y), (x|y) \leq ||x||||y||$
+
+\end{proposition}
+\marginCheck[Cas d'égalité]{ Le produit de deux vecteurs ne peut pas dépasser le produit de leurs longueurs. L'égalité n'arrive que si x et y sont colinéaires.}
+\begin{proposition}
+[Propriétés de la norme]
+    \begin{itemize}
+        \item $\forall x\in E, ||x||\geq 0$
+        \item $||x|| = 0 \Rightarrow x=0$
+        \item $||\lambda x|| = |\lambda|||x||$
+        \item $||x+y|| \leq ||x||+||y||$
+    \end{itemize}
+
+\end{proposition}
+
+\begin{proposition}
+[Calcul du produit scalaire]
+    \begin{itemize}
+        \item $(x|y) = \frac12 (||x+y||^2-||x||^2-||y||^2)$
+        \item $(x|y) = \frac12(-||x-y||^2+||x||^2+||y||^2)$
+        \item $(x|y) = \frac14(||x+y||^2-||x-y||^2)$
+        \item $||x+y||^2+||x-y||^2 = 2(||x||^2+||y||^2)$
+    \end{itemize}
+
+\end{proposition}
+
+\section{Orthogonalité}
+
+\begin{definition}
+[Vecteurs orthogonaux]
+    Deux vecteurs y et x sont orthogonaux quand leur produit scalaire est nul. On note $x\perp y$
+
+\end{definition}
+
+\begin{theorem}
+[Pythagore]
+    En réels, $x\perp y\iff ||x+y||^2 = ||x||^2+||y||^2$
+
+\end{theorem}
+\marginCritical[Validité]{Attention, Pythagore ne marche sous cette forme simple que dans les espaces réels.}
+\begin{definition}
+[Base orthogonale/orthonormée]
+Une base $e_1,\dots,e_n$ est orthogonale quand $\forall i,j, i\neq j, e_i\perp e_j$ 
+
+    Une base est orthonormée quand $\forall i\neq j, e_i\perp e_j, \forall i, ||e_i||=1$
+
+\end{definition}
+
+\begin{proposition}
+[Décomposition dans une base orthonormée]
+Si $e_1\dots e_n$ est un BON, alors $\forall x\in E, x= (e_1|x)e_1+\dots + (e_n|x)e_n$
+    Les coordonnées de x dans la base $e_1,\dots, e_n$, notées $(x_1,\dots, x_n)$ sont données par $x_i = (e_i|x)$
+
+\end{proposition}
+
+\begin{proposition}
+[Procédé de Gram-Schmidt]
+Soit $(u_1, _dots, u_n)$ une base quelconque de $E$. Il existe une base orthonormée $e_1,\dots, e_n$
+    telle que $\forall p, Vect(e_1,\dots, e_p) = Vect(u_1,\dots, u_p)$
+
+\end{proposition}
+
+\section{Sous espace orthogonal et projection}
+
+\begin{definition}
+[Orthogonal d'une partie]
+Soit E un espace euclidien. A est une partie de E. L'orthogonal de A, noté 
+    $A^{\perp}$ est donné par $A^{\perp} = \{y\in E/ \forall a \in A (y|a)=0\}$
+
+\end{definition}
+
+\begin{proposition}
+[Orthogonal d'une partie : sous-espace]
+$A^{\perp}$ est toujours un sev de E m\^eme si A n'est qu'une partie quelconque de E.
+
+\end{proposition}
+
+\begin{proposition}[Supplémentaire orthogonal]
+[Supplémentaire orthogonal]
+$F$ sev de E euclicien, F et $F^{\perp}$ sont supplémentaires $\iff E = F\oplus F^{\perp}$
+
+\end{proposition}
+
+\marginCritical[Validité]{En dimension infinie, cette propriété (Supplémentaire orthogonal) est fausse en général !}
+
+\begin{proposition}
+[Projection orthogonale]
+F un SEV de E, $x\in E$. Alors $\forall y \in F, ||x-p_f(x)||\leq||x-y|| \iff ||x-p_f(x)|| = \min(||x-y||)$
+    C'est la distance de x à F et $p_f(x)$ est la projection orthogonale de x sur F.
+
+\end{proposition}
+
+\end{document}

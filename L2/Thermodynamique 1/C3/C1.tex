@@ -1,0 +1,200 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Introduction à la termodynamique}
+\subtitle{Thermodynamique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\begin{document}
+\setcounter{chapter}{2}
+\chapter{Principe de conservation de l'énergie}
+
+On étudie un système fermé $\Omega$.
+
+\section{Énoncé et Conservation}
+
+\begin{theorem}[Principe de conservation de Lavoisier]
+    L'énergie est une grandeur conservative, elle ne peut \^etre ni créée, ni détruite.
+\end{theorem}
+
+% \begin{theorem}[Énergie de l'Univers]
+%     L'énergie d'un système isolé est une constante. L'énergie de l'univers est notée $E_0$. 
+%     C'est une grandeur extensive, donc $E_{\Omega} + E_{\bar{\Omega}} = E_0$.
+% \end{theorem}
+
+\tipsInfo{Principe de localité}{Pour que la variation d'énergie soit instantanée, le transfert doit s'effectuer physiquement à la frontière $\partial \Omega$ sous forme de flux $\varphi_{\partial \Omega}$.}
+
+\begin{theorem}[Bilan d'énergie]
+    $$\frac{\dd E_{\Omega}}{\dd t} = \phi_{\partial \Omega}$$
+\end{theorem}
+
+\section{Premier principe de la thermodynamique}
+
+\subsection{Nature de l'énergie et des échanges}
+L'énergie totale se décompose en :
+$$E_{\Omega} = E_{C} + E_p + U$$
+\begin{itemize}
+    \item $E_c$ : Énergie cinétique macroscopique.
+    \item $E_p$ : Énergie potentielle macroscopique.
+    \item $U$ : Énergie interne (microscopique).
+\end{itemize}
+
+\begin{definition}[Flux d'énergie]
+    On appelle flux d'énergie sous forme de chaleur ($\phi_Q$) tous les flux d'énergie qui ne sont pas mécaniques ($\phi_W$), c'est-à-dire non liés au mouvement de la frontière.
+\end{definition}
+
+
+
+\subsection{Énoncé du premier principe}
+
+\begin{theorem}[Premier principe de la thermodynamique]
+    Pour une transformation entre un état $i$ et un état $f$ :
+    $$\Delta_{if} (E_c + E_p + U) = W_{i \to f} + Q_{i \to f}$$
+\end{theorem}
+
+\criticalInfo{Utilité}{En pratique, pour un système au repos macroscopique, on a $\Delta U = W + Q$. Ce principe est l'outil majeur pour calculer la chaleur $Q$ échangée, souvent difficile à mesurer directement.}
+
+\section{Capacités thermiques et Enthalpie}
+
+\begin{definition}[Capacité thermique]
+    Quantité d'énergie thermique nécessaire pour augmenter la température d'un corps de $\dd T$:
+    $$\delta Q = C\dd T$$
+\end{definition}
+
+\subsection{Capacité à volume constant ($C_v$)}
+À volume constant, $\delta W = 0$, donc $\dd U = \delta Q = C_v \dd T$.
+\begin{theorem}[Définition de $C_v$]
+    $C_v = \left(\frac{\partial U}{\partial T}\right)_V$.
+\end{theorem}
+
+\subsection{L'Enthalpie ($H$) et $C_p$}
+Pour une transformation monobare ($P_{ext} = Cst$), le travail est $W = -P_{ext}\Delta V$.
+
+\begin{flalign*}
+    Q &= \Delta U - W = \Delta U + P_{ext}\Delta V \\
+      &= (U_f + P_{ext}V_f) - (U_i + P_{ext}V_i) \\
+      &= \Delta(U + PV)
+\end{flalign*}
+
+\begin{theorem}[Enthalpie]
+    On définit la fonction d'état extensive Enthalpie par : $H = U + PV$.
+    Pour une transformation monobare, la chaleur échangée est égale à la variation d'enthalpie : $Q = \Delta H$.
+\end{theorem}
+
+\begin{theorem}[Capacité thermique à pression constante]
+    $C_p = \left(\frac{\partial H}{\partial T}\right)_P$.
+\end{theorem}
+
+\section{Lois de Joule et Gaz Parfaits}
+
+\begin{theorem}[Première loi de Joule]
+    Pour un Gaz Parfait (GP), l'énergie interne ne dépend que de la température : $U = U(T)$.
+    Par extension, $H = H(T)$ (Seconde loi de Joule).
+\end{theorem}
+
+\subsection{Relation de Mayer et Gamma}
+\begin{theorem}[Relations fondamentales]
+    $$C_p - C_v = nR \quad \text{et} \quad \gamma = \frac{C_p}{C_v}$$
+\end{theorem}
+
+\warningInfo{Résolution de système}{En combinant ces deux relations, on obtient les expressions indispensables :
+$$C_v = \frac{nR}{\gamma-1} \quad ; \quad C_p = \frac{nR\gamma}{\gamma-1}$$}
+
+\section{Transformations Adiabatiques (Lois de Laplace)}
+
+\criticalInfo{Hypothèses de Laplace}{
+    Pour utiliser les relations suivantes, il faut impérativement :
+    \begin{itemize}
+        \item Un Gaz Parfait (GP).
+        \item Une transformation Adiabatique ($Q=0$).
+        \item Une transformation Quasi-Statique (QS).
+    \end{itemize}
+}
+
+\begin{theorem}[Lois de Laplace]
+    $$PV^{\gamma} = Cst \quad ; \quad TV^{\gamma-1} = Cst \quad ; \quad P^{1-\gamma}T^{\gamma} = Cst$$
+\end{theorem}
+
+\explanation{a1}{Le travail pour une adiabatique QS se calcule par $\Delta U$ ou par intégration de $-P dV$ en remplaçant $P$ par $Cst/V^\gamma$.}
+
+\begin{flalign*}
+    W_{i\to f} &= \Delta U = C_v \Delta T = \frac{nR}{\gamma-1}(T_f - T_i) = \frac{P_f V_f - P_i V_i}{\gamma-1} \explain{a1}{right}{0}{0.5}{}
+\end{flalign*}
+
+
+
+\section{Expériences de Détente}
+
+\subsection{Détente de Joule et Gay-Lussac}
+Détente d'un gaz dans le vide (adiabatique et sans travail).
+\checkInfo{Résultat}{Comme $W=0$ et $Q=0$, alors $\Delta U = 0$. Pour un GP, la température reste constante ($T_i = T_f$).}
+
+\subsection{Détente de Joule-Thomson}
+Écoulement permanent à travers un corps poreux (ou étranglement).
+\checkInfo{Résultat}{La transformation est isenthalpique : $\Delta H = 0$. Pour un GP, cela implique également $T_i = T_f$.}
+\section{Difficultés}
+
+\subsection{Confusion entre $P$, $P_{ext}$ et $P_{atm}$}
+C'est l'erreur la plus fréquente dans le calcul du travail $W = \int -P_{ext} \dd V$.
+\begin{itemize}
+    \item \textbf{Transformation brutale :} $P_{ext}$ est la pression finale d'équilibre ($P_f$). Elle est constante.
+    \item \textbf{Transformation quasi-statique :} On considère $P_{ext} = P_{gaz}$ à chaque instant. On peut alors utiliser la loi des gaz parfaits pour remplacer $P$ dans l'intégrale.
+    \item \textbf{Piston à l'équilibre :}  $P_{ext}$ peut inclure le poids du piston : $P_{ext} = P_{atm} + \frac{m_p g}{S_p}$.
+\end{itemize}
+
+\subsection{Diagramme de Clapeyron}
+Le diagramme $(P, V)$ permet de visualiser le travail comme l'aire sous la courbe.
+\begin{itemize}
+    \item \textbf{Chemin :} Pour aller d'un point A à un point B, l'aire est plus grande pour une transformation monobare (rectangle) que pour une isotherme (arc d'hyperbole).
+    \item \textbf{Cycle :} Si le cycle est parcouru dans le sens horaire, le travail total est négatif (moteur). S'il est anti-horaire, il est positif (récepteur).
+\end{itemize}
+
+\subsection{Différencier $\Delta U$ et $\Delta H$}
+\tipsInfo{Astuce de choix}{
+    \begin{itemize}
+        \item Utiliser $\Delta U = W + Q$ pour les transformations à \textbf{volume constant} (isochores).
+        \item Utiliser $\Delta H = Q$ pour les transformations \textbf{monobares} (où $W$ est déjà "absorbé" dans la définition de $H$).
+    \end{itemize}
+}
+\end{document}
+
+

@@ -1,0 +1,438 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Algèbre linéaire 3*}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lombardi@math.univ-toulouse.fr
+\professor{E.Lombardie}
+\usepackage{graphicx}%-pour mettre des images
+\usepackage[utf8]{inputenc}%encodage
+\usepackage{geometry}%pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%pour les boites d'exercices, de pbq et de croquis d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%Pour les boites info, danger et autres
+\usepackage{menukeys}%Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%pour les liens
+\usepackage{hyperref}%pour les liens (\`a mettre en dernier)
+\usepackage{caption}%pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\begin{document}
+\chapter{Espace euclidien}
+%C2 : Applications linéaires sur espaces euclidiens
+%C3 : Espaces hermitiens
+%C4 : Formes quadratiques
+%C5 : Introduction aux groupes
+
+%TD = U-111/U-112
+%CM : B-08/B-07/Grignard
+\section{Rappels}
+\begin{itemize}
+ \item \(Mat(f)_{b,b} = Mat(Id)_{e,b}Mat(f)_{e,e}Mat(Id)_{b,e}\)
+ \item \(M_{AB} = M_{\cdot B}\dots M_{A\cdot}\)
+ \item Matrice de passage : La matrice de passage de \(e\) à \(b\) est la matrice Identité de \(b\) à \(e\) : \(Mat(Id)_{b,e}\) : on écrit en colonne en fonction de e les vecteurs de \(b\) : $$Mat(Id)_{b,e} =  M(I_d)_{e\to b} = \begin{pmatrix} 
+\color{blue}\downarrow & \color{blue}\downarrow & \color{blue}\downarrow \\
+\color{blue}b_1 & \color{blue}b_2 & \color{blue}b_3 \\
+\color{blue}\downarrow & \color{blue}\downarrow & \color{blue}\downarrow 
+\end{pmatrix}$$
+ %\item Matrice de Passage de E à B : On écrit les vecteur colonnes de B en fonction de E : \(M(I_d)_{B,E} = M(I_d)_{E\to B}\)
+ %\item Donc \(M(f)_{BB} = M(I_d)_{EB}M(f)_{EE}M(I_d)_{BE}\)
+\end{itemize}
+\section{Déterminer des éléments caractéristiques}
+\subsection{À partir de la matrice}
+\checkInfo{Méthodologie}{Pour déterminer la nature d'une matrice $M$, on vérifie d'abord l'orthogonalité par $M^T M = I$. Ensuite, on calcule $\det(M)$ : 
+\begin{itemize}
+    \item $\det(M) = 1$ : Rotation d'angle $\theta$ autour d'un axe.
+    \item $\det(M) = -1$ : Isométrie indirecte. On regarde si $M$ est symétrique ($M^T=M$) pour distinguer une réflexion d'une antirotation.
+\end{itemize}}
+\checkInfo{Valeurs propres et Nature}{
+Le choix de la valeur propre $\lambda$ pour trouver l'élément fixe (axe ou plan) dépend du déterminant :
+\begin{itemize}
+    \item \textbf{Si $\det(M) = 1$ (Rotation) :} On cherche $\lambda = 1$. 
+    L'axe est l'ensemble des vecteurs invariants : $MX = X$.
+    \item \textbf{Si $\det(M) = -1$ (Isométrie indirecte) :}
+    \begin{itemize}
+        \item \textit{Antirotation :} On cherche $\lambda = -1$. L'axe est la direction inversée : $MX = -X$.
+        \item \textit{Réflexion :} $\lambda = 1$ donne le plan de symétrie, $\lambda = -1$ donne le vecteur normal au plan.
+    \end{itemize}
+\end{itemize}
+}
+\subsubsection{Analyse de la matrice A}
+$A = \frac{1}{3} \begin{pmatrix} 1 & -2 & -2 \\ -2 & 1 & -2 \\ 2 & 2 & -1 \end{pmatrix}$
+
+     \textbf{Nature :} Calcul du déterminant par la règle de Sarrus ou développement :
+     \begin{flalign*}
+    \det(A) &= \frac{1}{3^3} \left| \begin{matrix} 1 & -2 & -2 \\ -2 & 1 & -2 \\ 2 & 2 & -1 \end{matrix} \right|\\ 
+    &= \frac{1}{27} \left[ 1(-1+4) - (-2)(2+4) + (-2)(-4-2) \right]\\
+    &= \frac{1}{27} [ 3 + 12 + 12 ] = \frac{27}{27}\\
+    &=1
+     \end{flalign*}
+    Il s'agit d'une \textbf{rotation} (isométrie directe).
+    
+     \textbf{Axe de rotation :} On cherche $E_1 = \ker(A-I)$. Résolvons $(3A-3I)X = 0$\marginTips{En effet, cela revient au meme que de résoudre A-I et cela nous permet d'enlever le coeffcient 1/3 devant A.} :
+    \[ \begin{pmatrix} -2 & -2 & -2 \\ -2 & -2 & -2 \\ 2 & 2 & -4 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \iff 
+    \begin{cases} -2x - 2y - 2z = 0 \quad (L_1) \\ 2x + 2y - 4z = 0 \quad (L_3) \end{cases} \]
+    $L_1 \implies x + y + z = 0$. En remplaçant dans $L_3$ : $2(x+y) - 4z = 0 \implies 2(-z) - 4z = 0 \implies -6z = 0$.
+    On obtient $z=0$ et $x = -y$. L'axe est la droite $D = \text{Vect}(\mathbf{u})$ avec $\mathbf{u = (1, -1, 0)}$.
+
+    \textbf{Angle de rotation :} $\text{Tr}(A) = 1 + 2\cos\theta$.
+    \[ \frac{1+1-1}{3} = 1 + 2\cos\theta \implies \frac{1}{3} = 1 + 2\cos\theta \implies \cos\theta = -\frac{1}{3} \]
+    L'angle est $\theta = \arccos\left(-\frac{1}{3}\right)$.
+
+
+\subsubsection{Analyse de la matrice B}
+$B = \frac{1}{3} \begin{pmatrix} 2 & 2 & 1 \\ -1 & 2 & -2 \\ 2 & -1 & -2 \end{pmatrix}$
+
+
+     \textbf{Nature :} $\det(B) = \frac{1}{27} [ 2(-4-2) - 2(2+4) + 1(1-4) ] = \frac{-12-12-3}{27} = -1$.
+    Comme $B$ n'est pas symétrique ($b_{12} \neq b_{21}$), c'est une \textbf{antirotation}\marginCheck{composée d'une rotation $r$ et d'une réflexion $s$ par rapport au plan normal à l'axe}.
+    
+     \textbf{Axe (Vecteur propre pour $\lambda = -1$) :} Résolvons $(B+I)X = 0 \iff (3B+3I)X = 0$ :
+    \[ \begin{pmatrix} 5 & 2 & 1 \\ -1 & 5 & -2 \\ 2 & -1 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \implies
+    \begin{cases} -x + 5y - 2z = 0 \implies x = 5y - 2z \\ 5(5y-2z) + 2y + z = 0 \implies 27y - 9z = 0 \implies z = 3y \end{cases} \]
+    En posant $y=1$, on a $z=3$ et $x=5(1)-2(3)=-1$. Le vecteur est $\mathbf{v = (-1, 1, 3)}$.
+    
+     \textbf{Angle :} Pour une antirotation, $\text{Tr}(B) = 2\cos\theta - 1$.
+    \[ \text{Tr}(B) = \frac{2+2-2}{3} = \frac{2}{3} \implies \frac{2}{3} = 2\cos\theta - 1 \implies \cos\theta = \frac{5}{6} \]
+
+
+
+\subsubsection{Analyse de la matrice C}
+$C = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & -1 \\ -1 & 0 & 0 \end{pmatrix}$
+
+%\checkInfo{Méthodologie}{Pour une rotation d'angle $\theta$, le signe de $\sin\theta$ est celui du produit mixte $[w, x, f(x)]$ pour n'importe quel $x$ non colinéaire à l'axe $w$.}
+
+\begin{itemize}
+    \item \textbf{Nature :} $\det(C) = 0 - 1(0-1) + 0 = 1$. C'est une \textbf{rotation}.
+    \item \textbf{Axe :} $CX=X \iff y=x, -z=y, -x=z$. On en déduit $y=x$ et $z=-x$. 
+    L'axe est dirigé par $\mathbf{u = (1, 1, -1)}$.
+    \item \textbf{Angle :} $\text{Tr}(C) = 0 \implies 1 + 2\cos\theta = 0 \implies \cos\theta = -1/2$, soit $\theta = 2\pi/3$.
+   % \item \textbf{Sens :} Soit $x=(1,0,0)$, alors $C(x)=(0,0,-1)$. 
+   % $\det(u, x, C(x)) = \left| \begin{smallmatrix} 1 & 1 & 0 \\ 1 & 0 & 0 \\ -1 & 0 & -1 \end{smallmatrix} \right| = 1 > 0$. La rotation est d'angle $+2\pi/3$ selon l'orientation de $u$.
+\end{itemize}
+\subsection{À partir d'une description}
+\subsection*{(a) Demi-tour autour de la droite $D$ de vecteur $u(2, 1, 1)$}
+
+\checkInfo{Méthodologie}{Un demi-tour est une rotation d'angle $\pi$. Dans une base orthonormée dont le premier vecteur est l'axe, la matrice est :
+\[ A = \begin{pmatrix} 1 & 0 & 0 \\ 0 & \cos \pi & -\sin \pi \\ 0 & \sin \pi & \cos \pi \end{pmatrix} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -1 \end{pmatrix} \]
+La matrice dans la base canonique est $M = P A P^T$ où $P$ est la matrice de passage (orthogonale).}
+
+\begin{itemize}
+    \item \textbf{Construction de la base orthonormée $\mathcal{B}'$ :}
+    \begin{enumerate}
+        \item $w_1 = \frac{1}{\sqrt{6}}(2, 1, 1)$ (Axe normalisé).
+        \item Cherchons $w_2$ tel que $\langle w_1, w_2 \rangle = 0$. Soit $w_2 = \frac{1}{\sqrt{2}}(0, 1, -1)$.
+        \item $w_3 = w_1 \wedge w_2 = \frac{1}{\sqrt{12}}(-2, 2, 2) = \frac{1}{\sqrt{3}}(-1, 1, 1)$.
+    \end{enumerate}
+    \item \textbf{Matrice de passage $P$ :}
+    \[ P = \begin{pmatrix} 2/\sqrt{6} & 0 & -1/\sqrt{3} \\ 1/\sqrt{6} & 1/\sqrt{2} & 1/\sqrt{3} \\ 1/\sqrt{6} & -1/\sqrt{2} & 1/\sqrt{3} \end{pmatrix} \]
+    \item \textbf{Calcul :} $M = P A P^T$. Après calcul du produit matriciel, on retrouve :
+    \[ \mathbf{M = \frac{1}{3} \begin{pmatrix} 1 & 2 & 2 \\ 2 & -2 & 1 \\ 2 & 1 & -2 \end{pmatrix}} \]
+\end{itemize}
+
+
+
+\subsection*{(b) Rotation d'angle $\pi/3$ d'axe dirigé par $u(1, 1, 1)$}
+
+\checkInfo{Difficulté}{Le choix des vecteurs $w_2$ et $w_3$ pour compléter la base doit impérativement former une base \textbf{orthonormée directe} pour que le sens de l'angle $\pi/3$ soit respecté par rapport à l'orientation de $u$.}
+
+\begin{itemize}
+    \item \textbf{Base orthonormée $\mathcal{B}'$ :}
+    \begin{enumerate}
+        \item $w_1 = \frac{1}{\sqrt{3}}(1, 1, 1)$ (Axe).
+        \item $w_2 = \frac{1}{\sqrt{2}}(1, -1, 0)$ (Vecteur orthogonal à $w_1$).
+        \item $w_3 = w_1 \wedge w_2 = \frac{1}{\sqrt{6}}(1, 1, -2)$.
+    \end{enumerate}
+    \item \textbf{Matrice dans $\mathcal{B}'$ :}\marginCritical{Il faut bien mettre le vecteur correspondant à l'axe en première position de la matrice de passage (si on a choisit de mettre la valeur 1 en premiere colonne) } Avec $\cos(\pi/3) = 1/2$ et $\sin(\pi/3) = \sqrt{3}/2$ :
+    \[ A = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1/2 & -\sqrt{3}/2 \\ 0 & \sqrt{3}/2 & 1/2 \end{pmatrix} \]
+    \item \textbf{Retour à la base canonique :} $M = P A P^T$.
+    \[ P = \begin{pmatrix} 1/\sqrt{3} & 1/\sqrt{2} & 1/\sqrt{6} \\ 1/\sqrt{3} & -1/\sqrt{2} & 1/\sqrt{6} \\ 1/\sqrt{3} & 0 & -2/\sqrt{6} \end{pmatrix} \]
+    Le calcul $P \times A$ puis $(PA) \times P^T$ donne finalement :
+    \[ \mathbf{M = \frac{1}{3} \begin{pmatrix} 2 & -1 & 2 \\ 2 & 2 & -1 \\ -1 & 2 & 2 \end{pmatrix}} \]
+\end{itemize}
+
+%\checkInfo{Astuce de calcul}{Pour éviter de multiplier trois matrices $3 \times 3$, on peut remarquer que $M X = \langle X, w_1 \rangle w_1 + \cos\theta (X - \langle X, w_1 \rangle w_1) + \sin\theta (w_1 \wedge X)$. C'est la justification théorique de la formule de Rodrigues par le changement de base.}
+
+\section{Étude d'un endomorphisme dans un espace euclidien}
+
+Cet exercice porte sur la manipulation du produit scalaire et la reconnaissance géométrique d'un opérateur.
+
+\begin{definition}
+Soit $E$ un espace euclidien. L'application $f$ est définie par :
+$$f(x) = x + \mu (x|v)v$$
+où $v \in E \setminus \{0\}$ et $\mu \in \mathbb{R}^*$.
+\end{definition}
+
+
+a) Calcul de $\|f(x)\|^2$ et condition d'isométrie
+Pour calculer la norme au carré, on utilise la relation $\|a+b\|^2 = \|a\|^2 + 2(a|b) + \|b\|^2$.
+$$(f(x)|f(x)) = (x + \mu(x|v)v \mid x + \mu(x|v)v)$$
+$$= \|x\|^2 + 2\mu(x|v)(x|v) + \mu^2(x|v)^2\|v\|^2$$
+$$= \|x\|^2 + (2\mu + \mu^2\|v\|^2)(x|v)^2$$
+
+\checkInfo{Condition d'isométrie}{Pour que $f$ soit une isométrie, il faut $\|f(x)\|^2 = \|x\|^2$ pour tout $x$. Cela impose $2\mu + \mu^2\|v\|^2 = 0$. Comme $\mu \neq 0$, on trouve $\mu = -\frac{2}{\|v\|^2}$.}
+
+b) Valeur propre 1 et sous-espace associé
+$x \in E_1 \iff f(x) = x \iff \mu(x|v)v = 0$. Comme $\mu \neq 0$ et $v \neq 0$, cela implique $(x|v) = 0$.
+Ainsi, $E_1 = \{v\}^\perp$. C'est un hyperplan, donc $\dim(E_1) = n-1$.
+
+c) Calcul de $f(v)$
+$f(v) = v + \mu(v|v)v = v + \mu\|v\|^2 v = (1 + \mu\|v\|^2)v$.
+En remplaçant $\mu$ par $-\frac{2}{\|v\|^2}$, on obtient $f(v) = (1 - 2)v = -v$.
+
+d) Valeur propre -1 et sous-espace associé
+D'après la question précédente, $f(v) = -v$, donc $-1$ est valeur propre et $v \in E_{-1}$.
+Si $f(x) = -x$, alors $x + \mu(x|v)v = -x \Rightarrow 2x = -\mu(x|v)v$. Donc $x$ est colinéaire à $v$.
+$E_{-1} = \text{Vect}(v)$, et $\dim(E_{-1}) = 1$.
+
+e) Diagonalisation
+\begin{proposition}
+L'application $f$ est diagonalisable car la somme des dimensions des sous-espaces propres est $(n-1) + 1 = n = \dim(E)$. De plus, les sous-espaces propres $E_1$ et $E_{-1}$ sont orthogonaux.
+\end{proposition}
+
+f) Caractérisation géométrique
+$f$ laisse invariant l'hyperplan $\{v\}^\perp$ et transforme $v$ en son opposé. Comme $E_{-1} \perp E_1$, $f$ est la symétrie orthogonale par rapport à l'hyperplan $\{v\}^\perp$ (aussi appelée réflexion).
+
+%\tipsInfo{Astuce de calcul}{Lorsque vous manipulez $f(x) = x + \dots$, remarquez que $f$ ne modifie que la composante de $x$ portée par $v$. Si $x \perp v$, alors $f(x)=x$. Cela pointe immédiatement vers une symétrie ou une projection.}
+
+\section{Commutation de rotations dans $\mathbb{R}^3$}
+
+Cet exercice est un classique sur la structure du groupe des rotations $SO(3)$.
+
+\begin{theorem}
+Si deux rotations $f$ et $g$ commutent ($f\circ g=g\circ f$), alors l'axe de l'une est globalement invariant par l'autre.
+\end{theorem}
+
+
+a) Image de l'axe par $g$
+Soit $u$ un vecteur de l'axe de $f$, on a $f(u) = u$.
+Alors $f(g(u)) = g(f(u)) = g(u)$.
+Donc $g(u)$ appartient à l'espace propre de $f$ associé à la valeur propre 1. Comme $f \neq Id$, cet espace est la droite vectorielle dirigée par $u$.
+Comme $g$ est une isométrie, $\|g(u)\| = \|u\|$, d'où $g(u) = u$ ou $g(u) = -u$.
+
+b) Cas $g(u) = u$
+Si $g(u) = u$, alors $u$ est aussi sur l'axe de $g$. Comme $g \neq Id$, l'axe est unique, donc $f$ et $g$ ont le même axe.
+
+c) Cas $g(u) = -u$
+i) Soit $v$ le vecteur directeur de l'axe de $g$ ($g(v)=v$).
+$g$ est une rotation. Si elle transforme un vecteur $u$ en son opposé $-u$, c'est que $u$ appartient au plan de rotation (orthogonal à l'axe $v$) et que l'angle de la rotation $g$ est $\pi$.
+\checkInfo{Orthogonalité}{Comme $u$ est dans le plan de rotation de $g$, on a nécessairement $(u, v) = 0$.}
+
+ii) Par symétrie du problème (en utilisant $f(v)=\pm v$), on montre que $f$ doit aussi être une rotation d'angle $\pi$.
+\warningInfo{Interprétation}{Dans $\mathbb{R}^3$, une rotation d'angle $\pi$ est une symétrie orthogonale par rapport à son axe (demi-tour).}
+Ainsi, $f$ et $g$ sont des symétries par rapport à deux droites (leurs axes respectifs) qui sont orthogonales.
+
+\criticalInfo{Erreur fréquente}{En dimension 3, ne pas confondre "symétrie par rapport à un plan" (réflexion, déterminant -1) et "symétrie par rapport à une droite" (rotation d'angle $\pi$, déterminant 1).}
+\section{Matrices symétriques}
+On a matrice $A = \begin{pmatrix} 1 & -2 & -2 \\ -2 & 1 & -2 \\ -2 & -2 & 1 \end{pmatrix}$, et on cherche $P\in O(3)$ tel que $^tPAP$ est diagonale.
+
+\subsection{Justification de la diagonalisabilité}
+\begin{theorem}
+Toute matrice symétrique réelle est diagonalisable dans une base orthonormée (Théorème Spectral).
+\end{theorem}
+
+\checkInfo{Justification}{La matrice $A$ vérifie $^tA = A$ et ses coefficients sont réels. Elle est donc symétrique réelle, ce qui garantit qu'elle est diagonalisable et que ses sous-espaces propres sont orthogonaux entre eux.}
+
+
+\subsection{Recherche des valeurs propres et vecteurs propres}
+
+À l'aide de la formule\marginTips{Voir Astuce pour déterminer le polynome
+caractéristique} puis en factorisant, on obtient
+\begin{itemize}
+    \item $\lambda_1 = -3$ (multiplicité 1)
+    \item $\lambda_2 = 3$ (multiplicité 2)
+\end{itemize}
+
+Détermination des sous-espaces propres :
+
+Pour $\lambda_1 = -3$ : On résout $(A + 3I)X = 0$, ce qui donne le système où toutes les lignes sont $4x - 2y - 2z = 0$, soit $2x - y - z = 0$. On trouve que le vecteur $v_1 = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}$ convient\marginWarning{On n'a besoin que d'un vecteur car la multiplicité de la valeur propre associée est de 1.}.
+
+Pour $\lambda_2 = 3$ : On résout $(A - 3I)X = 0$, ce qui donne $-2x - 2y - 2z = 0$, soit l'hyperplan $x + y + z = 0$.
+
+
+\subsection{Construction de la matrice de passage $P \in O_3(\mathbb{R})$}
+
+Pour que $P$ soit orthogonale ($^tP = P^{-1}$), ses colonnes doivent former une base orthonormée de $\mathbb{R}^3$\marginInfo{Les SEV engendrés par les vecteurs propres issus de valeurs propres différentes sont déjà orthogonaux. Il faut donc appliquer Gram-Schmit à l'intéreieur de ces SEV pour obtenir une base orthonormée.}.
+
+Etape 1 : Orthonormalisation de $E_3$ (le plan $x+y+z=0$)
+On choisit deux vecteurs orthogonaux dans ce plan :
+1. $w_2 = \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} \implies u_2 = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}$
+2. Pour le deuxième, on peut faire un produit vectoriel entre $v_1$ et $w_2$ ou chercher $w_3 \in E_3$ tel que $w_3 \perp w_2$ :
+$w_3 = \begin{pmatrix} 1 \\ 1 \\ -2 \end{pmatrix} \implies u_3 = \frac{1}{\sqrt{6}} \begin{pmatrix} 1 \\ 1 \\ -2 \end{pmatrix}$
+
+Etape 2 : Normalisation de $E_{-3}$
+$u_1 = \frac{1}{\sqrt{3}} \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}$
+
+ \subsection{Résultat final}
+
+% Comme vu précédemment, on remplit $P$ en "jetant" nos nouveaux vecteurs en colonnes.
+
+
+La matrice de passage $P$ est :
+$$P = \begin{pmatrix} 
+\color{blue}\downarrow & \color{blue}\downarrow & \color{blue}\downarrow \\
+\color{blue}u_2 & \color{blue}u_3 & \color{blue}u_1 \\
+\color{blue}\downarrow & \color{blue}\downarrow & \color{blue}\downarrow 
+\end{pmatrix} = \begin{pmatrix} 
+1/\sqrt{2} & 1/\sqrt{6} & 1/\sqrt{3} \\
+-1/\sqrt{2} & 1/\sqrt{6} & 1/\sqrt{3} \\
+0 & -2/\sqrt{6} & 1/\sqrt{3}
+\end{pmatrix}$$
+
+On a bien $P \in O_3(\mathbb{R})$ car ses colonnes sont orthonormées. On obtient alors\marginCritical{L'ordre des valeurs propres sur la diagonale de $D$ doit correspondre exactement à l'ordre des vecteurs propres en colonnes dans $P$.}
+ :
+$$^tPAP = D = \begin{pmatrix} 3 & 0 & 0 \\ 0 & 3 & 0 \\ 0 & 0 & -3 \end{pmatrix}$$
+
+\subsection{Astuce pour déterminer le polynome caractéristique}
+
+\begin{theorem}
+Pour toute matrice $A \in \mathcal{M}_3(\mathbb{K})$, le polynôme caractéristique $P_A(X) = \det(A - XI)$ est donné par :
+$$P_A(X) = -X^3 + \text{Tr}(A)X^2 - \text{Tr}(\text{com}(A))X + \det(A)$$
+\end{theorem}
+
+Voici comment calculer chaque terme visuellement :
+
+1.  Le terme en $X^2$ : La Trace ($\text{Tr}(A)$)\marginTips{C'est la somme des éléments de la diagonale principale.} vaut
+    
+    $$\text{Tr}(A) = a_{11} + a_{22} + a_{33}$$
+
+2.  Le terme en $X$ : La somme des mineurs principaux ($\text{Tr}(\text{com}(A))$)\marginInfo{
+     Il s'agit de la somme des trois déterminants $2\times2$ centrés sur la diagonale. Pour les calculer,  Visuellement, cela revient à "barrer" successivement la ligne et la colonne 1, puis la 2, puis la 3.} :
+    $$\text{Tr}(\text{com}(A)) = \begin{vmatrix} a_{22} & a_{23} \\ a_{32} & a_{33} \end{vmatrix} + \begin{vmatrix} a_{11} & a_{13} \\ a_{31} & a_{33} \end{vmatrix} + \begin{vmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{vmatrix}$$
+    
+3.  Le terme constant : Le Déterminant ($\det(A)$)
+    Calculé par la règle de Sarrus ou par développement suivant une ligne/colonne.
+
+ Application à la matrice $A = \begin{pmatrix} 1 & -2 & -2 \\ -2 & 1 & -2 \\ -2 & -2 & 1 \end{pmatrix}$
+
+\checkInfo{Calcul rapide}{
+\begin{itemize}
+    \item \textbf{Trace :} $1 + 1 + 1 = \mathbf{3}$
+    \item \textbf{Somme des mineurs :} 
+    $\begin{vmatrix} 1 & -2 \\ -2 & 1 \end{vmatrix} + \begin{vmatrix} 1 & -2 \\ -2 & 1 \end{vmatrix} + \begin{vmatrix} 1 & -2 \\ -2 & 1 \end{vmatrix} = 3 \times (1 - 4) = \mathbf{-9}$
+    \item \textbf{Déterminant :} Un calcul rapide donne $\det(A) = \mathbf{-27}$
+\end{itemize}
+}
+
+On remplace dans la formule :
+$$P_A(X) = -X^3 + 3X^2 - (-9)X + (-27)$$
+$$P_A(X) = -X^3 + 3X^2 + 9X - 27$$
+
+\tipsInfo{Factorisation}{
+On retrouve bien le résultat précédent : $-(X+3)(X-3)^2$. 
+En effet : $-(X+3)(X^2 - 6X + 9) = -(X^3 - 6X^2 + 9X + 3X^2 - 18X + 27) = -(X^3 - 3X^2 - 9X + 27)$.
+}
+\section{Décomposition en valeur polaire}
+
+La décomposition polaire d'une matrice carrée réelle $A$ s'écrit sous la forme $A = UP$, où $U$ est une matrice orthogonale ($U^T U = I$) et $P$ est une matrice symétrique définie positive ($P = \sqrt{A^T A}$).
+
+Soit la matrice 
+$$A = \begin{pmatrix} 3 & 0 & -1 \\ \frac{1}{\sqrt{2}} & 3\sqrt{2} & -\frac{3}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} & 3\sqrt{2} & \frac{3}{\sqrt{2}} \end{pmatrix}$$
+
+\subsection{Calcul de $A^T A$}
+On multiplie la transposée de $A$ par $A$ :
+$$A^T A = \begin{pmatrix} 3 & \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\ 0 & 3\sqrt{2} & 3\sqrt{2} \\ -1 & -\frac{3}{\sqrt{2}} & \frac{3}{\sqrt{2}} \end{pmatrix} \begin{pmatrix} 3 & 0 & -1 \\ \frac{1}{\sqrt{2}} & 3\sqrt{2} & -\frac{3}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} & 3\sqrt{2} & \frac{3}{\sqrt{2}} \end{pmatrix} = \begin{pmatrix} 10 & 0 & -6 \\ 0 & 36 & 0 \\ -6 & 0 & 10 \end{pmatrix}$$
+
+\subsection{Calcul de $P = \sqrt{A^T A}$}
+On cherche une matrice symétrique $P$ telle que $P^2 = A^T A$. 
+
+Pour trouver $P = \sqrt{A^T A}$, nous devons diagonaliser la matrice symétrique obtenue précédemment.
+
+La matrice à diagonaliser est :
+$$M = A^T A = \begin{pmatrix} 10 & 0 & -6 \\ 0 & 36 & 0 \\ -6 & 0 & 10 \end{pmatrix}$$
+
+\subsubsection{Recherche des valeurs propres}
+On calcule le polynôme caractéristique $P(\lambda) = \det(M - \lambda I)$ :
+$$P(\lambda) = \begin{vmatrix} 10-\lambda & 0 & -6 \\ 0 & 36-\lambda & 0 \\ -6 & 0 & 10-\lambda \end{vmatrix}$$
+
+En développant selon la deuxième ligne (qui contient beaucoup de zéros), on obtient :
+$$P(\lambda) = (36-\lambda) \begin{vmatrix} 10-\lambda & -6 \\ -6 & 10-\lambda \end{vmatrix}$$
+$$P(\lambda) = (36-\lambda) \left[ (10-\lambda)^2 - (-6)^2 \right]$$
+$$P(\lambda) = (36-\lambda) \left[ (10-\lambda - 6)(10-\lambda + 6) \right]$$
+$$P(\lambda) = (36-\lambda) (4-\lambda) (16-\lambda)$$
+
+Les valeurs propres sont donc : $\lambda_1 = 36$, $\lambda_2 = 16$, et $\lambda_3 = 4$.
+
+ \subsubsection{Recherche des vecteurs propres}
+On cherche les vecteurs $v(x, y, z)$ tels que $(M - \lambda I)v = 0$.
+
+   Pour $\lambda_1 = 36$ :
+    Le système est $\{-26x - 6z = 0, \ 0y = 0, \ -6x - 26z = 0\}$. On en déduit $x=0$ et $z=0$, avec $y$ quelconque.
+    Vecteur propre unitaire : $v_1 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}$.
+
+   Pour $\lambda_2 = 16$ :
+    Le système est $\{-6x - 6z = 0, \ 20y = 0\}$. On en déduit $y=0$ et $x = -z$.
+    Vecteur propre unitaire : $v_2 = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix}$.
+
+   Pour $\lambda_3 = 4$ :
+    Le système est $\{6x - 6z = 0, \ 32y = 0\}$. On en déduit $y=0$ et $x = z$.
+    Vecteur propre unitaire : $v_3 = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}$.
+
+\subsubsection{Construction de la racine carrée $P$}
+On sait que $M = Q D Q^T$ où $D$ est la matrice des valeurs propres et $Q$ la matrice de passage (orthogonale). La racine carrée est $P = Q \sqrt{D} Q^T$.
+
+Ici, $\sqrt{D} = \text{diag}(\sqrt{36}, \sqrt{16}, \sqrt{4}) = \begin{pmatrix} 6 & 0 & 0 \\ 0 & 4 & 0 \\ 0 & 0 & 2 \end{pmatrix}$.
+
+Le calcul $P = Q \sqrt{D} Q^T$ revient à :
+$$P = 6(v_1 v_1^T) + 4(v_2 v_2^T) + 2(v_3 v_3^T)$$
+
+   $6(v_1 v_1^T) = 6 \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \begin{pmatrix} 0 & 1 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 0 & 0 \\ 0 & 6 & 0 \\ 0 & 0 & 0 \end{pmatrix}$
+
+   $4(v_2 v_2^T) = \frac{4}{2} \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix} \begin{pmatrix} 1 & 0 & -1 \end{pmatrix} = \begin{pmatrix} 2 & 0 & -2 \\ 0 & 0 & 0 \\ -2 & 0 & 2 \end{pmatrix}$
+
+   $2(v_3 v_3^T) = \frac{2}{2} \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} \begin{pmatrix} 1 & 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 0 & 1 \\ 0 & 0 & 0 \\ 1 & 0 & 1 \end{pmatrix}$
+
+En additionnant ces trois matrices, on obtient bien :
+$$P = \begin{pmatrix} 2+1 & 0 & -2+1 \\ 0 & 6 & 0 \\ -2+1 & 0 & 2+1 \end{pmatrix} = \begin{pmatrix} 3 & 0 & -1 \\ 0 & 6 & 0 \\ -1 & 0 & 3 \end{pmatrix}$$
+
+C'est cette matrice $P$ (symétrique et définie positive car ses valeurs propres $\{6, 4, 2\}$ sont strictement positives) que l'on utilise pour trouver $U = AP^{-1}$.
+
+> Vérification rapide : $P^2 = \begin{pmatrix} 9+1 & 0 & -3-3 \\ 0 & 36 & 0 \\ -3-3 & 0 & 1+9 \end{pmatrix} = \begin{pmatrix} 10 & 0 & -6 \\ 0 & 36 & 0 \\ -6 & 0 & 10 \end{pmatrix}$. C'est correct.
+
+\subsection{Calcul de $U = AP^{-1}$}
+L'inverse de $P$ est donné par :
+$$P^{-1} = \begin{pmatrix} 3/8 & 0 & 1/8 \\ 0 & 1/6 & 0 \\ 1/8 & 0 & 3/8 \end{pmatrix}$$
+
+En effectuant le produit $AP^{-1}$ :
+$$U = \begin{pmatrix} 3 & 0 & -1 \\ \frac{1}{\sqrt{2}} & 3\sqrt{2} & -\frac{3}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} & 3\sqrt{2} & \frac{3}{\sqrt{2}} \end{pmatrix} \begin{pmatrix} 3/8 & 0 & 1/8 \\ 0 & 1/6 & 0 \\ 1/8 & 0 & 3/8 \end{pmatrix} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\ 0 & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{pmatrix}$$
+
+
+La décomposition polaire $A = UP$ est :
+
+$$A = \underbrace{\begin{pmatrix} 1 & 0 & 0 \\ 0 & \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\ 0 & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{pmatrix}}_{U} \underbrace{\begin{pmatrix} 3 & 0 & -1 \\ 0 & 6 & 0 \\ -1 & 0 & 3 \end{pmatrix}}_{P}$$
+\begin{itemize}
+    \item  $U$ est une matrice de rotation d'angle $45^\circ$ (ou $\pi/4$) autour de l'axe $x$.
+    \item $P$ est la partie déformation (symétrique définie positive).
+\end{itemize}
+\end{document}

@@ -1,0 +1,1009 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="175.30243mm"
+   height="100.14654mm"
+   viewBox="0 0 175.30243 100.14654"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (1:1.4.3+202512261035+0d15f75042)"
+   sodipodi:docname="s1.svg"
+   inkscape:export-filename="s2.pdf"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="0.25165632"
+     inkscape:cx="79.473467"
+     inkscape:cy="439.09091"
+     inkscape:window-width="1920"
+     inkscape:window-height="1008"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid1"
+       units="mm"
+       originx="11.50065"
+       originy="-21.561788"
+       spacingx="0.26458333"
+       spacingy="0.26458334"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <rect
+       x="463.467"
+       y="718.50664"
+       width="359.99998"
+       height="420.00001"
+       id="rect13" />
+    <marker
+       style="overflow:visible"
+       id="ArrowWide"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc"
+         id="path3" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="ArrowWide-2"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc"
+         id="path3-9" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="ArrowWide-3"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc"
+         id="path3-2" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="ArrowWide-9"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc"
+         id="path3-4" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(11.50065,-21.561787)">
+    <ellipse
+       style="fill:none;stroke:#03a9f4;stroke-width:2.366;stroke-dasharray:none"
+       id="path1"
+       cx="86.795372"
+       cy="75.458069"
+       rx="36.242176"
+       ry="14.496871"
+       inkscape:export-filename="s1.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       id="path1-3"
+       style="fill:none;stroke:#03a9f4;stroke-width:2.366"
+       d="m 247.90883,107.21146 a 36.242176,14.496871 0 0 1 -36.24217,14.49687 36.242176,14.496871 0 0 1 -36.24218,-14.49687 36.242176,14.496871 0 0 1 36.24218,-14.496875 36.242176,14.496871 0 0 1 36.24217,14.496875 z"
+       inkscape:export-filename="s2.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       style="font-size:24.9087px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+       x="69.165901"
+       y="80.801208"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+         x="69.165901"
+         y="80.801208">-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:1.65172"
+       x="113.38697"
+       y="79.542076"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="stroke-width:1.65172"
+         x="113.38697"
+         y="79.542076">+</tspan></text>
+    <ellipse
+       style="fill:none;stroke:#03a9f4;stroke-width:1.65023;stroke-dasharray:none"
+       id="path1-5"
+       cx="323.06534"
+       cy="159.73642"
+       rx="25.278133"
+       ry="10.111254" />
+    <text
+       xml:space="preserve"
+       style="font-size:17.3733px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:1.88616"
+       x="310.76917"
+       y="163.46315"
+       id="text1-0"><tspan
+         sodipodi:role="line"
+         id="tspan1-3"
+         style="fill:#8e44ad;stroke:#8e44ad;stroke-width:1.88616"
+         x="310.76917"
+         y="163.46315">-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6114px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:1.15204"
+       x="341.61243"
+       y="162.58492"
+       id="text2-6"><tspan
+         sodipodi:role="line"
+         id="tspan2-1"
+         style="stroke-width:1.15204"
+         x="341.61243"
+         y="162.58492">+</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:none;stroke:#ffa500;stroke-width:1.65172"
+       x="266.92624"
+       y="228.53323"
+       id="text2-0"
+       inkscape:export-filename="s3.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan2-6"
+         style="fill:none;stroke:#ffa500;stroke-width:1.65172"
+         x="266.92624"
+         y="228.53323">+</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:none;stroke:#d32f2f;stroke-width:1.65172"
+       x="82.295776"
+       y="339.22"
+       id="text2-0-7"
+       transform="rotate(-36.37866)"><tspan
+         sodipodi:role="line"
+         id="tspan2-6-5"
+         style="fill:none;stroke:#d32f2f;stroke-width:1.65172"
+         x="82.295776"
+         y="339.22">+</tspan></text>
+    <path
+       style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.066;stroke-dasharray:none;marker-end:url(#ArrowWide)"
+       d="M 52.916663,100.54167 H 121.70833"
+       id="path2" />
+    <path
+       style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.066;stroke-dasharray:none;marker-end:url(#ArrowWide-2)"
+       d="M 211.66666,108.47917 V 39.687497"
+       id="path2-7" />
+    <text
+       xml:space="preserve"
+       style="font-size:21.5439px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:none;stroke-width:6.30847;stroke-dasharray:none"
+       x="96.04184"
+       y="117.52885"
+       id="text3"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="stroke:none;stroke-width:6.30847"
+         x="96.04184"
+         y="117.52885">p</tspan></text>
+    <path
+       style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.066;stroke-dasharray:none;marker-end:url(#ArrowWide-9)"
+       d="m -309.04222,317.51811 h 68.79167"
+       id="path2-9" />
+    <text
+       xml:space="preserve"
+       style="font-size:21.5439px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:none;stroke-width:6.30847;stroke-dasharray:none"
+       x="-265.91705"
+       y="334.50528"
+       id="text3-1"><tspan
+         sodipodi:role="line"
+         id="tspan3-7"
+         style="stroke:none;stroke-width:6.30847"
+         x="-265.91705"
+         y="334.50528">p</tspan></text>
+    <path
+       style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.066;stroke-dasharray:none;marker-end:url(#ArrowWide-3)"
+       d="M 337.24846,261.46146 H 347.8318"
+       id="path2-1"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:21.5439px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:none;stroke-width:6.30847;stroke-dasharray:none"
+       x="351.78973"
+       y="283.75839"
+       id="text3-5"><tspan
+         sodipodi:role="line"
+         id="tspan3-5"
+         style="stroke:none;stroke-width:6.30847"
+         x="351.78973"
+         y="283.75839">d</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#ffa500;stroke:none;stroke-width:2.066;stroke-dasharray:none"
+       x="90.198204"
+       y="51.463226"
+       id="text4"><tspan
+         sodipodi:role="line"
+         id="tspan4"
+         style="fill:#ffa500;stroke-width:2.066"
+         x="90.198204"
+         y="51.463226">Barycentre des charges négatives</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#ffa500;stroke:none;stroke-width:2.066;stroke-dasharray:none"
+       x="164.04166"
+       y="26.458334"
+       id="text5"><tspan
+         sodipodi:role="line"
+         id="tspan5"
+         style="fill:#ffa500;stroke-width:2.066"
+         x="164.04166"
+         y="26.458334">Barycentre des charges positives</tspan></text>
+    <path
+       style="fill:none;stroke:#ffa500;stroke-width:2.066;stroke-dasharray:none;marker-end:url(#ArrowWide)"
+       d="m 26.458332,58.208335 c 1e-6,8.819445 7.055556,14.111112 21.166665,15.875"
+       id="path5"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#ffa500;stroke-width:2.066;stroke-dasharray:none;marker-end:url(#ArrowWide)"
+       d="m 148.16666,31.75 c 1.76389,22.930558 -7.05555,40.569448 -26.45833,42.333336"
+       id="path6"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#03a9f4;stroke-width:2.366;stroke-dasharray:none"
+       d="m 211.66665,116.41667 5.29167,5.29166 L 211.66665,127"
+       id="path7" />
+    <text
+       xml:space="preserve"
+       style="font-size:21.5667px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:none;stroke:#03a9f4;stroke-width:7.23215;stroke-dasharray:none"
+       x="228.25928"
+       y="75.191093"
+       id="text7"><tspan
+         sodipodi:role="line"
+         id="tspan7"
+         style="fill:#8e44ad;stroke:none;stroke-width:7.23215"
+         x="235.41943"
+         y="75.191093">µ </tspan></text>
+    <ellipse
+       style="fill:none;stroke:#d32f2f;stroke-width:2.366;stroke-dasharray:none"
+       id="path8"
+       cx="260.98074"
+       cy="223.11688"
+       rx="21.166664"
+       ry="21.166666" />
+    <text
+       xml:space="preserve"
+       style="font-size:16.1322px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:none;stroke:#d32f2f;stroke-width:5.40974;stroke-dasharray:none"
+       x="299.20538"
+       y="245.46655"
+       id="text8"><tspan
+         sodipodi:role="line"
+         id="tspan8"
+         style="fill:#d32f2f;stroke:none;stroke-width:5.40974"
+         x="299.20538"
+         y="245.46655">+q</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16.1322px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#ffa500;stroke:#d32f2f;stroke-width:5.40974;stroke-dasharray:none"
+       x="267.47153"
+       y="215.55531"
+       id="text8-7"><tspan
+         sodipodi:role="line"
+         id="tspan8-9"
+         style="fill:#ffa500;stroke:none;stroke-width:5.40974"
+         x="267.47153"
+         y="215.55531">-q</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:none;stroke:#ffa500;stroke-width:1.65172"
+       x="342.01099"
+       y="228.65312"
+       id="text2-0-9"><tspan
+         sodipodi:role="line"
+         id="tspan2-6-7"
+         style="fill:none;stroke:#ffa500;stroke-width:1.65172"
+         x="342.01099"
+         y="228.65312">+</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:none;stroke:#d32f2f;stroke-width:1.65172"
+       x="149.4931"
+       y="388.87274"
+       id="text2-0-7-3"
+       transform="rotate(-36.37866)"><tspan
+         sodipodi:role="line"
+         id="tspan2-6-5-6"
+         style="fill:none;stroke:#d32f2f;stroke-width:1.65172"
+         x="149.4931"
+         y="388.87274">+</tspan></text>
+    <ellipse
+       style="fill:none;stroke:#d32f2f;stroke-width:2.366;stroke-dasharray:none"
+       id="path8-1"
+       cx="336.06546"
+       cy="223.23677"
+       rx="21.166664"
+       ry="21.166666" />
+    <text
+       xml:space="preserve"
+       style="font-size:16.1322px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:none;stroke:#d32f2f;stroke-width:5.40974;stroke-dasharray:none"
+       x="374.2901"
+       y="245.58644"
+       id="text8-2"><tspan
+         sodipodi:role="line"
+         id="tspan8-93"
+         style="fill:#d32f2f;stroke:none;stroke-width:5.40974"
+         x="374.2901"
+         y="245.58644">+q</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16.1322px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#ffa500;stroke:#d32f2f;stroke-width:5.40974;stroke-dasharray:none"
+       x="342.55624"
+       y="215.6752"
+       id="text8-7-1"><tspan
+         sodipodi:role="line"
+         id="tspan8-9-9"
+         style="fill:#ffa500;stroke:none;stroke-width:5.40974"
+         x="342.55624"
+         y="215.6752">-q</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#ffa500;stroke:#d32f2f;stroke-width:2.366;stroke-dasharray:none"
+       x="338.66666"
+       y="132.29167"
+       id="text9"><tspan
+         sodipodi:role="line"
+         id="tspan9"
+         style="fill:#d32f2f;stroke:none;stroke-width:2.366"
+         x="338.66666"
+         y="132.29167">schema pour atome neutre</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24.6944px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#d32f2f;stroke:none;stroke-width:2.366;stroke-dasharray:none"
+       x="139.53772"
+       y="274.62341"
+       id="text10"
+       inkscape:export-filename="s4.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan10"
+         style="font-size:24.6944px;stroke-width:2.366"
+         x="139.53772"
+         y="274.62341">O</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24.6944px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#d32f2f;stroke:none;stroke-width:2.366;stroke-dasharray:none"
+       x="174.86832"
+       y="243.41667"
+       id="text11"><tspan
+         sodipodi:role="line"
+         id="tspan11"
+         style="font-size:24.6944px;stroke-width:2.366"
+         x="174.86832"
+         y="243.41667">H</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24.6944px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#d32f2f;stroke:none;stroke-width:2.366;stroke-dasharray:none"
+       x="174.86832"
+       y="301.625"
+       id="text12"><tspan
+         sodipodi:role="line"
+         id="tspan12"
+         style="font-size:24.6944px;stroke-width:2.366"
+         x="174.86832"
+         y="301.625">H</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-11.50065,21.561787)"
+       id="text13"
+       style="font-size:93.3333px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect13);display:inline;fill:#d32f2f;stroke:none;stroke-width:8.94236;stroke-dasharray:none" />
+    <path
+       style="fill:#d32f2f;stroke:#d32f2f;stroke-width:2.366;stroke-dasharray:none"
+       d="m 137.58333,254 18.52083,-13.22916"
+       id="path13"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#d32f2f;stroke:#d32f2f;stroke-width:2.366;stroke-dasharray:none"
+       d="m 137.58333,275.16667 18.52083,15.875"
+       id="path14"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#d32f2f;stroke:#8e44ad;stroke-width:1.766;stroke-dasharray:1.766, 3.532;stroke-dashoffset:0"
+       d="M 95.249995,266.17081 H 222.24999"
+       id="path15" />
+    <text
+       xml:space="preserve"
+       style="font-size:10.5456px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#d32f2f;stroke:none;stroke-width:0.754162;stroke-dasharray:0.754162, 1.50832;stroke-dashoffset:0"
+       x="126.95064"
+       y="253.884"
+       id="text16"><tspan
+         sodipodi:role="line"
+         id="tspan16"
+         style="stroke:none;stroke-width:0.754162"
+         x="126.95064"
+         y="253.884">δ-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.5456px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#d32f2f;stroke:none;stroke-width:0.754162;stroke-dasharray:0.754162, 1.50832;stroke-dashoffset:0"
+       x="189.50291"
+       y="227.11264"
+       id="text16-6"><tspan
+         sodipodi:role="line"
+         id="tspan16-9"
+         style="stroke:none;stroke-width:0.754162"
+         x="189.50291"
+         y="227.11264">δ+</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.5456px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#d32f2f;stroke:none;stroke-width:0.754162;stroke-dasharray:0.754162, 1.50832;stroke-dashoffset:0"
+       x="192.02911"
+       y="296.23544"
+       id="text16-2"><tspan
+         sodipodi:role="line"
+         id="tspan16-5"
+         style="stroke:none;stroke-width:0.754162"
+         x="192.02911"
+         y="296.23544">δ+</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20.7138px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#d32f2f;stroke:none;stroke-width:1.48134;stroke-dasharray:1.48134, 2.96267;stroke-dashoffset:0"
+       x="156.42934"
+       y="270.36609"
+       id="text17"><tspan
+         sodipodi:role="line"
+         id="tspan17"
+         style="stroke-width:1.48134"
+         x="156.42934"
+         y="270.36609">⊖</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:21.2978px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#d32f2f;stroke:none;stroke-width:1.52309;stroke-dasharray:1.52309, 3.04618;stroke-dashoffset:0"
+       x="183.56346"
+       y="270.31238"
+       id="text18"><tspan
+         sodipodi:role="line"
+         id="tspan18"
+         style="stroke-width:1.52309"
+         x="183.56346"
+         y="270.31238">⊕</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24.9087px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+       x="-367.27881"
+       y="87.038834"
+       id="text1-3"><tspan
+         sodipodi:role="line"
+         id="tspan1-5"
+         style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+         x="-367.27881"
+         y="87.038834">-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:1.65172"
+       x="-323.05777"
+       y="85.779694"
+       id="text2-62"><tspan
+         sodipodi:role="line"
+         id="tspan2-9"
+         style="stroke-width:1.65172"
+         x="-323.05777"
+         y="85.779694">+</tspan></text>
+    <rect
+       style="fill:none;stroke:#03a9f4;stroke-width:2.94333;stroke-dasharray:none"
+       id="rect1"
+       width="70.555542"
+       height="26.45833"
+       x="-384.52774"
+       y="68.791672"
+       ry="13.229165" />
+    <text
+       xml:space="preserve"
+       style="font-size:24.9087px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+       x="-368.43152"
+       y="120.87891"
+       id="text1-3-9"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-3"
+         style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+         x="-368.43152"
+         y="120.87891">-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:1.65172"
+       x="-324.21048"
+       y="119.61977"
+       id="text2-62-6"><tspan
+         sodipodi:role="line"
+         id="tspan2-9-0"
+         style="stroke-width:1.65172"
+         x="-324.21048"
+         y="119.61977">+</tspan></text>
+    <rect
+       style="fill:none;stroke:#03a9f4;stroke-width:2.94333;stroke-dasharray:none"
+       id="rect1-6"
+       width="70.555542"
+       height="26.45833"
+       x="-385.68045"
+       y="102.63175"
+       ry="13.229165" />
+    <text
+       xml:space="preserve"
+       style="font-size:24.9087px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+       x="-367.18445"
+       y="155.85709"
+       id="text1-3-92"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-0"
+         style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+         x="-367.18445"
+         y="155.85709">-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:1.65172"
+       x="-322.96341"
+       y="154.59795"
+       id="text2-62-2"><tspan
+         sodipodi:role="line"
+         id="tspan2-9-3"
+         style="stroke-width:1.65172"
+         x="-322.96341"
+         y="154.59795">+</tspan></text>
+    <rect
+       style="fill:none;stroke:#03a9f4;stroke-width:2.94333;stroke-dasharray:none"
+       id="rect1-7"
+       width="70.555542"
+       height="26.45833"
+       x="-384.43338"
+       y="137.60992"
+       ry="13.229165" />
+    <text
+       xml:space="preserve"
+       style="font-size:24.9087px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+       x="-368.33701"
+       y="189.6972"
+       id="text1-3-9-5"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-3-9"
+         style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+         x="-368.33701"
+         y="189.6972">-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24.9087px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+       x="-358.80167"
+       y="264.60315"
+       id="text1-3-1"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-7"
+         style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+         x="-358.80167"
+         y="264.60315">-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24.9087px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+       x="-359.95438"
+       y="298.44321"
+       id="text1-3-9-2"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-3-72"
+         style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+         x="-359.95438"
+         y="298.44321">-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24.9087px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+       x="-358.70731"
+       y="333.42139"
+       id="text1-3-92-2"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-0-61"
+         style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+         x="-358.70731"
+         y="333.42139">-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24.9087px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+       x="-359.85986"
+       y="367.26151"
+       id="text1-3-9-5-0"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-3-9-6"
+         style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+         x="-359.85986"
+         y="367.26151">-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:1.65172"
+       x="-324.11597"
+       y="188.43806"
+       id="text2-62-6-2"><tspan
+         sodipodi:role="line"
+         id="tspan2-9-0-2"
+         style="stroke-width:1.65172"
+         x="-324.11597"
+         y="188.43806">+</tspan></text>
+    <rect
+       style="fill:none;stroke:#03a9f4;stroke-width:2.94333;stroke-dasharray:none"
+       id="rect1-6-8"
+       width="70.555542"
+       height="26.45833"
+       x="-385.58594"
+       y="171.45006"
+       ry="13.229165" />
+    <text
+       xml:space="preserve"
+       style="font-size:24.9087px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+       x="-285.35254"
+       y="87.541351"
+       id="text1-3-2"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-9"
+         style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+         x="-285.35254"
+         y="87.541351">-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:1.65172"
+       x="-241.1315"
+       y="86.282211"
+       id="text2-62-3"><tspan
+         sodipodi:role="line"
+         id="tspan2-9-1"
+         style="stroke-width:1.65172"
+         x="-241.1315"
+         y="86.282211">+</tspan></text>
+    <rect
+       style="fill:none;stroke:#03a9f4;stroke-width:2.94333;stroke-dasharray:none"
+       id="rect1-9"
+       width="70.555542"
+       height="26.45833"
+       x="-302.60147"
+       y="69.294189"
+       ry="13.229165" />
+    <text
+       xml:space="preserve"
+       style="font-size:24.9087px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+       x="-286.50525"
+       y="121.38142"
+       id="text1-3-9-4"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-3-7"
+         style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+         x="-286.50525"
+         y="121.38142">-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:1.65172"
+       x="-242.28419"
+       y="120.12228"
+       id="text2-62-6-8"><tspan
+         sodipodi:role="line"
+         id="tspan2-9-0-4"
+         style="stroke-width:1.65172"
+         x="-242.28419"
+         y="120.12228">+</tspan></text>
+    <rect
+       style="fill:none;stroke:#03a9f4;stroke-width:2.94333;stroke-dasharray:none"
+       id="rect1-6-5"
+       width="70.555542"
+       height="26.45833"
+       x="-303.75418"
+       y="103.13425"
+       ry="13.229165" />
+    <text
+       xml:space="preserve"
+       style="font-size:24.9087px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+       x="-285.25818"
+       y="156.3596"
+       id="text1-3-92-3"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-0-6"
+         style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+         x="-285.25818"
+         y="156.3596">-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:1.65172"
+       x="-241.03714"
+       y="155.10046"
+       id="text2-62-2-1"><tspan
+         sodipodi:role="line"
+         id="tspan2-9-3-0"
+         style="stroke-width:1.65172"
+         x="-241.03714"
+         y="155.10046">+</tspan></text>
+    <rect
+       style="fill:none;stroke:#03a9f4;stroke-width:2.94333;stroke-dasharray:none"
+       id="rect1-7-6"
+       width="70.555542"
+       height="26.45833"
+       x="-302.50711"
+       y="138.11244"
+       ry="13.229165" />
+    <text
+       xml:space="preserve"
+       style="font-size:24.9087px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+       x="-286.41074"
+       y="190.19972"
+       id="text1-3-9-5-3"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-3-9-2"
+         style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+         x="-286.41074"
+         y="190.19972">-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:1.65172"
+       x="-242.18968"
+       y="188.94058"
+       id="text2-62-6-2-0"><tspan
+         sodipodi:role="line"
+         id="tspan2-9-0-2-6"
+         style="stroke-width:1.65172"
+         x="-242.18968"
+         y="188.94058">+</tspan></text>
+    <rect
+       style="fill:none;stroke:#03a9f4;stroke-width:2.94333;stroke-dasharray:none"
+       id="rect1-6-8-1"
+       width="70.555542"
+       height="26.45833"
+       x="-303.65967"
+       y="171.95258"
+       ry="13.229165" />
+    <text
+       xml:space="preserve"
+       style="font-size:24.9087px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+       x="-203.33173"
+       y="88.599693"
+       id="text1-3-5"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-6"
+         style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+         x="-203.33173"
+         y="88.599693">-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:1.65172"
+       x="-159.11069"
+       y="87.340553"
+       id="text2-62-9"><tspan
+         sodipodi:role="line"
+         id="tspan2-9-37"
+         style="stroke-width:1.65172"
+         x="-159.11069"
+         y="87.340553">+</tspan></text>
+    <rect
+       style="fill:none;stroke:#03a9f4;stroke-width:2.94333;stroke-dasharray:none"
+       id="rect1-4"
+       width="70.555542"
+       height="26.45833"
+       x="-220.58066"
+       y="70.352531"
+       ry="13.229165" />
+    <text
+       xml:space="preserve"
+       style="font-size:24.9087px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+       x="-204.48438"
+       y="122.43975"
+       id="text1-3-9-52"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-3-5"
+         style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+         x="-204.48438"
+         y="122.43975">-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:1.65172"
+       x="-160.26334"
+       y="121.18061"
+       id="text2-62-6-4"><tspan
+         sodipodi:role="line"
+         id="tspan2-9-0-7"
+         style="stroke-width:1.65172"
+         x="-160.26334"
+         y="121.18061">+</tspan></text>
+    <rect
+       style="fill:none;stroke:#03a9f4;stroke-width:2.94333;stroke-dasharray:none"
+       id="rect1-6-4"
+       width="70.555542"
+       height="26.45833"
+       x="-221.73331"
+       y="104.1926"
+       ry="13.229165" />
+    <text
+       xml:space="preserve"
+       style="font-size:24.9087px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+       x="-203.23737"
+       y="157.41794"
+       id="text1-3-92-30"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-0-7"
+         style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+         x="-203.23737"
+         y="157.41794">-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:1.65172"
+       x="-159.01633"
+       y="156.1588"
+       id="text2-62-2-8"><tspan
+         sodipodi:role="line"
+         id="tspan2-9-3-6"
+         style="stroke-width:1.65172"
+         x="-159.01633"
+         y="156.1588">+</tspan></text>
+    <rect
+       style="fill:none;stroke:#03a9f4;stroke-width:2.94333;stroke-dasharray:none"
+       id="rect1-7-8"
+       width="70.555542"
+       height="26.45833"
+       x="-220.4863"
+       y="139.17078"
+       ry="13.229165" />
+    <text
+       xml:space="preserve"
+       style="font-size:24.9087px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+       x="-204.38986"
+       y="191.25804"
+       id="text1-3-9-5-8"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-3-9-4"
+         style="fill:#8e44ad;stroke:#8e44ad;stroke-width:2.70426"
+         x="-204.38986"
+         y="191.25804">-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:1.65172"
+       x="-160.16882"
+       y="189.9989"
+       id="text2-62-6-2-3"><tspan
+         sodipodi:role="line"
+         id="tspan2-9-0-2-1"
+         style="stroke-width:1.65172"
+         x="-160.16882"
+         y="189.9989">+</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:1.65172"
+       x="-168.20071"
+       y="268.96063"
+       id="text2-62-9-8"><tspan
+         sodipodi:role="line"
+         id="tspan2-9-37-9"
+         style="stroke-width:1.65172"
+         x="-168.20071"
+         y="268.96063">+</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:1.65172"
+       x="-169.35336"
+       y="302.80069"
+       id="text2-62-6-4-2"><tspan
+         sodipodi:role="line"
+         id="tspan2-9-0-7-6"
+         style="stroke-width:1.65172"
+         x="-169.35336"
+         y="302.80069">+</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:1.65172"
+       x="-168.10635"
+       y="337.77887"
+       id="text2-62-2-8-6"><tspan
+         sodipodi:role="line"
+         id="tspan2-9-3-6-4"
+         style="stroke-width:1.65172"
+         x="-168.10635"
+         y="337.77887">+</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.2139px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#8e44ad;stroke:#8e44ad;stroke-width:1.65172"
+       x="-169.25885"
+       y="371.61899"
+       id="text2-62-6-2-3-9"><tspan
+         sodipodi:role="line"
+         id="tspan2-9-0-2-1-5"
+         style="stroke-width:1.65172"
+         x="-169.25885"
+         y="371.61899">+</tspan></text>
+    <rect
+       style="fill:none;stroke:#03a9f4;stroke-width:2.94333;stroke-dasharray:none"
+       id="rect1-6-8-4"
+       width="70.555542"
+       height="26.45833"
+       x="-221.63879"
+       y="173.01089"
+       ry="13.229165" />
+    <rect
+       style="fill:none;stroke:#03a9f4;stroke-width:1.766;stroke-dasharray:none"
+       id="rect2"
+       width="232.83331"
+       height="158.75"
+       x="-380.99997"
+       y="232.83334"
+       ry="7.9375" />
+    <text
+       xml:space="preserve"
+       style="font-size:24.6944px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:none;stroke:#03a9f4;stroke-width:1.766;stroke-dasharray:none"
+       x="-455.08331"
+       y="222.25"
+       id="text6"><tspan
+         sodipodi:role="line"
+         id="tspan6"
+         style="stroke-width:1.766"
+         x="-455.08331"
+         y="222.25">s5</tspan></text>
+  </g>
+</svg>

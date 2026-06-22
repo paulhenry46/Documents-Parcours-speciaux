@@ -1,0 +1,248 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 3}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%jesse.groenen@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+%\setcounter{chapter}{3}
+\begin{document}
+%\chapter{Puissance et énergie du champ Em}
+\setcounter{chapter}{4}
+\chapter{Ondes électromahnétiques dans un milieu matériel}
+\section{Équations de Maxwell}
+\subsection{Équations de Maxwell dans un milieu matériel}
+On  a dans un milieu matériel
+\begin{itemize}
+    \item $\rot \vec{H} - \frac{\partial \vec{D}}{\partial t}=\vec{j_{libre}}$
+    \item $\rot \vec{E}+\frac{\partial \vec{B}}{\partial t} = \vec{0}$
+    \item $\Div \vec{D} = \rho_{libre}+\rho_{autres}$
+    \item $\Div \vec{B} = 0$
+\end{itemize}
+\subsection{Relations de passage}
+\begin{flalign}
+& (\vec{D}_2 - \vec{D}_1) \cdot \vec{n}_{1\to2} = \sigma && \text{(Composante normale de } \vec{D}\text{)} & \\
+& (\vec{E}_2 - \vec{E}_1) \times \vec{n}_{1\to2} = \vec{0} && \text{(Composante tangentielle de } \vec{E}\text{)} & \\
+& (\vec{B}_2 - \vec{B}_1) \cdot \vec{n}_{1\to2} = 0 && \text{(Composante normale de } \vec{B}\text{)} & \\
+& (\vec{H}_2 - \vec{H}_1) \times \vec{n}_{1\to2} = \vec{j}_S && \text{(Composante tangentielle de } \vec{H}\text{)} &
+\end{flalign}
+
+%TODO vérfier sur les diapositives que les relations de passage sont bien les bonnes
+
+%Attention, on n'a pas besoin de refaire les démos, pour le cours jusqu'ici diapostive 5.6 pour le programme de révision du CC2
+\section{Grandeurs énergétiques}
+Dans le vide :
+\begin{itemize}
+    \item Densité volumique dénergie em : $w = \frac{\epsilon_0 E^2}{2}+ \frac{B^2}{2\mu_0}$
+    \item Vecteur de Poyting : $\Pi = \vec{E}\wedge \frac{\vec{B}}{\mu_0}$ défini à partir du champ des réels 
+    \item Pour une onde progressive dans la direction u : $\vec{Pi} = wc\vec{u}$ : Pi est un courant volumique d'énergie em.
+\end{itemize}
+
+Dans le milieu matériel linéaire :
+\begin{itemize}
+    \item Densité volumique dénergie em : $w = \frac{\vec{D}\cdot \vec{E}}{2}+\frac{\vec{H}\cdot \vec{B}}{2}$
+    \item Vecteur de Poyting : $\Pi = \vec{E}\wedge \vec{H}$ défini à partir du champ des réels 
+\end{itemize}
+On introduit la puissance moyenne rayonnée à travers une surface S :
+$$P = \iint_S <\vec{\Pi}>_{temps}\cdot \vec{\dd S}$$
+L'intensité vaut alors $ I = \frac{P}{S}$
+\section{Ondes électromagnétiqus dans un milieu Diélectrique}
+\subsection{Ondes monochormatiques dans un milieu diélectrique LHI}
+On consdidère des milueux localment neutres, isolants et non magnétique :
+\begin{itemize}
+    \item $\rho_{libre} =0$
+    \item $\vec{j_{libre}} = 0$
+    \item $\vec{M} = \vec{0}$
+    \item $\vec{B} = \mu_0\vec{H}$
+\end{itemize}
+On introduit la relation constitutive du milieu : $\vec{\underline{D}} = \epsilon_0\underline{\epsilon_r}(\omega)\vec{\underline{E}}$ er $\epsilon_r = 1+ \chi_e(\omega)$
+
+Les équations de Maxwell sont identiques à l'exception que $\epsilon_0\to \epsilon_0\epsilon_r$ :Les ondes em qui peuvent se propager dans le milieu sont semblables à celles de propageant dans le vide.
+
+$$\lap \vec{\underline{E}}+\frac{\omega^2}{c^2}\epsilon_r(\omega)\vec{\underline{E}}=\vec{0}$$
+avec la vitesse de propagation : $\frac{c}{\sqrt{\epsilon_r}}$
+% \subsection{Ondes planes progressives monochromatiques}
+% On est dans le même type de milieu que dans la section précédente et les ondes ont la même aplitude en tout point d'un même plan, i.e. des ondes planes.
+
+% Les équations de maxwell sont de la forme :
+% \begin{itemize}
+%     \item $\vec{k}\cdot \vec{E} = \vec{k}\cdot \vec{B} = 0$
+%     \item $\vec{k}\wedge \vec{E} = \omega \vec{B}$
+%     \item $\vec{k}\wedge \vec{B} = -\omega \mu_0\epsilon_0\epsilon_r(\omega)\vec{E}$
+% \end{itemize}
+%  On peut réécrire l'eq de propagation pour une onde plane :
+%  $$k^2 \vec{\underline{E}} = \frac{\omega^2}{c^2}\epsilon_r(\omega)\vec{\underline{E}}$$
+ 
+%  Donc si 
+%  \begin{itemize}
+%     \item $\epsilon_r$ réel et strictement positif : milieu transparent, l'onde se propage sans atténuation de l'amplitude : $k$ réel
+%     \item $\epsilon_r$ dépend de $\omega$ : milieu dispersif
+%     \item $\epsilon_r =cst$ : milieu non dispersif, c'est le cas du vide.
+%  \end{itemize}
+% On introduit la vitesse de phase de l'onde :
+% $v_{\varphi}(\omega) = \frac{\omega}{k} = \frac{c}{\sqrt{\epsilon_r(\omega)}}$ : La vitesse de phase est plus petite que $c$.
+
+% On peut écrire $n(\omega) = \sqrt{\epsilon_r}$.
+
+% Dans un milieu matériel, $\lambda = \frac{2\pi}{k} = \frac{\lambda_0}{n(\omega)}$
+
+% Le nombre d'onde vaut alors $ k = \frac{\omega}{c}\sqrt{\epsilon_r(\omega)}$
+% \subsection{Aspects énergétiques}
+% $$\vec{\Pi} = n(\omega)c\epsilon_0E^2\vec{u}$$
+% On utilise ici le champ réel !
+
+
+
+\subsection{Ondes planes progressives monochromatiques (OPPM)}
+
+Une onde plane se caractérise par des amplitudes identiques en tout point d'un plan perpendiculaire à la direction de propagation. On se place dans un milieu linéaire, homogène et isotrope (LHI).
+
+\begin{definition}{Structure de l'OPPM dans un milieu LHI}
+En recherchant des solutions sous forme de vagues planes complexes de la forme $\vec{\underline{E}} = \vec{\underline{E}}_0 \exp\left(i(\omega t - \vec{k}\cdot\vec{r})\right)$, les équations de Maxwell se réduisent aux relations algébriques suivantes :
+\begin{itemize}
+    \item Transversalité : $\vec{k}\cdot \vec{\underline{E}} = 0 \quad \text{et} \quad \vec{k}\cdot \vec{\underline{B}} = 0$
+    \item Relation de structure : $\vec{k}\wedge \vec{\underline{E}} = \omega \vec{\underline{B}}$
+    \item Équation d'Ampère-Maxwell : $\vec{k}\wedge \vec{\underline{B}} = -\frac{\omega}{c^2}\epsilon_r(\omega)\vec{\underline{E}}$
+\end{itemize}
+\end{definition}
+
+\tipsInfo{Trièdre direct}{La relation de structure implique que le trièdre $(\vec{k}, \vec{\underline{E}}, \vec{\underline{B}})$ est direct. Les champs électrique et magnétique vibrent en phase dans un milieu non absorbant.}
+
+L'équation de propagation (équation de Helmholtz) pour le champ électrique se simplifie sous la forme :
+$$k^2 \vec{\underline{E}} = \frac{\omega^2}{c^2}\epsilon_r(\omega)\vec{\underline{E}}$$
+
+La nature de la permittivité diélectrique relative $\epsilon_r(\omega)$ détermine le comportement de l'onde dans le milieu :
+
+\begin{proposition}{Propriétés du milieu selon $\epsilon_r(\omega)$}
+\begin{itemize}
+    \item \textbf{Milieu transparent} : $\epsilon_r(\omega)$ est réel et strictement positif. Le vecteur d'onde $k = \frac{\omega}{c}\sqrt{\epsilon_r(\omega)}$ est réel : l'onde se propage sans atténuation de son amplitude.
+    \item \textbf{Milieu dispersif} : $\epsilon_r$ dépend explicitement de la pulsation $\omega$. Des ondes de fréquences différentes se propagent à des vitesses différentes.
+    \item \textbf{Milieu non dispersif} : $\epsilon_r = \text{cste}$. C'est le cas unique du vide où $\epsilon_r = 1$.
+\end{itemize}
+\end{proposition}
+
+\warningInfo{Cas des milieux conducteurs ou absorbants}{Si $\epsilon_r(\omega)$ possède une composante imaginaire non nulle, le vecteur d'onde $\vec{k}$ devient complexe ($\vec{\underline{k}} = \vec{k}' - i\vec{k}''$), ce qui traduit physiquement une atténuation (effet Joule ou absorption) de l'onde lors de sa propagation.}
+
+On introduit l'indice de réfraction du milieu $n(\omega) = \sqrt{\epsilon_r(\omega)}$, ainsi que la vitesse de phase de l'onde $v_{\varphi}(\omega)$ :
+
+$$v_{\varphi}(\omega) = \frac{\omega}{k} = \frac{c}{n(\omega)}$$
+
+\checkInfo{Longueur d'onde}{Dans un milieu matériel d'indice $n(\omega)$, la longueur d'onde est réduite par rapport à sa valeur dans le vide $\lambda_0$ :
+$$\lambda = \frac{2\pi}{k} = \frac{\lambda_0}{n(\omega)}$$
+}
+
+\subsection{Aspects énergétiques}
+
+Le transport d'énergie par l'onde électromagnétique est décrit par le vecteur de Poynting $\vec{\Pi}$. 
+
+\criticalInfo{Calcul de la puissance instantanée}{Pour les aspects énergétiques (produits de champs), il est impératif d'utiliser les \textbf{champs réels} et non les expressions complexes ! 
+$$\vec{\Pi} = \frac{\vec{E}_{\text{réel}} \wedge \vec{B}_{\text{réel}}}{\mu_0}$$
+}
+
+Pour une OPPM se propageant selon le vecteur unitaire $\vec{u}$ dans un milieu transparent d'indice $n(\omega)$, le vecteur de Poynting instantané s'écrit :
+$$\vec{\Pi} = n(\omega)c\epsilon_0 E_{\text{réel}}^2\vec{u}$$
+
+\tipsInfo{Moyenne temporelle}{En pratique, les détecteurs (œil, photodiodes) sont sensibles à la puissance moyenne. Pour une OPPM, la valeur moyenne temporelle du vecteur de Poynting (l'éclairement) vaut :
+$$\langle \vec{\Pi} \rangle = \frac{1}{2}n(\omega)c\epsilon_0 E_0^2\vec{u}$$
+}
+
+
+
+
+% \subsection{Milieu diélectrique LHI non magnétique, non chargé, isolant, transparent et non dispersif}
+% \begin{itemize}
+%     \item $\omega = \frac{ED}{2}+\frac{B^2}{2\mu_0} = \frac{\epsilon E^2}{2}+\frac{B^2}{2\mu_0} = \epsilon_0n^2E^2$
+%     \item $\vec{\pi} = \frac{c}{n}w\vec{u}$
+%     \item %TODO finir de noter
+% \end{itemize}
+\subsection{Milieux absorbants}
+On a $\epsilon_r$ complexe donc $\vec{k}$ complexe.
+
+% Eq de maxwell, de propagation et de dispersion dans ce cas.
+
+% On note $\vec{k} = (k'+ik'')\vec{u}$
+
+% On a $\vec{E} = \vec{E_0}e^{-k''z}e^{i(k'z-\omega t)}$
+
+
+% L'indice optique est aussi complexe : $\underline{n} = n'+in''$
+
+% On a $\epsilon_r' = n'^2-n''^2, \epsilon_r''=2n'\cdot n''$
+
+% On a $\underline{n} = \frac{c}{\omega}\underline{k}$
+
+% On a $$<\vec{\Pi}> = \frac12 n' c\epsilon_0E_0^2e^{-2k''z}\vec{e_z}$$
+
+% Si $\epsilon_r'>0$, il y a propagation sans atténuation, milieu transparent, dans le cas contraire, il n'y a plus de propagation, que de l'atténuation.
+
+% Si $\epsilon_r = 0$
+
+% Dans ce cas, il n'y a pas de composante B, donc l'ondes est purement électrique.
+
+% Comme $\vec{k}\wedge \vec{E} = \vec{B} = 0$, l'onde n'est plus transverse mais longitudinale.
+\begin{itemize}
+    \item Si $\underline{\epsilon_r} = \epsilon_r'$ : 
+\begin{itemize}
+    \item Si $\epsilon_r' >0$ : propagation sans atténuation : milieu transparent : $e^{i(kz-\omega t)}$
+    \item Si $\epsilon_r'<0$ : pas de propagation, que de l'atténuation : $e^{-kz}e^{-i\omega t}$ 
+\end{itemize}
+\item Dans le cas contraire,  absorption, propagation et atténuation
+\end{itemize}
+
+\subsection{Réflexion et transmission d'une onde à l'interface entre 2 diélectriques}
+% \subsubsection{Relations de passage}
+% On utilise les relations de passagepour relier les 2  champs du milieu 1 et 2.
+% \begin{itemize}
+%     \item $\vec{n_{12}}\cdot (\vec{D_2}-\vec{D_1})=0$
+%     \item $\vec{n_{12}}\cdot (\vec{B_2}-\vec{B_1})=0$
+%      \item $\vec{n_{12}}\wedge (\vec{E_2}-\vec{E_1})=0$
+%     \item $\vec{n_{12}}\wedge (\vec{H_2}-\vec{H_1})=0$
+% \end{itemize}
+%Il y a continuité à l'interface des composantes normales de $\vec{D},\vec{B}$ et des composantes tangentielles de $\vec{D}, \vec{E}$
+
+\includegraphics[scale=0.5]{resume.pdf}
+\end{document}

@@ -1,0 +1,337 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mecanique Analytique}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\newcommand{\qa}{q_{\alpha}}
+\newcommand{\qdb}{\dot{q_{\beta}}}
+\newcommand{\qb}{q_{\beta}}
+\setcounter{chapter}{1}
+\begin{document}
+\chapter{Calcul variationnel}
+\section{Variations et Actions}
+Parfois on veut minimiser non pas une fonction mais une fonctionnelle : $$\int L(f'(x), f(x))\dd x$$
+
+\checkInfo{Problème}{Avec une fonction à une variable, pour trouver un maxima, on calcule simplement la dérivée.
+
+Pour une fonction à plusieurs variables, on calcule le gradient.
+
+On s'intersse maintenant aux fonctionelles.
+}
+\begin{definition}[Fonctionelle]
+    Une fonctionelle prend une fonction entrée et donne un nombre réel en sortie
+\end{definition}
+Par exemple $$\int_x{x_i}^{x_f}L(x,f(x), f'(x))\dd x$$ est une fonctionnelle.
+
+Par exemple, l'énergie potentielle d'un cable entre 2 poteau dont on modélise la corde par $y=f(x)$.
+%todo corde.svg
+
+%todo c2-1
+
+Pour minimiser,on va calculer 
+$$\tilde{f}_{f_0(x)+\delta f(x)} \simeq \int_xi^{x_f} \dots \delta f(x)\dd x$$
+
+On calcule 
+
+\begin{flalign*}
+    \delta \tilde{f} &= \tilde{f}_{f_0(x)+\delta f(x)}- \tilde{f}_{f_0(x)}\\
+    &= \int_{x_i}^{x_f} L(x, f(x)+\delta f, f'(x)+\delta f'(x))-L(x, f(x), f'(x))\dd x\\
+    &= \int_{x_i}^{x_f} \left(\frac{\partial L}{\partial f'}\delta f'+\frac{\partial L}{\partial f}\delta f+\dots\right) \dd x\\
+    &= \int_{x_i}^{x_f} \left(\frac{\dd }{\dd x}\left(\frac{\partial L}{\partial f'}\delta f\right)-\frac{\dd }{\dd x}\left(\frac{\partial L}{\partial f'}\right)\delta f+\frac{\partial L}{\partial f}\delta f\right) \dd x\\
+    &= \int_{x_i}^{x_f} \frac{\dd }{\dd x}\left(\frac{\partial L}{\partial f'}\delta f\right)\dd x + \int_{x_i}^{x_f} \left(\frac{\partial L}{\partial f}-\frac{\dd }{\dd x}\frac{\partial L}{\partial f'}\right)\delta f \dd x
+\end{flalign*}
+%TODO À corriger
+On retrouve alors l'équation d'Euler-lagrange
+\begin{definition}[Action]
+    Pour q une trajectoire, on a 
+    $$S = \int L(q(t),\dot{q(t)},t)\dd t$$
+\end{definition}
+\section{Multiplicateurs de Lagrange et Contraintes}
+\subsection{Multiplicateur de Lagrange}
+\checkInfo{Rappel : Multiplicateurs de Lagrange}{
+Pour trouver les extrema d'une fonction $f(x,y)$ sous une contrainte $g(x,y) = 0$, on utilise la méthode du multiplicateur de Lagrange.
+\begin{enumerate}
+    \item On introduit une fonction auxiliaire $f_{\lambda}(x, y) = f(x, y) + \lambda g(x, y)$, où $\lambda$ est le multiplicateur de Lagrange.
+    \item On cherche les points critiques de $f_{\lambda}$ en résolvant le système :
+    \[ \begin{cases}
+    \frac{\partial f_{\lambda}}{\partial x} = \frac{\partial f}{\partial x} + \lambda \frac{\partial g}{\partial x} = 0 \\
+    \frac{\partial f_{\lambda}}{\partial y} = \frac{\partial f}{\partial y} + \lambda \frac{\partial g}{\partial y} = 0
+    \end{cases} \]
+    Cela donne les points critiques $(x^*(\lambda), y^*(\lambda))$ qui dépendent de $\lambda$.
+    \item On injecte ces points dans l'équation de contrainte $g(x^*(\lambda), y^*(\lambda)) = 0$ pour trouver la ou les valeurs de $\lambda = \lambda^*$.
+    \item Les points $(x^*(\lambda^*), y^*(\lambda^*))$ sont les extrema de $f$ sous la contrainte $g=0$.
+\end{enumerate}
+Cette méthode se généralise à plus de variables et plus de contraintes.
+}
+On a une fonction de plusieurs variable $F$ On veut déterminer ses extremas sous la contrainte $f(\vec{x})$. Cela se produit en $\vec{x_0}$, alors 
+$\vec{\nabla}F // \vec{\nabla}f \Rightarrow \vec{\nabla} = \lambda \vec{\nabla} f$
+
+Si on a 2 contraintes, le sous espace est de dimension $n-2$. Ainsi, $\vec{\nabla}f_1, \vec{\nabla}f_2$ sont $\perp$ à l'espace tangentiel et $\vec{\nabla}F\perp$ à l'espace tengent, donc va \^etre une combinaison linéaire des 2.
+
+\begin{theorem}[Gradient et contrainte dans le cas général]
+    $\vec{\nabla}F = \sum_{i=1}^k \lambda_i \vec{\nabla}f_i(\vec{x_0})$
+\end{theorem}
+\subsection{Application au calcul variationnel}
+On veut mnimiser $$S = \int_{t_i}^{t_f}L(q,\dot{q}, t)$$ mais avec la contrainte  intégrale $$\int_{t_i}^{t_f}f(q,\dot{q}, t)\dd t=0$$
+
+On peut écrire
+$$\tilde{S} =\int_{t_i}^{t_f} (L-\sum\lambda f) \dd t$$
+\subsection{Contrainte locale}
+C'est une contrainte que doit satisfaire S à chaque instant. Les multiplicateurs de Lagrange dépendent du temps :
+$$\tilde{S} = \int_{t_i}^{t_f}(L-\sum_{i=1}^k \lambda(t)f)\dd t$$
+
+Mais il vaut mieux utiliser les contraintes locales dès le début avec des contraintes scléronomes/hétéronomes.
+
+\subsubsection{Exemple avec une roue qui glisse}
+%todo schema roule
+\explanation{2}{Il s'agit de la contrainte que l'on oublie au début et que l'on injecte ensuite avec le multiplicateur.}
+\begin{align*}
+\dot{X} - R\dot{\theta} &= 0,\\
+X - R\theta &= \text{cste} = 0,\explain{2}{right}{0}{0.5}{}\\
+U &= \frac12 m\dot{X}^{2} + \frac12 I\dot{\theta}^{2},\\
+\text{(disque homogène)} \qquad I &= mR^{2},\\
+V &= -mgX\sin(\alpha),\\
+L &= U - V
+= \frac12 m\dot{X}^{2} + \frac12 I\dot{\theta}^{2} + mgX\sin(\alpha)
+- \lambda\,(X - R\theta),\\
+\delta S
+&= \int_{t_i}^{t_f}\left(
+m\dot{X}\,\delta\dot{X}
++ I\dot{\theta}\,\delta\dot{\theta}
++ mg\sin(\alpha)\,\delta X
+- \lambda\,\delta X
++ \lambda R\,\delta\theta
+\right)\dd t,\\
+S
+&= \int_{t_i}^{t_f}\left(
+\frac12 m\dot{X}^{2}
++ \frac12 I\dot{\theta}^{2}
++ mgX\sin(\alpha)
+- \lambda\,(X-R\theta)
+\right)\dd t,\\
+\frac{\partial S}{\partial X(t)} = 0
+&\Rightarrow m\ddot{X} - mg\sin(\alpha) + \lambda = 0,\\
+\frac{\partial S}{\partial \theta(t)} = 0
+&\Rightarrow I\ddot{\theta} - \lambda R = 0,\\
+\frac{\partial S}{\partial \lambda(t)} = 0
+&\Rightarrow X = R\theta.
+\end{align*}
+On a donc un système de 3 équations que l'on va pouvoir utiliser pour obtenir l'équation finale.
+Comme $X=R\theta$, on a aussi $\ddot{X}=R\ddot{\theta}$, donc
+\[
+\lambda = \frac{I}{R}\ddot{\theta}=\frac{I}{R^2}\ddot{X}.
+\]
+En remplaçant dans la première équation :
+\[
+m\ddot{X}-mg\sin(\alpha)+\frac{I}{R^2}\ddot{X}=0,
+\]
+d'où
+\[
+\left(m+\frac{I}{R^2}\right)\ddot{X}=mg\sin(\alpha).
+\]
+Ainsi,
+\[
+\ddot{X}=\frac{mg\sin(\alpha)}{m+\frac{I}{R^2}}.
+\]
+
+Pour un disque homogène, $I=mR^2$, donc
+\[
+\ddot{X}=\frac{g\sin(\alpha)}{2}.
+\]
+\chapter{Variable cycliques, formule de Beltrami et théorème de Noether}
+\section{Variables cycliques}
+\subsection{Définition}
+Soit un système avec $N$ coordonnées généralisées $q_1,\dots,q_N$, et supposons que le lagrangien
+$L(\dot{q}_\alpha,q_\alpha,t)$ ne dépend pas de $q_c$.
+
+L'équation d'Euler-Lagrange pour $q_c$ s'écrit alors :
+\[
+\frac{\dd}{\dd t}\left(\frac{\partial L}{\partial \dot{q}_c}\right)
+-
+\frac{\partial L}{\partial q_c}
+= 0.
+\]
+
+Comme $L$ ne dépend pas de $q_c$, on a :
+\[
+\frac{\partial L}{\partial q_c}=0.
+\]
+
+Donc :
+\[
+\frac{\dd}{\dd t}\left(\frac{\partial L}{\partial \dot{q}_c}\right)=0,
+\]
+et par conséquent :
+\[
+\frac{\partial L}{\partial \dot{q}_c}=\text{cste}.
+\]
+\subsection{Exemples}
+\subsubsection{Exemple 1}
+Exemple : $x_1, x_2, x_3$ sont les coordonnées cartésiennes et $V(\vec{r})$ est indépendant de $x_1$.
+
+On a alors :
+\[
+L=\frac{1}{2}m\left(\dot{x}_1^{\,2}+\dot{x}_2^{\,2}+\dot{x}_3^{\,2}\right)-V(\vec{r}).
+\]
+Comme $L$ ne dépend pas de $x_1$, la coordonnée $x_1$ est cyclique. Donc :
+\[
+\frac{\partial L}{\partial x_1}=0
+\qquad \Rightarrow \qquad
+\frac{\dd}{\dd t}\left(\frac{\partial L}{\partial \dot{x}_1}\right)=0.
+\]
+
+Ainsi :
+\[
+\frac{\partial L}{\partial \dot{x}_1}=m\dot{x}_1= p_1\text{cste},
+\]
+\warningInfo{Potentiel}{Quand un potentiel ne dépend d'une coordonnée, la composante de l'impulsion dans cette m\^eme direction est conservée.}
+\subsubsection{Exemple 2}
+\begin{theorem}[Énergie cinétique en sphérique]
+    $$\frac{1}{2}m\left(\dot{r}^{\,2}+r^{2}\dot{\theta}^{\,2}+r^{2}\sin^{2}\theta\,\dot{\varphi}^{\,2}\right)$$
+\end{theorem}
+En coordonnées sphériques $(r,\theta,\varphi)$, si le potentiel $V(\vec{r})$ est indépendant de $\varphi$, alors
+\[
+L=\frac{1}{2}m\left(\dot{r}^{\,2}+r^{2}\dot{\theta}^{\,2}+r^{2}\sin^{2}\theta\,\dot{\varphi}^{\,2}\right)-V(\vec{r}).
+\]
+Comme $L$ ne dépend pas de $\varphi$, cette coordonnée est cyclique. On a donc
+\[
+\frac{\partial L}{\partial \dot{\varphi}}=\text{cste}
+\qquad \Rightarrow \qquad
+mr^{2}\sin^{2}\theta\,\dot{\varphi}=\text{cste}.
+\]
+\warningInfo{Potentiel invariant autour d'un axe}{Quand un potentiel est invariant autour d'un axe, la composante du moment cinétique selon cet axe est conservée}
+\subsection{Formule de Beltrami}
+Si L est indépendant de t\marginCheck{Si il est indépendant explicitement du temps, bien sur les variables d'une trajectoire dépendent toujours du temps.}
+\[
+\text{Si } \frac{\partial L}{\partial t}=0,\ \text{alors}\ 
+\frac{\dd}{\dd t}\!\left(\sum_{\alpha=1}^{N}\dot q_\alpha
+\frac{\partial L}{\partial \dot q_\alpha}-L\right)=0.
+\]
+
+En effet,
+\begin{align*}
+\frac{\dd}{\dd t}\!\left(\sum_{\alpha}\dot q_\alpha\frac{\partial L}{\partial \dot q_\alpha}-L\right)
+&=
+\sum_{\alpha}\ddot q_\alpha\frac{\partial L}{\partial \dot q_\alpha}
++\sum_{\alpha}\dot q_\alpha\frac{\dd}{\dd t}\!\left(\frac{\partial L}{\partial \dot q_\alpha}\right)
+-\frac{\dd L}{\dd t} \\
+&=
+\sum_{\alpha}\dot q_\alpha\left[\frac{\dd}{\dd t}\!\left(\frac{\partial L}{\partial \dot q_\alpha}\right)-\frac{\partial L}{\partial q_\alpha}\right]
+-\frac{\partial L}{\partial t}.
+\end{align*}
+
+Avec les équations d'Euler--Lagrange,
+\[
+\frac{\dd}{\dd t}\!\left(\frac{\partial L}{\partial \dot q_\alpha}\right)-\frac{\partial L}{\partial q_\alpha}=0,
+\]
+on obtient donc
+\[
+\frac{\dd}{\dd t}\!\left(\sum_{\alpha=1}^{N}\dot q_\alpha\frac{\partial L}{\partial \dot q_\alpha}-L\right)=0
+\]
+\begin{theorem}[Formule de Beltrami]
+    Si L ne dépend pas du temps, 
+    $$\sum_{\alpha=1}^{N}\dot q_\alpha\frac{\partial L}{\partial \dot q_\alpha}-L=\text{cste}$$
+\end{theorem}
+Cette constante vaut l'énergie mécanique. En effet, 
+Pour une particule de masse $m$ soumise à un potentiel $V(\vec r)$,
+\[
+L=\frac12 m\dot{\vec r}^{\,2}-V(\vec r).
+\]
+Alors, d'après la formule de Beltrami,
+\[
+\sum_i \dot r_i\,\frac{\partial L}{\partial \dot r_i}-L
+=\frac12 m\dot{\vec r}^{\,2}+V(\vec r)
+=\text{cste}=E_{\mathrm m}.
+\]
+
+\subsection{Retour sur la corde}
+Si une corde de masse linéique $\mu$ est décrite par $y=f(x)$, alors
+\[
+\dd l=\sqrt{\dd x^2+\dd y^2}
+=\sqrt{1+\left(\frac{\dd y}{\dd x}\right)^2}\,\dd x.
+\]
+Comme $h=y(x)$ et $\dd m=\mu\,\dd l$, l'énergie potentielle vaut
+\[
+V=\int g\,h\,\dd m
+=\mu g\int_{x_i}^{x_f} y(x)\sqrt{1+\left(y'(x)\right)^2}\,\dd x.
+\]
+
+On doit minimiser la fonction, en prenant en compte la contrainte :
+\[
+S = \int_{0}^{D} \mu g y \sqrt{1 + y'^2} + \lambda \left(\sqrt{1 + y'^2} - \frac{l}{D}\right) \dd x
+\]
+où $L$ est le Lagrangien.
+
+Avec $\delta S = 0$, on a :
+\[
+\frac{\partial L}{\partial x} = 0 \quad \Rightarrow \quad y' - \frac{\partial L}{\partial y'} = \text{Cste}
+\]
+
+Ainsi :
+\[
+(\mu g y + \lambda) y'^2 - (\mu g y + \lambda) \sqrt{1 + y'^2} = \text{Cste}
+\]
+
+Soit :
+\[
+\frac{1}{\sqrt{1 + y'^2}} (\mu g y + \lambda) = \text{Cste}
+\]
+
+En posant $\lambda = \mu g (y_0 + S)$, on obtient :
+\[
+f = \frac{y_0 + S}{c} \quad \Rightarrow \quad \frac{\partial}{\partial y'}\sqrt{1 + y'^2} = 0
+\]
+
+Puis :
+\[
+z = \frac{y + S}{c}
+\]
+
+\end{document}
+

@@ -1,0 +1,479 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Algèbre linéaire 3*}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lombardi@math.univ-toulouse.fr
+\professor{E.Lombardie}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\begin{document}
+\setcounter{chapter}{1}
+%C2 : Applications linéaires sur espaces euclidiens
+%C3 : Espaces hermitiens
+%C4 : Formes quadratiques
+%C5 : Introduction aux groupes
+
+%TD = U-111/U-112
+%CM : B-08/B-07/Grignard
+
+%CC2 : TD du 19 mars
+%CC1 : 1h30
+%CC2 : TD du 7 mai
+%CC3 : 2 juin
+%CC4 : 9 juin
+\chapter{Endomorphismes d'espaces euclidiens}
+$S(x) = x_f-x_g$ avec F et G 2 espaces supplémentaires. On décompose $x = x_f-x_g$ et $P_{F//G}=x_f$.
+
+Notions sur les symétries à revoir
+\section{Isométrie et matrices orthogonales}
+\subsection{Définitions et propriétés}
+\begin{definition}[Isométrie]
+    $f : E\to E$ est une isométrie quand $\forall x\in E, ||f(x)|| = ||x||$
+\end{definition}
+\begin{proposition}
+    $\forall x \in E, ||f(x)||  = ||x|| \iff (f(x)|f(y)) = (x|y) \iff $ pour toites BON, f des vecteurs est
+    aussi BON
+\end{proposition}
+\begin{myproof}
+    $1\rightarrow 2$ :
+
+    $(x|y) = \frac12 (||x+y||^2-||x||^2-||y||^2) = \frac12 (||f(x+)y||^2-||f(x)||^2-||f(y)||^2)$
+    car f conserve la norme par hypothèse.
+
+    Mais f est linéaire, donc $(x|y) =\frac12 (||f(x)+f(y)||^2-||f(x)||^2-||f(y)||^2)$
+    Donc $1\rightarrow 2$ 
+
+    $2\rightarrow 3$ 
+
+    On supposera f conserve le froduit scalaire. Soit $(e_1,\dots, e_n)$ une BON.
+    Donc $\forall i,j (e_i|e_j)=\delta_{ij}\iff \forall i,j (f(e_i)|f(e_j))=\delta_{ij}\iff $ BON
+    Donc $2\rightarrow 3$ 
+
+    $3\rightarrow 1$ 
+
+    f envoie une BON et on veut montrer que f conserve la norme.
+
+    On écrit $x=x_1e_1+\dots+x_ne_n$. De plus, comme $f$ est linéaire, $f(x) = x_1f(e_1)+\dots+x_nf(e_n)$
+
+    $||x^2|| =  x_1^2+\dots+x_n^2$ car BON.
+    
+    $|f(x)|| =  x_1^2+\dots+x_n^2$ car BON.
+\end{myproof}
+\begin{definition}
+    Une matrice $Q\in M_n(\R)$ est orthogonale ssi son inverse $Q^{-1} = ^TQ$
+\end{definition}
+Exemples : Rotation
+\begin{proposition}
+    E euclidien. f est une isométrie $\iff Mat(f)_e$ est orthogonale.
+\end{proposition}
+\criticalInfo{Condition}{C'est faux si ce n'est pas une BON}
+\begin{myproof}
+    f est isométrie .
+
+    A = Mat(f). On décompose x et y dans la base.
+
+    $(x|y) = x_1y_1+\dots+x_ny_n = (^tX)Y$ car c'est BON et on utilise des vecteurs colonne
+
+    $f(x)|f(y) = (x|y) \rightarrow ^t(AX)(AY) = ^tXY \iff ^tX^tAAY = ^tXY \iff  ^tX(^tAAY-Y) = 0$ 
+    
+    $\iff (X|^tAAY-Y) = 0 $
+    $\iff ^tAAY-Y \in (\R^n)^{\perp}$
+
+    $ \iff ^tAAY-Y = 0 \iff ^tAA-I_n = I_n \iff A^{-1}  = ^tA$
+
+
+\end{myproof}
+\begin{proposition}
+    Si Q matrice orthogonale, alors $\det(Q) = \pm 1$
+\end{proposition}
+\begin{myproof}
+    $^tQQ = I_n$, donc $\det(^tQQ) = \det(I_n) = 1 = \det(Q)\det(^tQ)$ et comme $\det(^tQ) = \det(Q)$, c'est bien 1 ou -1.
+\end{myproof}
+$det(\lambda A) = \lambda^n A$.
+\begin{proposition}
+    Si f est une isométrie, alors les valeurs propres réelles de f sont $\pm 1$ $\iff$ Si A est orthogonale alors les vp réelles
+    de A sont $\pm 1$
+\end{proposition}
+\begin{myproof}
+    Si $\lambda \in \R,$ vp de f, $\exists x\neq 0, f(x)=\lambda x$
+
+    Donc $||f(x)|| = ||\lambda x||$ donc $|\lambda| = 1$.
+\end{myproof}
+\begin{definition}
+    On note $O(n)$ l'ensemble des matrices orthogonales et $SO(n)$ l'ensemble des matrices
+    orthogonales Q telle que $\det(Q) = 1$
+\end{definition}
+\begin{proposition}
+    Si (A,B) appartiennent à O(n), leur produit aussi. In appartient à O(n).
+    Si A appartient à O(n), l'inverse aussi.
+\end{proposition}
+Ces trois propriétés assurent que O(n) est un groupe multiplicatif.
+\begin{proposition}
+    SO(n) est aussi un groupe multiplicatif
+\end{proposition}
+On dit que $O(n)$ est le groupe orthogonal et SO(n) le groupe spécial orthogonal.
+\begin{myproof}
+    Pour le produit, on fait un calcul de AB et on obtient bien l'identité
+
+    Pour la 3eme, avec règle de transposé, etc pour montrer que $^t(A^{-1}) = (A^{-1})^{-1}$
+\end{myproof}
+\subsection{Étude de O(2)}
+\begin{proposition}
+    Soit A dans $O(2)$. Alors soit $A\in SO(2)$ et dans ce cas A = (cos -sin//sin cos)
+    A est une rotation d'angle theta
+    Soit A n'appartient pas à SO(2) et on a $A = (cos sin // sin -cos)$ A est une symétrie orthogonale d'angle theta/2
+\end{proposition}
+\begin{myproof}
+    Pour le premier cas, on fait en posant A = (a b // c d )
+
+    On obtient comme équations $a^2+c^2=1, b^2+d^2=1, ab+cd=0$
+    
+    Ils ont la forme d'un cercle : $a=\cos \theta, c=\sin\theta, b=\cos\phi, d = \sin \phi, \cos(\phi-\theta)=0$
+
+\end{myproof}
+\subsection{Étude de O(3)}
+\begin{proposition}
+    A appartient à O(3) et f l'endomorphisme de $\R^3$ tel que $A = mat(f,e_i)$ avec $e_i$ la base canonique de $\R^3$.
+
+    Alors il existe une bon de $\R^3$ telle que  $A' = (cos -sin 0//sin cos 0//0 0 epislon)$
+    avec epsilon =1 si A appartient à SO(3) et -1 sinon.
+\end{proposition}
+\begin{myproof}
+    Étape 1 : Lemme : Si F est une isométrie et si F un sev de E stable par $f$. Alors :
+    alors $f(F^{\perp})\subset F^{\perp}$
+
+    Cela fait instananément des matrices diagonales par bloc
+
+    Exercice pour démontrer le lemme
+
+    Étape 2 : On veut trouver un sous espace stable à l'aide d'un vecteur propre réel.
+    $\lambda v_p \iff P_A(\lambda) = 0$
+
+    Le dégré vaut 3, donc P a au moins une racine réelle.
+
+    finir la demo
+\end{myproof}
+\begin{proposition}
+    Soit A appartient à O3 et différent de l'identité.
+    a) Soit det A = 1, A représente une rotation autour de l'axe $E_1$ est donné par $tr A = 2\cos(\theta)+1$
+    
+    b) Si det A = -1, A représente une rotation d'axe $E_{-1}$ d'angle théta non orieté donné par $tr A = 2\cos theta -1$
+\end{proposition}
+\subsection{Classification dans O(n)}
+\begin{theorem}
+    Soit f isométrie de E espace euclidien. Alors il existe une bon de E tq A  = mat(f,e) est de la forme :
+
+    avec r_theta = [cos -sin // sin cos]
+\end{theorem}
+\begin{theorem}
+    Soit E euclicien, f isométrie de E. On note $E_1 = \{x\in E/ f(x) = x\}$
+
+    Alors f s'écrit $f = \sigma,\dots \sigma_\theta$
+    n- dim E_1 < \sigma < n
+    \sigma réflexion cad une symétrie orthogonale par rapport à un hyperplan
+\end{theorem}
+H hyperplan de E : $H sev de E, dim H  = n-1$
+
+Dans une bon adapatée à la matrice e l'une est de la forme : S = [1--0-0/0-0---1//-1]
+%----------------------Cours précédent non travaillé ---------------
+\section{Adjoint d'un endomorphisme}
+\subsubsection{Endomorphisme adjoint}
+\begin{definition}
+    Soit E un espace euclidien et f une application linéaire. Il existe un unique endomorphisme de E, noté f* tel que 
+    $$\forall (x,y)\in E, (f(x)|y) = (x|f*(y))$$
+    $f*$ est appelé adjoint de f.
+
+    Si $(e_i)$ est une BON, alors $A = mat(f,e), A*=mat(f*,e), A* = ^tA$
+\end{definition}
+\begin{myproof}
+    $\forall x,y \in E (f(x)|y)=(x|f*(y)) \iff ^t(AX)Y=^tX(A*Y) \iff (^tA-A*)Y=0$
+\end{myproof}
+\begin{proposition}
+    \begin{itemize}
+        \item $f** = f$
+        \item Id* = Id
+        \item $\lambda f* = (\lambda f)*$
+        \item $(f\circ g)* = g*\ciric f*$
+        \item Si f inversible : $(f*)^{-1} = (f^-1)$
+    \end{itemize}
+\end{proposition}
+\begin{proposition}
+    \begin{itemize}
+        \item $rg f* = rg f$
+        \item $det f* = det f$
+        \item tr f* = tr f
+    \end{itemize}
+\end{proposition}
+\begin{proposition}
+    Soit E euclidien et $F\subset E$, f app lin. On a 
+    
+    Si F est stable par f $\iff f^{\perp}$ stable par $f*$.
+\end{proposition}
+\begin{myproof}
+    Étape 1 : $\rightarrow$
+
+    Soit $y\in F^{\perp}$ on veut montrer que $f*(y)\in F^{\perp}$
+
+    $\forall x\in  F, (x|f*(y)) = (f(x)|y) = 0$
+
+    Donc $f*(y)\in F^{\perp}$, donc $f*(F^{\perp})\subset F^{\perp}$ donc $F^{\perp}$ est stable par $f*$.
+
+    On fait l'autre sens :
+    $F^{\perp}$ stable par $f*$ donc $(F^\perp)^\perp$ stable par $f**$ donc F stable par $f$.
+
+\end{myproof}
+\begin{proposition}
+    $Ker f* =( Im f)^{\perp}$
+
+    $Im f* = (Ker f)^{\perp}$
+\end{proposition}
+\begin{myproof}
+    $y\in Ker f* \iff f*(y) = 0\iff f*(y)\in E^{\perp} \iff (x|f*(y)) = 0 \iff (f(x)|y) = 0\iff y\in (Im f)^{\perp}$
+\end{myproof}
+\section{Endomorphisme Auto-adjoint}
+\begin{definition}
+    f est dit auto-adjoint $\iff \forall x,y, \in E , (f(x)|y) = (x|f(y))\iff f=f*$
+\end{definition}
+Pour une matrice, c'est l'ensemble des matrices symétriques
+\begin{proposition}
+    E espace euclidien, A = mat(f,e(BON)), f auto-adjoint $\iff A$ symétrique.
+\end{proposition}
+\begin{theorem}
+    Si f est auto-adjoint alors
+
+    1. f est diagonalisable et toutes les valeurs propres sont réelles
+    2. Les sous-espaces propres sont deux à deux orthogonaux. On peut donc construire une BON de E, constituée de vecteurs propres de f en prenant une BON sur chaque espace propre
+
+\end{theorem}
+\begin{theorem}
+    SI A est symétrique, alors A diagonalisable en BON : $\exists Q \in O_n tq A'=Q^{-1}AQ = ^tQAQ$ est diagonale.
+\end{theorem}
+\checkInfo{Rappel}{A diagonalisable si il existe P tq $A'=P^{-1}AP$ est diagonale. }
+\begin{myproof}
+    Étape 1 :Montrer que toutes kes vp sont réelles.
+
+    Soit f auto-adjoint, e BON, A=Mat(f,e), tA = Mat(f,E)
+
+    $\lambda v_p$ de f. c'est une racine du polynome caractétistique de A. On suppose que lambda est complexe.
+
+    On multiplie par le $X bar$ qui est le produit scalaire complexe.
+
+    Donc $\lambda = \bar{\lambda}$
+
+    On montre que c'est diagonalisable.
+
+Étape 2 : Montrons que f est diagonalisable par recurrence.
+
+Initialisation : n=1
+
+Supposons la propriété vraie au rang n.  Soit E avce dim E = n+1 et f est une app lin auto-adjointe.
+
+Donc $\exists \lambda vp$ Soit $e_{n+1}\neq 0$ et $f(e_n) = \lambda e_{n+1}$
+
+F = R e_{n+1} et f(F) \seubset F. Donc D^\perp stable par f* = f
+
+En considérant $f_G : G\to G$ on constante que $d_m G = n, f_G $ est auto-adjointe.
+
+Donc il existe e_n base de G constituée.
+
+donc il existe une base de G contrituée de cecteurs propres de f. Don c'est une base de E.
+
+Étape 3 : Montrons que les sous espaces propres sont orthogonaux entre eux.
+
+Étape 3 à savoir :
+Soit $\lambda_2,\lambda_1$ deux vp diffétentes : $f(x_1)=\lambda_1x_1$.
+
+$\lambda_1(x_1|x_2) = (f(x_1)|x_2) = (x_1|f*(x_2)) = (x_1|f(x_2)) = \lambda_2(x_1|x_2) \Rightarrow (\lambda_1-\lambda_2)(x_1|x_2) = 0$ et les lambdas sont différentes donc $(x_1|x_2)=0$
+\end{myproof}
+\checkInfo{Méthode pour diagonalisr en BON une matrice symétrique}{
+    \begin{itemize}
+        \item Véirier que la matrice est symétrique
+        \item Calcul du polynome caractétistique
+        \item Calcul des racines (= valeur propre et multiplicité)
+        \item Pour chaque kalbdan trouver une base quelconque
+        \item Pour chaque base utiliser GS
+    \end{itemize}
+}
+%----------------- Cours du 24/03/2026---------------
+
+\subsection{Endomorphisme auto-adjoint positif et décomposition polaire}
+\begin{definition}
+    Soit E euclidien, et $f$ auto-adjoint. $f$ est positive $\iff (x|f(x))\geq 0$ Elle est définie positive $\iff x\neq 0 , (x|f(x))>0$.
+\end{definition}
+\begin{proposition}
+    $f$ est auto-adjoint. $f$ spotive $\iff$ toutes les valeurs propres sont positives. Elle est déifnie positive $\iff$ toutes les valeurs propres sont strcutement positives.
+\end{proposition}
+\begin{myproof}
+    $f$ auto-adjoint, donc diagonalisable en base orthonormée de valeurs propres réelles. Donc in y a une BON $e_i$ et $f(e_i) = \lambda_i e_i, \lambda_i \in \R$
+
+    on  a $x= \sum x_i e_i$ , $f(x_i) = \sum \lambda_i x_i e_i$, donc $(x|f(x)) = \sum (x_i)(\lambda_i)(x_i) = \sum \lambda_i x_i^2$
+
+    a) $f$ positif $\iff \forall(x_i) \iff (\lambda_1 x_1+\dots+\lambda_n x_n\geq 0)\iff \lambda_i \geq 0$
+\end{myproof}
+\begin{theorem}
+    Soit $M\in Gl_n(R)$. Alors il existe un unique couple $(Q,S)$ où Q est une matrice orthogonale et S symétrique définie positive tel que $M=QS$.
+\end{theorem}
+\begin{lemma}
+    Soit A symétrique  définie positive. Alors il existe une unique matrice S symétrique définie positive tel que $S^2=A$.
+\end{lemma}
+\begin{myproof}[Théorème]
+    Étape 1 : Montrons que $^tMM$ est symétrique définie positive.
+On a $^tX(^tMM)X = ^tYY$ avec $Y = MX$
+
+De plus, $^tX(^tMM)X \geq 0$
+et $^tX(^tMM)X = 0 \iff Y = 0 \iff MX = 0 \iff X = 0$
+
+Étape 2 : Analyse :
+Si $M=QS$, alors $^tM = ^tS^tQ = S^tQ$
+
+Alors $S = \sqrt{^tMM}, Q = MS^{-1}$
+
+Étape 3
+M = QS, OK, S est définie positive, Ok 
+
+Reste à montrer que $Q \in O(n)$..
+
+$^tQQ = ^t(MS^{-1})MS^{-1} = I_n$.
+\end{myproof}
+\begin{myproof}[Démonstration du lemme]
+    Existence de $S^2 =A$
+
+    On peut diagonaliser A.
+
+    $\exists Q_1 \in O(n), ^tQ_1Aq_1 = D$
+
+    On peut prendre $S = Q_1 \sqrt{D}^tQ_1$ qui convient (A dem)
+
+    Montrons maintenant l'unicité :
+
+    Montrons que si $S^=A$, alors $\exists e_i$ bon de vecteurs propre de A et S.
+
+    point clef pour faire la co-réduction de A et B, c'est que A et B commutent.
+    Donc si $S^2=A, SA=AS$
+
+    A symétrique donc soit ei une BON de vecteurs propres de A.
+
+    $A S e_i = SA ei \iff A S_ei = \lambda_i S e_i$.
+
+    En notant $E_{\lambda}$ le sous espace propre de A associé à $\lambda_i$, on a $S(E\lambda_i )\subset E\lambda_i$
+
+    Sur chaque $E\lambda_i, S$ est symétrique définie positive donc diagonalisable en BON. En prenant sur chaque $E\lambda_i$ une base qui diagonalise $S^{-1}$ et concaténant ses bases on obtient une BON de vecteurs propres de  et de S.
+
+    En notant $P$ la matrice de passage, on a $S^2=A\iff ^tpS^2P = ^tPAP$
+
+    Il y a une unique solution donnée par $\lambda_i ' = \pm \sqrt{\lambda_i}$.
+
+\end{myproof}
+\begin{proposition}[Corollaire]
+    Si $M$, alors il existe $Q\in o(n)$ et $S$ symétrique positive tq $M=QS$ et Q et S ne sont pas forcément unique.
+\end{proposition}
+\subsection{Valeurs singulières}
+Dans cette section, on travaille dans Mn(R), matrices rectangles de taille $n\times m$ à coefficients réels. n = nombre de ligne (nombre de vecteurs de l'espace d'arrivé) et m nombre de colonne (nombre de vecteurs de l'espace de départ)
+\begin{lemma}
+    Soit M\in Mn,m(R)
+    a) $^tMM^$ est une matrice symétrique positive de taille m*m.
+    b) $Ker(^tMM) = Ker (M)$
+    c) rg(^tMM) = rg(M)
+    d) ^tMM = 0 \iff M = 0
+\end{lemma}
+\begin{myproof}
+    a) ^tMM est bien de taille m*m symétrique et $^tX^tMMX = ^t(MX)MX = (x|^tMMX) = ||MX||\geq 0$
+    b) Si X\jn ker(M), MX=0 \rightarrow ^tMMX = 0, donc \lambda \in ker^tMM, donc ker M\subset ker(^tMM)
+    On peut faire la réciproque.
+    c) rg(M) = dim(Im(M)) = n - dim(ker M) = rg(^tMM)
+    d) M = 0 \iff ker(M) = R^m \iff ^tMM = 0
+\end{myproof}
+\begin{theorem}[Décompoisiton en valeur singulières]
+    Soit A\in M_{n,m}(R), r= rg(A). Alors $Q\in O(n), P\in O(n)$ et $G\sigma_1,\dots, \sigma_r >0$ tel que $A = Q\sum ^tp$ où $\sum$ matrices $n\times m$ de ma forme et \sum = [\sigma_1 --- sigma_r] en diagonale. Ici la somme n'est pas une somme mais une matrice.
+\end{theorem}
+\begin{myproof}
+    /!\ démonstration inutile
+    content\begin{enumerate}
+        \item ^tAA \in M_m R symétrique positive  donc il existe P\in O(m) tq ^tp^tAAP  = [\lmabda_10//0\lamnda_m] où \lambda_1 >0. On peut imposer \lambda_1\geq \lambda_2\geq \dots\geq \lambda_n \geq 0
+        Donc \lambda_1 \geq \lambda_2\geq\dots\geq \lambda_R
+        Donc ^tp^tAAP = m(lambda_1\dots 0//0\lambda_r //0000)
+        \item On pose \sigma_k = \sqrt{\lambda_k}. De plus, 1\leq k\leq r, le k-ime vecteur colonne de p\in R^n, q_k = \frac{1}{\sigma_k}Ap_k\in R^N
+        \item monstrons que \forall k 1\leq k \leq r, ||q_k||=1, \forall k,j (q_k|q_j)=0
+        \item La famille (q_1, q_r) est une famille orthonormale de R^N, mais pas forcément une base. On peut donc compléter ctte famille pour obtenir une famille avec des vecteurs supplémentaires.
+        \item On note Q^n = [q_1, q_r, q_r+1, q_n]\in O(n).
+        \item Montrons que AP = Q\sum
+        \begin{enumerate}
+            \item On calcule Q\sum = [Ap1 Apr | 0000\\] de dimension n et m-r.
+            \item Calculon AP : on trouve [Ap1 Apr | Apr+1, Apn\\] de dimension n et m-r. Il faut juste montrer Apr+1=Apn = 0. Or, pr+1, pm sont des vecteurs propres de ^tAA associés à  la valeur prorpre 0. Donc pr+1,\dots pm\in ker ^tAA. Don APn = 0
+        \end{enumerate}
+    \end{enumerate}
+\end{myproof}
+\checkInfo{Méthode pour décomposer en valeurs singulières}{
+\begin{enumerate}
+    \item Calculer ^tAA : on s'assure que c'est symétrique
+    \item Diagonaliser ^tAA en bon en rangeant les valeurs propres de ^tAA par ordre décroissant.
+    \item On pose $\sigma_k = \sqrt{\lambda_k}, q_k = \frac{1}{\sigma_k}A_{pk}$
+    \item Le théorème assure que la famille orthonormale complète cette famille. On complète cette famille pour obtenir une bon de R en utiisant Gram Schmitch dans Vect(q_1,\dots, q_r)^\perp.
+    \item 
+\end{enumerate}
+
+}
+\chapter{Espaces Hermitiens}
+\section{Produit scalaire, norme}
+Dans ce chapitre, on travaille sur des EV avec des complexes.
+\begin{definition}
+    Soit E un escpace vectoriel sur C de dimension finie ou non. C'est un produit scalaire \iff
+    a) C(x+xx',y) = C(x,y) + C(x',y)
+    b) C(x,y+y') pareil
+    c) C(x,\lambda y) = \lambda C(x,y)
+    d) C(\lambda x, y) = \bar{\lambda} C(x,y)
+    e) C(y,x) = \bar{C(x,y)}
+    f) c'est positif et si c'est nul, alors x est nul.
+\end{definition}
+b+c : y -> C(x,y) est linéaire, a+d x->C(x,y) est 1/2 linéaire : les coeff sorttent conjugués
+e : C(x,x) \in R 
+\begin{definition}
+    Si dim E < +\infty, et C product saclaie hermitien. Alors E est un espace hermitien,  dans le cas contraire il est prohimbertien complexe,
+\end{definition}
+\end{document}
+13/15 : 
+15/16 : TP (imprimer TP)
+16/17 : Maths
+17/18 : EM

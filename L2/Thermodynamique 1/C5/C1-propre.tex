@@ -1,0 +1,371 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Introduction à la termodynamique}
+\subtitle{Thermodynamique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{}
+
+\usepackage{graphicx}%-pour mettre des images
+\usepackage[utf8]{inputenc}%encodage
+\usepackage{geometry}%pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%pour les boites d'exercices, de pbq et de croquis d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{tabularx}%pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%Pour les boites info, danger et autres
+\usepackage{menukeys}%Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%pour les liens
+\usepackage{hyperref}%pour les liens (\`a mettre en dernier)
+\usepackage{caption}%pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\begin{document}
+\setcounter{chapter}{4}
+
+\chapter{Transition de phase - États d'équilibre}
+
+% \checkInfo{Contexte}{Ce cours aborde l'étude des transitions de phase d'un corps pur sous l'angle de la thermodynamique classique.}
+
+% \tipsInfo{Structure du cours}{
+% \begin{itemize}
+%     \item Discussion introductive (phénoménologie et expériences).
+%     \item Étude de la stabilité de l'état d'équilibre.
+%     \item Introduction des potentiels thermodynamiques ($G$ et $F$).
+% \end{itemize}
+% }
+
+
+
+%%### Diapositive 3 : Diversité et Définitions
+\section{Introduction}
+\subsection{Phases et transitions}
+
+\begin{definition}[Phase]
+Ensemble d'états accessibles à un corps homogène répondant à un même jeu de lois de comportement (phénoménologie).
+\end{definition}
+Ce terme n'est pas strictement synonyme d'état de la matière.\marginInfo{Un système peut avoir deux phases pour un même état solide (ex: graphite et diamant sont deux phases du carbone solide).}
+
+\begin{definition}[Transition de phase]
+Changement de phénoménologie au-delà d'un seuil d'une grandeur physique fixée. 
+\end{definition}
+
+\checkInfo{Vocabulaire des changements d'état}{
+\begin{itemize}
+    \item \textbf{Fusion / Solidification} : Solide $\leftrightarrow$ Liquide.
+    \item \textbf{Vaporisation / Liquéfaction} : Liquide $\leftrightarrow$ Gaz/Vapeur.
+    \item \textbf{Sublimation / Condensation} : Solide $\leftrightarrow$ Gaz.
+\end{itemize}
+}
+
+
+
+%%### Diapositive 4 : Dispositifs Expérimentaux
+\subsection{Description des expériences (Température $T_0$ fixée)}
+
+\checkInfo{Expérience à Volume imposé}{
+On réduit le volume $V$ par pas constant $\Delta V$ au contact d'un thermostat. On mesure la pression $P$ et on observe l'état de la matière à l'équilibre pour chaque point.
+}
+
+\checkInfo{Expérience à Pression imposée}{
+On augmente la pression $P$ par pas constant $\Delta P$ (via des masselottes) au contact d'un thermostat. On mesure le volume $V$ résultant à l'équilibre.
+}
+
+
+
+%%### Diapositive 5 : Observations Expérimentales à $18^\circ\text{C}$
+\subsection{Résultats de la compression}
+
+\warningInfo{Différence fondamentale de comportement}{
+\begin{itemize}
+    \item \textbf{Volume imposé} : On observe un \textbf{palier de pression} (à $19,5\text{ bar}$) où les phases liquide ($L$) et vapeur ($V$) coexistent.
+    \item \textbf{Pression imposée} : La transition est dite "hors-équilibre". Dès que $P$ dépasse le seuil $P_s$, le système bascule brutalement de l'état gazeux à l'état liquide avec une discontinuité du volume.
+\end{itemize}
+}
+
+%\tipsInfo{Coexistence}{Dans le cas du volume imposé, la quantité de vapeur diminue continûment au profit du liquide sous l'effet de la gravité jusqu'à disparition totale de la phase gazeuse.}
+
+
+
+%%### Diapositive 6 : Analyse Graphique
+\subsection{Isothermes expérimentales}
+
+Pour l'expérinence avec volume imposé, l'analyse des courbes permet de distinguer les domaines d'existence\marginWarning{On définit deux valeurs seuils du volume, $V_{S1/2}$ et $V_{S2/3}$, délimitant le plateau de transition.} :
+\begin{enumerate}
+    \item \textbf{Zone (1)} : Vapeur seule.
+    \item \textbf{Zone (2)} : Coexistence Liquide + Vapeur (Palier de pression à $P_s$).
+    \item \textbf{Zone (3)} : Liquide seul.
+\end{enumerate}
+\includegraphics[scale=0.5]{c1.pdf}
+
+
+%%### Diapositive 7 : Problématiques et Limites des Modèles
+\subsection{Confrontation Modèles vs Observations}
+
+\criticalInfo{Échec des modèles simples}{
+Les modèles classiques (Gaz Parfait, Liquide incompressible, Van der Waals) ne parviennent pas à prédire l'intégralité des observations:
+\begin{itemize}
+    \item Incapacité à prédire l'existence du palier de coexistence $L+V$.
+    \item Absence de lien entre les lois d'énergie des différentes phases.
+\end{itemize}
+}
+Lorsqu'on tente de calculer la variation d'énergie interne entre deux états (ex: Gaz $\rightarrow$ Liquide), l'application de la 1ère loi de Joule se heurte à l'inconnue des constantes d'intégration propres à chaque phase.
+En effet, on a 
+\begin{flalign*}
+    U_V-U_L &= m c_v T_V + (K_u)_V - (m c_L T_L + (K_u)_L)\\
+    &= m c_v T_V - m c_L T_L + (K_u)_V - (K_u)_L
+\end{flalign*}
+Mais $(K_u)_V - (K_u)_L$ ne s'annule pas\marginWarning{Le problème vient du fait que $U$ est définie à une constante près. Sans lien entre les phases, on ne peut pas savoir si $U_L(T)$ et $U_V(T)$ utilisent la même référence.}, cela pose donc problème.
+
+
+Il est donc nécessaire d'adopter une \textbf{approche formelle} (via les potentiels thermodynamiques) pour introduire correctement la transition de phase dans les modèles phénoménologiques.
+
+
+
+%%### Diapositive 8 : Nécessité d'une approche formelle
+\section{Stabilité de l'état d'équilibre}
+\subsection{Approche Thermodynamique de Gibbs}
+
+L'étude des substances hétérogènes par J.W. Gibbs (1875) introduit la nécessité d'une approche formelle pour intégrer la transition de phase dans les modèles de phénoménologie.
+
+\begin{proposition}
+Les conditions de transition de phase sont dictées par la stabilité de l'état d'équilibre:
+\begin{itemize}
+    \item \textbf{Transition possible} : Dès que l'état d'équilibre devient \textbf{métastable} (moins stable qu'un autre état accessible dans les mêmes conditions).
+    \item \textbf{Transition certaine} : Si l'état d'équilibre devient \textbf{instable}.
+\end{itemize}
+\end{proposition}
+
+%\tipsInfo{Lien avec l'évolution}{Cette approche permet de lier la transition de phase à la notion d'évolution spontanée du système vers un état plus stable.}
+
+
+%%### Diapositive 10 : Stabilité de l'équilibre
+
+\subsection{Stabilité : Définition qualitative}
+
+
+Qualifier la stabilité d'un état d'équilibre consiste à observer le comportement du système suite à une perturbation de cet état.
+
+
+\checkInfo{Modèle de perturbation}{On considère un système dans un état d'équilibre $A$ (défini par $V_A$ à $T_0$ et $P_0$) soumis à une perturbation infinitésimale $\Delta V^P, \Delta P^P, \Delta T^P$.}
+
+
+\begin{theorem}
+On distingue deux cas de figure une fois que la perturbation a cessé:
+\begin{itemize}
+    \item \textbf{Équilibre STABLE} (au sens de Lyapunov) : Le système effectue un "retour" vers l'état initial $A$.
+    \item \textbf{Équilibre INSTABLE} : Le système subit une évolution spontanée au cours de laquelle il s'éloigne définitivement de l'état $A$.
+\end{itemize}
+\end{theorem}
+
+
+
+%### Page 1 (P11) : La Métastabilité et Cas $N=1$
+\subsection{Stabilité et Métastabilité}
+
+\begin{definition}
+Un état est dit \textbf{métastable} si le système est stable face à des perturbations infinitésimales, mais qu'une évolution spontanée (éloignement définitif de l'état initial) se produit au-delà d'un certain seuil de perturbation $\Delta V_0^P$.
+\end{definition}
+
+
+\begin{itemize}
+    \item \textbf{Rompre la métastabilité} : Apporter l'énergie nécessaire pour franchir le seuil $\Delta V^P > \Delta V_0^P$\marginInfo{L'état stable est comparable à une bille dans une cuvette infinie, tandis que l'état métastable correspond à une cuvette finie (risque de basculement).}.
+    \item \textbf{Supprimer la métastabilité} : Modifier les conditions pour que le seuil tende vers zéro ($(\Delta V)_0^P \to 0$), rendant l'état instable.
+\end{itemize}
+
+
+
+
+
+%### Page 2 (P12) : Stabilité en Thermodynamique (Cas $N=2$)
+\subsection{Critère de stabilité thermodynamique}
+
+Lorsque deux états $A$ et $B$ sont accessibles dans les mêmes conditions, on ne peut plus définir la stabilité par le simple retour systématique à l'état initial.
+
+\begin{definition}[État stable]
+En thermodynamique, un état d'équilibre est \textbf{STABLE} si les évolutions spontanées à partir de cet état sont \textbf{impossibles}. 
+\end{definition}
+
+\warningInfo{Processus non quasi-statiques}{Toute évolution spontanée (de $A$ vers $B$) est nécessairement un processus irréversible ne passant pas par des états d'équilibre.}
+
+
+
+%### Page 3 (P13) : Synthèse des Définitions
+\subsection{Classification des états d'équilibre}
+
+\begin{definition}
+Soit un état $A$ accessible pour un jeu de contraintes $(T, P \text{ ou } V)$ :
+\begin{itemize}
+    \item \textbf{INSTABLE} : Une perturbation infinitésimale suffit à déclencher une évolution spontanée vers un autre état.
+    \item \textbf{MÉTASTABLE} : L'évolution spontanée est impossible pour de petites perturbations mais devient possible au-delà d'un seuil fini.
+    \item \textbf{STABLE} : L'évolution spontanée vers un autre état accessible est rigoureusement impossible.
+\end{itemize}
+\end{definition}
+
+\checkInfo{Cas $N > 2$}{Il peut exister plusieurs états également stables (identiquement stables) ; on procède alors à une hiérarchisation deux à deux.}
+
+
+
+%### Page 4 (P14) : Notion de Perturbation Interne
+\subsection{Fluctuations et observations}
+
+%\checkInfo{Perturbations internes virtuelles}{Même sans intervention extérieure, un système subit en permanence des fluctuations internes de ses variables d'état ($P, T, V$).}
+
+
+\begin{itemize}
+    \item Les états \textbf{instables} ne sont jamais observés car les fluctuations internes les détruisent instantanément.
+    \item Seuls les états \textbf{stables} ou \textbf{métastables} (si les fluctuations sont faibles) sont physiquement observables.
+\end{itemize}
+
+%### Page 5 (P15) : Le Potentiel Thermodynamique
+\subsection{Approche formelle par les potentiels}
+
+\begin{definition}
+Un \textbf{potentiel thermodynamique} est une fonction d'état dont les variations permettent de déterminer les possibilités d'évolution spontanée. Elle atteint sa valeur \textbf{minimale} à l'équilibre stable.
+\end{definition}
+
+La construction de ces potentiels est directement liée au second principe et à la production d'entropie dans l'Univers.\marginTips{Cette fonction joue en thermodynamique le même rôle que l'énergie potentielle ($E_p$) en mécanique du point.}
+
+
+
+%### Page 6 (P16) : Enthalpie Libre $G$ (Évolution à $T$ et $P$ fixés)
+\subsection{Fonction de Gibbs}
+
+
+Pour une évolution au contact d'une atmosphère ($T_0, P_0$), on définit la fonction :
+$$G^* = U + P_0V - T_0S$$
+La variation donne $\Delta G^* = -T_0 S_{p}$ où $S_p$ est l'entropie produite.
+
+%     \begin{flalign*}
+% G^* &= U + P_0 V - T_0 S \\
+% \mathrm{d}G^* &= \mathrm{d}U + P_0\,\mathrm{d}V - T_0\,\mathrm{d}S \\
+% \mathrm{d}U &= \delta Q - P_0\,\mathrm{d}V \\
+% \Rightarrow\ \mathrm{d}G^* &= \delta Q - T_0\,\mathrm{d}S \\
+% \mathrm{d}S &= \mathrm{d}S_e + \mathrm{d}S_p\\
+% \mathrm{d}S_e &= \frac{\delta Q}{T_0} \\
+% \Rightarrow \mathrm{d}S &= \frac{\delta Q}{T_0} + \mathrm{d}S_p \\
+% \Rightarrow \mathrm{d}G^* &= \delta Q - T_0\left(\frac{\delta Q}{T_0} + \mathrm{d}S_p\right)\\
+% &= -T_0\,\mathrm{d}S_p \\
+% \Rightarrow \Delta G^* &= -T_0 S_p \le 0
+% \end{flalign*}
+
+En effet,  calculons sa différentielle.
+
+\begin{flalign*}
+\mathrm{d}G^* &= \mathrm{d}U + P_0\,\mathrm{d}V - T_0\,\mathrm{d}S
+\end{flalign*}
+Or, pour un système fermé ne faisant que du travail de pression contre l’atmosphère à $P_0$, on a :
+\begin{flalign*}
+\mathrm{d}U &= \delta Q - P_0\,\mathrm{d}V
+\end{flalign*}
+En substituant dans l’expression précédente, il vient :
+\begin{flalign*}
+\mathrm{d}G^* &= \delta Q - T_0\,\mathrm{d}S
+\end{flalign*}
+D’après le second principe, la variation d’entropie se décompose en :
+\begin{flalign*}
+\mathrm{d}S &= \mathrm{d}S_e + \mathrm{d}S_p
+\end{flalign*}
+Comme l’échange thermique se fait avec un thermostat à $T_0$, on a :
+\begin{flalign*}
+\mathrm{d}S_e &= \frac{\delta Q}{T_0}
+\end{flalign*}
+D’où :
+\begin{flalign*}
+\mathrm{d}S &= \frac{\delta Q}{T_0} + \mathrm{d}S_p
+\end{flalign*}
+En remplaçant dans l’expression de $\mathrm{d}G^*$, on obtient :
+\begin{flalign*}
+\mathrm{d}G^* 
+&= \delta Q - T_0\left(\frac{\delta Q}{T_0} + \mathrm{d}S_p\right)
+\end{flalign*}
+Les termes en $\delta Q$ se simplifient, ce qui donne :
+\begin{flalign*}
+\mathrm{d}G^* &= -T_0\,\mathrm{d}S_p
+\end{flalign*}
+En intégrant sur l’évolution :
+\begin{flalign*}
+\Delta G^* &= -T_0 S_p
+\end{flalign*}
+Comme $T_0 > 0$ et $S_p \ge 0$, on conclut que $\Delta G^* \le 0$ pour toute évolution spontanée sous contraintes $(T_0,P_0)$.
+
+
+\begin{proposition}
+Au cours d'une évolution spontanée sous contraintes extérieures constantes ($T_0, P_0$), la fonction $$G^* = U + P_0V - T_0S$$ ne peut que \textbf{décroître}.
+\end{proposition}
+
+%### Page 7 (P17) : Condition de Stabilité pour $G$
+\subsection{Potentiel $G$ et Équilibre stable}
+
+\begin{theorem}
+Pour des états d'équilibre à mêmes $T$ et $P$, le potentiel pertinent est l'Enthalpie Libre :
+$$G = H - TS$$
+L'évolution spontanée se traduit par $\Delta G < 0$.
+\end{theorem}
+
+Un état d'équilibre est \textbf{STABLE} à $T$ et $P$ fixés si $G$ y est minimale. Cela signifie qu'aucune variation (virtuelle) de $G$\marginTips{L'enthalpie libre G représente l'énergie "utile" (travail autre que celui des forces de pression) récupérable à $T$ et $P$ fixées.} ne peut être négative.
+
+
+
+%### Page 8 (P18) : Énergie Libre $F$ (Évolution à $T$ et $V$ fixés)
+\subsection{Fonction de Helmholtz}
+
+\checkInfo{Dérivation à $V$ constant}{
+Pour une évolution isochore au contact d'un thermostat ($T_0$), la variation d'énergie libre $F = U - TS$ vérifie :
+$$\Delta F = -T_0 S_{p} \Rightarrow \Delta F < 0$$.
+}
+
+\begin{proposition}
+L'énergie libre $F$ est le potentiel associé aux évolutions spontanées entre deux états d'équilibre où $T$ et $V$ sont identiques.
+\end{proposition}
+
+\tipsInfo{Minimum de $F$}{L'état d'équilibre à $T$ et $V$ fixés est stable si $F$ atteint une valeur minimale.}
+
+
+
+%### Page 9 (P19) : Synthèse des Critères
+\subsection{Critères de Stabilité}
+\begin{itemize}
+    \item \textbf{À $T$ et $P$ constants} : L'état est instable/métastable si $\Delta G_{AB} < 0$ ($G_A > G_B$). Il est stable si $\Delta G_{AB} \ge 0$ ($G_A \le G_B$).
+    \item \textbf{À $T$ et $V$ constants} : L'état est instable/métastable si $\Delta F_{AB} < 0$ ($F_A > F_B$). Il est stable si $\Delta F_{AB} \ge 0$ ($F_A \le F_B$).
+\end{itemize}
+
+\begin{theorem}[Critère de Gibbs-Duhem]
+À partir de tout état d'équilibre stable, on a la condition générale :
+$$\Delta U + P\Delta V - T\Delta S \ge 0$$.
+\end{theorem}
+
+
+
+%### Page 10 (P20) : Conclusion de la Partie 1
+\subsection{Bilan de l'approche formelle}
+
+\criticalInfo{Prédire la phase stable}{Entre deux états d'équilibre prédits par des modèles phénoménologiques, l'état physiquement réalisé (STABLE) est celui dont le potentiel thermodynamique est le \textbf{plus bas}.}
+
+\end{document}
+
+

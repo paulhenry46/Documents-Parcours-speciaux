@@ -1,0 +1,225 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 2 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\setcounter{chapter}{4}
+\begin{document}
+
+\chapter{Ondes EM dans le vide}
+
+\section{Équation de propagation}
+
+\subsection{Équation de propagation des champs $\vec{E}$ et $\vec{B}$}
+
+On se place dans le vide et loin des sources ($\rho = 0, \vec{j} = \vec{0}$). Les équations de Maxwell s'écrivent :
+
+$$\text{div } \vec{E} = 0, \quad \text{div } \vec{B} = 0, \quad \rot \vec{E} = -\frac{\partial \vec{B}}{\partial t}, \quad \rot \vec{B} = \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t}$$
+
+\warningInfo{Démonstration}{La démonstration du passage des équations de Maxwell aux équations de propagation (d'Alembert) est un classique à maîtriser.}
+
+
+
+\subsubsection{Champ électrique}
+En utilisant l'identité vectorielle $\rot(\rot \vec{E}) = \grad(\text{div } \vec{E}) - \lap \vec{E}$ :
+$$\rot\left(-\frac{\partial \vec{B}}{\partial t}\right) = -\lap \vec{E} \implies -\frac{\partial}{\partial t}(\rot \vec{B}) = -\lap \vec{E}$$
+En remplaçant $\rot \vec{B}$, on obtient :
+$$\lap \vec{E} - \frac{1}{c^2}\frac{\partial^2 \vec{E}}{\partial t^2} = \vec{0}$$
+
+\subsubsection{Champ magnétique}
+De la même manière pour le champ magnétique :
+$$\rot(\rot \vec{B}) = \grad(\text{div } \vec{B}) - \lap \vec{B}$$
+$$\rot\left(\epsilon_0 \mu_0 \frac{\partial \vec{E}}{\partial t}\right) = -\lap \vec{B} \implies \epsilon_0 \mu_0 \frac{\partial}{\partial t}(\rot \vec{E}) = -\lap \vec{B}$$
+D'où l'équation de d'Alembert :
+$$\lap \vec{B} - \frac{1}{c^2} \frac{\partial^2 \vec{B}}{\partial t^2} = \vec{0}$$
+
+% \checkInfo{Remarques}{
+% \begin{itemize}
+%     \item Le couplage des champs est à l'origine du phénomène de propagation.
+%     \item Une onde EM est vectorielle (3D). En optique ondulatoire, le modèle scalaire suffit souvent pour l'aspect vibratoire.
+%     \item La linéarité des équations permet d'utiliser le principe de superposition et l'analyse spectrale (OPPM).
+% \end{itemize}
+% }
+
+\subsection{Équations de propagation des potentiels}
+
+En utilisant la définition des potentiels $\vec{B} = \rot \vec{A}$ et $\vec{E} = -\grad V - \frac{\partial \vec{A}}{\partial t}$ :
+
+$$\rot \vec{B} = \rot(\rot \vec{A}) = \grad(\text{div } \vec{A}) - \lap \vec{A}$$
+D'après Maxwell-Ampère :
+$$\rot \vec{B} = \frac{1}{c^2} \frac{\partial \vec{E}}{\partial t} = \frac{1}{c^2} \frac{\partial}{\partial t}\left(-\grad V - \frac{\partial \vec{A}}{\partial t}\right) = -\grad\left(\frac{1}{c^2} \frac{\partial V}{\partial t}\right) - \frac{1}{c^2} \frac{\partial^2 \vec{A}}{\partial t^2}$$
+
+\checkInfo{Jauge de Lorenz}{
+Pour que les potentiels se propagent à la vitesse $c$ comme les champs, on impose la condition de jauge :
+$$\text{div } \vec{A} + \frac{1}{c^2} \frac{\partial V}{\partial t} = 0$$
+On obtient alors : $\lap \vec{A} - \frac{1}{c^2} \frac{\partial^2 \vec{A}}{\partial t^2} = \vec{0}$ et $\lap V - \frac{1}{c^2} \frac{\partial^2 V}{\partial t^2} = 0$.
+}
+
+\section{Ondes planes progressives monochromatiques (OPPM)}
+
+\subsection{Définitions}
+
+\begin{theorem}[Surface d'onde]
+Surface sur laquelle la phase est uniforme à un instant $t$ donné. C'est également la surface sur laquelle le champ EM est uniforme.
+\end{theorem}
+
+\begin{theorem}[Onde plane]
+Les surfaces d'onde sont des plans parallèles entre eux, d'équation $\vec{u} \cdot \vec{r} = \text{cste}$ où $\vec{u}$ est la direction de propagation.
+\end{theorem}
+
+\begin{definition}[Onde progressive]
+Onde dont les plans d'onde avancent à la vitesse $c$. La dépendance spatio-temporelle est de la forme $f(t - \frac{\vec{u} \cdot \vec{r}}{c})$.
+\end{definition}
+
+\begin{definition}[Onde monochromatique]
+Onde présentant une dépendance temporelle sinusoïdale de pulsation $\omega$ constante. Le champ varie en $\cos(\omega(t - \frac{\vec{u} \cdot \vec{r}}{c}) + \phi_0)$.
+\end{definition}
+
+En posant le vecteur d'onde $\vec{k} = \frac{\omega}{c}\vec{u}$, on obtient la forme $\cos(\omega t - \vec{k} \cdot \vec{r} + \phi_0)$.
+\begin{itemize}
+    \item Périodicité temporelle : $T = \frac{2\pi}{\omega}$
+    \item Périodicité spatiale : $\lambda = \frac{2\pi}{k}$
+\end{itemize}
+
+\subsection{Notation complexe}
+
+Pour une OPPM, on utilise la forme :
+$$\vec{\underline{E}}(\vec{r}, t) = \vec{\underline{E}_0} e^{i(\omega t - \vec{k} \cdot \vec{r})}$$
+Le champ réel est la partie réelle de cette expression : $\vec{E} = \text{Re}(\vec{\underline{E}})$.
+
+\subsection{Propriétés de dérivation des OPPM}
+
+En notation complexe, les opérateurs différentiels se simplifient :
+\begin{itemize}
+    \item $\frac{\partial}{\partial t} \to i\omega$
+    \item $\nabla \to -i\vec{k}$ (donc $\text{div} \to -i\vec{k} \cdot$ et $\rot \to -i\vec{k} \wedge$)
+\end{itemize}
+
+\warningInfo{Équations de Maxwell complexes}{
+Les équations de Maxwell dans le vide deviennent algébriques :
+\begin{itemize}
+    \item $\vec{k} \cdot \vec{\underline{E}} = 0$ et $\vec{k} \cdot \vec{\underline{B}} = 0$ (Ondes transverses)
+    \item $\vec{k} \wedge \vec{\underline{E}} = \omega \vec{\underline{B}}$
+    \item $\vec{k} \wedge \vec{\underline{B}} = -\frac{\omega}{c^2} \vec{\underline{E}}$
+\end{itemize}
+}
+
+L'équation de d'Alembert conduit à la relation de dispersion : $k^2 = \frac{\omega^2}{c^2}$. On définit la vitesse de phase $v_{\phi} = \frac{\omega}{k} = c$.
+
+\subsection{Structure de l'OPPM}
+
+D'après Maxwell-Faraday : $\vec{\underline{B}} = \frac{\vec{k}}{\omega} \wedge \vec{\underline{E}} = \frac{1}{c} \vec{u} \wedge \vec{\underline{E}}$.
+\begin{itemize}
+    \item $(\vec{u}, \vec{E}, \vec{B})$ forment un trièdre direct.
+    \item Les champs sont transverses (orthogonaux à la direction de propagation).
+    \item $\vec{E}$ et $\vec{B}$ sont en phase.
+    \item Rapport des amplitudes : $E = c B$.
+\end{itemize}
+
+\section{Autres types d'ondes}
+
+\subsection{Ondes stationnaires}
+
+Résultent de la superposition de deux ondes de même pulsation se propageant dans des directions opposées :
+$$\vec{\underline{E}_1} = E_0 e^{i(\omega t - kz)} \vec{e_x}, \quad \vec{\underline{E}_2} = E_0 e^{i(\omega t + kz)} \vec{e_x}$$
+Le champ total est : $\vec{E} = 2 E_0 \cos(kz) \cos(\omega t) \vec{e_x}$.
+
+\tipsInfo{Caractéristique}{
+Il y a découplage entre les variables spatiales et temporelles. L'onde ne se propage pas.
+\begin{itemize}
+    \item Noeuds de vibration : $\cos(kz) = 0 \implies z = (2n+1)\frac{\pi}{2k}$
+    \item Ventres de vibration : $\cos(kz) = \pm 1 \implies z = \frac{n\pi}{k}$
+\end{itemize}
+}
+
+\begin{proposition}
+Le champ magnétique associé est $\vec{B} = \frac{2E_0}{c} \sin(kz) \sin(\omega t) \vec{e_y}$. Les champs $\vec{E}$ et $\vec{B}$ sont en quadrature de phase (temporelle et spatiale).
+\end{proposition}
+
+\section{Polarisation d'une onde}
+
+
+
+La polarisation est définie par la direction du champ $\vec{E}$. Pour une onde se propageant selon $\vec{e_z}$, le champ est dans le plan $(Oxy)$.
+
+\subsection{Polarisation rectiligne}
+La direction de $\vec{E}$ reste constante au cours du temps. Cela correspond à un déphasage $\Delta\phi = \phi_y - \phi_x = 0$ ou $\pi$.
+
+\subsection{Polarisation circulaire}
+L'extrémité de $\vec{E}$ décrit un cercle. Conditions :
+\begin{itemize}
+    \item Amplitudes égales : $E_{0x} = E_{0y}$
+    \item Déphasage : $\Delta\phi = \pm \pi/2$
+\end{itemize}
+Elle est dite \textbf{droite} ou \textbf{gauche} selon le signe du déphasage.
+
+\subsection{Polarisation elliptique}
+C'est le cas général. L'extrémité du vecteur décrit une ellipse. Le vecteur de Jones permet de représenter ces états de manière complexe.
+
+\section{Aspects énergétiques}
+
+\subsection{Densité volumique d'énergie}
+$$u_{em} = \frac{\epsilon_0 E^2}{2} + \frac{B^2}{2\mu_0}$$
+Pour une OPPM, les densités électrique et magnétique sont égales ($u_e = u_m$), donc :
+$$u_{em} = \epsilon_0 E^2$$
+
+\subsection{Vecteur de Poynting}
+Il représente le flux de puissance surfacique :
+$$\vec{\Pi} = \frac{\vec{E} \wedge \vec{B}}{\mu_0}$$
+Pour une OPPM : $\vec{\Pi} = \frac{E^2}{\mu_0 c} \vec{u} = u_{em} c \vec{u}$.
+
+\subsection{Moyennes temporelles}
+Les détecteurs mesurent l'éclairement (moyenne temporelle) :
+$$\langle u_{em} \rangle = \frac{1}{2} \epsilon_0 E_0^2, \quad \langle \vec{\Pi} \rangle = \frac{1}{2} \epsilon_0 c E_0^2 \vec{u}$$
+
+\criticalInfo{Onde stationnaire}{
+Pour une onde stationnaire, la moyenne temporelle du vecteur de Poynting est nulle : $\langle \vec{\Pi} \rangle = \vec{0}$. Aucune énergie n'est transportée en moyenne.
+}
+
+\end{document}

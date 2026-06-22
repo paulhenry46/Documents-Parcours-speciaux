@@ -1,0 +1,262 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 3}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%jesse.groenen@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%-pour mettre des images
+\usepackage[utf8]{inputenc}%encodage
+\usepackage{geometry}%pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%pour les boites d'exercices, de pbq et de croquis d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%Pour les boites info, danger et autres
+\usepackage{menukeys}%Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%pour les liens
+\usepackage{hyperref}%pour les liens (\`a mettre en dernier)
+\usepackage{caption}%pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{esint}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ez}{\vec{e_{z}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\newcommand{\vds}{\vec{\dd S}}
+\newcommand{\Ea}{\vec{E_{aux}}}
+%\setcounter{chapter}{3}
+\begin{document}
+\chapter{Aimantation}
+% \section{Champ magnétique crée par une boule aimanté : Méthode du champ auxiliaire}
+% \subsection{Question préliminaire}
+% On cherche d'abord le champ électrique crée par une boule de rayon r et de densité $\rho_0$
+
+% On se place en coordonnées sphériques 
+% et on utilise le théorème de Gauss\marginInfo{On a une symétrie sphérique} :
+
+% \begin{flalign*}
+%     \oiint \vec{E}\cdot \vec{\dd S} &= \frac{Q_{int}}{\epsilon_0}\\
+%     E_{int} \cdot 4\pi r^2 &= \rho_0 \frac43 \pi r^3 \Rightarrow E_{int} = \frac{\rho_0}{3\epsilon_0}r \\
+%      E_{ext} \cdot 4\pi r^2 &= \rho_0 \frac43 \pi R^3 \Rightarrow E_{ext} = \frac{\rho_0}{3\epsilon_0}\frac{R^3}{r^2}\\
+% \end{flalign*}
+% \subsection{Potentiel vecteur à l'extérieur}
+% on considère une sphère magnétique homogène avec une aimantation volumique uniforme $\vec{M} = M\vec{e_z}$
+
+% Le potentiel crée par une boule aimantée vaut\marginCritical{Cette formule n'est pas à savoir}
+% $$\vec{A_m} = \frac{\mu_0\epsilon_0}{\rho_{aux}}(\vec{M}\wedge \vec{E_{aux}}(N))$$ Ici, le $\vec{M}$ est non local par rapport à $\vec{r}$
+% On le calcule à l'extérieur au point N :
+% \begin{flalign*}
+%     \vec{A_{m, ext}} &= \frac{\mu_0\epsilon_0}{\rho_{aux}}(\vec{M}\wedge \vec{E_{aux, ext}}(N))\\
+%     &= \frac{\mu_0\epsilon_0}{\rho_{aux}}\frac{\rho_{aux}R^3}{3\epsilon_0r^2} M(\vec{e_z}\wedge \vec{e_r})\\
+%     &= \frac{\mu_0}{1}\frac{R^3}{3r^2} M(\sin(\theta)\vec{e_\theta})\\
+%      &= \frac{\mu_0}{1}\frac{R^3}{3r^2} M(\sin(\theta)\vec{e_\theta})
+% \end{flalign*}
+% \criticalInfo{Produit vectoriel}{
+
+% En utilisant la relation $\vec{e}_z = \cos\theta \, \vec{e}_r - \sin\theta \, \vec{e}_\theta$, on effectue le produit vectoriel par $\vec{e}_r$ :
+% $\vec{e}_z \wedge \vec{e}_r = (\cos\theta \, \vec{e}_r - \sin\theta \, \vec{e}_\theta) \wedge \vec{e}_r = 0 - \sin\theta (\vec{e}_\theta \wedge \vec{e}_r) = \sin\theta \, \vec{e}_\varphi$.
+
+% }
+% On calcule maintenant le moment dipolaire total de la sphère\marginInfo{On intégère $\vec{M}$ sur le volume. Comme il est constant, on multiplie simplement par le volume.} :
+% $$\vec{\mathcal{M}} = \frac43 \pi R^3 \vec{M}$$
+% On en déduit que 
+% $$\vec{A_{m, ext}} = \frac{\mu_0}{4\pi}\vec{\mathcal{M}}\frac{\sin(\theta)}{r^2}$$
+% C'est équivalent au potentiel vecteur crée par $\vec{\mathcal{M}}$ placé en O.
+
+
+\section{Champ magnétique créé par une boule aimantée : Méthode du champ auxiliaire}
+
+\subsection{Question préliminaire}
+On cherche d'abord le champ électrique créé par une boule de rayon $R$ et de densité volumique de charge $\rho_0$.
+
+On se place en coordonnées sphériques et on utilise le théorème de Gauss\marginInfo{On a une symétrie sphérique} :
+
+\begin{flalign*}
+\oiint \vec{E}\cdot \vec{\dd S} &= \frac{Q_{int}}{\epsilon_0}\\
+E_{int} \cdot 4\pi r^2 &= \rho_0 \frac{4}{3} \pi r^3 \Rightarrow E_{int} = \frac{\rho_0}{3\epsilon_0}r \\
+E_{ext} \cdot 4\pi r^2 &= \rho_0 \frac{4}{3} \pi R^3 \Rightarrow E_{ext} = \frac{\rho_0}{3\epsilon_0}\frac{R^3}{r^2}\
+\end{flalign*}
+
+\subsection{Potentiel vecteur à l'extérieur}
+On considère une sphère magnétique homogène avec une aimantation uniforme $\vec{M} = M\vec{e_z}$.
+
+Le potentiel créé par une boule aimantée vaut\marginCritical{Cette formule n'est pas à savoir} :
+
+
+$$\vec{A_m} = \frac{\mu_0\epsilon_0}{\rho_{aux}}(\vec{M}\wedge \vec{E_{aux}}(N))$$
+
+On le calcule à l'extérieur au point $N$ ($r > R$) :
+\begin{flalign*}
+\vec{A_{m, ext}} &= \frac{\mu_0\epsilon_0}{\rho_{aux}} \left( \vec{M} \wedge \frac{\rho_{aux} R^3}{3\epsilon_0 r^2} \vec{e}_r \right) \\
+&= \frac{\mu_0 R^3 M}{3r^2} (\vec{e_z} \wedge \vec{e_r}) \\
+&= \frac{\mu_0 R^3 M}{3r^2} \sin\theta \vec{e}_\varphi
+\end{flalign*}
+
+\criticalInfo{Produit vectoriel}{
+$\vec{e}_z \wedge \vec{e}_r = (\cos\theta \, \vec{e}_r - \sin\theta \, \vec{e}_\theta) \wedge \vec{e}_r = -\sin\theta (\vec{e}_\theta \wedge \vec{e}_r) = \sin\theta \, \vec{e}_\varphi$.
+}
+
+On calcule maintenant le moment dipolaire total de la sphère\marginInfo{On intègre $\vec{M}$ sur le volume. Comme il est constant, $\vec{\mathcal{M}} = \iiint \vec{M} d\tau = \vec{M} \cdot \frac{4}{3}\pi R^3$.} :
+
+
+$$\vec{\mathcal{M}} = \frac{4}{3} \pi R^3 \vec{M}$$
+
+En substituant dans l'expression précédente, on obtient :
+
+
+$$\vec{A_{m, ext}} = \frac{\mu_0}{4\pi} \frac{\vec{\mathcal{M}} \wedge \vec{e}_r}{r^2}$$
+
+
+C'est la forme standard du potentiel vecteur créé par un dipôle magnétique $\vec{\mathcal{M}}$ placé en $O$.
+\subsection{Champ magnétique crée}
+On sait que $\vec{B_{ext, m}} = \rot\vec{A_{m,ext}}$
+
+On utilise les expressions du rotationnel en coordonnées sphériques
+%TODO expression du rotationne el sphérique
+\begin{equation*}
+\rot\vec{A} = \frac{1}{r\sin\theta}\left(\frac{\partial(A_\varphi\sin\theta)}{\partial\theta} - \frac{\partial A_\theta}{\partial\varphi}\right)\vec{e_r} + \frac{1}{r}\left(\frac{1}{\sin\theta}\frac{\partial A_r}{\partial\varphi} - \frac{\partial(rA_\varphi)}{\partial r}\right)\vec{e_\theta} + \frac{1}{r}\left(\frac{\partial(rA_\theta)}{\partial r} - \frac{\partial A_r}{\partial\theta}\right)\vec{e_\varphi}
+\end{equation*}
+Donc :
+\begin{flalign*}
+    \vec{B_{m, ext}} &= \frac{\mu_0}{4\pi}\frac{\mathcal{M}}{r}(\frac{1}{\sin\theta}\frac{\partial}{\partial \theta}(\frac{\sin^2\theta}{r^2})\vec{e_r}-\frac{\partial}{\partial r}(\frac{\sin \theta}{r^2}r)\vec{e_{\theta}})\\
+&= \frac{\mu_0}{4\pi}\frac{\mathcal{M}}{r^3}(\frac{1}{\sin\theta}\frac{\partial}{\partial \theta}(\sin^2\theta)\vec{e_r}-\frac{\partial}{\partial r}(\sin \theta r)\vec{e_{\theta}})\\
+&= \frac{\mu_0}{4\pi}\frac{\mathcal{M}}{r^3}(\frac{1}{\sin\theta}\frac{\partial}{\partial \theta}(\sin^2\theta)\vec{e_r}-\frac{\partial}{\partial r}(\sin \theta r)\vec{e_{\theta}})\\
+&= \dots\\
+&= \frac{\mu_0\mathcal{M}}{4\pi r^3}(2\cos\theta \vec{e_r}+\sin\theta \vec{e_{\theta}})
+\end{flalign*}
+On remarque que cela correspond à un dipôle M en O.
+\subsection{Champ magnétique à l'intérieur}
+\begin{flalign*}
+    \vec{A_{m,int}} &) \frac{\mu_0\epsilon_0}{\rho_{aux}}\vec{M}\wedge \vec{E_{aux, int}}\\
+    &= \frac{\mu_0}{3}\vec{M}\wedge \vec{r}\\
+    &= \frac{\mu_0}{3} r\sin(\theta)\vec{e_{\theta}}\\
+\end{flalign*}
+On peut en déduire le champ magnétique à l'aide du rotationnel.
+\begin{flalign*}
+    \vec{B_{int, m}} &= \rot \vec{A}\\
+    &= \frac{\mu_0}{3}M(\frac{1}{r\sin\theta}\frac{\partial}{\partial \theta}(r\sin^2\theta)\vec{e_r}-\frac{1}{r}\frac{\partial }{\partial r}(r^2\sin(\theta))\vec{e_{\theta}})\\
+    &= 2\frac{\mu_0M}{3}(\cos(\theta)\vec{e_r}-\sin(\theta)\vec{e_{\theta}})\\
+    &= \frac23 \mu_0 M \vec{e_z}\\
+    &= \frac23 \mu_0 \vec{M}
+\end{flalign*}
+\subsection{Relations de continuité}
+On suppose maintenant la sphère composée d'un materieux LHI placéd dans un champ appliqué uniforme $\vec{B_a}$\marginTips{La réponse du système sera donc aussi uniforme}
+
+On se place à la surface de la sphère.
+\begin{flalign*}
+    \vec{B_{ext}} &= \vec{B_a}  + \vec{B_{m,ext}}\\
+    &= \vec{B_a}+\frac{\mu_0}{3}\frac{R^3}{r^3}M(\dots)\\
+    \vec{B_{int}} &= \vec{B_a}  + \vec{B_{m,int}}\\
+    &= \vec{B_a}+\frac23 \mu_0M\vec{e_z}
+\end{flalign*}
+La relation de passage est 
+$$\vec{n_{12}}\cdot (\vec{B_2}-\vec{B_1}) = 0$$
+C'est bien vérifié\marginTips{On remarque que $\vec{B_a}$ s'annule puisqu'il est uniforme}.
+
+
+On vérifie maintenant la deuxième relation de passage pour $\vec{H} = \frac{\vec{B}}{\mu_0}-\vec{M}$ :
+\explanation{1}{Car pas d'aimantation à l'extérieur}
+\begin{flalign*}
+    \vec{H_{int}} &= \frac{\vec{B_{int}}}{\mu_0}-\vec{M}\\ 
+    &= \frac{\vec{B_{a}}}{\mu_0} + \frac{\vec{B_{m,int}}}{\mu_0}-\vec{M} \\
+    &= \frac{\vec{B_{a}}}{\mu_0}+\frac23\vec{M}-\vec{M} = \frac{\vec{B_{a}}}{\mu_0}-\frac{\vec{M}}{3}\\
+    \vec{H_{ext}} &= \frac{\vec{B_{ext}}}{\mu_0}\explain{1}{right}{0}{0.5}{}
+\end{flalign*}
+On vérifie la relation de passage :
+$$\vec{n_{12}} \wedge (\vec{H_2}-\vec{H_1})=\vec{J_{s,libre}}$$
+Ici, $\vec{J_s} = 0$ car pas de courant surfacique. Il y a donc continuité de la composante tangentielle de $\vec{H}$
+
+La relation est vérifiée.
+\subsection{Topologie courant d'aimantation équivalents}
+\begin{itemize}
+    \item $\vec{J_m} = 0$ car $\vec{M}$ uniforme Ici
+    \item $\vec{J_s,m} = \vec{M}\wedge \vec{n_{ext}} = M\vec{e_z}\wedge \vec{e_r}=M\sin\theta \vec{e_{\theta}}$
+\end{itemize}
+
+\section{Cylindre  - Aimantation non uniforme}
+\subsection{Expression de la densité volumique de courant}
+\warningInfo{Signification de $\vec{j}$ et I}{C'est le nombre de charges qui travensent par unité de temps. L'unité est le $A\cdot m^{-2}$ I correspond à son intégrale sur la section du fil. J est donc par unité de surface.}
+Ici, $$\vec{J_{libre}} = \frac{I}{\pi R^2}\vec{e_z}$$
+\subsection{Excitation magnétique}
+Dans le fil, on a $\vec{M} = \chi_m \vec{H}$. En outre, $\vec{H} = \frac{\vec{B}}{\mu_0}-\vec{M} = \frac{\vec{B}}{\mu_0}-\chi_m \vec{H}$.
+Enfin, on a $\vec{B} = \mu_0(1+\chi_m)\vec{H} = \mu\vec{H}$ avec $\mu_r = 1+\chi_m$ la permitivité relative aud vide.
+
+De plus, $\vec{J_{libre}} = \rot \vec{H}$
+
+On étudie les invariances par rotation autour de Oz et par translation autour de ce même axe.
+
+Le plan $(\vec{e_{\rho}}, \vec{e_z})$ est un plan de symétrie, donc c'est selon $\vec{e_{\varphi}}$
+
+On applique le théorème de Maxwell-Ampère sous sa forme intégrale.
+
+$$\oint \vec{H}\cdot \vec{\dd l} = \iint \vec{J}\cdot \vec{\dd S} = I_{libre}$$
+On prend comme contour d'ampère un cercle perpendiculaire à l'axe de façon à ce que le rayon soit constant.
+
+On a $\vec{dd S} = \dd S\vec{e_z}$
+
+On s'appuie sur le contour.
+\begin{flalign*}
+    \iint_S \vec{j}\cdot \vec{\dd S} &= \pi \rho^2J_{libre}
+\end{flalign*}
+On en déduit que 
+$$\vec{H_{int}} = \frac{I_{libre}}{2\pi R^2}\rho \vec{e_{\varphi}}$$
+$$\vec{H_{ext}} = \frac{I_{libre}}{2\pi }\frac{1}{\rho} \vec{e_{\varphi}}$$
+
+Il y a bien continuité.
+\subsection{Champ magnétique $\vec{B}$}
+On a $$\vec{B_{int}} = \mu_0\mu_r \vec{H_{int}} = \mu_0(1+\chi_m)\vec{H_{int}}$$
+
+À l'extérieur, $$\vec{B_{ext}} = \mu_0 \vec{H_{ext}}$$
+
+On remarque que ce n'est pas continue.
+
+De plus, $\vec{M} = \chi_m \vec{H_{int}}$\marginInfo{Il n'y a pas de M à l'extérieur}
+
+\subsection{Relations de passage}
+On vérifie les relations de passage en $\rho=R$.
+
+La composante normale de $\vec{B}$ est continue, en effet, B est tangent donc la composante normale est nulle.
+
+La composante tangentielle de $\vec{H}$ : $\vec{n_{12}}\wedge (\vec{H_2}-\vec{H_1}) = \vec{J_s} = \vec{0}$. Elle est continue car $\vec{H_{int }} = \vec{H_{ext}}$ en $\rho=R$
+
+%TODO 
+\subsection{Courant d'aimantation}
+On peut calculer les courants volumiques : 
+\begin{flalign}
+    \vec{J_m} &= \rot \vec{M}\\
+    &= \frac{\chi_m I}{\pi R^2}\vec{e_z}
+\end{flalign}
+De même pour le courant surfacique, en $\rho = R$ :
+\begin{flalign}
+    \vec{J_sm} &= \vec{M}\wedge \vec{n_{ext}}\\
+    &= -\frac{\chi_m I}{\pi R}\vec{e_z}
+\end{flalign}
+\end{document}

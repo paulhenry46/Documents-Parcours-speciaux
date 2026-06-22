@@ -1,0 +1,230 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 3}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%jesse.groenen@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%-pour mettre des images
+\usepackage[utf8]{inputenc}%encodage
+\usepackage{geometry}%pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%pour les boites d'exercices, de pbq et de croquis d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%Pour les boites info, danger et autres
+\usepackage{menukeys}%Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%pour les liens
+\usepackage{hyperref}%pour les liens (\`a mettre en dernier)
+\usepackage{caption}%pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{esint}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ez}{\vec{e_{z}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\newcommand{\vds}{\vec{\dd S}}
+\newcommand{\Ea}{\vec{E_{aux}}}
+%\setcounter{chapter}{3}
+\begin{document}
+
+\chapter{Propagation d'onde dans la matière}
+\section{Notions de cours}
+Il n'y a pas d'absorption, donc $\underline{\epsilon_r} = \epsilon_r$ réel.
+
+la fonction diléctrique relative correspond  à la permitivité relative.
+
+Dans notre cas, $\omega << \omega_{domaines absorption}$ donc on est statique.
+
+$\epsilon_s$ est statique, de plus $\epsilon_s >1$.
+\subsection{Équations de Maxwell dans un milieu localement neutre}
+On écrit E et B sous la forme 
+$$\underline{\vec{E}} = \underline{\vec{E_m}}e^{-i\omega t}$$
+On a donc dans un milieu localement neutre :
+\begin{itemize}
+    \item $\rot \underline{\vec{H}} = - \frac{\partial \underline{\vec{D}}}{\partial t}=-i\omega \underline{\vec{D}}$
+    \item $\rot \underline{\vec{E}}=-\frac{\partial \underline{\vec{B}}}{\partial t} = i\omega \underline{\vec{B}}$
+    \item $\Div \underline{\vec{D}} = 0$
+    \item $\Div \underline{\vec{B}} = 0$
+\end{itemize}
+On a de plus 2 remations constitutives du milieu :
+\begin{itemize}
+    \item $\underline{\vec{D}} = \epsilon\underline{\vec{E}}$
+    \item $\underline{\vec{H}} = \frac{\underline{\vec{B}}}{\mu_0}$
+\end{itemize}
+\subsection{Équation de propagation}
+On utilise les équations 1 et 3 pour obtenir l'équation de propagation.
+
+On utilise pour cela l'identité : $\rot\rot \underline{\vec{E}} = \grad(\Div{\underline{\vec{E}}})-\lap\vec{E}$
+
+Donc :
+\begin{flalign*}
+   \rot \rot \underline{\vec{E}}&= i\omega \rot\underline{\vec{B}}\\
+   & = i\omega \mu_0 \rot \underline{\vec{H}}\\
+   &= \omega^2 \mu_0 \underline{\vec{D}}\\
+   &= \omega^2\epsilon_0 \mu_0\epsilon_s \underline{\vec{E}}\\
+   -\lap\underline{\vec{E}} &= 
+   \Rightarrow \lap\underline{\vec{E}} + \frac{\omega^2}{c^2}\epsilon_s \underline{\vec{E}} = \vec{0}
+\end{flalign*}
+\subsection{Solution}
+On cherche la solution sous la forme d'une onde plane : $\underline{\vec{E}} = \underline{\vec{E_m}} e^{-i\omega t}$ avec $\underline{\vec{E_m}} = \vec{E_0}e^{i\vec{k}\cdot \vec{r}}$
+
+Ici, $\vec{K} = \underline{\vec{k}\cdot \vec{e_z}}$ donc $\vec{E_0} = E_0\vec{e_x}$%TODO POURQUOI c'est plus complexe
+
+En injectant cette solutions dans l'équation de propagation :
+$$\lap \underline{\vec{E}} = -k^2 e^{-i\omega t} \underline{\vec{E_m}}$$
+ 
+% On obtient :
+%  $$k^2 \vec{\underline{E}} = \frac{\omega^2}{c^2}\epsilon_r(\omega)\vec{\underline{E}}$$
+ On peut en déduire la relation de dispersion du milieu :
+ $$\omega^2 = \frac{c^2}{\epsilon_0^2}\underline{k^2}$$
+\subsubsection{Parties imaginaires et complexes de n}
+On a la relation 
+$$\underline{\vec{n}}^2 = (n+i\kappa)^2 \underline{\epsilon_r} = \underline{\epsilon_s}$$
+Donc 
+$$n^2-\kappa² +2in\kappa = \epsilon_s$$
+On en déduit que
+$$n^2-\kappa^2 = \epsilon_s, 2n\kappa=0$$
+Comme $\epsilon_s >1>0$ donc on choisit $n=\epsilon_s^{1/2}, \kappa=0$
+
+On déduit de la relation de propagation que $\underline{k} = \pm \frac{n\omega}{c}>0$
+
+Donc l'onde est de la forme $\vec{E_0}e^{i(\frac{\omega}{c}nz-\omega t)}$
+
+L'amlitude réelle est constante, il y a  donc propagation de l'onde dans atténuation.
+
+\subsection{Vitesse de phase}
+La phase vaut $kz-\omega t$ et par définition, $v_{\varphi} = \frac{\omega}{k} = \frac{c}{\sqrt{\epsilon_s}}<c$
+\subsection{Période spatiale}
+On a $\lambda = \frac{2\pi}{k} = \frac{2\pi}{\omega}\frac{c}{n}$
+
+Dans le vide, $\omega  = k_0c\Rightarrow \lambda_0 =\frac{2\pi c}{\omega}$, donc $\lambda = \frac{\lambda_0}{n}$
+
+\subsection{Champ magnétique de l'onde}
+On sait que $\underline{\vec{B}} = -\frac{i}{\omega}\rot \underline{\vec{E}}$ ou alors on utilise
+$i\omega \underline{\vec{B}} = -\vec{k}\wedge \underline{\vec{E}}$
+
+On obtient $\underline{\vec{B}} = \frac{n}{c}\underline{\vec{E_x}}\vec{e_y}$
+\subsection{Vecteur de Poyting}
+On calcule $\vec{\Pi} = \vec{E}\wedge \frac{\vec{B}}{\mu_0}$ en utilisant les vecteur réels et non complexes.
+
+On en déduit que $\vec{\Pi} = \frac{1}{\mu_0}E_xB_y\vec{e_z}$
+
+En outre, $I = \frac{<\dd P_r>}{\dd S} = \frac{<\vec{Pi}\cdot \vec{\dd S}>}{\dd S} = <R_z>$
+
+On en déduit que $I = \frac12 \frac{1}{\mu_0} Re(\underline{E_x}\cdt \underline{B_y}*) = \frac12 \frac{1}{\mu_0}E_0B_0 = \frac12 \frac{1}{\mu_0}E_0^2\frac{n}{c}$
+
+Donc 
+$$I = \frac{1}{2}nc\epsilon_0E_0^2$$
+
+Faire les app numériques
+
+\section{L'arséniure}
+On met volontairement ces impuretés.
+
+On combine ici la polarisation naturelle et celle apportée par le dopage.
+
+\subsection{Modèle de Drude}
+On fait un bilan des forces.
+
+On utilise le modèle de Drude : 
+$$m* \frac{\dd \vec{v}}{\dd t} = \vec{F_{lorenz}}-\frac{m*}{\tau}\vec{v}$$
+On néglige les collisions. Ici, $\tau$ représente le temps moyen entre 2 coliisons. Si il n'y a pas de collisison, $\tau\to \infty$, donc on néglige le terme.
+
+Si il y avait des électrons liées, il faudrait rajouter en plus $-m\omega_0\vec{r}$.
+
+On écrit donc 
+$$m*\frac{\dd \underline{\vec{v}}}{\dd t } = -e(\underline{E}+\underline{\vec{v}}\wedge \underline{\vec{B}})$$
+\subsection{Amplutude des forces}
+En faisant le rapport des deux, on a 
+$$\frac{\norm{F_m}}{\norm{F_e}} = \frac{\norm{v}}{c} n <<1$$
+\subsection{Équation linéaire}
+\begin{flalign*}
+    m*\frac{\dd \underline{\vec{v}}}{\dd t}& = -\frac{-e}{m}\underline{\vec{E}}\\
+   -i\omega m* \underline{\vec{v}} &= -e \underline{\vec{E}}
+
+\end{flalign*}
+Pour le courant : $$\underline{\vec{J}} = -eN\underline{\vec{v}}$$
+on en déduit $\underline{\vec{J}} = i\frac{Ne^2}{m*\omega}\underline{\vec{E}}$
+Comme on a une relation linéaire entre J et E, on peut introduire la conductivité $\underline{\sigma}$
+\subsection{Courant de Polarisation}
+Quand une polarisation varie ou cours du temps, on trouve un courant. Ici, on fait le raisonnement inverse.
+
+On écrit : 
+\begin{flalign*}
+    \underline{\vec{J}} = \underline{\vec{J_{libre}}} = \frac{\partial \underline{\vec{P_{libre}}}}{\partial t}\\
+    &= -i\omega \underline{\vec{P_{libre}}}\\
+   \underline{\vec{P_{libre}}} &= \frac{i}{\omega} \underline{\vec{J}}\\
+   &= -\frac{N_e^2}{m*\omega^2}\underline{\vec{E}}\\
+   &= -\epsilon_0\epsilon_s \frac{\omega_p^2}{\omega^2}\underline{\vec{E}}
+\end{flalign*}
+On a introduit $\omega_p$ la pulsation plasma $\omega_p^2 = \frac{N_e^2}{m*\epsilon_0\epsilon_s}$
+\subsection{Polarisation totale}
+On a $\underline{\vec{P}} = \underline{\vec{P_{pur}}} + \underline{\vec{P_{libres}}}$
+
+Donc 
+
+\begin{flalign*}
+    \underline{\vec{P}}&= \epsilon_0(\epsilon_s(1-\frac{\omega_p^2}{\omega^2})-1)\underline{\vec{E}}\\
+    & = \epsilon_0\chi_e^{dope}\underline{\vec{E}}\\
+    & = \epsilon_0(\epsilon_r-1)\underline{\vec{E}}
+\end{flalign*}
+
+Par identification, on trouve bien l'expression de l'énoncé. On remarque que la valeur est réelle, donc il n'y a pas d'absorpotion.
+\subsection{Représentation}
+En pratique, on fait varier le dopage N et donc c'est $\omega_P$ qui évolue.
+
+On peut en déduire facilement $N_0$
+\subsection{Caractère de l'onde EM}
+On introduit l'indice complexe : $\underline{n} = n+i\kappa$. De plus, $\underline{k} = \underline{n}k_0$
+
+De plus, $\underline{\epsilon_r} = \underline{n^2}$ Mais ici, c'est réel, donc on a $\epsilon_r = n^2-\kappa^2+2in\kappa$
+
+donc $\epsilon_r = n^2-\kappa^2$ et $n\kappa=0$
+
+Si $N<N_0$, alors $\omega_p<\omega$ et $\epsilon_r>0$ donc $\kappa=0$
+
+On écrit donc $\underline{\vec{E}} = \underline{\vec{E_0}}e^{i(\frac{\omega}{c}nz-\omega t)}$
+
+L'onde se propage dans le milieu sans modification de l'amplitude. On peut qualifier le milieu de transparent.
+
+Dans le deuxième cas de figure, $\epsilon_r < 0$, on botient l'opposé : $n=0$
+
+On écrit donc $\underline{\vec{E}} = \underline{\vec{E_0}}e^{i(\frac{\omega}{c}i\kappa z-\omega t)}$ avec une composante réelle qui décroit quand z augmente. Il n'y a pas de propagation car z et t ne sont pas couplés. 
+Il apparaissent dans des fonctions différentes. C'est donc une onde évanessante.
+
+Cet effet n'est pas en lien avec l'absorbtion. L'atténuation provient du fait que $\epsilon_r <0$ et réel ou parce qu'il est complexe.
+
+Il faut trouver $\epsilon_s$. 
+
+Faire un commentaire sur le m*.
+
+
+\end{document}

@@ -1,0 +1,234 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 2 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\setcounter{chapter}{1}
+\begin{document}
+\chapter{Induction}
+\section{Force électromotrice}
+\begin{definition}[Force électromotrice (fem)]
+    Toute variation de flux magnétique à travers un circuit provoque l'apparition d'une fem. Le circuit est alors équivalent à
+    une source de tension notée $e$. Si le circuit est ouvert, la tension vaut $e$, dans le cas contraire, elle induit l'apparition d'un courant induit noté $i$.
+\end{definition}
+\begin{definition}[Force électromotrice en fonction du champ électromoteur]
+   $$e= \int_C \vec{E_m}\cdot \vec{\dd l}$$
+\end{definition}
+Elle est homogène à une tension et s'exprime en V 
+\section{Lois de l'induction}
+\begin{theorem}[Loi de Faraday pour un circuit fixe]
+    $$e(t) = -\frac{\dd \phi}{\dd t}$$ avec $\phi = \iint_S \B\cdot \vec{\dd S}$.
+\end{theorem}
+\begin{theorem}[Fem dans circuit mobile]
+    $$e(t) = -\iint_S \frac{\partial \B}{\partial t} \cdot \vec{\dd S}+ \int_C (\vec{v}\wedge \B)\cdot \vec{\dd l}$$
+\end{theorem}
+\begin{theorem}[Loi de Lenz]
+    Les phénomènes d'induction s'opposent par leur effets aux causes qui leur ont donné naissance. On en déduit que le sens du
+    courant induit est tel que le flux de son propre champ magnétique s'oppose à la variation de flux inducteur.
+\end{theorem}
+\begin{theorem}[Équation de Maxwell Faraday]
+    $$\rot \E = -\frac{\partial \B}{\partial t}$$
+\end{theorem}
+\warningInfo{Types d'induction}{
+\begin{itemize}
+    \item induction statique (Neumann, $\vec{v}=0$) : on a $$e(t) = -\iint \frac{\partial \B}{\partial t}\cdot \vec{\dd S}$$
+    \item Induction de Lorenz : On a $\frac{\partial \B}{\partial t} = 0$, donc 
+     $$e(t) = \int_C (\vec{v}\wedge \B)\cdot \vec{\dd l}$$
+\end{itemize}
+}
+\section{Circuit fixe dans un champ variable}
+On considère une spire circulaire de rayon $r$ et de résistance $R$, placée dans le plan $(Oxy)$.
+
+Le champ magnétique appliqué est variable dans le temps :
+$$
+\vec{B}(t) = B_m \cos(\omega t)\, \vec{e_z}
+$$
+On oriente $\vec{\dd S}$ selon $\vec{e_z}$ (orientation sortante du plan).
+
+\textbf{1. Calcul du flux magnétique à travers la spire}
+
+Le flux du champ magnétique à travers la spire est donné par :
+$$
+\phi(t) = \iint_S \vec{B}(t) \cdot \vec{\dd S}
+$$
+Comme $\vec{B}(t)$ est uniforme et parallèle à $\vec{\dd S}$ sur toute la surface de la spire :
+$$
+\phi(t) = B(t) \cdot S = B_m \cos(\omega t) \cdot \pi r^2
+$$
+
+\textbf{2. Calcul de la force électromotrice induite}
+
+La loi de Faraday donne :
+$$
+e(t) = -\frac{\dd \phi}{\dd t}
+$$
+Calculons la dérivée :
+\begin{align*}
+e(t) &= -\frac{\dd}{\dd t}\left[B_m \cos(\omega t) \pi r^2\right] \\
+     &= -B_m \pi r^2 \frac{\dd}{\dd t}\left[\cos(\omega t)\right] \\
+     &= -B_m \pi r^2 \left[-\omega \sin(\omega t)\right] \\
+     &= B_m \omega \pi r^2 \sin(\omega t)
+\end{align*}
+
+\textbf{3. Courant induit dans la spire}
+
+La spire étant de résistance $R$, le courant induit vaut :
+$$
+i(t) = \frac{e(t)}{R} = \frac{B_m \omega \pi r^2}{R} \sin(\omega t)
+$$
+
+\begin{center}
+    \includegraphics[scale=0.5]{Figure_1}
+\end{center}
+
+\textbf{4. Sens du courant induit et loi de Lenz}
+
+On observe que $i(t)$ est proportionnel à $\sin(\omega t)$, c'est-à-dire qu'il est en quadrature de phase avec le champ $B(t)$ (qui est en $\cos(\omega t)$). Le courant induit s'oppose toujours à la variation du flux magnétique, conformément à la loi de Lenz :
+$$
+i(t) \propto -\frac{\dd \phi}{\dd t}
+$$
+Cela signifie que le courant induit crée un champ magnétique qui s'oppose à la variation du champ appliqué.
+
+\vspace{0.5em}
+\textit{Remarque :}
+
+On peut s'entraîner à refaire ce raisonnement pour une bobine tournant dans un champ fixe, ou pour d'autres situations d'induction.
+% \subsection{Fem dans un circuit mobile}
+% On considère un cuircuit C mobile dans un référenriel R où le champ $\E,\B$ est statique.
+% On considère une charge au repos dans C, elle se déplace à la m\^eme  vitesse ue C ($\vec{v}$).
+
+% Elle peut \^etre mise en mouvement par la force de Lorenz, donc 
+
+% \explanation{b1}{$\vec{F}$ est la force de Lorenz, en circuit fixe, donc il a quand meme un champ électrique $\vec{F} = q\vec{E}$ qui est le champ électromoteur. 
+% Dans le cas de l'induction de Lorenz, on aurait $\vec{F} = q(\vec{v}\wedge \vec{B})$. Ici, on a les deux pour la démonstration.}
+
+% \begin{flalign*}
+%     \vec{F} &= q(\E+\vec{v}\wedge \B)\\
+%     e(t) &= \int \frac{\vec{F}}{q}\vec{\dd l}\explain{b1}{right}{0}{0.5}{}\\
+%     &= \int_C (\E+\vec{v}\wedge \B)\cdot \vec{\dd l}\\
+%     &= \int_C \E\cdot \vec{\dd l} + \int_C (\vec{v}\wedge \B)\cdot \vec{\dd l}\\
+%     &= -\iint_S \frac{\partial \B}{\partial t} \cdot \vec{\dd S}+ \int_C (\vec{v}\wedge \B)\cdot \vec{\dd l}
+% \end{flalign*}
+\section{Auto-Induction et inductance d'une bobine}
+\subsection{Phénomène d'auto-Induction}
+\begin{definition}[Auto-induction]
+    L'auto-induction est le phénomène par lequel une variation du courant dans un circuit induit une fem dans ce même circuit, s'opposant à la variation du courant (loi de Lenz).
+\end{definition}
+\subsection{Induction propre et inductance}
+\begin{definition}[Flux propre]
+    Le \textbf{flux propre} est le flux du champ magnétique créé par un circuit à travers sa propre surface. Il dépend de l'intensité du courant et de la géométrie du circuit.
+\end{definition}
+
+\begin{theorem}[Inductance propre]
+    Pour une spire ou une bobine, le flux propre s'écrit $\phi = L i(t)$, où $L$ est l'\textbf{inductance propre} (en henry, H), caractéristique du circuit.
+\end{theorem}
+
+\begin{theorem}[Fem d'auto-induction]
+    La fem d'auto-induction vaut :
+    $$e = -\frac{\dd \phi}{\dd t} = -L \frac{\dd i}{\dd t}$$
+    Elle s'oppose à la variation du courant (signe moins, loi de Lenz).
+\end{theorem}
+\subsection{Inductance mutuelle entre deux circuits}
+Considérons deux circuits quelconques $C_1$ et $C_2$, parcourus par des courants $i_1$ et $i_2$.
+
+\begin{definition}[Inductance mutuelle]
+    L'\textbf{inductance mutuelle} $M$ entre deux circuits est définie par le flux du champ magnétique créé par le courant $i_1$ dans $C_1$ à travers $C_2$ :
+    $$
+    \phi_{21} = M i_1
+    $$
+    Par symétrie, $M = L_{21} = L_{12}$.
+\end{definition}
+
+% \begin{theorem}[Expression de l'inductance mutuelle]
+%     $$
+%     \phi_{21} = \iint_{S_2} \vec{B_1}\cdot \dd\vec{S_2} = \frac{\mu_0}{4\pi} \int_{C_2}\int_{C_1} \frac{\vec{\dd l_1}\cdot \vec{\dd l_2}}{||\vec{r_2}-\vec{r_1}||} i_1
+%     $$
+%     L'inductance mutuelle ne dépend que de la géométrie et de l'orientation relative des circuits.
+% \end{theorem}
+% \subsection{Matrices d'inductance}
+% On se place dans les m\^emes conditions que dans la partie précédente.
+
+% On considère toujours deux circuits $C_1$ et $C_2$, on note le flux total à travers $C_1$ : 
+
+% \explanation{b2}{Flux dans le cirucit 1 crée par le circuit 2}
+
+% $$\phi_1 = \phi_{12}\explain{b2}{right}{0}{0.5}{}+\phi_{11}$$
+
+% On obtient pour le circuit 2 : $\phi_{2} = \phi_{21}+\phi_{22}$
+
+% Or, $\phi{11} = L_1i_1, \phi_{12} = Mi_2, \phi_{22}=L_2i_2, \phi_{21}M i_1$
+
+% On écrit la matrice d'inductance : %TODO Matrice à générer phi = phi1 phi2 en connelone, pareil pour i, et on écrit phi = L i avec L = L1 M//M L2
+
+% \checkInfo{Application au cas de 2 bobines en série}{
+% \begin{flalign*}
+%     \phi &= \phi_1+\phi_2\\
+%     &= (L_1+L_2+2M)i
+% \end{flalign*}
+% Les inductances ne sont donc pas additives, sauf si $M=0$.
+% }
+\section{Exemples : Étude des transformateurs}
+\begin{definition}[Transformateur idéal]
+    Un \textbf{transformateur} est constitué de deux bobines couplées magnétiquement, permettant de transformer une tension alternative.
+\end{definition}
+
+\textbf{Équations fondamentales (résistances négligées) :}
+\begin{align*}
+    u_1 &= L_1 \frac{\dd i_1}{\dd t} + M \frac{\dd i_2}{\dd t} \\
+    u_2 &= L_2 \frac{\dd i_2}{\dd t} + M \frac{\dd i_1}{\dd t}
+\end{align*}
+
+\textbf{Rapport de transformation (cas idéal, couplage parfait $k=1$) :}
+\begin{theorem}[Rapport de tension d'un transformateur]
+    Si tout le flux du primaire passe dans le secondaire ($k=1$), alors :
+    $$
+    \frac{u_2}{u_1} = \frac{N_2}{N_1}
+    $$
+    où $N_1$ et $N_2$ sont les nombres de spires du primaire et du secondaire.
+\end{theorem}
+
+\end{document}

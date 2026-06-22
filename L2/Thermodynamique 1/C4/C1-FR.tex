@@ -1,0 +1,153 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Introduction à la termodynamique}
+\subtitle{Thermodynamique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\professor{}
+
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+\usepackage{tkz-tab}
+\usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\bz}{\overline{z}}
+\DeclareMathOperator{\card}{card}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\begin{document}
+\setcounter{chapter}{3}
+\chapter{Second principe de thermodynamique}
+
+\section{Entropie}
+
+\begin{theorem}
+    Comme l'intégrale de $\frac{\delta Q_{rev}}{T}$ sur un cycle fermé est nulle, la quantité $\int_A^B \frac{\delta Q_{rev}}{T}$ est indépendante du chemin suivi. Elle définit la variation d'une fonction d'état appelée \textbf{Entropie}, notée $S$.
+    $$\Delta S_{AB} = S_B - S_A = \int_A^B \frac{\delta Q_{rev}}{T}$$
+\end{theorem}
+
+\section{Énoncé du second principe}
+\begin{theorem}[Énoncé détaillé]
+    $$\Delta_{i\to f} = S_f-S_i = \int_i^f \frac{\delta Q_{QS}}{T} = -\Delta S_{ext, if}+S^p_{i\to f}$$
+    avec 
+    \begin{itemize}
+        \item $-\Delta S_{ext,if} = 0$ si la transformation est adiabatique
+        \item $-\Delta S_{ext,if} = \frac{Q_{i\to f}}{T_{source}}$ si la transformation s'effectue au contact d'une source.
+    \end{itemize}
+      et
+      \begin{itemize}
+        \item $S^p_{if}=0$ si c'est réversible
+        \item $S^p_{if}>0$ si c'est irréversible
+      \end{itemize}
+\end{theorem}
+\tipsInfo{Signification physique}{  $S_e = \int \frac{\delta Q}{T_{ext}}$ est l'entropie échangée avec le milieu extérieur.
+        et $S_p$ est l'entropie produite (ou créée) au sein du système.
+    }
+
+\begin{theorem}[Entropie de l'Univers]
+    Pour un système isolé (ou l'Univers entier), $Q=0 \implies S_e = 0$.
+    Par conséquent : $\Delta S_{univers} \geq 0$.
+    L'entropie d'un système isolé ne peut que croître.
+\end{theorem}
+
+\section{Énoncé de Thomson / de Kelvin}
+
+\criticalInfo{Rappel : Moteur}{Pour un cycle moteur, le travail total échangé est négatif ($W < 0$), ce qui signifie que le système fournit de l'énergie mécanique au milieu extérieur.}
+
+\begin{theorem}[Énoncé de Thomson]
+    Un système en contact avec une seule source de chaleur (cycle monotherme) ne peut pas fournir de travail au milieu extérieur au cours d'un cycle. 
+    Autrement dit : pour un cycle monotherme, $W \geq 0$.
+\end{theorem}
+
+\begin{theorem}[Conséquence]
+    Il est impossible de transformer intégralement de la chaleur en travail de façon cyclique. En revanche, la transformation intégrale de travail en chaleur est possible (ex: effet Joule).
+\end{theorem}
+
+\section{Exemples d'application}
+\subsection{Calcul de $\Delta S$ entre deux états quelconques}
+
+L'entropie étant une fonction d'état, on peut choisir n'importe quel chemin fictif quasi-statique entre $(P_0, V_0, T_0)$ et $(P_1, V_1, T_1)$.
+
+\begin{proposition}[Formules de l'entropie du Gaz Parfait]
+    Selon les variables d'état choisies, on utilise les identités thermodynamiques :
+    \begin{itemize}
+        \item \textbf{Variables $(T, V)$ :} $dS = \frac{dU + P dV}{T} = C_v \frac{dT}{T} + nR \frac{dV}{V}$
+        $$\Delta S = C_v \ln\left(\frac{T_1}{T_0}\right) + nR \ln\left(\frac{V_1}{V_0}\right)$$
+        \item \textbf{Variables $(T, P)$ :} $dS = \frac{dH - V dP}{T} = C_p \frac{dT}{T} - nR \frac{dP}{P}$
+        $$\Delta S = C_p \ln\left(\frac{T_1}{T_0}\right) - nR \ln\left(\frac{P_1}{P_0}\right)$$
+    \end{itemize}
+\end{proposition}
+
+% \warningInfo{Chemin par étapes}{Si tu décomposes en une isochore $(0 \to A)$ puis une isobare $(A \to 1)$ comme dans ton exemple :
+% $$\Delta S = C_v \ln\left(\frac{T_A}{T_0}\right) + C_p \ln\left(\frac{T_1}{T_A}\right)$$
+% C'est parfaitement correct et cela redonne les formules ci-dessus en remplaçant $T_A$. }
+
+
+\subsection{Démonstration du chemin par étapes}
+
+On souhaite aller de l'état $0$ $(P_0, V_0, T_0)$ à l'état $1$ $(P_1, V_1, T_1)$. On définit un état intermédiaire $A$ tel que :
+\begin{itemize}
+    \item Étape 1 ($0 \to A$) : Transformation isochore ($V_A = V_0$). Pour atteindre la pression $P_1$, la température devient $T_A = \frac{P_1 V_0}{nR}$.
+    \item Étape 2 ($A \to 1$) : Transformation isobare ($P_A = P_1$). On fait varier le volume de $V_0$ à $V_1$.
+\end{itemize}
+
+
+
+\subsubsection{Calcul des variations d'entropie}
+
+1. Sur l'isochore ($0 \to A$) :
+   Comme $dV = 0$, l'identité thermodynamique $dU = TdS - PdV$ devient $dU = TdS$.
+   $$\Delta S_{0A} = \int_{T_0}^{T_A} \frac{C_v dT}{T} = C_v \ln\left(\frac{T_A}{T_0}\right)$$
+
+2. Sur l'isobare ($A \to 1$) :
+   Comme $dP = 0$, l'identité $dH = TdS + VdP$ devient $dH = TdS$.
+   $$\Delta S_{A1} = \int_{T_A}^{T_1} \frac{C_p dT}{T} = C_p \ln\left(\frac{T_1}{T_A}\right)$$
+
+3. Somme totale :
+   $$\Delta S_{total} = C_v \ln\left(\frac{T_A}{T_0}\right) + C_p \ln\left(\frac{T_1}{T_A}\right)$$
+
+
+\subsubsection{Récupération de la formule classique}
+
+On utilise la relation de Mayer $C_p = C_v + nR$ pour décomposer le second terme :
+\begin{flalign*}
+    \Delta S &= C_v \ln\left(\frac{T_A}{T_0}\right) + (C_v + nR) \ln\left(\frac{T_1}{T_A}\right)\\
+&= C_v \left[ \ln\left(\frac{T_A}{T_0}\right) + \ln\left(\frac{T_1}{T_A}\right) \right] + nR \ln\left(\frac{T_1}{T_A}\right)\\
+&= C_v \ln\left(\frac{T_1}{T_0}\right) + nR \ln\left(\frac{T_1}{T_A}\right)
+\end{flalign*}
+
+Or, sur l'isobare $A \to 1$, on a $\frac{V}{T} = const \implies \frac{T_1}{T_A} = \frac{V_1}{V_A}$. Comme $V_A = V_0$ par construction :
+$$\Delta S = C_v \ln\left(\frac{T_1}{T_0}\right) + nR \ln\left(\frac{V_1}{V_0}\right)$$
+
+\end{document}
+
+

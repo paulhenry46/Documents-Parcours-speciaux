@@ -1,0 +1,265 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 2 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\setcounter{chapter}{3}
+\begin{document}
+\chapter{Puissance et énergie du champ Em}
+\setcounter{chapter}{4}
+\chapter{Ondes EM dans le vide}
+\section{Équation de propagation}
+\subsection{Équation de propagation des champs E et B}
+On se place dans le vide et loin des sources.
+
+$\Div \vec{E} = 0, \Div \vec{B} = 0, \rot \vec{E} = -\frac{\partial \vec{B}}{\partial t},\rot B = \mu_0 \epsilon_0 \frac{\partial \E}{\partial t}$
+
+La Démonstration à partir de ces équations est à savoir faire.
+
+\subsubsection{Champ électrique}
+$$\rot(\rot E) = \grad(\div E)-\lap \vec{E}$$
+
+$$\rot(-\frac{\partial \vec{B}}{\partial t}) = -\lap E, -\frac{\partial}{\partial t}(\rot B) = -\lap \vec{E}$$
+
+Donc $ \lap \vec{E} = -\frac{1}{c^2}\frac{\partial^2 \vec{E}}{\partial t^2} = \vec{0}$
+
+\subsubsection{Champ magnétique}
+$$rot rot(B) = grad (div B) -\lap \vec{B}$$
+$$\rot(\epsilon_0\mu_0 \frac{\partial E}{\partial t}) = -\lap \vec{B}$$
+$$\epsilon_0\mu_0 \frac{\partial}{\partial t}(-\frac{\partial \B}{\partial t}) = -\lap B$$
+donc $$\lap B - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} = \vec{0}$$
+
+Remarques :
+\begin{itemize}
+    \item On a un couplage des champs à l'orgine d'un phénomène de propagation d'une perturbation
+    \item Une onde EM est une onde vectorielle à  3 dimensions. En optique ondulatoire, on ne conserve que le caractère vibratiire (modèle scalaire)
+    \item Les équations de d'Alembert sont linéaires, donc les soltuions forment un sev. On peut regarder les phénomènes d'interférence : permet d'étudier des olutions monochormatique.
+    \item 
+\end{itemize}
+\subsection{Équations de propagation des potentiels}
+$$rot B = rot (rot A) = grad(div A)-lap A$$
+$$rot B =1/c^2 \frac{\partial E}{\partial t} = 1/c^2 \frac{c^2\partial}{\partial t}(-grad V-\frac{\partial \vec{A}}{\partial t}) = -grad (1/c^2 \frac{\partial v}{\partial t})-1/c^2 \frac{\partial \vec{A}}{\partial t}$$
+
+d'où $grad (div A)-lap A  = -grad (1/c^2 \frac{\partial V}{\partial t})-1/c^2 \frac{\partial A^2}{\partial t^2}$
+
+donc $\lap \vec{A} -1/c^2 \frac{\partial^2 A}{\partial t^2} = 0$ par la jauge de Lorenz.
+
+On fait de meme pour V : div E=0, donc div(-gra dV-partial A/partial t) = 0, donc $\Delta V - 1/c^2 \frac{\partial^2 v}{\partial^2 t} = 0$
+
+Jauge de Lorenz : Cndition pour que A et V se propagent comme E et B.
+
+\section{Ondes planes progressives monochormatiques}
+L'onde plane est sune solution unidimensionelle de l'équation d'onde. La propagation du champ EM ne dépend que d'une direction de l'espace
+\subsection{Définitions}
+\begin{theorem}[Surface d'onde]
+    Surface sur laquelle la phase est uniforme à un temps donné, la surface sur laquelle le champ EM est uniforme
+\end{theorem}
+\begin{theorem}[Onde plane]
+    Les surfaces d'onde sont des plans // entre eux. On a u.r l'équation des plans d'onde avec u la direction de propagation et r
+\end{theorem}
+\begin{definition}[Onde progressve]
+    Plans d'onde avancent à une vitesse c. L'onde dépend de t-(u.r) /c
+\end{definition}
+\begin{definition}[Monochromatique]
+    dépendance temporelle sinosodidale de pulsation w constante, varie en $\cos(\omega(t-\frac{u.r}{c})+\phi_0)$.
+\end{definition}
+Avec $\vec{k} = k\vec{u}, k = \omega/c, 2\pi/\lambda$
+Donc $\cos(\omega t - k.r +\phi_0)$
+
+Double périodicité temporelle et spatiale : $T = 2\pi/\omega, \lambda = 2\pi/k$
+
+\subsection{Notation complexe}
+Pour une OPPM : $\vec{E} = E_{0x} (\cos(\omega t-\vec{k}\cdot \vec{r})+\phi_x)+\dots$
+
+En complexe : $\vec{E} = \vec{E_0}e^{-i\omega t - k.r}$ avec $\vec{E_0} = E_{0x}e^{-i\phi_x}+\dots$
+
+$\vec{E} = Re(E(r,t))$
+\subsection{Dérivation des OPPM}
+$$E = E_0 e^{-i(\omega t)-(k_x x +\dots)}$$
+
+Dérivée partielle par rapport au temps : 
+$$\frac{\partial E}{\partial t} = -i\omega E$$
+
+Nous allons monter que $\nabla = ik$
+
+$$div E = \frac{\partial E_X}{\partial x} + \dots = E_x e^{-i(\omega t-k.r)}e^{-i\phi_x}(ik_x)+\dots = ie^{-i(\omega t-k.r)}(E_{0x}e^{-\phi_x}k_x+\dots)$$
+
+Finalement, $div E = i\vec{k}\cdot \vec{E}$.
+
+$rot E = i\vec{k}\wedge \vec{E}$.
+
+On fait de meme avec B, ce qui nous permet de réécrire les équations de Maxwell : $i\vec{k}\cdot \vec{E} = 0, i\vec{k}\cdot \vec{B} = 0, i\vec{k}\wedge \vec{E}i\omeaga B, i\vec{k}\wedge \vec{B} = -i\omega 1/c^2 E$
+
+L'équation de d'Alembert devient :
+$$\Delta \vec{E} - \frac{1}{c^2}\frac{\partial^2 \vec{E}}{\partial t^2} = \vec{0}$$
+puis 
+$$ (-k^2 + \frac{w^2}{c^2})\vec{\bar{E}} = \vec{0}$$ avec $k = \frac{\omega}{c}$. Cela relie les variations temporelles et spatiales de l'onde. 
+
+Pour $\lambda = \frac{2\pi}{k}$, la longueur d'onde et $\nu = \frac{\omega}{2\pi}$ la fréquence, on a $\lambda = \frac{c}{\nu}$.
+
+On peut aussi dire que $v\varphi = \frac{\omega}{k} = c$ dans ce cas (vide)
+
+\subsection{Structure des OPPM}
+En partant de Maxwell-Faraday, on a $i\vec{k} \wedge \vec{\bar{E}} = i\omega \vec{\bar{B}}$
+
+On en déduit que $\vec{\bar{B}} = \frac{\vec{k}}{w}\wedge \vec{B}$. Ils forment un trièdre direct.
+
+Par ailleurs, $\vec{k} = k\vec{u}$
+
+D'où $\vec{B} = \frac{k}{w}\vec{u}\wedge \vec{E} = 1/c \vec{u}\wedge \vec{E}$.
+
+Donc $\norm{B} = \frac{\norm{E}}{c}$.
+
+On peut écrire que $\bar{\vec{B_o}} e^{-i(\omega t - \vec{k}\cdot \vec{r})} = \frac{\vec{u}}{c}\wedge \vec{E_0} e^{-i \dots}$
+
+Les 2 champs sont en phase.
+
+B et E sont orthogonaux à la direction de propagation et appartiennent au plan d'onde. On dit qu'ils sont transverse.
+
+On écrit Maxwell-Ampère : $\vec{k}\wedge \vec{B} = - \frac{\omega}{c^2}\vec{E}$
+
+$\vec{E} = - \frac{c^2}{\omega}\vec{k}\wedge \vec{B} = \frac{c^2}{\omega}\vec{B}\wedge \vec{k}$
+
+il reste $\vec{E} = c\vec{B}\wedge \vec{u}$ qui est identitique à l'équation précédente.
+ \section{Autres types d'onde}
+ L'OPPM est utile mathématiquement car c'est une bonne base de développement pour d'autres formes d'ondes mais elle pose des problèmes physiques.
+
+ $\E$ ne tend pas vers 0 quand t tend vers l'infini.
+
+ Elle est valable seulement loin des sources.
+
+ L'onde sphérique (ne pas retenir, on s'en fout): 
+
+ \begin{itemize}
+    \item Onde sphérique
+    \item Onde stationnaire : Supperposition de vecteurs d'onde opposés. Il y a superposition de 2 ondes de m\^eme $\omega$, on peut observer dess- interférences.
+ \end{itemize}
+ On écrit $\bar{\vec{E_1}} = E_0 e^{-i(\omega t-kz)}\vec{e_x}$ et $\bar{\vec{E_2}} = E_0 e^{-i(\omega t+kz)}\vec{e_x}$
+
+ On fait la somme : $E_0 e^{-iwt}2\cos(kz)\vec{e_x} = E_0 \cos(\omega t)2\cos(kz)\vec{e_x}$.
+
+ La dépendance spatiale fait partie de l'amplitude. Il ya découplage entre évolution spataile et temporelle. L'amplitude est max quand $kz = \pi n$ acec $n\in \Z$ Elle sera nulle si $kz = (2n+1)\frac{\pi}{2}$
+
+ Il y a des noeuds et des ventres. Elle ne se propage pas.
+
+ \begin{theorem}
+    $\bar{B} = \vec{B_1} + \vec{B_2}$. On montre que $\vec{B} = \frac{2E_0}{c}\sin(\omega t)\sin(kz)$ 
+ \end{theorem}
+On remarque que les 2 ondes sont en quadrature de phase.
+
+ Calculer l'énergie avec E et B avec le vecteur de poynting
+
+ On peut aussi montrer que $\vec{\Pi} = \frac{4E_0^2}{c\mu_0}\cos(kz)\©os(\omega t)\sin(kz)\sin(wt)\vec{e_z}$.
+ dont la moyenne est nulle. Donc la puissance moyenne rayonnée par l'onde stationnaire vaut 0.
+
+ On peut endin montrer que $<u_{em}> = \epsilon_0E_0^2$. À savoir démontrer
+
+ \section{Polarisation d'une onde}
+ \begin{definition}[Polarisation]
+    C'est la direction de E
+ \end{definition}
+ On prend $\bar{E} = \bar{\vec{E_0}}e^{-i(\omega t - kr)}$
+
+Prenons $\vec{k} = k\vec{e_z}$, E appartient au plan orthogonal.
+
+On peut écrire $\vec{\bar{E_0}} = E_0 e^{-i\varphi_x}(\cos(\alpha)// \sin(\alpha)e^{i(\varphi_x-\varphi_y)})$ qui est le vecteur polatisation ou de johsnon (entre paretnthèses)
+
+On peut prendre $\varphi_x = 0$ sans parte de généralité. L'orinettaion ne dépend que de $\alpha$ et de la différence.
+
+\subsection{Polarisation rectiligne}
+C'est le cas $\avrphi_x-\varphi_x = 0$ 
+            |
+            |  *
+            | *
+____________|*_angle alpha____________E_{ox}\cos(\omega t)
+           *|
+          * |
+         *  |
+
+Exemple : Pour alpha=0, polarisation horizontale, pour alpha = $\pm \pi/2$, polartisan verticale
+\subsection{polarisation circulaire}
+$\phi_x - \phi_y = \pm \pi/2$
+
+Exemple avec $\alpha=\pi/4$
+
+On a $\vec{E} = \frac{E_0}{\sqrt{2}}(\cos(\omega t-kr)\vec{e_x}\pm \sin(\omega t-kr)\vec{e_y})$
+
+Les 2 composantes snt en quadrature de phase. L'extrémité de E décrit une trajectoire circulaire. $E_y$ est retardé de 1/4 de période.
+
+Elle est circulaire droite ou gauche selon $\varphi_x-\vaprih_y = \pm \pi/2$.
+
+\subsection{Polarisation éliptique}
+Cas général : La trajectoire de E est une ellipse, donc $\bar{\vec{e}} = E_0(\cos(\alpha)\cos(\omega t -kz)\vec{e_x}+\sin(\omega t -kz)\vec{e_y})$
+
+Dans le cas elliptique, contrairement au circulaire, l'angle alpha change l'oriettaion du grand axe.
+
+\section{Aspect énergétiques d'une OPPM} (Grand V)
+\subsection{Densité volumique d'énergie}
+$$u_{em} = \frac{\epsilon}{2}\norm{E}^2 + \frac{1}{2\mu_0}\norm{B}^2$$ avec des champs réels
+
+Pour une OPPM, $\norm{B} = \frac{\norm{E}}{c}$
+
+On en déduit que $u_{em} = \epsilon_0 \norm{E}^2$. Les contributions électriques et magnétiques sont les m\^emes.
+
+\subsection{Vecteur de Poiyting}
+$\vec{\Pi} = \frac{1}{\mu_0c}\norm{E}\vec{u}$.
+
+soit $\vec{\Pi} = U_{em}c \vec{u}$
+
+\subsection{Valeurs moyennes temporelles}
+$u_{em}$ et $\vec{\Pi}$ sont proportionelles à $\norm{E}^2$. Ces 2 grandeurs vont aussi osciller dans le temps.
+
+Par exemple si $\vec{E} = \cos(\omega t -kz)\vec{e_x}, \norm{E}^2 = E_0^2 \cos^2(\omega t -kz) = \frac{E_0^2}{2}(1+2\cos(\omega t -kz))$
+
+Les détecteurs ne peuvent pas suivre ces variations trop rapides. On va considérer la moyenne temporelle. On mesure l'éclairement qui est proportionnel à $<u_{em}>$
+
+$<u_{em}> = \epsilon_0 \frac{E_0^2}{2}, <\vec{\Pi}> = \frac{\epsilon_0 c E_0^2}{2}$.
+
+
+\end{document}

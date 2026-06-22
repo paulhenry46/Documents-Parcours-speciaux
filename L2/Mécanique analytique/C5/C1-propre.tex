@@ -1,0 +1,178 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Mecanique Analytique}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%-pour mettre des images
+\usepackage[utf8]{inputenc}%encodage
+\usepackage{geometry}%pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%pour les boites d'exercices, de pbq et de croquis d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%Pour les boites info, danger et autres
+\usepackage{menukeys}%Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%pour les liens
+\usepackage{hyperref}%pour les liens (\`a mettre en dernier)
+\usepackage{caption}%pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\newcommand{\qa}{q_{\alpha}}
+\newcommand{\qdb}{\dot{q_{\beta}}}
+\newcommand{\qb}{q_{\beta}}
+\setcounter{chapter}{3}
+\begin{document}
+\setcounter{chapter}{4}
+\chapter{Méthode de Hamilton-Jacobi et Séparation des Variables}
+
+\section{La théorie de Hamilton-Jacobi}
+
+La méthode de Hamilton-Jacobi est une formulation de la mécanique analytique qui cherche à trouver une transformation canonique $(q_i, p_i) \to (Q_i, P_i)$ telle que les nouvelles coordonnées $Q_i$ et les nouveaux moments $P_i$ soient tous des constantes du mouvement.
+
+Le choix le plus simple consiste à imposer un nouveau Hamiltonien identiquement nul : $\tilde{H} = 0$. Les équations de Hamilton associées deviennent alors :
+\begin{equation}
+    \dot{Q}_i = \frac{\partial \tilde{H}}{\partial P_i} = 0 \quad \text{et} \quad \dot{P}_i = -\frac{\partial \tilde{H}}{\partial Q_i} = 0 \implies Q_i = \text{cste}, \quad P_i = \alpha_i = \text{cste}
+\end{equation}
+
+Pour y parvenir, on utilise une fonction génératrice du second type, notée $S(q_i, P_j, t)$, qui dépend des anciennes positions $q_i$ et des nouveaux moments constants $P_j \equiv \alpha_j$.
+
+\begin{definition}[Équation de Hamilton-Jacobi]
+La fonction génératrice $S(q_i, \alpha_j, t)$ est solution de l'équation aux dérivées partielles du premier ordre suivante :
+\begin{equation}
+    H\left(q_i, \frac{\partial S}{\partial q_i}, t\right) + \frac{\partial S}{\partial t} = 0
+\end{equation}
+avec les relations de transformation :
+\begin{equation}
+    p_i = \frac{\partial S}{\partial q_i} \quad \text{et} \quad Q_i = \frac{\partial S}{\partial \alpha_i}
+\end{equation}
+\end{definition}
+
+\section{Exemple : L'oscillateur harmonique unidimensionnel}
+
+Le Hamiltonien d'un oscillateur harmonique est donné par : $H(q,p) = \frac{p^2}{2m} + \frac{1}{2}m\omega^2 q^2$.
+
+L'équation de Hamilton-Jacobi pour ce système s'écrit :
+\begin{equation}
+    \frac{1}{2m}\left(\frac{\partial S}{\partial q}\right)^2 + \frac{1}{2}m\omega^2 q^2 + \frac{\partial S}{\partial t} = 0
+\end{equation}
+
+\subsection{Résolution par séparation des variables}
+On pose l'Ansatz\marginInfo{La forme de notre tentative de solution} : $S(q, \alpha, t) = S_2(q) + S_1(t)$, où $\alpha$ est le nouveau moment constant ($P = \alpha$).
+L'équation devient :
+\begin{equation}
+    \underbrace{\frac{1}{2m}\left(\frac{\dd S_2}{\dd q}\right)^2 + \frac{1}{2}m\omega^2 q^2}_{\text{dépend de } q} = \underbrace{-\frac{\dd S_1}{\dd t}}_{\text{dépend de } t} = \alpha \quad (\text{constante de séparation})
+\end{equation}
+En intégrant chaque partie :
+\begin{enumerate}
+    \item $S_1(t) = -\alpha t$
+    \item $\left(\frac{\dd S_2}{\dd q}\right)^2 = 2m\alpha - m^2\omega^2 q^2 \implies S_2(q) = \int_0^q \sqrt{2m\alpha - m^2\omega^2 \tilde{q}^2} \, \dd\tilde{q}$
+\end{enumerate}
+
+L'action principale complète est donc :
+\begin{equation}
+    S(q, \alpha, t) = \int_0^q \sqrt{2m\alpha - m^2\omega^2 \tilde{q}^2} \, \dd\tilde{q} - \alpha t
+\end{equation}
+
+\subsection{Retour aux variables physiques}
+En utilisant la relation $Q = \frac{\partial S}{\partial \alpha}$ :
+\begin{equation}
+    Q = \int_0^q \frac{m}{\sqrt{2m\alpha - m^2\omega^2 \tilde{q}^2}} \, \dd\tilde{q} - t = \frac{1}{\omega} \arcsin\left(q\sqrt{\frac{m\omega^2}{2\alpha}}\right) - t
+\end{equation}
+En inversant cette relation pour isoler la position $q(t)$, et en posant $P \equiv \alpha$, on trouve la solution temporelle classique :
+\begin{equation}
+    q(t) = \sqrt{\frac{2P}{m\omega^2}} \sin\left(\omega(t + Q)\right)
+\end{equation}
+Le moment conjugué s'obtient via $p = \frac{\partial S}{\partial q} = \sqrt{2mP - m^2\omega^2 q^2}$, ce qui donne :
+\begin{equation}
+    p(t) = \sqrt{2mP} \cos\left(\omega(t + Q)\right)
+\end{equation}
+
+
+
+\section{Cas où $H$ est indépendant du temps}
+
+Lorsque le Hamiltonien ne dépend pas explicitement du temps, on peut séparer la dépendance temporelle de manière générale.
+
+\begin{definition}[Action réduite]
+Si $\frac{\partial H}{\partial t} = 0$, l'énergie totale $E$ est conservée. On pose $P_1 = E = \alpha_1$ et on cherche l'action sous la forme :
+\begin{equation}
+    S(q_i, \alpha_j, t) = W(q_i, \alpha_j) - \alpha_1 t
+\end{equation}
+$W$ est appelée l'\textbf{action réduite} (ou fonction caractéristique de Hamilton).
+\end{definition}
+
+L'équation de Hamilton-Jacobi se réduit alors à une équation indépendante du temps :
+\begin{equation}
+    H\left(q_i, \frac{\partial W}{\partial q_i}\right) = \alpha_1
+\end{equation}
+
+Les équations de la transformation deviennent :
+\begin{equation}
+    p_i = \frac{\partial W}{\partial q_i}, \quad Q_1 = \frac{\partial W}{\partial \alpha_1} - t, \quad Q_i = \frac{\partial W}{\partial \alpha_i} \quad (\text{pour } i \ge 2)
+\end{equation}
+
+\warningInfo{Évolution du nouveau système}{Sous cette forme, le nouveau Hamiltonien vaut $\tilde{H} = H + \frac{\partial S}{\partial t} = \alpha_1 - \alpha_1 = 0$. Cependant, si l'on choisit d'utiliser $W$ directement comme fonction génératrice d'une transformation indépendante du temps, le nouveau Hamiltonien vaut $\tilde{H} = H = \alpha_1 = P_1$. Les équations du mouvement sont alors $\dot{Q}_1 = \frac{\partial \tilde{H}}{\partial P_1} = 1 \implies Q_1 = t + \beta_1$, et toutes les autres coordonnées sont purement constantes.}
+
+
+
+\section{Méthode de séparation des variables}
+
+L'équation de Hamilton-Jacobi ne présente un réel intérêt pratique que si elle peut être résolue par séparation de variables, c'est-à-dire si $W$ (ou $S$) peut s'écrire comme une somme de fonctions ne dépendant chacune que d'une seule coordonnée.
+
+\subsection{Condition de séparabilité d'une variable}
+Une coordonnée $q_1$ est dite séparable si l'équation de Hamilton-Jacobi peut se mettre sous une forme où $q_1$ et $\frac{\partial S}{\partial q_1}$ n'apparaissent que regroupés dans une fonction isolée $\phi$ :
+\begin{equation}
+    H\left( \phi\left(q_1, \frac{\partial S}{\partial q_1}\right), q_2, \dots, q_N, \frac{\partial S}{\partial q_2}, \dots, \frac{\partial S}{\partial q_N}, t \right) + \frac{\partial S}{\partial t} = 0
+\end{equation}
+On peut alors poser la constante de séparation $\alpha_1$ telle que :
+\begin{equation}
+    \phi\left(q_1, \frac{\dd S_1}{\dd q_1}\right) = \alpha_1
+\end{equation}
+Ce qui permet d'intégrer directement $S_1(q_1)$ et de réduire le problème à $N-1$ degrés de liberté.
+
+\subsection{Système totalement séparable}
+\begin{proposition}[Séparabilité totale]
+Un système est dit totalement séparable s'il existe un système de coordonnées (dit de Jacobi) dans lequel l'action se sépare entièrement sous la forme :
+\begin{equation}
+    S(q_i, \alpha_i, t) = S_1(t) + \sum_{i=1}^N W_i(q_i, \alpha_1, \dots, \alpha_N)
+\end{equation}
+Le Hamiltonien global se décompose alors en une somme de Hamiltoniens effectifs pour chaque coordonnée :
+\begin{equation}
+    H(q_i, p_i) = \sum_{i=1}^N H_i\left(q_i, \frac{\dd W_i}{\dd q_i}\right)
+\end{equation}
+\end{proposition}
+
+\tipsInfo{Utilité pratique}{La séparabilité totale réduit la résolution d'une équation aux dérivées partielles complexe à $N$ dimensions en un ensemble de $N$ intégrations (quadratures) indépendantes à une dimension.}
+\end{document}

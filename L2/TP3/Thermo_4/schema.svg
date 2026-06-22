@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (1:1.4.3+202512261035+0d15f75042)"
+   sodipodi:docname="schema.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="0.5033126"
+     inkscape:cx="270.2098"
+     inkscape:cy="535.45252"
+     inkscape:window-width="1920"
+     inkscape:window-height="1008"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid1"
+       units="mm"
+       originx="0"
+       originy="0"
+       spacingx="0.26458333"
+       spacingy="0.26458334"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:2.1;stroke-linejoin:round;stroke-opacity:1"
+       id="rect1"
+       width="52.916664"
+       height="15.875001"
+       x="58.208332"
+       y="150.81247"
+       ry="0.48048303"
+       inkscape:export-filename="schema.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2.1;stroke-linejoin:round;stroke-opacity:1"
+       d="m 0,137.58334 v 15.875 h 10.583333 v -5.29167 H 5.2916663 v -10.58333 z"
+       id="path2" />
+    <g
+       id="g8"
+       transform="translate(111.125)">
+      <path
+         style="fill:#d32f2f;fill-opacity:0.217885;stroke:#d32f2f;stroke-width:2.1;stroke-linejoin:round;stroke-opacity:1"
+         d="m 21.166666,89.958335 v 63.500005 h 15.875 V 89.958335 Z"
+         id="path1" />
+      <path
+         style="fill:none;stroke:#d32f2f;stroke-width:2.1;stroke-linejoin:round;stroke-opacity:1"
+         d="M 26.458332,74.083335 V 116.41667 H 31.75 V 74.083335"
+         id="path3" />
+    </g>
+    <g
+       id="g9"
+       transform="translate(-111.125)">
+      <path
+         style="fill:#03a9f4;fill-opacity:0.22;stroke:#03a9f4;stroke-width:2.1;stroke-linejoin:round;stroke-opacity:1"
+         d="m 132.29167,89.958335 v 63.500005 h 15.875 V 89.958335 Z"
+         id="path1-3" />
+      <path
+         style="fill:none;stroke:#03a9f4;stroke-width:2.1;stroke-linejoin:round;stroke-opacity:1"
+         d="m 137.58333,74.083335 v 37.041665 5.29167 h 5.29166 V 74.083335"
+         id="path4" />
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.1;stroke-linejoin:round;stroke-opacity:1;stroke-dasharray:none"
+       d="m 111.125,158.75 h 42.33333 V 95.250001 h -5.29167"
+       id="path5" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.1;stroke-linejoin:round;stroke-opacity:1;stroke-dasharray:none"
+       d="M 132.29166,137.58334 H 42.333333 v -5.29167 h -5.291667 m -15.875,0 H 2.1166667 v 5.29167"
+       id="path6"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.1;stroke-linejoin:round;stroke-opacity:1;stroke-dasharray:none"
+       d="M 10.583333,151.34167 H 21.166666"
+       id="path7"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.1;stroke-linejoin:round;stroke-opacity:1;stroke-dasharray:none"
+       d="M 37.041666,89.958335 H 47.624997 V 158.75 H 58.20833"
+       id="path8" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.1;stroke-linejoin:round;stroke-opacity:0.334981"
+       id="path9"
+       cx="121.17916"
+       cy="158.75026"
+       r="2.6458333" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.1;stroke-linejoin:round;stroke-opacity:0.334981"
+       id="path9-1"
+       cx="126.47083"
+       cy="137.58359"
+       r="2.6458333" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.1;stroke-linejoin:round;stroke-opacity:0.334981"
+       id="path9-3"
+       cx="4.7625012"
+       cy="132.82109"
+       r="2.6458333" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.1;stroke-linejoin:round;stroke-opacity:0.334981"
+       id="path9-6"
+       cx="41.804165"
+       cy="89.95858"
+       r="2.6458333" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.1;stroke-linejoin:round;stroke-opacity:0.334981"
+       id="path9-2"
+       cx="52.387497"
+       cy="158.75026"
+       r="2.6458333" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#b8273b;fill-opacity:0;stroke-width:2.1;stroke-linejoin:round"
+       x="102.50836"
+       y="175.57843"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.1"
+         x="102.50836"
+         y="175.57843">Compresseur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#b8273b;fill-opacity:0;stroke-width:2.1;stroke-linejoin:round"
+       x="2.9139748"
+       y="163.12796"
+       id="text1-3"><tspan
+         sodipodi:role="line"
+         id="tspan1-5"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.1"
+         x="2.9139745"
+         y="163.12796">Détendeur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.1;stroke-linejoin:round"
+       x="74.365547"
+       y="79.008118"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="stroke-width:2.1"
+         x="74.365547"
+         y="79.008118">Source froide</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.1;stroke-linejoin:round"
+       x="132.57388"
+       y="84.299782"
+       id="text3"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="stroke-width:2.1"
+         x="132.57388"
+         y="84.299782">Source chaude</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.1;stroke-linejoin:round"
+       x="127.2155"
+       y="122.74719"
+       id="text4"><tspan
+         sodipodi:role="line"
+         id="tspan4"
+         style="stroke-width:2.1"
+         x="127.2155"
+         y="122.74719">Condensateur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.1;stroke-linejoin:round"
+       x="17.610409"
+       y="100.40562"
+       id="text5"><tspan
+         sodipodi:role="line"
+         id="tspan5"
+         style="stroke-width:2.1"
+         x="17.610409"
+         y="100.40562">Évaporateur</tspan></text>
+    <path
+       style="fill:#a527b0;fill-opacity:1;stroke:none;stroke-width:2.1;stroke-linejoin:round"
+       d="m 138.11257,156.10417 5.29166,2.64583 -5.29166,2.64584"
+       id="path10" />
+  </g>
+</svg>

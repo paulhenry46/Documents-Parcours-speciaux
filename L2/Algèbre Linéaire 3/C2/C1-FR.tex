@@ -1,0 +1,157 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Algèbre linéaire 3*}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lombardi@math.univ-toulouse.fr
+\professor{E.Lombardie}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\dd}{\mathrm{d}}
+
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\ps}[2]{(#1|#2)}
+\begin{document}
+\setcounter{chapter}{1}
+%C2 : Applications linéaires sur espaces euclidiens
+%C3 : Espaces hermitiens
+%C4 : Formes quadratiques
+%C5 : Introduction aux groupes
+
+%TD = U-111/U-112
+%CM : B-08/B-07/Grignard
+
+%CC2 : TD du 19 mars
+%CC1 : 1h30
+%CC2 : TD du 7 mai
+%CC3 : 2 juin
+%CC4 : 9 juin
+\chapter{Endomorphismes d'espaces euclidiens}
+% Rappel sur les symétries : Attention à ne pas confondre projection et symétrie.
+% Si E = F \oplus G, la symétrie s par rapport à F parallèlement à G est s(x) = x_F - x_G.
+% Si F \perp G, on parle de symétrie orthogonale (ou réflexion si F est un hyperplan).
+
+\section{Isométries et matrices orthogonales}
+
+\subsection{Définitions et propriétés}
+
+\begin{definition}[Isométrie vectorielle]
+    Soit $(E, \ps{\cdot}{\cdot})$ un espace euclidien. Un endomorphisme $f \in \mathcal{L}(E)$ est une isométrie vectorielle (ou un automorphisme orthogonal) si :
+    $$\forall x \in E, \norm{f(x)} = \norm{x}$$
+\end{definition}
+
+\begin{proposition}
+    Soit $f \in \mathcal{L}(E)$. Les assertions suivantes sont équivalentes :
+    \begin{enumerate}
+        \item $f$ est une isométrie ($\norm{f(x)} = \norm{x}$).
+        \item $f$ conserve le produit scalaire : $\forall (x,y) \in E^2, \ps{f(x)}{f(y)} = \ps{x}{y}$.
+        \item L'image d'une base orthonormée (BON) par $f$ est encore une BON.
+    \end{enumerate}
+\end{proposition}
+
+% \begin{myproof}
+%     % Piège classique : L'équivalence entre norme et produit scalaire repose 
+%     % sur les identités de polarisation.
+%     $1 \implies 2$ : On utilise l'identité de polarisation : $\ps{x}{y} = \frac{1}{2}(\norm{x+y}^2 - \norm{x}^2 - \norm{y}^2)$. Comme $f$ est linéaire et conserve la norme, le résultat est immédiat. \\
+%     $2 \implies 3$ : Soit $(e_i)$ une BON. Alors $\ps{f(e_i)}{f(e_j)} = \ps{e_i}{e_j} = \delta_{i,j}$. La famille $(f(e_i))$ est donc orthonormale, et comme elle contient $n$ vecteurs en dimension $n$, c'est une BON. \\
+%     $3 \implies 1$ : On décompose $x = \sum x_i e_i$ dans une BON. Alors $\norm{x}^2 = \sum x_i^2$. Comme $f(x) = \sum x_i f(e_i)$ et que $(f(e_i))$ est une BON, on a aussi $\norm{f(x)}^2 = \sum x_i^2$.
+% \end{myproof}
+
+\subsection{Matrices orthogonales}
+
+\begin{definition}
+    Une matrice $Q \in M_n(\R)$ est dite orthogonale si ${}^tQQ = I_n$, ce qui équivaut à $Q^{-1} = {}^tQ$. On note $O(n)$ l'ensemble de ces matrices (Groupe Orthogonal).
+\end{definition}
+
+\begin{proposition}
+    Soit $\mathcal{B}$ une BON de $E$. $f$ est une isométrie ssi $Mat_{\mathcal{B}}(f) \in O(n)$.
+\end{proposition}
+\criticalInfo{Erreur fréquente}{Ce résultat est FAUX si la base choisie n'est pas orthonormée. 
+}
+
+\begin{proposition}[Propriétés de $O(n)$]
+    \begin{itemize}
+        \item Si $Q \in O(n)$, alors $\det(Q) = \pm 1$.
+        \item Les valeurs propres réelles d'une isométrie ne peuvent être que $1$ ou $-1$.
+        \item $O(n)$ est un groupe pour la multiplication.
+        \item $SO(n) = \{Q \in O(n) \mid \det(Q) = 1\}$ est le groupe spécial orthogonal (isométries directes/rotations).
+    \end{itemize}
+\end{proposition}
+
+\subsection{Étude de $O(2)$}
+
+Soit $A \in O(2)$. Deux cas se présentent :
+\begin{enumerate}
+    \item $A \in SO(2)$ : $A = \begin{pmatrix} \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{pmatrix}$. C'est une \textbf{rotation} d'angle $\theta$.
+    \item $A \notin SO(2)$ : $A = \begin{pmatrix} \cos \theta & \sin \theta \\ \sin \theta & -\cos \theta \end{pmatrix}$. C'est une \textbf{réflexion} (symétrie orthogonale par rapport à une droite).
+\end{enumerate}
+
+\subsection{Étude de $O(3)$}
+
+\begin{theorem}
+    Pour toute isométrie $f$ de $\R^3$, il existe une BON dans laquelle la matrice de $f$ est :
+    $$ M = \begin{pmatrix} \cos \theta & -\sin \theta & 0 \\ \sin \theta & \cos \theta & 0 \\ 0 & 0 & \epsilon \end{pmatrix} \text{ avec } \epsilon = \det(f) = \pm 1 $$
+\end{theorem}
+\checkInfo{Méthode pour déterminer les éléments caractéristiques en dim 3}{
+
+\begin{itemize}
+    \item L'axe de rotation est l'espace propre $E_1$ (si det=1) ou $E_{-1}$ (si det=-1).
+\item L'angle theta se trouve avec la trace : Tr(A) = 1 + 2cos(theta) (si det=1).
+\item Le signe de sin(theta) dépend de l'orientation choisie pour l'axe.
+\end{itemize}
+
+}
+
+\section{Classification et décomposition}
+
+\begin{theorem}[Théorème de réduction des isométries]
+    Soit $f$ une isométrie. Il existe une BON telle que la matrice de $f$ soit diagonale par blocs, composée de blocs de rotations $R_{\theta_i}$, de $1$ et de $-1$.
+\end{theorem}
+
+\begin{theorem}[Cartan-Dieudonné]
+    Toute isométrie de $E$ (dim $n$) peut s'écrire comme la composée d'au plus $n$ réflexions.
+    \begin{itemize}
+        \item Les rotations de $\R^3$ sont la composée de 2 réflexions.
+        \item Une réflexion est une symétrie orthogonale par rapport à un hyperplan.
+    \end{itemize}
+\end{theorem}
+\end{document}

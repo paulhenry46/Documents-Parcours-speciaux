@@ -1,0 +1,280 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 2 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\begin{document}
+\chapter{Rappels}
+\section{Électrostatique}
+\begin{theorem}[Champ électrostatique au point M]
+    \[\E = \frac{1}{4\pi\epsilon_0}\frac{q_1}{PM^2}\vec{u}\] avec \(\vec{u}\) le vecteur unitaire dans la direction de PM.
+\end{theorem}
+\begin{theorem}[Force électrostatique]
+    \[\vec{F} = \frac{1}{4\pi\epsilon_0}\frac{q_1q_2}{PM^2}\vec{u}\] avec \(\vec{u}\) le vecteur unitaire dans la direction de PM.
+\end{theorem}
+\warningInfo{Théorème de superposition}{\[\E = \sum_{i=0}^N \vec{e_n}\] avec \(\vec{e_n}\) la contribution d'une particule}
+\begin{theorem}[Distrbution volumique]
+    $$\E = \iiint \frac{\rho \dd \tau}{4\pi \epsilon_0 PM^2}\vec{u}$$ avec $\dd \tau$ un élément de volume.
+\end{theorem}
+
+\begin{definition}[Caractéristique d'une ligne de champ]
+    $$\vec{\dd l}\wedge \E = \vec{0}$$
+\end{definition}
+%\section{Invariances et symétries}
+\subsection{Symétrie}
+\begin{center}
+\begin{tabular}{ll}
+Situation & Direction\\
+M \(\in \pip\) & E est contenu au plan\\
+M \(\in \pim\) & B est \(\perp\) au plan\\
+\( (Oxy) \in  \pip\) & Selon z, \(E_z\) impaire, \(Bx,B_y\) paires\\
+\( (Oxy) \in  \pim\) & Selon z, \(E_z\) paire, \(Bx,B_y\) impaires
+\end{tabular}
+\end{center}
+\subsection{Théorème de Gauss} 
+\begin{theorem}[Théorème de Gauss]
+    $$\phi = \iint_{S} \E\cdot \vec{\dd S} = \frac{Q_{int}}{\epsilon_0}$$ avec $\vec{\dd S}$ orienté vers l'extérieur
+\end{theorem}
+\begin{theorem}[Forme locale du Théorème de Gauss / Maxwell - Gauss]
+    $$\Div\E = \frac{\rho}{\epsilon_0}$$
+\end{theorem}
+\begin{myproof}
+    On utilise Green-ostrogradski :
+    $$\iint \vec{A}\cdot \vec{\dd S} = \iiint \div \vec{A}\cdot \vec{\dd \tau}$$
+    En l'appliquant, on obtient $$\Div\E = \frac{\rho}{\epsilon_0}$$
+\end{myproof}
+\begin{theorem}[Maxwell-Faraday]
+    $$\rot\vec{E} = \vec{0}$$
+\end{theorem}
+\begin{myproof}
+    On rappelle que la circulation de $\E$ le long d'un contour fermé  est nulle.
+
+On utilise le Théorème de Stokes : $$ \int_C \vec{A}\cdot \vec{\dd l} = \iint \rot \vec{A}\cdot \vec{\dd S}$$
+
+Ici,  $\int_C \E\cdot \vec{\dd l} = \iint_S \rot \vec{F}\cdot \vec{\dd S} = 0$
+\end{myproof}
+\subsection{Relations de passage/continuité/discontinuité}
+\begin{theorem}[Relation de passage]
+La composante normale à l'interface de $\E$ est discontinue à la traversée d'une interface chargée. On a en effet $$\vec{n_{ext}}\cdot (\E_{ext}-\E_{int}) = \frac{\sigma}{\epsilon_0}$$
+
+La composante tangentielle est continue :$$\vec{n_{ext}}\wedge (\E_{ext}-\E_{int}) = \vec{0}$$ 
+\end{theorem}
+
+
+
+\begin{myproof}
+    On considère une surface chargée et on construit un cylindre de hauteur infinitésimale $h$ de part et d'autre de l'interface, avec des surfaces de base $S_1$ et $S_2$ de même aire $S$.
+
+    En appliquant le théorème de Gauss sur ce cylindre :
+    $$\iint_{\text{surface}} \E \cdot \vec{\dd S} = \frac{Q_{\text{int}}}{\epsilon_0}$$
+
+    Le flux à travers la surface latérale tend vers zéro quand $h \to 0$. Il reste :
+    $$E_{\text{ext},n} \cdot S - E_{\text{int},n} \cdot S = \frac{\sigma S}{\epsilon_0}$$
+
+    En divisant par $S$ :
+    $$E_{\text{ext},n} - E_{\text{int},n} = \frac{\sigma}{\epsilon_0}$$
+
+    Ce qui peut s'écrire vectoriellement : $$\vec{n_{\text{ext}}} \cdot (\E_{\text{ext}} - \E_{\text{int}}) = \frac{\sigma}{\epsilon_0}$$
+
+    Pour la composante tangentielle, on applique le théorème de Stokes sur un contour fermé perpendiculaire à l'interface. 
+    
+    Comme $\rot \E = \vec{0}$, la circulation est nulle, donc la composante tangentielle est continue.
+\end{myproof}
+\subsection{Potentiel électrostatique et équation de Poissson}
+La circulation de $\E$ entre 2 points A et B ne dépend que de la différence de potentiel entre ces 2 points du chemin :
+\begin{theorem}[Relation du potentiel]
+    $$\int_A^B \E \cdot \vec{\dd l} = V(A)-V(B)$$
+    $$ \E = -\grad(V)$$
+\end{theorem}
+\begin{theorem}[Équation de Poisson]
+   $$-\lap V = \frac{\rho}{\epsilon_0}$$
+\end{theorem}
+\begin{myproof}
+      $$\Div \E = \frac{\rho}{\epsilon_0}$$ En remplaçant $\E$ par son expression en fonction de V, on obtient
+
+      $$-\lap V = \frac{\rho}{\epsilon_0}$$
+\end{myproof}
+\subsection{Matérieux conducteurs}
+Ils contiennent des charges libres. 
+\begin{definition}[Densité de courant]
+    $$\vec{j} = \rho\vec{v}$$ avec $\vec{v}$ avec $\vec{v}$ la vitesse des charges.
+    $$\vec{j} = \gamma \E$$ où $\gamma$ est la conductivité.
+\end{definition}
+\begin{theorem}[Intensité du courant]
+    $$I = \iint_S \vec{j}\cdot \vec{\dd S}$$
+\end{theorem}
+\subsection{Conducteurs en équilibre électrostatique}
+Un conducteur soumis à un champ crée un champ intérieur de lui-m\^eme.
+Les chargent répondent au champ extérieur et arretent de se déplacer quand le champ total$\E_{tot}$ est nul.
+\subsubsection{Répartition des charges}
+Quand $\E_{tot} = \vec{0}$, sont divergent aussi et donc $\rho=0$. 
+
+S'il a été préalablement chargé : $\sigma \neq 0$
+\subsubsection{Potentiel}
+Le potentiel est alors constant, le conducteur est équipotentiel.
+\subsection{Au voisinage d'une surface}
+\begin{theorem}[Théorème de Coulomb]
+    $$\E_{ext} = \frac{\sigma}{\epsilon_0}\vec{n_{ext}}$$
+\end{theorem}
+\subsubsection{Application à l'effet de pointe}
+
+On modélise une pointe par des sphères en contact les unes avec les autres. L'ensemble du conducteur est chargé avec une charge totale $Q$. Le potentiel d'une sphère isolée s'écrit :
+$$V = \frac{Q}{4\pi\epsilon_0 R}$$
+
+Considérons deux sphères 1 et 2 mises en contact. Puisqu'elles forment un conducteur unique, elles sont équipotentielles :
+$$V_1 = V_2 \implies \frac{Q_1}{R_1} = \frac{Q_2}{R_2}$$
+
+En exprimant les charges en fonction des densités surfaciques : $Q_1 = \sigma_1 S_1$ et $Q_2 = \sigma_2 S_2$ (avec $S_i = 4\pi R_i^2$), on obtient :
+$$\sigma_2 = \frac{R_1}{R_2}\sigma_1$$
+
+Puisque $R_2 < R_1$, on a $\sigma_2 > \sigma_1$. La densité de charge augmente aux points de plus petit rayon. Par le théorème de Coulomb, le champ électrique à la surface s'intensifie considérablement à la pointe.
+\section{Magnétostatique}
+\begin{theorem}
+    $$\B = \frac{\mu_0}{4\pi}\frac{q\vec{v}\wedge \vec{PM}}{\vec{PM^3}}$$
+\end{theorem}
+\subsection{Ensemble de charges en mouvement}
+\begin{theorem}[Champ magnétique d'un volume]
+    $$\B = \frac{\mu_0}{4\pi}\iint_V \frac{\vec{j}\wedge \vec{PM}}{PM^3}\dd \tau$$
+\end{theorem}
+\begin{theorem}[Loi de Biot et Savat]
+            $$\B = \frac{\mu_0}{4\pi}\int_C \frac{I\vec{\dd l}\wedge \vec{PM}}{PM^3}$$
+\end{theorem}
+\subsection{Invariances et symétrie}
+\begin{center}
+\begin{tabular}{ll}
+Situation & Direction\\
+M \(\in \pip\) & B est \(\perp\) au plan\\
+M \(\in \pim\) & B est contenu dans le plan\\
+\( (Oxy) \in  \pip\) & Selon z, \(B_z\) paire, \(Bx,B_y\) impaires\\
+\( (Oxy) \in  \pim\) & Selon z, \(B_z\) impaire, \(Bx,B_y\) paires
+\end{tabular}
+\end{center}
+\subsection{Théorème d'Ampère}
+On se place sur un contour fermé
+
+\begin{theorem}[Théorème d'Ampère]
+\[\int_C \vec{B}(M)\cdot \dd \vec{l} = \mu_0 \sum I_{\text{entrées par C}} \]
+Les courant sont comptés positivement s'ils sont dans le sens de \(\vec{n}\).
+\end{theorem}
+
+\begin{theorem}[Théorème d'Ampère pour une distribution volumique de courant]
+ \[\int_C\B\cdot \dd \vec{l} = \mu_0 \iint \vec{j}\cdot \vec{n}\dd S\]
+\end{theorem}
+
+\begin{theorem}[Forme locale du théorème d'Ampère / Maxwell - Ampère]
+\[\rot(\vec{B})=\mu_0 \vec{j}\]
+\end{theorem}
+\subsection{Conservation du flux magnétique}
+\begin{theorem}[Loi de conservation du flux magnétique]
+
+    $$\phi = \iint_S \B\cdot \vec{\dd S} = \vec{0}$$
+\end{theorem}
+\begin{theorem}[Forme locale de la conservation]
+    $\Div \B = 0$
+\end{theorem}
+\begin{myproof}[Forme locale]
+    En appliquant le théorème de Green-Ostrogradski :
+    $$\iint_S \B \cdot \vec{\dd S} = \iiint_V \Div(\B) \cdot \dd \tau$$
+    
+    Puisque le flux magnétique est nul pour toute surface fermée, on a :
+    $$\iiint_V \Div(\B) \cdot \dd \tau = 0$$
+    
+    Cette égalité étant vraie pour tout volume $V$, l'intégrande doit être nul :
+    $$\Div \B = 0$$
+\end{myproof}
+\subsection{Relations de passage} 
+\begin{theorem}[Relation de passage pour le champ magnétique]
+    \begin{itemize}
+    \item La composante normalew de $\B$ est continue lors de la traversée d'une nappe : $$ \vec{n_{ext}}\cdot (\B_{ext}-\B_{int})=0$$
+    \item La composante tangentielle est discontinue : $$\vec{n_{ext}}\wedge (\B_{ext}-B_{int}) = \mu_0 \vec{j}$$
+\end{itemize}
+\end{theorem}
+\subsection{Potentiel vecteur}
+Puisque $\Div\B = 0$, il existe un vecteur $\vec{A}$ tel que $\Div(\rot(\vec{A}))=0$, on a $\B = \rot\vec{A}$. On appelle $\vec{A}$ le potentiel vecteur et $\B$ dérivé de $\vec{A}$
+\begin{definition}[Potentiel vecteur]
+    On appelle $\vec{A}$ le potentiel vecteur de $\B$ : $$\B = \rot\vec{A}$$
+\end{definition}
+On cherche à établir une relation entre $\vec{A}$ et les sources $\vec{j}$ :
+
+\begin{flalign*}
+    \rot\B &= \rot\rot\vec{A}\\
+    &=\grad(\Div \vec{A})-\lap \vec{A}\\
+    &= \mu_0\vec{j}
+\end{flalign*}
+On définit $\vec{A}$ à uns constante près : $\Div\vec{A} = 0$ (jauge de Coulomb)
+
+On obtient
+\begin{theorem}[Équation de Poisson]
+    $$\lap \vec{A} = -\mu_0 \vec{j}$$
+\end{theorem}
+On peut montrer que $$\dd \vec{A}(M) = \frac{\mu_0}{4\pi} \frac{\vec{j}(P)\dd \tau}{PM}$$ et
+pour un circuit filaire $$\vec{A}(M) = \frac{\mu_0}{4\pi} I\int \frac{\dd \vec{l}}{PM}$$
+\subsection{Interactions Électromagnétiques}
+\subsubsection{Force de Lorenz}
+\begin{definition}[Force de Lorenz]
+    $$\vec{f} = q(\E+\vec{v}\wedge \B)$$ avec v la vitesse de la particule
+\end{definition}
+\subsubsection{Force de Laplace}
+Au sei d'un conducteur, on a 2 types de charges, les charges mobiles ($\rho_m$) et les charges fixes ($\rho_f$). La neutralité est assurée par $\rho_m+\rho_f=0$.
+
+Pour un volume infinitésimal du conducteur, on applique la force EM sur l'ensemble des charges :
+\explanation{1}{$\vec{V}$ est la vitesse de déplacement du conducteur et $\vec{v}$ celle des charges mobiles}
+\explanation{2}{En appliquant $\rho_m = -\rho_f$}
+\explanation{3}{Avec $\vec{j} = \rho_m \vec{v}$}
+
+\begin{flalign*}
+    \dd \vec{F} &= \rho_f \dd \tau(\E+\vec{V}\wedge \B)\explain{1}{right}{0}{0}{}\\
+    &\:+ \rho_m \dd \tau(\E+(\vec{v}+\vec{V})\wedge \B)\explain{2}{right}{0}{0}{}\\
+    &= \rho_m \dd \tau \vec{v}\wedge \B\\
+   \frac{\dd \vec{F}}{\dd \tau} &= \vec{j}\wedge \B\explain{3}{right}{0}{0}{}\\
+\end{flalign*}
+On peut aussi, en écrivant $\vec{j}\dd \tau = \vec{j}S\dd l = jS\vec{\dd l}=I\vec{\dd l}$ :
+\begin{definition}[Force de Laplace]
+    $$\vec{F} = \int \dd \vec{F} = \int I\vec{\dd l} \wedge \B$$
+\end{definition}
+%Exemples : Rails de Laplace + 2 fils avec un champ qui s'attirent l'un vers l'autre
+\end{document}

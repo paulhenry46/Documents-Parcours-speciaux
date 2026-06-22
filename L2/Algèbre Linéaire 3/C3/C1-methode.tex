@@ -1,0 +1,529 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Algèbre linéaire 3*}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lombardi@math.univ-toulouse.fr
+\professor{E.Lombardie}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\begin{document}
+\setcounter{chapter}{2}
+\chapter{Espaces Hermitiens - Méthode}
+
+\section{Exercice 1}
+
+\subsection{Déterminer l'orthogonal de $F$}
+
+
+Le plan $F$ est défini dans $\mathbb{C}^3$ muni du produit scalaire hermitien standard :
+
+
+$$\langle x, y \rangle = \overline{x_1}y_1 + \overline{x_2}y_2 + \overline{x_3}y_3$$
+
+
+L'équation de $F$ est $x_1 - x_2 + ix_3 = 0$.
+
+
+Pour trouver $F^\perp$, on cherche à réécrire l'équation de $F$ sous la forme d'un produit scalaire standard $\langle n, x \rangle = 0$.
+Attention à la conjugaison sur la première composante du produit scalaire :
+
+
+$$x_1 - x_2 + ix_3 = 0 \iff \overline{1}x_1 + \overline{(-1)}x_2 + \overline{(-i)}x_3 = 0$$
+
+On identifie immédiatement le vecteur normal à $F$ : $n = \begin{pmatrix} 1 \\ -1 \\ -i \end{pmatrix}$.
+
+L'orthogonal de $F$ est la droite vectorielle engendrée par ce vecteur $n$ :
+
+
+$$F^\perp = \text{Vect}\left( \begin{pmatrix} 1 \\ -1 \\ -i \end{pmatrix} \right)$$
+
+\subsection{Matrice de la projection orthogonale sur $F$}
+
+\tipsInfo{Astuce de calcul}{
+Il est souvent beaucoup plus rapide de calculer la matrice de la projection sur la droite $F^\perp$ (qui est de dimension 1) puis d'utiliser la relation $p_F = Id - p_{F^\perp}$.
+}
+
+1. Normalisons le vecteur $n$ qui engendre $F^\perp$ :
+
+$$\|n\|^2 = |1|^2 + |-1|^2 + |-i|^2 = 1 + 1 + 1 = 3 \implies \|n\| = \sqrt{3}$$
+
+
+
+Un vecteur unitaire engendrant $F^\perp$ est donc $u = \frac{1}{\sqrt{3}}\begin{pmatrix} 1 \\ -1 \\ -i \end{pmatrix}$.
+2. Formule de la projection sur $F^\perp$ :
+Pour tout vecteur $x \in \mathbb{C}^3$, $p_{F^\perp}(x) = \langle u, x \rangle u = \frac{1}{\|n\|^2} \langle n, x \rangle n$.
+
+$$p_{F^\perp}(x) = \frac{1}{3} (x_1 - x_2 + ix_3) \begin{pmatrix} 1 \\ -1 \\ -i \end{pmatrix} = \frac{1}{3} \begin{pmatrix} x_1 - x_2 + ix_3 \\ -x_1 + x_2 - ix_3 \\ -ix_1 + ix_2 + x_3 \end{pmatrix}$$
+
+
+3. Matrice de $p_{F^\perp}$ dans la base canonique :
+
+$$M_{F^\perp} = \frac{1}{3} \begin{pmatrix} 1 & -1 & i \\ -1 & 1 & -i \\ -i & i & 1 \end{pmatrix}$$
+
+
+4. En déduire la matrice de $p_F$ :
+
+$$M_F = I_3 - M_{F^\perp} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} - \frac{1}{3} \begin{pmatrix} 1 & -1 & i \\ -1 & 1 & -i \\ -i & i & 1 \end{pmatrix} = \frac{1}{3} \begin{pmatrix} 2 & 1 & -i \\ 1 & 2 & i \\ i & -i & 2 \end{pmatrix}$$
+
+
+
+\subsection{Trouver une base orthonormale de $F$}
+
+On part de la base quelconque $(u_1, u_2)$ de $F$ :
+$$ u_1 = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} \quad \text{et} \quad u_2 = \begin{pmatrix} 0 \\ i \\ 1 \end{pmatrix} $$
+
+\subsubsection*{1. Premier vecteur de la base orthonormale}
+On pose $v_1 = u_1$. On calcule sa norme :
+$$ \|v_1\| = \sqrt{\overline{1}(1) + \overline{1}(1) + \overline{0}(0)} = \sqrt{2} $$
+En normalisant, on obtient le premier vecteur unitaire $w_1$ :
+$$ w_1 = \frac{1}{\sqrt{2}} u_1 = \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \\ 0 \end{pmatrix} $$
+
+\subsubsection*{2. Second vecteur de la base orthonormale}
+On cherche un vecteur $v_2$ orthogonal à $w_1$ en retranchant la projection de $u_2$ sur $w_1$ :
+$$ v_2 = u_2 - \langle w_1, u_2 \rangle w_1 $$
+
+Le produit scalaire hermitien (avec conjugaison à gauche) donne :
+$$ \langle w_1, u_2 \rangle = \overline{\left(\frac{1}{\sqrt{2}}\right)}(0) + \overline{\left(\frac{1}{\sqrt{2}}\right)}(i) + \overline{0}(1) = \frac{i}{\sqrt{2}} $$
+
+On en déduit $v_2$ :
+$$ v_2 = \begin{pmatrix} 0 \\ i \\ 1 \end{pmatrix} - \frac{i}{\sqrt{2}} \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \\ 0 \end{pmatrix} = \begin{pmatrix} -\frac{1}{2}i \\ \frac{1}{2}i \\ 1 \end{pmatrix} $$
+
+On calcule la norme de $v_2$ pour le normaliser :
+$$ \|v_2\| = \sqrt{\left|-\frac{1}{2}i\right|^2 + \left|\frac{1}{2}i\right|^2 + |1|^2} = \sqrt{\frac{1}{4} + \frac{1}{4} + 1} = \sqrt{\frac{3}{2}} = \frac{\sqrt{3}}{\sqrt{2}} $$
+
+En divisant $v_2$ par sa norme, on obtient le second vecteur unitaire $w_2$ :
+$$ w_2 = \frac{\sqrt{2}}{\sqrt{3}} \begin{pmatrix} -\frac{1}{2}i \\ \frac{1}{2}i \\ 1 \end{pmatrix} = \begin{pmatrix} -\frac{1}{\sqrt{6}}i \\ \frac{1}{\sqrt{6}}i \\ \frac{\sqrt{2}}{\sqrt{3}} \end{pmatrix} $$
+
+La famille $(w_1, w_2)$ forme la base orthonormale recherchée pour $F$.
+
+\section{Exercice 2}
+
+\subsection{Montrer que $\varphi$ est un produit hermitien sur $E = \mathbb{C}_2[X]$}
+
+Pour montrer que $\varphi$ est un produit hermitien, nous devons vérifier trois propriétés : la semi-linéarité à gauche (ou linéarité à droite selon la convention, ici nous utiliserons la convention standard de la semi-linéarité à gauche), la symétrie hermitienne, et le caractère défini positif.
+
+Il faut vérifier
+
+1. Symétrie hermitienne : $\varphi(Q, P) = \overline{\varphi(P, Q)}$
+
+2. Linéarité à droite (et donc semi-linéarité à gauche)
+
+3. Défini positif : $\forall P \in E, \varphi(P, P) \ge 0$ et $\varphi(P, P) = 0 \iff P = 0$
+
+On a donc 
+
+1. Symétrie hermitienne :
+$$\varphi(Q,P) = \overline{Q(1)}P(1) + \overline{Q(i)}P(i) + \overline{Q(-i)}P(-i) = \overline{P(1)\overline{Q(1)} + P(i)\overline{Q(i)} + P(-i)\overline{Q(-i)}} = \overline{\varphi(P,Q)}$$
+2. Linéarité par rapport à la seconde variable : (immédiate par linéarité de l'évaluation d'un polynôme).
+
+3. Caractère défini positif :
+
+$$\varphi(P,P) = \overline{P(1)}P(1) + \overline{P(i)}P(i) + \overline{P(-i)}P(-i) = |P(1)|^2 + |P(i)|^2 + |P(-i)|^2$$
+
+Comme c'est une somme de carrés de modules, $\varphi(P,P) \ge 0$.
+
+Si $\varphi(P,P) = 0$, alors $|P(1)|^2 + |P(i)|^2 + |P(-i)|^2 = 0$, ce qui implique :
+
+
+$$P(1) = 0, \quad P(i) = 0, \quad P(-i) = 0$$
+
+
+Le polynôme $P$ admet donc (au moins) 3 racines distinctes ($1, i, -i$). Or, par définition, $P \in \mathbb{C}_2[X]$, donc $\deg(P) \le 2$.
+
+\criticalInfo{Argument du degré}{
+Un polynôme non nul de degré au plus 2 ne peut pas avoir 3 racines distinctes. Donc $P$ est nécessairement le polynôme nul ($P = 0$).
+}
+
+$\varphi$ est donc bien un produit scalaire hermitien sur $E$.
+
+\subsection{Trouver une base orthonormale $(B_0, B_1, B_2)$ avec $\deg(B_k) = k$}
+
+On applique le procédé de Gram-Schmidt à la base canonique $(1, X, X^2)$.
+
+1. Calcul de $B_0$ (degré 0) :
+On part de $P_0 = 1$.
+
+$$\|1\|^2 = \varphi(1,1) = |1|^2 + |1|^2 + |1|^2 = 3 \implies \|1\| = \sqrt{3}$$
+
+
+$$B_0 = \frac{1}{\sqrt{3}}$$
+
+
+2. Calcul de $B_1$ (degré 1) :
+On part de $P_1 = X$. On cherche $\tilde{B}_1 = X - \langle B_0, X \rangle B_0$.
+
+$$\langle B_0, X \rangle = \varphi\left(\frac{1}{\sqrt{3}}, X\right) = \frac{1}{\sqrt{3}}\left(\overline{1}(1) + \overline{1}(i) + \overline{1}(-i)\right) = \frac{1}{\sqrt{3}}(1 + i - i) = \frac{1}{\sqrt{3}}$$
+
+
+$$\tilde{B}_1 = X - \left(\frac{1}{\sqrt{3}}\right)\frac{1}{\sqrt{3}} = X - \frac{1}{3}$$
+
+
+
+Calculons la norme de $\tilde{B}_1$ : pour $P(X) = X - \frac{1}{3}$, on a $P(1)=\frac{2}{3}$, $P(i)=i-\frac{1}{3}$, $P(-i)=-i-\frac{1}{3}$.
+
+$$\|\tilde{B}_1\|^2 = \left|\frac{2}{3}\right|^2 + \left|i-\frac{1}{3}\right|^2 + \left|-i-\frac{1}{3}\right|^2 = \frac{4}{9} + \left(1 + \frac{1}{9}\right) + \left(1 + \frac{1}{9}\right) = \frac{4}{9} + \frac{10}{9} + \frac{10}{9} = \frac{24}{9} = \frac{8}{3}$$
+
+
+$$B_1 = \frac{\tilde{B}_1}{\|\tilde{B}_1\|} = \sqrt{\frac{3}{8}}\left(X - \frac{1}{3}\right)$$
+
+
+3. Calcul de $B_2$ (degré 2) :
+Pour simplifier les calculs, on remarque que les points d'évaluation $1, i, -i$ sont les racines de $(X-1)(X^2+1) = X^3 - X^2 + X - 1$, mais ici on est dans $\mathbb{C}_2[X]$.
+Posons directement un polynôme de degré 2 orthogonal à $B_0$ (somme des valeurs aux points est nulle) et à $B_1$. On s'aperçoit que le polynôme $P_2 = X^2 + 1$ s'annule en $i$ et $-i$.
+Evaluons $\varphi(B_0, X^2+1) = \frac{1}{\sqrt{3}}(\overline{1}(2) + \overline{1}(0) + \overline{1}(0)) = \frac{2}{\sqrt{3}} \neq 0$.
+Utilisons la méthode systématique avec $P_2 = X^2$ :
+
+$$\langle B_0, X^2 \rangle = \frac{1}{\sqrt{3}}(1 + i^2 + (-i)^2) = \frac{1}{\sqrt{3}}(1 - 1 - 1) = -\frac{1}{\sqrt{3}}$$
+
+
+$$\langle B_1, X^2 \rangle = \sqrt{\frac{3}{8}} \left[ \left(1-\frac{1}{3}\right)\cdot 1 + \left(-i-\frac{1}{3}\right)(-1) + \left(i-\frac{1}{3}\right)(-1) \right] = \sqrt{\frac{3}{8}} \left[ \frac{2}{3} + i + \frac{1}{3} - i + \frac{1}{3} \right] = \frac{4}{3}\sqrt{\frac{3}{8}}$$
+
+
+
+Après retrait des projections et normalisation, on trouve de manière plus élégante en remarquant que le polynôme $\tilde{B}_2 = X^2 - \frac{2}{3}X - \frac{1}{3}$ convient.
+En effet, ses valeurs en $1, i, -i$ sont $0, -\frac{4}{3}-\frac{2}{3}i, -\frac{4}{3}+\frac{2}{3}i$. Sa norme au carré vaut $\frac{40}{9}$.
+On obtient :
+
+$$B_2 = \sqrt{\frac{9}{40}}\left(X^2 - \frac{2}{3}X - \frac{1}{3}\right)$$
+
+\section{Exercice 3}
+
+\subsection{Vérifier que $\langle P,Q\rangle$ est un produit scalaire hermitien}
+
+La linéarité à droite et la symétrie hermitienne découlent directement des propriétés de l'intégrale et de la conjugaison complexe :
+
+
+$$\overline{\langle P,Q\rangle} = \frac{1}{2\pi}\int_{0}^{2\pi} \overline{\overline{P(e^{it})}Q(e^{it})} dt = \frac{1}{2\pi}\int_{0}^{2\pi} P(e^{it})\overline{Q(e^{it})} dt = \langle Q,P \rangle$$
+
+Pour le caractère défini positif :
+
+
+$$\langle P,P\rangle = \frac{1}{2\pi}\int_{0}^{2\pi} |P(e^{it})|^2 dt$$
+
+
+L'intégrande est une fonction continue, positive ou nulle sur $[0, 2\pi]$. L'intégrale est donc positive ou nulle.
+Si $\langle P,P\rangle = 0$, alors par continuité et positivité de l'intégrande, $|P(e^{it})|^2 = 0$ pour tout $t \in [0, 2\pi]$.
+Cela signifie que le polynôme $P$ s'annule sur tout le cercle unité, ce qui représente une infinité de racines. Un polynôme ayant une infinité de racines est nécessairement le polynôme nul ($P = 0$).
+
+\subsection{La base $(1,X,...,X^{n})$ est-elle orthonormale ?}
+
+Calculons $\langle X^k, X^m \rangle$ pour deux entiers $k, m \in \{0, \dots, n\}$ :
+
+
+$$\langle X^k, X^m \rangle = \frac{1}{2\pi}\int_{0}^{2\pi} \overline{(e^{it})^k} (e^{it})^m dt = \frac{1}{2\pi}\int_{0}^{2\pi} e^{-ikt} e^{imt} dt = \frac{1}{2\pi}\int_{0}^{2\pi} e^{i(m-k)t} dt$$
+
+* Si $k = m$ :
+
+$$\langle X^k, X^k \rangle = \frac{1}{2\pi}\int_{0}^{2\pi} 1 \cdot dt = \frac{2\pi}{2\pi} = 1$$
+
+
+* Si $k \neq m$ :
+
+$$\langle X^k, X^m \rangle = \frac{1}{2\pi} \left[ \frac{e^{i(m-k)t}}{i(m-k)} \right]_0^{2\pi} = \frac{1}{2\pi \cdot i(m-k)} (1 - 1) = 0$$
+
+
+
+
+La famille $(1, X, \dots, X^n)$ est bien orthonormale pour ce produit scalaire.
+
+\subsection{Calculer $\|Q\|^{2}$}
+
+Soit $Q = X^{n}+\alpha_{n-1}X^{n-1}+\cdot\cdot\cdot+\alpha_{0}$.
+Puisque la base canonique est orthonormale d'après la question précédente, on peut appliquer directement le théorème de Pythagore généralisé (ou l'identité de Parseval).
+
+$$\|Q\|^2 = 1^2 + |\alpha_{n-1}|^2 + |\alpha_{n-2}|^2 + \dots + |\alpha_{0}|^2 = 1 + \sum_{k=0}^{n-1} |\alpha_k|^2$$
+
+ \subsection{Montrer que $M \ge 1$ et étudier les cas d'égalité}
+
+
+
+Par définition du maximum, pour tout $t \in [0, 2\pi]$, on a $|Q(e^{it})| \le M$, donc $|Q(e^{it})|^2 \le M^2$.
+En intégrant cette inégalité, on obtient :
+
+
+$$\|Q\|^2 = \frac{1}{2\pi}\int_{0}^{2\pi} |Q(e^{it})|^2 dt \le \frac{1}{2\pi}\int_{0}^{2\pi} M^2 dt = M^2$$
+
+Or, d'après la question (c), on sait que $\|Q\|^2 = 1 + \sum_{k=0}^{n-1} |\alpha_k|^2 \ge 1$.
+On en déduit donc :
+
+
+$$1 \le \|Q\|^2 \le M^2 \implies M \ge 1$$
+
+Cas d'égalité $M = 1$ :
+Pour avoir $M = 1$, il faut que toutes les inégalités intermédiaires soient des égalités. On doit donc avoir :
+
+
+$$\|Q\|^2 = 1 \iff 1 + \sum_{k=0}^{n-1} |\alpha_k|^2 = 1 \iff \sum_{k=0}^{n-1} |\alpha_k|^2 = 0$$
+
+
+Ce qui implique que tous les coefficients $\alpha_k$ sont nuls pour $k \in \{0, \dots, n-1\}$.
+
+L'égalité $M = 1$ a lieu si et seulement si $Q(X) = X^n$.
+
+
+\section{Exercice 4}
+
+Cet exercice met en lumière une différence fondamentale entre les espaces euclidiens (réels) et les espaces hermitiens (complexes) concernant les formes quadratiques.
+
+\subsection{Démontrer que $\langle f(x), y \rangle = 0$ pour tous $x$ et $y$ de $E$}
+
+Pour résoudre cette question, nous allons utiliser une méthode incontournable en algèbre hermitienne : l'identité de polarisation.
+
+\tipsInfo{L'identité de polarisation}{
+L'astuce consiste à évaluer l'hypothèse $\langle f(z), z \rangle = 0$ en remplaçant $z$ par des combinaisons linéaires judicieuses de $x$ et $y$, notamment $x+y$ et $x+iy$.
+}
+
+1. En développant $\langle f(x+y), x+y \rangle = 0$ par linéarité à droite et semi-linéarité à gauche, on obtient :
+
+$$\langle f(x) + f(y), x+y \rangle = 0$$
+
+
+$$\langle f(x), x \rangle + \langle f(x), y \rangle + \langle f(y), x \rangle + \langle f(y), y \rangle = 0$$
+
+
+
+Comme $\langle f(x), x \rangle = 0$ et $\langle f(y), y \rangle = 0$, il reste :
+
+$$\langle f(x), y \rangle + \langle f(y), x \rangle = 0 \quad \text{(Équation 1)}$$
+
+
+2. En effectuant la même opération avec $x+iy$, on développe $\langle f(x+iy), x+iy \rangle = 0$ :
+
+$$\langle f(x) + i f(y), x+iy \rangle = 0$$
+
+
+$$\langle f(x), x \rangle + \langle f(x), iy \rangle + \langle if(y), x \rangle + \langle if(y), iy \rangle = 0$$
+
+
+
+En sortant les scalaires complexes (attention : $\langle f(x), iy \rangle = i\langle f(x), y \rangle$ et $\langle if(y), x \rangle = \overline{i}\langle f(y), x \rangle = -i\langle f(y), x \rangle$) :
+
+$$i\langle f(x), y \rangle - i\langle f(y), x \rangle = 0$$
+
+
+
+En divisant par $i$, on obtient :
+
+$$\langle f(x), y \rangle - \langle f(y), x \rangle = 0 \quad \text{(Équation 2)}$$
+
+
+3. En additionnant l'Équation 1 et l'Équation 2 :
+
+$$2\langle f(x), y \rangle = 0 \implies \langle f(x), y \rangle = 0$$
+
+
+
+\subsection{En déduire que $f$ est l'endomorphisme nul}
+
+Puisque la relation $\langle f(x), y \rangle = 0$ est vraie pour tout $y \in E$, elle est en particulier vraie pour le choix de $y = f(x)$.
+
+On a donc, pour tout $x \in E$ :
+
+
+$$\langle f(x), f(x) \rangle = 0 \implies \|f(x)\|^2 = 0$$
+
+Par propriété de séparation de la norme (ou du produit scalaire), cela implique que $f(x) = 0$ pour tout $x \in E$. L'endomorphisme $f$ est donc bien l'endomorphisme nul.
+
+\subsection{Que penser de l'énoncé analogue sur un espace euclidien ?}
+
+
+L'énoncé est faux sur un espace euclidien ! Dans le cas réel, on ne peut pas utiliser le facteur $i$ pour isoler les termes lors de la polarisation.
+
+
+*Contre-exemple classique : Soit $E = \mathbb{R}^2$ muni du produit scalaire canonique, et $f$ la rotation d'angle $\pi/2$ (quart de tour), dont la matrice est $\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}$.
+Pour tout vecteur $x = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}$, on a $f(x) = \begin{pmatrix} -x_2 \\ x_1 \end{pmatrix}$.
+Le produit scalaire donne :
+
+
+$$\langle f(x), x \rangle = -x_2 x_1 + x_1 x_2 = 0$$
+
+
+Pourtant, $f$ n'est absolument pas l'endomorphisme nul.
+
+\section{Exercice 5}
+
+ Montrer que $B = iA$ est autoadjointe
+
+
+Pour rappel, une matrice complexe $B \in M_n(\mathbb{C})$ est dite autoadjointe (ou hermitienne) si elle est égale à sa transtransposée conjuguée (notée $B^*$), c'est-à-dire : $B^* = \overline{{}^tB} = B$.
+
+
+Calculons l'adjointe de $B = iA$ sachant que $A$ est une matrice réelle (${}^tA = A$ et $\overline{A} = A$) et antisymétrique (${}^tA = -A$) :
+
+
+$$B^* = \overline{{}^t(iA)} = \overline{i \cdot {}^tA} = -i \cdot {}^tA$$
+
+
+Comme ${}^tA = -A$, on injecte cette relation :
+
+
+$$B^* = -i \cdot (-A) = iA = B$$
+
+La matrice $B$ est donc bien autoadjointe.
+
+ En déduire que les valeurs propres de $A$ sont imaginaires pures
+
+D'après le cours, toutes les valeurs propres d'une matrice autoadjointe sont réelles.
+
+Soit $\lambda$ une valeur propre de $A$ et $X \neq 0$ un vecteur propre associé, de sorte que $AX = \lambda X$.
+Multiplions cette équation par $i$ :
+
+
+$$iAX = i\lambda X \implies BX = (i\lambda) X$$
+
+Cela montre que $(i\lambda)$ est une valeur propre de la matrice $B$. Comme $B$ est autoadjointe, sa valeur propre $(i\lambda)$ est obligatoirement un nombre réel.
+
+Posons $r = i\lambda$ avec $r \in \mathbb{R}$. En divisant par $i$, on obtient :
+
+
+$$\lambda = \frac{r}{i} = -ir$$
+
+Comme $r$ est réel, $\lambda$ est bien un imaginaire pur (ou nul si $r=0$).
+
+\subsection{Exercice 6}
+
+Pour rappel, le théorème spectral pour les matrices hermitiennes assure qu'elles sont diagonalisables à l'aide d'une matrice de passage unitaire $U$ (telle que $U^{-1} = U^*$).
+
+\subsection{Diagonalisation de A}
+On diagonalise $A = \begin{pmatrix} 4 & i & -i \\ -i & 4 & 1 \\ i & 1 & 4 \end{pmatrix}$
+
+1. Calcul du polynôme caractéristique :
+
+$$\chi_A(\lambda) = \det(A - \lambda I_3) = \begin{vmatrix} 4-\lambda & i & -i \\ -i & 4-\lambda & 1 \\ i & 1 & 4-\lambda \end{vmatrix}$$
+
+
+
+En effectuant des opérations sur les lignes/colonnes ou par un développement direct, on trouve :
+
+$$\chi_A(\lambda) = (4-\lambda)^3 - 3(4-\lambda) - 2$$
+
+
+
+En posant $X = 4-\lambda$, l'équation devient $X^3 - 3X - 2 = 0$. Une racine évidente est $X = -1$ (double) et $X = 2$ (simple).
+
+Si $4-\lambda = -1 \implies \lambda = 5$ (double)
+
+ Si $4-\lambda = 2 \implies \lambda = 2$ (simple)
+
+
+La matrice diagonale est donc :
+
+$$D = \begin{pmatrix} 2 & 0 & 0 \\ 0 & 5 & 0 \\ 0 & 0 & 5 \end{pmatrix}$$
+
+
+2. Recherche des sous-espaces propres et orthogonalisation :
+
+Pour $\lambda = 2$ : On résout $(A - 2I_3)X = 0$.
+
+$$\begin{pmatrix} 2 & i & -i \\ -i & 2 & 1 \\ i & 1 & 2 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \implies \dots \implies X_1 = \frac{1}{\sqrt{3}} \begin{pmatrix} 1 \\ i \\ -i \end{pmatrix} \text{ (après normalisation)}$$
+
+
+ Pour $\lambda = 5$ : On résout $(A - 5I_3)X = 0$, ce qui donne l'équation plan d'un plan complexe : $-x + iy - iz = 0$.
+On trouve deux vecteurs orthogonaux et normés appartenant à ce plan :
+
+$$X_2 = \frac{1}{\sqrt{2}} \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix} \quad \text{et} \quad X_3 = \frac{1}{\sqrt{6}} \begin{pmatrix} 2 \\ i \\ -i \end{pmatrix}$$
+
+
+
+
+3. Matrice unitaire $U$ :
+
+$$U = \begin{pmatrix} \frac{1}{\sqrt{3}} & 0 & \frac{2}{\sqrt{6}} \\ \frac{i}{\sqrt{3}} & \frac{1}{\sqrt{2}} & \frac{i}{\sqrt{6}} \\ -\frac{i}{\sqrt{3}} & \frac{1}{\sqrt{2}} & -\frac{i}{\sqrt{6}} \end{pmatrix}$$
+
+\subsection{Diagonalisation de B}
+On diagonalise $B = \begin{pmatrix} 1 & 0 & i \\ 0 & 1 & -1 \\ -i & -1 & 1 \end{pmatrix}$
+
+1. Calcul du polynôme caractéristique :
+
+$$\chi_B(\lambda) = \det(B - \lambda I_3) = \begin{vmatrix} 1-\lambda & 0 & i \\ 0 & 1-\lambda & -1 \\ -i & -1 & 1-\lambda \end{vmatrix}$$
+
+
+
+En développant suivant la première ligne :
+
+$$\chi_B(\lambda) = (1-\lambda) \left[ (1-\lambda)^2 - 1 \right] + i \left[ 0 - (-i(1-\lambda)) \right]$$
+
+
+$$\chi_B(\lambda) = (1-\lambda) [ (1-\lambda)^2 - 1 - 1 ] = (1-\lambda)(\lambda^2 - 2\lambda - 1)$$
+
+
+
+Les racines sont :
+
+$$\lambda_1 = 1, \quad \lambda_2 = 1 + \sqrt{2}, \quad \lambda_3 = 1 - \sqrt{2}$$
+
+
+La matrice diagonale est :
+
+$$D = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1+\sqrt{2} & 0 \\ 0 & 0 & 1-\sqrt{2} \end{pmatrix}$$
+
+
+2. Recherche des sous-espaces propres (normés) :
+
+Pour $\lambda_1 = 1$ : 
+$$(B - I_3)X = 0 \iff \begin{pmatrix} 0 & 0 & i \\ 0 & 0 & -1 \\ -i & -1 & 0 \end{pmatrix}\begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \implies \begin{cases} z = 0 \\ y = -ix \end{cases}$$
+
+
+
+En normalisant le vecteur $\begin{pmatrix} 1 \\ -i \\ 0 \end{pmatrix}$, on obtient $Y_1 = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ -i \\ 0 \end{pmatrix}$.
+
+Pour $\lambda_2 = 1+\sqrt{2}$ :
+Après résolution du système, on obtient le vecteur propre unitaire :
+
+$$Y_2 = \frac{1}{2} \begin{pmatrix} 1 \\ i \\ \sqrt{2} \end{pmatrix}$$
+
+
+ Pour $\lambda_3 = 1-\sqrt{2}$ :
+De même, on trouve le dernier vecteur propre unitaire :
+
+$$Y_3 = \frac{1}{2} \begin{pmatrix} 1 \\ i \\ -\sqrt{2} \end{pmatrix}$$
+
+
+
+
+3. Matrice unitaire $U$ :
+
+$$U = \begin{pmatrix} \frac{1}{\sqrt{2}} & \frac{1}{2} & \frac{1}{2} \\ -\frac{i}{\sqrt{2}} & \frac{i}{2} & \frac{i}{2} \\ 0 & \frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \end{pmatrix}$$
+\end{document}

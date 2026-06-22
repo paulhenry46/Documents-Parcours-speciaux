@@ -1,0 +1,113 @@
+% !TeX spellcheck = fr_FR
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 2 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{awesomebox}
+
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+
+\begin{document}
+\setcounter{chapter}{2}
+\chapter{Équations de Maxwell}
+
+\section{Conservation de la charge}
+
+La charge électrique est une grandeur conservative. Toute variation de la charge dans un volume $V$ est due à un flux de courant à travers sa surface frontière $S$.
+
+\begin{theorem}[Équation de conservation de la charge]
+    En tout point $M$ à l'instant $t$, la densité volumique de charge $\rho$ et le vecteur densité de courant $\vec{j}$ sont liés par la forme locale :
+    $$\Div \vec{j} + \frac{\partial \rho}{\partial t} = 0$$
+\end{theorem}
+
+\textbf{Interprétation :} Si la densité de charge $\rho$ diminue en un point, c'est qu'un courant $\vec{j}$ s'en éloigne (divergence positive).
+
+\section{Les Équations de Maxwell}
+
+\subsection{Équations de structure}
+Elles décrivent les propriétés intrinsèques des champs $\vec{E}$ et $\vec{B}$.
+
+\begin{definition}[Maxwell-Gauss et Maxwell-Thomson]
+    \begin{itemize}
+        \item \textbf{Maxwell-Gauss :} $\Div \vec{E} = \frac{\rho}{\epsilon_0}$ (Lien source-champ)
+        \item \textbf{Maxwell-Thomson :} $\Div \vec{B} = 0$ (Flux conservatif, pas de monopôle magnétique)
+    \end{itemize}
+\end{definition}
+
+\subsection{Équations de couplage (régime variable)}
+Ces équations traduisent l'interaction entre les champs et leur dépendance temporelle.
+
+\begin{theorem}[Maxwell-Faraday et Maxwell-Ampère]
+    \begin{itemize}
+        \item \textbf{Maxwell-Faraday :} $\rot \vec{E} = -\frac{\partial \vec{B}}{\partial t}$ 
+        \item \textbf{Maxwell-Ampère :} $\rot \vec{B} = \mu_0\left(\vec{j} + \epsilon_0\frac{\partial \vec{E}}{\partial t}\right)$
+    \end{itemize}
+\end{theorem}
+
+\tipsInfo{Courant de déplacement}{Le terme $\vec{j_D} = \epsilon_0\frac{\partial \vec{E}}{\partial t}$ est appelé \textbf{courant de déplacement}. Il a été introduit par Maxwell pour assurer la cohérence mathématique avec l'équation de conservation de la charge.}
+
+\section{Potentiels Électromagnétiques}
+
+On définit les potentiels $(V, \vec{A})$ qui permettent de reconstruire les champs physiques.
+
+\begin{definition}[Potentiels vecteur et scalaire]
+    Les champs $\vec{E}$ et $\vec{B}$ s'expriment en fonction du potentiel vecteur $\vec{A}$ et du potentiel scalaire $V$ par :
+    $$\vec{B} = \rot \vec{A} \quad \text{et} \quad \vec{E} = -\grad V - \frac{\partial \vec{A}}{\partial t}$$
+\end{definition}
+
+\subsection{Jauge de Lorenz}
+Pour simplifier les équations de propagation, on exploite la liberté de jauge.
+
+\begin{theorem}[Condition de Lorenz]
+    On impose la relation suivante entre $\vec{A}$ et $V$ :
+    $$\Div \vec{A} + \frac{1}{c^2}\frac{\partial V}{\partial t} = 0 \quad \text{avec} \quad c = \frac{1}{\sqrt{\mu_0\epsilon_0}}$$
+\end{theorem}
+
+\subsection{Équations de propagation}
+
+
+Sous la jauge de Lorenz, les potentiels sont découplés et satisfont des équations d'onde de type D'Alembertien.
+
+\begin{theorem}[Équations de propagation des potentiels]
+    $$\square V = \Delta V - \frac{1}{c^2}\frac{\partial^2 V}{\partial t^2} = -\frac{\rho}{\epsilon_0}$$
+    $$\square \vec{A} = \Delta \vec{A} - \frac{1}{c^2}\frac{\partial^2 \vec{A}}{\partial t^2} = -\mu_0 \vec{j}$$
+\end{theorem}
+
+\subsection{Invariance de jauge}
+Il existe une infinité de couples $(V, \vec{A})$ pour décrire les mêmes champs physiques.
+
+\begin{theorem}[Transformation de jauge]
+    Les champs $\vec{E}$ et $\vec{B}$ sont invariants par la transformation :
+    $$\vec{A}' = \vec{A} + \grad f \quad ; \quad V' = V - \frac{\partial f}{\partial t}$$
+    où $f(M,t)$ est un champ scalaire quelconque.
+\end{theorem}
+
+\end{document}

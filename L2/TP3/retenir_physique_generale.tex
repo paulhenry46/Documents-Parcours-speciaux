@@ -1,0 +1,154 @@
+% !TeX spellcheck = en_US
+\documentclass[french]{yLectureNote}
+
+\title{Électromagnétisme 2 PS}
+\subtitle{Physique}
+\author{Paulhenry Saux}
+\date{\today}
+\yLanguage{Français}
+%lionels.calmels@cemes.fr
+\professor{M.Brut}
+\usepackage{graphicx}%----pour mettre des images
+\usepackage[utf8]{inputenc}%---encodage
+\usepackage{geometry}%---pour modifier les tailles et mettre a4paper
+%\usepackage{awesomebox}%---pour les boites d'exercices, de pbq et de croquis ---d\'esactiv\'e pour les TP de PC
+\usepackage{tikz}%---pour deiffner + d\'ependance de chemfig
+% \usepackage{tabularx}%---pour dimensionner automatiquement les tableaux avec variable X
+\usepackage{awesomebox}%---Pour les boites info, danger et autres
+\usepackage{menukeys}%---Pour deiffner les touches de Calculatrice
+\usepackage{fancyhdr}%---pour les en-t\^ete personnalis\'ees
+\usepackage{blindtext}%---pour les liens
+\usepackage{hyperref}%---pour les liens (\`a mettre en dernier)
+\usepackage{caption}%---pour la francisation de la l\'egende table vers Tableau
+\usepackage{pifont}
+\usepackage{array}%---pour les tableaux
+\usepackage{lipsum}
+\usepackage{yFlatTable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Lim}[1]{\lim\limits_{\substack{#1}}\:}
+\renewcommand{\vec}{\overrightarrow}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\norm}[1]{||\vec{#1}||}
+\newcommand{\fo}{\psi(\vec{r},t)}
+\newcommand{\foe}{\psi(\vec{r},t)\*}
+\newcommand{\HH}{\hat{H}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapcc}{\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}}
+\newcommand{\E}{\vec{E}(M)}
+\newcommand{\B}{\vec{B}(M)}
+\newcommand{\V}{V(M)}
+\newcommand{\er}{\vec{e_{\rho}}}
+\newcommand{\ep}{\vec{e_{\varphi}}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\mv}{\mathcal{V}}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\rot}{\vec{\mathrm{rot}}}
+\newcommand{\grad}{\vec{\mathrm{grad}}}
+\setcounter{chapter}{3}
+\begin{document}
+\chapter{TP de Physique Générale : À retenir}
+\section{Polarisation de la lumière}
+\subsection{Loi de Malus}
+
+\begin{theorem}[Loi de Malus]
+    Pour une onde polarisée rectilignement traversant un analyseur, l'éclairement $I$ (ou la puissance $P$) transmis est :
+$$P(\theta) = P_0 \cos^2(\theta - \theta_0) + P_{offset}$$
+où $\theta_0$ est la direction de polarisation incidente.
+\end{theorem}
+
+\checkInfo{Protocole et Analyse}{
+\begin{itemize}
+    \item \textbf{Zéro machine :} Attention au décalage entre l'index du support et l'axe réel ( $90^\circ$ sur Didalab).
+    \item \textbf{Orientation des supports} : l'aiguille des supports doit regarder dans le meme sens que le laser (= pas en face du laser).
+    \item \textbf{Linéarisation :} Pour valider la loi, on trace $Y = \frac{P - P_{min}}{P_{max} - P_{min}}$ en fonction de $\cos^2(\theta - \theta_0)$. On doit obtenir une droite de pente 1 passant par l'origine.
+\end{itemize}
+}
+
+\subsection{Lame demi-onde ($\lambda/2$)}
+
+\begin{proposition}[Effet de la lame $\lambda/2$]
+    Une lame $\lambda/2$ transforme une polarisation rectiligne en une autre polarisation rectiligne, symétrique de l'incidente par rapport aux axes neutres de la lame.
+
+    Si le champ incident fait un angle $\alpha$ avec l'axe lent de la lame, la direction de polarisation tourne d'un angle : 
+$$\theta_{rot} = 2\alpha$$
+\end{proposition}
+
+\subsection{Réflexion et Angle de Brewster}
+
+% \begin{theorem}[Loi de Brewster]
+%  Il existe un angle d'incidence $\theta_B$ pour lequel le coefficient de réflexion de la composante polarisée \textbf{parallèlement} au plan d'incidence ($p$) s'annule :
+% $$\tan(\theta_B) = \frac{n_2}{n_1}$$   
+% \end{theorem}
+
+\checkInfo{Calcul de l'indice $n$}{
+    \begin{itemize}
+    \item \textbf{Polarisation $p$} (parallèle) : Présente un minimum (extinction) à $\theta_B$.
+    \item À l'interface air/verre ($n_{air} = 1$) : $n_v = \tan(\theta_B)$.\\
+    \item L'incertitude se calcule par : $\Delta n = (1 + n^2) \Delta \theta_B$ (avec $\Delta \theta_B$ en radians).
+\end{itemize}
+
+}
+\section{Induction et Magnétisme}
+
+\subsection{Loi de Faraday-Lenz}
+
+\begin{definition}[Force électromotrice (f.e.m) d'induction]
+Toute variation de flux magnétique $\Phi$ à travers un circuit fermé induit une f.e.m $e$ définie par :
+$$e = -\frac{\dd\Phi}{\dd t}$$
+\end{definition}
+
+\warningInfo{Sens du courant (Loi de Lenz)}{Le courant induit a un sens tel qu'il s'oppose, par ses effets électromagnétiques, à la cause qui lui a donné naissance (modérateur).}
+
+\checkInfo{Analyse du Flux}{
+\begin{itemize}
+    \item \textbf{Intégration :} Le flux se mesure en intégrant la tension : $\Delta\Phi = - \int e(t) \dd t$.
+    \item \textbf{Indépendance de la vitesse :} La valeur finale du flux $\Phi$ ne dépend que des positions initiale et finale, pas de la rapidité du mouvement (l'aire sous la courbe $e(t)$ est constante).
+    \item \textbf{Symétrie :} Retourner la bobine change le signe du flux mesuré.
+\end{itemize}
+}
+
+
+
+\subsection{Inductance Mutuelle $M$}
+
+\begin{proposition}[Relation constitutive]
+Pour deux circuits couplés, la f.e.m. induite au secondaire ($e_2$) par un courant variable au primaire ($i_1$) est :
+$$e_2 = -M \frac{\dd i_1}{\dd t}$$
+\end{proposition}
+
+\tipsInfo{Méthode de mesure}{
+\begin{itemize}
+    \item \textbf{Signal :} Utiliser un signal triangulaire au primaire pour avoir $\frac{\dd i_1}{\dd t}$ constant par morceaux (palier de tension au secondaire).
+    \item \textbf{Calcul :} $M$ est la pente de la droite $E_2 = f(\frac{\dd i_1}{\dd t})$.
+    \item \textbf{Théorie (Solénoïdes imbriqués) :} $M_{th} = \mu_0 \frac{N_1 N_2}{l_1} S$.
+\end{itemize}
+}
+
+\subsection{Auto-induction $L$ (Régime Transitoire)}
+Quand on ferme l'interrupteur, on crée un court-circuit. La partie résistance + bobine n'est plus alimentée. La bobine (qui a de l'énergie stokée) se décharge alors dans la résistance.
+
+\begin{theorem}[Équation différentielle (Décharge RL)]
+Lors de la décharge d'une bobine dans une résistance $R$, la maille donne :
+$$L\frac{\dd i}{\dd t} + R_{tot} i = 0 \quad \text{avec} \quad R_{tot} = R_{boite} + r_{bobine} + R_g$$
+\end{theorem}
+
+\criticalInfo{Temps caractéristique $\tau$}{Le courant décroît selon $i(t) = I_0 e^{-t/\tau}$ avec :
+$$\tau = \frac{L}{R_{tot}}$$
+On en déduit $L = \tau \cdot R_{tot}$.}
+
+
+
+\checkInfo{Réglages Acquisition}{
+\begin{itemize}
+    \item \textbf{Trigger :} Front descendant, seuil à $\approx 2/3$ de $E_{max}$.
+    \item \textbf{Pre-Trigger :} Ne pas oublier de le près trig de 25\%.
+    \item \textbf{Fenêtre temporelle :} Choisir $T_{total} \approx 5\tau$ à $10\tau$.
+   \end{itemize}
+}
+
+\end{document}
